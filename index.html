@@ -116,7 +116,13 @@ button{cursor:pointer}
 .cartao.sel{border-color:var(--azul)!important}
 .secao.voce .cartao.sel{background:var(--ouro-fundo)}
 .posicao{flex:none;width:1.9em;height:1.9em;border-radius:50%;background:var(--ouro);color:var(--azul);font-weight:700;font-size:.9375em;display:flex;align-items:center;justify-content:center}
-.cartao-abrir{flex:1;min-width:0;min-height:2.75em;text-align:left;background:none;border:none;padding:0;display:flex;flex-direction:column;gap:.3em}
+.cartao-abrir{flex:1;min-width:0;min-height:2.75em;text-align:left;background:none;border:none;padding:0;display:flex;flex-direction:column;gap:.3em;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+.compart{display:inline-flex;align-items:center;justify-content:center;vertical-align:-.3em;width:2em;height:1.6em;margin:-.3em -.4em -.3em .05em;border-radius:.5em;color:#9AA3B5;cursor:pointer}
+.compart:hover,.compart:active{color:var(--azul2);background:#EEF1F6}
+.det-topo{display:flex;align-items:center;justify-content:space-between;gap:.5em}
+.bt-compart{display:inline-flex;align-items:center;gap:.4em;margin-left:auto;min-height:2.75em;padding:0 .8em;border-radius:999px;border:1px solid var(--linha);background:#fff;color:var(--azul);font-weight:600;font-size:.9375em}
+.bt-compart:hover{border-color:var(--ouro)}
+.opc-lista{display:flex;flex-direction:column;gap:.25em}
 .cartao-titulo{font-size:1.0625em;font-weight:500;line-height:1.3;color:var(--texto);overflow-wrap:anywhere}
 .secao.urg .cartao-titulo,.secao.voce .cartao-titulo{font-weight:600;color:var(--azul)}
 .cartao-meta{font-size:.8125em;color:var(--suave)}
@@ -232,6 +238,7 @@ body.janela-aberta .sugerir-flut{display:none}
   .aviso{left:7em}
 }
 @media (min-width:1024px){.fundo-det{display:none!important}}
+@media (min-width:1024px){.det-topo{position:absolute;top:1.4em;right:1.4em}.det-topo+.bloco{padding-right:3.25em}.bt-compart{width:2.75em;padding:0;justify-content:center}.bt-compart span{display:none}}
 
 /* ---------- Celular (até 767) ---------- */
 @media (max-width:767px){
@@ -395,7 +402,7 @@ body.janela-aberta .sugerir-flut{display:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.2';
+var VERSAO_SITE = '1.3';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -469,6 +476,10 @@ var IC = {
   mic: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>',
   sair: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5C6680" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg>',
   doc: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5C6680" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>',
+  compart: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/></svg>',
+  link: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16325C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg>',
+  abrir: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16325C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  zap: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.7z"/></svg>',
   att: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5C6680" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>'
 };
 
@@ -610,6 +621,7 @@ function desenhar() {
   desenharCondos();
   desenharLista();
   if (S.selId && !S.det) abrirTarefa(S.selId, true);
+  if (ler('abrirT')) abrirLinkDireto();
 }
 
 function desenharCondos() {
@@ -662,7 +674,9 @@ function cartao(t) {
   return '<article class="cartao' + (S.selId === t.id ? ' sel' : '') + '" data-id="' + esc(t.id) + '">' +
     (t.urgente ? '<div class="posicao" aria-label="Urgente ' + t.posicao + '">' + t.posicao + '</div>' : '') +
     '<button class="cartao-abrir" data-abrir="' + esc(t.id) + '">' +
-      '<span class="cartao-titulo">' + esc(t.titulo) + '</span>' +
+      '<span class="cartao-titulo">' + esc(t.titulo) +
+        (podeCompartilhar(t.condo) ? '<span class="compart" data-compartilhar="' + esc(t.id) + '" role="button" aria-label="Compartilhar: ' + esc(t.titulo) + '">' + IC.compart + '</span>' : '') +
+      '</span>' +
       '<span class="cartao-meta">' + esc(metaDe(t)) + '</span>' +
       (t.etiqueta ? '<span class="etiqueta">' + esc(t.etiqueta) + '</span>' : '') +
     '</button>' +
@@ -742,7 +756,8 @@ function desenharDetalhe() {
   var pode = t.pode || {};
   var u = S.dados.usuario || {};
   var pend = t.status !== 'Concluída' && !t.concluidoEm;
-  var h = cabDetalheVoltar();
+  var h = '<div class="det-topo">' + cabDetalheVoltar() +
+    (podeCompartilhar(t.condo) ? '<button class="bt-compart" data-acao="compartDet" aria-label="Compartilhar tarefa" title="Compartilhar">' + IC.compart + '<span>Compartilhar</span></button>' : '') + '</div>';
   h += '<div class="bloco" style="gap:.5em"><span class="det-condo">' + esc(nomeCondo(t.condo)) + ' · ' + esc(t.id) + '</span>' +
     (S.editandoTitulo
       ? '<label class="sr" for="txtTitulo">Título</label><input class="campo" id="txtTitulo" maxlength="120" autocomplete="off" value="' + esc(t.titulo) + '">' +
@@ -875,6 +890,111 @@ function trocarCondominio(cod) {
     });
   });
   desenharDetalhe();
+}
+
+/* ================= Compartilhar ================= */
+function compartilharCriada() {
+  var t = S.ultimaCriada; if (!t) return;
+  if (!tarefaPorId(t.id) && S.dados) S.dados.tarefas = (S.dados.tarefas || []).concat([t]);
+  compartilhar(t.id);
+}
+function podeCompartilhar(cod) {
+  var d = S.dados || {}, u = d.usuario || {};
+  if (u.master) return true;
+  return (d.condos || []).some(function (c) { return c.codigo === cod && c.podeCriar; });
+}
+function tarefaPorId(id) {
+  if (S.det && S.det.id === id) return S.det;
+  return ((S.dados && S.dados.tarefas) || []).filter(function (t) { return t.id === id; })[0];
+}
+function linkDe(id) { return location.origin + location.pathname + '?t=' + encodeURIComponent(id); }
+function textoDe(t) { return nomeCondo(t.condo).toUpperCase() + ' - ' + t.titulo; }
+function copiarLink(id) {
+  var link = linkDe(id);
+  var ok = function () { avisar('Link copiado'); };
+  var reserva = function () {
+    var ta = document.createElement('textarea'); ta.value = link; ta.setAttribute('readonly', '');
+    ta.style.position = 'absolute'; ta.style.left = '-9999px'; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); ok(); } catch (e) { avisar('Não deu para copiar. Link: ' + link, true); }
+    document.body.removeChild(ta);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(ok, reserva); else reserva();
+}
+function compartilhar(id) {
+  var t = tarefaPorId(id); if (!t) return;
+  var link = linkDe(id), texto = textoDe(t);
+  if (navigator.share && faixa() !== 'computador') {
+    navigator.share({ title: texto, text: texto + '\nAbra no app Síndico:', url: link }).catch(function () {});
+    return;
+  }
+  abrirOpcoes(id, true);
+}
+/* Menu curto: ao segurar o cartão (celular) ou com o botão direito; no computador também é o "compartilhar". */
+function abrirOpcoes(id, soCompartilhar) {
+  var t = tarefaPorId(id); if (!t) return;
+  var noPc = faixa() === 'computador' || !navigator.share;
+  var h = '<div class="jan-corpo"><div class="opc-lista">' +
+    (noPc ? '<button class="menu-item" data-opc="zap">' + IC.zap + 'Enviar pelo WhatsApp</button>'
+          : '<button class="menu-item" data-opc="share">' + '<span style="color:#16325C;display:inline-flex">' + IC.compart + '</span>Compartilhar</button>') +
+    '<button class="menu-item" data-opc="copiar">' + IC.link + 'Copiar link</button>' +
+    (soCompartilhar ? '' : '<button class="menu-item" data-opc="abrir">' + IC.abrir + 'Abrir tarefa</button>') +
+    '</div></div>';
+  abrirJanela(t.titulo, nomeCondo(t.condo) + ' · ' + t.id, h, 'centro', function (raiz) {
+    raiz.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-opc]'); if (!b) return;
+      var o = b.getAttribute('data-opc');
+      fecharCamadas();
+      if (o === 'zap') window.open('https://wa.me/?text=' + encodeURIComponent(textoDe(t) + '\nAbra no app Síndico: ' + linkDe(id)), '_blank', 'noopener');
+      if (o === 'share') navigator.share({ title: textoDe(t), text: textoDe(t) + '\nAbra no app Síndico:', url: linkDe(id) }).catch(function () {});
+      if (o === 'copiar') copiarLink(id);
+      if (o === 'abrir') abrirTarefa(id);
+    });
+  });
+}
+/* Segurar o cartão: iOS não dispara contextmenu, então há um temporizador de toque; Android e computador usam contextmenu. */
+var segurar = { timer: null, x: 0, y: 0, ultimo: 0, ignorarClique: false };
+function cartaoIdDe(el) { var c = el && el.closest && el.closest('.cartao'); return c ? c.getAttribute('data-id') : null; }
+function dispararSegurar(id) {
+  if (Date.now() - segurar.ultimo < 900) return;
+  var t = tarefaPorId(id); if (!t || !podeCompartilhar(t.condo)) return;
+  segurar.ultimo = Date.now(); segurar.ignorarClique = true;
+  if (navigator.vibrate) { try { navigator.vibrate(12); } catch (e) {} }
+  abrirOpcoes(id, false);
+}
+document.addEventListener('touchstart', function (e) {
+  var id = cartaoIdDe(e.target); if (!id || e.target.closest('.concluir')) return;
+  var p = e.touches[0]; segurar.x = p.clientX; segurar.y = p.clientY;
+  clearTimeout(segurar.timer);
+  segurar.timer = setTimeout(function () { dispararSegurar(id); }, 550);
+}, { passive: true });
+document.addEventListener('touchmove', function (e) {
+  var p = e.touches[0];
+  if (Math.abs(p.clientX - segurar.x) > 10 || Math.abs(p.clientY - segurar.y) > 10) clearTimeout(segurar.timer);
+}, { passive: true });
+document.addEventListener('touchend', function () { clearTimeout(segurar.timer); }, { passive: true });
+document.addEventListener('touchcancel', function () { clearTimeout(segurar.timer); }, { passive: true });
+document.addEventListener('contextmenu', function (e) {
+  var id = cartaoIdDe(e.target); if (!id) return;
+  var t = tarefaPorId(id); if (!t || !podeCompartilhar(t.condo)) return;
+  e.preventDefault(); clearTimeout(segurar.timer); dispararSegurar(id);
+});
+
+/* Link direto: ?t=MAXC-T-00012 abre a tarefa depois do login. */
+function guardarLinkDireto() {
+  try {
+    var t = new URLSearchParams(location.search).get('t');
+    if (t) { guardar('abrirT', String(t).slice(0, 40)); history.replaceState(null, '', location.pathname); }
+  } catch (e) {}
+}
+function abrirLinkDireto() {
+  var id = ler('abrirT'); if (!id || !S.dados) return;
+  guardar('abrirT', null);
+  var cod = String(id).split('-T-')[0];
+  var tem = (S.dados.condos || []).some(function (c) { return c.codigo === cod; });
+  if (!tem) { avisar('Você não tem acesso a esta tarefa.', true); return; }
+  if (S.condo !== 'todos') S.condo = cod;
+  desenharCondos(); desenharLista();
+  abrirTarefa(id);
 }
 
 function salvarTitulo() {
@@ -1075,7 +1195,11 @@ function criarTarefa(raiz, condo, confirmar) {
     }
     guardarLocal('ultimoCondo', condo);
     fecharCamadas();
-    avisar('Tarefa criada');
+    var nova = r.tarefa;
+    if (nova && podeCompartilhar(nova.condo)) {
+      S.ultimaCriada = nova;
+      avisar('Tarefa criada', false, { rotulo: 'Compartilhar', seg: 7, fn: function () { compartilharCriada(); } });
+    } else avisar('Tarefa criada');
     if (S.condo !== 'todos' && S.condo !== condo) S.condo = condo;
     recarregar();
   });
@@ -1194,6 +1318,10 @@ function avisar(texto, erro, acao) {
 
 /* ================= Eventos ================= */
 document.addEventListener('click', function (e) {
+  if (segurar.ignorarClique && cartaoIdDe(e.target)) { segurar.ignorarClique = false; e.preventDefault(); return; }
+  segurar.ignorarClique = false;
+  var sh = e.target.closest('[data-compartilhar]');
+  if (sh) { e.preventDefault(); compartilhar(sh.getAttribute('data-compartilhar')); return; }
   var b = e.target.closest('button, a[data-acao], .fundo, .fundo-det');
   if (!b) return;
   if (b.id === 'fundoDet') { fecharDetalhe(); return; }
@@ -1227,6 +1355,7 @@ document.addEventListener('click', function (e) {
     case 'editarTitulo': S.editandoTitulo = true; desenharDetalhe(); var it = $('txtTitulo'); it.focus(); it.select(); break;
     case 'cancelarTitulo': S.editandoTitulo = false; desenharDetalhe(); break;
     case 'salvarTitulo': salvarTitulo(); break;
+    case 'compartDet': if (S.det) compartilhar(S.det.id); break;
     case 'editarDesc': S.editandoDesc = true; desenharDetalhe(); $('txtDesc').focus(); break;
     case 'cancelarDesc': S.editandoDesc = false; desenharDetalhe(); break;
     case 'salvarDesc':
@@ -1271,6 +1400,7 @@ function carregarScriptGoogle() {
   document.head.appendChild(s);
 }
 function iniciar() {
+  guardarLinkDireto();
   S.sessao = ler('sessao');
   try { S.google = JSON.parse(ler('google') || 'null'); } catch (e) { S.google = null; }
   if (S.sessao) {
