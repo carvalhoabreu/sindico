@@ -324,6 +324,19 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 .ent-dados b{color:var(--azul)}
 .ent-form{width:100%;display:flex;flex-direction:column;gap:.6em;text-align:left}
 
+/* ---------- Instalar e ativar notificações (v1.7) ---------- */
+.faixa-guia{display:flex;align-items:center;gap:.75em;background:#fff;border:1px solid var(--linha);border-left:none;border-radius:.875em;padding:.6em .6em .6em .9em;margin-bottom:.9em;box-shadow:0 1px 2px rgba(15,38,70,.05)}
+.faixa-guia .ico{width:2.25em;height:2.25em;border-radius:50%;background:var(--ouro-fundo);display:flex;align-items:center;justify-content:center;flex:none}
+.faixa-guia .tx{flex:1;min-width:0;font-size:.875em;color:var(--texto)}
+.faixa-guia .tx b{display:block;color:var(--azul)}
+.faixa-guia .bt{min-height:2.5em;padding:0 .9em;font-size:.8125em}
+.faixa-guia .x{width:2.5em;height:2.5em;border-radius:50%;border:none;background:none;display:flex;align-items:center;justify-content:center;flex:none}
+.passos{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.6em;counter-reset:passo}
+.passos li{display:flex;align-items:flex-start;gap:.75em;font-size:.9375em;line-height:1.45;counter-increment:passo}
+.passos li::before{content:counter(passo);width:1.75em;height:1.75em;border-radius:50%;background:var(--azul);color:#fff;font-weight:700;font-size:.8125em;display:flex;align-items:center;justify-content:center;flex:none;margin-top:.1em}
+.passos .tecla{display:inline-flex;align-items:center;gap:.25em;background:var(--creme2);border-radius:.4em;padding:.05em .4em;font-weight:600;color:var(--azul);white-space:nowrap}
+.guia-ok{display:flex;align-items:center;gap:.75em;background:#E9F3EC;color:#1F5C3A;border-radius:.75em;padding:.75em .9em;font-size:.9375em}
+
 @media (max-width:767px){
   .topo{padding:calc(.75em + var(--topo-seg)) 1em .75em;gap:.6em}
   .marca-nomes{flex-direction:column;align-items:flex-start;gap:.1em}
@@ -447,6 +460,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
           Nova tarefa
         </button>
       </div>
+      <div id="faixaGuia"></div>
       <nav class="condos" id="condos" aria-label="Condomínios"></nav>
       <div class="area">
         <div class="lista" id="lista"><div class="carregando">Carregando tarefas…</div></div>
@@ -488,7 +502,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.6';
+var VERSAO_SITE = '1.7';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -577,6 +591,11 @@ var IC = {
   relogio: '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7A5C27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
   chevD: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9AA3B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>',
   zapBranco: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.7z"/></svg>',
+  sino: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A5C27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>',
+  celular: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>',
+  sinoAzul: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>',
+  compartIOS: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M8 7l4-4 4 4"/><path d="M5 11v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg>',
+  x: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7E879C" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>',
   att: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5C6680" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>'
 };
 
@@ -813,6 +832,8 @@ function desenhar() {
   desenharLista();
   if (S.selId && !S.det) abrirTarefa(S.selId, true);
   if (ler('abrirT')) abrirLinkDireto();
+  if (ler('abrirP') && S.portal) { var idP = ler('abrirP'); guardar('abrirP', null); if (S.portal.gestao && S.portal.gestao.pedidos !== null) abrirPedidos(idP); }
+  verificarPush();
 }
 
 function desenharCondos() {
@@ -1228,8 +1249,11 @@ document.addEventListener('contextmenu', function (e) {
 /* Link direto: ?t=MAXC-T-00012 abre a tarefa depois do login. */
 function guardarLinkDireto() {
   try {
-    var t = new URLSearchParams(location.search).get('t');
-    if (t) { guardar('abrirT', String(t).slice(0, 40)); history.replaceState(null, '', location.pathname); }
+    var q = new URLSearchParams(location.search);
+    var t = q.get('t'), p = q.get('p');
+    if (t) guardar('abrirT', String(t).slice(0, 40));
+    if (p) guardar('abrirP', String(p).replace(/[^A-Za-z0-9-]/g, '').slice(0, 20));
+    if (t || p) history.replaceState(null, '', location.pathname);
   } catch (e) {}
 }
 function abrirLinkDireto() {
@@ -1354,6 +1378,179 @@ function lerAlertasDa(idTarefa) {
   S.dados.alertas.forEach(function (a) { if (ids.indexOf(a.id) >= 0) a.lido = true; });
   desenharSino();
   api('tarefas.lerAlertas', { ids: ids });
+}
+
+/* ================= Instalar o app e notificações push ================= */
+var PUSH = { prompt: null, verificado: false, ouvindo: false };
+var FB_SDK = 'https://www.gstatic.com/firebasejs/10.12.5/';
+window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); PUSH.prompt = e; });
+window.addEventListener('appinstalled', function () { PUSH.prompt = null; desenharFaixaGuia(); });
+function hojeLocal() { var d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); }
+function instalado() {
+  return (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
+}
+function plataforma() {
+  var ua = navigator.userAgent || '';
+  var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (ios) return /CriOS|FxiOS|EdgiOS|GSA\//.test(ua) ? 'ios-outro' : 'ios';
+  if (/SamsungBrowser/.test(ua)) return 'samsung';
+  if (/Android/.test(ua)) return 'android';
+  return 'computador';
+}
+function pushConfigurado() { return !!(S.cfg && S.cfg.push && S.cfg.push.vapid); }
+function suportaPush() { return pushConfigurado() && 'serviceWorker' in navigator && 'Notification' in window && 'PushManager' in window; }
+/** 'instalar' | 'ativar' | 'bloqueado' | 'ok' | null (sem push configurado ou aparelho sem suporte) */
+function estadoGuia() {
+  if (!pushConfigurado()) return null;
+  if (plataforma() !== 'computador' && !instalado()) return 'instalar';
+  if (!suportaPush()) return null;
+  if (Notification.permission === 'denied') return 'bloqueado';
+  if (Notification.permission === 'default') return 'ativar';
+  return 'ok';
+}
+function carregarScript(src) {
+  return new Promise(function (ok, erro) {
+    var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = erro; document.head.appendChild(s);
+  });
+}
+/** Registra o aparelho no motor (uma vez por dia, para manter o "último uso"). */
+function obterTokenPush(forcar) {
+  var p = S.cfg.push;
+  return navigator.serviceWorker.register('sw.js?cfg=' + encodeURIComponent(JSON.stringify(p.firebase)), { scope: './' }).then(function (reg) {
+    return (window.firebase && firebase.messaging ? Promise.resolve() : carregarScript(FB_SDK + 'firebase-app-compat.js').then(function () {
+      return carregarScript(FB_SDK + 'firebase-messaging-compat.js');
+    })).then(function () {
+      if (!firebase.apps.length) firebase.initializeApp(p.firebase);
+      var m = firebase.messaging();
+      if (!PUSH.ouvindo) {
+        PUSH.ouvindo = true;
+        m.onMessage(function (msg) {
+          var d = (msg && msg.data) || {};
+          avisar((d.titulo || 'Aviso') + (d.corpo ? ': ' + d.corpo : ''));
+          recarregar();
+        });
+      }
+      return m.getToken({ vapidKey: p.vapid, serviceWorkerRegistration: reg });
+    });
+  }).then(function (tok) {
+    if (!tok) return false;
+    if (!forcar && lerLocal('pushToken') === tok && lerLocal('pushTokenDia') === hojeLocal()) return true;
+    return api('portal.registrarPush', { token: tok, plataforma: plataforma() + (instalado() ? ' · app instalado' : '') }).then(function (r) {
+      if (r.ok) { guardarLocal('pushToken', tok); guardarLocal('pushTokenDia', hojeLocal()); }
+      return !!r.ok;
+    });
+  });
+}
+/** Chamado quando a configuração e as tarefas já chegaram: registra o aparelho ou conduz a pessoa. */
+function verificarPush() {
+  if (PUSH.verificado || !S.cfg || !S.dados || $('app').hidden) return;
+  PUSH.verificado = true;
+  var est = estadoGuia();
+  if (est === 'ok') { obterTokenPush().catch(function () {}); return; }
+  if ((est === 'instalar' || est === 'ativar') && !lerLocal('guiaVisto')) { guardarLocal('guiaVisto', '1'); abrirGuia(); }
+  desenharFaixaGuia();
+}
+function desenharFaixaGuia() {
+  var el = $('faixaGuia'); if (!el) return;
+  var est = estadoGuia();
+  if ((est !== 'instalar' && est !== 'ativar') || lerLocal('faixaGuiaFechada') === hojeLocal()) { el.innerHTML = ''; return; }
+  var instalar = est === 'instalar';
+  el.innerHTML = '<div class="faixa-guia" role="region" aria-label="Avisos no celular"><span class="ico">' + IC.sino + '</span>' +
+    '<span class="tx"><b>' + (instalar ? 'Instale o Síndico no celular' : 'Receba os avisos aqui') + '</b>' +
+    (instalar ? 'Ele abre como app e te avisa de tarefas novas.' : 'Tarefas novas, urgentes e o lembrete do dia.') + '</span>' +
+    '<button class="bt" data-acao="guia">' + (instalar ? 'Instalar' : 'Ativar') + '</button>' +
+    '<button class="x" data-acao="fecharFaixaGuia" aria-label="Agora não">' + IC.x + '</button></div>';
+}
+function itensGuiaMenu() {
+  var est = estadoGuia();
+  if (!est) return '';
+  if (est === 'instalar') return '<button class="menu-item" data-acao="guia">' + IC.celular + 'Instalar o app</button>';
+  return '<button class="menu-item" data-acao="guia">' + IC.sinoAzul + 'Notificações: ' + (est === 'ok' ? 'ativadas' : 'desativadas') + '</button>';
+}
+function htmlGuia(est) {
+  var p = plataforma(), h = '';
+  if (est === 'instalar') {
+    h += '<p style="margin:0">Coloque o Síndico na tela inicial: ele abre como um aplicativo e pode te avisar de tarefas novas, urgentes e do lembrete do dia.</p>';
+    if (p === 'ios-outro') {
+      h += '<div class="alerta-ouro">No iPhone, a instalação só funciona pelo <b>Safari</b>. Copie o link e abra no Safari.</div>' +
+        '<button class="bt grande" id="guiaCopiar">' + IC.link + 'Copiar o link</button>';
+    } else if (p === 'ios') {
+      h += '<ol class="passos"><li><span>Toque em <span class="tecla">' + IC.compartIOS + ' Compartilhar</span> na barra do Safari.</span></li>' +
+        '<li><span>Role e toque em <span class="tecla">Adicionar à Tela de Início</span>.</span></li>' +
+        '<li><span>Toque em <span class="tecla">Adicionar</span>.</span></li>' +
+        '<li><span>Abra o Síndico pelo ícone novo e ative as notificações.</span></li></ol>';
+    } else if (p === 'samsung') {
+      h += '<ol class="passos"><li><span>Toque no menu <span class="tecla">≡</span> (embaixo, à direita).</span></li>' +
+        '<li><span>Toque em <span class="tecla">Adicionar página a</span> e depois em <span class="tecla">Tela inicial</span>.</span></li>' +
+        '<li><span>Abra o Síndico pelo ícone novo e ative as notificações.</span></li></ol>';
+    } else if (PUSH.prompt) {
+      h += '<button class="bt grande" id="guiaInstalar">' + IC.celular.replace('#0F2646', '#FFFFFF') + 'Instalar o app</button>' +
+        '<p class="dica-campo" style="margin:0">Depois, abra o Síndico pelo ícone novo e ative as notificações.</p>';
+    } else {
+      h += '<ol class="passos"><li><span>Toque no menu <span class="tecla">⋮</span> (em cima, à direita).</span></li>' +
+        '<li><span>Toque em <span class="tecla">Instalar app</span> ou <span class="tecla">Adicionar à tela inicial</span>.</span></li>' +
+        '<li><span>Abra o Síndico pelo ícone novo e ative as notificações.</span></li></ol>';
+    }
+  } else if (est === 'ativar') {
+    h += '<p style="margin:0">Ative as notificações para receber, mesmo com o app fechado, tarefas novas para você, urgentes e o lembrete do dia.</p>' +
+      '<button class="bt grande" id="guiaAtivar">' + IC.sinoAzul.replace('#0F2646', '#FFFFFF') + 'Ativar notificações</button>';
+  } else if (est === 'bloqueado') {
+    h += '<p style="margin:0">As notificações estão bloqueadas neste aparelho. Para liberar:</p>';
+    if (p === 'ios') h += '<ol class="passos"><li><span>Abra os <span class="tecla">Ajustes</span> do iPhone.</span></li><li><span>Toque em <span class="tecla">Notificações</span> › <span class="tecla">Síndico</span>.</span></li><li><span>Ligue <span class="tecla">Permitir Notificações</span>.</span></li></ol>';
+    else if (p === 'computador') h += '<ol class="passos"><li><span>Clique no ícone ao lado do endereço do site.</span></li><li><span>Em <span class="tecla">Notificações</span>, escolha <span class="tecla">Permitir</span>.</span></li><li><span>Recarregue a página.</span></li></ol>';
+    else h += '<ol class="passos"><li><span>Abra as <span class="tecla">Configurações</span> do celular › <span class="tecla">Apps</span> › <span class="tecla">Síndico</span>.</span></li><li><span>Toque em <span class="tecla">Notificações</span> e ligue.</span></li><li><span>Volte ao Síndico.</span></li></ol>';
+  } else {
+    h += '<div class="guia-ok">' + IC.sinoAzul.replace('#0F2646', '#1F5C3A') + '<span>As notificações estão ativadas neste aparelho.</span></div>' +
+      '<button class="bt grande claro" id="guiaTeste">Enviar notificação de teste</button>';
+  }
+  h += '<div class="entrada-msg" id="guiaMsg" role="status" hidden></div>';
+  if (est === 'instalar' || est === 'ativar') h += '<button class="bt-link" data-acao="fecharJan" style="align-self:center">Agora não</button>';
+  return '<div class="jan-corpo">' + h + '</div>';
+}
+function abrirGuia() {
+  var est = estadoGuia();
+  if (!est) { avisar('As notificações ainda não estão disponíveis neste aparelho.'); return; }
+  var titulos = { instalar: 'Instalar o Síndico', ativar: 'Ativar notificações', bloqueado: 'Notificações bloqueadas', ok: 'Notificações' };
+  abrirJanela(titulos[est], 'Avisos no celular', htmlGuia(est), 'centro', function (raiz) {
+    var msg = raiz.querySelector('#guiaMsg');
+    var mostrar = function (txt, erro) { msg.textContent = txt; msg.hidden = false; msg.style.color = erro ? '' : 'var(--azul)'; };
+    var bi = raiz.querySelector('#guiaInstalar');
+    if (bi) bi.addEventListener('click', function () {
+      var ev = PUSH.prompt; if (!ev) return;
+      ev.prompt();
+      ev.userChoice.then(function (c) {
+        PUSH.prompt = null;
+        if (c && c.outcome === 'accepted') mostrar('Pronto! Abra o Síndico pelo ícone na tela inicial e ative as notificações.');
+      });
+    });
+    var bc = raiz.querySelector('#guiaCopiar');
+    if (bc) bc.addEventListener('click', function () {
+      var url = location.origin + location.pathname;
+      (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(function () { mostrar('Link copiado. Abra o Safari e cole na barra de endereço.'); },
+        function () { mostrar(url); });
+    });
+    var ba = raiz.querySelector('#guiaAtivar');
+    if (ba) ba.addEventListener('click', function () {
+      var solta = ocupar(ba, 'Ativando…');
+      Notification.requestPermission().then(function (perm) {
+        if (perm !== 'granted') { fecharCamadas(); desenharFaixaGuia(); if (perm === 'denied') abrirGuia(); return; }
+        return obterTokenPush(true).then(function (ok) {
+          if (!ok) throw new Error('sem token');
+          return api('portal.testePush');
+        }).then(function () {
+          fecharCamadas(); desenharFaixaGuia();
+          avisar('Pronto! Enviamos uma notificação de teste.');
+        });
+      }).catch(function () { solta(); mostrar('Não foi possível ativar agora. Tente de novo em instantes.', true); });
+    });
+    var bt = raiz.querySelector('#guiaTeste');
+    if (bt) bt.addEventListener('click', function () {
+      umaVez('testePush', bt, 'Enviando…', function () {
+        return obterTokenPush(true).then(function () { return api('portal.testePush'); });
+      }).then(function (r) { mostrar(r && r.ok && r.enviados ? 'Enviada! Ela deve aparecer em instantes.' : 'Não chegou a enviar. Tente ativar de novo.', !(r && r.enviados)); },
+        function () { mostrar('Não foi possível enviar agora.', true); });
+    });
+  });
 }
 
 /* ================= Menu do portal (logo) ================= */
@@ -1627,6 +1824,7 @@ function abrirPerfil() {
   var u = S.dados ? S.dados.usuario : (S.portal ? S.portal.usuario : {});
   var h = '<div class="menu-cab"><b>' + esc(u.nome) + '</b><small>' + esc(u.email) + '<br>' + esc(papelTexto(u)) + (u.master ? '' : '') + '</small></div>' +
     '<button class="menu-item" data-acao="atualizar">' + IC.att + 'Atualizar lista</button>' +
+    itensGuiaMenu() +
     '<a class="menu-item" href="privacidade.html">' + IC.doc + 'Política de privacidade</a>' +
     '<button class="menu-item" data-acao="sair">' + IC.sair + 'Sair</button>' +
     '<div class="menu-vazio" style="font-size:.75em;padding:.4em .75em">Site v' + VERSAO_SITE + ' · ' + esc((S.dados && S.dados.versaoApp) || '') + '</div>';
@@ -1881,6 +2079,8 @@ document.addEventListener('click', function (e) {
   switch (acao) {
     case 'fecharJan': fecharCamadas(); break;
     case 'convidar': fecharCamadas(); abrirConvidar(); break;
+    case 'guia': fecharCamadas(); abrirGuia(); break;
+    case 'fecharFaixaGuia': guardarLocal('faixaGuiaFechada', hojeLocal()); desenharFaixaGuia(); break;
     case 'pedidos': fecharCamadas(); abrirPedidos(); break;
     case 'trocarConta': trocarConta(); break;
     case 'verificarPedido': verificarPedido(b); break;
@@ -1954,6 +2154,7 @@ function iniciar() {
     if (!c.ok || !c.clientId) { if (!S.sessao) mostrarEntrada(c.mensagem || 'Não foi possível carregar o aplicativo. Tente de novo em instantes.'); return; }
     S.cfg = c;
     carregarScriptGoogle();
+    verificarPush();
     if (!S.sessao) mostrarEntrada();
   });
 }
