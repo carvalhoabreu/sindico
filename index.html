@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Síndico · Carvalho &amp; Abreu</title>
+<meta charset="utf-8">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+  :root { --azul:#0F2646; --ouro:#C9A46A; --creme:#F8F4EC; --vinho:#8A2E2E; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--creme); color:#1d2433; font-size:17px; }
+  header { background:var(--azul); color:#fff; padding:16px 20px; border-bottom:3px solid var(--ouro); }
+  header h1 { margin:0; font-family:Lora,Georgia,serif; font-size:20px; font-weight:600; }
+  header small { opacity:.75; font-size:13px; }
+  main { max-width:640px; margin:0 auto; padding:20px; }
+  .card { background:#fff; border-radius:12px; padding:16px; margin:12px 0; box-shadow:0 1px 3px rgba(15,38,70,.08); }
+  .tarefa { display:flex; gap:12px; align-items:center; }
+  .tarefa .t { flex:1; }
+  .meta { font-size:14px; color:#5b6474; }
+  .urg { border-left:4px solid var(--vinho); }
+  button { min-height:44px; padding:0 16px; border-radius:10px; border:1px solid var(--azul); background:#fff; color:var(--azul); font-size:15px; cursor:pointer; }
+  button.p { background:var(--azul); color:#fff; }
+  input, select { width:100%; min-height:44px; font-size:16px; padding:8px 10px; border:1px solid #c9ccd3; border-radius:10px; margin:6px 0; }
+  .aviso { color:var(--vinho); }
+  pre { white-space:pre-wrap; font-size:12px; background:#f1eee6; padding:10px; border-radius:8px; max-height:260px; overflow:auto; }
+</style>
+</head>
+<body>
+<header><h1 id="nomeApp">Síndico</h1><small>Página de teste do motor · <span id="versao">carregando…</span></small></header>
+<main>
+  <div id="login" class="card">
+    <p>Entre com a sua conta Google para testar o motor.</p>
+    <div id="botaoGoogle"></div>
+    <p class="meta">Origem desta página: <b id="origem"></b></p>
+    <p id="msg" class="aviso"></p>
+  </div>
+  <div id="app" hidden>
+    <div class="card"><b id="quem"></b><div class="meta" id="escopo"></div></div>
+    <div class="card" id="nova" hidden>
+      <b>Nova tarefa (teste)</b>
+      <select id="fCondo"></select>
+      <select id="fEmpresa"></select>
+      <input id="fTitulo" placeholder="Título" maxlength="120">
+      <button class="p" onclick="criar()">Criar</button>
+    </div>
+    <div id="lista"></div>
+    <pre id="log"></pre>
+  </div>
+</main>
+<script>
+  var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
+  var sessao = null, dados = null;
+  try { sessao = sessionStorage.getItem('sindico.sessao'); } catch (e) {}
+  document.getElementById('origem').textContent = location.origin;
+
+  function log(o) { document.getElementById('log').textContent = JSON.stringify(o, null, 2); }
+  function msg(t) { document.getElementById('msg').textContent = t || ''; }
+
+  function motor(corpo) {
+    return fetch(MOTOR, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(corpo) })
+      .then(function (r) { return r.json(); });
+  }
+
+  window.onload = function () {
+    motor({ fn: 'config' }).then(function (c) {
+      if (!c.ok) { msg(c.mensagem); return; }
+      document.getElementById('nomeApp').textContent = c.nomeCurto;
+      document.getElementById('versao').textContent = 'versão ' + c.versao;
+      if (sessao) { recarregar(); }
+      if (!c.clientId) { msg('Falta o parâmetro "ID do cliente Google (login)" na aba PARAMETROS.'); return; }
+      var tenta = setInterval(function () {
+        if (!window.google || !google.accounts) return;
+        clearInterval(tenta);
+        google.accounts.id.initialize({ client_id: c.clientId, callback: aoEntrar });
+        google.accounts.id.renderButton(document.getElementById('botaoGoogle'),
+          { theme: 'filled_blue', size: 'large', text: 'signin_with', locale: 'pt-BR' });
+      }, 200);
+    }).catch(function () { msg('Não consegui falar com o motor. Confira a internet e recarregue.'); });
+  };
+
+  function aoEntrar(resp) {
+    msg('Conferindo...');
+    motor({ fn: 'entrar', token: resp.credential }).then(function (r) {
+      if (!r.ok) { msg(r.mensagem); log(r); return; }
+      sessao = r.sessao; try { sessionStorage.setItem('sindico.sessao', sessao); } catch (e) {}
+      if (!r.tarefas) { msg('Sem acesso ao módulo Tarefas.'); return; } mostrar(r.tarefas);
+    }).catch(function () { msg('Sem internet. Tente de novo.'); });
+  }
+
+  function chamar(acao, d, depois) {
+    motor({ fn: 'api', sessao: sessao, acao: acao, dados: d }).then(function (r) {
+      log(r);
+      if (!r.ok) {
+        if (r.codigo === 'SESSAO') { try { sessionStorage.removeItem('sindico.sessao'); } catch (e) {} sessao = null; return; }
+        alertar(r.mensagem); return;
+      }
+      if (depois) depois(r); else recarregar();
+    }).catch(function () { alertar('Sem internet. Tente de novo.'); });
+  }
+  function alertar(t) { document.getElementById('escopo').innerHTML = '<span class="aviso">' + esc(t) + '</span>'; }
+  function recarregar() { chamar('tarefas.inicio', {}, mostrar); }
+
+  function mostrar(r) {
+    dados = r;
+    document.getElementById('login').hidden = true;
+    document.getElementById('app').hidden = false;
+    document.getElementById('quem').textContent = r.usuario.nome + ' · ' + r.usuario.perfil + ' · ' + r.usuario.empresa;
+    document.getElementById('escopo').textContent = r.condos.map(function (c) { return c.nome + ' (' + c.pendentes + ')'; }).join(' · ');
+    var podeCriar = r.condos.filter(function (c) { return c.podeCriar; });
+    document.getElementById('nova').hidden = !podeCriar.length;
+    var fc = document.getElementById('fCondo');
+    fc.innerHTML = podeCriar.map(function (c) { return '<option value="' + c.codigo + '">' + esc(c.nome) + '</option>'; }).join('');
+    fc.onchange = empresas; empresas();
+    document.getElementById('lista').innerHTML = r.tarefas.map(function (t) {
+      return '<div class="card tarefa' + (t.urgente ? ' urg' : '') + '"><div class="t"><b>' + esc(t.titulo) + '</b>' +
+        '<div class="meta">' + t.condo + ' · ' + esc(t.empresa) + (t.urgente ? ' · Urgente ' + t.posicao : '') +
+        (t.paraVoce ? ' · Para você' : '') + (t.etiqueta ? ' · <span class="aviso">' + esc(t.etiqueta) + '</span>' : '') + '</div></div>' +
+        '<button onclick="chamar(\'tarefas.abrir\',{id:\'' + t.id + '\'},log)">Abrir</button>' +
+        '<button class="p" onclick="chamar(\'tarefas.concluir\',{id:\'' + t.id + '\'})">Concluir</button></div>';
+    }).join('') || '<div class="card">Tudo em dia por aqui.</div>';
+  }
+
+  function empresas() {
+    var cod = document.getElementById('fCondo').value;
+    var c = dados.condos.filter(function (x) { return x.codigo === cod; })[0];
+    document.getElementById('fEmpresa').innerHTML = (c ? c.empresasParaCriar : []).map(function (e) {
+      return '<option>' + esc(e) + '</option>'; }).join('');
+  }
+
+  function criar() {
+    var d = { condo: fCondo.value, empresa: fEmpresa.value, titulo: fTitulo.value };
+    chamar('tarefas.criar', d, function (r) {
+      if (r.aviso === 'DUPLICADA' && confirm('Já existe uma tarefa pendente igual. Criar mesmo assim?')) {
+        d.confirmarDuplicada = true; chamar('tarefas.criar', d);
+      } else { fTitulo.value = ''; recarregar(); }
+    });
+  }
+
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+</script>
+</body>
+</html>
