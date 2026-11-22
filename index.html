@@ -252,6 +252,78 @@ body.janela-aberta .sugerir-flut{display:none}
 @media (min-width:1024px){.det-topo{position:absolute;top:1.4em;right:1.4em}.det-topo+.bloco{padding-right:3.25em}.bt-compart{width:2.75em;padding:0;justify-content:center}.bt-compart span{display:none}}
 
 /* ---------- Celular (até 767) ---------- */
+/* ---------- Menu do portal, convites e pedidos (v1.6) ---------- */
+.marca{background:none;border:none;padding:.25em .6em .25em .25em;border-radius:999px;text-align:left;cursor:default;color:inherit}
+.marca.clicavel{cursor:pointer}
+.marca.clicavel:hover{background:var(--creme)}
+.marca-chev{display:none;width:1.5em;height:1.5em;border-radius:50%;background:var(--creme2);align-items:center;justify-content:center;flex:none}
+.marca.clicavel .marca-chev{display:inline-flex}
+.menu.portal{right:auto;width:25em;max-height:calc(100vh - 6em);overflow-y:auto}
+.mp{display:flex;flex-direction:column;gap:.75em}
+.menu .mp{padding:.6em}
+.mp-rot{font-size:.6875em;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7A5C27}
+.mp-grade{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6em}
+.mp-mod{border:1.5px solid var(--linha);border-radius:.875em;padding:.75em;display:flex;flex-direction:column;align-items:flex-start;gap:.4em;background:#fff;text-align:left;min-height:5.25em;color:var(--azul)}
+.mp-mod b{font-size:.9375em}
+.mp-mod small{font-size:.75em;color:var(--suave)}
+.mp-mod.atual{background:var(--azul);border-color:var(--azul);color:#fff}
+.mp-mod.atual small{color:var(--ouro-claro)}
+.mp-mod.breve{background:var(--creme);border-style:dashed;color:var(--suave)}
+.mp-lista{display:flex;flex-direction:column;gap:.5em}
+.mp-lin{display:flex;align-items:center;gap:.75em;min-height:3.5em;padding:.4em .75em;border-radius:.75em;background:var(--creme);border:none;text-align:left;width:100%;color:inherit}
+.mp-lin:hover{background:var(--creme2)}
+.mp-lin .ico{width:2.25em;height:2.25em;border-radius:50%;background:#fff;border:1.5px solid var(--ouro);display:flex;align-items:center;justify-content:center;flex:none}
+.mp-lin .tx{flex:1;min-width:0}
+.mp-lin b{display:block;font-size:.9375em;color:var(--azul)}
+.mp-lin small{display:block;font-size:.75em;color:var(--suave)}
+.mp-lin[disabled]{opacity:.6;cursor:default}
+.mp-lin[disabled]:hover{background:var(--creme)}
+.selo.estatico{position:static;flex:none}
+.lat-item .cont.vinho{background:#B5544F;color:#fff}
+.op-emp{display:flex;align-items:center;gap:.75em;border:1.5px solid var(--linha);border-radius:.875em;padding:.75em .9em;background:#fff;text-align:left;width:100%;color:inherit}
+.op-emp[aria-pressed="true"]{border:2px solid var(--azul);background:#FBF8F2}
+.op-emp .radio{width:1.375em;height:1.375em;border-radius:50%;border:2px solid #9AA3B8;flex:none;box-sizing:border-box}
+.op-emp[aria-pressed="true"] .radio{border:.45em solid var(--azul)}
+.op-emp b{display:block;color:var(--azul);font-size:.9375em}
+.op-emp small{display:block;font-size:.8125em;color:var(--suave)}
+.msg-zap{background:var(--ouro-fundo);border-radius:.875em .875em .875em .25em;padding:.75em .9em;font-size:.875em;white-space:pre-line;overflow-wrap:anywhere;color:var(--texto)}
+.msg-zap.vazia{background:var(--creme);color:var(--suave)}
+.bt.zap{background:#1F7A4D;text-decoration:none}
+a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
+.pills{display:flex;gap:.5em;flex-wrap:wrap}
+.pill{min-height:2.5em;padding:0 .9em;border-radius:999px;border:1.5px solid var(--linha);font-size:.875em;font-weight:600;color:var(--azul);background:#fff}
+.pill[aria-pressed="true"]{background:var(--azul);color:#fff;border-color:var(--azul)}
+.seg{display:flex;background:var(--creme2);border-radius:.625em;padding:.2em;gap:.2em;flex:none}
+.seg button{min-height:2.25em;padding:0 .6em;border:none;border-radius:.5em;background:transparent;font-size:.8125em;font-weight:600;color:var(--suave2)}
+.seg button[aria-pressed="true"]{background:var(--azul);color:#fff}
+.linha-condo{display:flex;align-items:center;gap:.6em;flex-wrap:wrap;min-height:2.75em}
+.linha-condo b{flex:1;min-width:6em;font-size:.9375em;color:var(--azul)}
+.chk-lin{display:flex;align-items:center;gap:.6em;min-height:2.5em;font-size:.9375em;color:var(--azul)}
+.chk-lin input{width:1.25em;height:1.25em;accent-color:#0F2646;margin:0}
+.chk-lin.breve{color:#7E879C}
+.tag-breve{margin-left:auto;font-size:.6875em;font-weight:700;color:#6B5A3A;background:var(--ouro-fundo);border-radius:999px;padding:.2em .6em}
+.conta-box{display:flex;align-items:center;gap:.75em;background:var(--creme);border-radius:.75em;padding:.6em .75em;text-align:left;width:100%}
+.conta-box .tx{flex:1;min-width:0}
+.conta-box b{display:block;color:var(--azul);font-size:.9375em;overflow-wrap:anywhere}
+.conta-box small{display:block;color:var(--suave);font-size:.8125em;overflow-wrap:anywhere}
+.alerta-ouro{background:var(--ouro-fundo);color:#5C4520;border-radius:.75em;padding:.6em .8em;font-size:.8125em}
+.dica-campo{margin:-.4em 0 0;font-size:.8125em;color:var(--suave)}
+.av-item{display:flex;flex-direction:column;align-items:flex-start;gap:.35em;padding:.65em .75em}
+.av-item+.av-item{border-top:1px solid var(--linha2)}
+.av-tipo{font-size:.6875em;color:#8A2E2E;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.av-tipo.info{color:var(--suave)}
+.av-txt{font-size:.9375em;color:var(--texto)}
+.av-txt.novo{font-weight:600}
+.av-bt{min-height:2.5em;padding:0 1em;border-radius:.6em;border:none;background:var(--azul);color:#fff;font-weight:600;font-size:.8125em;display:inline-flex;align-items:center;gap:.4em}
+.menu.sino{width:22em}
+#entradaExtra{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px}
+.ent-tag{display:inline-block;font-size:.6875rem;font-weight:700;color:#6B5A3A;background:var(--ouro-fundo);border-radius:999px;padding:.35em .9em;letter-spacing:.1em;text-transform:uppercase}
+.ent-tit{margin:0;font-family:Lora,Georgia,serif;font-size:1.25rem;color:var(--azul)}
+.ent-icone{width:4rem;height:4rem;border-radius:50%;background:var(--ouro-fundo);display:flex;align-items:center;justify-content:center}
+.ent-dados{width:100%;background:var(--creme);border-radius:.75em;padding:.75em .9em;text-align:left;font-size:.875rem;color:var(--suave);display:flex;flex-direction:column;gap:.3em}
+.ent-dados b{color:var(--azul)}
+.ent-form{width:100%;display:flex;flex-direction:column;gap:.6em;text-align:left}
+
 @media (max-width:767px){
   .topo{padding:calc(.75em + var(--topo-seg)) 1em .75em;gap:.6em}
   .marca-nomes{flex-direction:column;align-items:flex-start;gap:.1em}
@@ -303,6 +375,7 @@ body.janela-aberta .sugerir-flut{display:none}
       <p id="entradaTexto">Carregando…</p>
       <div id="botaoGoogle"></div>
       <div id="entradaMsg" class="entrada-msg" role="alert" hidden></div>
+      <div id="entradaExtra" hidden></div>
     </div>
     <div class="entrada-rodape"><a href="privacidade.html">Política de privacidade</a></div>
   </div>
@@ -311,13 +384,14 @@ body.janela-aberta .sugerir-flut{display:none}
 <!-- Aplicativo -->
 <div id="app" hidden>
   <header class="topo">
-    <div class="marca">
+    <button class="marca" id="btMarca" aria-label="Menu do portal">
       <img src="logo.png" alt="" width="40" height="40">
       <div class="marca-nomes">
         <span class="marca-nome" id="nomeApp">Síndico</span>
         <span class="marca-sub">Carvalho &amp; Abreu</span>
       </div>
-    </div>
+      <span class="marca-chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+    </button>
     <div class="telas" role="group" aria-label="Tamanho de tela">
       <span>Tela</span>
       <div class="telas-grupo" id="telas"></div>
@@ -341,6 +415,7 @@ body.janela-aberta .sugerir-flut{display:none}
       </a>
       <span class="lat-titulo cinza">Em breve</span>
       <div id="emBreve"></div>
+      <div id="latGestao"></div>
       <div class="lat-esp"></div>
       <div class="lat-rodape"><a href="privacidade.html">Política de privacidade</a> · <span id="versaoLat"></span></div>
     </nav>
@@ -413,7 +488,7 @@ body.janela-aberta .sugerir-flut{display:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.5';
+var VERSAO_SITE = '1.6';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -492,6 +567,16 @@ var IC = {
   link: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16325C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg>',
   abrir: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16325C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
   zap: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.7z"/></svg>',
+  pessoaMais: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>',
+  pessoaMaisOuro: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>',
+  caixa: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5.1L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.5-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.7 1.1z"/></svg>',
+  caixaOuro: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5.1L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.5-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.7 1.1z"/></svg>',
+  pessoas: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>',
+  listaOuro: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>',
+  breve: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9AA3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  relogio: '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7A5C27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
+  chevD: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9AA3B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>',
+  zapBranco: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.7z"/></svg>',
   att: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5C6680" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>'
 };
 
@@ -516,6 +601,9 @@ function mostrarEntrada(msg) {
   $('app').hidden = true; $('entrada').hidden = false;
   document.body.classList.remove('com-sel');
   $('entradaTexto').textContent = 'Entre com a sua conta Google cadastrada.';
+  $('entradaTexto').hidden = false; $('botaoGoogle').hidden = false;
+  $('entradaExtra').hidden = true; $('entradaExtra').innerHTML = '';
+  S.tokenPendente = null;
   var m = $('entradaMsg');
   if (msg) { m.textContent = msg; m.hidden = false; } else m.hidden = true;
   iniciarGoogle();
@@ -548,13 +636,104 @@ function aoEntrarGoogle(resp) {
   $('entradaTexto').textContent = 'Entrando…';
   $('entradaMsg').hidden = true;
   var info = lerToken(resp.credential);
-  chamar({ fn: 'entrar', token: resp.credential }).then(function (r) {
-    if (!r.ok) { mostrarEntrada(r.mensagem || 'Acesso não autorizado.'); return; }
-    S.sessao = r.sessao; S.google = info;
-    guardar('sessao', r.sessao); guardar('google', JSON.stringify(info));
-    S.portal = r; S.dados = r.tarefas || null;
-    abrirApp();
+  chamar({ fn: 'entrar', token: resp.credential, convite: ler('convite') || '' }).then(function (r) {
+    if (!r.ok) { tratarSemAcesso(r, resp.credential, info); return; }
+    concluirEntrada(r, info);
   });
+}
+function concluirEntrada(r, info) {
+  S.sessao = r.sessao; S.google = info; S.tokenPendente = null;
+  guardar('sessao', r.sessao); guardar('google', JSON.stringify(info)); guardar('convite', null);
+  S.portal = r; S.dados = r.tarefas || null;
+  abrirApp();
+}
+
+/* ---------- Sem acesso: pedir acesso pelo convite ou aguardar aprovação ---------- */
+function lerConviteUrl() {
+  try {
+    var p = new URLSearchParams(location.search);
+    var c = p.get('c');
+    if (!c) return;
+    guardar('convite', String(c).replace(/[^A-Za-z0-9]/g, '').slice(0, 12));
+    p.delete('c');
+    var q = p.toString();
+    history.replaceState(null, '', location.pathname + (q ? '?' + q : ''));
+  } catch (e) {}
+}
+function entradaExtra(html) {
+  $('entradaTexto').hidden = true; $('botaoGoogle').hidden = true; $('entradaMsg').hidden = true;
+  var x = $('entradaExtra'); x.innerHTML = html; x.hidden = false;
+  return x;
+}
+function tratarSemAcesso(r, token, info) {
+  if (r.codigo === 'PEDIR') { mostrarPedir(r, token, info); return; }
+  if (r.codigo === 'AGUARDANDO') { mostrarAguardando(r, token, info); return; }
+  if (r.codigo === 'CONVITE_VENCIDO' || r.codigo === 'CONVITE_INVALIDO') guardar('convite', null);
+  mostrarEntrada(r.mensagem || 'Acesso não autorizado.');
+}
+function avatarDe(info, nome) {
+  return '<span class="avatar">' + (info && info.foto ? '<img src="' + esc(info.foto) + '" alt="" referrerpolicy="no-referrer">' : esc(iniciais(nome || ''))) + '</span>';
+}
+function mostrarPedir(r, token, info) {
+  S.tokenPendente = token;
+  var x = entradaExtra(
+    '<span class="ent-tag">Convite · ' + esc(r.convite && r.convite.empresa) + '</span>' +
+    '<h2 class="ent-tit">Solicitar acesso</h2>' +
+    '<div class="conta-box">' + avatarDe(info, r.nome) + '<span class="tx"><small>Entrou como</small><b>' + esc(r.email) + '</b></span>' +
+      '<button type="button" class="bt-link" data-acao="trocarConta">Trocar</button></div>' +
+    '<form class="ent-form" id="formPedir" novalidate>' +
+      '<label class="rot-campo" for="pedNome">Seu nome</label>' +
+      '<input class="campo" id="pedNome" maxlength="80" autocomplete="name" value="' + esc(r.nome || '') + '">' +
+      '<p style="margin:0;font-size:.8125rem;color:var(--suave)">O responsável confere o seu pedido e libera o acesso. Você recebe um aviso por e-mail.</p>' +
+      '<div class="entrada-msg" id="pedMsg" role="alert" hidden></div>' +
+      '<button class="bt grande" type="submit" id="btPedir">Solicitar acesso</button>' +
+    '</form>');
+  x.querySelector('#formPedir').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nome = x.querySelector('#pedNome').value.trim();
+    var msg = x.querySelector('#pedMsg');
+    if (nome.length < 3) { msg.textContent = 'Escreva o seu nome.'; msg.hidden = false; return; }
+    msg.hidden = true;
+    umaVez('pedir', x.querySelector('#btPedir'), 'Enviando…', function () {
+      return chamar({ fn: 'pedir', token: token, convite: ler('convite') || '', nome: nome });
+    }).then(function (r2) {
+      if (r2.codigo === 'AGUARDANDO') { guardar('convite', null); mostrarAguardando(r2, token, info); return; }
+      if (r2.codigo === 'NAO_AUTORIZADO' || r2.codigo === 'SESSAO') { mostrarEntrada('Entre de novo para enviar o pedido.'); return; }
+      if (r2.codigo === 'PEDIR' || r2.codigo === 'VALIDACAO' || r2.codigo === 'REDE' || r2.codigo === 'OCUPADO' || r2.codigo === 'ERRO') {
+        msg.textContent = r2.mensagem || 'Algo deu errado. Tente de novo.'; msg.hidden = false; return;
+      }
+      tratarSemAcesso(r2, token, info);
+    });
+  });
+}
+function mostrarAguardando(r, token, info) {
+  S.tokenPendente = token; S.googlePendente = info;
+  var p = r.pedido || {};
+  var em = p.em ? new Date(p.em) : null;
+  entradaExtra(
+    '<span class="ent-icone">' + IC.relogio + '</span>' +
+    '<h2 class="ent-tit">Pedido enviado</h2>' +
+    '<p>Seu acesso está aguardando aprovação. Assim que for liberado, você recebe um e-mail e já pode entrar por este mesmo link.</p>' +
+    '<div class="ent-dados"><span><b>Empresa:</b> ' + esc(p.empresa) + '</span><span><b>Conta:</b> ' + esc(p.email) + '</span>' +
+      (em ? '<span><b>Enviado em:</b> ' + dataCurta(em) + '/' + new Intl.DateTimeFormat('pt-BR', { timeZone: TZ, year: 'numeric' }).format(em) + ', ' + horaSP(em) + '</span>' : '') + '</div>' +
+    '<button type="button" class="bt claro grande" data-acao="verificarPedido">Verificar de novo</button>' +
+    '<button type="button" class="bt-link" data-acao="trocarConta">Sair desta conta</button>');
+}
+function verificarPedido(bt) {
+  if (!S.tokenPendente) { mostrarEntrada(); return; }
+  var info = S.googlePendente;
+  umaVez('verificarPedido', bt, 'Verificando…', function () {
+    return chamar({ fn: 'entrar', token: S.tokenPendente, convite: '' });
+  }).then(function (r) {
+    if (r.ok) { concluirEntrada(r, info); return; }
+    if (r.codigo === 'AGUARDANDO') { avisar('Ainda aguardando aprovação.'); return; }
+    if (r.codigo === 'NAO_AUTORIZADO') { mostrarEntrada('Entre de novo para conferir o seu pedido.'); return; }
+    tratarSemAcesso(r, S.tokenPendente, info);
+  });
+}
+function trocarConta() {
+  try { google.accounts.id.disableAutoSelect(); } catch (e) {}
+  mostrarEntrada('');
 }
 
 function sair(msg) {
@@ -598,6 +777,7 @@ function abrirApp() {
   else av.textContent = iniciais(u.nome);
   $('emBreve').innerHTML = EM_BREVE.map(function (m) { return '<div class="lat-breve"><i aria-hidden="true"></i><span>' + esc(m) + '</span></div>'; }).join('');
   $('versaoLat').textContent = 'v' + VERSAO_SITE;
+  desenharPortal();
   aplicarTela();
   if (S.dados) desenhar(); else recarregar();
 }
@@ -612,10 +792,9 @@ var recarregando = false;
 function recarregar() {
   if (recarregando || !S.sessao) return Promise.resolve();
   recarregando = true;
-  var pPortal = S.portal ? Promise.resolve(S.portal) : api('portal.inicio');
-  return Promise.all([pPortal, api('tarefas.inicio')]).then(function (rs) {
+  return Promise.all([api('portal.inicio'), api('tarefas.inicio')]).then(function (rs) {
     recarregando = false;
-    if (rs[0] && rs[0].ok) S.portal = rs[0];
+    if (rs[0] && rs[0].ok) { S.portal = rs[0]; if (!$('app').hidden) desenharPortal(); }
     if (rs[1] && rs[1].ok) { S.dados = rs[1]; if ($('app').hidden) abrirApp(); else desenhar(); }
     else if (rs[1]) avisar(rs[1].mensagem, true);
   }).catch(function () { recarregando = false; });
@@ -1120,32 +1299,54 @@ function escolherUrgente(t, r) {
 }
 
 /* ================= Sininho ================= */
+/* Regra do portal: aviso que pede ação traz o botão com o nome da ação e leva direto à tela certa. */
+function avisosPortal() { return (S.portal && S.portal.avisos) || []; }
 function desenharSino() {
-  var al = (S.dados.alertas || []).filter(function (a) { return !a.lido; });
+  var al = ((S.dados && S.dados.alertas) || []).filter(function (a) { return !a.lido; });
+  var n = al.length + avisosPortal().filter(function (a) { return !a.lido; }).length;
   var selo = $('seloSino');
-  selo.hidden = !al.length; selo.textContent = al.length;
-  $('btSino').setAttribute('aria-label', al.length ? 'Avisos: ' + al.length + ' novos' : 'Avisos');
+  selo.hidden = !n; selo.textContent = n;
+  $('btSino').setAttribute('aria-label', n ? 'Avisos: ' + n + ' novos' : 'Avisos');
 }
 var NOMES_ALERTA = { URGENTE_PARADA: 'Urgente parada', NOVA: 'Tarefa nova', CADASTRO: 'Cadastro aguardando aprovação' };
 function abrirSino() {
-  var al = S.dados.alertas || [];
+  var al = (S.dados && S.dados.alertas) || [];
+  var av = avisosPortal();
   var porId = {};
-  (S.dados.tarefas || []).forEach(function (t) { porId[t.id] = t; });
-  var h = '<div class="menu-cab"><b>Avisos</b><small>' + (al.length ? 'Toque para abrir a tarefa' : '') + '</small></div>';
-  if (!al.length) h += '<div class="menu-vazio">Nenhum aviso por enquanto.</div>';
+  ((S.dados && S.dados.tarefas) || []).forEach(function (t) { porId[t.id] = t; });
+  var h = '<div class="menu-cab"><b>Avisos</b></div>';
+  if (!al.length && !av.length) h += '<div class="menu-vazio">Nenhum aviso por enquanto.</div>';
+  av.forEach(function (a) {
+    h += '<div class="av-item"><span class="av-tipo' + (a.acao ? '' : ' info') + '">' + esc(a.titulo) + '</span>' +
+      '<span class="av-txt' + (a.lido ? '' : ' novo') + '">' + esc(a.texto) + '</span>' +
+      (a.acao ? '<button class="av-bt" data-aviso-acao="' + esc(a.acao.tipo) + '" data-aviso-ref="' + esc(a.acao.ref) + '">' + esc(a.acao.rotulo) + '</button>' : '') + '</div>';
+  });
   al.forEach(function (a) {
     var t = porId[a.tarefa];
-    h += '<button class="menu-item" data-alerta="' + esc(a.tarefa) + '"' + (a.lido ? '' : ' style="font-weight:600"') + '>' +
-      '<span style="flex:1;min-width:0"><span style="display:block;font-size:.75em;color:#8A2E2E;text-transform:uppercase;letter-spacing:.08em">' + esc(NOMES_ALERTA[a.tipo] || a.tipo) + '</span>' +
-      esc(t ? t.titulo : a.tarefa) + '</span></button>';
+    h += '<div class="av-item"><span class="av-tipo">' + esc(NOMES_ALERTA[a.tipo] || a.tipo) + '</span>' +
+      '<span class="av-txt' + (a.lido ? '' : ' novo') + '">' + esc(t ? t.titulo : a.tarefa) + '</span>' +
+      '<button class="av-bt" data-alerta="' + esc(a.tarefa) + '">Abrir tarefa</button></div>';
   });
   abrirMenu($('btSino'), h, function (raiz) {
+    raiz.classList.add('sino');
     raiz.addEventListener('click', function (e) {
-      var b = e.target.closest('[data-alerta]'); if (!b) return;
-      fecharCamadas();
-      abrirTarefa(b.getAttribute('data-alerta'));
+      var b = e.target.closest('[data-alerta]');
+      if (b) { fecharCamadas(); abrirTarefa(b.getAttribute('data-alerta')); return; }
+      var p = e.target.closest('[data-aviso-acao]');
+      if (p) { fecharCamadas(); executarAviso(p.getAttribute('data-aviso-acao'), p.getAttribute('data-aviso-ref')); }
     });
   });
+  // avisos só informativos contam como lidos ao abrir o sininho
+  var info = av.filter(function (a) { return !a.acao && !a.lido; });
+  if (info.length) {
+    info.forEach(function (a) { a.lido = true; });
+    desenharSino();
+    api('portal.lerAvisos', { ids: info.map(function (a) { return a.id; }) });
+  }
+}
+function executarAviso(tipo, ref) {
+  if (tipo === 'pedido') abrirPedidos(ref);
+  else if (tipo === 'tarefa') abrirTarefa(ref);
 }
 function lerAlertasDa(idTarefa) {
   var ids = (S.dados.alertas || []).filter(function (a) { return a.tarefa === idTarefa && !a.lido; }).map(function (a) { return a.id; });
@@ -1153,6 +1354,272 @@ function lerAlertasDa(idTarefa) {
   S.dados.alertas.forEach(function (a) { if (ids.indexOf(a.id) >= 0) a.lido = true; });
   desenharSino();
   api('tarefas.lerAlertas', { ids: ids });
+}
+
+/* ================= Menu do portal (logo) ================= */
+function desenharPortal() {
+  var b = $('btMarca'), tem = temMenuPortal();
+  b.classList.toggle('clicavel', tem);
+  if (tem) { b.setAttribute('aria-haspopup', 'true'); b.removeAttribute('tabindex'); b.setAttribute('aria-label', 'Abrir menu do portal'); }
+  else { b.removeAttribute('aria-haspopup'); b.setAttribute('tabindex', '-1'); b.setAttribute('aria-label', 'Síndico'); }
+  desenharLateralGestao();
+  if (S.dados) desenharSino();
+}
+function temMenuPortal() {
+  var p = S.portal || {};
+  return !!p.gestao || (p.modulos || []).length > 1;
+}
+function mpLin(acao, icone, titulo, sub, direita, desligado) {
+  return '<button class="mp-lin" ' + (desligado ? 'disabled' : 'data-acao="' + acao + '"') + '><span class="ico">' + icone + '</span>' +
+    '<span class="tx"><b>' + esc(titulo) + '</b><small>' + esc(sub) + '</small></span>' + (direita || '') + (desligado ? '' : IC.chevD) + '</button>';
+}
+function htmlMenuPortal() {
+  var p = S.portal || {}, mods = p.modulos || [], g = p.gestao;
+  var n = ((S.dados && S.dados.tarefas) || []).length;
+  var h = '<div class="mp"><div class="mp-rot">Módulos</div><div class="mp-grade">';
+  mods.forEach(function (m) {
+    h += '<button class="mp-mod atual" data-acao="fecharJan">' + IC.listaOuro + '<b>' + esc(m.nome) + '</b><small>' + n + (n === 1 ? ' pendente' : ' pendentes') + '</small></button>';
+  });
+  var breve = EM_BREVE.slice(1, 1 + (mods.length % 2 ? 3 : 2));
+  breve.forEach(function (nome) { h += '<div class="mp-mod breve">' + IC.breve + '<b>' + esc(nome) + '</b><small>Em breve</small></div>'; });
+  h += '</div>';
+  if (g) {
+    h += '<div class="mp-rot">Gestão</div><div class="mp-lista">';
+    if (g.convidar) h += mpLin('convidar', IC.pessoaMais, 'Convidar pessoas', 'Enviar convite pelo WhatsApp');
+    if (g.pedidos !== null && g.pedidos !== undefined) {
+      h += mpLin('pedidos', IC.caixa, 'Pedidos de acesso', g.pedidos ? 'Aguardando sua aprovação' : 'Nenhum pedido aguardando',
+        g.pedidos ? '<span class="selo estatico">' + g.pedidos + '</span>' : '');
+    }
+    if (g.pessoas) h += mpLin('', IC.pessoas, 'Pessoas e empresas', 'Em breve', '', true);
+    h += '</div>';
+  }
+  return h + '</div>';
+}
+function abrirMenuPortal() {
+  if (!temMenuPortal()) return;
+  if (faixa() === 'computador') {
+    fecharCamadas();
+    var r = $('btMarca').getBoundingClientRect();
+    $('camadas').innerHTML = '<div class="fundo" data-acao="fecharJan" style="background:transparent"></div><div class="menu portal" role="dialog" aria-label="Menu do portal"></div>';
+    var m = $('camadas').querySelector('.menu');
+    m.innerHTML = htmlMenuPortal();
+    m.style.top = (r.bottom + 8) + 'px';
+    m.style.left = Math.max(12, r.left) + 'px';
+    document.addEventListener('keydown', escFecha);
+  } else {
+    abrirJanela('Portal Síndico', 'Módulos e gestão', '<div class="jan-corpo">' + htmlMenuPortal() + '</div>', 'centro');
+  }
+}
+function desenharLateralGestao() {
+  var g = S.portal && S.portal.gestao, el = $('latGestao');
+  if (!el) return;
+  if (!g) { el.innerHTML = ''; return; }
+  var h = '<span class="lat-titulo" style="padding-top:1.6em">Gestão</span>';
+  if (g.convidar) h += '<button class="lat-item" data-acao="convidar">' + IC.pessoaMaisOuro + '<span style="flex:1">Convidar pessoas</span></button>';
+  if (g.pedidos !== null && g.pedidos !== undefined) {
+    h += '<button class="lat-item" data-acao="pedidos" aria-label="Pedidos de acesso">' + IC.caixaOuro + '<span style="flex:1">Pedidos</span>' +
+      (g.pedidos ? '<span class="cont vinho">' + g.pedidos + '</span>' : '') + '</button>';
+  }
+  if (g.pessoas) h += '<div class="lat-breve"><i aria-hidden="true"></i><span>Pessoas e empresas</span></div>';
+  el.innerHTML = h;
+}
+function atualizarPortal() {
+  return api('portal.inicio').then(function (r) { if (r && r.ok) { S.portal = r; desenharPortal(); } }).catch(function () {});
+}
+
+/* ================= Convidar pessoas ================= */
+function ehCasa(apelido) { return String(apelido || '').toUpperCase() === 'CARVALHO & ABREU'; }
+function listaNomes(arr) {
+  arr = arr || [];
+  if (arr.length <= 1) return arr.join('');
+  if (arr.length > 3) return arr.slice(0, 3).join(', ') + ' e mais ' + (arr.length - 3);
+  return arr.slice(0, -1).join(', ') + ' e ' + arr[arr.length - 1];
+}
+function abrirConvidar() {
+  var g = S.portal && S.portal.gestao;
+  if (!g || !g.convidar) return;
+  var emps = g.empresasConvite || [];
+  var dias = g.validadeConviteDias || 7;
+  var st = { emp: null, codigos: {}, texto: '' };
+  var linkDoCodigo = function (c) { return location.origin + location.pathname + '?c=' + encodeURIComponent(c); };
+  var textoDe = function (emp, codigo) {
+    return 'Olá! Você foi convidado(a) para o app Síndico, da Carvalho & Abreu' + (ehCasa(emp) ? '' : ', pela ' + emp) + '.\n' +
+      'Toque no link, entre com a sua conta Google e solicite o acesso (o convite vale por ' + dias + ' dias):\n' + linkDoCodigo(codigo);
+  };
+  var h = '<div class="jan-corpo">' +
+    '<span class="rotulo">De qual empresa é a pessoa?</span>' +
+    '<div class="mp-lista">' + emps.map(function (e) {
+      return '<button class="op-emp" data-emp="' + esc(e.apelido) + '" aria-pressed="false"><span class="radio" aria-hidden="true"></span>' +
+        '<span style="flex:1;min-width:0"><b>' + esc(ehCasa(e.apelido) ? 'Carvalho & Abreu' : e.apelido) + '</b><small>' +
+        esc(ehCasa(e.apelido) ? 'Colaboradores da casa' : (e.atende && e.atende.length ? 'Atende ' + listaNomes(e.atende) : 'Ainda sem condomínio')) + '</small></span></button>';
+    }).join('') + '</div>' +
+    '<span class="rotulo">Mensagem que vai junto</span>' +
+    '<div class="msg-zap vazia" id="msgConvite">Escolha a empresa para montar o convite.</div>' +
+    '<div class="entrada-msg" id="convMsg" role="alert" hidden></div>' +
+    '<a class="bt grande zap" id="btZap" href="#" target="_blank" rel="noopener" aria-disabled="true">' + IC.zapBranco + 'Enviar pelo WhatsApp</a>' +
+    '<button class="bt grande claro" id="btCopiarConvite" disabled>' + IC.link + 'Copiar link</button>' +
+    '</div>';
+  abrirJanela('Convidar pessoas', 'O convite vale por ' + dias + ' dias', h, 'centro', function (raiz) {
+    var msg = raiz.querySelector('#msgConvite'), zap = raiz.querySelector('#btZap'), cop = raiz.querySelector('#btCopiarConvite'), erro = raiz.querySelector('#convMsg');
+    var pronto = function (ok) {
+      zap.setAttribute('aria-disabled', ok ? 'false' : 'true');
+      cop.disabled = !ok;
+      if (ok) zap.href = 'https://wa.me/?text=' + encodeURIComponent(st.texto);
+    };
+    var escolher = function (emp, bt) {
+      st.emp = emp;
+      Array.prototype.forEach.call(raiz.querySelectorAll('[data-emp]'), function (x) { x.setAttribute('aria-pressed', String(x === bt)); });
+      erro.hidden = true;
+      if (st.codigos[emp]) { st.texto = textoDe(emp, st.codigos[emp]); msg.textContent = st.texto; msg.classList.remove('vazia'); pronto(true); return; }
+      pronto(false);
+      msg.classList.add('vazia'); msg.textContent = 'Gerando o convite…';
+      umaVez('convidar:' + emp, null, null, function () { return api('portal.convidar', { empresa: emp }); }).then(function (r) {
+        if (st.emp !== emp) return;
+        if (!r.ok) { msg.textContent = 'Escolha a empresa para montar o convite.'; erro.textContent = r.mensagem; erro.hidden = false; return; }
+        st.codigos[emp] = r.codigo;
+        st.texto = textoDe(emp, r.codigo);
+        msg.textContent = st.texto; msg.classList.remove('vazia');
+        pronto(true);
+      });
+    };
+    raiz.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-emp]');
+      if (b) { escolher(b.getAttribute('data-emp'), b); return; }
+    });
+    zap.addEventListener('click', function (e) { if (zap.getAttribute('aria-disabled') === 'true') e.preventDefault(); });
+    cop.addEventListener('click', function () {
+      var ok = function () { avisar('Convite copiado'); };
+      var reserva = function () {
+        var ta = document.createElement('textarea'); ta.value = st.texto; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); ok(); } catch (e) { avisar('Não foi possível copiar.', true); }
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(st.texto).then(ok, reserva); else reserva();
+    });
+    if (emps.length === 1) escolher(emps[0].apelido, raiz.querySelector('[data-emp]'));
+  });
+}
+
+/* ================= Pedidos de acesso (master) ================= */
+function abrirPedidos(idInicial) {
+  abrirJanela('Pedidos de acesso', 'Carregando…', '<div class="jan-corpo"><p class="vazio">Carregando pedidos…</p></div>', 'centro', function (raiz) {
+    carregarPedidos(raiz, idInicial);
+  });
+}
+function corpoJanela(raiz, sub, html) {
+  raiz.querySelector('.jan-cab small').textContent = sub;
+  var c = raiz.querySelector('.jan-corpo');
+  c.innerHTML = html;
+  c.scrollTop = 0;
+}
+function carregarPedidos(raiz, idInicial) {
+  api('portal.pedidos').then(function (r) {
+    if (!raiz.isConnected) return;
+    if (!r.ok) { corpoJanela(raiz, '', '<p class="vazio">' + esc(r.mensagem) + '</p>'); return; }
+    S.pedidos = r;
+    var alvo = (r.pedidos || []).filter(function (p) { return p.id === idInicial; })[0];
+    if (!alvo && r.pedidos.length === 1) alvo = r.pedidos[0];
+    if (alvo) mostrarPedido(raiz, alvo); else listaPedidos(raiz);
+  });
+}
+function listaPedidos(raiz) {
+  var lista = (S.pedidos && S.pedidos.pedidos) || [];
+  if (!lista.length) { corpoJanela(raiz, 'Nada pendente', '<p class="vazio">Nenhum pedido aguardando aprovação.</p>'); return; }
+  corpoJanela(raiz, lista.length + (lista.length === 1 ? ' aguardando' : ' aguardando'), '<div class="mp-lista">' + lista.map(function (p) {
+    return '<button class="mp-lin" data-pedido="' + esc(p.id) + '">' + avatarDe(null, p.nome) +
+      '<span class="tx"><b>' + esc(p.nome) + '</b><small>' + esc(p.empresa) + ' · ' + esc(haQuanto(p.em)) + '</small></span>' + IC.chevD + '</button>';
+  }).join('') + '</div>');
+  raiz.querySelector('.jan-corpo').onclick = function (e) {
+    var b = e.target.closest('[data-pedido]'); if (!b) return;
+    var p = lista.filter(function (x) { return x.id === b.getAttribute('data-pedido'); })[0];
+    if (p) mostrarPedido(raiz, p);
+  };
+}
+function mostrarPedido(raiz, p) {
+  var R = S.pedidos || {};
+  var st = { perfil: 'Operador', atividade: '', modulos: {}, papeis: {}, recusar: false };
+  (R.modulos || []).forEach(function (m, i) { if (i === 0) st.modulos[m.id] = true; });
+  if ((p.condos || []).length === 1) st.papeis[p.condos[0].codigo] = 'O';
+  var varios = ((R.pedidos || []).length > 1);
+  var desenharForm = function () {
+    var veTudo = st.perfil === 'Gestor' || st.atividade.toUpperCase() === 'COMPRAS';
+    var h = '';
+    if (varios) h += '<button class="bt-link" data-pvoltar style="align-self:flex-start">‹ Voltar aos pedidos</button>';
+    h += '<div class="conta-box">' + avatarDe(null, p.nome) + '<span class="tx"><b>' + esc(p.nome) + '</b><small>' + esc(p.email) + ' · ' + esc(p.empresa) + '</small>' +
+      '<small>' + (p.convidadoPor ? 'Convite de ' + esc(p.convidadoPor) : 'Pedido pelo link do app') + ' · ' + esc(haQuanto(p.em)) + '</small></span></div>';
+    if (p.viaLinkSemCodigo) h += '<div class="alerta-ouro">Este pedido veio pelo link do app, sem convite. Confira se você conhece a pessoa antes de aprovar.</div>';
+    h += '<span class="rotulo">Perfil</span><div class="pills">' + (R.perfis || []).map(function (x) {
+      return '<button class="pill" data-pperfil="' + esc(x) + '" aria-pressed="' + (st.perfil === x) + '">' + esc(x) + '</button>';
+    }).join('') + '</div>';
+    if (p.casa && (R.atividades || []).length) {
+      h += '<span class="rotulo">Atividade principal</span><div class="pills">' +
+        '<button class="pill" data-pativ="" aria-pressed="' + (!st.atividade) + '">Nenhuma</button>' +
+        R.atividades.map(function (a) { return '<button class="pill" data-pativ="' + esc(a) + '" aria-pressed="' + (st.atividade === a) + '">' + esc(a) + '</button>'; }).join('') + '</div>';
+    }
+    h += '<span class="rotulo">Módulos</span><div>' + (R.modulos || []).map(function (m) {
+      return '<label class="chk-lin"><input type="checkbox" data-pmod="' + esc(m.id) + '"' + (st.modulos[m.id] ? ' checked' : '') + '> ' + esc(m.nome) + '</label>';
+    }).join('') + EM_BREVE.slice(1, 3).map(function (nome) {
+      return '<label class="chk-lin breve"><input type="checkbox" disabled> ' + esc(nome) + '<span class="tag-breve">Em breve</span></label>';
+    }).join('') + '</div>';
+    h += '<span class="rotulo">Condomínios ' + (p.casa ? 'da casa' : 'da ' + esc(p.empresa)) + '</span>';
+    if (veTudo) h += '<p class="dica-campo">' + (st.perfil === 'Gestor' ? 'Gestor vê todos os condomínios da empresa.' : 'Compras vê as compras de todos os condomínios da casa.') + ' Marque abaixo só se quiser direcionar tarefas para a pessoa.</p>';
+    if (!(p.condos || []).length) h += '<p class="dica-campo">A empresa ainda não atende nenhum condomínio (aba EMPRESAS APP).</p>';
+    h += '<div>' + (p.condos || []).map(function (c) {
+      var v = st.papeis[c.codigo] || '';
+      return '<div class="linha-condo"><b>' + esc(c.nome) + '</b><div class="seg" role="group" aria-label="Acesso em ' + esc(c.nome) + '">' +
+        [['', 'Sem acesso'], ['O', 'Operador'], ['L', 'Líder']].map(function (o) {
+          return '<button data-ppapel="' + esc(c.codigo) + '|' + o[0] + '" aria-pressed="' + (v === o[0]) + '">' + o[1] + '</button>';
+        }).join('') + '</div></div>';
+    }).join('') + '</div>';
+    h += '<div class="entrada-msg" id="pedErro" role="alert" hidden></div>';
+    h += '<button class="bt grande" id="btAprovar">Aprovar acesso</button>';
+    h += '<button class="bt grande claro" id="btRecusar" style="border-color:#8A2E2E;color:#8A2E2E">' + (st.recusar ? 'Confirmar recusa' : 'Recusar') + '</button>';
+    corpoJanela(raiz, p.empresa, h);
+  };
+  desenharForm();
+  var corpo = raiz.querySelector('.jan-corpo');
+  corpo.onclick = function (e) {
+    var b;
+    if ((b = e.target.closest('[data-pvoltar]'))) { listaPedidos(raiz); return; }
+    if ((b = e.target.closest('[data-pperfil]'))) { st.perfil = b.getAttribute('data-pperfil'); st.recusar = false; desenharForm(); return; }
+    if ((b = e.target.closest('[data-pativ]'))) { st.atividade = b.getAttribute('data-pativ'); st.recusar = false; desenharForm(); return; }
+    if ((b = e.target.closest('[data-ppapel]'))) {
+      var pr = b.getAttribute('data-ppapel').split('|');
+      if (pr[1]) st.papeis[pr[0]] = pr[1]; else delete st.papeis[pr[0]];
+      st.recusar = false; desenharForm(); return;
+    }
+    var erro = corpo.querySelector('#pedErro');
+    if (e.target.closest('#btAprovar')) {
+      var mods = Object.keys(st.modulos).filter(function (k) { return st.modulos[k]; });
+      umaVez('aprovar:' + p.id, e.target.closest('#btAprovar'), 'Aprovando…', function () {
+        return api('portal.aprovar', { id: p.id, perfil: st.perfil, atividade: st.atividade, modulos: mods, papeis: st.papeis });
+      }).then(function (r) {
+        if (!r.ok) { erro.textContent = r.mensagem; erro.hidden = false; return; }
+        avisar('Acesso liberado para ' + p.nome);
+        posDecisao(raiz, p.id);
+      });
+      return;
+    }
+    if (e.target.closest('#btRecusar')) {
+      if (!st.recusar) { st.recusar = true; desenharForm(); return; }
+      umaVez('recusar:' + p.id, e.target.closest('#btRecusar'), 'Recusando…', function () {
+        return api('portal.recusar', { id: p.id });
+      }).then(function (r) {
+        if (!r.ok) { erro.textContent = r.mensagem; erro.hidden = false; return; }
+        avisar('Pedido recusado');
+        posDecisao(raiz, p.id);
+      });
+    }
+  };
+  corpo.onchange = function (e) {
+    var m = e.target.getAttribute && e.target.getAttribute('data-pmod');
+    if (m) st.modulos[m] = e.target.checked;
+  };
+}
+function posDecisao(raiz, id) {
+  if (S.pedidos) S.pedidos.pedidos = (S.pedidos.pedidos || []).filter(function (x) { return x.id !== id; });
+  atualizarPortal();
+  if (S.pedidos && S.pedidos.pedidos.length) listaPedidos(raiz); else fecharCamadas();
 }
 
 /* ================= Menu da conta ================= */
@@ -1268,6 +1735,8 @@ function criarTarefa(raiz, condo, confirmar) {
     if (nova && podeCompartilhar(nova.condo)) {
       S.ultimaCriada = nova;
       avisar('Tarefa criada', false, { rotulo: 'Compartilhar', seg: 7, fn: function () { compartilharCriada(); } });
+    } else if (nova && String(nova.categoria || '').toUpperCase() === 'COMPRAS' && !(S.dados.usuario.master || S.dados.usuario.compras || S.dados.usuario.supervisorCasa)) {
+      avisar('Tarefa de compras enviada para Compras');
     } else avisar('Tarefa criada');
     if (S.condo !== 'todos' && S.condo !== condo) S.condo = condo;
     recarregar();
@@ -1411,6 +1880,10 @@ document.addEventListener('click', function (e) {
   }
   switch (acao) {
     case 'fecharJan': fecharCamadas(); break;
+    case 'convidar': fecharCamadas(); abrirConvidar(); break;
+    case 'pedidos': fecharCamadas(); abrirPedidos(); break;
+    case 'trocarConta': trocarConta(); break;
+    case 'verificarPedido': verificarPedido(b); break;
     case 'fecharDet': fecharDetalhe(); break;
     case 'nova': abrirNova(); break;
     case 'sugerir': abrirSugestao(); break;
@@ -1433,6 +1906,7 @@ document.addEventListener('click', function (e) {
       break;
   }
   if (b.id === 'btSino') abrirSino();
+  if (b.id === 'btMarca') abrirMenuPortal();
   if (b.id === 'btPerfil') abrirPerfil();
 });
 document.addEventListener('change', function (e) {
@@ -1468,6 +1942,7 @@ function carregarScriptGoogle() {
   document.head.appendChild(s);
 }
 function iniciar() {
+  lerConviteUrl();
   guardarLinkDireto();
   S.sessao = ler('sessao');
   try { S.google = JSON.parse(ler('google') || 'null'); } catch (e) { S.google = null; }
