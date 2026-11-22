@@ -395,7 +395,7 @@ body.janela-aberta .sugerir-flut{display:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.0';
+var VERSAO_SITE = '1.1';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -772,7 +772,12 @@ function desenharDetalhe() {
     gEmp = '<div><label class="rotulo" for="selEmp">Empresa</label><select class="campo" id="selEmp">' +
       t.empresasDoCondo.map(function (e) { return '<option' + (e === t.empresa ? ' selected' : '') + '>' + esc(e) + '</option>'; }).join('') + '</select></div>';
   }
-  if (gDir || gEmp) h += '<div class="grade2">' + gDir + gEmp + '</div>';
+  var gCondo = '';
+  if (pode.trocarCondominio && (t.condosParaTrocar || []).length > 1) {
+    gCondo = '<div><label class="rotulo" for="selCondo">Condomínio</label><select class="campo" id="selCondo">' +
+      t.condosParaTrocar.map(function (c) { return '<option value="' + esc(c.codigo) + '"' + (c.codigo === t.condo ? ' selected' : '') + '>' + esc(c.nome) + '</option>'; }).join('') + '</select></div>';
+  }
+  if (gCondo || gDir || gEmp) h += '<div class="grade2">' + gCondo + gDir + gEmp + '</div>';
 
   if (S.editandoDesc) {
     h += '<div class="bloco"><label class="rotulo" for="txtDesc">Descrição</label>' +
@@ -832,6 +837,39 @@ function acaoDetalhe(acao, dados, depois) {
     recarregar();
     return r;
   });
+}
+
+/* Master: tarefa cadastrada no condomínio errado. O motor dá um ID novo do condomínio certo. */
+function trocarCondominio(cod) {
+  var t = S.det; if (!t || cod === t.condo) return;
+  var c = (t.condosParaTrocar || []).filter(function (x) { return x.codigo === cod; })[0];
+  if (!c) return;
+  var emps = c.empresas || [];
+  var enviar = function (emp) {
+    var sel = $('selCondo'); if (sel) sel.disabled = true;
+    api('tarefas.trocarCondominio', { id: t.id, condo: cod, empresa: emp }).then(function (r) {
+      if (!r.ok) { avisar(r.mensagem, true); desenharDetalhe(); return; }
+      if (r.semMudanca || !r.tarefa) { abrirTarefa(t.id, true); return; }
+      S.condo = cod;
+      avisar('Tarefa movida para ' + c.nome + ' · novo nº ' + r.tarefa.id);
+      recarregar();
+      abrirTarefa(r.tarefa.id);
+    });
+  };
+  if (emps.indexOf(t.empresa) >= 0) { enviar(t.empresa); return; }
+  if (emps.length === 1) { enviar(emps[0]); return; }
+  if (!emps.length) { avisar('Nenhuma empresa atende ' + c.nome + ' no app.', true); desenharDetalhe(); return; }
+  var h = '<div class="jan-corpo"><p class="desc">A empresa ' + esc(t.empresa) + ' não atende ' + esc(c.nome) + '. Escolha a empresa da tarefa lá:</p>' +
+    '<label class="rot-campo" for="trocaEmp">Empresa</label><select class="campo" id="trocaEmp">' +
+    emps.map(function (e) { return '<option>' + esc(e) + '</option>'; }).join('') + '</select>' +
+    '<div class="jan-rodape"><button class="bt claro" type="button" data-acao="fecharJan">Cancelar</button><button class="bt" type="button" id="trocaOk">Mover tarefa</button></div></div>';
+  abrirJanela('Trocar condomínio', 'Escolha a empresa', h, 'centro', function (raiz) {
+    raiz.querySelector('#trocaOk').addEventListener('click', function () {
+      var emp = raiz.querySelector('#trocaEmp').value;
+      fecharCamadas(); enviar(emp);
+    });
+  });
+  desenharDetalhe();
 }
 
 function enviarObs() {
@@ -1188,6 +1226,7 @@ document.addEventListener('change', function (e) {
   if (el.id === 'outroCondo' && el.value) { S.condo = el.value; desenharCondos(); desenharLista(); }
   if (el.id === 'selDir') acaoDetalhe('direcionar', { para: el.value });
   if (el.id === 'selEmp') acaoDetalhe('trocarEmpresa', { empresa: el.value });
+  if (el.id === 'selCondo') trocarCondominio(el.value);
 });
 document.addEventListener('input', function (e) {
   if (e.target.id === 'txtObs' && S.det) { S.rascunhoObs[S.det.id] = e.target.value; ajustarAltura(e.target); }
