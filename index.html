@@ -395,7 +395,7 @@ body.janela-aberta .sugerir-flut{display:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.1';
+var VERSAO_SITE = '1.2';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -709,7 +709,7 @@ function desfazer(id) {
 
 /* ================= Tarefa aberta ================= */
 function abrirTarefa(id, silencioso) {
-  S.selId = id; S.editandoDesc = false;
+  S.selId = id; S.editandoDesc = false; S.editandoTitulo = false;
   document.body.classList.add('com-sel');
   marcarSelecionado();
   if (!silencioso || !S.det || S.det.id !== id) {
@@ -744,7 +744,12 @@ function desenharDetalhe() {
   var pend = t.status !== 'Concluída' && !t.concluidoEm;
   var h = cabDetalheVoltar();
   h += '<div class="bloco" style="gap:.5em"><span class="det-condo">' + esc(nomeCondo(t.condo)) + ' · ' + esc(t.id) + '</span>' +
-    '<h2 class="det-titulo">' + esc(t.titulo) + '</h2><div class="pilulas">' +
+    (S.editandoTitulo
+      ? '<label class="sr" for="txtTitulo">Título</label><input class="campo" id="txtTitulo" maxlength="120" autocomplete="off" value="' + esc(t.titulo) + '">' +
+        '<div class="linha-campos" style="justify-content:flex-end"><button class="bt claro" data-acao="cancelarTitulo">Cancelar</button><button class="bt" data-acao="salvarTitulo">Salvar título</button></div>'
+      : '<h2 class="det-titulo">' + esc(t.titulo) + '</h2>' +
+        (pode.titulo ? '<button class="bt-link" data-acao="editarTitulo" style="align-self:flex-start">Corrigir título</button>' : '')) +
+    '<div class="pilulas">' +
     (t.urgente ? '<span class="pilula urg">Urgente ' + t.posicao + '</span>' : '') +
     (t.etiqueta ? '<span class="pilula atraso">' + esc(t.etiqueta) + '</span>' : '') +
     '<span class="pilula forte">' + esc(t.empresa) + '</span>' +
@@ -870,6 +875,15 @@ function trocarCondominio(cod) {
     });
   });
   desenharDetalhe();
+}
+
+function salvarTitulo() {
+  var el = $('txtTitulo'); if (!el || !S.det) return;
+  var txt = el.value.trim();
+  if (!txt) { el.focus(); return; }
+  S.editandoTitulo = false;
+  if (txt === S.det.titulo) { desenharDetalhe(); return; }
+  acaoDetalhe('titulo', { texto: txt, versao: S.det.versao }, function () { avisar('Título corrigido'); });
 }
 
 function enviarObs() {
@@ -1210,6 +1224,9 @@ document.addEventListener('click', function (e) {
     case 'concluirDet': concluir(S.det.id); break;
     case 'reabrir': acaoDetalhe('reabrir', {}, function () { avisar('Tarefa reaberta'); }); break;
     case 'enviarObs': enviarObs(); break;
+    case 'editarTitulo': S.editandoTitulo = true; desenharDetalhe(); var it = $('txtTitulo'); it.focus(); it.select(); break;
+    case 'cancelarTitulo': S.editandoTitulo = false; desenharDetalhe(); break;
+    case 'salvarTitulo': salvarTitulo(); break;
     case 'editarDesc': S.editandoDesc = true; desenharDetalhe(); $('txtDesc').focus(); break;
     case 'cancelarDesc': S.editandoDesc = false; desenharDetalhe(); break;
     case 'salvarDesc':
@@ -1233,6 +1250,8 @@ document.addEventListener('input', function (e) {
 });
 document.addEventListener('keydown', function (e) {
   if (e.target.id === 'txtObs' && e.key === 'Enter' && !e.shiftKey && faixa() === 'computador') { e.preventDefault(); enviarObs(); }
+  if (e.target.id === 'txtTitulo' && e.key === 'Enter') { e.preventDefault(); salvarTitulo(); }
+  if (e.target.id === 'txtTitulo' && e.key === 'Escape') { e.stopPropagation(); S.editandoTitulo = false; desenharDetalhe(); return; }
   if (e.key === 'Escape' && S.selId && !$('camadas').innerHTML) fecharDetalhe();
 });
 var ultimaFaixa = faixa();
