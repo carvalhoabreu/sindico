@@ -92,6 +92,14 @@ button{cursor:pointer}
 .abas button[aria-selected="true"]{border-bottom-color:var(--ouro);color:var(--azul);font-weight:700}
 .bt{min-height:2.75em;padding:0 1.25em;border-radius:.75em;border:none;background:var(--azul);color:#fff;font-weight:600;font-size:.9375em;display:inline-flex;align-items:center;justify-content:center;gap:.5em}
 .bt.claro{background:#fff;color:var(--azul);border:1.5px solid var(--azul)}
+.ocupado{pointer-events:none;opacity:.72;-webkit-user-select:none;user-select:none}
+.ocupado.girando::before{content:"";width:1em;height:1em;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:gira .7s linear infinite;flex:none}
+.ocupado.girando svg{display:none}
+@keyframes gira{to{transform:rotate(360deg)}}
+.salvando-rot::after{content:" · Salvando…";font-weight:500;color:var(--ouro2,#9C7A3C);text-transform:none;letter-spacing:0}
+.conf-tit{margin:0;font-family:Lora,Georgia,serif;font-weight:700;font-size:1.125em;line-height:1.3;color:var(--azul);overflow-wrap:anywhere}
+.conf-rodape{display:flex;gap:.75em;justify-content:flex-end;flex-wrap:wrap}
+@media (max-width:767px){.conf-rodape{flex-direction:column-reverse}.conf-rodape .bt{width:100%}}
 .bt.ouro{background:#fff;color:var(--azul);border:1.5px solid var(--ouro)}
 .bt.grande{min-height:3.25em;border-radius:.875em;font-weight:700;font-size:1em;width:100%}
 .bt:disabled{opacity:.55;cursor:default}
@@ -405,7 +413,7 @@ body.janela-aberta .sugerir-flut{display:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.4';
+var VERSAO_SITE = '1.5';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -701,16 +709,69 @@ function desenharLista() {
   $('lista').innerHTML = html;
 }
 
-/* ================= Concluir e desfazer ================= */
+/* ================= Salvando: trava contra clique duplo ================= */
+var emCurso = {};
+/* Marca o botão (ou campo) como ocupado; a bolinha só aparece se demorar mais de 250 ms. Devolve a função que libera. */
+function ocupar(el, texto) {
+  if (!el || !el.classList) return function () {};
+  var ehCampo = el.tagName === 'SELECT' || el.tagName === 'INPUT' || el.tagName === 'TEXTAREA';
+  var antes = el.innerHTML, rot = null, timer = null;
+  el.classList.add('ocupado'); el.setAttribute('aria-busy', 'true');
+  if (ehCampo) {
+    el.disabled = true;
+    rot = el.id && document.querySelector('label[for="' + el.id + '"]');
+    if (rot) rot.classList.add('salvando-rot');
+  } else {
+    if (texto && el.querySelector('span') && !el.classList.contains('edit-tit')) el.querySelector('span').textContent = texto;
+    else if (texto && !el.querySelector('svg')) el.textContent = texto;
+    timer = setTimeout(function () { el.classList.add('girando'); }, 250);
+  }
+  return function () {
+    clearTimeout(timer);
+    if (!document.body.contains(el)) return;
+    el.classList.remove('ocupado', 'girando'); el.removeAttribute('aria-busy');
+    if (ehCampo) { el.disabled = false; if (rot) rot.classList.remove('salvando-rot'); } else el.innerHTML = antes;
+  };
+}
+/* Executa uma gravação uma vez só por vez (mesma chave = ignora o segundo toque). */
+function umaVez(chave, el, texto, fazer) {
+  if (emCurso[chave]) return Promise.resolve({ ok: false, ignorado: true });
+  emCurso[chave] = true;
+  var liberar = ocupar(el, texto);
+  return Promise.resolve().then(fazer).then(function (r) { delete emCurso[chave]; liberar(); return r; },
+    function (e) { delete emCurso[chave]; liberar(); throw e; });
+}
+
+/* ================= Concluir: confirmação + desfazer ================= */
+function confirmarConcluir(id) {
+  var t = tarefaPorId(id); if (!t) return;
+  var h = '<div class="jan-corpo">' +
+    '<p class="conf-tit">' + esc(t.titulo) + '</p>' +
+    '<p class="cartao-meta" style="margin:0">Ela sai da lista de pendentes. Logo depois aparece a opção Desfazer, caso tenha sido engano.</p>' +
+    '<div class="conf-rodape"><button class="bt claro" type="button" data-acao="fecharJan">Cancelar</button>' +
+    '<button class="bt" type="button" id="confConcluir">' + IC.checkOuro + '<span>Concluir tarefa</span></button></div></div>';
+  abrirJanela('Concluir esta tarefa?', nomeCondo(t.condo) + ' · ' + t.id, h, 'centro', function (raiz) {
+    var ok = raiz.querySelector('#confConcluir');
+    ok.addEventListener('click', function () {
+      if (ok.classList.contains('ocupado')) return;
+      ok.classList.add('ocupado');
+      fecharCamadas(); concluir(id);
+    });
+    setTimeout(function () { try { ok.focus(); } catch (e) {} }, 50);
+  });
+}
 function concluir(id) {
+  if (emCurso['concluir:' + id]) return;
   var t = (S.dados.tarefas || []).filter(function (x) { return x.id === id; })[0];
   if (!t) return;
+  emCurso['concluir:' + id] = true;
   S.dados.tarefas = S.dados.tarefas.filter(function (x) { return x.id !== id; });
   var c = (S.dados.condos || []).filter(function (x) { return x.codigo === t.condo; })[0];
   if (c) c.pendentes = Math.max(0, c.pendentes - 1);
   if (S.selId === id) fecharDetalhe();
   desenhar();
   api('tarefas.concluir', { id: id }).then(function (r) {
+    delete emCurso['concluir:' + id];
     if (r.jaConcluida) { avisar('Essa tarefa já tinha sido concluída' + (r.por ? ' por ' + r.por : '') + '.'); recarregar(); return; }
     if (!r.ok) { avisar(r.mensagem, true); recarregar(); return; }
     var seg = r.desfazerSeg || (S.dados.regras && S.dados.regras.desfazerSeg) || 5;
@@ -719,7 +780,8 @@ function concluir(id) {
   });
 }
 function desfazer(id) {
-  api('tarefas.desfazer', { id: id }).then(function (r) {
+  umaVez('desfazer:' + id, null, null, function () { return api('tarefas.desfazer', { id: id }); }).then(function (r) {
+    if (r.ignorado) return;
     if (!r.ok) avisar(r.mensagem, true);
     recarregar();
   });
@@ -851,11 +913,12 @@ function ajustarAltura(el) {
   el.style.height = Math.min(el.scrollHeight + 2, 200) + 'px';
 }
 
-function acaoDetalhe(acao, dados, depois) {
+function acaoDetalhe(acao, dados, depois, el, texto) {
   var t = S.det; if (!t) return;
   var payload = Object.assign({ id: t.id }, dados || {});
-  return api('tarefas.' + acao, payload).then(function (r) {
-    if (!r.ok) { avisar(r.mensagem, true); return r; }
+  return umaVez(acao + ':' + t.id, el, texto || 'Salvando…', function () { return api('tarefas.' + acao, payload); }).then(function (r) {
+    if (r.ignorado) return r;
+    if (!r.ok) { avisar(r.mensagem, true); desenharDetalhe(); return r; }
     if (depois) depois(r);
     abrirTarefa(t.id, true);
     recarregar();
@@ -870,8 +933,8 @@ function trocarCondominio(cod) {
   if (!c) return;
   var emps = c.empresas || [];
   var enviar = function (emp) {
-    var sel = $('selCondo'); if (sel) sel.disabled = true;
-    api('tarefas.trocarCondominio', { id: t.id, condo: cod, empresa: emp }).then(function (r) {
+    umaVez('trocarCondominio:' + t.id, $('selCondo'), null, function () { return api('tarefas.trocarCondominio', { id: t.id, condo: cod, empresa: emp }); }).then(function (r) {
+      if (r.ignorado) return;
       if (!r.ok) { avisar(r.mensagem, true); desenharDetalhe(); return; }
       if (r.semMudanca || !r.tarefa) { abrirTarefa(t.id, true); return; }
       S.condo = cod;
@@ -1005,9 +1068,9 @@ function salvarTitulo() {
   var el = $('txtTitulo'); if (!el || !S.det) return;
   var txt = el.value.trim();
   if (!txt) { el.focus(); return; }
-  S.editandoTitulo = false;
-  if (txt === S.det.titulo) { desenharDetalhe(); return; }
-  acaoDetalhe('titulo', { texto: txt, versao: S.det.versao }, function () { avisar('Título corrigido'); });
+  if (txt === S.det.titulo) { S.editandoTitulo = false; desenharDetalhe(); return; }
+  var bt = document.querySelector('[data-acao="salvarTitulo"]');
+  acaoDetalhe('titulo', { texto: txt, versao: S.det.versao }, function () { S.editandoTitulo = false; avisar('Título corrigido'); }, bt);
 }
 
 function enviarObs() {
@@ -1030,8 +1093,10 @@ function enviarObs() {
 
 function marcarUrgente() {
   var t = S.det;
-  if (t.urgente) { acaoDetalhe('tirarUrgente'); return; }
-  api('tarefas.urgente', { id: t.id }).then(function (r) {
+  var bt = document.querySelector('[data-acao="urgente"]');
+  if (t.urgente) { acaoDetalhe('tirarUrgente', {}, null, bt); return; }
+  umaVez('urgente:' + t.id, bt, 'Salvando…', function () { return api('tarefas.urgente', { id: t.id }); }).then(function (r) {
+    if (r.ignorado) return;
     if (!r.ok) { avisar(r.mensagem, true); return; }
     if (r.precisaEscolher) { escolherUrgente(t, r); return; }
     abrirTarefa(t.id, true); recarregar();
@@ -1330,11 +1395,11 @@ document.addEventListener('click', function (e) {
   if (!b) return;
   if (b.id === 'fundoDet') { fecharDetalhe(); return; }
   var acao = b.getAttribute('data-acao');
-  if (b.hasAttribute('data-concluir')) { concluir(b.getAttribute('data-concluir')); return; }
+  if (b.hasAttribute('data-concluir')) { confirmarConcluir(b.getAttribute('data-concluir')); return; }
   if (b.hasAttribute('data-abrir')) { abrirTarefa(b.getAttribute('data-abrir')); return; }
   if (b.hasAttribute('data-condo')) { S.condo = b.getAttribute('data-condo'); desenharCondos(); desenharLista(); return; }
   if (b.hasAttribute('data-tela')) { guardarLocal('tela', b.getAttribute('data-tela')); aplicarTela(); return; }
-  if (b.hasAttribute('data-mover')) { acaoDetalhe('mover', { direcao: b.getAttribute('data-mover') }); return; }
+  if (b.hasAttribute('data-mover')) { acaoDetalhe('mover', { direcao: b.getAttribute('data-mover') }, null, b); return; }
   if (b.hasAttribute('data-excluirobs')) {
     var idObs = b.getAttribute('data-excluirobs');
     api('tarefas.excluirObs', { id: idObs }).then(function (r) {
@@ -1353,8 +1418,8 @@ document.addEventListener('click', function (e) {
     case 'sair': fecharCamadas(); sair(); break;
     case 'atualizar': fecharCamadas(); recarregar().then(function () { avisar('Lista atualizada'); }); break;
     case 'urgente': marcarUrgente(); break;
-    case 'concluirDet': concluir(S.det.id); break;
-    case 'reabrir': acaoDetalhe('reabrir', {}, function () { avisar('Tarefa reaberta'); }); break;
+    case 'concluirDet': confirmarConcluir(S.det.id); break;
+    case 'reabrir': acaoDetalhe('reabrir', {}, function () { avisar('Tarefa reaberta'); }, b, 'Reabrindo…'); break;
     case 'enviarObs': enviarObs(); break;
     case 'editarTitulo': S.editandoTitulo = true; desenharDetalhe(); var it = $('txtTitulo'); it.focus(); it.select(); break;
     case 'cancelarTitulo': S.editandoTitulo = false; desenharDetalhe(); break;
@@ -1364,8 +1429,7 @@ document.addEventListener('click', function (e) {
     case 'cancelarDesc': S.editandoDesc = false; desenharDetalhe(); break;
     case 'salvarDesc':
       var txt = $('txtDesc').value;
-      S.editandoDesc = false;
-      acaoDetalhe('descricao', { texto: txt, versao: S.det.versao });
+      acaoDetalhe('descricao', { texto: txt, versao: S.det.versao }, function () { S.editandoDesc = false; avisar('Descrição salva'); }, b);
       break;
   }
   if (b.id === 'btSino') abrirSino();
@@ -1374,8 +1438,8 @@ document.addEventListener('click', function (e) {
 document.addEventListener('change', function (e) {
   var el = e.target;
   if (el.id === 'outroCondo' && el.value) { S.condo = el.value; desenharCondos(); desenharLista(); }
-  if (el.id === 'selDir') acaoDetalhe('direcionar', { para: el.value });
-  if (el.id === 'selEmp') acaoDetalhe('trocarEmpresa', { empresa: el.value });
+  if (el.id === 'selDir') acaoDetalhe('direcionar', { para: el.value }, function () { avisar('Direcionamento salvo'); }, el);
+  if (el.id === 'selEmp') acaoDetalhe('trocarEmpresa', { empresa: el.value }, function () { avisar('Empresa alterada'); }, el);
   if (el.id === 'selCondo') trocarCondominio(el.value);
 });
 document.addEventListener('input', function (e) {
