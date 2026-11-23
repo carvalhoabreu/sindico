@@ -1,28 +1,23 @@
-/* Síndico · service worker das notificações (Firebase Cloud Messaging). A configuração vem no endereço (?cfg=). */
-importScripts('https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js');
-importScripts('https://www.gstatic.com/firebasejs/10.12.5/firebase-messaging-compat.js');
-
-var cfg = {};
-try { cfg = JSON.parse(new URL(self.location.href).searchParams.get('cfg') || '{}'); } catch (e) { cfg = {}; }
+/* Síndico · service worker das notificações. Recebe o push do Firebase Cloud Messaging direto (sem carregar
+   bibliotecas de fora, que alguns navegadores e antivírus bloqueiam) e mostra a notificação com o botão de ação. */
 
 self.addEventListener('install', function () { self.skipWaiting(); });
 self.addEventListener('activate', function (e) { e.waitUntil(self.clients.claim()); });
 
-if (cfg && cfg.projectId) {
-  firebase.initializeApp(cfg);
-  firebase.messaging().onBackgroundMessage(function (p) {
-    var d = (p && p.data) || {};
-    return self.registration.showNotification(d.titulo || 'Síndico', {
-      body: d.corpo || '',
-      icon: 'icon-192.png',
-      badge: 'icon-192.png',
-      tag: d.tag || undefined,
-      renotify: !!d.tag,
-      data: { link: d.link || './' },
-      actions: [{ action: 'abrir', title: d.acao || 'Abrir' }]
-    });
-  });
-}
+self.addEventListener('push', function (e) {
+  var p = {};
+  try { p = e.data ? e.data.json() : {}; } catch (err) { p = {}; }
+  var d = p.data || p || {};
+  e.waitUntil(self.registration.showNotification(d.titulo || 'Síndico', {
+    body: d.corpo || '',
+    icon: 'icon-192.png',
+    badge: 'icon-192.png',
+    tag: d.tag || undefined,
+    renotify: !!d.tag,
+    data: { link: d.link || './' },
+    actions: [{ action: 'abrir', title: d.acao || 'Abrir' }]
+  }));
+});
 
 /* Toque na notificação (ou no botão de ação): abre o app direto na tela certa. */
 self.addEventListener('notificationclick', function (e) {

@@ -502,7 +502,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.7';
+var VERSAO_SITE = '1.7.1';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -1416,7 +1416,7 @@ function carregarScript(src) {
 /** Registra o aparelho no motor (uma vez por dia, para manter o "último uso"). */
 function obterTokenPush(forcar) {
   var p = S.cfg.push;
-  return navigator.serviceWorker.register('sw.js?cfg=' + encodeURIComponent(JSON.stringify(p.firebase)), { scope: './' }).then(function (reg) {
+  return navigator.serviceWorker.register('sw.js?v=2', { scope: './' }).then(function (reg) {
     return (window.firebase && firebase.messaging ? Promise.resolve() : carregarScript(FB_SDK + 'firebase-app-compat.js').then(function () {
       return carregarScript(FB_SDK + 'firebase-messaging-compat.js');
     })).then(function () {
