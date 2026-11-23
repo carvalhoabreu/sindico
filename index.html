@@ -518,6 +518,12 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 .ges-voltar{display:none;align-self:flex-start}
 .ges-dica{margin:auto 0;background:none}
 .bt.perigo{background:#F6E9E6;color:#8A2E2E;border:1.5px solid #E7C9C3}
+.eq-rot-ouro{color:#7A5C27}
+.ges-item.eq-pend{border-style:dashed;border-color:var(--ouro);box-shadow:none}
+.ges-item[disabled]{cursor:default}
+.eq-fixo{min-height:2.75em;border-radius:.75em;background:var(--creme2);padding:0 .9em;display:flex;align-items:center;font-weight:600;color:var(--suave2)}
+.eq-regra{background:#fff;border:1px solid var(--linha2);border-radius:.75em;padding:.7em .85em;font-size:.8125em;color:var(--azul)}
+.eq-regra p{margin:.3em 0 0;color:var(--suave)}
 .bt[disabled]{opacity:.5;cursor:default}
 @media (max-width:899px){
   .ges-lista{width:100%;border-right:none}
@@ -737,7 +743,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.12';
+var VERSAO_SITE = '1.13';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -2854,6 +2860,8 @@ function htmlMenuPortal() {
       h += mpLin('pedidos', IC.caixa, 'Pedidos de acesso', g.pedidos ? 'Aguardando sua aprovação' : 'Nenhum pedido aguardando',
         g.pedidos ? '<span class="selo estatico">' + g.pedidos + '</span>' : '');
     }
+    if (g.equipe) h += mpLin('equipe', IC.pessoas, 'Minha equipe', g.equipeAguardando ? (g.equipeAguardando === 1 ? '1 pedido aguardando o síndico' : g.equipeAguardando + ' pedidos aguardando o síndico') : 'Funcionários da sua empresa',
+      g.equipeAguardando ? '<span class="selo estatico">' + g.equipeAguardando + '</span>' : '');
     if (g.pessoas) h += mpLin('pessoas', IC.pessoas, 'Pessoas e empresas', 'Cadastros, perfis e acessos');
     h += '</div>';
   }
@@ -2884,6 +2892,8 @@ function desenharLateralGestao() {
     h += '<button class="lat-item" data-acao="pedidos" aria-label="Pedidos de acesso">' + IC.caixaOuro + '<span style="flex:1">Pedidos</span>' +
       (g.pedidos ? '<span class="cont vinho">' + g.pedidos + '</span>' : '') + '</button>';
   }
+  if (g.equipe) h += '<button class="lat-item" data-acao="equipe">' + IC.pessoas.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Minha equipe</span>' +
+    (g.equipeAguardando ? '<span class="cont">' + g.equipeAguardando + '</span>' : '') + '</button>';
   if (g.pessoas) h += '<button class="lat-item" data-acao="pessoas">' + IC.pessoas.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Pessoas e empresas</span></button>';
   el.innerHTML = h;
 }
@@ -2991,7 +3001,7 @@ function listaPedidos(raiz) {
   if (!lista.length) { corpoJanela(raiz, 'Nada pendente', '<p class="vazio">Nenhum pedido aguardando aprovação.</p>'); return; }
   corpoJanela(raiz, lista.length + (lista.length === 1 ? ' aguardando' : ' aguardando'), '<div class="mp-lista">' + lista.map(function (p) {
     return '<button class="mp-lin" data-pedido="' + esc(p.id) + '">' + avatarDe(null, p.nome) +
-      '<span class="tx"><b>' + esc(p.nome) + '</b><small>' + esc(p.empresa) + ' · ' + esc(haQuanto(p.em)) + '</small></span>' + IC.chevD + '</button>';
+      '<span class="tx"><b>' + esc(p.nome) + '</b><small>' + esc(p.empresa) + (p.gestor ? ' · ' + esc(p.tipo || 'Pedido') + ' pelo gestor' : '') + ' · ' + esc(haQuanto(p.em)) + '</small></span>' + IC.chevD + '</button>';
   }).join('') + '</div>');
   raiz.querySelector('.jan-corpo').onclick = function (e) {
     var b = e.target.closest('[data-pedido]'); if (!b) return;
@@ -3011,6 +3021,7 @@ function mostrarPedido(raiz, p) {
     if (em && em.condos.length === 1) st.papeis[em.condos[0].codigo] = 'O';
   };
   condosPadrao();
+  if (p.gestor) { st.perfil = p.perfil || 'Operador'; st.papeis = JSON.parse(JSON.stringify(p.papeis || {})); }
   var varios = ((R.pedidos || []).length > 1);
   var desenharForm = function () {
     var em = empDe(st.empresa);
@@ -3023,7 +3034,8 @@ function mostrarPedido(raiz, p) {
     var h = '';
     if (varios) h += '<button class="bt-link" data-pvoltar style="align-self:flex-start">‹ Voltar aos pedidos</button>';
     h += '<div class="conta-box">' + avatarDe(null, p.nome) + '<span class="tx"><b>' + esc(p.nome) + '</b><small>' + esc(p.email) + (p.viaLinkSemCodigo ? '' : ' · ' + esc(p.empresa)) + '</small>' +
-      '<small>' + (p.convidadoPor ? 'Convite de ' + esc(p.convidadoPor) : 'Pedido pelo link do app') + ' · ' + esc(haQuanto(p.em)) + '</small></span></div>';
+      '<small>' + (p.gestor ? esc(p.tipo || 'Pedido') + ' pedido por ' + esc(p.convidadoPor) + ', gestor da empresa' : (p.convidadoPor ? 'Convite de ' + esc(p.convidadoPor) : 'Pedido pelo link do app')) + ' · ' + esc(haQuanto(p.em)) + '</small></span></div>' +
+      (p.gestor ? '<div class="alerta-ouro">Já vem preenchido com o que o gestor pediu. Confira e ajuste se precisar antes de aprovar.</div>' : '');
     if (p.viaLinkSemCodigo) h += '<div class="alerta-ouro"><b>Empresa não informada pelo convite.</b> A pessoa entrou por um link sem empresa. Escolha a empresa antes de aprovar e confira se você a conhece.</div>';
     h += '<span class="rotulo">Empresa</span><div class="pills">' + empresas.map(function (x) {
       return '<button class="pill" data-pempresa="' + esc(x.apelido) + '" aria-pressed="' + (st.empresa === x.apelido) + '">' + esc(x.apelido) + '</button>';
@@ -3488,6 +3500,155 @@ function salvarEmpresaGestao(bt) {
   });
 }
 
+/* ================= Minha equipe (gestor da parceira, v1.13) ================= */
+var EQ = null;
+function abrirEquipe() {
+  EQ = { dados: null, tela: 'lista', sel: null, form: null, conf: '' };
+  abrirJanela('Minha equipe', 'Carregando…', '<div class="jan-corpo"><p class="vazio">Carregando a equipe…</p></div>', 'centro', function (raiz) {
+    raiz.querySelector('.jan-corpo').addEventListener('click', cliqueEquipe);
+    raiz.querySelector('.jan-corpo').addEventListener('input', function (e) {
+      if (!EQ || !EQ.form) return;
+      if (e.target.id === 'eqNome') EQ.form.nome = e.target.value;
+      if (e.target.id === 'eqEmail') EQ.form.email = e.target.value;
+    });
+    carregarEquipe();
+  });
+}
+function eqRaiz() { var c = document.querySelector('#camadas .janela'); return c && c.getAttribute('aria-label') === 'Minha equipe' ? c : null; }
+function carregarEquipe() {
+  return api('portal.equipe').then(function (r) {
+    var raiz = eqRaiz(); if (!raiz) return;
+    if (!r.ok) { corpoJanela(raiz, '', '<p class="vazio">' + esc(r.mensagem) + '</p>'); return; }
+    EQ.dados = r;
+    desenharEquipe();
+  });
+}
+function eqCondoNome(cod) {
+  var c = ((EQ.dados && EQ.dados.condos) || []).filter(function (x) { return x.codigo === cod; })[0];
+  return c ? c.nome : cod;
+}
+function eqResumo(papeis, perfil) {
+  var cods = Object.keys(papeis || {});
+  if (!cods.length) return perfil === 'Gestor' ? 'todos os condomínios da empresa' : 'sem condomínio';
+  return cods.map(function (c) { return eqCondoNome(c) + (papeis[c] === 'L' ? ' (L)' : ''); }).join(' · ');
+}
+function desenharEquipe() {
+  var raiz = eqRaiz(); if (!raiz || !EQ.dados) return;
+  if (EQ.tela === 'ficha' || EQ.tela === 'novo') return desenharEquipeFicha();
+  var d = EQ.dados, h = '';
+  var ativos = d.membros.filter(function (m) { return m.status === 'Ativo'; });
+  var inativos = d.membros.filter(function (m) { return m.status !== 'Ativo'; });
+  h += '<button class="bt grande" data-eq-novo>+ Cadastrar funcionário</button>';
+  if (d.pendentes.length) {
+    h += '<p class="rotulo eq-rot-ouro">Aguardando aprovação do síndico · ' + d.pendentes.length + '</p><div class="mp-lista">';
+    d.pendentes.forEach(function (p) {
+      h += '<div class="ges-item eq-pend">' + avatarDe(null, p.nome) + '<span class="tx"><b>' + esc(p.nome) + '</b><small>' + esc(p.tipo) +
+        (Object.keys(p.papeis || {}).length ? ' · ' + esc(eqResumo(p.papeis)) : '') + ' · ' + esc(haQuanto(p.em)) + '</small></span>' +
+        (p.meu ? '<button class="bt-link" data-eq-cancelar="' + esc(p.id) + '">' + (EQ.conf === 'cancelar:' + p.id ? 'Confirmar' : 'Cancelar') + '</button>' : '') + '</div>';
+    });
+    h += '</div>';
+  }
+  h += '<p class="rotulo">Ativos · ' + ativos.length + '</p><div class="mp-lista">';
+  ativos.forEach(function (m) { h += eqItem(m); });
+  h += '</div>';
+  if (inativos.length) {
+    h += '<p class="rotulo">Inativos · ' + inativos.length + '</p><div class="mp-lista">';
+    inativos.forEach(function (m) { h += eqItem(m); });
+    h += '</div>';
+  }
+  h += '<div class="eq-regra"><b>Como funciona</b><p>Cadastrar alguém ou mudar os condomínios fica aguardando o síndico aprovar. Inativar quem saiu da empresa corta o acesso na hora, e o síndico é avisado.</p></div>';
+  corpoJanela(raiz, d.empresa + ' · ' + ativos.length + (ativos.length === 1 ? ' pessoa ativa' : ' pessoas ativas'), h);
+}
+function eqItem(m) {
+  return '<button class="ges-item" data-eq-pessoa="' + esc(m.email) + '"' + (m.voce ? ' disabled' : '') + '>' + avatarDe(null, m.nome) +
+    '<span class="tx"><b>' + esc(m.nome) + (m.voce ? ' <span style="font-weight:500;color:var(--suave)">(você)</span>' : '') + '</b><small>' +
+    esc(m.perfil + ' · ' + eqResumo(m.papeis, m.perfil)) + '</small></span>' + (m.voce ? '' : IC.chevD) + '</button>';
+}
+function desenharEquipeFicha() {
+  var raiz = eqRaiz(), d = EQ.dados, f = EQ.form, h = '';
+  var m = EQ.tela === 'ficha' ? d.membros.filter(function (x) { return x.email === EQ.sel; })[0] : null;
+  var pend = m ? d.pendentes.filter(function (p) { return p.email === m.email; })[0] : null;
+  h += '<button class="bt-link ges-voltar" style="display:inline-block" data-eq-voltar>‹ Minha equipe</button>';
+  if (m) {
+    h += '<div class="ges-cab">' + avatarDe(null, m.nome) + '<span class="tx"><b>' + esc(m.nome) + '</b><small>' + esc(m.email) + '</small></span>' +
+      '<span class="ges-tag ' + (m.status === 'Ativo' ? 'verde' : 'cinza') + '">' + esc(m.status) + '</span></div>';
+    if (pend) h += '<div class="alerta-ouro">Já existe um pedido aguardando o síndico (' + esc(pend.tipo) + '). Enviar de novo substitui o pedido.</div>';
+  } else {
+    h += '<label class="ges-campo"><span class="rotulo">Nome</span><input type="text" id="eqNome" maxlength="80" placeholder="Nome e sobrenome" value="' + esc(f.nome) + '"></label>' +
+      '<label class="ges-campo"><span class="rotulo">E-mail da conta Google</span><input type="email" id="eqEmail" maxlength="120" placeholder="nome@gmail.com" value="' + esc(f.email) + '" autocomplete="off"></label>' +
+      '<p class="dica-campo">A pessoa entra no app com esta conta Google.</p>' +
+      '<span class="rotulo">Empresa</span><div class="eq-fixo">' + esc(d.empresa) + '</div>';
+  }
+  var gestorAlvo = m && m.perfil === 'Gestor';
+  h += '<span class="rotulo">' + (m && m.status !== 'Ativo' ? 'Condomínios ao reativar' : 'Onde trabalha') + '</span>';
+  if (gestorAlvo) h += '<p class="dica-campo">É gestor: vê todos os condomínios da empresa. Marque só para direcionar tarefas.</p>';
+  if (!d.condos.length) h += '<p class="dica-campo">A empresa ainda não atende nenhum condomínio. Fale com o síndico.</p>';
+  h += '<div>' + d.condos.map(function (c) {
+    var v = f.papeis[c.codigo] || '';
+    return '<div class="linha-condo"><b>' + esc(c.nome) + '</b><div class="seg" role="group" aria-label="Acesso em ' + esc(c.nome) + '">' +
+      [['', 'Sem acesso'], ['O', 'Operador'], ['L', 'Líder']].map(function (o) {
+        return '<button data-eq-papel="' + esc(c.codigo) + '|' + o[0] + '" aria-pressed="' + (v === o[0]) + '">' + o[1] + '</button>';
+      }).join('') + '</div></div>';
+  }).join('') + '</div>';
+  h += '<p class="dica-campo" style="margin:0">Operador vê e conclui as tarefas. Líder também organiza a fila e marca urgente.</p>';
+  h += '<div class="alerta-ouro">' + (m ? (m.status === 'Ativo' ? 'A mudança vai para o síndico aprovar. Até lá, vale o acesso atual.' : 'A reativação vai para o síndico aprovar.')
+    : 'O cadastro vai para o síndico aprovar. Quando for aprovado, a pessoa recebe um e-mail e você vê o aviso no sininho.') + '</div>';
+  h += '<div class="entrada-msg" id="eqErro" role="alert" hidden></div>';
+  h += '<button class="bt grande" id="eqEnviar">' + (m ? (m.status === 'Ativo' ? 'Enviar mudança para aprovação' : 'Pedir reativação') : 'Enviar para aprovação') + '</button>';
+  if (m && m.status === 'Ativo') {
+    h += '<div class="ges-zona" style="margin-top:.4em"><span class="rotulo">Saiu da empresa?</span><p class="dica-campo" style="margin:0">Inativar corta o acesso na hora. O síndico é avisado e pode reativar.</p>' +
+      '<button class="bt perigo" id="eqInativar" style="width:100%">' + (EQ.conf === 'inativar' ? 'Confirmar: tirar o acesso agora' : 'Inativar acesso') + '</button></div>';
+  }
+  corpoJanela(raiz, m ? d.empresa : 'Cadastrar funcionário', h);
+}
+function eqErro(msg) { var e = document.getElementById('eqErro'); if (e) { e.textContent = msg; e.hidden = false; } }
+function cliqueEquipe(ev) {
+  var b = ev.target.closest('button'); if (!b || !EQ || !EQ.dados) return;
+  var a;
+  if (b.hasAttribute('data-eq-novo')) { EQ.tela = 'novo'; EQ.sel = null; EQ.conf = ''; EQ.form = { nome: '', email: '', papeis: {} }; if (EQ.dados.condos.length === 1) EQ.form.papeis[EQ.dados.condos[0].codigo] = 'O'; desenharEquipe(); return; }
+  if ((a = b.getAttribute('data-eq-pessoa'))) {
+    var m = EQ.dados.membros.filter(function (x) { return x.email === a; })[0]; if (!m) return;
+    EQ.tela = 'ficha'; EQ.sel = a; EQ.conf = ''; EQ.form = { papeis: JSON.parse(JSON.stringify(m.papeis || {})) }; desenharEquipe(); return;
+  }
+  if (b.hasAttribute('data-eq-voltar')) { EQ.tela = 'lista'; EQ.sel = null; EQ.form = null; EQ.conf = ''; desenharEquipe(); return; }
+  if ((a = b.getAttribute('data-eq-papel'))) {
+    var pr = a.split('|');
+    if (pr[1]) EQ.form.papeis[pr[0]] = pr[1]; else delete EQ.form.papeis[pr[0]];
+    EQ.conf = ''; desenharEquipe(); return;
+  }
+  if ((a = b.getAttribute('data-eq-cancelar'))) {
+    if (EQ.conf !== 'cancelar:' + a) { EQ.conf = 'cancelar:' + a; desenharEquipe(); return; }
+    umaVez('eqCancelar:' + a, b, '…', function () { return api('portal.equipeCancelar', { id: a }); }).then(function (r) {
+      if (!r.ok) { avisar(r.mensagem, true); return; }
+      avisar('Pedido cancelado'); EQ.conf = ''; carregarEquipe();
+    });
+    return;
+  }
+  if (b.id === 'eqEnviar') {
+    var f = EQ.form;
+    var dados = EQ.tela === 'novo' ? { email: String(f.email || '').trim(), nome: String(f.nome || '').trim(), papeis: f.papeis } : { email: EQ.sel, papeis: f.papeis };
+    if (EQ.tela === 'novo' && dados.nome.length < 3) return eqErro('Escreva o nome e sobrenome.');
+    if (EQ.tela === 'novo' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(dados.email)) return eqErro('Confira o e-mail.');
+    umaVez('eqPedir:' + (dados.email || 'novo'), b, 'Enviando…', function () { return api('portal.equipePedir', dados); }).then(function (r) {
+      if (!r.ok) return eqErro(r.mensagem);
+      avisar(r.tipo === 'Cadastro' ? 'Cadastro enviado para o síndico aprovar' : (r.tipo === 'Reativação' ? 'Reativação enviada para o síndico aprovar' : 'Mudança enviada para o síndico aprovar'));
+      EQ.tela = 'lista'; EQ.sel = null; EQ.form = null; EQ.conf = '';
+      carregarEquipe(); atualizarPortal();
+    });
+    return;
+  }
+  if (b.id === 'eqInativar') {
+    if (EQ.conf !== 'inativar') { EQ.conf = 'inativar'; desenharEquipe(); return; }
+    var alvo = EQ.dados.membros.filter(function (x) { return x.email === EQ.sel; })[0];
+    umaVez('eqInativar:' + EQ.sel, b, 'Inativando…', function () { return api('portal.equipeStatus', { email: EQ.sel, ativo: false }); }).then(function (r) {
+      if (!r.ok) return eqErro(r.mensagem);
+      avisar((alvo ? alvo.nome : 'A pessoa') + ' não entra mais no app');
+      EQ.tela = 'lista'; EQ.sel = null; EQ.form = null; EQ.conf = '';
+      carregarEquipe();
+    });
+  }
+}
+
 /* ================= Menu da conta ================= */
 function abrirPerfil() {
   var u = S.dados ? S.dados.usuario : (S.portal ? S.portal.usuario : {});
@@ -3765,6 +3926,7 @@ document.addEventListener('click', function (e) {
     case 'fecharJan': fecharCamadas(); break;
     case 'convidar': fecharCamadas(); abrirConvidar(); break;
     case 'pessoas': fecharCamadas(); abrirGestao(); break;
+    case 'equipe': fecharCamadas(); abrirEquipe(); break;
     case 'guia': fecharCamadas(); abrirGuia(); break;
     case 'fecharFaixaGuia': guardarLocal('faixaGuiaFechada', hojeLocal()); desenharFaixaGuia(); break;
     case 'pedidos': fecharCamadas(); abrirPedidos(); break;
