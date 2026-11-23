@@ -524,6 +524,65 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 .eq-fixo{min-height:2.75em;border-radius:.75em;background:var(--creme2);padding:0 .9em;display:flex;align-items:center;font-weight:600;color:var(--suave2)}
 .eq-regra{background:#fff;border:1px solid var(--linha2);border-radius:.75em;padding:.7em .85em;font-size:.8125em;color:var(--azul)}
 .eq-regra p{margin:.3em 0 0;color:var(--suave)}
+.janela.pf{width:64em}
+.pf-corpo{flex:1;min-height:0;padding:1.25em 1.5em 0;gap:1em}
+.pf-intro{margin:0;font-size:.9375em;color:var(--suave);max-width:46em}
+.pf-tabela{background:#fff;border:1px solid var(--linha2);border-radius:1em;overflow:hidden;flex:none}
+.pf-lin{display:grid;border-bottom:1px solid #F1ECE1}
+.pf-lin:last-child{border-bottom:none}
+.pf-cab{background:#FBF8F2;border-bottom:1px solid var(--linha2)}
+.pf-acao{padding:.75em 1.1em;display:flex;flex-direction:column;justify-content:center;gap:.15em;min-width:0}
+.pf-acao b{font-size:.9375em;color:var(--azul)}
+.pf-acao small{font-size:.8125em;color:var(--suave)}
+.pf-c{display:flex;flex-direction:column;align-items:center;justify-content:center;border-left:1px solid #EFE9DC;min-height:3.75em;padding:.4em;text-align:center;gap:.1em}
+.pf-h b{font-size:.875em;color:var(--azul)}
+.pf-h small{font-size:.7em;color:var(--suave)}
+.pf-trava{font-size:.75em;font-weight:600;color:#6B5A3A;background:var(--ouro-fundo);border-radius:999px;padding:.25em .65em}
+.pf-fixas-rot{padding:.8em 1.1em .3em;border-bottom:1px solid #F1ECE1}
+.pf-fixa{background:#FDFCF9}
+.pf-fixa .pf-c{min-height:3em}
+.pf-fixa .pf-acao b{color:var(--suave2);font-size:.875em}
+.pf-fixo{font-size:.75em;font-weight:600;border-radius:999px;padding:.25em .65em}
+.pf-fixo.sim{background:#E6F0E6;color:#24502A}
+.pf-fixo.nao{background:#ECEEF2;color:#4A5468}
+.pf-sw{width:2.9em;height:1.75em;border-radius:999px;border:none;background:#D3D8E1;position:relative;padding:0;flex:none;cursor:pointer}
+.pf-sw::after{content:"";position:absolute;top:.19em;left:.19em;width:1.37em;height:1.37em;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(15,38,70,.25);transition:left .15s}
+.pf-sw[aria-checked="true"]{background:var(--azul)}
+.pf-sw[aria-checked="true"]::after{left:1.34em;background:var(--ouro)}
+.pf-sw.mudou{outline:3px solid var(--ouro-claro);outline-offset:2px}
+.pf-cel{display:none;flex-direction:column;gap:.8em}
+.pf-chips{display:flex;gap:.4em;overflow-x:auto;scrollbar-width:none}
+.pf-chips .chip{min-height:2.5em;font-size:.875em}
+.pf-desc{background:#FBF8F2;border-radius:.75em;padding:.6em .8em;font-size:.8125em;color:var(--suave2)}
+.pf-desc b{color:var(--azul)}
+.pf-lista{background:#fff;border:1px solid var(--linha2);border-radius:1em;overflow:hidden}
+.pf-item{display:flex;align-items:center;gap:.75em;padding:.85em 1em;border-bottom:1px solid #F1ECE1}
+.pf-item:last-child{border-bottom:none}
+.pf-item.mudou{background:#FDF8EE}
+.pf-item .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:.15em}
+.pf-item b{font-size:.9375em;color:var(--azul)}
+.pf-item small{font-size:.8125em;color:var(--suave)}
+.pf-tag{font-size:.6875em;font-weight:700;color:#7A5C27;background:var(--ouro-fundo);border-radius:999px;padding:.15em .55em;margin-left:.3em}
+.pf-sempre p{margin:.3em 0 0;font-size:.8125em;color:var(--suave)}
+.pf-hist{margin-bottom:1.25em;flex:none}
+.pf-barra{position:sticky;bottom:0;margin:auto -1.5em 0;background:var(--azul);padding:.85em 1.5em;display:flex;align-items:center;gap:.8em;flex-wrap:wrap;box-shadow:0 -6px 20px rgba(15,38,70,.18);flex:none}
+.pf-ponto{width:.6em;height:.6em;border-radius:50%;background:var(--ouro);flex:none}
+.pf-resumo{flex:1;min-width:12em;color:#fff;font-weight:600;font-size:.9375em}
+.pf-resumo span{color:var(--ouro-claro);font-weight:500}
+.pf-bts{display:flex;gap:.6em}
+.pf-desc-bt{min-height:2.75em;padding:0 1em;border-radius:.75em;border:1.5px solid rgba(255,255,255,.5);background:none;color:#fff;font-weight:600}
+.pf-salvar{min-height:2.75em;padding:0 1.25em;border-radius:.75em;border:none;background:var(--ouro);color:var(--azul);font-weight:700}
+@media (max-width:899px){
+  .pf-tabela{display:none}
+  .pf-cel{display:flex}
+  .pf-corpo{padding:1em 1em 0}
+  .pf-barra{margin:auto -1em 0;padding:.8em 1em calc(1em + var(--baixo-seg))}
+  .pf-bts{width:100%}
+  .pf-desc-bt{flex:1;min-height:3em}
+  .pf-chips{gap:.3em}
+  .pf-chips .chip{flex:1;justify-content:center;padding:0 .35em;min-width:0;font-size:.8125em}
+  .pf-salvar{flex:1.4;min-height:3em}
+}
 .bt[disabled]{opacity:.5;cursor:default}
 @media (max-width:899px){
   .ges-lista{width:100%;border-right:none}
@@ -743,7 +802,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.13';
+var VERSAO_SITE = '1.14';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -2863,6 +2922,7 @@ function htmlMenuPortal() {
     if (g.equipe) h += mpLin('equipe', IC.pessoas, 'Minha equipe', g.equipeAguardando ? (g.equipeAguardando === 1 ? '1 pedido aguardando o síndico' : g.equipeAguardando + ' pedidos aguardando o síndico') : 'Funcionários da sua empresa',
       g.equipeAguardando ? '<span class="selo estatico">' + g.equipeAguardando + '</span>' : '');
     if (g.pessoas) h += mpLin('pessoas', IC.pessoas, 'Pessoas e empresas', 'Cadastros, perfis e acessos');
+    if (g.perfis) h += mpLin('perfis', ICO_PERFIS, 'Perfis e permissões', 'O que cada perfil pode fazer');
     h += '</div>';
   }
   return h + '</div>';
@@ -2894,6 +2954,7 @@ function desenharLateralGestao() {
   }
   if (g.equipe) h += '<button class="lat-item" data-acao="equipe">' + IC.pessoas.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Minha equipe</span>' +
     (g.equipeAguardando ? '<span class="cont">' + g.equipeAguardando + '</span>' : '') + '</button>';
+  if (g.perfis) h += '<button class="lat-item" data-acao="perfis">' + ICO_PERFIS.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Perfis e permissões</span></button>';
   if (g.pessoas) h += '<button class="lat-item" data-acao="pessoas">' + IC.pessoas.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Pessoas e empresas</span></button>';
   el.innerHTML = h;
 }
@@ -3649,6 +3710,119 @@ function cliqueEquipe(ev) {
   }
 }
 
+var ICO_PERFIS = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>';
+/* ================= Gestão › Perfis e permissões (master, v1.14) ================= */
+var PF = null;
+var PF_DESC = {
+  Supervisor: ['Carvalho & Abreu', 'Colaborador da casa com visão das tarefas de todas as empresas nos condomínios marcados.'],
+  Gestor: ['empresa parceira', 'Responsável pela equipe da empresa parceira; vê todos os condomínios que ela atende.'],
+  'Líder': ['L no condomínio', 'Operador marcado com L no condomínio. Organiza a fila da equipe.'],
+  Operador: ['O no condomínio', 'Vê e conclui as tarefas dos condomínios em que tem O.']
+};
+function abrirPerfis() {
+  PF = { dados: null, edit: null, perfil: 'Supervisor' };
+  abrirJanela('Perfis e permissões', 'Carregando…', '<div class="jan-corpo pf-corpo"><p class="vazio">Carregando…</p></div>', 'gestao pf', function (raiz) {
+    raiz.querySelector('.jan-corpo').addEventListener('click', cliquePerfis);
+    carregarPerfis();
+  });
+}
+function pfRaiz() { var j = document.querySelector('#camadas .janela.pf'); return j; }
+function carregarPerfis() {
+  return api('portal.permissoes').then(function (r) {
+    var raiz = pfRaiz(); if (!raiz) return;
+    if (!r.ok) { corpoJanela(raiz, '', '<p class="vazio">' + esc(r.mensagem) + '</p>'); return; }
+    PF.dados = r;
+    PF.edit = {};
+    r.acoes.forEach(function (a) { PF.edit[a.id] = JSON.parse(JSON.stringify(a.valores)); });
+    desenharPerfis();
+  });
+}
+function pfMudancas() {
+  var out = [];
+  PF.dados.acoes.forEach(function (a) {
+    PF.dados.perfis.forEach(function (p) {
+      if (!!PF.edit[a.id][p] !== !!a.valores[p]) out.push({ acao: a.id, perfil: p, valor: !!PF.edit[a.id][p], nome: a.nome, antes: !!a.valores[p] });
+    });
+  });
+  return out;
+}
+function pfSw(a, p) {
+  var on = !!PF.edit[a.id][p], mudou = on !== !!a.valores[p];
+  return '<button class="pf-sw' + (mudou ? ' mudou' : '') + '" role="switch" aria-checked="' + on + '" data-pf="' + esc(a.id) + '|' + esc(p) + '" aria-label="' + esc(p + ' · ' + a.nome) + '"></button>';
+}
+function desenharPerfis() {
+  var raiz = pfRaiz(); if (!raiz || !PF.dados) return;
+  var d = PF.dados, h = '';
+  var corpo = raiz.querySelector('.jan-corpo'), topo = corpo.scrollTop;
+  h += '<p class="pf-intro">O que cada perfil pode fazer no módulo Tarefas. Vale para todas as empresas e todos os condomínios. Quem é cada pessoa você escolhe em Pessoas e empresas.</p>';
+  // computador: tabela
+  var cols = 'minmax(0,2.2fr) repeat(' + (d.perfis.length + 1) + ',minmax(0,1fr))';
+  h += '<section class="pf-tabela" aria-label="Permissões por perfil"><div class="pf-lin pf-cab" style="grid-template-columns:' + cols + '"><div class="pf-acao"><span class="rotulo">Tarefas</span></div>' +
+    '<div class="pf-c pf-h"><b>Master</b><small>você</small></div>' +
+    d.perfis.map(function (p) { return '<div class="pf-c pf-h"><b>' + esc(p) + '</b><small>' + esc(PF_DESC[p] ? PF_DESC[p][0] : '') + '</small></div>'; }).join('') + '</div>';
+  d.acoes.forEach(function (a) {
+    h += '<div class="pf-lin" style="grid-template-columns:' + cols + '"><div class="pf-acao"><b>' + esc(a.nome) + '</b><small>' + esc(a.desc) + '</small></div>' +
+      '<div class="pf-c"><span class="pf-trava">Sempre</span></div>' + d.perfis.map(function (p) { return '<div class="pf-c">' + pfSw(a, p) + '</div>'; }).join('') + '</div>';
+  });
+  h += '<div class="pf-fixas-rot"><span class="rotulo">Regras fixas (não mudam aqui)</span></div>';
+  [['Concluir, escrever follow-up e anexar', [1, 1, 1, 1, 1]], ['Reabrir, trocar empresa ou condomínio, corrigir título', [1, 0, 0, 0, 0]]].forEach(function (r) {
+    h += '<div class="pf-lin pf-fixa" style="grid-template-columns:' + cols + '"><div class="pf-acao"><b>' + esc(r[0]) + '</b></div>' +
+      r[1].map(function (v) { return '<div class="pf-c"><span class="pf-fixo ' + (v ? 'sim' : 'nao') + '">' + (v ? 'Sim' : 'Não') + '</span></div>'; }).join('') + '</div>';
+  });
+  h += '</section>';
+  // celular: um perfil por vez
+  h += '<section class="pf-cel" aria-label="Permissões do perfil escolhido"><div class="pf-chips" role="tablist">' + d.perfis.map(function (p) {
+    var n = d.acoes.filter(function (a) { return !!PF.edit[a.id][p] !== !!a.valores[p]; }).length;
+    return '<button class="chip" role="tab" data-pf-perfil="' + esc(p) + '" aria-pressed="' + (PF.perfil === p) + '">' + esc(p) + (n ? ' <span class="n">' + n + '</span>' : '') + '</button>';
+  }).join('') + '</div>' +
+    '<div class="pf-desc"><b>' + esc(PF.perfil) + '</b> · ' + esc(PF_DESC[PF.perfil] ? PF_DESC[PF.perfil][1] : '') + '</div><div class="pf-lista">' +
+    d.acoes.map(function (a) {
+      var mudou = !!PF.edit[a.id][PF.perfil] !== !!a.valores[PF.perfil];
+      return '<div class="pf-item' + (mudou ? ' mudou' : '') + '"><span class="tx"><b>' + esc(a.nome) + (mudou ? ' <span class="pf-tag">alterado</span>' : '') + '</b><small>' + esc(a.desc) + '</small></span>' + pfSw(a, PF.perfil) + '</div>';
+    }).join('') + '</div>' +
+    '<div class="pf-sempre"><span class="rotulo">Sempre valem</span><p>Todos concluem, escrevem follow-up e anexam. Reabrir, trocar empresa ou condomínio e corrigir título são só do master.</p></div></section>';
+  // histórico
+  h += '<div class="ges-hist pf-hist"><span class="rotulo">Últimas mudanças</span>' + (d.historico.length ? d.historico.map(function (i) {
+    var dt = i.quando ? new Date(i.quando) : null;
+    var q = dt ? dt.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }) + ' ' + dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : '';
+    return '<p><b>' + esc(q) + '</b> · ' + esc(i.campo) + ': ' + esc(i.antigo) + ' → ' + esc(i.novo) + ' · ' + esc(i.quem) + '</p>';
+  }).join('') : '<p class="dica-campo" style="margin:0">Nenhuma mudança feita pelo app ainda.</p>') +
+    '<p class="dica-campo" style="margin:.2em 0 0">As mudanças valem a partir da próxima atualização do app de cada pessoa.</p></div>';
+  // barra de mudanças
+  var m = pfMudancas();
+  if (m.length) {
+    h += '<div class="pf-barra" role="region" aria-label="Mudanças não salvas"><span class="pf-ponto" aria-hidden="true"></span><span class="pf-resumo">' + m.length + (m.length === 1 ? ' mudança não salva' : ' mudanças não salvas') +
+      ' · <span>' + esc(m[0].perfil + ' · ' + m[0].nome + ': ' + (m[0].antes ? 'Sim' : 'Não') + ' → ' + (m[0].valor ? 'Sim' : 'Não')) + (m.length > 1 ? ' e mais ' + (m.length - 1) : '') + '</span></span>' +
+      '<div class="pf-bts"><button class="pf-desc-bt" id="pfDescartar">Descartar</button><button class="pf-salvar" id="pfSalvar">Salvar alterações</button></div></div>';
+  }
+  corpoJanela(raiz, m.length ? m.length + (m.length === 1 ? ' mudança não salva' : ' mudanças não salvas') : 'Tudo salvo', h);
+  corpo.scrollTop = topo;
+}
+function cliquePerfis(ev) {
+  var b = ev.target.closest('button'); if (!b || !PF || !PF.dados) return;
+  var a;
+  if ((a = b.getAttribute('data-pf'))) {
+    var pr = a.split('|');
+    PF.edit[pr[0]][pr[1]] = !PF.edit[pr[0]][pr[1]];
+    desenharPerfis(); return;
+  }
+  if ((a = b.getAttribute('data-pf-perfil'))) { PF.perfil = a; desenharPerfis(); return; }
+  if (b.id === 'pfDescartar') {
+    PF.dados.acoes.forEach(function (x) { PF.edit[x.id] = JSON.parse(JSON.stringify(x.valores)); });
+    desenharPerfis(); return;
+  }
+  if (b.id === 'pfSalvar') {
+    var m = pfMudancas();
+    umaVez('pfSalvar', b, 'Salvando…', function () {
+      return api('portal.salvarPermissoes', { mudancas: m.map(function (x) { return { acao: x.acao, perfil: x.perfil, valor: x.valor }; }) });
+    }).then(function (r) {
+      if (!r.ok) { avisar(r.mensagem, true); return; }
+      avisar(r.mudou === 1 ? 'Permissão atualizada' : r.mudou + ' permissões atualizadas');
+      carregarPerfis();
+    });
+  }
+}
+
 /* ================= Menu da conta ================= */
 function abrirPerfil() {
   var u = S.dados ? S.dados.usuario : (S.portal ? S.portal.usuario : {});
@@ -3927,6 +4101,7 @@ document.addEventListener('click', function (e) {
     case 'convidar': fecharCamadas(); abrirConvidar(); break;
     case 'pessoas': fecharCamadas(); abrirGestao(); break;
     case 'equipe': fecharCamadas(); abrirEquipe(); break;
+    case 'perfis': fecharCamadas(); abrirPerfis(); break;
     case 'guia': fecharCamadas(); abrirGuia(); break;
     case 'fecharFaixaGuia': guardarLocal('faixaGuiaFechada', hojeLocal()); desenharFaixaGuia(); break;
     case 'pedidos': fecharCamadas(); abrirPedidos(); break;
