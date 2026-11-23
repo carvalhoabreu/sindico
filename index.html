@@ -672,7 +672,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.10';
+var VERSAO_SITE = '1.11';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -2936,21 +2936,40 @@ function listaPedidos(raiz) {
 }
 function mostrarPedido(raiz, p) {
   var R = S.pedidos || {};
-  var st = { perfil: 'Operador', atividade: '', modulos: {}, papeis: {}, recusar: false };
+  var st = { empresa: p.viaLinkSemCodigo ? '' : p.empresa, perfil: 'Operador', atividade: '', modulos: {}, papeis: {}, recusar: false };
   (R.modulos || []).forEach(function (m, i) { if (i === 0) st.modulos[m.id] = true; });
-  if ((p.condos || []).length === 1) st.papeis[p.condos[0].codigo] = 'O';
+  var empresas = R.empresas || [];
+  var empDe = function (ape) { return empresas.filter(function (x) { return x.apelido === ape; })[0] || null; };
+  var condosPadrao = function () {
+    var em = empDe(st.empresa);
+    st.papeis = {};
+    if (em && em.condos.length === 1) st.papeis[em.condos[0].codigo] = 'O';
+  };
+  condosPadrao();
   var varios = ((R.pedidos || []).length > 1);
   var desenharForm = function () {
+    var em = empDe(st.empresa);
+    var casa = !!(em && em.casa);
+    var perfis = em ? em.perfis : [];
+    if (em && perfis.indexOf(st.perfil) < 0) st.perfil = perfis[0];
+    if (!casa) st.atividade = '';
+    var condos = em ? em.condos : [];
     var veTudo = st.perfil === 'Gestor' || st.atividade.toUpperCase() === 'COMPRAS';
     var h = '';
     if (varios) h += '<button class="bt-link" data-pvoltar style="align-self:flex-start">‹ Voltar aos pedidos</button>';
-    h += '<div class="conta-box">' + avatarDe(null, p.nome) + '<span class="tx"><b>' + esc(p.nome) + '</b><small>' + esc(p.email) + ' · ' + esc(p.empresa) + '</small>' +
+    h += '<div class="conta-box">' + avatarDe(null, p.nome) + '<span class="tx"><b>' + esc(p.nome) + '</b><small>' + esc(p.email) + (p.viaLinkSemCodigo ? '' : ' · ' + esc(p.empresa)) + '</small>' +
       '<small>' + (p.convidadoPor ? 'Convite de ' + esc(p.convidadoPor) : 'Pedido pelo link do app') + ' · ' + esc(haQuanto(p.em)) + '</small></span></div>';
-    if (p.viaLinkSemCodigo) h += '<div class="alerta-ouro">Este pedido veio pelo link do app, sem convite. Confira se você conhece a pessoa antes de aprovar.</div>';
-    h += '<span class="rotulo">Perfil</span><div class="pills">' + (R.perfis || []).map(function (x) {
+    if (p.viaLinkSemCodigo) h += '<div class="alerta-ouro"><b>Empresa não informada pelo convite.</b> A pessoa entrou por um link sem empresa. Escolha a empresa antes de aprovar e confira se você a conhece.</div>';
+    h += '<span class="rotulo">Empresa</span><div class="pills">' + empresas.map(function (x) {
+      return '<button class="pill" data-pempresa="' + esc(x.apelido) + '" aria-pressed="' + (st.empresa === x.apelido) + '">' + esc(x.apelido) + '</button>';
+    }).join('') + '</div>';
+    if (!em) {
+      h += '<p class="dica-campo">Escolha a empresa para ver o perfil e os condomínios.</p>';
+    } else {
+    h += '<span class="rotulo">Perfil ' + (casa ? 'na Carvalho &amp; Abreu' : 'na ' + esc(em.apelido)) + '</span><div class="pills">' + perfis.map(function (x) {
       return '<button class="pill" data-pperfil="' + esc(x) + '" aria-pressed="' + (st.perfil === x) + '">' + esc(x) + '</button>';
     }).join('') + '</div>';
-    if (p.casa && (R.atividades || []).length) {
+    if (casa && (R.atividades || []).length) {
       h += '<span class="rotulo">Atividade principal</span><div class="pills">' +
         '<button class="pill" data-pativ="" aria-pressed="' + (!st.atividade) + '">Nenhuma</button>' +
         R.atividades.map(function (a) { return '<button class="pill" data-pativ="' + esc(a) + '" aria-pressed="' + (st.atividade === a) + '">' + esc(a) + '</button>'; }).join('') + '</div>';
@@ -2960,26 +2979,32 @@ function mostrarPedido(raiz, p) {
     }).join('') + EM_BREVE.slice(1, 3).map(function (nome) {
       return '<label class="chk-lin breve"><input type="checkbox" disabled> ' + esc(nome) + '<span class="tag-breve">Em breve</span></label>';
     }).join('') + '</div>';
-    h += '<span class="rotulo">Condomínios ' + (p.casa ? 'da casa' : 'da ' + esc(p.empresa)) + '</span>';
+    h += '<span class="rotulo">Condomínios ' + (casa ? 'da casa' : 'que a ' + esc(em.apelido) + ' atende') + '</span>';
     if (veTudo) h += '<p class="dica-campo">' + (st.perfil === 'Gestor' ? 'Gestor vê todos os condomínios da empresa.' : 'Compras vê as compras de todos os condomínios da casa.') + ' Marque abaixo só se quiser direcionar tarefas para a pessoa.</p>';
-    if (!(p.condos || []).length) h += '<p class="dica-campo">A empresa ainda não atende nenhum condomínio (aba EMPRESAS APP).</p>';
-    h += '<div>' + (p.condos || []).map(function (c) {
+    if (!condos.length) h += '<p class="dica-campo">A empresa ainda não atende nenhum condomínio (aba Empresas da Base Portal).</p>';
+    h += '<div>' + condos.map(function (c) {
       var v = st.papeis[c.codigo] || '';
       return '<div class="linha-condo"><b>' + esc(c.nome) + '</b><div class="seg" role="group" aria-label="Acesso em ' + esc(c.nome) + '">' +
         [['', 'Sem acesso'], ['O', 'Operador'], ['L', 'Líder']].map(function (o) {
           return '<button data-ppapel="' + esc(c.codigo) + '|' + o[0] + '" aria-pressed="' + (v === o[0]) + '">' + o[1] + '</button>';
         }).join('') + '</div></div>';
     }).join('') + '</div>';
+    }
     h += '<div class="entrada-msg" id="pedErro" role="alert" hidden></div>';
-    h += '<button class="bt grande" id="btAprovar">Aprovar acesso</button>';
+    h += '<button class="bt grande" id="btAprovar"' + (em ? '' : ' disabled') + '>Aprovar acesso</button>';
     h += '<button class="bt grande claro" id="btRecusar" style="border-color:#8A2E2E;color:#8A2E2E">' + (st.recusar ? 'Confirmar recusa' : 'Recusar') + '</button>';
-    corpoJanela(raiz, p.empresa, h);
+    corpoJanela(raiz, em ? em.apelido : 'Escolha a empresa', h);
   };
   desenharForm();
   var corpo = raiz.querySelector('.jan-corpo');
   corpo.onclick = function (e) {
     var b;
     if ((b = e.target.closest('[data-pvoltar]'))) { listaPedidos(raiz); return; }
+    if ((b = e.target.closest('[data-pempresa]'))) {
+      var nova = b.getAttribute('data-pempresa');
+      if (nova !== st.empresa) { st.empresa = nova; condosPadrao(); }
+      st.recusar = false; desenharForm(); return;
+    }
     if ((b = e.target.closest('[data-pperfil]'))) { st.perfil = b.getAttribute('data-pperfil'); st.recusar = false; desenharForm(); return; }
     if ((b = e.target.closest('[data-pativ]'))) { st.atividade = b.getAttribute('data-pativ'); st.recusar = false; desenharForm(); return; }
     if ((b = e.target.closest('[data-ppapel]'))) {
@@ -2991,7 +3016,7 @@ function mostrarPedido(raiz, p) {
     if (e.target.closest('#btAprovar')) {
       var mods = Object.keys(st.modulos).filter(function (k) { return st.modulos[k]; });
       umaVez('aprovar:' + p.id, e.target.closest('#btAprovar'), 'Aprovando…', function () {
-        return api('portal.aprovar', { id: p.id, perfil: st.perfil, atividade: st.atividade, modulos: mods, papeis: st.papeis });
+        return api('portal.aprovar', { id: p.id, empresa: st.empresa, perfil: st.perfil, atividade: st.atividade, modulos: mods, papeis: st.papeis });
       }).then(function (r) {
         if (!r.ok) { erro.textContent = r.mensagem; erro.hidden = false; return; }
         avisar('Acesso liberado para ' + p.nome);
