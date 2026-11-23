@@ -469,6 +469,71 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 .conta-box b{display:block;color:var(--azul);font-size:.9375em;overflow-wrap:anywhere}
 .conta-box small{display:block;color:var(--suave);font-size:.8125em;overflow-wrap:anywhere}
 .alerta-ouro{background:var(--ouro-fundo);color:#5C4520;border-radius:.75em;padding:.6em .8em;font-size:.8125em}
+.janela.gestao{left:50%;top:50%;transform:translate(-50%,-50%);width:72em;max-width:calc(100% - 2em);height:calc(100vh - 3em);height:calc(100dvh - 3em);max-height:58em;border-radius:1.25em}
+.ges{flex:1;min-height:0;display:flex}
+.ges-lista{width:24em;flex:none;border-right:1px solid var(--linha2);overflow-y:auto;padding:1em;display:flex;flex-direction:column;gap:.7em;background:#FBF8F2}
+.ges-ficha{flex:1;min-width:0;overflow-y:auto;padding:1.1em 1.5em 0;display:flex;flex-direction:column;gap:.85em}
+.ges-abas{align-self:stretch}
+.ges-abas button{flex:1}
+.ges-chips{display:flex;gap:.4em;overflow-x:auto;padding-bottom:.15em;scrollbar-width:none}
+.ges-chips .chip{min-height:2.5em;font-size:.875em}
+.ges-situ{align-self:flex-start}
+.ges-busca input{width:100%;min-height:2.75em;border-radius:.75em;border:1.5px solid var(--linha);background:#fff;padding:0 .9em;font:inherit;font-size:.9375em;color:var(--texto)}
+.ges-grupo{margin:.4em 0 -.2em}
+.ges-item{display:flex;align-items:center;gap:.75em;min-height:3.75em;padding:.55em .8em;border-radius:.875em;background:#fff;border:1.5px solid var(--linha2);text-align:left;width:100%;color:inherit;box-shadow:0 1px 4px rgba(15,38,70,.05)}
+.ges-item:hover{border-color:var(--ouro-claro)}
+.ges-item.sel{border:2px solid var(--ouro);background:#fff}
+.ges-item .tx{flex:1;min-width:0}
+.ges-item b{display:block;font-size:.9375em;color:var(--azul);overflow-wrap:anywhere}
+.ges-item small{display:block;font-size:.8125em;color:var(--suave);overflow-wrap:anywhere}
+.ges-av-emp{background:var(--azul);color:var(--ouro);font-weight:700;font-size:.75em}
+.ges-tags{display:flex;gap:.3em;flex-wrap:wrap;margin-top:.3em}
+.ges-tag{display:inline-flex;align-items:center;padding:.2em .65em;border-radius:999px;font-size:.6875em;font-weight:700;flex:none}
+.ges-tag.verde{background:#E6F0E6;color:#24502A}
+.ges-tag.cinza{background:#ECEEF2;color:#4A5468}
+.ges-tag.ouro{background:var(--ouro-fundo);color:#5C4520}
+.ges-cab{display:flex;align-items:center;gap:.8em;padding-bottom:.85em;border-bottom:1px solid var(--linha2)}
+.ges-cab .avatar{width:3em;height:3em;font-size:1em}
+.ges-cab .tx{flex:1;min-width:0}
+.ges-cab b{display:block;font-family:Lora,Georgia,serif;font-size:1.25em;color:var(--azul);overflow-wrap:anywhere}
+.ges-cab small{display:block;font-size:.875em;color:var(--suave);overflow-wrap:anywhere}
+.ges-tit{margin:0;font-family:Lora,Georgia,serif;font-size:1.25em;color:var(--azul)}
+.ges-campo{display:flex;flex-direction:column;gap:.4em}
+.ges-campo input{min-height:3em;border-radius:.75em;border:1.5px solid var(--linha);padding:0 .9em;font:inherit;font-size:1em;color:var(--texto);background:#fff}
+.ges-campo input:focus{border-color:var(--azul);outline:none}
+.ges-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5em}
+.ges-nums div{background:var(--creme);border-radius:.75em;padding:.6em .75em;display:flex;flex-direction:column}
+.ges-nums b{font-family:Lora,Georgia,serif;font-size:1.375em;color:var(--azul)}
+.ges-nums span{font-size:.75em;color:var(--suave)}
+.ges-cds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4em}
+.ges-cd{min-height:2.75em;display:flex;align-items:center;gap:.5em;padding:0 .7em;border-radius:.65em;border:1.5px solid var(--linha);background:#fff;color:var(--suave2);font-size:.8125em;font-weight:600;text-align:left}
+.ges-cd .cx{width:1em;height:1em;border-radius:.25em;border:1.5px solid #9AA3B8;flex:none}
+.ges-cd[aria-pressed="true"]{background:var(--azul);border-color:var(--azul);color:#fff}
+.ges-cd[aria-pressed="true"] .cx{background:var(--ouro);border-color:var(--ouro)}
+.ges-hist{background:var(--creme);border-radius:.75em;padding:.75em .9em;display:flex;flex-direction:column;gap:.35em}
+.ges-hist p{margin:0;font-size:.8125em;color:var(--texto)}
+.ges-rodape{position:sticky;bottom:0;margin-top:auto;background:#fff;border-top:1px solid var(--linha2);padding:.8em 0 1.1em;display:flex;align-items:center;gap:.75em;flex-wrap:wrap}
+.ges-rodape .esp{flex:1}
+.ges-zona{display:flex;flex-direction:column;gap:.5em;align-items:flex-start;border:1px solid var(--linha2);border-radius:.75em;padding:.8em .9em}
+.ges-voltar{display:none;align-self:flex-start}
+.ges-dica{margin:auto 0;background:none}
+.bt.perigo{background:#F6E9E6;color:#8A2E2E;border:1.5px solid #E7C9C3}
+.bt[disabled]{opacity:.5;cursor:default}
+@media (max-width:899px){
+  .ges-lista{width:100%;border-right:none}
+  .ges-ficha{display:none;padding:1em 1em 0}
+  .ges.com-ficha .ges-lista{display:none}
+  .ges.com-ficha .ges-ficha{display:flex}
+  .ges-voltar{display:inline-block}
+  .ges-cds{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:767px){
+  .janela.gestao{left:0;right:0;top:0;bottom:0;transform:none;width:100%;max-width:none;height:100%;max-height:none;border-radius:0;padding-top:var(--topo-seg)}
+  .ges-rodape{padding-bottom:calc(1em + var(--baixo-seg))}
+  .ges-rodape .bt{flex:1;min-height:3.25em}
+  .ges-rodape .esp{display:none}
+  .ges-zona .bt{width:100%}
+}
 .dica-campo{margin:-.4em 0 0;font-size:.8125em;color:var(--suave)}
 .av-item{display:flex;flex-direction:column;align-items:flex-start;gap:.35em;padding:.65em .75em}
 .av-item+.av-item{border-top:1px solid var(--linha2)}
@@ -672,7 +737,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.11';
+var VERSAO_SITE = '1.12';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -2789,7 +2854,7 @@ function htmlMenuPortal() {
       h += mpLin('pedidos', IC.caixa, 'Pedidos de acesso', g.pedidos ? 'Aguardando sua aprovação' : 'Nenhum pedido aguardando',
         g.pedidos ? '<span class="selo estatico">' + g.pedidos + '</span>' : '');
     }
-    if (g.pessoas) h += mpLin('', IC.pessoas, 'Pessoas e empresas', 'Em breve', '', true);
+    if (g.pessoas) h += mpLin('pessoas', IC.pessoas, 'Pessoas e empresas', 'Cadastros, perfis e acessos');
     h += '</div>';
   }
   return h + '</div>';
@@ -2819,7 +2884,7 @@ function desenharLateralGestao() {
     h += '<button class="lat-item" data-acao="pedidos" aria-label="Pedidos de acesso">' + IC.caixaOuro + '<span style="flex:1">Pedidos</span>' +
       (g.pedidos ? '<span class="cont vinho">' + g.pedidos + '</span>' : '') + '</button>';
   }
-  if (g.pessoas) h += '<div class="lat-breve"><i aria-hidden="true"></i><span>Pessoas e empresas</span></div>';
+  if (g.pessoas) h += '<button class="lat-item" data-acao="pessoas">' + IC.pessoas.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Pessoas e empresas</span></button>';
   el.innerHTML = h;
 }
 function atualizarPortal() {
@@ -3044,6 +3109,383 @@ function posDecisao(raiz, id) {
   if (S.pedidos) S.pedidos.pedidos = (S.pedidos.pedidos || []).filter(function (x) { return x.id !== id; });
   atualizarPortal();
   if (S.pedidos && S.pedidos.pedidos.length) listaPedidos(raiz); else fecharCamadas();
+}
+
+/* ================= Gestão › Pessoas e empresas (master, v1.12) ================= */
+function gesNorm(s) { return String(s == null ? "" : s).normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toUpperCase(); }
+var G = null;
+function abrirGestao(aba) {
+  G = { dados: null, aba: aba || 'pessoas', emp: '', situ: 'Ativo', busca: '', sel: null, novo: false, form: null, conf: '' };
+  abrirJanela('Pessoas e empresas', 'Carregando…',
+    '<div class="ges" id="ges"><div class="ges-lista" id="gesLista"><p class="vazio">Carregando…</p></div><div class="ges-ficha" id="gesFicha"></div></div>',
+    'gestao', function (raiz) {
+      raiz.addEventListener('click', cliqueGestao);
+      raiz.addEventListener('input', entradaGestao);
+      raiz.addEventListener('change', mudancaGestao);
+      carregarGestao();
+    });
+}
+function carregarGestao(manterSel) {
+  return api('portal.gestao').then(function (r) {
+    if (!$('ges')) return;
+    if (!r.ok) { $('gesLista').innerHTML = '<p class="vazio">' + esc(r.mensagem) + '</p>'; return; }
+    G.dados = r;
+    if (!manterSel) { G.sel = null; G.novo = false; G.form = null; }
+    desenharGestao();
+  });
+}
+function gesCondoNome(cod) {
+  var c = ((G.dados && G.dados.condos) || []).filter(function (x) { return x.codigo === cod; })[0];
+  return c ? c.nome : cod;
+}
+function gesEmpresa(ape) { return ((G.dados && G.dados.empresas) || []).filter(function (e) { return e.apelido === ape; })[0] || null; }
+function gesNomeEmp(ape) { return ehCasa(ape) ? 'Carvalho & Abreu' : ape; }
+function gesResumoAcesso(u) {
+  if (u.master) return 'Master · todos os condomínios';
+  var cods = Object.keys(u.papeis || {});
+  var perf = u.perfil === 'Operador' && ehCasa(u.empresa) ? 'Colaborador' : u.perfil;
+  var partes = [perf + (u.atividade ? ' · ' + u.atividade : '')];
+  if (!cods.length) partes.push(u.perfil === 'Gestor' ? 'todos da empresa' : (u.atividade ? 'todos da casa' : 'sem condomínio'));
+  else if (cods.length > 3) partes.push(cods.length + ' condomínios');
+  else partes.push(cods.map(function (c) { return gesCondoNome(c) + (u.papeis[c] === 'L' ? ' (L)' : ''); }).join(' · '));
+  return partes.join(' · ');
+}
+function desenharGestao() {
+  var d = G.dados; if (!d) return;
+  var raiz = $('ges').closest('.janela');
+  var ativos = d.usuarios.filter(function (u) { return u.status === 'Ativo'; }).length;
+  raiz.querySelector('.jan-cab small').textContent = ativos + (ativos === 1 ? ' pessoa ativa · ' : ' pessoas ativas · ') + d.empresas.length + (d.empresas.length === 1 ? ' empresa' : ' empresas');
+  $('ges').classList.toggle('com-ficha', !!(G.sel || G.novo));
+  desenharGesLista();
+  desenharGesFicha();
+}
+function desenharGesLista() {
+  var d = G.dados, h = '';
+  h += '<div class="alt-visao ges-abas" role="tablist">' +
+    '<button role="tab" data-ges-aba="pessoas" aria-pressed="' + (G.aba === 'pessoas') + '">Pessoas <span class="q">' + d.usuarios.length + '</span></button>' +
+    '<button role="tab" data-ges-aba="empresas" aria-pressed="' + (G.aba === 'empresas') + '">Empresas <span class="q">' + d.empresas.length + '</span></button></div>';
+  if (G.aba === 'pessoas') {
+    h += '<button class="bt grande" data-ges-novo="pessoa">+ Cadastrar pessoa</button>';
+    var porEmp = {};
+    d.usuarios.forEach(function (u) { porEmp[u.empresa] = (porEmp[u.empresa] || 0) + 1; });
+    h += '<div class="ges-chips"><button class="chip" data-ges-emp="" aria-pressed="' + (!G.emp) + '">Todas <span class="n">' + d.usuarios.length + '</span></button>' +
+      d.empresas.filter(function (e) { return porEmp[e.apelido]; }).map(function (e) {
+        return '<button class="chip" data-ges-emp="' + esc(e.apelido) + '" aria-pressed="' + (G.emp === e.apelido) + '">' + esc(gesNomeEmp(e.apelido)) + ' <span class="n">' + porEmp[e.apelido] + '</span></button>';
+      }).join('') + '</div>';
+    var nAt = d.usuarios.filter(function (u) { return u.status === 'Ativo' && (!G.emp || u.empresa === G.emp); }).length;
+    var nIn = d.usuarios.filter(function (u) { return u.status !== 'Ativo' && (!G.emp || u.empresa === G.emp); }).length;
+    h += '<div class="seg ges-situ" role="group" aria-label="Situação">' +
+      '<button data-ges-situ="Ativo" aria-pressed="' + (G.situ === 'Ativo') + '">Ativos (' + nAt + ')</button>' +
+      '<button data-ges-situ="Inativo" aria-pressed="' + (G.situ === 'Inativo') + '">Inativos (' + nIn + ')</button></div>';
+    h += '<label class="ges-busca"><span class="sr">Buscar</span><input type="search" id="gesBusca" placeholder="Buscar por nome ou e-mail" value="' + esc(G.busca) + '"></label>';
+    var b = gesNorm(G.busca);
+    var lista = d.usuarios.filter(function (u) {
+      return (u.status === 'Ativo') === (G.situ === 'Ativo') && (!G.emp || u.empresa === G.emp) &&
+        (!b || gesNorm(u.nome).indexOf(b) >= 0 || u.email.indexOf(G.busca.toLowerCase().trim()) >= 0);
+    });
+    if (!lista.length) h += '<p class="vazio">' + (G.situ === 'Ativo' ? 'Ninguém aqui.' : 'Nenhuma pessoa inativa.') + '</p>';
+    d.empresas.forEach(function (e) {
+      var us = lista.filter(function (u) { return u.empresa === e.apelido; });
+      if (!us.length) return;
+      h += '<p class="rotulo ges-grupo">' + esc(gesNomeEmp(e.apelido)) + ' · ' + us.length + '</p>';
+      us.forEach(function (u) {
+        h += '<button class="ges-item' + (G.sel === u.email ? ' sel' : '') + '" data-ges-pessoa="' + esc(u.email) + '">' + avatarDe(null, u.nome) +
+          '<span class="tx"><b>' + esc(u.nome) + '</b><small>' + esc(gesResumoAcesso(u)) + '</small></span>' + IC.chevD + '</button>';
+      });
+    });
+  } else {
+    h += '<button class="bt grande" data-ges-novo="empresa">+ Cadastrar empresa</button>';
+    d.empresas.forEach(function (e) {
+      var n = d.usuarios.filter(function (u) { return u.empresa === e.apelido && u.status === 'Ativo'; }).length;
+      var tags = (!e.ativa ? '<span class="ges-tag cinza">Inativa</span>' : '') + (e.incompleta ? '<span class="ges-tag ouro">Cadastro incompleto</span>' : '');
+      h += '<button class="ges-item' + (G.sel === 'empresa:' + e.apelido ? ' sel' : '') + '" data-ges-empresa="' + esc(e.apelido) + '">' +
+        '<span class="avatar ges-av-emp" aria-hidden="true">' + esc(gesNomeEmp(e.apelido).slice(0, 2).toUpperCase()) + '</span>' +
+        '<span class="tx"><b>' + esc(gesNomeEmp(e.apelido)) + '</b><small>' + e.condos.length + (e.condos.length === 1 ? ' condomínio' : ' condomínios') + ' · ' + n + (n === 1 ? ' pessoa ativa' : ' pessoas ativas') + '</small>' + (tags ? '<span class="ges-tags">' + tags + '</span>' : '') + '</span>' + IC.chevD + '</button>';
+    });
+  }
+  $('gesLista').innerHTML = h;
+}
+
+/* ---------- Ficha da pessoa ---------- */
+function formDePessoa(u) {
+  return {
+    tipo: 'pessoa', novo: !u, email: u ? u.email : '', nome: u ? u.nome : '', empresa: u ? u.empresa : (G.emp || ''),
+    perfil: u ? u.perfil : 'Operador', atividade: u ? u.atividade : '',
+    modulos: (u ? u.modulos : ['tarefas']).reduce(function (m, k) { m[k] = true; return m; }, {}),
+    papeis: JSON.parse(JSON.stringify(u ? u.papeis : {})), mudou: false, empresaOriginal: u ? u.empresa : ''
+  };
+}
+function htmlFichaPessoa(f) {
+  var d = G.dados, u = f.novo ? null : d.usuarios.filter(function (x) { return x.email === f.email; })[0];
+  var h = '<button class="bt-link ges-voltar" data-ges-voltar>‹ Pessoas</button>';
+  if (u) {
+    h += '<div class="ges-cab">' + avatarDe(null, u.nome) + '<span class="tx"><b>' + esc(u.nome) + '</b><small>' + esc(u.email) + '</small></span>' +
+      '<span class="ges-tag ' + (u.status === 'Ativo' ? 'verde' : 'cinza') + '">' + esc(u.status) + '</span></div>';
+  } else {
+    h += '<h2 class="ges-tit">Cadastrar pessoa</h2>' +
+      '<label class="ges-campo"><span class="rotulo">Nome</span><input type="text" id="gesNome" maxlength="80" placeholder="Nome e sobrenome" value="' + esc(f.nome) + '"></label>' +
+      '<label class="ges-campo"><span class="rotulo">E-mail da conta Google</span><input type="email" id="gesEmail" maxlength="120" placeholder="nome@gmail.com" value="' + esc(f.email) + '" autocomplete="off"></label>' +
+      '<p class="dica-campo">A pessoa entra no app com esta conta Google e recebe um e-mail avisando que o acesso foi liberado.</p>';
+  }
+  if (u && u.master) {
+    h += '<div class="alerta-ouro">Este é o cadastro do master: vê todos os condomínios e todas as empresas. Ele só muda direto na planilha.</div>';
+    return h + htmlHistorico(u.email);
+  }
+  var em = gesEmpresa(f.empresa);
+  var ativas = d.empresas.filter(function (e) { return e.ativa || e.apelido === f.empresa; });
+  h += '<span class="rotulo">Empresa</span><div class="pills">' + ativas.map(function (e) {
+    return '<button class="pill" data-gf-empresa="' + esc(e.apelido) + '" aria-pressed="' + (f.empresa === e.apelido) + '">' + esc(gesNomeEmp(e.apelido)) + '</button>';
+  }).join('') + '</div>';
+  if (!f.novo && f.empresa !== f.empresaOriginal) h += '<div class="alerta-ouro">Trocar a empresa tira o acesso aos condomínios que a ' + esc(gesNomeEmp(f.empresa)) + ' não atende. A pessoa passa a ver só as tarefas da nova empresa.</div>';
+  if (!em) return h + '<p class="dica-campo">Escolha a empresa para ver o perfil e os condomínios.</p>' + rodapeFicha(f, u);
+  var casa = em.casa;
+  if (em.perfis.indexOf(f.perfil) < 0) f.perfil = em.perfis[0];
+  if (!casa) f.atividade = '';
+  h += '<span class="rotulo">Perfil ' + (casa ? 'na Carvalho &amp; Abreu' : 'na ' + esc(em.apelido)) + '</span><div class="pills">' + em.perfis.map(function (p) {
+    return '<button class="pill" data-gf-perfil="' + esc(p) + '" aria-pressed="' + (f.perfil === p) + '">' + esc(p === 'Operador' && casa ? 'Colaborador (Operador)' : p) + '</button>';
+  }).join('') + '</div>';
+  h += '<p class="dica-campo">' + (casa ? 'Supervisor vê as tarefas de todas as empresas nos condomínios marcados. Colaborador vê só a sua atividade.' : 'Gestor vê todas as tarefas da ' + esc(em.apelido) + ' e organiza a equipe. Operador vê as tarefas dos condomínios marcados.') + '</p>';
+  if (casa && (d.atividades || []).length) {
+    h += '<span class="rotulo">Atividade principal</span><div class="pills">' +
+      '<button class="pill" data-gf-ativ="" aria-pressed="' + (!f.atividade) + '">Nenhuma</button>' +
+      d.atividades.map(function (a) { return '<button class="pill" data-gf-ativ="' + esc(a) + '" aria-pressed="' + (gesNorm(f.atividade) === gesNorm(a)) + '">' + esc(a) + '</button>'; }).join('') + '</div>';
+  }
+  h += '<span class="rotulo">Módulos</span><div>' + d.modulos.map(function (m) {
+    return '<label class="chk-lin"><input type="checkbox" data-gf-mod="' + esc(m.id) + '"' + (f.modulos[m.id] ? ' checked' : '') + '> ' + esc(m.nome) + '</label>';
+  }).join('') + EM_BREVE.slice(1, 3).map(function (nome) {
+    return '<label class="chk-lin breve"><input type="checkbox" disabled> ' + esc(nome) + '<span class="tag-breve">Em breve</span></label>';
+  }).join('') + '</div>';
+  var veTudo = f.perfil === 'Gestor' || gesNorm(f.atividade) === 'COMPRAS';
+  h += '<span class="rotulo">Condomínios ' + (casa ? 'da casa' : 'que a ' + esc(em.apelido) + ' atende') + '</span>';
+  if (veTudo) h += '<p class="dica-campo">' + (f.perfil === 'Gestor' ? 'Gestor vê todos os condomínios da empresa.' : 'Compras vê as compras de todos os condomínios da casa.') + ' Marque só se quiser direcionar tarefas para a pessoa.</p>';
+  if (!em.condos.length) h += '<p class="dica-campo">A empresa ainda não atende nenhum condomínio. Marque na ficha da empresa.</p>';
+  h += '<div>' + em.condos.map(function (cod) {
+    var v = f.papeis[cod] || '';
+    return '<div class="linha-condo"><b>' + esc(gesCondoNome(cod)) + '</b><div class="seg" role="group" aria-label="Acesso em ' + esc(gesCondoNome(cod)) + '">' +
+      [['', 'Sem acesso'], ['O', 'Operador'], ['L', 'Líder']].map(function (o) {
+        return '<button data-gf-papel="' + esc(cod) + '|' + o[0] + '" aria-pressed="' + (v === o[0]) + '">' + o[1] + '</button>';
+      }).join('') + '</div></div>';
+  }).join('') + '</div>';
+  if (u) h += htmlHistorico(u.email);
+  return h + rodapeFicha(f, u);
+}
+function rodapeFicha(f, u) {
+  var h = '';
+  if (u) {
+    var inat = u.status !== 'Ativo', conf = G.conf === 'status';
+    h += '<div class="ges-zona"><span class="rotulo">Acesso ao app</span><p class="dica-campo" style="margin:0">' +
+      (inat ? 'Inativo: a pessoa não entra no app. Reativar devolve o acesso com as mesmas permissões.' : 'Inativar corta o acesso na hora (use quando a pessoa sai da empresa). Nada é apagado.') + '</p>' +
+      '<button class="bt ' + (inat ? 'claro' : 'perigo') + '" id="gesStatus">' + (inat ? (conf ? 'Confirmar reativação' : 'Reativar acesso') : (conf ? 'Confirmar: tirar o acesso agora' : 'Inativar acesso')) + '</button></div>';
+  }
+  h += '<div class="entrada-msg" id="gesErro" role="alert" hidden></div><div class="ges-rodape">' +
+    '<button class="bt-link" data-ges-voltar>Cancelar</button><span class="esp"></span>' +
+    '<button class="bt" id="gesSalvar"' + (f.novo || f.mudou ? '' : ' disabled') + '>' + (f.novo ? 'Cadastrar e liberar' : 'Salvar alterações') + '</button></div>';
+  return h;
+}
+function htmlHistorico(chave) {
+  return '<div class="ges-hist" id="gesHist" data-chave="' + esc(chave) + '"><span class="rotulo">Histórico do cadastro</span><p class="dica-campo" style="margin:0">Carregando…</p></div>';
+}
+function carregarHistorico() {
+  var el = $('gesHist'); if (!el) return;
+  var chave = el.getAttribute('data-chave');
+  api('portal.historicoCadastro', { chave: chave }).then(function (r) {
+    var el2 = $('gesHist'); if (!el2 || el2.getAttribute('data-chave') !== chave) return;
+    var itens = (r.ok && r.itens) || [];
+    el2.innerHTML = '<span class="rotulo">Histórico do cadastro</span>' + (itens.length ? itens.slice(0, 8).map(function (i) {
+      var dt = i.quando ? new Date(i.quando) : null;
+      var q = dt ? dt.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }) + ' ' + dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : '';
+      return '<p><b>' + esc(q) + '</b> · ' + esc(rotuloCampo(i.campo)) + ': ' + esc(i.antigo || '—') + ' → ' + esc(i.novo || '—') + ' · ' + esc(i.quem) + '</p>';
+    }).join('') : '<p class="dica-campo" style="margin:0">Nada registrado ainda.</p>');
+  });
+}
+function rotuloCampo(c) {
+  var m = { 'EMPRESA': 'Empresa', 'PERFIL': 'Perfil', 'CONDOMÍNIOS': 'Condomínios', 'STATUS': 'Situação', 'NOME': 'Nome', 'MÓDULOS': 'Módulos', 'ATIVIDADE PRINCIPAL': 'Atividade', 'ATIVA': 'Ativa' };
+  return m[c] || c;
+}
+
+/* ---------- Ficha da empresa ---------- */
+function formDeEmpresa(e) {
+  return { tipo: 'empresa', novo: !e, apelido: e ? e.apelido : '', ativa: e ? e.ativa : true, condos: (e ? e.condos : []).slice(),
+    razao: '', tipoForn: '', email: '', mudou: false };
+}
+function htmlFichaEmpresa(f) {
+  var d = G.dados, e = f.novo ? null : gesEmpresa(f.apelido);
+  var h = '<button class="bt-link ges-voltar" data-ges-voltar>‹ Empresas</button>';
+  if (e) {
+    h += '<div class="ges-cab"><span class="avatar ges-av-emp" aria-hidden="true">' + esc(gesNomeEmp(e.apelido).slice(0, 2).toUpperCase()) + '</span><span class="tx"><b>' + esc(gesNomeEmp(e.apelido)) + '</b><small>' +
+      esc([e.razao, e.tipo].filter(String).join(' · ') || (e.casa ? 'A sua empresa' : 'Sem dados na FORNECEDORES')) + '</small></span>' +
+      '<span class="ges-tag ' + (e.ativa ? 'verde' : 'cinza') + '">' + (e.ativa ? 'Ativa' : 'Inativa') + '</span></div>';
+    if (e.incompleta) h += '<div class="alerta-ouro"><b>Cadastro incompleto na FORNECEDORES.</b> Peça ao Claude: “completar o cadastro do fornecedor ' + esc(e.apelido) + '”.</div>';
+    var ativos = d.usuarios.filter(function (u) { return u.empresa === e.apelido && u.status === 'Ativo'; }).length;
+    var inat = d.usuarios.filter(function (u) { return u.empresa === e.apelido && u.status !== 'Ativo'; }).length;
+    h += '<div class="ges-nums"><div><b>' + ativos + '</b><span>' + (ativos === 1 ? 'pessoa ativa' : 'pessoas ativas') + '</span></div><div><b>' + inat + '</b><span>' + (inat === 1 ? 'inativa' : 'inativas') + '</span></div><div><b>' + f.condos.length + '</b><span>' + (f.condos.length === 1 ? 'condomínio' : 'condomínios') + '</span></div></div>';
+  } else {
+    h += '<h2 class="ges-tit">Cadastrar empresa</h2>' +
+      '<label class="ges-campo"><span class="rotulo">Apelido</span><input type="text" id="gesApelido" maxlength="40" placeholder="Ex.: SJC" value="' + esc(f.apelido) + '" autocomplete="off"></label>' +
+      '<p class="dica-campo">É o nome curto que aparece no app e nas tarefas. Não muda depois.</p>' +
+      '<label class="ges-campo"><span class="rotulo">Razão social (opcional)</span><input type="text" id="gesRazao" maxlength="120" value="' + esc(f.razao) + '"></label>' +
+      '<label class="ges-campo"><span class="rotulo">Tipo de serviço (opcional)</span><input type="text" id="gesTipo" maxlength="60" placeholder="Ex.: Manutenção" value="' + esc(f.tipoForn) + '"></label>' +
+      '<label class="ges-campo"><span class="rotulo">E-mail (opcional)</span><input type="email" id="gesEmailEmp" maxlength="120" value="' + esc(f.email) + '"></label>' +
+      '<p class="dica-campo">Se a empresa não estiver na FORNECEDORES, o app cria uma linha básica lá, marcada como incompleta.</p>';
+  }
+  var casa = e ? e.casa : ehCasa(f.apelido);
+  h += '<span class="rotulo">Condomínios que ' + (casa ? 'a casa atende' : 'a empresa atende') + '</span><div class="ges-cds">' + d.condos.map(function (c) {
+    var on = f.condos.indexOf(c.codigo) >= 0;
+    return '<button class="ges-cd" data-gf-cd="' + esc(c.codigo) + '" aria-pressed="' + on + '"><span class="cx" aria-hidden="true"></span>' + esc(c.nome) + '</button>';
+  }).join('') + '</div>';
+  var tirados = e ? e.condos.filter(function (c) { return f.condos.indexOf(c) < 0; }) : [];
+  var afetados = e && tirados.length ? d.usuarios.filter(function (u) { return u.empresa === e.apelido && tirados.some(function (c) { return u.papeis[c]; }); }).length : 0;
+  if (afetados) h += '<div class="alerta-ouro">Desmarcar ' + esc(tirados.map(gesCondoNome).join(', ')) + ' tira o acesso de ' + afetados + (afetados === 1 ? ' pessoa' : ' pessoas') + ' da ' + esc(gesNomeEmp(e.apelido)) + ' a ' + (tirados.length === 1 ? 'esse condomínio' : 'esses condomínios') + '.</div>';
+  else h += '<p class="dica-campo">Desmarcar um condomínio tira o acesso de todas as pessoas da empresa a ele.</p>';
+  if (!casa) {
+    h += '<span class="rotulo">Situação</span><div class="pills"><button class="pill" data-gf-ativa="1" aria-pressed="' + f.ativa + '">Ativa</button><button class="pill" data-gf-ativa="0" aria-pressed="' + (!f.ativa) + '">Inativa</button></div>';
+    if (!f.ativa) h += '<p class="dica-campo">Empresa inativa: ninguém dela entra no app e ela some das listas, mas nada é apagado.</p>';
+  }
+  if (e) h += htmlHistorico('empresa:' + e.apelido.toLowerCase());
+  h += '<div class="entrada-msg" id="gesErro" role="alert" hidden></div><div class="ges-rodape"><button class="bt-link" data-ges-voltar>Cancelar</button><span class="esp"></span>' +
+    '<button class="bt" id="gesSalvar"' + (f.novo || f.mudou ? '' : ' disabled') + '>' + (f.novo ? 'Cadastrar empresa' : (afetados && G.conf === 'empresa' ? 'Confirmar e salvar' : 'Salvar alterações')) + '</button></div>';
+  return h;
+}
+
+function desenharGesFicha() {
+  var el = $('gesFicha'); if (!el) return;
+  var f = G.form;
+  if (!f) {
+    el.innerHTML = '<p class="vazio ges-dica">' + (G.aba === 'pessoas' ? 'Escolha uma pessoa na lista para ver e mudar o acesso.' : 'Escolha uma empresa para ver os condomínios que ela atende.') + '</p>';
+    return;
+  }
+  var topo = el.scrollTop;
+  el.innerHTML = f.tipo === 'pessoa' ? htmlFichaPessoa(f) : htmlFichaEmpresa(f);
+  el.scrollTop = topo;
+  if ($('gesHist') && !f.histCarregado) { f.histCarregado = true; carregarHistorico(); }
+  else if ($('gesHist') && f.histHtml) $('gesHist').innerHTML = f.histHtml;
+}
+function gesMarcarMudou() {
+  G.form.mudou = true; G.conf = '';
+  var h = $('gesHist'); if (h) G.form.histHtml = h.innerHTML;
+  desenharGesFicha();
+}
+
+/* ---------- Eventos ---------- */
+function cliqueGestao(ev) {
+  var b = ev.target.closest('button'); if (!b || !G || !G.dados) return;
+  var a;
+  if ((a = b.getAttribute('data-ges-aba'))) { G.aba = a; G.sel = null; G.novo = false; G.form = null; G.conf = ''; desenharGestao(); return; }
+  if (b.hasAttribute('data-ges-emp')) { G.emp = b.getAttribute('data-ges-emp'); desenharGesLista(); return; }
+  if ((a = b.getAttribute('data-ges-situ'))) { G.situ = a; desenharGesLista(); return; }
+  if ((a = b.getAttribute('data-ges-pessoa'))) {
+    var u = G.dados.usuarios.filter(function (x) { return x.email === a; })[0];
+    G.sel = a; G.novo = false; G.form = formDePessoa(u); G.conf = ''; desenharGestao(); $('gesFicha').scrollTop = 0; return;
+  }
+  if ((a = b.getAttribute('data-ges-empresa'))) {
+    G.sel = 'empresa:' + a; G.novo = false; G.form = formDeEmpresa(gesEmpresa(a)); G.conf = ''; desenharGestao(); $('gesFicha').scrollTop = 0; return;
+  }
+  if ((a = b.getAttribute('data-ges-novo'))) {
+    G.sel = null; G.novo = true; G.conf = ''; G.form = a === 'pessoa' ? formDePessoa(null) : formDeEmpresa(null);
+    desenharGestao(); $('gesFicha').scrollTop = 0;
+    var foco = $(a === 'pessoa' ? 'gesNome' : 'gesApelido'); if (foco && faixa() === 'computador') foco.focus();
+    return;
+  }
+  if (b.hasAttribute('data-ges-voltar')) { G.sel = null; G.novo = false; G.form = null; G.conf = ''; desenharGestao(); return; }
+  var f = G.form; if (!f) return;
+  if ((a = b.getAttribute('data-gf-empresa'))) {
+    if (a === f.empresa) return;
+    f.empresa = a;
+    var em = gesEmpresa(a);
+    Object.keys(f.papeis).forEach(function (c) { if (!em || em.condos.indexOf(c) < 0) delete f.papeis[c]; });
+    if (em && em.condos.length === 1 && f.novo && !Object.keys(f.papeis).length) f.papeis[em.condos[0]] = 'O';
+    gesMarcarMudou(); return;
+  }
+  if ((a = b.getAttribute('data-gf-perfil'))) { f.perfil = a; gesMarcarMudou(); return; }
+  if (b.hasAttribute('data-gf-ativ')) { f.atividade = b.getAttribute('data-gf-ativ'); gesMarcarMudou(); return; }
+  if ((a = b.getAttribute('data-gf-papel'))) {
+    var pr = a.split('|');
+    if (pr[1]) f.papeis[pr[0]] = pr[1]; else delete f.papeis[pr[0]];
+    gesMarcarMudou(); return;
+  }
+  if ((a = b.getAttribute('data-gf-cd'))) {
+    var i = f.condos.indexOf(a);
+    if (i >= 0) f.condos.splice(i, 1); else f.condos.push(a);
+    gesMarcarMudou(); return;
+  }
+  if ((a = b.getAttribute('data-gf-ativa'))) { f.ativa = a === '1'; gesMarcarMudou(); return; }
+  if (b.id === 'gesStatus') { statusPessoaGestao(b); return; }
+  if (b.id === 'gesSalvar') { if (f.tipo === 'pessoa') salvarPessoaGestao(b); else salvarEmpresaGestao(b); }
+}
+function entradaGestao(ev) {
+  var t = ev.target;
+  if (t.id === 'gesBusca') {
+    G.busca = t.value;
+    var pos = t.selectionStart;
+    desenharGesLista();
+    var nb = $('gesBusca'); if (nb) { nb.focus(); try { nb.setSelectionRange(pos, pos); } catch (e) {} }
+    return;
+  }
+  var f = G && G.form; if (!f) return;
+  var mapa = { gesNome: 'nome', gesEmail: 'email', gesApelido: 'apelido', gesRazao: 'razao', gesTipo: 'tipoForn', gesEmailEmp: 'email' };
+  if (mapa[t.id]) { f[mapa[t.id]] = t.value; f.mudou = true; }
+}
+function mudancaGestao(ev) {
+  var m = ev.target.getAttribute && ev.target.getAttribute('data-gf-mod');
+  if (m && G.form) { G.form.modulos[m] = ev.target.checked; gesMarcarMudou(); }
+}
+function gesErro(msg) { var e = $('gesErro'); if (e) { e.textContent = msg; e.hidden = false; } }
+function salvarPessoaGestao(bt) {
+  var f = G.form;
+  var mods = Object.keys(f.modulos).filter(function (k) { return f.modulos[k]; });
+  if (f.novo && !String(f.nome).trim()) return gesErro('Escreva o nome.');
+  if (f.novo && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(f.email).trim())) return gesErro('Confira o e-mail.');
+  if (!f.empresa) return gesErro('Escolha a empresa.');
+  umaVez('gesPessoa:' + (f.email || 'novo'), bt, f.novo ? 'Cadastrando…' : 'Salvando…', function () {
+    return api('portal.salvarUsuario', { email: f.email, novo: f.novo, nome: f.novo ? f.nome : '', empresa: f.empresa, perfil: f.perfil,
+      atividade: f.atividade, modulos: mods, papeis: f.papeis });
+  }).then(function (r) {
+    if (!r.ok) return gesErro(r.mensagem);
+    avisar(r.novo ? 'Acesso liberado para ' + f.nome.trim() : 'Cadastro atualizado');
+    G.sel = r.email; G.novo = false; G.emp = ''; G.situ = 'Ativo';
+    carregarGestao(true).then(function () {
+      var u = G.dados && G.dados.usuarios.filter(function (x) { return x.email === r.email; })[0];
+      G.form = u ? formDePessoa(u) : null; G.conf = '';
+      desenharGestao();
+    });
+  });
+}
+function statusPessoaGestao(bt) {
+  var f = G.form, u = G.dados.usuarios.filter(function (x) { return x.email === f.email; })[0];
+  if (!u) return;
+  if (G.conf !== 'status') { G.conf = 'status'; var h = $('gesHist'); if (h) f.histHtml = h.innerHTML; desenharGesFicha(); return; }
+  var ativar = u.status !== 'Ativo';
+  umaVez('gesStatus:' + u.email, bt, ativar ? 'Reativando…' : 'Inativando…', function () {
+    return api('portal.statusUsuario', { email: u.email, ativo: ativar });
+  }).then(function (r) {
+    if (!r.ok) return gesErro(r.mensagem);
+    avisar(ativar ? u.nome + ' voltou a ter acesso' : u.nome + ' não entra mais no app');
+    G.situ = ativar ? 'Ativo' : 'Inativo';
+    carregarGestao(true).then(function () {
+      var nu = G.dados && G.dados.usuarios.filter(function (x) { return x.email === u.email; })[0];
+      G.form = nu ? formDePessoa(nu) : null; G.conf = '';
+      desenharGestao();
+    });
+  });
+}
+function salvarEmpresaGestao(bt) {
+  var f = G.form, e = f.novo ? null : gesEmpresa(f.apelido);
+  if (f.novo && !String(f.apelido).trim()) return gesErro('Escreva o apelido da empresa.');
+  var tirados = e ? e.condos.filter(function (c) { return f.condos.indexOf(c) < 0; }) : [];
+  var afetados = e && tirados.length ? G.dados.usuarios.filter(function (u) { return u.empresa === e.apelido && tirados.some(function (c) { return u.papeis[c]; }); }).length : 0;
+  if (afetados && G.conf !== 'empresa') { G.conf = 'empresa'; var h = $('gesHist'); if (h) f.histHtml = h.innerHTML; desenharGesFicha(); gesErro('Confira o aviso acima e toque de novo para confirmar.'); return; }
+  umaVez('gesEmpresa:' + (f.apelido || 'nova'), bt, 'Salvando…', function () {
+    return api('portal.salvarEmpresa', { apelido: f.apelido, novo: f.novo, ativa: f.ativa, condos: f.condos, razao: f.razao, tipo: f.tipoForn, email: f.email });
+  }).then(function (r) {
+    if (!r.ok) return gesErro(r.mensagem);
+    avisar(r.nova ? 'Empresa ' + r.apelido + ' cadastrada' + (r.criouFornecedor ? ' (linha criada na FORNECEDORES)' : '') : 'Empresa atualizada' + (r.afetados ? ' · acesso ajustado de ' + r.afetados + (r.afetados === 1 ? ' pessoa' : ' pessoas') : ''));
+    G.sel = 'empresa:' + r.apelido; G.novo = false;
+    carregarGestao(true).then(function () {
+      var ne = gesEmpresa(r.apelido);
+      G.form = ne ? formDeEmpresa(ne) : null; G.conf = '';
+      desenharGestao();
+    });
+  });
 }
 
 /* ================= Menu da conta ================= */
@@ -3322,6 +3764,7 @@ document.addEventListener('click', function (e) {
   switch (acao) {
     case 'fecharJan': fecharCamadas(); break;
     case 'convidar': fecharCamadas(); abrirConvidar(); break;
+    case 'pessoas': fecharCamadas(); abrirGestao(); break;
     case 'guia': fecharCamadas(); abrirGuia(); break;
     case 'fecharFaixaGuia': guardarLocal('faixaGuiaFechada', hojeLocal()); desenharFaixaGuia(); break;
     case 'pedidos': fecharCamadas(); abrirPedidos(); break;
