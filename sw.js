@@ -33,3 +33,37 @@ self.addEventListener('notificationclick', function (e) {
     return self.clients.openWindow(link);
   }));
 });
+
+/* Receber do menu Compartilhar do Android (WhatsApp, Galeria, Arquivos): guarda no aparelho e abre o app
+   na tela "Anexar a qual tarefa?". Nada sai do aparelho aqui; o envio é feito pelo app depois de escolher a tarefa. */
+function abrirBanco() {
+  return new Promise(function (ok, erro) {
+    var r = indexedDB.open('sindico-app', 1);
+    r.onupgradeneeded = function () {
+      var db = r.result;
+      if (!db.objectStoreNames.contains('fila')) db.createObjectStore('fila', { keyPath: 'idCliente' });
+      if (!db.objectStoreNames.contains('compartilhado')) db.createObjectStore('compartilhado', { keyPath: 'id' });
+    };
+    r.onsuccess = function () { ok(r.result); };
+    r.onerror = function () { erro(r.error); };
+  });
+}
+self.addEventListener('fetch', function (e) {
+  if (e.request.method !== 'POST') return;
+  var u = new URL(e.request.url);
+  if (u.searchParams.get('compartilhar') !== '1') return;
+  e.respondWith(e.request.formData().then(function (fd) {
+    var arquivos = fd.getAll('arquivos').filter(function (f) { return f && typeof f !== 'string' && f.size; }).slice(0, 10)
+      .map(function (f) { return { nome: f.name || 'arquivo', tipo: f.type || 'application/octet-stream', blob: f }; });
+    var reg = { id: 'atual', titulo: String(fd.get('titulo') || ''), texto: String(fd.get('texto') || ''), link: String(fd.get('link') || ''), arquivos: arquivos, em: Date.now() };
+    return abrirBanco().then(function (db) {
+      return new Promise(function (ok) {
+        var tx = db.transaction('compartilhado', 'readwrite');
+        tx.objectStore('compartilhado').put(reg);
+        tx.oncomplete = ok; tx.onerror = ok; tx.onabort = ok;
+      });
+    });
+  }).catch(function () {}).then(function () {
+    return Response.redirect(new URL('./?compartilhado=1', self.registration.scope).href, 303);
+  }));
+});

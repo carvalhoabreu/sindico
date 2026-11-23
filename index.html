@@ -148,6 +148,40 @@ button{cursor:pointer}
 .carregando{padding:2.5em 1em;text-align:center;color:var(--suave)}
 
 
+
+/* ---------- v1.10: fila sem sinal, compartilhamento e registro automático ---------- */
+.anx-tile.aguardando .anx-prog{background:rgba(15,38,70,.42)}
+.anx-tile.aguardando .anx-prog svg{stroke:#E3C894}
+.anx-fila{display:flex;align-items:center;gap:.6em;flex-wrap:wrap;background:#FBF3E2;border:1px solid #EAD7AE;border-radius:.75em;padding:.6em .8em;font-size:.8125em;color:#5A4520}
+.anx-fila svg{flex:none;stroke:#7A5C27}
+.anx-fila span{flex:1;min-width:12em}
+.obs-auto{display:flex;align-items:center;gap:.5em;width:100%;padding:.35em .25em;border:none;background:none;text-align:left;font:inherit;font-size:.8125em;color:var(--suave);border-radius:.5em}
+button.obs-auto{cursor:pointer}
+button.obs-auto:hover{background:var(--creme)}
+.obs-auto svg{flex:none;color:var(--suave)}
+.obs-auto span{flex:1;min-width:0}
+.obs-auto b{color:var(--suave2);font-weight:600}
+.obs-auto time{flex:none;font-size:.92em;color:#8A93A8}
+.nova-anexos{display:flex;align-items:center;gap:.5em;margin:0;background:var(--creme);border-radius:.6em;padding:.55em .75em;font-size:.875em;font-weight:600;color:var(--azul)}
+.comp-recebidos{display:flex;gap:.5em;flex-wrap:wrap}
+.comp-recebidos img{width:4em;height:4em;object-fit:cover;border-radius:.6em;background:var(--creme2)}
+.comp-doc{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2em;width:7em;height:4em;border-radius:.6em;background:var(--creme);border:1px solid var(--linha);padding:.3em;box-sizing:border-box}
+.comp-doc small{font-size:.6875em;color:var(--suave2);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.comp-mais{display:flex;align-items:center;justify-content:center;width:4em;height:4em;border-radius:.6em;background:var(--creme2);font-weight:700;color:var(--azul)}
+.comp-msg{background:var(--creme);border-radius:.75em;padding:.65em .8em;display:flex;flex-direction:column;gap:.5em}
+.comp-msg p{margin:0;font-size:.875em;color:var(--texto);white-space:pre-line}
+.comp-check{display:flex;align-items:center;gap:.5em;font-size:.8125em;font-weight:600;color:var(--suave2)}
+.comp-check input{width:1.2em;height:1.2em;accent-color:var(--azul)}
+.comp-nova{width:100%;justify-content:center}
+.comp-nova svg{stroke:var(--azul)}
+.comp-lista{display:flex;flex-direction:column;gap:.35em;max-height:40vh;overflow-y:auto}
+.comp-grupo{font-size:.75em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7A5C27;margin:.5em 0 .1em}
+.comp-item{display:flex;flex-direction:column;gap:.15em;text-align:left;width:100%;min-height:3em;padding:.55em .8em;border-radius:.75em;border:1.5px solid var(--linha);background:#fff;color:inherit;font:inherit;cursor:pointer}
+.comp-item:hover,.comp-item:focus-visible{border-color:var(--ouro)}
+.comp-item b{font-size:.9375em;font-weight:600;color:var(--azul)}
+.comp-item small{font-size:.75em;color:var(--suave)}
+.comp-vazio{margin:.25em 0}
+.comp-criar{width:100%;justify-content:center}
 /* ---------- v1.9: anexos e fotos Antes/Depois ---------- */
 .anx{gap:.75em}
 #blocoAnexos{display:flex;flex-direction:column;gap:1.25em}
@@ -638,7 +672,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.9';
+var VERSAO_SITE = '1.10';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -755,6 +789,9 @@ var IC = {
   clipP: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>',
   clip: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>',
   cameraOuro: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+  semSinal: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l22 22"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><path d="M12 20h.01"/></svg>',
+  lixoP: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>',
+  maisBranco: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
   att: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5C6680" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>'
 };
 
@@ -992,6 +1029,8 @@ function desenhar() {
   desenharLista();
   if (S.selId && !S.det) abrirTarefa(S.selId, true);
   if (ler('abrirT')) abrirLinkDireto();
+  if (!S.filaCarregada) { S.filaCarregada = true; carregarFila(); } else processarFila();
+  verificarCompartilhado();
   if (ler('abrirP') && S.portal) { var idP = ler('abrirP'); guardar('abrirP', null); if (S.portal.gestao && S.portal.gestao.pedidos !== null) abrirPedidos(idP); }
   verificarPush();
 }
@@ -1419,45 +1458,25 @@ function ajustarContagem(idTarefa, etapa, delta) {
 
 function enviarAnexo(idTarefa, file, etapa, extra) {
   extra = extra || {};
+  var foto = etapa !== 'Documento';
+  var item = { idCliente: novoIdCliente(), idTarefa: idTarefa, etapa: etapa, origem: extra.origem || 'app', idObs: extra.idObs || '',
+    original: file.size, criadoEm: Date.now() };
   var envios = S.envios[idTarefa] || (S.envios[idTarefa] = []);
-  var tmp = { tmp: 'tmp' + Date.now() + Math.random(), etapa: etapa, nome: file.name || 'foto.jpg', progresso: 0, url: null };
+  var tmp = { tmp: item.idCliente, etapa: etapa, nome: file.name || 'foto.jpg', progresso: 0, url: null, estado: 'preparando' };
   envios.push(tmp);
   desenharAnexos();
-  var foto = etapa !== 'Documento';
-  var original = file.size;
   var prep = foto ? prepararFoto(file) : Promise.resolve([file, null]);
   return prep.then(function (par) {
-    var blob = par[0], mini = par[1];
-    if (mini) tmp.url = URL.createObjectURL(mini);
+    item.blob = par[0]; item.mini = par[1];
+    if (item.mini) tmp.url = URL.createObjectURL(item.mini);
     var limite = ((S.dados.regras && S.dados.regras.tamArquivoMB) || 25) * 1048576;
-    if (blob.size > limite) throw { mensagem: 'O arquivo passa de ' + Math.round(limite / 1048576) + ' MB. Envie um link no follow-up.' };
-    var nome = foto ? String(file.name || 'foto').replace(/\.[^.]+$/, '') + '.jpg' : (file.name || 'arquivo');
-    var tipo = foto ? 'image/jpeg' : (file.type || 'application/octet-stream');
-    desenharAnexos();
-    return (mini ? blobParaB64(mini) : Promise.resolve('')).then(function (m64) {
-      var base = { id: idTarefa, etapa: etapa, nome: nome, tipo: tipo, tamanho: blob.size, miniatura: m64, idObs: extra.idObs || '' };
-      if (blob.size <= ANX_PARTE) {
-        return blobParaB64(blob).then(function (b64) { base.dados = b64; return api('tarefas.anexoIniciar', base); })
-          .then(function (r) { return { r: r, blob: blob, mini: mini }; });
-      }
-      return api('tarefas.anexoIniciar', base).then(function (r) {
-        if (!r.ok) return { r: r };
-        return enviarPartes(r.upload, r.parte || ANX_PARTE, blob, tmp).then(function (r2) { return { r: r2, blob: blob, mini: mini }; });
-      });
-    });
-  }).then(function (x) {
-    var r = x.r;
-    tirarEnvio(idTarefa, tmp);
-    if (!r.ok) { avisar(r.mensagem, true); desenharAnexos(); return r; }
-    var a = r.anexo;
-    if (x.mini) { S.mini[a.id] = tmp.url; cacheGravar('mini-' + a.id, x.mini); }
-    if (foto && x.blob) cacheGravar('arq-' + a.id, x.blob);
-    if (S.det && S.det.id === idTarefa) S.det.anexos = (S.det.anexos || []).concat([a]);
-    ajustarContagem(idTarefa, etapa, 1);
-    avisar(foto ? 'Foto ' + ETAPA_ROT[etapa] + ' enviada' + (original > x.blob.size * 1.5 ? ' · ' + tamanhoTxt(original) + ' → ' + tamanhoTxt(x.blob.size) : '') : 'Arquivo anexado');
-    if (S.det && S.det.id === idTarefa) desenharDetalhe(); else desenhar();
-    return r;
+    if (item.blob.size > limite) throw { mensagem: 'O arquivo passa de ' + Math.round(limite / 1048576) + ' MB. Envie um link no follow-up.' };
+    item.nome = foto ? String(file.name || 'foto').replace(/\.[^.]+$/, '') + '.jpg' : (file.name || 'arquivo');
+    item.tipo = foto ? 'image/jpeg' : (file.type || 'application/octet-stream');
+    if (!foto && !(item.blob instanceof Blob)) item.blob = new Blob([item.blob], { type: item.tipo });
+    return filaGravar(item).then(function () { return enviarItem(item, tmp); });
   }).catch(function (e) {
+    filaApagar(item.idCliente);
     tirarEnvio(idTarefa, tmp);
     avisar((e && e.mensagem) || (e && e.message === 'formato' ? 'Não deu para abrir esta foto. Tente tirar pela câmera ou escolher outra.' : 'Não foi possível enviar. Tente de novo.'), true);
     desenharAnexos();
@@ -1547,6 +1566,8 @@ function htmlAnexos(t) {
   var envDe = function (e) { return env.filter(function (a) { return a.etapa === e; }); };
   var nFotos = fotosDe('Antes').length + fotosDe('Depois').length + envDe('Antes').length + envDe('Depois').length;
   var h = '';
+  var nAguardando = env.filter(function (x) { return x.estado === 'aguardando'; }).length;
+  if (nAguardando) h += '<div class="anx-fila">' + IC.semSinal + '<span><b>Sem sinal.</b> ' + nAguardando + (nAguardando === 1 ? ' anexo guardado' : ' anexos guardados') + ' no aparelho; ' + (nAguardando === 1 ? 'vai' : 'vão') + ' sozinho' + (nAguardando === 1 ? '' : 's') + ' quando a conexão voltar.</span><button class="bt-link" data-acao="tentarFila">Tentar agora</button></div>';
   if (nFotos || pode) {
     h += '<section class="bloco anx" aria-label="Fotos"><span class="rotulo">Fotos</span>';
     ['Antes', 'Depois'].forEach(function (e) {
@@ -1557,8 +1578,8 @@ function htmlAnexos(t) {
           (S.mini[a.id] ? '<img src="' + S.mini[a.id] + '" alt="">' : '<img data-mini="' + esc(a.id) + '" alt="">') + '</button>';
       });
       es.forEach(function (x) {
-        h += '<div class="anx-tile enviando" aria-label="Enviando foto">' + (x.url ? '<img src="' + x.url + '" alt="">' : '') +
-          '<span class="anx-prog">' + (x.progresso ? x.progresso + '%' : '<i class="anx-gira"></i>') + '</span></div>';
+        h += '<div class="anx-tile enviando' + (x.estado === 'aguardando' ? ' aguardando' : '') + '" aria-label="' + (x.estado === 'aguardando' ? 'Foto aguardando sinal' : 'Enviando foto') + '">' + (x.url ? '<img src="' + x.url + '" alt="">' : '') +
+          '<span class="anx-prog">' + (x.estado === 'aguardando' ? IC.semSinal : x.progresso ? x.progresso + '%' : '<i class="anx-gira"></i>') + '</span></div>';
       });
       if (pode && fs.length + es.length < 10) {
         if (e === 'Depois' && !fs.length && !es.length) h += '<button class="anx-add largo" data-anexar="Depois">' + IC.camera + '<span>Adicionar foto do depois</span></button>';
@@ -1581,7 +1602,7 @@ function htmlAnexos(t) {
         (a.podeExcluir ? '<button class="anx-x" data-excluiranx="' + esc(a.id) + '" aria-label="Excluir ' + esc(nomeCurtoAnexo(a)) + '">' + IC.lixo + '</button>' : '') + '</div>';
     });
     envDocs.forEach(function (x) {
-      h += '<div class="anx-arq enviando"><span class="anx-ext">' + IC.nuvem + '</span><span class="anx-arq-abrir"><b>' + esc(x.nome) + '</b><small>Enviando… ' + (x.progresso || 0) + '%</small></span></div>';
+      h += '<div class="anx-arq enviando"><span class="anx-ext">' + (x.estado === 'aguardando' ? IC.semSinal : IC.nuvem) + '</span><span class="anx-arq-abrir"><b>' + esc(x.nome) + '</b><small>' + (x.estado === 'aguardando' ? 'Aguardando sinal' : 'Enviando… ' + (x.progresso || 0) + '%') + '</small></span></div>';
     });
     h += '</section>';
   }
@@ -1764,6 +1785,7 @@ function confirmarExcluirAnexo(id, bt) {
     if (r.ignorado) return;
     if (!r.ok) { avisar(r.mensagem, true); return; }
     if (S.det) S.det.anexos = (S.det.anexos || []).filter(function (x) { return x.id !== id; });
+    if (S.det && r.observacao) S.det.observacoes = (S.det.observacoes || []).concat([r.observacao]);
     ajustarContagem(a.idTarefa, a.etapa, -1);
     avisar(a.etapa === 'Documento' ? 'Arquivo excluído' : 'Foto excluída');
     if (S.visor) fecharVisor();
@@ -1802,6 +1824,254 @@ document.addEventListener('drop', function (e) {
   var id = S.det.id;
   fs.slice(0, 10).forEach(function (f) { enviarAnexo(id, f, etapa); });
 });
+
+/* ================= Fila no aparelho e compartilhamento (v1.10) ================= */
+var IDB = null;
+function idb() {
+  if (IDB) return IDB;
+  IDB = new Promise(function (ok, erro) {
+    if (!window.indexedDB) { erro(new Error('sem idb')); return; }
+    var r = indexedDB.open('sindico-app', 1);
+    r.onupgradeneeded = function () {
+      var db = r.result;
+      if (!db.objectStoreNames.contains('fila')) db.createObjectStore('fila', { keyPath: 'idCliente' });
+      if (!db.objectStoreNames.contains('compartilhado')) db.createObjectStore('compartilhado', { keyPath: 'id' });
+    };
+    r.onsuccess = function () { ok(r.result); };
+    r.onerror = function () { erro(r.error); };
+  });
+  IDB.catch(function () { IDB = null; });
+  return IDB;
+}
+function idbOp(loja, modo, fn) {
+  return idb().then(function (db) {
+    return new Promise(function (ok, erro) {
+      var tx = db.transaction(loja, modo), q = fn(tx.objectStore(loja)), res;
+      if (q) q.onsuccess = function () { res = q.result; };
+      tx.oncomplete = function () { ok(res); };
+      tx.onerror = function () { erro(tx.error); };
+      tx.onabort = function () { erro(tx.error); };
+    });
+  });
+}
+function filaGravar(item) { return idbOp('fila', 'readwrite', function (st) { return st.put(item); }).catch(function () {}); }
+function filaApagar(id) { return idbOp('fila', 'readwrite', function (st) { return st.delete(id); }).catch(function () {}); }
+function filaTodos() { return idbOp('fila', 'readonly', function (st) { return st.getAll(); }).catch(function () { return []; }); }
+function compLer() { return idbOp('compartilhado', 'readonly', function (st) { return st.get('atual'); }).catch(function () { return null; }); }
+function compApagar() { return idbOp('compartilhado', 'readwrite', function (st) { return st.delete('atual'); }).catch(function () {}); }
+
+function novoIdCliente() { return 'c' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+
+/* Envia um item da fila. Sem sinal: fica guardado no aparelho e vai sozinho depois. */
+function enviarItem(item, tmp) {
+  if (navigator.onLine === false) { tmp.estado = 'aguardando'; desenharAnexos(); return Promise.resolve({ ok: false, codigo: 'REDE' }); }
+  tmp.estado = 'enviando'; desenharAnexos();
+  var base = { id: item.idTarefa, etapa: item.etapa, nome: item.nome, tipo: item.tipo, tamanho: item.blob.size,
+    idObs: item.idObs || '', origem: item.origem || 'app', idCliente: item.idCliente };
+  return (item.mini ? blobParaB64(item.mini) : Promise.resolve('')).then(function (m64) {
+    base.miniatura = m64;
+    if (item.blob.size <= ANX_PARTE) {
+      return blobParaB64(item.blob).then(function (b64) { base.dados = b64; return api('tarefas.anexoIniciar', base); });
+    }
+    return api('tarefas.anexoIniciar', base).then(function (r) {
+      if (!r.ok || r.anexo) return r;
+      return enviarPartes(r.upload, r.parte || ANX_PARTE, item.blob, tmp);
+    });
+  }).then(function (r) { return tratarRespostaEnvio(item, tmp, r); }, function () { return tratarRespostaEnvio(item, tmp, { ok: false, codigo: 'REDE' }); });
+}
+function tratarRespostaEnvio(item, tmp, r) {
+  var foto = item.etapa !== 'Documento';
+  if (!r.ok && r.codigo === 'REDE') {
+    tmp.estado = 'aguardando'; tmp.progresso = 0;
+    desenharAnexos();
+    if (!S.avisouFila) { S.avisouFila = true; avisar('Sem sinal: fica guardado no aparelho e vai sozinho quando a conexão voltar.'); }
+    return r;
+  }
+  filaApagar(item.idCliente);
+  tirarEnvio(item.idTarefa, tmp);
+  if (!r.ok) { avisar(r.mensagem, true); desenharAnexos(); return r; }
+  var a = r.anexo;
+  if (item.mini) { S.mini[a.id] = tmp.url || URL.createObjectURL(item.mini); cacheGravar('mini-' + a.id, item.mini); }
+  if (foto) cacheGravar('arq-' + a.id, item.blob);
+  if (S.det && S.det.id === item.idTarefa) {
+    if (!(S.det.anexos || []).some(function (x) { return x.id === a.id; })) S.det.anexos = (S.det.anexos || []).concat([a]);
+    if (r.observacao && !(S.det.observacoes || []).some(function (o) { return o.id === r.observacao.id; })) S.det.observacoes = (S.det.observacoes || []).concat([r.observacao]);
+  }
+  if (!r.repetido) ajustarContagem(item.idTarefa, item.etapa, 1);
+  var t = tarefaPorId(item.idTarefa);
+  if (r.observacao && t) t.nObs = (t.nObs || 0) + 1;
+  avisar(foto ? 'Foto ' + ETAPA_ROT[item.etapa] + ' enviada' + (item.original > item.blob.size * 1.5 ? ' · ' + tamanhoTxt(item.original) + ' → ' + tamanhoTxt(item.blob.size) : '') : 'Arquivo anexado');
+  if (S.det && S.det.id === item.idTarefa) desenharDetalhe(); else desenhar();
+  return r;
+}
+
+/* Tenta de novo tudo o que ficou na fila (ao abrir o app, ao voltar o sinal, ao voltar para o app). */
+function processarFila() {
+  if (S.filaRodando || !S.sessao || !S.dados || navigator.onLine === false) return;
+  S.filaRodando = true;
+  filaTodos().then(function (itens) {
+    itens.sort(function (a, b) { return a.criadoEm - b.criadoEm; });
+    var i = 0;
+    var proximo = function () {
+      if (i >= itens.length) { S.filaRodando = false; return; }
+      var item = itens[i++];
+      var lista = S.envios[item.idTarefa] || (S.envios[item.idTarefa] = []);
+      var tmp = lista.filter(function (x) { return x.tmp === item.idCliente; })[0];
+      if (tmp && tmp.estado === 'enviando') { proximo(); return; }
+      if (!tmp) {
+        tmp = { tmp: item.idCliente, etapa: item.etapa, nome: item.nome, progresso: 0, url: item.mini ? URL.createObjectURL(item.mini) : null, estado: 'aguardando' };
+        lista.push(tmp);
+      }
+      enviarItem(item, tmp).then(function (r) {
+        if (!r.ok && r.codigo === 'REDE') { S.filaRodando = false; return; }
+        proximo();
+      });
+    };
+    proximo();
+  });
+}
+/* Ao abrir o app: mostra o que está guardado esperando sinal. */
+function carregarFila() {
+  filaTodos().then(function (itens) {
+    if (!itens.length) return;
+    itens.forEach(function (item) {
+      var lista = S.envios[item.idTarefa] || (S.envios[item.idTarefa] = []);
+      if (lista.some(function (x) { return x.tmp === item.idCliente; })) return;
+      lista.push({ tmp: item.idCliente, etapa: item.etapa, nome: item.nome, progresso: 0, url: item.mini ? URL.createObjectURL(item.mini) : null, estado: 'aguardando' });
+    });
+    avisar(itens.length + (itens.length === 1 ? ' anexo aguardando envio' : ' anexos aguardando envio'));
+    desenharAnexos();
+    processarFila();
+  });
+}
+window.addEventListener('online', function () { S.avisouFila = false; processarFila(); });
+
+/* ---------- Receber do WhatsApp (menu Compartilhar do Android) ---------- */
+function verificarCompartilhado() {
+  if (!ler('compartilhado') || S.compAberto || !S.dados) return;
+  compLer().then(function (c) {
+    guardar('compartilhado', null);
+    if (!c || (!(c.arquivos || []).length && !c.texto && !c.titulo && !c.link)) return;
+    S.comp = c;
+    abrirCompartilhado();
+  });
+}
+function textoCompartilhado(c) {
+  return [c.titulo, c.texto, c.link].filter(function (x, i, a) { return x && a.indexOf(x) === i; }).join('\n').trim();
+}
+function arquivosCompartilhados(c) {
+  return (c.arquivos || []).map(function (a) { return new File([a.blob], a.nome || 'arquivo', { type: a.tipo || (a.blob && a.blob.type) || 'application/octet-stream' }); });
+}
+function podeCriarAlgum() { return ((S.dados && S.dados.condos) || []).some(function (c) { return c.podeCriar; }); }
+
+function abrirCompartilhado() {
+  var c = S.comp; if (!c) return;
+  if (S.visao === 'concluidas') trocarVisao('abertas');
+  S.compAberto = true;
+  var fs = arquivosCompartilhados(c);
+  var txt = textoCompartilhado(c);
+  var soFotos = fs.length && fs.every(function (f) { return /^image\//.test(f.type); });
+  S.compEtapa = soFotos ? 'Antes' : 'Documento';
+  var miniaturas = fs.slice(0, 4).map(function (f) {
+    return /^image\//.test(f.type) ? '<img src="' + URL.createObjectURL(f) + '" alt="">' : '<span class="comp-doc">' + IC.doc + '<small>' + esc(f.name) + '</small></span>';
+  }).join('') + (fs.length > 4 ? '<span class="comp-mais">+' + (fs.length - 4) + '</span>' : '');
+  var h = '<div class="jan-corpo comp">' +
+    (fs.length ? '<div class="comp-recebidos">' + miniaturas + '</div>' : '') +
+    (txt ? '<div class="comp-msg"><p>' + esc(txt.length > 280 ? txt.slice(0, 280) + '…' : txt) + '</p>' +
+      '<label class="comp-check"><input type="checkbox" id="compSalvarMsg"' + (fs.length ? ' checked' : ' checked') + '> Salvar a mensagem como follow-up</label></div>' : '') +
+    (fs.length ? (soFotos
+      ? '<div class="rot-campo">Estas fotos são</div><div class="seg seg-largo" role="group" aria-label="Etapa">' +
+        ['Antes', 'Depois', 'Documento'].map(function (e) { return '<button type="button" data-competapa="' + e + '" aria-pressed="' + (e === S.compEtapa) + '">' + (e === 'Documento' ? 'Documento' : 'Do ' + e.toLowerCase()) + '</button>'; }).join('') + '</div>'
+      : '<p class="anx-nota">' + (fs.length === 1 ? 'O arquivo vai' : 'Os arquivos vão') + ' para o bloco Arquivos da tarefa.</p>') : '') +
+    (podeCriarAlgum() ? '<button type="button" class="bt claro comp-nova" data-compnova="">' + IC.mais + '<span>Nova tarefa com ' + (fs.length ? (fs.length === 1 ? 'este anexo' : 'estes anexos') : 'esta mensagem') + '</span></button>' : '') +
+    '<div class="conc-busca"><label class="sr" for="compBusca">Buscar tarefa</label>' + IC.lupa + '<input id="compBusca" type="search" placeholder="Buscar tarefa" autocomplete="off"></div>' +
+    '<div class="comp-lista" id="compLista"></div></div>';
+  var sub = fs.length ? (fs.length === 1 ? '1 arquivo recebido' : fs.length + ' arquivos recebidos') : 'Mensagem recebida';
+  abrirJanela('Anexar a qual tarefa?', sub, h, 'centro', function (raiz) {
+    var lista = raiz.querySelector('#compLista'), busca = raiz.querySelector('#compBusca');
+    var pintar = function () { lista.innerHTML = htmlListaCompartilhar(busca.value.trim()); };
+    pintar();
+    busca.addEventListener('input', pintar);
+    raiz.addEventListener('click', function (e) {
+      var et = e.target.closest('[data-competapa]');
+      if (et) {
+        S.compEtapa = et.getAttribute('data-competapa');
+        Array.prototype.forEach.call(raiz.querySelectorAll('[data-competapa]'), function (b) { b.setAttribute('aria-pressed', String(b === et)); });
+        return;
+      }
+      var tt = e.target.closest('[data-compt]');
+      if (tt) { aplicarCompartilhado(tt.getAttribute('data-compt'), raiz); return; }
+      var nv = e.target.closest('[data-compnova]');
+      if (nv) { novaPeloCompartilhado(nv.getAttribute('data-compnova') || busca.value.trim(), raiz); }
+    });
+  });
+  var obs = new MutationObserver(function () { if (!document.querySelector('#compLista')) { obs.disconnect(); S.compAberto = false; } });
+  obs.observe($('camadas'), { childList: true });
+}
+function semAcento(s) { return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+function htmlListaCompartilhar(q) {
+  var ts = (S.dados.tarefas || []).slice();
+  var nq = semAcento(q);
+  if (nq) ts = ts.filter(function (t) { return semAcento(t.titulo + ' ' + nomeCondo(t.condo) + ' ' + t.id).indexOf(nq) >= 0; });
+  if (!ts.length) {
+    return '<p class="cartao-meta comp-vazio">' + (q ? 'Nenhuma tarefa aberta com “' + esc(q) + '”.' : 'Nenhuma tarefa aberta.') + '</p>' +
+      (podeCriarAlgum() && q ? '<button type="button" class="bt comp-criar" data-compnova="' + esc(q) + '">' + IC.maisBranco + '<span>Criar tarefa “' + esc(q.charAt(0).toUpperCase() + q.slice(1)) + '”</span></button>' : '');
+  }
+  var ultima = lerLocal('ultimaTarefa');
+  var h = '';
+  var u = ts.filter(function (t) { return t.id === ultima; })[0];
+  if (u && !nq) h += '<div class="comp-grupo">Última aberta</div>' + itemCompartilhar(u);
+  gruposDaLista(ts).forEach(function (g) {
+    h += '<div class="comp-grupo">' + esc(nomeCondo(g.cod)) + '</div>' + g.tarefas.map(itemCompartilhar).join('');
+  });
+  return h;
+}
+function itemCompartilhar(t) {
+  return '<button type="button" class="comp-item" data-compt="' + esc(t.id) + '"><b>' + esc(t.titulo) + '</b><small>' + esc(t.id + ' · ' + t.empresa) +
+    contagemAnexos(t) + '</small></button>';
+}
+function contagemAnexos(t) {
+  var f = (t.nAntes || 0) + (t.nDepois || 0), d = t.nDocs || 0, p = [];
+  if (f) p.push(f + (f === 1 ? ' foto' : ' fotos'));
+  if (d) p.push(d + (d === 1 ? ' arquivo' : ' arquivos'));
+  return p.length ? ' · ' + p.join(', ') : '';
+}
+function aplicarCompartilhado(idTarefa, raiz) {
+  var c = S.comp; if (!c) return;
+  var fs = arquivosCompartilhados(c), txt = textoCompartilhado(c);
+  var salvarMsg = txt && raiz.querySelector('#compSalvarMsg') && raiz.querySelector('#compSalvarMsg').checked;
+  var etapa = S.compEtapa || 'Documento';
+  S.comp = null; compApagar(); fecharCamadas(); S.compAberto = false;
+  abrirTarefa(idTarefa);
+  var enviarArquivos = function (idObs) {
+    fs.forEach(function (f) { enviarAnexo(idTarefa, f, /^image\//.test(f.type) ? etapa : 'Documento', { origem: 'whatsapp', idObs: idObs || '' }); });
+  };
+  if (salvarMsg) {
+    api('tarefas.observar', { id: idTarefa, texto: txt.slice(0, 1000) }).then(function (r) {
+      if (r.ok && S.det && S.det.id === idTarefa) { S.det.observacoes = (S.det.observacoes || []).concat([r.observacao]); desenharDetalhe(); }
+      enviarArquivos(r.ok ? r.observacao.id : '');
+      if (!fs.length) avisar(r.ok ? 'Mensagem salva no follow-up' : r.mensagem, !r.ok);
+    });
+  } else enviarArquivos('');
+}
+function novaPeloCompartilhado(busca, raiz) {
+  var c = S.comp; if (!c) return;
+  var fs = arquivosCompartilhados(c), txt = textoCompartilhado(c);
+  var etapa = S.compEtapa || 'Documento';
+  var primeira = (txt.split('\n').filter(function (x) { return x.trim(); })[0] || '').trim();
+  var titulo = busca ? busca.charAt(0).toUpperCase() + busca.slice(1) : primeira.slice(0, 120);
+  S.compAberto = false;
+  abrirNova({
+    titulo: titulo,
+    descricao: txt && txt !== titulo ? txt.slice(0, 2000) : '',
+    anexos: fs.length,
+    aoCriar: function (nova) {
+      S.comp = null; compApagar();
+      abrirTarefa(nova.id);
+      fs.forEach(function (f) { enviarAnexo(nova.id, f, /^image\//.test(f.type) ? etapa : 'Documento', { origem: 'whatsapp' }); });
+    }
+  });
+}
 
 /* ================= Salvando: trava contra clique duplo ================= */
 var emCurso = {};
@@ -1898,6 +2168,7 @@ function desfazer(id) {
 
 /* ================= Tarefa aberta ================= */
 function abrirTarefa(id, silencioso) {
+  guardarLocal('ultimaTarefa', id);
   S.selId = id; S.editandoDesc = false; S.editandoTitulo = false;
   document.body.classList.add('com-sel');
   marcarSelecionado();
@@ -1994,6 +2265,14 @@ function desenharDetalhe() {
   var obs = t.observacoes || [];
   if (!obs.length) h += '<span class="cartao-meta">Nenhum follow-up ainda.</span>';
   obs.forEach(function (o) {
+    if (o.tipo === 'Anexo') {
+      var ax = (t.anexos || []).filter(function (a) { return a.id === o.idAnexo; })[0];
+      var frase = '<b>' + esc(String(o.autor).split(' ')[0]) + '</b> ' + esc(o.texto.charAt(0).toLowerCase() + o.texto.slice(1));
+      h += ax && !/^Excluiu/.test(o.texto)
+        ? '<button class="obs-auto" ' + (ax.etapa === 'Documento' ? 'data-baixar' : 'data-verfoto') + '="' + esc(ax.id) + '">' + IC.clipP + '<span>' + frase + '</span><time>' + esc(quando(o.em)) + '</time></button>'
+        : '<div class="obs-auto">' + (/^Excluiu/.test(o.texto) ? IC.lixoP : IC.clipP) + '<span>' + frase + '</span><time>' + esc(quando(o.em)) + '</time></div>';
+      return;
+    }
     h += '<div class="obs' + (o.excluida ? ' excluida' : '') + '"><div class="avatar" aria-hidden="true">' + esc(iniciais(o.autor)) + '</div>' +
       '<div class="obs-caixa"><span class="obs-autor">' + esc(o.autor) + ' · ' + esc(quando(o.em)) + '</span>' +
       '<span class="obs-texto">' + esc(o.texto) + '</span>' +
@@ -2339,7 +2618,7 @@ function carregarScript(src) {
 /** Registra o aparelho no motor (uma vez por dia, para manter o "último uso"). */
 function obterTokenPush(forcar) {
   var p = S.cfg.push;
-  return navigator.serviceWorker.register('sw.js?v=2', { scope: './' }).then(function (reg) {
+  return navigator.serviceWorker.register('sw.js?v=3', { scope: './' }).then(function (reg) {
     return (window.firebase && firebase.messaging ? Promise.resolve() : carregarScript(FB_SDK + 'firebase-app-compat.js').then(function () {
       return carregarScript(FB_SDK + 'firebase-messaging-compat.js');
     })).then(function () {
@@ -2755,7 +3034,8 @@ function abrirPerfil() {
 }
 
 /* ================= Nova tarefa ================= */
-function abrirNova() {
+function abrirNova(opcoes) {
+  opcoes = opcoes || {};
   if (S.visao === 'concluidas') trocarVisao('abertas');
   var d = S.dados;
   var condos = (d.condos || []).filter(function (c) { return c.podeCriar; });
@@ -2777,6 +3057,7 @@ function abrirNova() {
     '<div id="novaDirWrap"></div>' +
     '<button type="button" class="chave" role="switch" aria-checked="false" id="novaChaveDesc"><i aria-hidden="true"></i>Adicionar descrição</button>' +
     '<textarea class="campo" id="novaDesc" rows="3" maxlength="2000" placeholder="Uma explicação simples, se precisar" hidden></textarea>' +
+    (opcoes.anexos ? '<p class="nova-anexos">' + IC.clipP + '<span>' + opcoes.anexos + (opcoes.anexos === 1 ? ' arquivo recebido será anexado' : ' arquivos recebidos serão anexados') + ' à tarefa</span></p>' : '') +
     '<span class="erro-txt" id="novaErro" role="alert" hidden></span>' +
     '<div class="jan-rodape"><span></span><button class="bt" type="submit" id="novaCriar">Criar tarefa</button></div>' +
     '</form>';
@@ -2817,15 +3098,18 @@ function abrirNova() {
     });
     var mic = raiz.querySelector('#novaMic');
     if (mic) ligarMicrofone(mic, raiz.querySelector('#novaTitulo'));
+    if (opcoes.titulo) raiz.querySelector('#novaTitulo').value = opcoes.titulo;
+    if (opcoes.descricao) { chave.setAttribute('aria-checked', 'true'); raiz.querySelector('#novaDesc').hidden = false; raiz.querySelector('#novaDesc').value = opcoes.descricao; }
     setTimeout(function () { if (faixa() === 'computador') raiz.querySelector('#novaTitulo').focus(); }, 50);
     raiz.querySelector('#formNova').addEventListener('submit', function (e) {
       e.preventDefault();
-      criarTarefa(raiz, condoAtual(), false);
+      criarTarefa(raiz, condoAtual(), false, opcoes);
     });
   });
 }
 
-function criarTarefa(raiz, condo, confirmar) {
+function criarTarefa(raiz, condo, confirmar, opcoes) {
+  opcoes = opcoes || {};
   var titulo = raiz.querySelector('#novaTitulo').value.trim();
   var erro = raiz.querySelector('#novaErro');
   if (!titulo) { erro.textContent = 'Escreva o título da tarefa.'; erro.hidden = false; raiz.querySelector('#novaTitulo').focus(); return; }
@@ -2848,7 +3132,7 @@ function criarTarefa(raiz, condo, confirmar) {
       erro.innerHTML = 'Já existe uma tarefa pendente com esse título neste condomínio. ' +
         '<button type="button" class="bt-link" id="novaMesmoAssim">Criar mesmo assim</button>';
       erro.hidden = false;
-      raiz.querySelector('#novaMesmoAssim').addEventListener('click', function () { criarTarefa(raiz, condo, true); });
+      raiz.querySelector('#novaMesmoAssim').addEventListener('click', function () { criarTarefa(raiz, condo, true, opcoes); });
       return;
     }
     guardarLocal('ultimoCondo', condo);
@@ -2861,6 +3145,10 @@ function criarTarefa(raiz, condo, confirmar) {
       avisar('Tarefa de compras enviada para Compras');
     } else avisar('Tarefa criada');
     if (S.condo !== 'todos' && S.condo !== condo) S.condo = condo;
+    if (nova && opcoes.aoCriar) {
+      S.dados.tarefas = (S.dados.tarefas || []).concat([nova]);
+      opcoes.aoCriar(nova);
+    }
     recarregar();
   });
 }
@@ -3025,6 +3313,7 @@ document.addEventListener('click', function (e) {
     case 'reabrir': acaoDetalhe('reabrir', {}, function () { avisar('Tarefa reaberta'); invalidarConcluidas(); if (S.visao === 'concluidas') carregarConcluidas(); }, b, 'Reabrindo…'); break;
     case 'alternarGrupos': alternarGrupos(); break;
     case 'clipObs': abrirAnexar('Antes', 'obs'); break;
+    case 'tentarFila': S.avisouFila = false; processarFila(); break;
     case 'tirarClip': if (S.det) { delete S.anexoObs[S.det.id]; desenharDetalhe(); } break;
     case 'concPeriodo': abrirPeriodo(); break;
     case 'concMais': carregarConcluidas(true); break;
@@ -3086,6 +3375,11 @@ function carregarScriptGoogle() {
   document.head.appendChild(s);
 }
 function iniciar() {
+  try {
+    var qsC = new URLSearchParams(location.search);
+    if (qsC.get('compartilhado')) { guardar('compartilhado', '1'); history.replaceState(null, '', location.pathname); }
+  } catch (e) {}
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js?v=3', { scope: './' }).catch(function () {});
   lerConviteUrl();
   guardarLinkDireto();
   S.sessao = ler('sessao');
