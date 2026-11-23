@@ -147,6 +147,72 @@ button{cursor:pointer}
 .vazio{margin:0;padding:1.25em;text-align:center;color:var(--suave);font-size:.9375em;background:#fff;border-radius:1em}
 .carregando{padding:2.5em 1em;text-align:center;color:var(--suave)}
 
+
+/* ---------- v1.9: anexos e fotos Antes/Depois ---------- */
+.anx{gap:.75em}
+#blocoAnexos{display:flex;flex-direction:column;gap:1.25em}
+#blocoAnexos:empty{display:none}
+.anx-cab{display:flex;align-items:center;justify-content:space-between;gap:.5em}
+.anx-etapa{display:flex;flex-direction:column;gap:.45em;border-radius:.75em;transition:background .15s}
+.anx-rot{display:flex;align-items:center;gap:.45em;font-size:.875em;font-weight:700;color:var(--azul)}
+.anx-rot small{font-size:.85em;font-weight:600;color:var(--suave)}
+.anx-dot{width:.55em;height:.55em;border-radius:50%;background:#9AA3B8;display:inline-block}
+.anx-dot.d{background:var(--ouro)}
+.anx-faixa{display:flex;gap:.5em;flex-wrap:wrap}
+.anx-tile{width:4.5em;height:4.5em;border-radius:.65em;overflow:hidden;flex:none;position:relative;border:none;padding:0;background:var(--creme2);cursor:pointer}
+.anx-tile img{width:100%;height:100%;object-fit:cover;display:block}
+.anx-tile img:not([src]),.anx-tile img[src=""]{opacity:0}
+.anx-tile.enviando{cursor:default}
+.anx-prog{position:absolute;inset:0;background:rgba(15,38,70,.55);color:#fff;font-weight:700;font-size:.8125em;display:flex;align-items:center;justify-content:center}
+.anx-gira{width:1.4em;height:1.4em;border-radius:50%;border:2.5px solid rgba(255,255,255,.4);border-top-color:#E3C894;animation:gira .8s linear infinite;display:inline-block}
+.anx-add{width:4.5em;height:4.5em;border-radius:.65em;flex:none;border:1.5px dashed var(--ouro);background:var(--ouro-fundo,#FBF8F2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.15em;font-size:.6875em;font-weight:600;color:#7A5C27;padding:0;cursor:pointer}
+.anx-add.largo{width:auto;flex:1;min-width:12em;max-width:26em;flex-direction:row;gap:.5em;font-size:.875em}
+.anx-add.largo svg{stroke:#7A5C27;width:1.25em;height:1.25em}
+.anx-arq{display:flex;align-items:center;gap:.75em;min-height:3.25em}
+.anx-arq+.anx-arq{border-top:1px solid var(--linha2);padding-top:.5em}
+.anx-ext{width:2.6em;height:3em;border-radius:.45em;background:var(--creme2);flex:none;display:flex;align-items:flex-end;justify-content:center;padding-bottom:.4em;box-sizing:border-box;font-size:.625em;font-weight:800;letter-spacing:.04em;color:#fff}
+.anx-ext b{background:var(--azul);color:#fff;border-radius:.3em;padding:.15em .35em;font-size:1em}
+.anx-arq.enviando .anx-ext{align-items:center;padding:0}
+.anx-arq-abrir{flex:1;min-width:0;text-align:left;background:none;border:none;padding:0;display:flex;flex-direction:column;gap:.15em;color:inherit;cursor:pointer;min-height:2.75em;justify-content:center}
+.anx-arq-abrir b{font-size:.9375em;font-weight:600;color:var(--azul);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.anx-arq-abrir small{font-size:.8125em;color:var(--suave)}
+.anx-x{width:2.75em;height:2.75em;border-radius:50%;border:none;background:none;display:flex;align-items:center;justify-content:center;padding:0;flex:none}
+.anx-x.confirmar{background:var(--vinho-fundo)}
+.arrastando{background:var(--ouro-fundo,#FBF8F2);outline:2px dashed var(--ouro);outline-offset:4px}
+.anx-g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(9em,1fr));gap:.6em}
+.anx-gb{min-height:5.25em;border-radius:.875em;border:1.5px solid var(--linha);background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4em;font-weight:600;font-size:.9375em;color:var(--azul)}
+.anx-gb:hover{border-color:var(--ouro)}
+.menu-item.anx-doc{display:flex;align-items:center;gap:.75em;text-align:left;width:100%;min-height:3.5em;padding:.6em 1em;border:1.5px solid var(--linha);border-radius:.875em;background:#fff}
+.anx-doc span{display:flex;flex-direction:column}
+.anx-doc small{font-weight:500;color:var(--suave);font-size:.8125em}
+.anx-nota{margin:0;font-size:.8125em;color:var(--suave)}
+.anx-lembrete{display:flex;gap:.6em;align-items:flex-start;background:#FBF3E2;border:1px solid #EAD7AE;border-radius:.75em;padding:.75em .875em;font-size:.875em;color:#5A4520}
+.anx-lembrete svg{flex:none;width:1.25em;height:1.25em;stroke:#7A5C27}
+.cartao-anx{display:inline-flex;gap:.6em;margin-left:.5em;vertical-align:-.1em}
+.cartao-anx span{display:inline-flex;align-items:center;gap:.2em;font-weight:600}
+.obs-chip{text-align:left;display:inline-flex;align-items:center;gap:.4em;align-self:flex-start;min-height:2.25em;padding:0 .75em;margin-top:.35em;border-radius:.6em;border:1px solid var(--linha);background:var(--creme);font-size:.8125em;font-weight:600;color:var(--azul);cursor:pointer}
+.obs-anexo{display:flex;align-items:center;gap:.5em;background:var(--creme);border:1px solid var(--linha);border-radius:.6em;padding:.35em .4em .35em .75em;font-size:.8125em;font-weight:600;color:var(--azul)}
+.obs-anexo span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.obs-anexo button{width:2.25em;height:2.25em;border:none;background:none;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0}
+.bt-clip{width:2.75em;height:2.75em;border-radius:50%;border:none;background:var(--creme2);display:flex;align-items:center;justify-content:center;padding:0;flex:none}
+.visor{position:fixed;inset:0;z-index:120;background:#0B1220;color:#fff;display:flex;flex-direction:column}
+.visor-topo{display:flex;align-items:center;gap:.5em;padding:calc(.75em + var(--topo-seg,0px)) .75em .75em}
+.visor-topo span{flex:1;text-align:center;font-weight:600;font-size:.9375em}
+.visor-bt{width:2.75em;height:2.75em;border-radius:50%;border:none;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;padding:0}
+.visor-foto{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;touch-action:pan-y}
+.visor-foto img{max-width:100%;max-height:100%;object-fit:contain}
+.visor-seta{position:absolute;top:50%;transform:translateY(-50%);width:3em;height:3em;border-radius:50%;border:none;background:rgba(255,255,255,.88);display:flex;align-items:center;justify-content:center;padding:0}
+.visor-seta.esq{left:.75em}.visor-seta.dir{right:.75em}
+.visor-carr{position:absolute;bottom:1em;right:1em}
+.visor-carr[hidden]{display:none}
+.visor-base{padding:.75em 1em calc(1.25em + var(--baixo-seg,0px));display:flex;flex-direction:column;gap:.75em}
+.visor-base b{display:block;font-size:.9375em}
+.visor-base small{font-size:.8125em;color:#AEB6C8}
+.visor-acoes{display:flex;gap:.5em}
+.visor-acao{flex:1;min-height:3em;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;font-weight:600;display:flex;align-items:center;justify-content:center;gap:.5em}
+.visor-acao.perigo{flex:none;padding:0 1.1em;color:#F2B8B8}
+.visor-acao.confirmar{background:rgba(138,46,46,.5)}
+@media (max-width:767px){.visor-seta{display:none}}
 /* ---------- v1.8: lista por condomínio e Abertas | Concluídas ---------- */
 .cab .bt{margin-left:auto}
 .alt-visao{display:flex;background:var(--creme2);border-radius:999px;padding:.2em;gap:.15em;flex:none}
@@ -572,7 +638,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.8';
+var VERSAO_SITE = '1.9';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -590,7 +656,8 @@ var S = {
   cfg: null, sessao: null, google: null, portal: null, dados: null,
   condo: 'todos', selId: null, det: null, carregandoDet: false,
   visao: 'abertas', conc: { periodo: 'mes', agrupar: lerLocal('concAgrupar') || 'data', empresa: '', busca: '', res: null, chave: null },
-  rascunhoObs: {}, ultimaConclusao: null, editandoDesc: false
+  rascunhoObs: {}, ultimaConclusao: null, editandoDesc: false,
+  envios: {}, mini: {}, miniPedidas: {}, baixando: {}, anexoObs: {}, visor: null, abrirAnexarDepois: null
 };
 
 /* ================= Utilidades ================= */
@@ -674,6 +741,20 @@ var IC = {
   calOuro: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
   baixoOuro: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
   lupa: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7D8699" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>',
+  camera: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+  imagem: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>',
+  mais: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A5C27" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
+  lixo: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>',
+  nuvem: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A5C27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V8M8 12l4-4 4 4"/><path d="M20 16.6A5 5 0 0 0 18 7h-1.3A8 8 0 1 0 4 15.3"/></svg>',
+  compartBranco: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/></svg>',
+  setaEsq: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>',
+  setaDir: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>',
+  baixarBranco: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>',
+  lixoClaro: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2B8B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>',
+  cameraP: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+  clipP: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>',
+  clip: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>',
+  cameraOuro: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
   att: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5C6680" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>'
 };
 
@@ -989,7 +1070,7 @@ function cartao(t, agrupado) {
       '<span class="cartao-titulo">' + esc(t.titulo) +
         (podeCompartilhar(t.condo) ? '<span class="compart" data-compartilhar="' + esc(t.id) + '" role="button" aria-label="Compartilhar: ' + esc(t.titulo) + '">' + IC.compart + '</span>' : '') +
       '</span>' +
-      '<span class="cartao-meta">' + esc(metaDe(t, agrupado)) + '</span>' +
+      '<span class="cartao-meta">' + esc(metaDe(t, agrupado)) + anxInd(t) + '</span>' +
       (t.etiqueta ? '<span class="etiqueta">' + esc(t.etiqueta) + '</span>' : '') +
     '</button>' +
     '<button class="concluir" data-concluir="' + esc(t.id) + '" aria-label="Concluir: ' + esc(t.titulo) + '">' + IC.check + '</button>' +
@@ -1261,6 +1342,467 @@ function abrirPeriodo() {
   });
 }
 
+/* ================= Anexos: fotos Antes/Depois e documentos (v1.9) ================= */
+var ANX_PARTE = 5 * 1024 * 1024;
+var CACHE_ANX = 'sindico-anexos-v1';
+var ETAPA_ROT = { Antes: 'do antes', Depois: 'do depois' };
+
+function cacheLer(chave) {
+  if (!('caches' in window)) return Promise.resolve(null);
+  return caches.open(CACHE_ANX).then(function (c) { return c.match('/anx/' + chave); })
+    .then(function (r) { return r ? r.blob() : null; }).catch(function () { return null; });
+}
+function cacheGravar(chave, blob) {
+  if (!('caches' in window) || !blob) return;
+  caches.open(CACHE_ANX).then(function (c) { return c.put('/anx/' + chave, new Response(blob)); }).catch(function () {});
+}
+function b64ParaBlob(b64, tipo) {
+  var bin = atob(b64), n = bin.length, u = new Uint8Array(n);
+  for (var i = 0; i < n; i++) u[i] = bin.charCodeAt(i);
+  return new Blob([u], { type: tipo || 'application/octet-stream' });
+}
+function blobParaB64(blob) {
+  return new Promise(function (ok, erro) {
+    var fr = new FileReader();
+    fr.onload = function () { var s = String(fr.result); ok(s.slice(s.indexOf(',') + 1)); };
+    fr.onerror = function () { erro(new Error('leitura')); };
+    fr.readAsDataURL(blob);
+  });
+}
+function tamanhoTxt(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return Math.round(b / 1024) + ' KB';
+  return (b / 1048576).toFixed(1).replace('.', ',') + ' MB';
+}
+function nomeCurtoAnexo(a) { var p = String(a.nome || '').split(' · '); return p.length > 1 && /-T-\d+$/.test(p[0]) ? p.slice(1).join(' · ') : a.nome; }
+function extAnexo(a) {
+  var m = /\.([a-z0-9]{1,5})$/i.exec(a.nome || '');
+  if (m) return m[1].toUpperCase().slice(0, 4);
+  return /pdf/.test(a.tipo) ? 'PDF' : /image/.test(a.tipo) ? 'IMG' : 'ARQ';
+}
+
+/* ---------- Fotos: reduzir no próprio aparelho (1600 px + miniatura de 320 px, JPEG, sem localização) ---------- */
+function carregarImg(file) {
+  return new Promise(function (ok, erro) {
+    var u = URL.createObjectURL(file), im = new Image();
+    im.onload = function () { ok(im); };
+    im.onerror = function () { URL.revokeObjectURL(u); erro(new Error('formato')); };
+    im.src = u;
+  });
+}
+function carregarImagem(file) {
+  if (window.createImageBitmap) {
+    return createImageBitmap(file, { imageOrientation: 'from-image' }).catch(function () { return carregarImg(file); });
+  }
+  return carregarImg(file);
+}
+function reduzir(img, lado, q) {
+  var w = img.width, h = img.height, k = Math.min(1, lado / Math.max(w, h));
+  var c = document.createElement('canvas');
+  c.width = Math.max(1, Math.round(w * k)); c.height = Math.max(1, Math.round(h * k));
+  var x = c.getContext('2d');
+  x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height);
+  x.drawImage(img, 0, 0, c.width, c.height);
+  return new Promise(function (ok) { c.toBlob(function (b) { ok(b); }, 'image/jpeg', q); });
+}
+function prepararFoto(file) {
+  return carregarImagem(file).then(function (img) { return Promise.all([reduzir(img, 1600, 0.78), reduzir(img, 320, 0.7)]); });
+}
+
+/* ---------- Enviar ---------- */
+function ajustarContagem(idTarefa, etapa, delta) {
+  var t = ((S.dados && S.dados.tarefas) || []).filter(function (x) { return x.id === idTarefa; })[0];
+  if (!t) return;
+  var k = etapa === 'Antes' ? 'nAntes' : etapa === 'Depois' ? 'nDepois' : 'nDocs';
+  t[k] = Math.max(0, (t[k] || 0) + delta);
+}
+
+function enviarAnexo(idTarefa, file, etapa, extra) {
+  extra = extra || {};
+  var envios = S.envios[idTarefa] || (S.envios[idTarefa] = []);
+  var tmp = { tmp: 'tmp' + Date.now() + Math.random(), etapa: etapa, nome: file.name || 'foto.jpg', progresso: 0, url: null };
+  envios.push(tmp);
+  desenharAnexos();
+  var foto = etapa !== 'Documento';
+  var original = file.size;
+  var prep = foto ? prepararFoto(file) : Promise.resolve([file, null]);
+  return prep.then(function (par) {
+    var blob = par[0], mini = par[1];
+    if (mini) tmp.url = URL.createObjectURL(mini);
+    var limite = ((S.dados.regras && S.dados.regras.tamArquivoMB) || 25) * 1048576;
+    if (blob.size > limite) throw { mensagem: 'O arquivo passa de ' + Math.round(limite / 1048576) + ' MB. Envie um link no follow-up.' };
+    var nome = foto ? String(file.name || 'foto').replace(/\.[^.]+$/, '') + '.jpg' : (file.name || 'arquivo');
+    var tipo = foto ? 'image/jpeg' : (file.type || 'application/octet-stream');
+    desenharAnexos();
+    return (mini ? blobParaB64(mini) : Promise.resolve('')).then(function (m64) {
+      var base = { id: idTarefa, etapa: etapa, nome: nome, tipo: tipo, tamanho: blob.size, miniatura: m64, idObs: extra.idObs || '' };
+      if (blob.size <= ANX_PARTE) {
+        return blobParaB64(blob).then(function (b64) { base.dados = b64; return api('tarefas.anexoIniciar', base); })
+          .then(function (r) { return { r: r, blob: blob, mini: mini }; });
+      }
+      return api('tarefas.anexoIniciar', base).then(function (r) {
+        if (!r.ok) return { r: r };
+        return enviarPartes(r.upload, r.parte || ANX_PARTE, blob, tmp).then(function (r2) { return { r: r2, blob: blob, mini: mini }; });
+      });
+    });
+  }).then(function (x) {
+    var r = x.r;
+    tirarEnvio(idTarefa, tmp);
+    if (!r.ok) { avisar(r.mensagem, true); desenharAnexos(); return r; }
+    var a = r.anexo;
+    if (x.mini) { S.mini[a.id] = tmp.url; cacheGravar('mini-' + a.id, x.mini); }
+    if (foto && x.blob) cacheGravar('arq-' + a.id, x.blob);
+    if (S.det && S.det.id === idTarefa) S.det.anexos = (S.det.anexos || []).concat([a]);
+    ajustarContagem(idTarefa, etapa, 1);
+    avisar(foto ? 'Foto ' + ETAPA_ROT[etapa] + ' enviada' + (original > x.blob.size * 1.5 ? ' · ' + tamanhoTxt(original) + ' → ' + tamanhoTxt(x.blob.size) : '') : 'Arquivo anexado');
+    if (S.det && S.det.id === idTarefa) desenharDetalhe(); else desenhar();
+    return r;
+  }).catch(function (e) {
+    tirarEnvio(idTarefa, tmp);
+    avisar((e && e.mensagem) || (e && e.message === 'formato' ? 'Não deu para abrir esta foto. Tente tirar pela câmera ou escolher outra.' : 'Não foi possível enviar. Tente de novo.'), true);
+    desenharAnexos();
+    return { ok: false };
+  });
+}
+function tirarEnvio(idTarefa, tmp) {
+  S.envios[idTarefa] = (S.envios[idTarefa] || []).filter(function (x) { return x !== tmp; });
+}
+function enviarPartes(upload, parte, blob, tmp) {
+  var tentar = function (inicio, falhas) {
+    var pedaco = blob.slice(inicio, Math.min(blob.size, inicio + parte));
+    return blobParaB64(pedaco).then(function (b64) { return api('tarefas.anexoParte', { upload: upload, inicio: inicio, dados: b64 }); })
+      .then(function (r) {
+        if (!r.ok) {
+          if (r.codigo === 'REDE' && falhas < 3) return new Promise(function (ok) { setTimeout(ok, 2000 * (falhas + 1)); }).then(function () { return tentar(inicio, falhas + 1); });
+          return r;
+        }
+        if (r.anexo) return r;
+        tmp.progresso = Math.round((r.recebido / blob.size) * 100);
+        desenharAnexos();
+        return tentar(r.recebido, 0);
+      });
+  };
+  return tentar(0, 0);
+}
+
+/* ---------- Escolher foto ou arquivo ---------- */
+function escolherArquivos(tipo, aoEscolher) {
+  var inp = document.createElement('input');
+  inp.type = 'file';
+  inp.style.display = 'none';
+  if (tipo === 'camera') { inp.accept = 'image/*'; inp.setAttribute('capture', 'environment'); }
+  else if (tipo === 'galeria') { inp.accept = 'image/*'; inp.multiple = true; }
+  else inp.accept = '.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.ppt,.pptx,.dwg,.zip,image/*';
+  inp.addEventListener('change', function () {
+    var fs = Array.prototype.slice.call(inp.files || []);
+    document.body.removeChild(inp);
+    if (fs.length) aoEscolher(fs);
+  });
+  document.body.appendChild(inp);
+  inp.click();
+}
+
+function abrirAnexar(etapaInicial, modo) {
+  var t = S.det; if (!t) return;
+  var etapa = etapaInicial === 'Depois' ? 'Depois' : 'Antes';
+  var mb = (S.dados.regras && S.dados.regras.tamArquivoMB) || 25;
+  var pc = faixa() === 'computador';
+  var h = '<div class="jan-corpo">' +
+    '<div class="rot-campo">Foto da ocorrência</div>' +
+    '<div class="seg seg-largo" role="group" aria-label="Etapa da foto">' +
+      '<button type="button" data-etapa="Antes" aria-pressed="' + (etapa === 'Antes') + '">Antes</button>' +
+      '<button type="button" data-etapa="Depois" aria-pressed="' + (etapa === 'Depois') + '">Depois</button></div>' +
+    '<div class="anx-g2">' +
+      (pc ? '' : '<button type="button" class="anx-gb" data-pegar="camera">' + IC.camera + '<span>Tirar foto</span></button>') +
+      '<button type="button" class="anx-gb" data-pegar="galeria">' + IC.imagem + '<span>' + (pc ? 'Escolher fotos' : 'Da galeria') + '</span></button></div>' +
+    '<div class="rot-campo">Documento</div>' +
+    '<button type="button" class="menu-item anx-doc" data-pegar="doc">' + IC.doc + '<span><b>Escolher arquivo</b><small>PDF, planilha, Word ou imagem · até ' + mb + ' MB</small></span></button>' +
+    '<p class="anx-nota">As fotos são otimizadas no próprio aparelho antes de enviar: chegam em segundos e ocupam pouco espaço.' + (pc ? ' Você também pode arrastar fotos e arquivos direto para a tarefa.' : '') + '</p></div>';
+  abrirJanela(modo === 'obs' ? 'Anexar ao follow-up' : 'Anexar à tarefa', nomeCondo(t.condo) + ' · ' + t.id, h, 'centro', function (raiz) {
+    raiz.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-etapa]');
+      if (b) {
+        etapa = b.getAttribute('data-etapa');
+        Array.prototype.forEach.call(raiz.querySelectorAll('[data-etapa]'), function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+        return;
+      }
+      var p = e.target.closest('[data-pegar]'); if (!p) return;
+      var tipo = p.getAttribute('data-pegar');
+      var et = tipo === 'doc' ? 'Documento' : etapa;
+      var idT = t.id;
+      escolherArquivos(tipo, function (fs) {
+        fecharCamadas();
+        if (modo === 'obs') { S.anexoObs[idT] = { file: fs[0], etapa: et }; desenharDetalhe(); var el = $('txtObs'); if (el) el.focus(); return; }
+        fs.slice(0, 10).forEach(function (f) { enviarAnexo(idT, f, et); });
+      });
+    });
+  });
+}
+
+/* ---------- Desenho dos blocos ---------- */
+function htmlAnexos(t) {
+  var ax = t.anexos || [], env = S.envios[t.id] || [];
+  var pode = !!(t.pode && t.pode.anexar);
+  var fotosDe = function (e) { return ax.filter(function (a) { return a.etapa === e; }); };
+  var envDe = function (e) { return env.filter(function (a) { return a.etapa === e; }); };
+  var nFotos = fotosDe('Antes').length + fotosDe('Depois').length + envDe('Antes').length + envDe('Depois').length;
+  var h = '';
+  if (nFotos || pode) {
+    h += '<section class="bloco anx" aria-label="Fotos"><span class="rotulo">Fotos</span>';
+    ['Antes', 'Depois'].forEach(function (e) {
+      var fs = fotosDe(e), es = envDe(e);
+      h += '<div class="anx-etapa" data-drop="' + e + '"><div class="anx-rot"><i class="anx-dot' + (e === 'Depois' ? ' d' : '') + '"></i>' + e + ' <small>' + (fs.length + es.length) + '</small></div><div class="anx-faixa">';
+      fs.forEach(function (a, i) {
+        h += '<button class="anx-tile" data-verfoto="' + esc(a.id) + '" aria-label="Foto ' + ETAPA_ROT[e] + ' ' + (i + 1) + '">' +
+          (S.mini[a.id] ? '<img src="' + S.mini[a.id] + '" alt="">' : '<img data-mini="' + esc(a.id) + '" alt="">') + '</button>';
+      });
+      es.forEach(function (x) {
+        h += '<div class="anx-tile enviando" aria-label="Enviando foto">' + (x.url ? '<img src="' + x.url + '" alt="">' : '') +
+          '<span class="anx-prog">' + (x.progresso ? x.progresso + '%' : '<i class="anx-gira"></i>') + '</span></div>';
+      });
+      if (pode && fs.length + es.length < 10) {
+        if (e === 'Depois' && !fs.length && !es.length) h += '<button class="anx-add largo" data-anexar="Depois">' + IC.camera + '<span>Adicionar foto do depois</span></button>';
+        else h += '<button class="anx-add" data-anexar="' + e + '" aria-label="Adicionar foto ' + ETAPA_ROT[e] + '">' + IC.mais + '<span>Foto</span></button>';
+      }
+      h += '</div></div>';
+    });
+    h += '</section>';
+  }
+  var docs = ax.filter(function (a) { return a.etapa === 'Documento'; }), envDocs = envDe('Documento');
+  if (docs.length || envDocs.length || pode) {
+    h += '<section class="bloco anx" aria-label="Arquivos" data-drop="Documento"><div class="anx-cab"><span class="rotulo">Arquivos</span>' +
+      (pode ? '<button class="bt-link" data-anexar="Documento">+ Anexar arquivo</button>' : '') + '</div>';
+    if (!docs.length && !envDocs.length) h += '<span class="cartao-meta">Nenhum arquivo ainda.' + (faixa() === 'computador' ? ' Arraste um arquivo para cá.' : '') + '</span>';
+    docs.forEach(function (a) {
+      var b = S.baixando[a.id];
+      h += '<div class="anx-arq"><span class="anx-ext"><b>' + esc(extAnexo(a)) + '</b></span>' +
+        '<button class="anx-arq-abrir" data-baixar="' + esc(a.id) + '"><b>' + esc(nomeCurtoAnexo(a)) + '</b><small>' +
+        (b != null ? 'Baixando… ' + b + '%' : esc(tamanhoTxt(a.tamanho) + ' · ' + a.por + ' · ' + quando(a.em))) + '</small></button>' +
+        (a.podeExcluir ? '<button class="anx-x" data-excluiranx="' + esc(a.id) + '" aria-label="Excluir ' + esc(nomeCurtoAnexo(a)) + '">' + IC.lixo + '</button>' : '') + '</div>';
+    });
+    envDocs.forEach(function (x) {
+      h += '<div class="anx-arq enviando"><span class="anx-ext">' + IC.nuvem + '</span><span class="anx-arq-abrir"><b>' + esc(x.nome) + '</b><small>Enviando… ' + (x.progresso || 0) + '%</small></span></div>';
+    });
+    h += '</section>';
+  }
+  return h;
+}
+function desenharAnexos() {
+  var el = $('blocoAnexos');
+  if (!el || !S.det) return;
+  el.innerHTML = htmlAnexos(S.det);
+  carregarMiniaturas();
+}
+
+function carregarMiniaturas() {
+  var faltam = Array.prototype.map.call(document.querySelectorAll('img[data-mini]'), function (im) { return im.getAttribute('data-mini'); })
+    .filter(function (id, i, a) { return a.indexOf(id) === i && !S.mini[id] && !S.miniPedidas[id]; });
+  if (!faltam.length) return;
+  faltam.forEach(function (id) { S.miniPedidas[id] = true; });
+  var porRede = [];
+  Promise.all(faltam.map(function (id) {
+    return cacheLer('mini-' + id).then(function (b) { if (b) S.mini[id] = URL.createObjectURL(b); else porRede.push(id); });
+  })).then(function () {
+    pintarMiniaturas();
+    if (!porRede.length) return;
+    api('tarefas.miniaturas', { ids: porRede }).then(function (r) {
+      porRede.forEach(function (id) { delete S.miniPedidas[id]; });
+      if (!r.ok) return;
+      Object.keys(r.itens || {}).forEach(function (id) {
+        var b = b64ParaBlob(r.itens[id], 'image/jpeg');
+        S.mini[id] = URL.createObjectURL(b);
+        cacheGravar('mini-' + id, b);
+      });
+      pintarMiniaturas();
+    });
+  });
+}
+function pintarMiniaturas() {
+  Array.prototype.forEach.call(document.querySelectorAll('img[data-mini]'), function (im) {
+    var id = im.getAttribute('data-mini');
+    if (S.mini[id]) { im.src = S.mini[id]; im.removeAttribute('data-mini'); }
+  });
+}
+
+/* ---------- Baixar e abrir ---------- */
+function baixarArquivo(a, aoProgresso) {
+  return cacheLer('arq-' + a.id).then(function (b) {
+    if (b) return b;
+    var partes = [];
+    var pedaco = function (inicio) {
+      return api('tarefas.anexoBaixar', { id: a.id, inicio: inicio }).then(function (r) {
+        if (!r.ok) throw r;
+        var bl = b64ParaBlob(r.dados, r.tipo);
+        partes.push(bl);
+        var feito = inicio + bl.size;
+        if (aoProgresso && r.total) aoProgresso(Math.min(100, Math.round(feito / r.total * 100)));
+        if (r.fim || !bl.size) {
+          var tudo = new Blob(partes, { type: r.tipo });
+          if (tudo.size <= 10 * 1048576) cacheGravar('arq-' + a.id, tudo);
+          return tudo;
+        }
+        return pedaco(feito);
+      });
+    };
+    return pedaco(0);
+  });
+}
+function anexoPorId(id) { return ((S.det && S.det.anexos) || []).filter(function (a) { return a.id === id; })[0]; }
+function abrirDocumento(id) {
+  var a = anexoPorId(id); if (!a || S.baixando[id] != null) return;
+  S.baixando[id] = 0; desenharAnexos();
+  baixarArquivo(a, function (p) { S.baixando[id] = p; desenharAnexos(); }).then(function (blob) {
+    delete S.baixando[id]; desenharAnexos();
+    salvarBlob(blob, nomeCurtoAnexo(a), faixa() === 'computador' && /pdf|image/.test(a.tipo));
+  }).catch(function (e) {
+    delete S.baixando[id]; desenharAnexos();
+    avisar((e && e.mensagem) || 'Não foi possível baixar agora.', true);
+  });
+}
+function salvarBlob(blob, nome, tentarAbrir) {
+  var url = URL.createObjectURL(blob);
+  if (tentarAbrir) { var w = window.open(url, '_blank'); if (w) { setTimeout(function () { URL.revokeObjectURL(url); }, 60000); return; } }
+  var lk = document.createElement('a');
+  lk.href = url; lk.download = nome || 'arquivo';
+  document.body.appendChild(lk); lk.click(); document.body.removeChild(lk);
+  setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+}
+
+/* ---------- Ver foto em tela cheia ---------- */
+function fotosDaTarefa() {
+  var ax = (S.det && S.det.anexos) || [];
+  return ax.filter(function (a) { return a.etapa === 'Antes'; }).concat(ax.filter(function (a) { return a.etapa === 'Depois'; }));
+}
+function abrirFoto(id) {
+  var lista = fotosDaTarefa();
+  var i = lista.map(function (a) { return a.id; }).indexOf(id);
+  if (i < 0) return;
+  S.visor = { lista: lista, i: i };
+  desenharVisor();
+  document.addEventListener('keydown', teclaVisor);
+  document.addEventListener('keydown', escFecha);
+}
+function teclaVisor(e) {
+  if (!S.visor) { document.removeEventListener('keydown', teclaVisor); return; }
+  if (e.key === 'ArrowLeft') passarFoto(-1);
+  if (e.key === 'ArrowRight') passarFoto(1);
+}
+function passarFoto(d) {
+  var v = S.visor; if (!v) return;
+  var n = v.i + d;
+  if (n < 0 || n >= v.lista.length) return;
+  v.i = n; desenharVisor();
+}
+function fecharVisor() { S.visor = null; fecharCamadas(); document.removeEventListener('keydown', teclaVisor); }
+function desenharVisor() {
+  var v = S.visor; if (!v) return;
+  var a = v.lista[v.i];
+  var mesmas = v.lista.filter(function (x) { return x.etapa === a.etapa; });
+  var pos = mesmas.indexOf(a) + 1;
+  var h = '<div class="visor" role="dialog" aria-modal="true" aria-label="Foto ' + ETAPA_ROT[a.etapa] + '">' +
+    '<div class="visor-topo"><button class="visor-bt" data-visor="fechar" aria-label="Fechar">' + IC.fechar + '</button>' +
+      '<span>' + a.etapa + ' · ' + pos + ' de ' + mesmas.length + '</span>' +
+      '<button class="visor-bt" data-visor="compartilhar" aria-label="Compartilhar foto">' + IC.compartBranco + '</button></div>' +
+    '<div class="visor-foto" id="visorFoto"><img id="visorImg" src="' + (S.mini[a.id] || '') + '" alt="Foto ' + ETAPA_ROT[a.etapa] + ' ' + pos + '">' +
+      (v.i > 0 ? '<button class="visor-seta esq" data-visor="ant" aria-label="Foto anterior">' + IC.setaEsq + '</button>' : '') +
+      (v.i < v.lista.length - 1 ? '<button class="visor-seta dir" data-visor="prox" aria-label="Próxima foto">' + IC.setaDir + '</button>' : '') +
+      '<span class="visor-carr" id="visorCarr"><i class="anx-gira"></i></span></div>' +
+    '<div class="visor-base"><div><b>' + esc(a.legenda || (a.etapa === 'Antes' ? 'Antes do serviço' : 'Depois do serviço')) + '</b>' +
+      '<small>' + esc(a.por + ' · ' + quando(a.em) + ' · ' + a.idTarefa) + '</small></div>' +
+      '<div class="visor-acoes"><button class="visor-acao" data-visor="baixar">' + IC.baixarBranco + '<span>Baixar</span></button>' +
+      (a.podeExcluir ? '<button class="visor-acao perigo" data-visor="excluir" id="visorExcluir">' + IC.lixoClaro + '<span>Excluir</span></button>' : '') + '</div></div></div>';
+  $('camadas').innerHTML = h;
+  document.body.classList.add('janela-aberta');
+  var raiz = $('camadas').querySelector('.visor');
+  raiz.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-visor]'); if (!b) return;
+    var o = b.getAttribute('data-visor');
+    if (o === 'fechar') fecharVisor();
+    if (o === 'ant') passarFoto(-1);
+    if (o === 'prox') passarFoto(1);
+    if (o === 'baixar') baixarArquivo(a).then(function (bl) { salvarBlob(bl, nomeCurtoAnexo(a), false); }, function () { avisar('Não foi possível baixar agora.', true); });
+    if (o === 'compartilhar') compartilharFoto(a);
+    if (o === 'excluir') confirmarExcluirAnexo(a.id, b);
+  });
+  var x0 = null;
+  var area = $('visorFoto');
+  area.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  area.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 50) passarFoto(dx < 0 ? 1 : -1);
+  });
+  baixarArquivo(a).then(function (bl) {
+    if (!S.visor || S.visor.lista[S.visor.i] !== a) return;
+    var im = $('visorImg'); if (im) im.src = URL.createObjectURL(bl);
+    var c = $('visorCarr'); if (c) c.hidden = true;
+  }, function () { var c = $('visorCarr'); if (c) c.hidden = true; });
+}
+function compartilharFoto(a) {
+  baixarArquivo(a).then(function (bl) {
+    var arq = new File([bl], nomeCurtoAnexo(a), { type: 'image/jpeg' });
+    var tar = S.det ? textoDe(S.det) : '';
+    if (navigator.canShare && navigator.canShare({ files: [arq] })) {
+      navigator.share({ files: [arq], title: tar, text: tar + ' · foto ' + ETAPA_ROT[a.etapa] }).catch(function () {});
+    } else salvarBlob(bl, nomeCurtoAnexo(a), false);
+  }, function () { avisar('Não foi possível abrir a foto agora.', true); });
+}
+
+/* ---------- Excluir (segundo toque confirma) ---------- */
+function confirmarExcluirAnexo(id, bt) {
+  if (bt.getAttribute('data-confirmar') !== '1') {
+    bt.setAttribute('data-confirmar', '1');
+    var sp = bt.querySelector('span');
+    var antes = sp ? sp.textContent : '';
+    if (sp) sp.textContent = 'Toque de novo para excluir'; else bt.setAttribute('aria-label', 'Toque de novo para excluir');
+    bt.classList.add('confirmar');
+    setTimeout(function () { if (document.body.contains(bt)) { bt.removeAttribute('data-confirmar'); bt.classList.remove('confirmar'); if (sp) sp.textContent = antes; } }, 3500);
+    return;
+  }
+  var a = anexoPorId(id); if (!a) return;
+  umaVez('excluirAnexo:' + id, bt, 'Excluindo…', function () { return api('tarefas.excluirAnexo', { id: id }); }).then(function (r) {
+    if (r.ignorado) return;
+    if (!r.ok) { avisar(r.mensagem, true); return; }
+    if (S.det) S.det.anexos = (S.det.anexos || []).filter(function (x) { return x.id !== id; });
+    ajustarContagem(a.idTarefa, a.etapa, -1);
+    avisar(a.etapa === 'Documento' ? 'Arquivo excluído' : 'Foto excluída');
+    if (S.visor) fecharVisor();
+    desenharDetalhe();
+  });
+}
+
+/* ---------- Indicadores no cartão ---------- */
+function anxInd(t) {
+  var f = (t.nAntes || 0) + (t.nDepois || 0), d = t.nDocs || 0;
+  if (!f && !d) return '';
+  return '<span class="cartao-anx">' + (f ? '<span title="Fotos">' + IC.cameraP + f + '</span>' : '') + (d ? '<span title="Arquivos">' + IC.clipP + d + '</span>' : '') + '</span>';
+}
+
+/* ---------- Arrastar e soltar (computador) ---------- */
+document.addEventListener('dragover', function (e) {
+  var z = e.target.closest && e.target.closest('#detalhe [data-drop]');
+  if (!z || !S.det || !(S.det.pode && S.det.pode.anexar)) return;
+  e.preventDefault();
+  Array.prototype.forEach.call(document.querySelectorAll('.arrastando'), function (x) { if (x !== z) x.classList.remove('arrastando'); });
+  z.classList.add('arrastando');
+});
+document.addEventListener('dragleave', function (e) {
+  var z = e.target.closest && e.target.closest('[data-drop]');
+  if (z && !z.contains(e.relatedTarget)) z.classList.remove('arrastando');
+});
+document.addEventListener('drop', function (e) {
+  var z = e.target.closest && e.target.closest('#detalhe [data-drop]');
+  if (!z || !S.det || !(S.det.pode && S.det.pode.anexar)) return;
+  e.preventDefault();
+  z.classList.remove('arrastando');
+  var etapa = z.getAttribute('data-drop');
+  var fs = Array.prototype.slice.call((e.dataTransfer && e.dataTransfer.files) || []);
+  if (etapa !== 'Documento') fs = fs.filter(function (f) { return /^image\//.test(f.type); });
+  if (!fs.length) { avisar(etapa === 'Documento' ? 'Nenhum arquivo.' : 'Antes e Depois aceitam só fotos.', true); return; }
+  var id = S.det.id;
+  fs.slice(0, 10).forEach(function (f) { enviarAnexo(id, f, etapa); });
+});
+
 /* ================= Salvando: trava contra clique duplo ================= */
 var emCurso = {};
 /* Marca o botão (ou campo) como ocupado; a bolinha só aparece se demorar mais de 250 ms. Devolve a função que libera. */
@@ -1297,11 +1839,20 @@ function umaVez(chave, el, texto, fazer) {
 /* ================= Concluir: confirmação + desfazer ================= */
 function confirmarConcluir(id) {
   var t = tarefaPorId(id); if (!t) return;
+  var tl = ((S.dados && S.dados.tarefas) || []).filter(function (x) { return x.id === id; })[0] || t;
+  if (S.det && S.det.id === id) { var axd = S.det.anexos || []; tl.nAntes = axd.filter(function (a) { return a.etapa === 'Antes'; }).length; tl.nDepois = axd.filter(function (a) { return a.etapa === 'Depois'; }).length; }
+  var lembrarDepois = (tl.nAntes || 0) > 0 && !(tl.nDepois || 0);
+  t = Object.assign({}, t, { nAntes: tl.nAntes || 0 });
   var h = '<div class="jan-corpo">' +
     '<p class="conf-tit">' + esc(t.titulo) + '</p>' +
-    '<p class="cartao-meta" style="margin:0">Ela sai da lista de pendentes. Logo depois aparece a opção Desfazer, caso tenha sido engano.</p>' +
-    '<div class="conf-rodape"><button class="bt claro" type="button" data-acao="fecharJan">Cancelar</button>' +
-    '<button class="bt" type="button" id="confConcluir">' + IC.checkOuro + '<span>Concluir tarefa</span></button></div></div>';
+    (lembrarDepois
+      ? '<div class="anx-lembrete">' + IC.camera + '<span>Esta tarefa tem <b>' + t.nAntes + (t.nAntes === 1 ? ' foto' : ' fotos') + ' do antes</b> e nenhuma do depois. Registrar o resultado ajuda no relatório aos moradores.</span></div>' +
+        '<div class="conf-rodape"><button class="bt claro" type="button" data-acao="fecharJan">Cancelar</button>' +
+        '<button class="bt claro" type="button" id="confConcluir"><span>Concluir sem foto</span></button>' +
+        '<button class="bt" type="button" data-fotodepois="' + esc(id) + '">' + IC.cameraOuro + '<span>Adicionar foto do depois</span></button></div></div>'
+      : '<p class="cartao-meta" style="margin:0">Ela sai da lista de pendentes. Logo depois aparece a opção Desfazer, caso tenha sido engano.</p>' +
+        '<div class="conf-rodape"><button class="bt claro" type="button" data-acao="fecharJan">Cancelar</button>' +
+        '<button class="bt" type="button" id="confConcluir">' + IC.checkOuro + '<span>Concluir tarefa</span></button></div></div>');
   abrirJanela('Concluir esta tarefa?', nomeCondo(t.condo) + ' · ' + t.id, h, 'centro', function (raiz) {
     var ok = raiz.querySelector('#confConcluir');
     ok.addEventListener('click', function () {
@@ -1309,7 +1860,12 @@ function confirmarConcluir(id) {
       ok.classList.add('ocupado');
       fecharCamadas(); concluir(id);
     });
-    setTimeout(function () { try { ok.focus(); } catch (e) {} }, 50);
+    var fd = raiz.querySelector('[data-fotodepois]');
+    if (fd) fd.addEventListener('click', function () {
+      fecharCamadas();
+      if (S.det && S.det.id === id) abrirAnexar('Depois'); else { S.abrirAnexarDepois = id; abrirTarefa(id); }
+    });
+    setTimeout(function () { try { (fd || ok).focus(); } catch (e) {} }, 50);
   });
 }
 function concluir(id) {
@@ -1355,6 +1911,7 @@ function abrirTarefa(id, silencioso) {
     S.det = r.tarefa;
     desenharDetalhe();
     lerAlertasDa(id);
+    if (S.abrirAnexarDepois === id) { S.abrirAnexarDepois = null; abrirAnexar('Depois'); }
   });
 }
 function fecharDetalhe() {
@@ -1432,6 +1989,7 @@ function desenharDetalhe() {
     h += '<button class="bt-link" data-acao="editarDesc" style="align-self:flex-start">+ Adicionar descrição</button>';
   }
 
+  h += '<div id="blocoAnexos">' + htmlAnexos(t) + '</div>';
   h += '<div class="bloco" style="gap:.75em"><span class="rotulo">Follow-up</span>';
   var obs = t.observacoes || [];
   if (!obs.length) h += '<span class="cartao-meta">Nenhum follow-up ainda.</span>';
@@ -1439,12 +1997,17 @@ function desenharDetalhe() {
     h += '<div class="obs' + (o.excluida ? ' excluida' : '') + '"><div class="avatar" aria-hidden="true">' + esc(iniciais(o.autor)) + '</div>' +
       '<div class="obs-caixa"><span class="obs-autor">' + esc(o.autor) + ' · ' + esc(quando(o.em)) + '</span>' +
       '<span class="obs-texto">' + esc(o.texto) + '</span>' +
+      (t.anexos || []).filter(function (a) { return a.idObs && a.idObs === o.id; }).map(function (a) {
+        return '<button class="obs-chip" ' + (a.etapa === 'Documento' ? 'data-baixar' : 'data-verfoto') + '="' + esc(a.id) + '">' + IC.clipP + '<span>' + esc(a.etapa === 'Documento' ? nomeCurtoAnexo(a) : 'Foto ' + ETAPA_ROT[a.etapa]) + '</span></button>';
+      }).join('') +
       (o.excluida ? '<span class="obs-aviso">Excluída por ' + esc(o.excluidaPor) + ' · ' + esc(quando(o.excluidaEm)) + '</span>' : '') +
       (o.podeExcluir ? '<button class="obs-excluir" data-excluirobs="' + esc(o.id) + '">Excluir (até ' + esc(horaSP(new Date(o.excluirAte))) + ')</button>' : '') +
       '</div></div>';
   });
   if (pode.observar) {
-    h += '<div class="linha-campos"><label class="sr" for="txtObs">Escrever follow-up</label>' +
+    var clipObs = S.anexoObs[t.id];
+    if (clipObs) h += '<div class="obs-anexo">' + IC.clipP + '<span>' + esc(clipObs.etapa === 'Documento' ? clipObs.file.name : 'Foto ' + ETAPA_ROT[clipObs.etapa] + ' · ' + clipObs.file.name) + '</span><button data-acao="tirarClip" aria-label="Tirar anexo">' + IC.x + '</button></div>';
+    h += '<div class="linha-campos">' + (pode.anexar ? '<button class="bt-clip" data-acao="clipObs" aria-label="Anexar foto ou arquivo ao follow-up" title="Anexar">' + IC.clip + '</button>' : '') + '<label class="sr" for="txtObs">Escrever follow-up</label>' +
       '<textarea class="campo" id="txtObs" rows="1" maxlength="1000" placeholder="Escrever follow-up" style="resize:none">' + esc(S.rascunhoObs[t.id] || '') + '</textarea>' +
       '<button class="bt claro" data-acao="enviarObs">Enviar</button></div>';
   }
@@ -1461,6 +2024,7 @@ function desenharDetalhe() {
   }
   $('detalhe').innerHTML = h;
   ajustarAltura($('txtObs'));
+  carregarMiniaturas();
 }
 
 function ajustarAltura(el) {
@@ -1635,13 +2199,16 @@ function salvarTitulo() {
 function enviarObs() {
   var el = $('txtObs'); if (!el) return;
   var texto = el.value.trim();
-  if (!texto) { el.focus(); return; }
   var id = S.det.id;
+  var clip = S.anexoObs[id];
+  if (!texto && clip) texto = clip.etapa === 'Documento' ? 'Enviou o arquivo ' + clip.file.name + '.' : 'Enviou uma foto ' + ETAPA_ROT[clip.etapa] + '.';
+  if (!texto) { el.focus(); return; }
   el.disabled = true;
   api('tarefas.observar', { id: id, texto: texto }).then(function (r) {
     el.disabled = false;
     if (!r.ok) { avisar(r.mensagem, true); return; }
     S.rascunhoObs[id] = '';
+    if (clip) { delete S.anexoObs[id]; enviarAnexo(id, clip.file, clip.etapa, { idObs: r.observacao.id }); }
     if (S.det && S.det.id === id) {
       S.det.observacoes = (S.det.observacoes || []).concat([r.observacao]);
       desenharDetalhe();
@@ -2377,7 +2944,7 @@ function abrirSugestao() {
 
 /* ================= Camadas (janelas, menus, avisos) ================= */
 function fecharCamadas() { $('camadas').innerHTML = ''; document.body.classList.remove('janela-aberta'); document.removeEventListener('keydown', escFecha); }
-function escFecha(e) { if (e.key === 'Escape') fecharCamadas(); }
+function escFecha(e) { if (e.key === 'Escape') { if (S.visor) fecharVisor(); else fecharCamadas(); } }
 function abrirJanela(titulo, sub, corpoHtml, tipo, montar, semFundoNoComputador) {
   var fundo = (semFundoNoComputador && faixa() === 'computador') ? '' : '<div class="fundo" data-acao="fecharJan"></div>';
   $('camadas').innerHTML = fundo + '<section class="janela ' + tipo + '" role="dialog" aria-modal="true" aria-label="' + esc(titulo) + '">' +
@@ -2423,6 +2990,10 @@ document.addEventListener('click', function (e) {
   if (b.hasAttribute('data-abrir')) { abrirTarefa(b.getAttribute('data-abrir')); return; }
   if (b.hasAttribute('data-condo')) { S.condo = b.getAttribute('data-condo'); desenharCondos(); desenharLista(); return; }
   if (b.hasAttribute('data-visao')) { trocarVisao(b.getAttribute('data-visao')); return; }
+  if (b.hasAttribute('data-anexar')) { abrirAnexar(b.getAttribute('data-anexar')); if (b.getAttribute('data-anexar') === 'Documento') { /* folha já abre no documento */ } return; }
+  if (b.hasAttribute('data-verfoto')) { abrirFoto(b.getAttribute('data-verfoto')); return; }
+  if (b.hasAttribute('data-baixar')) { abrirDocumento(b.getAttribute('data-baixar')); return; }
+  if (b.hasAttribute('data-excluiranx')) { confirmarExcluirAnexo(b.getAttribute('data-excluiranx'), b); return; }
   if (b.hasAttribute('data-grupo')) { alternarGrupo(b.getAttribute('data-grupo')); return; }
   if (b.hasAttribute('data-tela')) { guardarLocal('tela', b.getAttribute('data-tela')); aplicarTela(); return; }
   if (b.hasAttribute('data-mover')) { acaoDetalhe('mover', { direcao: b.getAttribute('data-mover') }, null, b); return; }
@@ -2453,6 +3024,8 @@ document.addEventListener('click', function (e) {
     case 'concluirDet': confirmarConcluir(S.det.id); break;
     case 'reabrir': acaoDetalhe('reabrir', {}, function () { avisar('Tarefa reaberta'); invalidarConcluidas(); if (S.visao === 'concluidas') carregarConcluidas(); }, b, 'Reabrindo…'); break;
     case 'alternarGrupos': alternarGrupos(); break;
+    case 'clipObs': abrirAnexar('Antes', 'obs'); break;
+    case 'tirarClip': if (S.det) { delete S.anexoObs[S.det.id]; desenharDetalhe(); } break;
     case 'concPeriodo': abrirPeriodo(); break;
     case 'concMais': carregarConcluidas(true); break;
     case 'enviarObs': enviarObs(); break;
