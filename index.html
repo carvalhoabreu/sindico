@@ -811,6 +811,117 @@ a.bt{text-decoration:none}
 .evo-comp .evo-acoes{justify-content:flex-end;gap:1em}
 .sug-perg{display:flex;flex-direction:column;gap:.5em;margin-top:.35em}
 @media (max-width:767px){.evo{padding:.875em .875em 1.5em}.evo-acoes>.bt{flex:1 1 auto}}
+/* Ressarcimentos (v1.20) */
+.rs{display:flex;flex-direction:column;gap:1.25em;padding:1em 1.5em 1.75em;overflow-y:auto;flex:1;min-height:0;background:var(--creme)}
+.rs-topo{display:flex;flex-wrap:wrap;align-items:center;gap:.5em 1em;position:sticky;top:-1em;z-index:3;background:var(--creme);margin:-1em -1.5em 0;padding:.5em 1.5em 0;border-bottom:1px solid var(--linha2)}
+.rs-topo .abas{flex-wrap:wrap}
+.rs-grade3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1em}
+.rs-num{background:#fff;border-radius:1.25em;padding:1.25em 1.5em;box-shadow:var(--sombra);display:flex;flex-direction:column;gap:.35em;border:2px solid transparent}
+.rs-num.destaque{border-color:var(--ouro)}
+.rs-num .rotulo.ouro{color:#7A5C27}.rs-num .rotulo.vinho{color:var(--vinho)}
+.rs-num b{font-family:Lora,Georgia,serif;font-weight:700;font-size:1.75em;color:var(--azul)}
+.rs-num small{font-size:.8125em;color:var(--suave)}
+.rs-h2{margin:0;font-size:.8125em;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--azul)}
+.rs-grande{text-align:left;min-height:9em;padding:1.5em;border-radius:1.25em;border:2px solid var(--linha);background:#fff;color:var(--azul);display:flex;flex-direction:column;gap:.6em}
+.rs-grande.azul{background:var(--azul);border-color:var(--azul);color:#fff}
+.rs-grande.ouro{border-color:var(--ouro)}
+.rs-grande b{font-family:Lora,Georgia,serif;font-weight:700;font-size:1.25em}
+.rs-grande span{font-size:.875em;line-height:1.45;color:var(--suave2)}
+.rs-grande.azul span{color:#C9D1E0}
+.rs-info{background:#EEF1F6;color:var(--azul);border-radius:1em;padding:1em 1.25em;display:flex;flex-direction:column;gap:.35em;font-size:.9375em;line-height:1.5}
+.rs-info.ouro{background:var(--ouro-fundo);color:#4A3A1C}
+.rs-info.vinho{background:var(--vinho-fundo);color:var(--vinho)}
+.rs-info .rotulo{color:inherit}
+.rs-duas{display:flex;flex-wrap:wrap;gap:1.5em;align-items:flex-start}
+.rs-form{flex:1.4 1 30em;min-width:0;background:#fff;border-radius:1.25em;padding:1.5em 1.75em;box-shadow:var(--sombra);display:flex;flex-direction:column;gap:1.25em}
+.rs-lado{flex:1 1 20em;min-width:0;display:flex;flex-direction:column;gap:1em;position:sticky;top:3.5em}
+.rs-cx{background:#fff;border-radius:1.25em;padding:1.25em 1.5em;box-shadow:var(--sombra);display:flex;flex-direction:column;gap:.6em}
+.rs-bloco{display:flex;flex-direction:column;gap:.5em}
+.rs-ops{display:flex;flex-wrap:wrap;gap:.5em}
+.rs-op{flex:1 1 13em;min-height:3.75em;padding:.6em 1em;border-radius:.875em;text-align:left;display:flex;flex-direction:column;gap:.15em;font-size:.9375em;background:#fff;color:var(--azul);border:2px solid var(--linha)}
+.rs-op b{font-weight:700}.rs-op small{font-size:.8125em;opacity:.85}
+.rs-op[aria-pressed="true"]{background:var(--azul);color:#fff;border-color:var(--azul)}
+.rs-campos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1em}
+.rs-campo{display:flex;flex-direction:column;gap:.4em;font-size:.8125em;font-weight:600;color:var(--suave2);min-width:0}
+.rs-campo .campo{font-size:1.15em;font-weight:400}
+.rs-campo.inteiro{grid-column:1/-1}
+.rs-arq{display:flex;flex-wrap:wrap;gap:.75em;align-items:center}
+.rs-arq label.bt-arq{flex:1 1 14em;min-height:5em;border-radius:1em;border:2px dashed var(--ouro);background:#FBF7EE;color:var(--azul);font-weight:600;font-size:.9375em;display:flex;align-items:center;justify-content:center;gap:.6em;cursor:pointer;text-align:center;padding:.5em 1em}
+.rs-arq label.bt-arq:focus-within{outline:3px solid var(--ouro);outline-offset:2px}
+.rs-arq img{width:5em;height:5em;object-fit:cover;border-radius:.75em;border:1px solid var(--linha)}
+.rs-arq .nome{font-size:.8125em;color:var(--suave2);word-break:break-all}
+.rs-nome{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.875em;line-height:1.5;color:var(--azul);background:var(--creme);border-radius:.75em;padding:.85em 1em;word-break:break-word}
+.rs-chips{display:flex;flex-wrap:wrap;gap:.5em}
+.rs-chip{min-height:2.75em;padding:0 1em;border-radius:999px;font-size:.875em;font-weight:600;background:#fff;color:var(--azul);border:2px solid var(--linha)}
+.rs-chip[aria-pressed="true"]{background:var(--azul);color:#fff;border-color:var(--azul)}
+.rs-seg{display:inline-flex;background:var(--creme2);border-radius:.75em;padding:.25em;gap:.25em;align-self:flex-start}
+.rs-seg button{min-height:2.5em;padding:0 1em;border-radius:.55em;border:none;font-size:.875em;font-weight:600;background:transparent;color:var(--suave2)}
+.rs-seg button[aria-pressed="true"]{background:var(--azul);color:#fff}
+.rs-forn{display:flex;align-items:center;gap:.75em;min-height:3.25em;padding:.6em 1em;border-radius:.875em;text-align:left;font-size:.9375em;background:#fff;border:2px solid var(--linha2);width:100%}
+.rs-forn[aria-pressed="true"]{background:var(--ouro-fundo);border-color:var(--azul)}
+.rs-forn:disabled{opacity:.7;cursor:default}
+.rs-forn .tx{display:flex;flex-direction:column;gap:.2em;flex:1;min-width:0}
+.rs-forn .tx b{color:var(--azul)}.rs-forn .tx small{font-size:.8125em;color:var(--suave)}
+.rs-selo{flex:none;font-size:.75em;font-weight:600;border-radius:999px;padding:.35em .75em;background:var(--vinho-fundo);color:var(--vinho)}
+.rs-selo.azul{background:#EEF1F6;color:var(--azul)}.rs-selo.verde{background:#E4EFE6;color:#22543A}.rs-selo.ouro{background:var(--ouro-fundo);color:#5C4520}
+.rs-outro{display:flex;flex-direction:column;gap:.75em;background:var(--creme);border-radius:1em;padding:1em 1.1em}
+.rs-comp{display:flex;flex-direction:column;gap:.75em;border:1px solid var(--linha2);border-radius:1em;padding:.9em 1em}
+.rs-comp-cab{display:flex;align-items:center;gap:.5em}
+.rs-comp-cab b{flex:1;color:var(--azul);font-size:.9375em}
+.rs-mais{align-self:flex-start;min-height:2.75em;padding:0 1.1em;border-radius:.75em;border:1.5px dashed #8C99B3;background:#fff;color:var(--azul);font-weight:600;font-size:.875em}
+.rs-x{width:2.75em;height:2.75em;border-radius:50%;border:none;background:var(--creme2);display:flex;align-items:center;justify-content:center;padding:0;flex:none}
+.rs-card{background:#fff;border-radius:1.25em;padding:1.25em 1.5em;box-shadow:var(--sombra);display:flex;flex-direction:column;gap:1em}
+.rs-card-lin{display:flex;flex-wrap:wrap;gap:1em 1.25em;align-items:center}
+.rs-nota{width:5.5em;height:5.5em;border-radius:.75em;background:#EEF1F6;border:1px solid #DDE3EE;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3em;font-size:.75em;font-weight:600;color:var(--suave);text-decoration:none;flex:none}
+.rs-nota:hover{border-color:var(--ouro)}
+.rs-card-tx{flex:1 1 16em;min-width:0;display:flex;flex-direction:column;gap:.3em}
+.rs-card-tx .numdoc{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.75em;color:#6B5A3A}
+.rs-card-tx b{font-size:1.0625em;color:var(--azul)}
+.rs-card-val{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:.2em}
+.rs-card-val small{font-size:.75em;color:var(--suave)}
+.rs-card-val b{font-family:Lora,Georgia,serif;font-weight:700;font-size:1.25em;color:var(--azul)}
+.rs-card-bt{flex:none;display:flex;flex-wrap:wrap;gap:.5em}
+.rs-bt-ouro{background:var(--ouro);color:var(--azul);font-weight:700}
+.rs-email{border-top:1px solid var(--linha2);padding-top:1em;display:flex;flex-direction:column;gap:.6em;font-size:.9375em;line-height:1.55}
+.rs-email .corpo{white-space:pre-line;background:var(--creme);border-radius:.75em;padding:1em 1.1em;color:var(--texto)}
+.rs-email a{color:var(--azul2);font-weight:600}
+.rs-tab{background:#fff;border-radius:1.25em;box-shadow:var(--sombra);overflow-x:auto}
+.rs-tab table{width:100%;border-collapse:collapse;font-size:.9375em;min-width:46em}
+.rs-tab th{text-align:left;color:var(--suave);font-size:.75em;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.9em .75em}
+.rs-tab td{padding:.75em .75em;border-top:1px solid var(--creme2);vertical-align:middle}
+.rs-tab th:first-child,.rs-tab td:first-child{padding-left:1.5em}
+.rs-tab th:last-child,.rs-tab td:last-child{padding-right:1.5em;text-align:right}
+.rs-tab .numdoc{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.8125em;color:var(--azul)}
+.rs-tab .dir{text-align:right;font-weight:600;white-space:nowrap}
+.rs-baixa{display:inline-flex;flex-wrap:wrap;gap:.4em;align-items:center;justify-content:flex-end}
+.rs-baixa input{min-height:2.5em;border:1px solid var(--linha);border-radius:.6em;padding:0 .5em}
+.rs-passos{display:flex;flex-direction:column;gap:.5em}
+.rs-passos .barras{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.4em}
+.rs-passos .barras i{height:4px;border-radius:2px;background:var(--linha)}
+.rs-passos .barras i.on{background:var(--ouro)}
+.rs-rodape{position:sticky;bottom:-1.75em;margin:0 -1.5em -1.75em;padding:.75em 1.5em calc(1em + var(--baixo-seg));background:#fff;border-top:1px solid var(--linha2);display:flex;gap:.5em}
+.rs-rodape .bt{flex:1}
+.rs-ocupado{display:flex;flex-direction:column;align-items:center;gap:.75em;text-align:center;padding:3em 1em;color:var(--suave2)}
+.rs-ocupado b{font-family:Lora,Georgia,serif;font-size:1.2em;color:var(--azul)}
+@media (max-width:1023px){.rs-lado{position:static}}
+@media (max-width:767px){
+  .rs{padding:.875em .875em 1.5em;gap:1em}
+  .rs-topo{margin:-.875em -.875em 0;padding:.25em .875em 0;top:-.875em}
+  .rs-topo .abas{overflow-x:auto;flex-wrap:nowrap}
+  .rs-topo .abas button{flex:none;padding:0 .7em}
+  .rs-grade3{grid-template-columns:1fr}
+  .rs-grade3.nums{grid-template-columns:repeat(3,minmax(0,1fr));gap:.5em}
+  .nums .rs-num{padding:.75em .7em;border-radius:1em;gap:.25em}
+  .nums .rs-num .rotulo{font-size:.625em;letter-spacing:.06em}
+  .nums .rs-num b{font-size:1.15em}
+  .nums .rs-num small{font-size:.75em}
+  .rs-grande{min-height:0}
+  .rs-form{padding:1.1em 1em}
+  .rs-campos{grid-template-columns:1fr}
+  .rs-rodape{margin:0 -.875em -1.5em;bottom:-1.5em;padding:.75em .875em calc(1em + var(--baixo-seg))}
+  .rs-card{padding:1em}
+  .rs-card-val{align-items:flex-start}
+}
 </style>
 </head>
 <body>
@@ -943,7 +1054,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.19';
+var VERSAO_SITE = '1.20';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -951,6 +1062,12 @@ var TELAS = [
   { id: '4k', rotulo: '4K', px: 20 }
 ];
 var EM_BREVE = ['Painel geral', 'Ressarcimentos', 'Seguros', 'Contas de consumo', 'Orçamentos', 'Comunicados', 'Acompanhamentos'];
+/* Módulos que já estão no ar saem da lista "Em breve" (Ressarcimentos desde a v1.20, só para o master). */
+function emBreve() {
+  var ids = ((S.portal && S.portal.modulos) || []).map(function (m) { return rsSemAcento(m.nome); });
+  return EM_BREVE.filter(function (n) { return ids.indexOf(rsSemAcento(n)) < 0; });
+}
+var ICO_RESS = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16v12H4z"/><path d="M4 11h16"/><path d="M8 15h3"/><path d="M8 3l-2 4M16 3l2 4"/></svg>';
 var TIPOS_SUG = [
   { id: 'problema', rotulo: 'Encontrei um problema' },
   { id: 'ideia', rotulo: 'Tive uma ideia' },
@@ -1312,6 +1429,7 @@ function desenhar() {
   if (!S.filaCarregada) { S.filaCarregada = true; carregarFila(); } else processarFila();
   verificarCompartilhado();
   if (ler('abrirEvo') && S.portal) { guardar('abrirEvo', null); abrirEvolucao(); }
+  if (ler('abrirRess') && S.portal) { guardar('abrirRess', null); abrirRessarcimentos(); }
   if (ler('abrirSug') && S.portal) { guardar('abrirSug', null); abrirSugestao(true); }
   if (ler('abrirEq') && S.portal) { var idEq = ler('abrirEq'); guardar('abrirEq', null); if (S.portal.gestao && S.portal.gestao.equipe) abrirEquipe(idEq); }
   if (ler('abrirP') && S.portal) { var idP = ler('abrirP'); guardar('abrirP', null); if (S.portal.gestao && S.portal.gestao.pedidos !== null) abrirPedidos(idP); }
@@ -2855,6 +2973,7 @@ function guardarLinkDireto() {
     if (t) guardar('abrirT', String(t).slice(0, 40));
     if (p) guardar('abrirP', String(p).replace(/[^A-Za-z0-9-]/g, '').slice(0, 20));
     if (m === 'evolucao') guardar('abrirEvo', '1');
+    if (m === 'ressarcimentos') guardar('abrirRess', '1');
     if (sug) guardar('abrirSug', String(sug).replace(/[^A-Za-z0-9-]/g, '').slice(0, 20));
     if (eq) guardar('abrirEq', String(eq).replace(/[^A-Za-z0-9-]/g, '').slice(0, 20));
     if (t || p || m || sug || eq) history.replaceState(null, '', location.pathname);
@@ -3192,12 +3311,15 @@ function htmlMenuPortal() {
   mods.forEach(function (m) {
     h += '<button class="mp-mod atual" data-acao="fecharJan">' + IC.listaOuro + '<b>' + esc(m.nome) + '</b><small>' + n + (n === 1 ? ' pendente' : ' pendentes') + '</small></button>';
   });
-  var breve = EM_BREVE.slice(1, 1 + (mods.length % 2 ? 3 : 2));
+  var breve = emBreve().slice(1, 1 + (mods.length % 2 ? 3 : 2));
   breve.forEach(function (nome) { h += '<div class="mp-mod breve">' + IC.breve + '<b>' + esc(nome) + '</b><small>Em breve</small></div>'; });
   h += '</div>';
   if (soVoce.length) {
     var nd = evoDecidirN();
+    var nr = rsBadge();
     h += '<div class="mp-rot">Só para você</div><div class="mp-lista">' +
+      (temRess() ? mpLin('ressarcimentos', ICO_RESS.replace(/#E3C894/g, '#0F2646'), 'Ressarcimentos', nr ? (nr === 1 ? '1 aguardando aprovação' : nr + ' aguardando aprovação') : 'Notas, deslocamentos e reembolsos',
+        nr ? '<span class="selo estatico">' + nr + '</span>' : '') : '') +
       mpLin('evolucao', IC.evolucaoOuro.replace(/#E3C894/g, '#0F2646'), 'Evolução', nd ? (nd === 1 ? '1 para decidir' : nd + ' para decidir') : 'Sugestões e melhorias do app',
         nd ? '<span class="selo estatico">' + nd + '</span>' : '') + '</div>';
   }
@@ -3236,9 +3358,15 @@ function desenharLateralGestao() {
   var sv = $('latSoVoce');
   if (sv) {
     var temEvo = ((S.portal && S.portal.modulos) || []).some(function (m) { return m.id === 'evolucao'; }), nd = evoDecidirN();
-    sv.innerHTML = temEvo ? '<span class="lat-titulo" style="padding-top:1.6em">Só para você</span><button class="lat-item" data-acao="evolucao">' + IC.evolucaoOuro +
-      '<span style="flex:1">Evolução do app</span>' + (nd ? '<span class="cont">' + nd + '</span>' : '') + '</button>' : '';
+    var temRs = temRess(), nr = rsBadge();
+    sv.innerHTML = (temEvo || temRs) ? '<span class="lat-titulo" style="padding-top:1.6em">Só para você</span>' +
+      (temRs ? '<button class="lat-item" data-acao="ressarcimentos">' + ICO_RESS + '<span style="flex:1">Ressarcimentos</span>' + (nr ? '<span class="cont">' + nr + '</span>' : '') + '</button>' : '') +
+      (temEvo ? '<button class="lat-item" data-acao="evolucao">' + IC.evolucaoOuro +
+      '<span style="flex:1">Evolução do app</span>' + (nd ? '<span class="cont">' + nd + '</span>' : '') + '</button>' : '') : '';
+    if (temRs && !S.rsResumo) rsAtualizarResumo();
   }
+  var eb = $('emBreve');
+  if (eb) eb.innerHTML = emBreve().map(function (m) { return '<div class="lat-breve"><i aria-hidden="true"></i><span>' + esc(m) + '</span></div>'; }).join('');
   var g = S.portal && S.portal.gestao, el = $('latGestao');
   if (!el) return;
   if (!g) { el.innerHTML = ''; return; }
@@ -5248,6 +5376,7 @@ document.addEventListener('click', function (e) {
     case 'convidar': fecharCamadas(); abrirConvidar(); break;
     case 'pessoas': fecharCamadas(); abrirGestao(); break;
     case 'evolucao': fecharCamadas(); abrirEvolucao(); break;
+    case 'ressarcimentos': fecharCamadas(); abrirRessarcimentos(); break;
     case 'equipe': fecharCamadas(); abrirEquipe(); break;
     case 'perfis': fecharCamadas(); abrirPerfis(); break;
     case 'guia': fecharCamadas(); abrirGuia(); break;
@@ -5320,6 +5449,541 @@ document.addEventListener('visibilitychange', function () {
   if (document.visibilityState === 'visible' && S.sessao && !$('app').hidden) recarregar();
 });
 setInterval(function () { if (document.visibilityState === 'visible' && S.sessao && !$('app').hidden && !S.carregandoDet) recarregar(); }, 120000);
+
+/* ================= Ressarcimentos (v1.20): início, nova NF, deslocamento, revisão e acompanhamento ================= */
+/* Só o master (decisão de 24/11/2026). Regras: skill ressarcimentos-carvalho-abreu e doc de diretrizes.
+   O app monta o nome do arquivo; nada sai sem "Aprovar e enviar". */
+var RS = null;
+var RS_ABAS = [{ id: 'inicio', rot: 'Início' }, { id: 'nf', rot: 'Nova NF' }, { id: 'desl', rot: 'Deslocamento' }, { id: 'rev', rot: 'Revisão' }, { id: 'acomp', rot: 'Acompanhamento' }];
+var RS_CASO = {
+  AS: 'NF para arquivo', AD: 'NF para arquivo + deslocamento', RS: 'Compra a ressarcir', RD: 'Compra a ressarcir + deslocamento',
+  FATURADO: 'Retirada de material faturado', 'REUNIÃO': 'Reunião ou visita'
+};
+var RS_PASSOS = ['Motivo', 'Condomínios', 'Destino', 'Conferir'];
+
+function temRess() { return ((S.portal && S.portal.modulos) || []).some(function (m) { return m.id === 'ressarcimentos'; }); }
+function rsBadge() { return (S.rsResumo && S.rsResumo.emRevisao) || 0; }
+function rsAtualizarResumo() {
+  if (!temRess() || S.rsPedindo) return;
+  S.rsPedindo = true;
+  api('ressarcimentos.resumo').then(function (r) {
+    S.rsPedindo = false;
+    if (r && r.ok) { S.rsResumo = r; desenharLateralGestao(); if (RS && RS.aba === 'inicio' && $('rs')) rsDesenhar(); }
+  }).catch(function () { S.rsPedindo = false; });
+}
+function rsHoje() { return diaSP(new Date()); }
+function rsMoeda(v) { return 'R$ ' + Number(v || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+function rsNum(txt) {
+  var s = String(txt == null ? '' : txt).replace(/[^\d,.-]/g, '');
+  if (s.indexOf(',') >= 0) s = s.replace(/\./g, '').replace(',', '.');
+  var n = parseFloat(s);
+  return isNaN(n) ? null : Math.round(n * 100) / 100;
+}
+function rsData(iso) { if (!iso) return ''; var p = String(iso).slice(0, 10).split('-'); return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : ''; }
+function rsSemAcento(s) { return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().trim(); }
+function rsCondo(cod) { return ((RS && RS.cfg && RS.cfg.condominios) || []).filter(function (c) { return c.codigo === cod; })[0] || null; }
+function rsNomeCondo(cod) { var c = rsCondo(cod); return c ? c.nome : nomeCondo(cod); }
+function rsForn(ap) { return ((RS && RS.cfg && RS.cfg.fornecedores) || []).filter(function (f) { return f.apelido === ap; })[0] || null; }
+function rsDrive(id) { return 'https://drive.google.com/file/d/' + encodeURIComponent(id) + '/view'; }
+function rsNovaNF() { return { arq: null, ra: 'R', ds: 'D', codigo: '', loja: '', tipo: 'NF', valor: '', numero: '', data: rsHoje(), desc: '', comps: [] }; }
+function rsNovoDesl() { return { motivo: 'FATURADO', sel: {}, modo: 'cad', forn: '', busca: '', outro: { nome: '', endereco: '', bairro: '', cidade: 'São José dos Campos - SP', cep: '', salvar: true }, data: rsHoje(), desc: '', comps: [], passo: 1 }; }
+
+function abrirRessarcimentos(aba) {
+  if (!(S.portal && S.portal.usuario && S.portal.usuario.master) || !temRess()) return;
+  RS = { aba: aba || 'inicio', cfg: null, rev: null, acomp: null, verAcomp: 'abertos', aberto: null, confTodos: false, baixa: null,
+    nf: rsNovaNF(), d: rsNovoDesl(), ocupado: '', entradaInfo: false };
+  abrirJanela('Ressarcimentos', 'Carregando…', '<div class="rs" id="rs"><p class="vazio">Carregando…</p></div>', 'gestao', function (raiz) {
+    raiz.addEventListener('click', cliqueRess);
+    raiz.addEventListener('input', entradaRess);
+    raiz.addEventListener('change', mudancaRess);
+    Promise.all([api('ressarcimentos.config'), api('ressarcimentos.resumo')]).then(function (rr) {
+      if (!$('rs')) return;
+      if (!rr[0].ok) { $('rs').innerHTML = '<p class="vazio">' + esc(rr[0].mensagem) + '</p>'; return; }
+      RS.cfg = rr[0];
+      RS.cfg.fornecedores.sort(function (a, b) { return a.apelido < b.apelido ? -1 : 1; });
+      if (rr[1].ok) { S.rsResumo = rr[1]; desenharLateralGestao(); }
+      rsIrAba(RS.aba);
+    }).catch(function () {});
+  });
+}
+function rsIrAba(aba) {
+  RS.aba = aba; RS.aberto = null; RS.confTodos = false; RS.baixa = null; RS.entradaInfo = false;
+  rsDesenhar();
+  if (aba === 'rev') rsCarregarRev();
+  if (aba === 'acomp') rsCarregarAcomp();
+  if (aba === 'inicio') rsAtualizarResumo();
+  var c = $('rs'); if (c) c.scrollTop = 0;
+}
+function rsCarregarRev() {
+  return api('ressarcimentos.revisao').then(function (r) {
+    if (!RS) return;
+    RS.rev = r.ok ? (r.cartoes || []) : { erro: r.mensagem };
+    if (RS.aba === 'rev' && $('rs')) rsDesenhar();
+  });
+}
+function rsCarregarAcomp() {
+  return api('ressarcimentos.acompanhamento').then(function (r) {
+    if (!RS) return;
+    RS.acomp = r.ok ? r : { erro: r.mensagem };
+    if (RS.aba === 'acomp' && $('rs')) rsDesenhar();
+  });
+}
+
+/* ---------- desenho ---------- */
+function rsDesenhar() {
+  var el = $('rs'); if (!el || !RS || !RS.cfg) return;
+  var raiz = el.closest('.janela'), n = rsBadge();
+  raiz.querySelector('.jan-cab small').textContent = n ? (n === 1 ? '1 aguardando sua aprovação' : n + ' aguardando sua aprovação') : 'Notas, deslocamentos e reembolsos';
+  var h = '<div class="rs-topo"><div class="abas" role="tablist" aria-label="Seções do módulo">' + RS_ABAS.map(function (a) {
+    return '<button role="tab" data-rsaba="' + a.id + '" aria-selected="' + (RS.aba === a.id) + '">' + a.rot + (a.id === 'rev' && n ? ' (' + n + ')' : '') + '</button>';
+  }).join('') + '</div></div>';
+  if (RS.ocupado) h += '<div class="rs-ocupado" role="status"><b>' + esc(RS.ocupado) + '</b><span>Pode levar até 1 minuto por condomínio. Não feche esta janela.</span></div>';
+  else if (RS.aba === 'inicio') h += rsHtmlInicio();
+  else if (RS.aba === 'nf') h += rsHtmlNF();
+  else if (RS.aba === 'desl') h += rsHtmlDesl();
+  else if (RS.aba === 'rev') h += rsHtmlRev();
+  else h += rsHtmlAcomp();
+  el.innerHTML = h;
+}
+
+function rsHtmlInicio() {
+  var r = S.rsResumo || {};
+  var h = '<div class="rs-grade3 nums">' +
+    '<div class="rs-num"><span class="rotulo">A receber</span><b>' + rsMoeda(r.aReceber) + '</b><small>' + (r.itensAReceber || 0) + ((r.itensAReceber === 1) ? ' item ainda não pago' : ' itens ainda não pagos') + '</small></div>' +
+    '<div class="rs-num destaque"><span class="rotulo ouro">Aguardando sua aprovação</span><b>' + (r.emRevisao || 0) + '</b>' +
+      (r.emRevisao ? '<button class="bt-link" data-rs="irRev" style="align-self:flex-start">Revisar e enviar</button>' : '<small>Nada para aprovar agora</small>') + '</div>' +
+    '<div class="rs-num"><span class="rotulo vinho">Há mais de 15 dias</span><b>' + (r.atrasados || 0) + '</b><small>' +
+      (r.atrasados ? '<button class="bt-link" data-rs="irAcomp">Ver o que cobrar</button>' : 'Nada para cobrar agora') + '</small></div></div>';
+  if (r.comErro || r.aguardandoClaude) {
+    h += '<div class="rs-info ouro">' + (r.comErro ? '<span><b>' + r.comErro + (r.comErro === 1 ? ' pedido com dúvida' : ' pedidos com dúvida') + '</b>: veja a pergunta em Revisão.</span>' : '') +
+      (r.aguardandoClaude ? '<span><b>' + r.aguardandoClaude + (r.aguardandoClaude === 1 ? ' compra aguarda' : ' compras aguardam') + ' Claude.</b> Peça no chat: "continue os ressarcimentos".</span>' : '') + '</div>';
+  }
+  h += '<h2 class="rs-h2">O que você quer registrar?</h2><div class="rs-grade3">' +
+    '<button class="rs-grande azul" data-rsaba="nf">' + IC.doc.replace('#5C6680', '#E3C894').replace(/width="18" height="18"/, 'width="28" height="28"') +
+      '<b>Nova NF</b><span>Foto ou arquivo da nota. Ressarcir ou só arquivar, com ou sem deslocamento.</span></button>' +
+    '<button class="rs-grande ouro" data-rsaba="desl">' + IC.local.replace('#5C6680', '#0F2646').replace(/width="14" height="14"/, 'width="28" height="28"') +
+      '<b>Deslocamento</b><span>Sem NF: retirada de material faturado ou reunião e visita.</span></button>' +
+    '<button class="rs-grande" data-rs="entrada">' + IC.caixa.replace(/width="18" height="18"/, 'width="28" height="28"') +
+      '<b>Processar entrada</b><span>' + (r.arquivosNaEntrada ? r.arquivosNaEntrada + (r.arquivosNaEntrada === 1 ? ' arquivo' : ' arquivos') + ' na pasta ENTRADA RESSARCIMENTOS.' : 'Arquivos que colaboradores deixaram na pasta ENTRADA RESSARCIMENTOS.') + '</span></button></div>';
+  if (RS.entradaInfo) {
+    h += '<div class="rs-info" role="status"><span class="rotulo">Processar entrada</span><span>Os arquivos da pasta de entrada são lidos por Claude. Peça no chat: <b>"continue os ressarcimentos"</b>. ' +
+      'O que ele preparar volta para a aba Revisão do app, e nada é enviado antes do seu "Aprovar e enviar".</span></div>';
+  }
+  return h;
+}
+
+/* --- Nova NF --- */
+function rsNomeNF() {
+  var f = RS.nf, c = rsCondo(f.codigo), l = f.loja;
+  return f.ra + f.ds + ' - ' + (c ? rsSemAcento(c.nome) : '[CONDOMÍNIO]') + ' - ' + String(f.data || rsHoje()).replace(/-/g, '') + 'NN - ' + f.tipo + ' - ' +
+    (l || '[LOJA]') + ' - ' + (f.desc.trim() || '[descrição]');
+}
+function rsOpcoes(lista, atual, prim) {
+  return '<option value="">' + esc(prim) + '</option>' + lista.map(function (o) {
+    return '<option value="' + esc(o.v) + '"' + (o.v === atual ? ' selected' : '') + (o.off ? ' disabled' : '') + '>' + esc(o.t) + '</option>';
+  }).join('');
+}
+function rsHtmlArquivo(arq, alvo, rotulo) {
+  return '<div class="rs-arq"><label class="bt-arq">' + IC.camera.replace(/width="24" height="24"/, 'width="22" height="22"') +
+    '<span>' + esc(arq ? 'Trocar arquivo' : rotulo) + '</span><input class="sr" type="file" accept="image/*,application/pdf" data-rsarq="' + alvo + '"></label>' +
+    (arq ? (arq.mime.indexOf('image/') === 0 ? '<img src="' + arq.base64 + '" alt="Prévia do arquivo">' : '') + '<span class="nome">' + esc(arq.nome) + '</span>' : '') + '</div>';
+}
+function rsHtmlComps(lista, ctx) {
+  var multi = ctx === 'd' && rsSelDesl().length > 1;
+  var h = '<div class="rs-bloco"><span class="rotulo">Estacionamento e pedágio</span>';
+  lista.forEach(function (c, i) {
+    var p = ctx + ':' + i;
+    h += '<div class="rs-comp"><div class="rs-comp-cab"><b>Comprovante ' + (i + 1) + '</b><button class="rs-x" data-rs="tiraComp" data-rsi="' + p + '" aria-label="Tirar comprovante ' + (i + 1) + '">' + IC.x + '</button></div>' +
+      '<div class="rs-campos">' +
+      '<label class="rs-campo">Tipo<select class="campo" data-rsc="tipo" data-rsi="' + p + '"><option value="ESTACIONAMENTO"' + (c.tipo !== 'PEDAGIO' ? ' selected' : '') + '>Estacionamento</option><option value="PEDAGIO"' + (c.tipo === 'PEDAGIO' ? ' selected' : '') + '>Pedágio</option></select></label>' +
+      '<label class="rs-campo">Valor' + (c.ressarcir ? '' : ' (opcional)') + '<input class="campo" inputmode="decimal" placeholder="R$ 0,00" data-rsc="valor" data-rsi="' + p + '" value="' + esc(c.valor) + '"></label>' +
+      '<label class="rs-campo">Local (opcional)<input class="campo" maxlength="40" data-rsc="local" data-rsi="' + p + '" value="' + esc(c.local) + '"></label>' +
+      (multi ? '<label class="rs-campo">De qual condomínio<select class="campo" data-rsc="codigo" data-rsi="' + p + '">' +
+        rsOpcoes(rsSelDesl().map(function (cod) { return { v: cod, t: rsNomeCondo(cod) }; }), c.codigo, 'Escolha') + '</select></label>' : '') +
+      '</div><label class="chk-lin"><input type="checkbox" data-rsc="ressarcir" data-rsi="' + p + '"' + (c.ressarcir ? ' checked' : '') + '> Ressarcir (paguei do meu bolso)</label>' +
+      rsHtmlArquivo(c.arq, p, 'Foto do comprovante') + '</div>';
+  });
+  return h + '<button class="rs-mais" data-rs="maisComp" data-rsi="' + ctx + '">+ Comprovante de estacionamento ou pedágio</button></div>';
+}
+function rsHtmlNF() {
+  var f = RS.nf, cfg = RS.cfg, R = f.ra === 'R';
+  var lojas = cfg.fornecedores.map(function (x) {
+    return { v: x.apelido, t: x.apelido + (x.tipo ? ' · ' + x.tipo : '') + (x.semEndereco && f.ds === 'D' ? ' · sem endereço' : ''), off: x.semEndereco && f.ds === 'D' };
+  });
+  var h = '<div class="rs-duas"><section class="rs-form" aria-label="Nova NF">' +
+    rsHtmlArquivo(f.arq, 'nf', 'Tirar foto ou enviar arquivo da nota') +
+    '<div class="rs-bloco"><span class="rotulo">A compra</span><div class="rs-ops" role="group" aria-label="Ressarcir ou arquivar">' +
+      rsOp('ra', 'R', f.ra, 'Ressarcir', 'Paguei do meu bolso') + rsOp('ra', 'A', f.ra, 'Só arquivar', 'Pago pelo condomínio') + '</div></div>' +
+    '<div class="rs-bloco"><span class="rotulo">Deslocamento</span><div class="rs-ops" role="group" aria-label="Com ou sem deslocamento">' +
+      rsOp('ds', 'D', f.ds, 'Com deslocamento', 'Fui buscar') + rsOp('ds', 'S', f.ds, 'Sem deslocamento', 'Entrega ou compra online') + '</div></div>' +
+    '<div class="rs-campos">' +
+      '<label class="rs-campo">Condomínio<select class="campo" data-rsnf="codigo">' + rsOpcoes(cfg.condominios.map(function (c) { return { v: c.codigo, t: c.nome }; }), f.codigo, 'Escolha o condomínio') + '</select></label>' +
+      '<label class="rs-campo">Loja (fornecedores cadastrados)<select class="campo" data-rsnf="loja">' + rsOpcoes(lojas, f.loja, 'Escolha a loja') + '</select></label>' +
+      '<label class="rs-campo">Tipo do documento<select class="campo" data-rsnf="tipo"><option' + (f.tipo === 'NF' ? ' selected' : '') + '>NF</option><option' + (f.tipo === 'CUPOM' ? ' selected' : '') + '>CUPOM</option></select></label>' +
+      '<label class="rs-campo">' + (R ? 'Valor (Claude confere na nota)' : 'Valor (opcional)') + '<input class="campo" inputmode="decimal" placeholder="R$ 0,00" data-rsnf="valor" value="' + esc(f.valor) + '"></label>' +
+      '<label class="rs-campo">Nº da ' + (f.tipo === 'CUPOM' ? 'nota do cupom' : 'NF') + ' (opcional)<input class="campo" inputmode="numeric" maxlength="20" data-rsnf="numero" value="' + esc(f.numero) + '"></label>' +
+      '<label class="rs-campo">Data da compra<input class="campo" type="date" max="' + rsHoje() + '" data-rsnf="data" value="' + esc(f.data) + '"></label>' +
+      '<label class="rs-campo inteiro">Descrição<input class="campo" maxlength="80" placeholder="Ex.: lâmpadas do hall" data-rsnf="desc" value="' + esc(f.desc) + '"></label>' +
+    '</div>' + (f.ds === 'D' ? rsHtmlComps(f.comps, 'nf') : '') + '</section>' +
+    '<aside class="rs-lado"><div class="rs-cx"><span class="rotulo">Nome que o app vai dar ao arquivo</span><code class="rs-nome" id="rsNomeNF">' + esc(rsNomeNF()) + '</code>' +
+      '<span class="cartao-meta">O NN do dia é escolhido sozinho. Ninguém precisa digitar o nome.</span></div>' +
+    '<div class="rs-info' + (R ? ' ouro' : '') + '"><span class="rotulo">' + (R ? 'Processado por Claude' : 'Processado pelo app') + '</span><span>' +
+      (R ? 'Compra a ressarcir: Claude lê o valor na nota, prepara ' + (f.ds === 'D' ? 'a nota de débito e ' : '') + 'o e-mail e deixa tudo em Revisão para você aprovar. Peça no chat: "continue os ressarcimentos".'
+        : 'Só arquivo: o app numera, ' + (f.ds === 'D' ? 'calcula o deslocamento, ' : '') + 'prepara o e-mail e deixa em Revisão na hora.') + '</span></div>' +
+    '<button class="bt grande" data-rs="salvarNF">' + (R ? 'Salvar e enviar para Claude' : 'Salvar e processar agora') + '</button></aside></div>';
+  return h;
+}
+function rsOp(campo, v, atual, tit, sub) {
+  return '<button class="rs-op" data-rsop="' + campo + '" data-rsv="' + esc(v) + '" aria-pressed="' + (atual === v) + '"><b>' + esc(tit) + '</b><small>' + esc(sub) + '</small></button>';
+}
+
+/* --- Deslocamento --- */
+function rsSelDesl() { var d = RS.d; return RS.cfg.condominios.map(function (c) { return c.codigo; }).filter(function (c) { return d.sel[c]; }); }
+function rsDestinoTxt() {
+  var d = RS.d;
+  if (d.modo === 'outro') return d.outro.nome.trim() ? d.outro.nome.trim().toUpperCase() : 'outro destino';
+  return d.forn || 'destino a escolher';
+}
+function rsResumoDesl() {
+  var d = RS.d, n = rsSelDesl().length;
+  return n + ' ocorrência' + (n === 1 ? '' : 's') + ' · ' + rsDestinoTxt() + ' · ' + rsData(d.data) + (d.desc.trim() ? ' · ' + d.desc.trim() : '');
+}
+function rsSecMotivo() {
+  var d = RS.d;
+  return '<div class="rs-bloco"><span class="rotulo">1 · Motivo</span><div class="rs-ops" role="group" aria-label="Motivo do deslocamento">' +
+    rsOp('motivo', 'FATURADO', d.motivo, 'Retirada de material faturado', 'A NF vai do fornecedor à administradora') +
+    rsOp('motivo', 'REUNIÃO', d.motivo, 'Reunião ou visita', 'Jurídico, prestador, vistoria') + '</div>' +
+    '<span class="cartao-meta">Tem a NF da compra? Use "Nova NF".</span></div>';
+}
+function rsSecCondos() {
+  var d = RS.d, n = rsSelDesl().length;
+  return '<div class="rs-bloco"><div style="display:flex;align-items:baseline;gap:.75em;flex-wrap:wrap"><span class="rotulo" style="flex:1">2 · Condomínios</span>' +
+    '<span class="cartao-meta" id="rsNSel">' + n + (n === 1 ? ' selecionado' : ' selecionados') + ' · cada um vira uma ocorrência</span></div>' +
+    '<div class="rs-chips" role="group" aria-label="Condomínios">' + RS.cfg.condominios.map(function (c) {
+      return '<button class="rs-chip" data-rscondo="' + esc(c.codigo) + '" aria-pressed="' + !!d.sel[c.codigo] + '">' + esc(c.nome) + '</button>';
+    }).join('') + '</div></div>';
+}
+function rsListaForn() {
+  var d = RS.d, q = rsSemAcento(d.busca);
+  var l = RS.cfg.fornecedores.filter(function (f) { return !q || rsSemAcento(f.apelido + ' ' + f.tipo + ' ' + f.nome).indexOf(q) >= 0; });
+  if (d.forn && !l.some(function (f) { return f.apelido === d.forn; })) { var at = rsForn(d.forn); if (at) l.unshift(at); }
+  return l.slice(0, 6).map(function (f) {
+    return '<button class="rs-forn" data-rsforn="' + esc(f.apelido) + '" aria-pressed="' + (d.forn === f.apelido) + '"' + (f.semEndereco ? ' disabled' : '') + '>' +
+      '<span class="tx"><b>' + esc(f.apelido) + (f.tipo ? ' <span style="font-weight:500;color:var(--suave);font-size:.875em">· ' + esc(f.tipo) + '</span>' : '') + '</b>' +
+      '<small>' + esc(f.semEndereco ? 'Complete o endereço em FORNECEDORES para usar como destino' : f.endereco) + '</small></span>' +
+      (f.semEndereco ? '<span class="rs-selo">Sem endereço</span>' : '') + '</button>';
+  }).join('') || '<p class="cartao-meta" style="margin:0">Nenhum fornecedor com esse nome. Use "Outro destino".</p>';
+}
+function rsSecDestino() {
+  var d = RS.d, o = d.outro;
+  var h = '<div class="rs-bloco"><span class="rotulo">3 · Destino</span><div class="rs-seg" role="group" aria-label="Origem do destino">' +
+    '<button data-rsmodo="cad" aria-pressed="' + (d.modo === 'cad') + '">Fornecedor cadastrado</button><button data-rsmodo="outro" aria-pressed="' + (d.modo === 'outro') + '">Outro destino</button></div>';
+  if (d.modo === 'cad') {
+    h += '<label class="sr" for="rsBusca">Buscar fornecedor</label><input id="rsBusca" class="campo" placeholder="Buscar por apelido ou tipo" data-rsd="busca" value="' + esc(d.busca) + '">' +
+      '<div class="rs-bloco" id="rsListaForn">' + rsListaForn() + '</div>';
+  } else {
+    h += '<div class="rs-outro"><span class="cartao-meta" style="color:var(--suave2)">Só o mínimo para o Google Maps achar o lugar.</span><div class="rs-campos">' +
+      '<label class="rs-campo">Nome do local<input class="campo" maxlength="30" placeholder="Ex.: Escritório do advogado" data-rso="nome" value="' + esc(o.nome) + '"></label>' +
+      '<label class="rs-campo">CEP (se souber)<input class="campo" inputmode="numeric" maxlength="9" placeholder="00000-000" data-rso="cep" value="' + esc(o.cep) + '"></label>' +
+      '<label class="rs-campo inteiro">Rua e número<input class="campo" maxlength="120" placeholder="Rua Paraibuna, 475" data-rso="endereco" value="' + esc(o.endereco) + '"></label>' +
+      '<label class="rs-campo">Bairro<input class="campo" maxlength="60" data-rso="bairro" value="' + esc(o.bairro) + '"></label>' +
+      '<label class="rs-campo">Cidade<input class="campo" maxlength="60" data-rso="cidade" value="' + esc(o.cidade) + '"></label></div>' +
+      '<label class="chk-lin"><input type="checkbox" data-rso="salvar"' + (o.salvar ? ' checked' : '') + '> Salvar como fornecedor para as próximas vezes</label></div>';
+  }
+  return h + '</div>';
+}
+function rsSecDataDesc() {
+  var d = RS.d;
+  return '<div class="rs-campos"><label class="rs-campo">4 · Data<input class="campo" type="date" max="' + rsHoje() + '" data-rsd="data" value="' + esc(d.data) + '"></label>' +
+    '<label class="rs-campo">Descrição' + (d.motivo === 'REUNIÃO' ? ' (motivo da reunião)' : ' (opcional)') + '<input class="campo" maxlength="80" data-rsd="desc" placeholder="' +
+    (d.motivo === 'REUNIÃO' ? 'Ex.: reunião com a Dra. Marcela' : 'Ex.: material de elétrica') + '" value="' + esc(d.desc) + '"></label></div>';
+}
+function rsLadoDesl() {
+  var d = RS.d, n = rsSelDesl().length;
+  return '<div class="rs-cx"><span class="rotulo">Resumo</span><span id="rsResumoDesl" style="font-size:.9375em;line-height:1.5">' + esc(rsResumoDesl()) + '</span>' +
+    '<span class="cartao-meta">Texto do e-mail: ' + (d.motivo === 'FATURADO' ? 'retirada de material faturado (a NF chega pelo fornecedor no fechamento da fatura)' : 'reunião ou visita') + '</span></div>' +
+    '<div class="rs-info"><span class="rotulo">Processado pelo app</span><span>Rotas, valores e notas de débito ficam prontos em cerca de 1 minuto. Nada é enviado antes da sua aprovação.</span></div>' +
+    '<button class="bt grande" data-rs="salvarDesl"' + (n ? '' : ' disabled') + ' id="rsBtDesl">Calcular e preparar ' + n + ' nota' + (n === 1 ? '' : 's') + '</button>';
+}
+function rsHtmlDesl() {
+  if (faixa() === 'celular') return rsHtmlDeslPassos();
+  return '<div class="rs-duas"><section class="rs-form" aria-label="Deslocamento">' + rsSecMotivo() + rsSecCondos() + rsSecDestino() + rsSecDataDesc() +
+    rsHtmlComps(RS.d.comps, 'd') + '</section><aside class="rs-lado">' + rsLadoDesl() + '</aside></div>';
+}
+function rsHtmlDeslPassos() {
+  var d = RS.d, p = d.passo, n = rsSelDesl().length;
+  var h = '<div class="rs-passos"><span class="rotulo">Passo ' + p + ' de 4 · ' + RS_PASSOS[p - 1] + '</span><div class="barras" aria-hidden="true">' +
+    [1, 2, 3, 4].map(function (i) { return '<i' + (i <= p ? ' class="on"' : '') + '></i>'; }).join('') + '</div></div><section class="rs-form" aria-label="Deslocamento">';
+  if (p === 1) h += rsSecMotivo();
+  else if (p === 2) h += rsSecCondos();
+  else if (p === 3) h += rsSecDestino() + rsSecDataDesc();
+  else h += '<div class="rs-cx" style="box-shadow:none;padding:0"><span class="rotulo">' + esc(RS_CASO[d.motivo]) + '</span><b style="color:var(--azul)">' + esc(rsDestinoTxt()) + ' · ' + esc(rsData(d.data)) + '</b>' +
+    '<span style="font-size:.9375em;color:var(--suave2)">' + n + ' condomínio' + (n === 1 ? '' : 's') + ': ' + esc(rsSelDesl().map(rsNomeCondo).join(', ')) + '</span>' +
+    (d.desc.trim() ? '<span class="cartao-meta">' + esc(d.desc.trim()) + '</span>' : '') + '</div>' + rsHtmlComps(d.comps, 'd') +
+    '<div class="rs-info"><span>O app calcula as rotas e prepara as notas. Você aprova o envio na Revisão.</span></div>';
+  h += '</section><div class="rs-rodape">' + (p > 1 ? '<button class="bt claro" data-rs="passoVolta" style="flex:0 0 auto">Voltar</button>' : '') +
+    (p < 4 ? '<button class="bt" data-rs="passoVai"' + (p === 2 && !n ? ' disabled' : '') + '>' + (p === 2 ? 'Continuar com ' + n : 'Continuar') + '</button>'
+      : '<button class="bt" data-rs="salvarDesl">Preparar ' + n + ' nota' + (n === 1 ? '' : 's') + '</button>') + '</div>';
+  return h;
+}
+
+/* --- Revisão --- */
+function rsHtmlRev() {
+  var lista = RS.rev;
+  if (!lista) return '<p class="vazio">Carregando…</p>';
+  if (lista.erro) return '<p class="vazio">' + esc(lista.erro) + '</p>';
+  if (!lista.length) return '<p class="vazio">Nada aguardando aprovação. Tudo enviado.</p>';
+  var prontos = lista.filter(rsPodeEnviar);
+  var h = '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:1em"><p style="margin:0;flex:1 1 20em;font-size:.9375em;color:var(--suave2)">' +
+    (prontos.length ? prontos.length + (prontos.length === 1 ? ' pronta' : ' prontas') + ' para enviar. Cada uma vai num e-mail separado para a administradora do condomínio.' : 'Nada pronto para enviar agora.') + '</p>';
+  if (prontos.length > 1) {
+    h += RS.confTodos ? '<span style="display:flex;gap:.5em;flex-wrap:wrap"><button class="bt claro" data-rs="cancTodos">Cancelar</button><button class="bt rs-bt-ouro" data-rs="aprovarTodos">Confirmar envio de ' + prontos.length + ' e-mails</button></span>'
+      : '<button class="bt" data-rs="confTodos">Aprovar e enviar todas (' + prontos.length + ')</button>';
+  }
+  h += '</div>';
+  lista.forEach(function (c) {
+    var num = c.numD || c.numC || c.id, aberto = RS.aberto === c.id, km = c.rota ? (c.rota.kmIda + c.rota.kmVolta) : null;
+    h += '<article class="rs-card"><div class="rs-card-lin">' +
+      (c.nota ? '<a class="rs-nota" href="' + esc(c.nota.url) + '" target="_blank" rel="noopener">' + IC.doc.replace(/width="18" height="18"/, 'width="26" height="26"') + 'Nota PDF</a>'
+        : '<span class="rs-nota" aria-hidden="true">' + IC.doc.replace(/width="18" height="18"/, 'width="26" height="26"') + (c.numC ? 'NF' : '—') + '</span>') +
+      '<div class="rs-card-tx"><span class="numdoc">' + esc(num) + (c.numC && c.numD ? ' · ' + esc(c.numC) : '') + '</span>' +
+        '<b>' + esc(c.condominio) + (c.destino ? ' → ' + esc(c.destino) : '') + '</b>' +
+        '<span class="cartao-meta">' + esc(RS_CASO[c.caso] || c.caso) + (c.descricao ? ' · ' + esc(c.descricao) : '') + (c.data ? ' · ' + esc(rsData(c.data)) : '') + '</span></div>' +
+      '<div class="rs-card-val">' + (km !== null ? '<small>' + rsKm(c.rota.kmIda) + ' ida + ' + rsKm(c.rota.kmVolta) + ' volta</small>' : '') +
+        (c.valor !== null && c.valor !== undefined ? '<b>' + esc(rsMoeda(c.valor)) + '</b>' : '<small>sem valor</small>') + '</div>' +
+      '<div class="rs-card-bt"><button class="bt claro" data-rs="verRev" data-rsid="' + esc(c.id) + '" aria-expanded="' + aberto + '">' + (aberto ? 'Fechar prévia' : 'Ver nota e e-mail') + '</button>' +
+        (rsPodeEnviar(c) ? '<button class="bt rs-bt-ouro" data-rs="aprovar" data-rsid="' + esc(c.id) + '">Aprovar e enviar</button>' : '') + '</div></div>';
+    if (c.etapa === 'ERRO') h += '<div class="rs-info vinho" role="alert"><span class="rotulo">Precisa de você</span><span>' + esc(c.aviso || 'Erro ao processar.') + '</span></div>';
+    else if (c.processador === 'CLAUDE') h += '<div class="rs-info ouro"><span>Preparado por Claude. O envio destas pelo app ainda não está ligado: confirme no chat.</span></div>';
+    else if (c.aviso) h += '<div class="rs-info vinho" role="alert"><span>' + esc(c.aviso) + '</span></div>';
+    if (aberto) {
+      h += '<div class="rs-email">';
+      if (c.email) h += '<span class="cartao-meta">Para: ' + esc(c.email.para) + '</span><b style="color:var(--azul)">' + esc(c.email.assunto) + '</b><div class="corpo">' + esc(c.email.texto) + '</div>';
+      else h += '<span class="cartao-meta">Prévia do e-mail indisponível.</span>';
+      var anexos = [];
+      if (c.nota) anexos.push('<a href="' + esc(c.nota.url) + '" target="_blank" rel="noopener">Nota de débito ' + esc(c.numD) + '</a>');
+      (c.arquivos || []).forEach(function (a) { anexos.push('<a href="' + esc(rsDrive(a.id)) + '" target="_blank" rel="noopener">' + esc(a.nome) + '</a>' + (a.ressarcir ? '' : ' <span class="cartao-meta">(só arquivo, não vai anexo)</span>')); });
+      if (anexos.length) h += '<span class="rotulo">Anexos</span><span>' + anexos.join('<br>') + '</span>';
+      h += '</div>';
+    }
+    h += '</article>';
+  });
+  return h;
+}
+function rsPodeEnviar(c) { return c.etapa === 'REVISÃO' && c.processador === 'MOTOR' && !!c.email; }
+function rsKm(v) { return Number(v || 0).toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' km'; }
+
+/* --- Acompanhamento --- */
+function rsHtmlAcomp() {
+  var a = RS.acomp;
+  if (!a) return '<p class="vazio">Carregando…</p>';
+  if (a.erro) return '<p class="vazio">' + esc(a.erro) + '</p>';
+  var ver = RS.verAcomp, lista = ver === 'abertos' ? a.abertos : a.concluidos;
+  var h = '<nav class="rs-chips" aria-label="Filtro"><button class="chip" data-rsver="abertos" aria-pressed="' + (ver === 'abertos') + '">A receber<span class="n">' + a.abertos.length + '</span></button>' +
+    '<button class="chip" data-rsver="concluidos" aria-pressed="' + (ver === 'concluidos') + '">Recebidos (últimos 30)</button></nav>';
+  if (!lista.length) return h + '<p class="vazio">' + (ver === 'abertos' ? 'Nada a receber. Tudo em dia.' : 'Nenhum recebido ainda.') + '</p>';
+  h += '<div class="rs-tab"><table><thead><tr><th>Documento</th><th>Condomínio</th><th>Tipo</th><th style="text-align:right">Valor</th><th>' + (ver === 'abertos' ? 'Enviado em' : 'Recebido em') + '</th><th>Situação</th><th><span class="sr">Ação</span></th></tr></thead><tbody>';
+  lista.forEach(function (l) {
+    var pode = ver === 'abertos' && l.situacao !== 'GERAR', bx = RS.baixa && RS.baixa.linha === l.linha;
+    var pill = l.situacao === 'CONCLUÍDO' ? 'verde' : l.situacao === 'GERAR' ? 'ouro' : l.atrasado ? '' : 'azul';
+    h += '<tr><td class="numdoc">' + esc(l.numDoc || '—') + '</td><td>' + esc(rsNomeCondo(l.codigo)) + '</td>' +
+      '<td style="color:var(--suave2)">' + esc(l.tipo) + (l.descricao ? '<br><span class="cartao-meta">' + esc(l.descricao) + '</span>' : '') + '</td>' +
+      '<td class="dir">' + esc(rsMoeda(l.valor)) + '</td><td style="color:var(--suave2);white-space:nowrap">' + esc(rsData(ver === 'abertos' ? l.enviadoEm : l.recebidoEm) || '—') + '</td>' +
+      '<td><span class="rs-selo ' + pill + '">' + esc(l.situacao === 'GERAR' ? 'Aguardando envio' : l.situacao === 'CONCLUÍDO' ? 'Concluído' : l.atrasado ? 'Há ' + l.dias + ' dias' : 'Enviado') + '</span></td><td>';
+    if (pode && bx) h += '<span class="rs-baixa"><label class="sr" for="rsDataBaixa">Data do recebimento</label><input type="date" id="rsDataBaixa" max="' + rsHoje() + '" value="' + esc(RS.baixa.data) + '">' +
+      '<button class="bt-link" data-rs="cancBaixa">Cancelar</button><button class="bt" data-rs="baixa">Confirmar</button></span>';
+    else if (pode) h += '<button class="bt claro" data-rs="abrirBaixa" data-rslinha="' + l.linha + '" style="min-height:2.5em;font-size:.8125em;white-space:nowrap">Caiu na conta</button>';
+    h += '</td></tr>';
+  });
+  return h + '</tbody></table></div>';
+}
+
+/* ---------- eventos ---------- */
+function rsComp(i) {
+  var p = String(i).split(':'), lista = p[0] === 'nf' ? RS.nf.comps : RS.d.comps;
+  return { lista: lista, i: Number(p[1]), item: lista[Number(p[1])] };
+}
+function cliqueRess(ev) {
+  var b = ev.target.closest('button'); if (!b || !RS || b.disabled) return;
+  if (b.hasAttribute('data-rsaba')) { if (!RS.ocupado) rsIrAba(b.getAttribute('data-rsaba')); return; }
+  if (b.hasAttribute('data-rsop')) {
+    var campo = b.getAttribute('data-rsop'), v = b.getAttribute('data-rsv');
+    if (campo === 'motivo') RS.d.motivo = v; else RS.nf[campo] = v;
+    if (campo === 'ds' && v === 'D') { var lj = rsForn(RS.nf.loja); if (lj && lj.semEndereco) RS.nf.loja = ''; }
+    rsDesenhar(); return;
+  }
+  if (b.hasAttribute('data-rscondo')) {
+    var cod = b.getAttribute('data-rscondo');
+    if (RS.d.sel[cod]) delete RS.d.sel[cod]; else RS.d.sel[cod] = true;
+    rsDesenhar(); return;
+  }
+  if (b.hasAttribute('data-rsforn')) { RS.d.forn = b.getAttribute('data-rsforn'); rsDesenhar(); return; }
+  if (b.hasAttribute('data-rsmodo')) { RS.d.modo = b.getAttribute('data-rsmodo'); rsDesenhar(); return; }
+  if (b.hasAttribute('data-rsver')) { RS.verAcomp = b.getAttribute('data-rsver'); RS.baixa = null; rsDesenhar(); return; }
+  var a = b.getAttribute('data-rs'); if (!a) return;
+  if (a === 'irRev') rsIrAba('rev');
+  else if (a === 'irAcomp') rsIrAba('acomp');
+  else if (a === 'entrada') { RS.entradaInfo = !RS.entradaInfo; rsDesenhar(); }
+  else if (a === 'maisComp') {
+    var alvo = b.getAttribute('data-rsi') === 'nf' ? RS.nf.comps : RS.d.comps;
+    alvo.push({ tipo: 'ESTACIONAMENTO', ressarcir: true, valor: '', local: '', codigo: '', arq: null }); rsDesenhar();
+  }
+  else if (a === 'tiraComp') { var c = rsComp(b.getAttribute('data-rsi')); c.lista.splice(c.i, 1); rsDesenhar(); }
+  else if (a === 'salvarNF') rsSalvarNF();
+  else if (a === 'salvarDesl') rsSalvarDesl();
+  else if (a === 'passoVai') { var erro = rsValidaPasso(RS.d.passo); if (erro) { avisar(erro, true); return; } RS.d.passo++; rsDesenhar(); $('rs').scrollTop = 0; }
+  else if (a === 'passoVolta') { RS.d.passo = Math.max(1, RS.d.passo - 1); rsDesenhar(); $('rs').scrollTop = 0; }
+  else if (a === 'verRev') { var id = b.getAttribute('data-rsid'); RS.aberto = RS.aberto === id ? null : id; rsDesenhar(); }
+  else if (a === 'confTodos') { RS.confTodos = true; rsDesenhar(); }
+  else if (a === 'cancTodos') { RS.confTodos = false; rsDesenhar(); }
+  else if (a === 'aprovar') rsAprovar([b.getAttribute('data-rsid')], b);
+  else if (a === 'aprovarTodos') rsAprovar((RS.rev || []).filter(rsPodeEnviar).map(function (x) { return x.id; }), b);
+  else if (a === 'abrirBaixa') { RS.baixa = { linha: Number(b.getAttribute('data-rslinha')), data: rsHoje() }; rsDesenhar(); }
+  else if (a === 'cancBaixa') { RS.baixa = null; rsDesenhar(); }
+  else if (a === 'baixa') rsBaixa(b);
+}
+function entradaRess(ev) {
+  var t = ev.target; if (!RS) return;
+  var k = t.getAttribute('data-rsnf');
+  if (k && k !== 'codigo' && k !== 'loja' && k !== 'tipo') { RS.nf[k] = t.value; var nm = $('rsNomeNF'); if (nm) nm.textContent = rsNomeNF(); return; }
+  k = t.getAttribute('data-rsd');
+  if (k) {
+    RS.d[k] = t.value;
+    if (k === 'busca') { var lf = $('rsListaForn'); if (lf) lf.innerHTML = rsListaForn(); }
+    var rd = $('rsResumoDesl'); if (rd) rd.textContent = rsResumoDesl();
+    return;
+  }
+  k = t.getAttribute('data-rso');
+  if (k && k !== 'salvar') { RS.d.outro[k] = t.value; var rd2 = $('rsResumoDesl'); if (rd2) rd2.textContent = rsResumoDesl(); return; }
+  k = t.getAttribute('data-rsc');
+  if (k === 'valor' || k === 'local') { rsComp(t.getAttribute('data-rsi')).item[k] = t.value; return; }
+  if (t.id === 'rsDataBaixa' && RS.baixa) RS.baixa.data = t.value;
+}
+function mudancaRess(ev) {
+  var t = ev.target; if (!RS) return;
+  if (t.type === 'file') { rsLerArquivo(t); return; }
+  var k = t.getAttribute('data-rsnf');
+  if (k === 'codigo' || k === 'loja' || k === 'tipo') { RS.nf[k] = t.value; rsDesenhar(); return; }
+  if (k === 'data') { RS.nf.data = t.value; var nm = $('rsNomeNF'); if (nm) nm.textContent = rsNomeNF(); return; }
+  if (t.getAttribute('data-rso') === 'salvar') { RS.d.outro.salvar = t.checked; return; }
+  k = t.getAttribute('data-rsc');
+  if (k === 'ressarcir') { rsComp(t.getAttribute('data-rsi')).item.ressarcir = t.checked; rsDesenhar(); return; }
+  if (k === 'tipo' || k === 'codigo') { rsComp(t.getAttribute('data-rsi')).item[k] = t.value; return; }
+}
+function rsLerArquivo(inp) {
+  var f = inp.files && inp.files[0]; if (!f) return;
+  var max = (RS.cfg && RS.cfg.tamMaxMB) || 10;
+  if (f.size > max * 1024 * 1024) { avisar('Arquivo maior que ' + max + ' MB. Tire outra foto ou envie um PDF menor.', true); inp.value = ''; return; }
+  if (!/^image\/|^application\/pdf$/.test(f.type)) { avisar('Envie uma foto ou um PDF.', true); inp.value = ''; return; }
+  var alvo = inp.getAttribute('data-rsarq'), rd = new FileReader();
+  rd.onload = function () {
+    var arq = { nome: f.name, mime: f.type, base64: String(rd.result) };
+    if (alvo === 'nf') RS.nf.arq = arq; else rsComp(alvo).item.arq = arq;
+    rsDesenhar();
+  };
+  rd.onerror = function () { avisar('Não consegui ler o arquivo. Tente de novo.', true); };
+  rd.readAsDataURL(f);
+}
+function rsArqEnvio(a) { return a ? { nome: a.nome, mime: a.mime, base64: a.base64.replace(/^data:[^,]*,/, '') } : null; }
+function rsCompsEnvio(lista, multi) {
+  var erro = null;
+  var out = lista.map(function (c, i) {
+    var v = rsNum(c.valor);
+    if (c.ressarcir && !(v > 0)) erro = erro || 'Informe o valor do comprovante ' + (i + 1) + '.';
+    if (multi && !c.codigo) erro = erro || 'Diga de qual condomínio é o comprovante ' + (i + 1) + '.';
+    return { tipo: c.tipo, ressarcir: !!c.ressarcir, valor: v === null ? '' : v, local: c.local.trim(), codigo: c.codigo || undefined, arquivo: rsArqEnvio(c.arq) };
+  });
+  return { erro: erro, lista: out };
+}
+
+/* ---------- ações ---------- */
+function rsSalvarNF() {
+  var f = RS.nf, v = rsNum(f.valor);
+  var erro = !f.arq ? 'Falta a foto ou o arquivo da nota.' : !f.codigo ? 'Escolha o condomínio.' : !f.loja ? 'Escolha a loja.' :
+    !f.desc.trim() ? 'Escreva a descrição da compra.' : (f.ra === 'R' && !(v > 0)) ? 'Informe o valor da nota para ressarcir.' : null;
+  var comps = f.ds === 'D' ? rsCompsEnvio(f.comps, false) : { lista: [] };
+  erro = erro || comps.erro;
+  if (erro) { avisar(erro, true); return; }
+  var c = rsCondo(f.codigo);
+  if (c && c.ativo === false && !confirm('O condomínio está inativo. Registrar mesmo assim?')) return;
+  RS.ocupado = f.ra === 'R' ? 'Salvando a nota na entrada…' : 'Salvando e processando…'; rsDesenhar();
+  api('ressarcimentos.salvarNF', {
+    codigo: f.codigo, ressarcir: f.ra === 'R', deslocamento: f.ds === 'D', tipo: f.tipo, destino: f.loja,
+    valor: v === null ? '' : v, numeroNF: f.numero.trim(), descricao: f.desc.trim(), data: f.data, arquivo: rsArqEnvio(f.arq), comprovantes: comps.lista
+  }).then(function (r) {
+    RS.ocupado = '';
+    if (!r.ok) { rsDesenhar(); avisar(r.mensagem, true); return; }
+    RS.nf = rsNovaNF(); RS.rev = null;
+    if (r.processador === 'CLAUDE') { avisar('NF salva como ' + r.nome + '. Peça no chat: "continue os ressarcimentos".'); rsIrAba('inicio'); }
+    else { avisar('NF processada. Confira em Revisão.'); rsIrAba('rev'); }
+    rsAtualizarResumo();
+  }).catch(function () { RS.ocupado = ''; rsDesenhar(); });
+}
+function rsValidaPasso(p) {
+  var d = RS.d;
+  if (p === 2 && !rsSelDesl().length) return 'Escolha pelo menos um condomínio.';
+  if (p === 3) {
+    if (d.modo === 'cad' && !d.forn) return 'Escolha o destino.';
+    if (d.modo === 'outro' && (!d.outro.nome.trim() || !/\d/.test(d.outro.endereco) || !d.outro.cidade.trim())) return 'Informe o nome do local, a rua com número e a cidade.';
+    if (d.motivo === 'REUNIÃO' && !d.desc.trim()) return 'Escreva o motivo da reunião ou visita.';
+    if (!d.data) return 'Informe a data.';
+  }
+  return null;
+}
+function rsSalvarDesl() {
+  var d = RS.d, sel = rsSelDesl();
+  var erro = rsValidaPasso(2) || rsValidaPasso(3);
+  var comps = rsCompsEnvio(d.comps, sel.length > 1);
+  erro = erro || comps.erro;
+  if (erro) { avisar(erro, true); return; }
+  var inativos = sel.filter(function (c) { var x = rsCondo(c); return x && x.ativo === false; });
+  if (inativos.length && !confirm('Há condomínio inativo na lista. Gerar a cobrança mesmo assim?')) return;
+  var o = d.outro, corpo = { motivo: d.motivo, codigos: sel, data: d.data, descricao: d.desc.trim(), comprovantes: comps.lista };
+  var antes = Promise.resolve(null);
+  if (d.modo === 'cad') corpo.destino = d.forn;
+  else if (o.salvar) {
+    antes = api('ressarcimentos.salvarFornecedor', { apelido: o.nome.trim(), nome: o.nome.trim(), endereco: o.endereco.trim(), bairro: o.bairro.trim(), cep: o.cep.trim(), cidade: o.cidade.trim() })
+      .then(function (r) { if (!r.ok) throw r; corpo.destino = r.apelido; return r; });
+  } else corpo.outroDestino = { nome: o.nome.trim(), endereco: [o.endereco, o.bairro, o.cidade, o.cep].map(function (s) { return s.trim(); }).filter(String).join(', ') };
+  RS.ocupado = 'Calculando ' + (sel.length === 1 ? 'a rota e preparando a nota…' : 'as rotas e preparando ' + sel.length + ' notas…'); rsDesenhar();
+  antes.then(function () { return api('ressarcimentos.criarDeslocamento', corpo); }).then(function (r) {
+    RS.ocupado = '';
+    if (!r.ok) { rsDesenhar(); avisar(r.mensagem, true); return; }
+    if (d.modo === 'outro' && o.salvar) api('ressarcimentos.config').then(function (c) { if (c.ok && RS) { RS.cfg = c; RS.cfg.fornecedores.sort(function (a, b) { return a.apelido < b.apelido ? -1 : 1; }); } });
+    var n = (r.pedidos || []).length;
+    RS.d = rsNovoDesl(); RS.rev = null;
+    avisar(n === 1 ? 'Nota preparada. Confira e aprove em Revisão.' : n + ' notas preparadas. Confira e aprove em Revisão.');
+    rsIrAba('rev');
+    rsAtualizarResumo();
+  }).catch(function (r) {
+    RS.ocupado = ''; rsDesenhar();
+    if (r && r.mensagem) avisar(r.mensagem, true);
+  });
+}
+function rsAprovar(ids, b) {
+  if (!ids.length) return;
+  b.disabled = true; b.textContent = ids.length === 1 ? 'Enviando…' : 'Enviando ' + ids.length + ' e-mails…';
+  api('ressarcimentos.aprovar', { ids: ids }).then(function (r) {
+    RS.confTodos = false;
+    if (!r.ok) { avisar(r.mensagem, true); rsCarregarRev(); return; }
+    var res = r.resultados || [], ok = res.filter(function (x) { return x.enviado; }), falhas = res.filter(function (x) { return !x.enviado; });
+    if (falhas.length) avisar((ok.length ? ok.length + ' enviado(s). ' : '') + 'Não enviado: ' + falhas.map(function (x) { return x.id + ' (' + x.mensagem + ')'; }).join('; '), true);
+    else avisar(ok.length === 1 ? 'E-mail enviado. Situação: ENVIADO.' : ok.length + ' e-mails enviados. Situação: ENVIADO.');
+    RS.aberto = null; RS.acomp = null;
+    rsCarregarRev(); rsAtualizarResumo();
+  }).catch(function () { rsCarregarRev(); });
+}
+function rsBaixa(b) {
+  var bx = RS.baixa, l = ((RS.acomp && RS.acomp.abertos) || []).filter(function (x) { return x.linha === bx.linha; })[0];
+  if (!l || !bx.data) return;
+  b.disabled = true; b.textContent = 'Salvando…';
+  api('ressarcimentos.baixa', { linha: l.linha, numDoc: l.numDoc, recebidoEm: bx.data }).then(function (r) {
+    RS.baixa = null;
+    if (!r.ok) { avisar(r.mensagem, true); rsCarregarAcomp(); return; }
+    avisar((l.numDoc || 'Lançamento') + ' baixado como CONCLUÍDO.');
+    rsCarregarAcomp(); rsAtualizarResumo();
+  }).catch(function () { rsCarregarAcomp(); });
+}
 
 /* ================= Início ================= */
 function carregarScriptGoogle() {
