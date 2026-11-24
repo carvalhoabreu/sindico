@@ -590,6 +590,46 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
   .pf-chips .chip{flex:1;justify-content:center;padding:0 .35em;min-width:0;font-size:.8125em}
   .pf-salvar{flex:1.4;min-height:3em}
 }
+/* Configurações (v1.22) */
+.cf-corpo{padding-bottom:0}
+.cf-busca input{width:100%;box-sizing:border-box;min-height:2.9em;border-radius:.75em;border:1.5px solid var(--linha);background:#fff;padding:0 1em;font:inherit;color:var(--azul)}
+.cf-corpo .mp-lista{display:flex;flex-direction:column;gap:.35em}
+.cf-corpo .mp-lin .ico{border-color:var(--linha)}
+.cf-corpo .mp-lin small{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cf-link{display:flex;align-items:center;justify-content:space-between;min-height:2.75em;border:none;background:none;font-weight:600;color:#7A5C27;padding:0;margin-bottom:1em}
+.cf-cab{display:flex;flex-direction:column;gap:.2em}
+.cf-cab h2{margin:0;font-family:Lora,Georgia,serif;font-size:1.35em;color:var(--azul)}
+.cf-voltar{display:inline-flex;align-items:center;gap:.3em;min-height:2.75em;border:none;background:none;padding:0;font-weight:600;color:var(--suave2);align-self:flex-start}
+.cf-sec{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19em),1fr));gap:.6em}
+.cf-item{background:#fff;border:1px solid var(--linha2);border-radius:1em;padding:.85em 1em;display:flex;flex-direction:column;gap:.55em}
+.cf-item.mudou{border-color:var(--ouro);box-shadow:0 0 0 1px var(--ouro)}
+.cf-item.ro{background:#FBF9F4}
+.cf-tx{display:flex;flex-wrap:wrap;align-items:center;gap:.3em .5em}
+.cf-tx label{cursor:default}
+.cf-tx b{font-size:.9375em;color:var(--azul)}
+.cf-tx small{flex-basis:100%;font-size:.8125em;color:var(--suave)}
+.cf-sem{font-size:.6875em;font-weight:700;color:#5C4A24;background:var(--creme2);border-radius:999px;padding:.15em .55em}
+.cf-ro{display:flex;align-items:center;gap:.5em;font-size:.875em;color:var(--suave2);word-break:break-all}
+.cf-stp{display:flex;align-items:center;gap:.5em;flex-wrap:wrap}
+.cf-stp button{width:2.75em;height:2.75em;border-radius:.75em;border:1.5px solid var(--linha);background:var(--creme);font-size:1.15em;font-weight:700;color:var(--azul)}
+.cf-stp input{width:5.5em;min-height:2.75em;border-radius:.75em;border:1.5px solid var(--linha);text-align:center;font:inherit;font-weight:700;color:var(--azul)}
+.cf-un{font-size:.875em;color:var(--suave2)}
+.cf-faixa{font-size:.75em;color:var(--suave)}
+.cf-in{min-height:2.75em;border-radius:.75em;border:1.5px solid var(--linha);background:#fff;padding:0 .8em;font:inherit;color:var(--azul);width:100%;box-sizing:border-box}
+.cf-hora{width:auto;min-width:7.5em}
+.cf-chips{display:flex;flex-wrap:wrap;gap:.4em;align-items:center}
+.cf-chips .chip{min-height:2.75em;font-size:.875em}
+.cf-dias{display:flex;gap:.3em;justify-content:space-between;max-width:24em}
+.cf-d{width:2.75em;height:2.75em;border-radius:50%;border:1.5px solid var(--linha);background:#fff;font-weight:600;color:var(--azul)}
+.cf-d[aria-pressed="true"]{background:var(--azul);border-color:var(--azul);color:#fff}
+.cf-hr{display:inline-flex;align-items:center;gap:.2em;min-height:2.75em;padding:0 .2em 0 .8em;border-radius:.75em;border:1.5px solid var(--linha);background:#fff;font-weight:700;color:var(--azul)}
+.cf-hr button{width:2.2em;height:2.2em;border:none;background:none;display:flex;align-items:center;justify-content:center}
+.cf-mais{min-height:2.75em;padding:0 .9em;border-radius:.75em;border:1.5px dashed var(--ouro);background:none;font-weight:600;color:#7A5C27}
+.cf-faixa2{display:flex;align-items:center;gap:.6em;flex-wrap:wrap;color:var(--suave)}
+.cf-nota{margin:.2em 0 1em}
+.cf-inline{border:none;background:none;padding:0;font:inherit;font-weight:600;color:#7A5C27;text-decoration:underline}
+.cf-corpo .pf-barra{margin-top:auto}
+@media (max-width:899px){ .cf-corpo{padding:1em 1em 0} .cf-corpo .pf-barra{margin:auto -1em 0} .pf-chips .chip{flex:1 0 auto} }
 .bt[disabled]{opacity:.5;cursor:default}
 @media (max-width:899px){
   .ges-lista{width:100%;border-right:none}
@@ -1080,7 +1120,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.21';
+var VERSAO_SITE = '1.22';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -3347,7 +3387,8 @@ function htmlMenuPortal() {
       (temRess() ? mpLin('ressarcimentos', ICO_RESS.replace(/#E3C894/g, '#0F2646'), 'Ressarcimentos', nr ? (nr === 1 ? '1 aguardando aprovação' : nr + ' aguardando aprovação') : 'Notas, deslocamentos e reembolsos',
         nr ? '<span class="selo estatico">' + nr + '</span>' : '') : '') +
       mpLin('evolucao', IC.evolucaoOuro.replace(/#E3C894/g, '#0F2646'), 'Evolução', nd ? (nd === 1 ? '1 para decidir' : nd + ' para decidir') : 'Sugestões e melhorias do app',
-        nd ? '<span class="selo estatico">' + nd + '</span>' : '') + '</div>';
+        nd ? '<span class="selo estatico">' + nd + '</span>' : '') +
+      (g && g.configuracoes ? mpLin('configuracoes', ICO_CFG, 'Configurações', 'Parâmetros gerais e de cada módulo') : '') + '</div>';
   }
   if (g) {
     h += '<div class="mp-rot">Gestão</div><div class="mp-lista">';
@@ -3360,7 +3401,7 @@ function htmlMenuPortal() {
       : (g.equipeAguardando ? (g.equipeAguardando === 1 ? '1 pedido aguardando o síndico' : g.equipeAguardando + ' pedidos aguardando o síndico') : 'Funcionários da sua empresa'),
       g.equipeParaVoce ? '<span class="selo">' + g.equipeParaVoce + '</span>' : (g.equipeAguardando ? '<span class="selo estatico">' + g.equipeAguardando + '</span>' : ''));
     if (g.pessoas) h += mpLin('pessoas', IC.pessoas, 'Pessoas e empresas', 'Cadastros, perfis e acessos');
-    if (g.perfis) h += mpLin('perfis', ICO_PERFIS, 'Perfis e permissões', 'O que cada perfil pode fazer');
+    if (g.perfis) h += mpLin('perfis', ICO_PERFIS, 'Perfis de acesso', 'O que cada perfil pode fazer');
     h += '</div>';
   }
   return h + '</div>';
@@ -3388,7 +3429,8 @@ function desenharLateralGestao() {
     sv.innerHTML = (temEvo || temRs) ? '<span class="lat-titulo" style="padding-top:1.6em">Só para você</span>' +
       (temRs ? '<button class="lat-item" data-acao="ressarcimentos">' + ICO_RESS + '<span style="flex:1">Ressarcimentos</span>' + (nr ? '<span class="cont">' + nr + '</span>' : '') + '</button>' : '') +
       (temEvo ? '<button class="lat-item" data-acao="evolucao">' + IC.evolucaoOuro +
-      '<span style="flex:1">Evolução do app</span>' + (nd ? '<span class="cont">' + nd + '</span>' : '') + '</button>' : '') : '';
+      '<span style="flex:1">Evolução do app</span>' + (nd ? '<span class="cont">' + nd + '</span>' : '') + '</button>' : '') +
+      (S.portal.gestao && S.portal.gestao.configuracoes ? '<button class="lat-item" data-acao="configuracoes">' + ICO_CFG.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Configurações</span></button>' : '') : '';
     if (temRs && !S.rsResumo) rsAtualizarResumo();
   }
   var eb = $('emBreve');
@@ -3404,7 +3446,7 @@ function desenharLateralGestao() {
   }
   if (g.equipe) h += '<button class="lat-item" data-acao="equipe">' + IC.pessoas.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Minha equipe</span>' +
     ((g.equipeParaVoce || g.equipeAguardando) ? '<span class="cont">' + ((g.equipeParaVoce || 0) + (g.equipeAguardando || 0)) + '</span>' : '') + '</button>';
-  if (g.perfis) h += '<button class="lat-item" data-acao="perfis">' + ICO_PERFIS.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Perfis e permissões</span></button>';
+  if (g.perfis) h += '<button class="lat-item" data-acao="perfis">' + ICO_PERFIS.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Perfis de acesso</span></button>';
   if (g.pessoas) h += '<button class="lat-item" data-acao="pessoas">' + IC.pessoas.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Pessoas e empresas</span></button>';
   el.innerHTML = h;
 }
@@ -4285,17 +4327,305 @@ function cliqueEquipe(ev) {
 }
 
 var ICO_PERFIS = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>';
+/* ================= Configurações (master, v1.22) ================= */
+var CF = null;
+var ICO_CFG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>';
+var CF_ICO_CADEADO = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5C6680" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+var CF_DIAS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+var CF_DIAS_LONGOS = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+
+function abrirConfiguracoes(vista) {
+  CF = { dados: null, vista: vista || 'inicio', edit: {}, busca: '' };
+  abrirJanela('Configurações', 'Carregando…', '<div class="jan-corpo cf-corpo"><p class="vazio">Carregando…</p></div>', 'gestao cf', function (raiz) {
+    var c = raiz.querySelector('.jan-corpo');
+    c.addEventListener('click', cliqueCfg);
+    c.addEventListener('input', entradaCfg);
+    c.addEventListener('change', entradaCfg);
+    carregarCfg();
+  });
+}
+function cfRaiz() { return document.querySelector('#camadas .janela.cf'); }
+function carregarCfg() {
+  return api('portal.configuracoes').then(function (r) {
+    var raiz = cfRaiz(); if (!raiz) return;
+    if (!r.ok) { corpoJanela(raiz, '', '<p class="vazio">' + esc(r.mensagem) + '</p>'); return; }
+    CF.dados = r; CF.edit = {};
+    desenharCfg();
+  });
+}
+function cfItens() {
+  var out = [];
+  ((CF.dados && CF.dados.grupos) || []).forEach(function (g) { g.secoes.forEach(function (s) { s.itens.forEach(function (i) { out.push({ g: g, s: s, i: i }); }); }); });
+  return out;
+}
+function cfValor(i) { return Object.prototype.hasOwnProperty.call(CF.edit, i.chave) ? CF.edit[i.chave] : i.valor; }
+function cfNorm(s) { return String(s == null ? '' : s).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ').trim().toLowerCase(); }
+function cfMudou(i) { return Object.prototype.hasOwnProperty.call(CF.edit, i.chave) && cfNorm(CF.edit[i.chave]) !== cfNorm(i.valor); }
+function cfMudancas() { return cfItens().filter(function (x) { return cfMudou(x.i); }).map(function (x) { return x.i; }); }
+function cfLista(s) { return String(s || '').split(/[,;]/).map(function (x) { return x.trim(); }).filter(String); }
+function cfMostrar(i) {
+  var v = cfValor(i);
+  if (!v) return '—';
+  if (i.formato === 'faixa') return v.replace('-', ' até ');
+  if (i.formato === 'link') return v.replace(/^https:\/\//, '').slice(0, 38) + (v.length > 46 ? '…' : '');
+  return v + (i.unidade && i.formato === 'numero' ? ' ' + i.unidade : '');
+}
+function cfResumo(g) {
+  var its = [];
+  g.secoes.forEach(function (s) { s.itens.forEach(function (i) { if (!i.semUso && i.formato !== 'json') its.push(i); }); });
+  return its.slice(0, 2).map(function (i) { return i.nome.replace(/ \(.*\)$/, '').replace(/^(Dias|Horários) do lembrete$/, '$1') + ': ' + cfMostrar(i); }).join(' · ');
+}
+
+function desenharCfg() {
+  var raiz = cfRaiz(); if (!raiz || !CF.dados) return;
+  var corpo = raiz.querySelector('.jan-corpo'), topo = corpo.scrollTop, h = '', sub = 'Só para você';
+  var g = CF.dados.grupos.filter(function (x) { return x.id === CF.vista; })[0];
+  if (g) { h = cfHtmlGrupo(g); sub = g.area === 'modulos' ? 'Módulo' : g.area === 'sistema' ? 'Só leitura' : 'Gerais'; }
+  else if (CF.vista === 'historico') { h = cfHtmlHistorico(); sub = 'Histórico e Sistema'; }
+  else if (CF.vista === 'empresas') { h = cfHtmlEmpresas(); sub = 'Empresas parceiras'; }
+  else { CF.vista = 'inicio'; h = cfHtmlInicio(); }
+  var m = cfMudancas();
+  if (m.length) {
+    h += '<div class="pf-barra" role="region" aria-label="Mudanças não salvas"><span class="pf-ponto" aria-hidden="true"></span><span class="pf-resumo">' + m.length + (m.length === 1 ? ' alteração' : ' alterações') +
+      ' · <span>' + esc(m[0].nome + ': ' + m[0].valor + ' → ' + cfValor(m[0])) + (m.length > 1 ? ' e mais ' + (m.length - 1) : '') + '</span></span>' +
+      '<div class="pf-bts"><button class="pf-desc-bt" id="cfDescartar">Descartar</button><button class="pf-salvar" id="cfSalvar">Salvar</button></div></div>';
+  }
+  var foco = document.activeElement && document.activeElement.id;
+  var pos = foco && document.activeElement.selectionStart;
+  corpoJanela(raiz, sub, h);
+  corpo.scrollTop = topo;
+  if (foco && $(foco)) { var el = $(foco); el.focus(); try { if (pos != null) el.setSelectionRange(pos, pos); } catch (e) {} }
+}
+
+function cfLinha(acao, icone, titulo, sub, extra) {
+  return '<button class="mp-lin" ' + acao + '><span class="ico">' + icone + '</span><span class="tx"><b>' + esc(titulo) + '</b><small>' + esc(sub) + '</small></span>' + (extra || '') + IC.chevD + '</button>';
+}
+function cfHtmlInicio() {
+  var d = CF.dados, h = '';
+  h += '<label class="cf-busca"><span class="sr">Buscar configuração</span><input id="cfBusca" type="search" placeholder="Buscar: urgente, lembrete, gasolina…" value="' + esc(CF.busca) + '" autocomplete="off"></label>';
+  if (CF.busca.trim()) {
+    var q = cfNorm(CF.busca);
+    var achados = cfItens().filter(function (x) { return cfNorm(x.i.nome + ' ' + x.i.descricao + ' ' + x.s.nome + ' ' + x.g.nome).indexOf(q) >= 0; });
+    h += '<div class="mp-lista">' + (achados.length ? achados.map(function (x) {
+      return cfLinha('data-cf-ir="' + esc(x.g.id) + '"', ICO_CFG, x.i.nome, x.g.nome + ' › ' + x.s.nome + ' · ' + cfMostrar(x.i));
+    }).join('') : '<p class="vazio">Nada encontrado.</p>') + '</div>';
+    return h;
+  }
+  var nmud = function (g) { return cfMudancas().filter(function (i) { return g.secoes.some(function (s) { return s.itens.indexOf(i) >= 0; }); }).length; };
+  var linhaGrupo = function (g) {
+    var n = nmud(g);
+    return cfLinha('data-cf-ir="' + esc(g.id) + '"', ICO_CFG, g.nome, cfResumo(g) || g.desc, n ? '<span class="selo estatico">' + n + '</span>' : '');
+  };
+  var gerais = d.grupos.filter(function (g) { return g.area === 'gerais'; });
+  var mods = d.grupos.filter(function (g) { return g.area === 'modulos'; });
+  h += '<span class="rotulo">Gerais</span><div class="mp-lista">' + gerais.map(linhaGrupo).join('') + '</div>';
+  h += '<span class="rotulo">Módulos</span><div class="mp-lista">' + mods.map(linhaGrupo).join('') +
+    (((S.portal && S.portal.modulos) || []).some(function (m) { return m.id === 'evolucao'; }) ? cfLinha('data-acao="evolucao"', IC.evolucaoOuro.replace(/#E3C894/g, '#0F2646'), 'Evolução do app', 'Sugestões e pareceres') : '') + '</div>';
+  var ne = (d.empresas || []).length;
+  h += '<span class="rotulo">Pessoas e acesso</span><div class="mp-lista">' +
+    cfLinha('data-acao="perfis"', ICO_PERFIS, 'Perfis de acesso', 'O que cada perfil pode fazer') +
+    cfLinha('data-cf-ir="empresas"', IC.pessoas, 'Empresas parceiras', ne ? (d.empresas.map(function (e) { return e.apelido; }).join(', ')) : 'Nenhuma empresa parceira ativa') +
+    cfLinha('data-acao="pessoas"', IC.pessoas, 'Pessoas e empresas', 'Cadastros, perfis e acessos') + '</div>';
+  h += '<button class="cf-link" data-cf-ir="historico">Histórico de mudanças · Sistema' + IC.chevD + '</button>';
+  return h;
+}
+
+function cfHtmlCab(titulo) {
+  return '<div class="cf-cab"><button class="cf-voltar" data-cf-ir="inicio">' + IC.voltar + '<span>Configurações</span></button><h2>' + esc(titulo) + '</h2></div>';
+}
+function cfHtmlGrupo(g) {
+  var h = cfHtmlCab(g.nome);
+  g.secoes.forEach(function (s) {
+    h += '<span class="rotulo">' + esc(s.nome) + '</span><div class="cf-sec">' + s.itens.map(cfHtmlItem).join('') + '</div>';
+  });
+  if (g.id === 'tarefas') h += '<p class="dica-campo cf-nota">Quem pode criar, ordenar e ver concluídas fica em <button class="cf-inline" data-acao="perfis">Perfis de acesso</button>. Categorias e assuntos chegam na próxima etapa.</p>';
+  return h;
+}
+function cfHtmlItem(i) {
+  var mudou = cfMudou(i), v = cfValor(i), id = 'cf_' + i.chave.replace(/[^A-Za-z0-9_]/g, '_');
+  var h = '<div class="cf-item' + (mudou ? ' mudou' : '') + (i.noApp !== 'Editável' ? ' ro' : '') + '">' +
+    '<div class="cf-tx"><label for="' + id + '"><b>' + esc(i.nome) + '</b></label>' +
+    (mudou ? '<span class="pf-tag">era ' + esc(i.valor || '—') + '</span>' : '') +
+    (i.semUso ? '<span class="cf-sem">ainda não usado pelo app</span>' : '') +
+    (i.descricao ? '<small>' + esc(i.descricao) + '</small>' : '') + '</div>';
+  if (i.noApp !== 'Editável') return h + '<div class="cf-ro">' + CF_ICO_CADEADO + '<span>' + esc(v || '—') + '</span></div></div>';
+  var c = 'data-cf="' + esc(i.chave) + '"';
+  switch (i.formato) {
+    case 'numero':
+      h += '<div class="cf-stp"><button ' + c + ' data-cf-passo="-1" aria-label="Diminuir">−</button><input id="' + id + '" ' + c + ' inputmode="decimal" value="' + esc(v) + '"><button ' + c + ' data-cf-passo="1" aria-label="Aumentar">+</button>' +
+        (i.unidade ? '<span class="cf-un">' + esc(i.unidade) + '</span>' : '') + '</div>';
+      if (i.min !== null && i.max !== null) h += '<small class="cf-faixa">de ' + esc(String(i.min).replace('.', ',')) + ' a ' + esc(String(i.max).replace('.', ',')) + '</small>';
+      break;
+    case 'simnao':
+      h += '<button class="pf-sw" role="switch" id="' + id + '" ' + c + ' data-cf-sw="1" aria-checked="' + (cfNorm(v) === 'sim') + '"></button>';
+      break;
+    case 'lista1':
+      h += '<div class="cf-chips">' + i.opcoes.map(function (o) { return '<button class="chip" ' + c + ' data-cf-op="' + esc(o) + '" aria-pressed="' + (cfNorm(o) === cfNorm(v)) + '">' + esc(o) + '</button>'; }).join('') + '</div>';
+      break;
+    case 'listaN': {
+      var sel = cfLista(v), extras = sel.filter(function (x) { return !i.opcoes.some(function (o) { return cfNorm(o) === cfNorm(x); }); });
+      h += '<div class="cf-chips">' + i.opcoes.concat(extras).map(function (o) {
+        return '<button class="chip" ' + c + ' data-cf-multi="' + esc(o) + '" aria-pressed="' + sel.some(function (x) { return cfNorm(x) === cfNorm(o); }) + '">' + esc(o) + '</button>';
+      }).join('') + '</div>';
+      if (i.aceitaEmail) h += '<small class="cf-faixa">Para incluir uma pessoa pelo e-mail, digite abaixo e toque fora do campo.</small><input class="cf-in" id="' + id + '_em" ' + c + ' data-cf-email="1" type="email" placeholder="email@exemplo.com">';
+      break;
+    }
+    case 'dias': {
+      var ds = cfLista(v);
+      h += '<div class="cf-dias">' + CF_DIAS.map(function (dd) { return '<button class="cf-d" ' + c + ' data-cf-dia="' + dd + '" aria-pressed="' + (ds.indexOf(dd) >= 0) + '" aria-label="' + dd + '">' + dd.charAt(0) + '</button>'; }).join('') + '</div>';
+      break;
+    }
+    case 'dia':
+      h += '<select class="cf-in" id="' + id + '" ' + c + '>' + CF_DIAS_LONGOS.map(function (dd) { return '<option' + (cfNorm(dd) === cfNorm(v) ? ' selected' : '') + '>' + dd + '</option>'; }).join('') + '</select>';
+      break;
+    case 'hora':
+      h += '<input class="cf-in cf-hora" id="' + id + '" ' + c + ' type="time" value="' + esc(v) + '">';
+      break;
+    case 'horas': {
+      var hs = cfLista(v);
+      h += '<div class="cf-chips">' + hs.map(function (x) { return '<span class="cf-hr">' + esc(x) + '<button ' + c + ' data-cf-tirahora="' + esc(x) + '" aria-label="Tirar ' + esc(x) + '">' + IC.xP.replace('currentColor', '#5C6680') + '</button></span>'; }).join('') +
+        '<input class="cf-in cf-hora" id="' + id + '" ' + c + ' data-cf-poehora="1" type="time" aria-label="Novo horário"><button class="cf-mais" ' + c + ' data-cf-addhora="' + id + '">+ Horário</button></div>';
+      break;
+    }
+    case 'faixa': {
+      var fx = String(v).split('-');
+      h += '<div class="cf-faixa2"><input class="cf-in cf-hora" id="' + id + '" ' + c + ' data-cf-fx="0" type="time" value="' + esc(fx[0] || '') + '"><span>até</span><input class="cf-in cf-hora" ' + c + ' data-cf-fx="1" type="time" value="' + esc(fx[1] || '') + '" aria-label="Fim do silêncio"></div>';
+      break;
+    }
+    default:
+      h += '<input class="cf-in" id="' + id + '" ' + c + ' type="' + (i.formato === 'link' ? 'url' : 'text') + '" value="' + esc(v) + '"' + (i.maxTexto ? ' maxlength="' + i.maxTexto + '"' : '') + '>';
+  }
+  return h + '</div>';
+}
+function cfHtmlHistorico() {
+  var d = CF.dados, h = cfHtmlCab('Histórico e Sistema');
+  h += '<span class="rotulo">Últimas mudanças</span><div class="ges-hist">' + (d.historico.length ? d.historico.map(function (i) {
+    var dt = i.quando ? new Date(i.quando) : null;
+    var q = dt ? dt.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }) + ' ' + dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : '';
+    return '<p><b>' + esc(q) + '</b> · ' + esc(i.campo) + ': ' + esc(i.antigo) + ' → ' + esc(i.novo) + ' · ' + esc(i.quem) + '</p>';
+  }).join('') : '<p class="dica-campo" style="margin:0">Nenhuma mudança feita pelo app ainda.</p>') + '</div>';
+  var sis = d.grupos.filter(function (g) { return g.id === 'sistema'; })[0];
+  h += '<span class="rotulo">Sistema · só leitura</span><div class="cf-sec">' + (sis ? sis.secoes.map(function (s) { return s.itens.map(cfHtmlItem).join(''); }).join('') : '') +
+    '<div class="cf-item ro"><div class="cf-tx"><b>Versão</b></div><div class="cf-ro"><span>' + esc(d.versao + ' · site ' + VERSAO_SITE) + '</span></div></div></div>' +
+    '<p class="dica-campo cf-nota">Estes dados tiram o app do ar se forem alterados errado. Ficam aqui para conferência e só mudam na planilha.</p>';
+  return h;
+}
+function cfHtmlEmpresas() {
+  var h = cfHtmlCab('Empresas parceiras');
+  var es = CF.dados.empresas || [];
+  if (!es.length) return h + '<p class="vazio">Nenhuma empresa parceira ativa.</p>';
+  es.forEach(function (e) {
+    h += '<div class="cf-sec"><div class="cf-item"><div class="cf-tx"><b>' + esc(e.apelido) + '</b><small>' + e.pessoas + (e.pessoas === 1 ? ' pessoa' : ' pessoas') + ' · ' + esc(e.condos.join(', ')) + '</small></div></div>' +
+      '<div class="cf-item ro"><div class="cf-tx"><b>Módulos que recebe</b></div><div class="cf-ro"><span>' + esc(e.modulos.join(', ')) + '</span></div></div>' +
+      '<div class="cf-item ro"><div class="cf-tx"><b>Em Tarefas, atua em</b><small>Escolher categorias e assuntos por empresa chega na próxima etapa.</small></div><div class="cf-ro"><span>' + esc(e.categorias.join(', ')) + '</span></div></div></div>';
+  });
+  h += '<p class="dica-campo cf-nota">Pessoas e condomínios de cada empresa ficam em <button class="cf-inline" data-acao="pessoas">Pessoas e empresas</button>.</p>';
+  return h;
+}
+
+function cfItemPorChave(k) { var x = cfItens().filter(function (y) { return y.i.chave === k; })[0]; return x && x.i; }
+function cfPor(i, v) { CF.edit[i.chave] = v; desenharCfg(); }
+function cliqueCfg(ev) {
+  var b = ev.target.closest('button'); if (!b || !CF || !CF.dados) return;
+  var a;
+  if ((a = b.getAttribute('data-cf-ir'))) {
+    if (a !== 'inicio' && a !== 'historico' && a !== 'empresas') CF.busca = '';
+    CF.vista = a; desenharCfg(); var c = cfRaiz(); if (c) c.querySelector('.jan-corpo').scrollTop = 0; return;
+  }
+  if (b.id === 'cfDescartar') { CF.edit = {}; desenharCfg(); return; }
+  if (b.id === 'cfSalvar') {
+    var m = cfMudancas();
+    umaVez('cfSalvar', b, 'Salvando…', function () {
+      return api('portal.salvarConfiguracoes', { mudancas: m.map(function (i) { return { chave: i.chave, valor: cfValor(i) }; }) });
+    }).then(function (r) {
+      if (!r || r.ignorado) return;
+      if (!r.ok) { avisar(r.mensagem, true); return; }
+      avisar(r.mudou === 1 ? 'Salvo · vale a partir de agora' : r.mudou + ' configurações salvas · valem a partir de agora');
+      carregarCfg();
+      atualizarPortal();
+    });
+    return;
+  }
+  var k = b.getAttribute('data-cf'); if (!k) return;
+  var i = cfItemPorChave(k); if (!i) return;
+  var v = cfValor(i);
+  if ((a = b.getAttribute('data-cf-passo'))) {
+    var n = parseFloat(String(v).replace(',', '.')); if (isNaN(n)) n = i.min || 0;
+    var passo = i.decimal ? 0.01 : 1;
+    n = Math.round((n + passo * (+a)) * 100) / 100;
+    if (i.min !== null) n = Math.max(i.min, n);
+    if (i.max !== null) n = Math.min(i.max, n);
+    cfPor(i, i.decimal ? n.toFixed(2).replace('.', ',') : String(n)); return;
+  }
+  if (b.hasAttribute('data-cf-sw')) { cfPor(i, cfNorm(v) === 'sim' ? 'Não' : 'Sim'); return; }
+  if ((a = b.getAttribute('data-cf-op'))) { cfPor(i, a); return; }
+  if ((a = b.getAttribute('data-cf-multi'))) {
+    var sel = cfLista(v), tem = sel.some(function (x) { return cfNorm(x) === cfNorm(a); });
+    sel = tem ? sel.filter(function (x) { return cfNorm(x) !== cfNorm(a); }) : sel.concat([a]);
+    if (!sel.length) { avisar('Deixe pelo menos uma opção marcada.', true); return; }
+    cfPor(i, sel.join(', ')); return;
+  }
+  if ((a = b.getAttribute('data-cf-dia'))) {
+    var ds = cfLista(v), on = ds.indexOf(a) >= 0;
+    ds = on ? ds.filter(function (x) { return x !== a; }) : ds.concat([a]);
+    if (!ds.length) { avisar('Deixe pelo menos um dia.', true); return; }
+    cfPor(i, CF_DIAS.filter(function (x) { return ds.indexOf(x) >= 0; }).join(', ')); return;
+  }
+  if ((a = b.getAttribute('data-cf-tirahora'))) {
+    var hs = cfLista(v).filter(function (x) { return x !== a; });
+    if (!hs.length) { avisar('Deixe pelo menos um horário.', true); return; }
+    cfPor(i, hs.join(', ')); return;
+  }
+  if ((a = b.getAttribute('data-cf-addhora'))) {
+    var inp = $(a), nv = inp && inp.value;
+    if (!nv) { if (inp) inp.focus(); return; }
+    var l = cfLista(v); if (l.indexOf(nv) < 0) l.push(nv);
+    cfPor(i, l.sort().join(', ')); return;
+  }
+}
+function entradaCfg(ev) {
+  var el = ev.target; if (!CF || !CF.dados) return;
+  if (el.id === 'cfBusca') { CF.busca = el.value; if (ev.type === 'input') desenharCfg(); return; }
+  var k = el.getAttribute && el.getAttribute('data-cf'); if (!k) return;
+  var i = cfItemPorChave(k); if (!i) return;
+  if (el.hasAttribute('data-cf-poehora')) return; // só entra ao tocar em "+ Horário"
+  if (el.hasAttribute('data-cf-email')) {
+    if (ev.type !== 'change') return;
+    var em = el.value.trim().toLowerCase(); if (!em) return;
+    if (!/^[^@\s,;]+@[^@\s,;]+\.[^@\s,;]+$/.test(em)) { avisar('E-mail inválido.', true); return; }
+    var sel = cfLista(cfValor(i)); if (sel.indexOf(em) < 0) sel.push(em);
+    cfPor(i, sel.join(', ')); return;
+  }
+  if (el.hasAttribute('data-cf-fx')) {
+    var fx = String(cfValor(i)).split('-'); fx[+el.getAttribute('data-cf-fx')] = el.value;
+    CF.edit[i.chave] = (fx[0] || '') + '-' + (fx[1] || '');
+  } else CF.edit[i.chave] = el.value;
+  // texto: redesenha só ao sair do campo, para não atrapalhar a digitação
+  if (ev.type === 'change' || el.tagName === 'SELECT' || el.type === 'time') desenharCfg();
+  else cfBarraSo();
+}
+/** Atualiza só a barra de mudanças (durante a digitação). */
+function cfBarraSo() {
+  var raiz = cfRaiz(); if (!raiz) return;
+  var m = cfMudancas(), barra = raiz.querySelector('.pf-barra');
+  if (!m.length) { if (barra) barra.remove(); raiz.querySelector('.jan-cab small').textContent = 'Só para você'; return; }
+  if (!barra) { desenharCfg(); return; }
+  var r = barra.querySelector('.pf-resumo');
+  if (r) r.innerHTML = m.length + (m.length === 1 ? ' alteração' : ' alterações') + ' · <span>' + esc(m[0].nome + ': ' + m[0].valor + ' → ' + cfValor(m[0])) + (m.length > 1 ? ' e mais ' + (m.length - 1) : '') + '</span>';
+}
+
 /* ================= Gestão › Perfis e permissões (master, v1.14) ================= */
 var PF = null;
 var PF_DESC = {
   Supervisor: ['Carvalho & Abreu', 'Colaborador da casa com visão das tarefas de todas as empresas nos condomínios marcados.'],
   Gestor: ['empresa parceira', 'Responsável pela equipe da empresa parceira; vê todos os condomínios que ela atende.'],
-  'Líder': ['L no condomínio', 'Operador marcado com L no condomínio. Organiza a fila da equipe.'],
-  Operador: ['O no condomínio', 'Vê e conclui as tarefas dos condomínios em que tem O.']
+  Colaborador: ['Carvalho & Abreu', 'Equipe da casa com O no condomínio (até a v1.20 contava como Operador). Vê e conclui as tarefas dos condomínios marcados.'],
+  'Líder': ['L no condomínio', 'Pessoa marcada com L no condomínio. Organiza a fila da equipe.'],
+  Operador: ['empresa parceira', 'Funcionário de empresa parceira com O no condomínio. Vê e conclui as tarefas dos condomínios em que tem O.']
 };
 function abrirPerfis() {
   PF = { dados: null, edit: null, perfil: 'Supervisor' };
-  abrirJanela('Perfis e permissões', 'Carregando…', '<div class="jan-corpo pf-corpo"><p class="vazio">Carregando…</p></div>', 'gestao pf', function (raiz) {
+  abrirJanela('Perfis de acesso', 'Carregando…', '<div class="jan-corpo pf-corpo"><p class="vazio">Carregando…</p></div>', 'gestao pf', function (raiz) {
     raiz.querySelector('.jan-corpo').addEventListener('click', cliquePerfis);
     carregarPerfis();
   });
@@ -5405,6 +5735,7 @@ document.addEventListener('click', function (e) {
     case 'ressarcimentos': fecharCamadas(); abrirRessarcimentos(); break;
     case 'equipe': fecharCamadas(); abrirEquipe(); break;
     case 'perfis': fecharCamadas(); abrirPerfis(); break;
+    case 'configuracoes': fecharCamadas(); abrirConfiguracoes(); break;
     case 'guia': fecharCamadas(); abrirGuia(); break;
     case 'fecharFaixaGuia': guardarLocal('faixaGuiaFechada', hojeLocal()); desenharFaixaGuia(); break;
     case 'pedidos': fecharCamadas(); abrirPedidos(); break;
