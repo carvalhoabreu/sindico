@@ -607,6 +607,54 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
   .ges-zona .bt{width:100%}
 }
 .dica-campo{margin:-.4em 0 0;font-size:.8125em;color:var(--suave)}
+/* Categorias e Aquisições (v1.18) */
+.cat-lista{display:flex;flex-direction:column;gap:.4em}
+.cat-op{display:flex;align-items:center;gap:.75em;min-height:3.125em;padding:0 .75em;border-radius:.75em;background:#fff;border:1.5px solid var(--linha);width:100%;text-align:left;font:inherit;color:var(--texto);cursor:pointer}
+.cat-op:hover{border-color:var(--ouro-claro)}
+.cat-op[aria-checked="true"]{border-color:var(--azul);background:#EEF1F6}
+.cat-op[disabled]{cursor:default;opacity:.62;background:var(--creme,#F8F4EC)}
+.cat-op .ci{width:2em;height:2em;border-radius:50%;background:var(--ouro-fundo,#F3E6CC);display:flex;align-items:center;justify-content:center;flex:none;color:var(--azul)}
+.cat-op[aria-checked="true"] .ci{background:var(--azul);color:#fff}
+.cat-op .cn{flex:1;min-width:0;font-size:.875em;color:var(--suave)}
+.cat-op .cn b{font-size:1.07em;color:var(--azul)}
+.cat-op .breve-tag{font-size:.6875em;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7A5C27}
+.cat-op .ok{flex:none;color:var(--azul)}
+.cp-item{border:1px solid var(--linha);border-radius:1em;padding:.75em .85em;display:flex;flex-direction:column;gap:.6em;background:#fff}
+.cp-item .linha-campos{align-items:flex-end}
+.cp-item label{display:flex;flex-direction:column;gap:.3em;min-width:0}
+.cp-qtd{width:4.75em;flex:none}
+.cp-qtd .campo{text-align:center;font-weight:700;padding:.6em .4em}
+.cp-tirar{flex:none;width:2.75em;height:2.75em;border-radius:50%;border:none;background:none;display:flex;align-items:center;justify-content:center}
+.cp-tirar:hover{background:var(--creme2,#F1EBDD)}
+.cp-site{font-size:.8125em;color:var(--suave);display:flex;align-items:center;gap:.4em}
+.cp-mais{min-height:2.75em;border-radius:.75em;border:1.5px dashed var(--ouro);background:var(--ouro-fundo,#FBF8F2);font:600 .875em Inter,system-ui,sans-serif;color:#7A5C27;cursor:pointer}
+.chips-linha{display:flex;gap:.5em;flex-wrap:wrap}
+.chip-op{min-height:2.5em;padding:0 1em;border-radius:999px;border:1.5px solid var(--linha);background:#fff;font:600 .875em Inter,system-ui,sans-serif;color:var(--azul);cursor:pointer}
+.chip-op[aria-pressed="true"]{background:var(--azul);border-color:var(--azul);color:#fff}
+.etapas{display:flex;align-items:flex-start;background:#fff;border:1px solid var(--linha);border-radius:1em;padding:.85em .6em .7em}
+.etapas .et{flex:1;display:flex;flex-direction:column;align-items:center;gap:.35em;font-size:.75em;font-weight:600;color:var(--suave);text-align:center;min-width:0}
+.etapas .bo{width:1.9em;height:1.9em;border-radius:50%;border:2px solid #C9C2B2;background:#fff;display:flex;align-items:center;justify-content:center;font-size:.9em;font-weight:700;box-sizing:border-box;color:var(--suave)}
+.etapas .et.feito .bo{background:var(--azul);border-color:var(--azul)}
+.etapas .et.atual{color:var(--azul)}
+.etapas .et.atual .bo{border-color:var(--azul);border-width:3px;color:var(--azul)}
+.etapas .et.parou .bo{background:var(--vinho-fundo,#F8E5E5);border-color:var(--vinho,#8A2E2E);color:var(--vinho,#8A2E2E)}
+.etapas .et.parou{color:var(--vinho,#8A2E2E)}
+.etapas .li{flex:1;height:2px;background:#C9C2B2;margin-top:.95em;min-width:.75em}
+.etapas .li.feito{background:var(--azul)}
+.cp-caixa{background:#fff;border:1px solid var(--linha);border-radius:1em;padding:.85em 1em;display:flex;flex-direction:column;gap:.35em}
+.cp-prod{display:flex;align-items:baseline;gap:.6em;font-size:.9375em;color:var(--azul);min-height:1.9em}
+.cp-prod .q{flex:none;font-weight:700;min-width:3.2em;color:var(--suave2)}
+.cp-prod span{flex:1;min-width:0}
+.cp-prod a{flex:none;font-size:.8125em;font-weight:600;color:var(--azul);text-decoration:underline;text-decoration-color:var(--ouro);text-underline-offset:3px}
+.kv{display:flex;align-items:baseline;gap:.75em;min-height:2em;font-size:.875em}
+.kv span{color:var(--suave);width:9.5em;flex:none}
+.kv b{color:var(--azul);font-weight:600;min-width:0;overflow-wrap:anywhere}
+.cp-aviso{background:var(--ouro-fundo,#F3E6CC);border-radius:1em;padding:.85em 1em;display:flex;flex-direction:column;gap:.6em;font-size:.875em;color:var(--azul)}
+.cp-aviso.recusa{background:var(--vinho-fundo,#F8E5E5);color:var(--vinho,#8A2E2E)}
+.cp-botoes{display:flex;gap:.5em;flex-wrap:wrap}
+.cp-botoes .bt{flex:1;min-width:9em}
+.cp-form{display:flex;flex-direction:column;gap:.6em}
+.cp-form label{display:flex;flex-direction:column;gap:.3em}
 .av-item{display:flex;flex-direction:column;align-items:flex-start;gap:.35em;padding:.65em .75em}
 .av-item+.av-item{border-top:1px solid var(--linha2)}
 .av-tipo{font-size:.6875em;color:#8A2E2E;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
@@ -834,7 +882,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.17';
+var VERSAO_SITE = '1.18';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -955,7 +1003,11 @@ var IC = {
   semSinal: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l22 22"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><path d="M12 20h.01"/></svg>',
   lixoP: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>',
   maisBranco: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
-  att: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5C6680" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>'
+  att: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5C6680" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>',
+  carrinho: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.5L21.5 7H6"/></svg>',
+  okP: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>',
+  xP: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>',
+  okAzul: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>'
 };
 
 /* ================= Comunicação com o motor ================= */
@@ -1258,7 +1310,8 @@ function variasEmpresas() {
 function metaDe(t, semCondo) {
   var partes = [];
   if (!semCondo && S.condo === 'todos' && (S.dados.condos || []).length > 1) partes.push(nomeCondo(t.condo));
-  if (t.categoria && t.categoria !== 'Geral') partes.push(t.categoria);
+  if (ehCompraT(t)) partes.push(t.fase ? t.categoria + ' · ' + t.fase : t.categoria);
+  else if (temCategoria(t)) partes.push(t.categoria);
   else if (variasEmpresas()) partes.push(t.empresa);
   if (t.paraVoce) partes.push('direcionada a você');
   else if (t.direcionadoNome && t.direcionadoNome !== 'Equipe') partes.push('para ' + t.direcionadoNome);
@@ -1278,7 +1331,9 @@ function cartao(t, agrupado) {
       '<span class="cartao-meta">' + esc(metaDe(t, agrupado)) + anxInd(t) + '</span>' +
       (t.etiqueta ? '<span class="etiqueta">' + esc(t.etiqueta) + '</span>' : '') +
     '</button>' +
-    '<button class="concluir" data-concluir="' + esc(t.id) + '" aria-label="Concluir: ' + esc(t.titulo) + '">' + IC.check + '</button>' +
+    (ehCompraT(t)
+      ? '<button class="concluir abrir-compra" data-abrir="' + esc(t.id) + '" aria-label="Abrir compra: ' + esc(t.titulo) + '" title="Abrir compra">' + IC.carrinho + '</button>'
+      : '<button class="concluir" data-concluir="' + esc(t.id) + '" aria-label="Concluir: ' + esc(t.titulo) + '">' + IC.check + '</button>') +
   '</article>';
 }
 
@@ -1458,7 +1513,7 @@ function rotuloDia(iso) {
 function linhaConc(t) {
   var meta = [];
   if (S.condo === 'todos' && S.conc.agrupar !== 'condo') meta.push(nomeCondo(t.condo));
-  if (t.categoria && t.categoria !== 'Geral') meta.push(t.categoria);
+  if (temCategoria(t)) meta.push(t.categoria);
   if (S.conc.agrupar !== 'empresa') meta.push(t.empresa);
   meta.push(String(t.concluidoPor || '—').split(' ')[0] + ', ' + horaSP(new Date(t.concluidoEm)));
   return '<article class="linha-conc' + (S.selId === t.id ? ' sel' : '') + '" data-idconc="' + esc(t.id) + '">' +
@@ -1728,13 +1783,15 @@ function abrirAnexar(etapaInicial, modo) {
 function htmlAnexos(t) {
   var ax = t.anexos || [], env = S.envios[t.id] || [];
   var pode = !!(t.pode && t.pode.anexar);
+  var compra = !!t.compra; // aquisição: sem fotos de antes/depois; arquivos = comprovante e nota fiscal
+  var podeFoto = pode && !compra;
   var fotosDe = function (e) { return ax.filter(function (a) { return a.etapa === e; }); };
   var envDe = function (e) { return env.filter(function (a) { return a.etapa === e; }); };
   var nFotos = fotosDe('Antes').length + fotosDe('Depois').length + envDe('Antes').length + envDe('Depois').length;
   var h = '';
   var nAguardando = env.filter(function (x) { return x.estado === 'aguardando'; }).length;
   if (nAguardando) h += '<div class="anx-fila">' + IC.semSinal + '<span><b>Sem sinal.</b> ' + nAguardando + (nAguardando === 1 ? ' anexo guardado' : ' anexos guardados') + ' no aparelho; ' + (nAguardando === 1 ? 'vai' : 'vão') + ' sozinho' + (nAguardando === 1 ? '' : 's') + ' quando a conexão voltar.</span><button class="bt-link" data-acao="tentarFila">Tentar agora</button></div>';
-  if (nFotos || pode) {
+  if (nFotos || podeFoto) {
     h += '<section class="bloco anx" aria-label="Fotos"><span class="rotulo">Fotos</span>';
     ['Antes', 'Depois'].forEach(function (e) {
       var fs = fotosDe(e), es = envDe(e);
@@ -1747,7 +1804,7 @@ function htmlAnexos(t) {
         h += '<div class="anx-tile enviando' + (x.estado === 'aguardando' ? ' aguardando' : '') + '" aria-label="' + (x.estado === 'aguardando' ? 'Foto aguardando sinal' : 'Enviando foto') + '">' + (x.url ? '<img src="' + x.url + '" alt="">' : '') +
           '<span class="anx-prog">' + (x.estado === 'aguardando' ? IC.semSinal : x.progresso ? x.progresso + '%' : '<i class="anx-gira"></i>') + '</span></div>';
       });
-      if (pode && fs.length + es.length < 10) {
+      if (podeFoto && fs.length + es.length < 10) {
         if (e === 'Depois' && !fs.length && !es.length) h += '<button class="anx-add largo" data-anexar="Depois">' + IC.camera + '<span>Adicionar foto do depois</span></button>';
         else h += '<button class="anx-add" data-anexar="' + e + '" aria-label="Adicionar foto ' + ETAPA_ROT[e] + '">' + IC.mais + '<span>Foto</span></button>';
       }
@@ -1757,9 +1814,9 @@ function htmlAnexos(t) {
   }
   var docs = ax.filter(function (a) { return a.etapa === 'Documento'; }), envDocs = envDe('Documento');
   if (docs.length || envDocs.length || pode) {
-    h += '<section class="bloco anx" aria-label="Arquivos" data-drop="Documento"><div class="anx-cab"><span class="rotulo">Arquivos</span>' +
-      (pode ? '<button class="bt-link" data-anexar="Documento">+ Anexar arquivo</button>' : '') + '</div>';
-    if (!docs.length && !envDocs.length) h += '<span class="cartao-meta">Nenhum arquivo ainda.' + (faixa() === 'computador' ? ' Arraste um arquivo para cá.' : '') + '</span>';
+    h += '<section class="bloco anx" aria-label="Arquivos" data-drop="Documento"><div class="anx-cab"><span class="rotulo">' + (compra ? 'Comprovante e nota fiscal' : 'Arquivos') + '</span>' +
+      (pode ? '<button class="bt-link" data-anexar="Documento">+ ' + (compra ? 'Anexar' : 'Anexar arquivo') + '</button>' : '') + '</div>';
+    if (!docs.length && !envDocs.length) h += '<span class="cartao-meta">' + (compra ? 'Nenhum comprovante ainda.' : 'Nenhum arquivo ainda.') + (faixa() === 'computador' ? ' Arraste um arquivo para cá.' : '') + '</span>';
     docs.forEach(function (a) {
       var b = S.baixando[a.id];
       h += '<div class="anx-arq"><span class="anx-ext"><b>' + esc(extAnexo(a)) + '</b></span>' +
@@ -2128,7 +2185,7 @@ function textoCompartilhado(c) {
 function arquivosCompartilhados(c) {
   return (c.arquivos || []).map(function (a) { return new File([a.blob], a.nome || 'arquivo', { type: a.tipo || (a.blob && a.blob.type) || 'application/octet-stream' }); });
 }
-function podeCriarAlgum() { return ((S.dados && S.dados.condos) || []).some(function (c) { return c.podeCriar; }); }
+function podeCriarAlgum() { return catalogoDaTela().some(function (c) { return c.fluxo === FLX.SIMPLES && !c.emBreve && condosDaCategoria(c.nome).length; }); }
 
 function abrirCompartilhado() {
   var c = S.comp; if (!c) return;
@@ -2336,6 +2393,8 @@ function desfazer(id) {
 function abrirTarefa(id, silencioso) {
   guardarLocal('ultimaTarefa', id);
   S.selId = id; S.editandoDesc = false; S.editandoTitulo = false;
+  if (S.editandoPreco !== id) S.editandoPreco = null;
+  if (S.recusandoCompra !== id) S.recusandoCompra = null;
   document.body.classList.add('com-sel');
   marcarSelecionado();
   if (!silencioso || !S.det || S.det.id !== id) {
@@ -2384,11 +2443,13 @@ function desenharDetalhe() {
     (t.urgente ? '<span class="pilula urg">Urgente ' + t.posicao + '</span>' : '') +
     (t.etiqueta ? '<span class="pilula atraso">' + esc(t.etiqueta) + '</span>' : '') +
     '<span class="pilula forte">' + esc(t.empresa) + '</span>' +
-    (t.categoria && t.categoria !== 'Geral' ? '<span class="pilula">' + esc(t.categoria) + '</span>' : '') +
+    (temCategoria(t) ? '<span class="pilula">' + esc(t.categoria) + '</span>' : '') +
     '<span class="pilula">' + esc(t.paraVoce ? 'Direcionada a você' : t.direcionadoNome === 'Equipe' ? 'Equipe' : 'Para ' + t.direcionadoNome) + '</span>' +
     '<span class="pilula">Criada por ' + esc(t.criadoPor) + ' · ' + esc(quando(t.criadoEm)) + '</span>' +
     (!pend ? '<span class="pilula forte">Concluída por ' + esc(t.concluidoPor) + ' · ' + esc(quando(t.concluidoEm)) + '</span>' : '') +
     '</div></div>';
+
+  if (t.compra) h += htmlCompra(t);
 
   if (pode.ordenar) {
     h += '<div class="caixa-creme"><span>Prioridade</span>' +
@@ -2431,6 +2492,10 @@ function desenharDetalhe() {
   var obs = t.observacoes || [];
   if (!obs.length) h += '<span class="cartao-meta">Nenhum follow-up ainda.</span>';
   obs.forEach(function (o) {
+    if (o.tipo === 'Compra') {
+      h += '<div class="obs-auto">' + IC.carrinho.replace('width="20" height="20"', 'width="14" height="14"') + '<span><b>' + esc(String(o.autor).split(' ')[0]) + '</b> · ' + esc(o.texto) + '</span><time>' + esc(quando(o.em)) + '</time></div>';
+      return;
+    }
     if (o.tipo === 'Anexo') {
       var ax = (t.anexos || []).filter(function (a) { return a.id === o.idAnexo; })[0];
       var frase = '<b>' + esc(String(o.autor).split(' ')[0]) + '</b> ' + esc(o.texto.charAt(0).toLowerCase() + o.texto.slice(1));
@@ -2459,6 +2524,7 @@ function desenharDetalhe() {
   h += '</div>';
 
   if (pode.concluir) h += '<button class="bt grande" data-acao="concluirDet">' + IC.checkOuro + ' Marcar como concluída</button>';
+  if (t.compra && t.compra.pode && t.compra.pode.receber) h += '<button class="bt grande" data-acao="cpReceber">' + IC.checkOuro + ' Marcar como recebida</button>';
   if (pode.reabrir) h += '<button class="bt grande claro" data-acao="reabrir">Reabrir tarefa</button>';
 
   if (t.historico && t.historico.length) {
@@ -2470,6 +2536,108 @@ function desenharDetalhe() {
   $('detalhe').innerHTML = h;
   ajustarAltura($('txtObs'));
   carregarMiniaturas();
+}
+
+/* ---------- Aquisições = fluxo Compra pontual (v1.18) ---------- */
+function etapasCompra(c) {
+  var passos = ['Solicitada'];
+  if (c.passouPorAprovacao) passos.push('Aprovação');
+  if (c.etapa === 'Recusada') passos.push('Recusada'); else passos.push('Comprada', 'Recebida');
+  var atual = { 'Solicitada': 'Solicitada', 'Aguardando aprovação': 'Aprovação', 'Aprovada': 'Comprada', 'Comprada': 'Recebida', 'Recebida': '', 'Recusada': 'Recusada' }[c.etapa];
+  var iAtual = atual ? passos.indexOf(atual) : passos.length;
+  if (c.etapa === 'Solicitada' && c.liberada) iAtual = passos.indexOf('Comprada');
+  return '<div class="etapas" role="list" aria-label="Etapas da compra">' + passos.map(function (p, k) {
+    var parou = p === 'Recusada';
+    var cls = parou ? 'parou' : k < iAtual ? 'feito' : k === iAtual ? 'atual' : '';
+    var rot = p === 'Aprovação' ? (c.etapa === 'Aguardando aprovação' ? 'Aguardando aprovação' : 'Aprovada') : p;
+    return (k ? '<span class="li' + (k <= iAtual && !parou ? ' feito' : '') + '" aria-hidden="true"></span>' : '') +
+      '<span class="et ' + cls + '" role="listitem"' + (k === iAtual && !parou ? ' aria-current="step"' : '') + '><span class="bo">' +
+      (parou ? IC.xP : k < iAtual ? IC.okP : (k + 1)) + '</span>' + esc(rot) + '</span>';
+  }).join('') + '</div>';
+}
+function htmlCompra(t) {
+  var c = t.compra, p = c.pode || {};
+  var h = etapasCompra(c);
+  h += '<div class="cp-caixa"><span class="rotulo">' + (c.itens.length === 1 ? 'Produto' : 'Produtos') + '</span>' +
+    c.itens.map(function (it) {
+      var q = String(it.qtd).replace('.', ',') + ' ' + (it.unidade || 'un.');
+      return '<div class="cp-prod"><span class="q">' + esc(q) + '</span><span>' + esc(it.item) + '</span>' +
+        (it.link ? '<a href="' + esc(it.link) + '" target="_blank" rel="noopener noreferrer">' + esc(it.site || 'Abrir link') + '</a>' : '') + '</div>';
+    }).join('') +
+    '<div class="kv" style="margin-top:.25em"><span>Para quando</span><b>' + esc(c.paraQuando) + '</b></div>' +
+    (c.motivo ? '<div class="kv"><span>Motivo</span><b>' + esc(c.motivo) + '</b></div>' : '') +
+    (c.estimado !== null && c.etapa !== 'Comprada' && c.etapa !== 'Recebida' ? '<div class="kv"><span>Preço encontrado</span><b>' + esc(c.estimadoTxt) + (c.estimadoPor ? ' · ' + esc(String(c.estimadoPor).split(' ')[0]) : '') + '</b></div>' : '') +
+    (c.aprovado !== null ? '<div class="kv"><span>Aprovada</span><b>' + esc(c.aprovadoTxt) + ' · ' + esc(String(c.aprovadoPor || '').split(' ')[0]) + '</b></div>' : '') +
+    '</div>';
+
+  if (c.etapa === 'Aguardando aprovação') {
+    h += '<div class="cp-aviso"><span><b>Aguardando aprovação</b> · ' + esc(c.estimadoTxt) + ' passa do limite de ' + esc(c.limiteTxt) + '.</span>' +
+      (p.aprovar ? (S.recusandoCompra === t.id ? htmlRecusa() : '<div class="cp-botoes"><button class="bt claro" data-acao="cpRecusar">Recusar</button><button class="bt" data-acao="cpAprovar">Aprovar compra</button></div>')
+        : (p.preco && S.editandoPreco !== t.id ? '<button class="bt-link" data-acao="cpPrecoEditar" style="align-self:flex-start">Achei outro preço</button>' : '')) + '</div>';
+  }
+  if (c.etapa === 'Recusada') {
+    h += '<div class="cp-aviso recusa"><span><b>Compra recusada</b>' + (c.motivoRecusa ? ' · ' + esc(c.motivoRecusa) : '') + '</span></div>';
+  }
+  if (c.etapa === 'Comprada' || c.etapa === 'Recebida') {
+    h += '<div class="cp-caixa"><span class="rotulo">Registro da compra</span>' +
+      '<div class="kv"><span>Onde comprou</span><b>' + esc(c.onde) + '</b></div>' +
+      '<div class="kv"><span>Valor</span><b>' + esc(c.valorTxt) + '</b></div>' +
+      (c.pedido ? '<div class="kv"><span>Nº do pedido</span><b>' + esc(c.pedido) + '</b></div>' : '') +
+      (c.previsao ? '<div class="kv"><span>Previsão de entrega</span><b>' + esc(c.previsao) + '</b></div>' : '') +
+      '<div class="kv"><span>Comprada por</span><b>' + esc(String(c.compradoPor).split(' ')[0]) + ' · ' + esc(quando(c.compradoEm)) + '</b></div>' +
+      (c.recebidoEm ? '<div class="kv"><span>Recebida por</span><b>' + esc(String(c.recebidoPor).split(' ')[0]) + ' · ' + esc(quando(c.recebidoEm)) + '</b></div>' : '') +
+      '</div>';
+  }
+  // Compras: preço → (aprovação) → registro
+  if (p.preco && (S.editandoPreco === t.id || (c.estimado === null && c.etapa === 'Solicitada'))) {
+    h += '<div class="cp-caixa cp-form"><label><span class="rotulo">Preço encontrado (R$)</span><input class="campo" id="cpPreco" inputmode="decimal" autocomplete="off" placeholder="0,00" value="' + (c.estimado !== null ? esc(String(c.estimado.toFixed(2)).replace('.', ',')) : '') + '"></label>' +
+      '<p class="dica-campo" style="margin:0">Até ' + esc(c.limiteTxt) + ' pode comprar direto. Acima disso, vai para a aprovação do síndico.</p>' +
+      '<div class="cp-botoes">' + (S.editandoPreco === t.id ? '<button class="bt claro" data-acao="cpPrecoCancelar">Cancelar</button>' : '') + '<button class="bt" data-acao="cpPrecoSalvar">Salvar preço</button></div></div>';
+  } else if (p.registrar && c.liberada) {
+    h += '<div class="cp-caixa cp-form"><span class="rotulo">Registrar a compra</span>' +
+      '<label><span class="rot-campo">Onde comprou</span><input class="campo" id="cpOnde" maxlength="120" autocomplete="off" placeholder="Loja ou site" value="' + esc(primeiroSite(c)) + '"></label>' +
+      '<div class="grade2"><div><label class="rot-campo" for="cpValor">Valor pago (R$)</label><input class="campo" id="cpValor" inputmode="decimal" autocomplete="off" value="' + (c.estimado !== null ? esc(c.estimado.toFixed(2).replace('.', ',')) : '') + '"></div>' +
+      '<div><label class="rot-campo" for="cpPedido">Nº do pedido · opcional</label><input class="campo" id="cpPedido" maxlength="60" autocomplete="off"></div></div>' +
+      '<label><span class="rot-campo">Previsão de entrega · opcional</span><input class="campo" type="date" id="cpPrevisao" min="' + diaSP(new Date()) + '"></label>' +
+      '<div class="cp-botoes"><button class="bt claro" data-acao="cpPrecoEditar">Atualizar preço</button><button class="bt" data-acao="cpRegistrar">Registrar compra</button></div></div>';
+  }
+  if (p.recusar && c.etapa !== 'Aguardando aprovação') {
+    h += S.recusandoCompra === t.id ? '<div class="cp-aviso recusa">' + htmlRecusa() + '</div>'
+      : '<button class="bt-link" data-acao="cpRecusar" style="align-self:flex-start">Recusar esta compra</button>';
+  }
+  return h;
+}
+function htmlRecusa() {
+  return '<label class="cp-form" style="gap:.35em"><span class="rot-campo">Motivo da recusa (Compras recebe)</span><textarea class="campo" id="cpMotivoRecusa" rows="2" maxlength="300" placeholder="Ex.: fora do orçamento deste mês"></textarea></label>' +
+    '<div class="cp-botoes"><button class="bt claro" data-acao="cpRecusarCancelar">Cancelar</button><button class="bt" data-acao="cpRecusarConfirmar">Recusar compra</button></div>';
+}
+function primeiroSite(c) { var it = (c.itens || []).filter(function (x) { return x.site; })[0]; return it ? it.site : ''; }
+function acaoCompra(acao, el) {
+  var t = S.det; if (!t) return;
+  var v = function (id) { var x = $(id); return x ? x.value.trim() : ''; };
+  if (acao === 'cpPrecoEditar') { S.editandoPreco = t.id; desenharDetalhe(); var f = $('cpPreco'); if (f) f.focus(); return; }
+  if (acao === 'cpPrecoCancelar') { S.editandoPreco = null; desenharDetalhe(); return; }
+  if (acao === 'cpRecusar') { S.recusandoCompra = t.id; desenharDetalhe(); var m = $('cpMotivoRecusa'); if (m) m.focus(); return; }
+  if (acao === 'cpRecusarCancelar') { S.recusandoCompra = null; desenharDetalhe(); return; }
+  if (acao === 'cpComprovante') { var idT = t.id; escolherArquivos('doc', function (fs) { fs.slice(0, 10).forEach(function (f) { enviarAnexo(idT, f, 'Documento'); }); }); return; }
+  if (acao === 'cpPrecoSalvar') {
+    if (!v('cpPreco')) { avisar('Informe o preço encontrado.', true); $('cpPreco').focus(); return; }
+    acaoDetalhe('compraPreco', { valor: v('cpPreco') }, function (r) {
+      S.editandoPreco = null;
+      avisar(r.etapa === 'Aguardando aprovação' ? 'Enviado para aprovação do síndico' : r.etapa === 'Aprovada' ? 'Preço salvo e aprovado' : 'Preço salvo · pode comprar');
+    }, el);
+  } else if (acao === 'cpAprovar') {
+    acaoDetalhe('compraAprovar', {}, function () { avisar('Compra aprovada · Compras foi avisada'); }, el, 'Aprovando…');
+  } else if (acao === 'cpRecusarConfirmar') {
+    if (!v('cpMotivoRecusa')) { avisar('Escreva o motivo, para Compras entender.', true); $('cpMotivoRecusa').focus(); return; }
+    acaoDetalhe('compraRecusar', { motivo: v('cpMotivoRecusa') }, function () { S.recusandoCompra = null; avisar('Compra recusada'); }, el, 'Recusando…');
+  } else if (acao === 'cpRegistrar') {
+    if (!v('cpOnde')) { avisar('Escreva onde comprou.', true); $('cpOnde').focus(); return; }
+    if (!v('cpValor')) { avisar('Informe o valor pago.', true); $('cpValor').focus(); return; }
+    acaoDetalhe('compraRegistrar', { onde: v('cpOnde'), valor: v('cpValor'), pedido: v('cpPedido'), previsao: v('cpPrevisao') }, function () { avisar('Compra registrada · anexe o comprovante abaixo'); }, el, 'Registrando…');
+  } else if (acao === 'cpReceber') {
+    acaoDetalhe('compraReceber', {}, function () { avisar('Compra recebida e concluída'); invalidarConcluidas(); }, el, 'Concluindo…');
+  }
 }
 
 function ajustarAltura(el) {
@@ -4019,82 +4187,239 @@ function abrirPerfil() {
   abrirMenu($('btPerfil'), h);
 }
 
-/* ================= Nova tarefa ================= */
+/* ================= Nova tarefa (v1.18: por categoria) ================= */
+var FLX = { SIMPLES: 'Simples', COMPRA: 'Compra pontual', PEDIDO: 'Pedido mensal' };
+function ehCompraT(t) { return !!t && t.fluxo === FLX.COMPRA; }
+/* Ocorrência é a categoria comum: não ocupa espaço no cartão (como o antigo "Geral"). */
+function temCategoria(t) { return !!(t && t.categoria) && ['Geral', 'Ocorrência', 'Ocorrencia'].indexOf(t.categoria) < 0; }
+var ICO_CAT = {
+  alerta: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 8v4.5M12 16h.01"/></svg>',
+  repetir: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5"/></svg>',
+  inspecao: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>',
+  carrinho: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.6 12.2a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.5L21.5 7H6"/></svg>',
+  lista: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>'
+};
+function catalogoDaTela() {
+  var d = S.dados || {};
+  if (d.catalogo && d.catalogo.length) return d.catalogo;
+  return (d.categorias || ['Ocorrência']).map(function (n) { return { nome: n, fluxo: /compra|aquisi/i.test(n) ? FLX.COMPRA : FLX.SIMPLES, icone: /compra|aquisi/i.test(n) ? 'carrinho' : 'alerta', explicacao: '' }; });
+}
+function condosDaCategoria(nome) {
+  return ((S.dados && S.dados.condos) || []).filter(function (c) {
+    return c.categoriasCriar ? c.categoriasCriar.indexOf(nome) >= 0 : c.podeCriar;
+  });
+}
+function novoItemCompra() { return { item: '', qtd: '1', link: '' }; }
+
 function abrirNova(opcoes) {
   opcoes = opcoes || {};
   if (S.visao === 'concluidas') trocarVisao('abertas');
   var d = S.dados;
-  var condos = (d.condos || []).filter(function (c) { return c.podeCriar; });
-  if (!condos.length) return;
-  var ultimo = lerLocal('ultimoCondo');
-  var inicial = condos.filter(function (c) { return c.codigo === S.condo; })[0] ||
-    condos.filter(function (c) { return c.codigo === ultimo; })[0] || condos[0];
-  var u = d.usuario || {};
-  var temMic = u.microfone && (window.SpeechRecognition || window.webkitSpeechRecognition);
-  var cats = d.categorias || ['Geral'];
+  var cats = catalogoDaTela().filter(function (c) { return c.emBreve || condosDaCategoria(c.nome).length; });
+  var usaveis = cats.filter(function (c) { return !c.emBreve; });
+  if (!usaveis.length) return;
+  // vindo de um compartilhamento (texto/arquivos): começa pela ocorrência
+  var lembrada = lerLocal('ultimaCategoria');
+  var inicial = (opcoes.titulo || opcoes.descricao || opcoes.anexos)
+    ? usaveis.filter(function (c) { return c.fluxo === FLX.SIMPLES; })[0]
+    : usaveis.filter(function (c) { return c.nome === lembrada; })[0];
+  S.nova = { cat: (inicial || usaveis[0]).nome, condo: null, itens: [novoItemCompra()], quando: 'Sem pressa', data: '', motivo: '' };
   var h = '<form class="jan-corpo" id="formNova" novalidate>' +
-    (condos.length > 1 ? '<label class="rot-campo" for="novaCondo">Condomínio</label><select class="campo" id="novaCondo">' +
-      condos.map(function (c) { return '<option value="' + esc(c.codigo) + '"' + (c.codigo === inicial.codigo ? ' selected' : '') + '>' + esc(c.nome) + '</option>'; }).join('') + '</select>' : '') +
-    '<div id="novaEmpWrap"></div>' +
-    '<label class="rot-campo" for="novaTitulo">Título</label>' +
-    '<div class="linha-campos"><input class="campo" id="novaTitulo" maxlength="120" autocomplete="off" placeholder="Ex.: Trocar lâmpada do hall" required>' +
-    (temMic ? '<button type="button" class="mic" id="novaMic" aria-label="Ditar o título">' + IC.mic + '</button>' : '') + '</div>' +
-    (cats.length > 1 ? '<div id="novaCatWrap"></div>' : '') +
-    '<div id="novaDirWrap"></div>' +
-    '<button type="button" class="chave" role="switch" aria-checked="false" id="novaChaveDesc"><i aria-hidden="true"></i>Adicionar descrição</button>' +
-    '<textarea class="campo" id="novaDesc" rows="3" maxlength="2000" placeholder="Uma explicação simples, se precisar" hidden></textarea>' +
-    (opcoes.anexos ? '<p class="nova-anexos">' + IC.clipP + '<span>' + opcoes.anexos + (opcoes.anexos === 1 ? ' arquivo recebido será anexado' : ' arquivos recebidos serão anexados') + ' à tarefa</span></p>' : '') +
+    (cats.length > 1 ? '<div class="bloco" style="gap:.4em"><span class="rot-campo" id="rotCat">Categoria</span><div class="cat-lista" role="radiogroup" aria-labelledby="rotCat">' +
+      cats.map(function (c) {
+        return '<button type="button" class="cat-op" role="radio" data-cat="' + esc(c.nome) + '"' + (c.emBreve ? ' disabled aria-disabled="true"' : '') + ' aria-checked="false">' +
+          '<span class="ci">' + (ICO_CAT[c.icone] || ICO_CAT.alerta) + '</span>' +
+          '<span class="cn"><b>' + esc(c.nome) + '</b>' + (c.explicacao ? ' · ' + esc(c.explicacao) : '') + '</span>' +
+          (c.emBreve ? '<span class="breve-tag">Em breve</span>' : '<span class="ok" hidden>' + IC.okAzul + '</span>') + '</button>';
+      }).join('') + '</div></div>' : '') +
+    '<div id="novaCondoWrap"></div>' +
+    '<div id="novaCorpo" class="bloco" style="gap:.9em"></div>' +
     '<span class="erro-txt" id="novaErro" role="alert" hidden></span>' +
     '<div class="jan-rodape"><span></span><button class="bt" type="submit" id="novaCriar">Criar tarefa</button></div>' +
     '</form>';
   abrirJanela('Nova tarefa', 'Fica na lista do condomínio escolhido', h, 'centro', function (raiz) {
-    var selCondo = raiz.querySelector('#novaCondo');
-    var condoAtual = function () { return selCondo ? selCondo.value : inicial.codigo; };
-    var montar = function () {
-      var c = condos.filter(function (x) { return x.codigo === condoAtual(); })[0];
+    var catAtual = function () { return usaveis.filter(function (c) { return c.nome === S.nova.cat; })[0] || usaveis[0]; };
+    var condoAtual = function () { var sel = raiz.querySelector('#novaCondo'); return sel ? sel.value : S.nova.condo; };
+    var montarCondo = function () {
+      var condos = condosDaCategoria(catAtual().nome);
+      var ultimo = lerLocal('ultimoCondo');
+      var atual = condos.filter(function (c) { return c.codigo === S.nova.condo; })[0] ||
+        condos.filter(function (c) { return c.codigo === S.condo; })[0] ||
+        condos.filter(function (c) { return c.codigo === ultimo; })[0] || condos[0];
+      S.nova.condo = atual.codigo;
+      raiz.querySelector('#novaCondoWrap').innerHTML = condos.length > 1
+        ? '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="novaCondo">Condomínio</label><select class="campo" id="novaCondo">' +
+          condos.map(function (c) { return '<option value="' + esc(c.codigo) + '"' + (c.codigo === atual.codigo ? ' selected' : '') + '>' + esc(c.nome) + '</option>'; }).join('') + '</select></div>'
+        : '';
+    };
+    var montarSimples = function () {
+      var c = (d.condos || []).filter(function (x) { return x.codigo === condoAtual(); })[0] || {};
       var emps = c.empresasParaCriar || [];
       var empSel = raiz.querySelector('#novaEmp');
       var empAtual = empSel ? empSel.value : emps[0];
       if (emps.indexOf(empAtual) < 0) empAtual = emps[0];
-      raiz.querySelector('#novaEmpWrap').innerHTML = emps.length > 1 ?
-        '<label class="rot-campo" for="novaEmp">Empresa</label><select class="campo" id="novaEmp">' +
-        emps.map(function (e) { return '<option' + (e === empAtual ? ' selected' : '') + '>' + esc(e) + '</option>'; }).join('') + '</select>' :
-        '<input type="hidden" id="novaEmp" value="' + esc(emps[0] || '') + '">';
-      var catWrap = raiz.querySelector('#novaCatWrap');
-      var catSel = raiz.querySelector('#novaCat');
-      var catAtual = catSel ? catSel.value : 'Geral';
-      var catsOk = cats.filter(function (x) { return x.toUpperCase() !== 'COMPRAS' || empAtual === 'CARVALHO & ABREU'; });
-      if (catWrap) catWrap.innerHTML = catsOk.length > 1 ? '<label class="rot-campo" for="novaCat">Categoria</label><select class="campo" id="novaCat">' +
-        catsOk.map(function (x) { return '<option' + (x === catAtual ? ' selected' : '') + '>' + esc(x) + '</option>'; }).join('') + '</select>' : '';
-      var cat = raiz.querySelector('#novaCat') ? raiz.querySelector('#novaCat').value : 'Geral';
       var pessoas = (c.pessoas && c.pessoas[empAtual]) || [];
-      raiz.querySelector('#novaDirWrap').innerHTML = (cat.toUpperCase() !== 'COMPRAS' && pessoas.length) ?
-        '<label class="rot-campo" for="novaDir">Direcionar para</label><select class="campo" id="novaDir"><option value="Equipe">Equipe (todos veem)</option>' +
-        pessoas.map(function (p) { return '<option value="' + esc(p.email) + '">' + esc(p.nome) + '</option>'; }).join('') + '</select>' :
-        (cat.toUpperCase() === 'COMPRAS' ? '<p class="cartao-meta" style="margin:0">Vai direto para quem cuida de Compras.</p>' : '');
+      var u = d.usuario || {};
+      var temMic = u.microfone && (window.SpeechRecognition || window.webkitSpeechRecognition);
+      var tituloAntes = raiz.querySelector('#novaTitulo') ? raiz.querySelector('#novaTitulo').value : (opcoes.titulo || '');
+      var descAntes = raiz.querySelector('#novaDesc') ? raiz.querySelector('#novaDesc').value : (opcoes.descricao || '');
+      var descOn = raiz.querySelector('#novaChaveDesc') ? raiz.querySelector('#novaChaveDesc').getAttribute('aria-checked') === 'true' : !!opcoes.descricao;
+      raiz.querySelector('#novaCorpo').innerHTML =
+        (emps.length > 1 ? '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="novaEmp">Empresa</label><select class="campo" id="novaEmp">' +
+          emps.map(function (e) { return '<option' + (e === empAtual ? ' selected' : '') + '>' + esc(e) + '</option>'; }).join('') + '</select></div>'
+          : '<input type="hidden" id="novaEmp" value="' + esc(emps[0] || '') + '">') +
+        '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="novaTitulo">Título</label>' +
+        '<div class="linha-campos"><input class="campo" id="novaTitulo" maxlength="120" autocomplete="off" placeholder="Ex.: Trocar lâmpada do hall" required value="' + esc(tituloAntes) + '">' +
+        (temMic ? '<button type="button" class="mic" id="novaMic" aria-label="Ditar o título">' + IC.mic + '</button>' : '') + '</div></div>' +
+        (pessoas.length ? '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="novaDir">Direcionar para</label><select class="campo" id="novaDir"><option value="Equipe">Equipe (todos veem)</option>' +
+          pessoas.map(function (p) { return '<option value="' + esc(p.email) + '">' + esc(p.nome) + '</option>'; }).join('') + '</select></div>' : '') +
+        '<button type="button" class="chave" role="switch" aria-checked="' + descOn + '" id="novaChaveDesc"><i aria-hidden="true"></i>Adicionar descrição</button>' +
+        '<textarea class="campo" id="novaDesc" rows="3" maxlength="2000" placeholder="Uma explicação simples, se precisar"' + (descOn ? '' : ' hidden') + '>' + esc(descAntes) + '</textarea>' +
+        (opcoes.anexos ? '<p class="nova-anexos">' + IC.clipP + '<span>' + opcoes.anexos + (opcoes.anexos === 1 ? ' arquivo recebido será anexado' : ' arquivos recebidos serão anexados') + ' à tarefa</span></p>' : '');
+      var mic = raiz.querySelector('#novaMic');
+      if (mic) ligarMicrofone(mic, raiz.querySelector('#novaTitulo'));
     };
-    montar();
-    raiz.addEventListener('change', function (e) { if (/novaCondo|novaEmp|novaCat/.test(e.target.id)) montar(); });
-    var chave = raiz.querySelector('#novaChaveDesc');
-    chave.addEventListener('click', function () {
-      var on = chave.getAttribute('aria-checked') !== 'true';
-      chave.setAttribute('aria-checked', on);
-      raiz.querySelector('#novaDesc').hidden = !on;
-      if (on) raiz.querySelector('#novaDesc').focus();
+    var montarCompra = function () {
+      var n = S.nova;
+      var lim = (d.compras && d.compras.limiteTxt) || '';
+      var data = n.quando === 'Escolher';
+      raiz.querySelector('#novaCorpo').innerHTML =
+        '<div class="bloco" style="gap:.5em" id="cpItens">' + n.itens.map(function (it, k) {
+          return '<div class="cp-item" data-k="' + k + '">' +
+            '<div class="linha-campos"><label style="flex:1"><span class="rot-campo">Produto</span><input class="campo" data-cp="item" maxlength="120" autocomplete="off" placeholder="Ex.: Mesa de pingue-pongue" value="' + esc(it.item) + '"></label>' +
+            '<label class="cp-qtd"><span class="rot-campo">Qtd.</span><input class="campo" data-cp="qtd" inputmode="decimal" maxlength="6" value="' + esc(it.qtd) + '"></label>' +
+            (n.itens.length > 1 ? '<button type="button" class="cp-tirar" data-cptirar="' + k + '" aria-label="Tirar este produto">' + IC.x + '</button>' : '') + '</div>' +
+            '<label><span class="rot-campo">Link do produto · opcional</span><input class="campo" data-cp="link" inputmode="url" maxlength="500" autocomplete="off" placeholder="Colar link" value="' + esc(it.link) + '"></label>' +
+            '<span class="cp-site" data-cpsite' + (siteDe(it.link) ? '' : ' hidden') + '>' + IC.link + '<span>' + esc(siteDe(it.link)) + '</span></span>' +
+            '</div>';
+        }).join('') + '</div>' +
+        (n.itens.length < 20 ? '<button type="button" class="cp-mais" data-acao-nova="maisItem">+ Outro produto</button>' : '') +
+        '<div class="bloco" style="gap:.4em"><span class="rot-campo" id="rotQuando">Para quando</span><div class="chips-linha" role="group" aria-labelledby="rotQuando">' +
+          ['Sem pressa', 'Esta semana', 'Escolher'].map(function (q) { return '<button type="button" class="chip-op" data-quando="' + q + '" aria-pressed="' + (n.quando === q) + '">' + q + '</button>'; }).join('') + '</div>' +
+          (data ? '<label class="sr" for="cpData">Data</label><input class="campo" type="date" id="cpData" value="' + esc(n.data) + '" min="' + diaSP(new Date()) + '">' : '') + '</div>' +
+        '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="cpMotivo">Motivo · opcional</label><input class="campo" id="cpMotivo" maxlength="300" autocomplete="off" placeholder="Ex.: salão de jogos, a mesa atual quebrou" value="' + esc(n.motivo) + '"></div>' +
+        (lim ? '<p class="dica-campo" style="margin:0">Compras acima de ' + esc(lim) + ' passam pela aprovação do síndico antes de comprar.</p>' : '');
+    };
+    var montar = function (focar) {
+      var cat = catAtual();
+      Array.prototype.forEach.call(raiz.querySelectorAll('.cat-op'), function (b) {
+        var on = b.getAttribute('data-cat') === cat.nome;
+        b.setAttribute('aria-checked', String(on));
+        var ok = b.querySelector('.ok'); if (ok) ok.hidden = !on;
+      });
+      montarCondo();
+      var compra = cat.fluxo === FLX.COMPRA;
+      if (compra) montarCompra(); else montarSimples();
+      raiz.querySelector('#novaCriar').textContent = compra ? 'Enviar para Compras' : 'Criar tarefa';
+      var cab = raiz.querySelector('.jan-cab small');
+      if (cab) cab.textContent = compra ? (nomeCondo(S.nova.condo) + ' · vai para Compras') : 'Fica na lista do condomínio escolhido';
+      raiz.querySelector('#novaErro').hidden = true;
+      if (focar && faixa() === 'computador') { var f = raiz.querySelector(compra ? '[data-cp="item"]' : '#novaTitulo'); if (f) f.focus(); }
+    };
+    montar(true);
+    var guardarItens = function () {
+      Array.prototype.forEach.call(raiz.querySelectorAll('.cp-item'), function (el) {
+        var k = Number(el.getAttribute('data-k')), it = S.nova.itens[k]; if (!it) return;
+        it.item = el.querySelector('[data-cp="item"]').value;
+        it.qtd = el.querySelector('[data-cp="qtd"]').value;
+        it.link = el.querySelector('[data-cp="link"]').value;
+      });
+      var m = raiz.querySelector('#cpMotivo'); if (m) S.nova.motivo = m.value;
+      var dt = raiz.querySelector('#cpData'); if (dt) S.nova.data = dt.value;
+    };
+    raiz.addEventListener('click', function (e) {
+      var c = e.target.closest('.cat-op');
+      if (c && !c.disabled) { guardarItens(); S.nova.cat = c.getAttribute('data-cat'); montar(true); return; }
+      var q = e.target.closest('[data-quando]');
+      if (q) { guardarItens(); S.nova.quando = q.getAttribute('data-quando'); montarCompra(); if (S.nova.quando === 'Escolher') { var dt = raiz.querySelector('#cpData'); if (dt) { dt.focus(); try { dt.showPicker(); } catch (x) {} } } return; }
+      var t = e.target.closest('[data-cptirar]');
+      if (t) { guardarItens(); S.nova.itens.splice(Number(t.getAttribute('data-cptirar')), 1); montarCompra(); return; }
+      if (e.target.closest('[data-acao-nova="maisItem"]')) {
+        guardarItens(); S.nova.itens.push(novoItemCompra()); montarCompra();
+        var ult = raiz.querySelectorAll('[data-cp="item"]'); if (ult.length) ult[ult.length - 1].focus();
+        return;
+      }
+      if (e.target.closest('#novaChaveDesc')) {
+        var ch = raiz.querySelector('#novaChaveDesc');
+        var on = ch.getAttribute('aria-checked') !== 'true';
+        ch.setAttribute('aria-checked', on);
+        raiz.querySelector('#novaDesc').hidden = !on;
+        if (on) raiz.querySelector('#novaDesc').focus();
+      }
     });
-    var mic = raiz.querySelector('#novaMic');
-    if (mic) ligarMicrofone(mic, raiz.querySelector('#novaTitulo'));
-    if (opcoes.titulo) raiz.querySelector('#novaTitulo').value = opcoes.titulo;
-    if (opcoes.descricao) { chave.setAttribute('aria-checked', 'true'); raiz.querySelector('#novaDesc').hidden = false; raiz.querySelector('#novaDesc').value = opcoes.descricao; }
-    setTimeout(function () { if (faixa() === 'computador') raiz.querySelector('#novaTitulo').focus(); }, 50);
+    raiz.addEventListener('input', function (e) {
+      var el = e.target;
+      if (el.getAttribute('data-cp') === 'link') {
+        var box = el.closest('.cp-item').querySelector('[data-cpsite]');
+        var st = siteDe(el.value);
+        box.hidden = !st; box.querySelector('span').textContent = st;
+      }
+    });
+    // colar uma lista (uma linha por produto) no campo Produto separa sozinho
+    raiz.addEventListener('paste', function (e) {
+      var el = e.target;
+      if (el.getAttribute('data-cp') !== 'item') return;
+      var txt = (e.clipboardData || window.clipboardData).getData('text') || '';
+      var linhas = txt.split(/\r?\n/).map(function (x) { return x.trim(); }).filter(Boolean);
+      if (linhas.length < 2) return;
+      e.preventDefault();
+      guardarItens();
+      var k = Number(el.closest('.cp-item').getAttribute('data-k'));
+      var novos = linhas.slice(0, 20).map(function (l) {
+        var m = l.match(/^(\d+(?:[.,]\d+)?)\s*(?:x|un\.?|unid\.?|-)?\s+(.+)$/i);
+        return m ? { item: m[2], qtd: m[1], link: '' } : { item: l, qtd: '1', link: '' };
+      });
+      var atual = S.nova.itens[k];
+      if (atual && !atual.item.trim()) S.nova.itens.splice(k, 1, ...novos.slice(0, 1)); else S.nova.itens.splice(k + 1, 0, novos[0]);
+      S.nova.itens.splice(k + 1, 0, ...novos.slice(1));
+      S.nova.itens = S.nova.itens.slice(0, 20);
+      montarCompra();
+      avisar(novos.length + ' produtos separados da lista');
+    });
+    raiz.addEventListener('change', function (e) {
+      if (e.target.id === 'novaCondo') { guardarItens(); S.nova.condo = e.target.value; montar(false); }
+      else if (e.target.id === 'novaEmp') montarSimples();
+    });
     raiz.querySelector('#formNova').addEventListener('submit', function (e) {
       e.preventDefault();
-      criarTarefa(raiz, condoAtual(), false, opcoes);
+      if (catAtual().fluxo === FLX.COMPRA) { guardarItens(); criarCompra(raiz, condoAtual(), catAtual().nome, false); }
+      else criarTarefa(raiz, condoAtual(), false, opcoes, catAtual().nome);
     });
   });
 }
+function siteDe(link) {
+  var m = String(link || '').trim().match(/^(?:https?:\/\/)?(?:www\.)?([^\/\s?#]+\.[^\/\s?#]+)/i);
+  return m ? m[1].toLowerCase() : '';
+}
+function criarCompra(raiz, condo, categoria, confirmar) {
+  var n = S.nova, erro = raiz.querySelector('#novaErro');
+  var itens = n.itens.map(function (it) { return { item: it.item.trim(), qtd: String(it.qtd || '1').trim() || '1', link: it.link.trim() }; })
+    .filter(function (it) { return it.item; });
+  var falha = function (msg, sel) { erro.textContent = msg; erro.hidden = false; var f = sel && raiz.querySelector(sel); if (f) f.focus(); };
+  if (!itens.length) return falha('Escreva o produto.', '[data-cp="item"]');
+  if (itens.some(function (it) { return !(Number(String(it.qtd).replace(',', '.')) > 0); })) return falha('Confira a quantidade de cada produto.', '[data-cp="qtd"]');
+  if (n.quando === 'Escolher' && !n.data) return falha('Escolha a data.', '#cpData');
+  var bt = raiz.querySelector('#novaCriar');
+  bt.disabled = true; bt.textContent = 'Enviando…'; erro.hidden = true;
+  api('tarefas.criar', { condo: condo, categoria: categoria, itens: itens, paraQuando: n.quando === 'Escolher' ? n.data : n.quando, motivo: n.motivo, confirmarDuplicada: !!confirmar }).then(function (r) {
+    bt.disabled = false; bt.textContent = 'Enviar para Compras';
+    if (!r.ok) return falha(r.mensagem);
+    if (r.aviso === 'DUPLICADA') {
+      erro.innerHTML = 'Já existe uma compra pendente igual neste condomínio. <button type="button" class="bt-link" id="novaMesmoAssim">Enviar mesmo assim</button>';
+      erro.hidden = false;
+      raiz.querySelector('#novaMesmoAssim').addEventListener('click', function () { criarCompra(raiz, condo, categoria, true); });
+      return;
+    }
+    guardarLocal('ultimoCondo', condo); guardarLocal('ultimaCategoria', categoria);
+    fecharCamadas();
+    var u = S.dados.usuario || {};
+    avisar(u.compras ? 'Compra registrada' : 'Compra enviada para Compras');
+    if (S.condo !== 'todos' && S.condo !== condo) S.condo = condo;
+    recarregar();
+  });
+}
 
-function criarTarefa(raiz, condo, confirmar, opcoes) {
+function criarTarefa(raiz, condo, confirmar, opcoes, categoria) {
   opcoes = opcoes || {};
   var titulo = raiz.querySelector('#novaTitulo').value.trim();
   var erro = raiz.querySelector('#novaErro');
@@ -4104,7 +4429,7 @@ function criarTarefa(raiz, condo, confirmar, opcoes) {
     condo: condo,
     empresa: raiz.querySelector('#novaEmp').value,
     titulo: titulo,
-    categoria: raiz.querySelector('#novaCat') ? raiz.querySelector('#novaCat').value : 'Geral',
+    categoria: categoria || 'Ocorrência',
     direcionado: raiz.querySelector('#novaDir') ? raiz.querySelector('#novaDir').value : 'Equipe',
     descricao: chaveOn ? raiz.querySelector('#novaDesc').value : '',
     confirmarDuplicada: !!confirmar
@@ -4118,17 +4443,15 @@ function criarTarefa(raiz, condo, confirmar, opcoes) {
       erro.innerHTML = 'Já existe uma tarefa pendente com esse título neste condomínio. ' +
         '<button type="button" class="bt-link" id="novaMesmoAssim">Criar mesmo assim</button>';
       erro.hidden = false;
-      raiz.querySelector('#novaMesmoAssim').addEventListener('click', function () { criarTarefa(raiz, condo, true, opcoes); });
+      raiz.querySelector('#novaMesmoAssim').addEventListener('click', function () { criarTarefa(raiz, condo, true, opcoes, categoria); });
       return;
     }
-    guardarLocal('ultimoCondo', condo);
+    guardarLocal('ultimoCondo', condo); if (categoria) guardarLocal('ultimaCategoria', categoria);
     fecharCamadas();
     var nova = r.tarefa;
     if (nova && podeCompartilhar(nova.condo)) {
       S.ultimaCriada = nova;
       avisar('Tarefa criada', false, { rotulo: 'Compartilhar', seg: 7, fn: function () { compartilharCriada(); } });
-    } else if (nova && String(nova.categoria || '').toUpperCase() === 'COMPRAS' && !(S.dados.usuario.master || S.dados.usuario.compras || S.dados.usuario.supervisorCasa)) {
-      avisar('Tarefa de compras enviada para Compras');
     } else avisar('Tarefa criada');
     if (S.condo !== 'todos' && S.condo !== condo) S.condo = condo;
     if (nova && opcoes.aoCriar) {
@@ -4421,6 +4744,7 @@ document.addEventListener('click', function (e) {
     });
     return;
   }
+  if (acao && /^cp[A-Z]/.test(acao)) { acaoCompra(acao, b); return; }
   switch (acao) {
     case 'fecharJan': fecharCamadas(); break;
     case 'convidar': fecharCamadas(); abrirConvidar(); break;
