@@ -652,9 +652,70 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 .cp-aviso{background:var(--ouro-fundo,#F3E6CC);border-radius:1em;padding:.85em 1em;display:flex;flex-direction:column;gap:.6em;font-size:.875em;color:var(--azul)}
 .cp-aviso.recusa{background:var(--vinho-fundo,#F8E5E5);color:var(--vinho,#8A2E2E)}
 .cp-botoes{display:flex;gap:.5em;flex-wrap:wrap}
-.cp-botoes .bt{flex:1;min-width:9em}
+.cp-botoes .bt{flex:1;min-width:9em;white-space:nowrap}
+.cp-botoes [data-cmp="voltar"]{flex:0 0 auto;min-width:6.5em}
 .cp-form{display:flex;flex-direction:column;gap:.6em}
 .cp-form label{display:flex;flex-direction:column;gap:.3em}
+/* Pedido mensal (v1.19) */
+.pd-jan .jan-corpo{flex:1;min-height:0}
+.pd-rodape{flex:none;display:flex;align-items:center;gap:.5em;flex-wrap:wrap;padding:.75em 1.25em 1em;border-top:1px solid var(--linha2);background:#fff}
+.pd-rodape .bt:last-child{margin-left:auto}
+.pd-msg{font-size:.8125em;color:var(--suave);flex-basis:100%;order:-1;text-align:center}
+.pd-msg:empty{display:none}
+.pd-passo{display:flex;flex-direction:column;gap:.15em}
+.pd-passo .pd-num{font-size:.6875em;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7A5C27}
+.pd-passo b{font-family:Lora,Georgia,serif;font-size:1.125em;color:var(--azul)}
+.pd-passo small{font-size:.8125em;color:var(--suave)}
+.pd-lista{display:flex;flex-direction:column;gap:.45em}
+.pd-item{background:#fff;border:1px solid var(--linha);border-radius:.75em;padding:.4em .4em .4em .5em;display:flex;flex-direction:column;gap:.3em}
+.pd-ln{display:flex;align-items:center;gap:.4em}
+.pd-ln .campo{min-height:2.5em;padding:.45em .55em}
+.pd-q{width:3.4em;flex:none;text-align:center;font-weight:700}
+.pd-u{width:5.8em;flex:none;background:var(--creme2);border-color:var(--creme2);font-size:.875em}
+.pd-i{flex:1;min-width:0}
+.pd-ms{font-size:.75em;font-weight:600;padding:0 .3em .15em;display:flex;align-items:center;gap:.5em}
+.pd-ms:empty{display:none}
+.pd-item.pd-bl{border:2px solid #B44A4A}.pd-item.pd-bl .pd-q{border-color:#B44A4A}.pd-item.pd-bl .pd-ms{color:var(--vinho)}
+.pd-item.pd-av{border-color:#EAD7AE;background:#FFFCF5}.pd-item.pd-av .pd-ms{color:#7A5C27}
+.pd-item.pd-fo{opacity:.6;background:var(--creme)}.pd-item.pd-fo .pd-ms{color:var(--suave)}
+.pd-forn{display:flex;align-items:center;gap:.75em;width:100%;text-align:left;font:inherit;background:#fff;border:1.5px solid var(--linha);border-radius:.85em;padding:.7em .75em;cursor:pointer}
+.pd-forn[aria-checked="true"]{border-color:var(--azul)}
+.pd-ck{width:1.5em;height:1.5em;border-radius:.45em;border:2px solid #9AA3B8;display:flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box}
+.pd-forn[aria-checked="true"] .pd-ck{background:var(--azul);border-color:var(--azul)}
+.pd-fn{display:flex;flex-direction:column;min-width:0}.pd-fn b{color:var(--azul);font-size:.9375em}.pd-fn small{font-size:.75em;color:var(--suave)}
+.pd-add{display:flex;flex-direction:column;gap:.45em;border-top:1px solid var(--linha2);padding-top:.75em;margin-top:.25em}
+.pd-res{display:flex;align-items:center;gap:.6em;width:100%;min-height:3em;padding:.4em .75em;border-radius:.75em;border:none;background:var(--creme);font:inherit;text-align:left;cursor:pointer;margin-bottom:.3em}
+.pd-res b{color:var(--azul);font-size:.9375em}.pd-res small{flex:1;font-size:.75em;color:var(--suave)}
+.pd-res:hover{background:#EEF1F6}
+.pd-email{gap:.25em}
+.pd-corpo{white-space:pre-wrap;font:inherit;font-size:.875em;line-height:1.5;color:var(--texto);background:var(--creme);border-radius:.6em;padding:.75em .85em;margin:.35em 0 0;max-height:18em;overflow:auto}
+.pd-cab{display:flex;align-items:center;gap:.5em}.pd-cab .rotulo{flex:1}.pd-cab b{font-size:.8125em;color:var(--azul)}.pd-cab small{font-size:.8125em;color:var(--suave);margin-left:auto}
+.pd-fr{display:flex;align-items:center;gap:.6em;min-height:3em}
+.pd-fr>span{flex:1;display:flex;flex-direction:column;min-width:0}.pd-fr>span b{color:var(--azul);font-size:.9375em}.pd-fr small{font-size:.75em;color:var(--suave)}
+.pd-sep{height:1px;background:var(--creme2)}
+.pd-tot{color:var(--azul);font-size:.9375em;white-space:nowrap}
+.pd-tag{font-size:.75em;font-weight:700;padding:.3em .6em;border-radius:999px;background:var(--creme2);color:#5A4520;white-space:nowrap}
+.pd-tag.ouro{background:#F4E7CC}
+.pd-cobrar{min-height:2.5em;padding:0 .9em}
+.pd-info{display:flex;align-items:center;gap:.6em;background:#EEF1F6;border-radius:.85em;padding:.6em .75em;font-size:.8125em;color:var(--texto)}
+.pd-info span{flex:1}.pd-info svg{flex:none}
+.pd-itens summary{cursor:pointer;list-style:none;display:flex;align-items:center;min-height:1.8em}
+.pd-itens summary::-webkit-details-marker{display:none}
+.pd-itens summary::after{content:"Ver";margin-left:auto;font-size:.8125em;font-weight:600;color:var(--azul)}
+.pd-itens[open] summary::after{content:"Ocultar"}
+.pd-res-tag{flex:none;font-size:.6875em;font-weight:700;padding:.2em .5em;border-radius:999px;background:#E3F0E8;color:#2F6B4F}
+.pd-res-tag.faltou{background:var(--vinho-fundo);color:var(--vinho)}.pd-res-tag.diferente{background:#F4E7CC;color:#7A4A12}
+.pd-ent{gap:.6em}.pd-ent-it{display:flex;flex-direction:column;gap:.35em;padding-bottom:.6em;border-bottom:1px solid var(--creme2)}
+.pd-seg{display:flex;gap:.35em}
+.pd-seg button{flex:1;min-height:2.5em;border-radius:.6em;border:1.5px solid var(--linha);background:#fff;font:600 .8125em Inter,system-ui,sans-serif;color:var(--azul);cursor:pointer}
+.pd-seg button[aria-pressed="true"]{background:var(--azul);border-color:var(--azul);color:#fff}
+.pd-cd{gap:.45em}.pd-cd.menor{border:2px solid var(--ouro)}
+.pd-nm{font-size:1em;color:var(--azul);flex:1}
+.pd-total{font-family:Lora,Georgia,serif;font-size:1.5em;font-weight:700;color:var(--azul)}
+.pd-mt{font-size:.8125em;color:var(--suave2);display:flex;align-items:flex-start;gap:.4em}
+.pd-mt svg{flex:none;margin-top:.1em}.pd-mt.alerta{color:#7A4A12}.pd-mt.ok{color:#2F6B4F}
+.pd-sem{background:var(--creme);border-style:dashed}
+a.bt{text-decoration:none}
 .av-item{display:flex;flex-direction:column;align-items:flex-start;gap:.35em;padding:.65em .75em}
 .av-item+.av-item{border-top:1px solid var(--linha2)}
 .av-tipo{font-size:.6875em;color:#8A2E2E;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
@@ -882,7 +943,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.18';
+var VERSAO_SITE = '1.19';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -1004,6 +1065,10 @@ var IC = {
   lixoP: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>',
   maisBranco: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
   att: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5C6680" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>',
+  relogioP: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
+  alertaP: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9A5B16" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></svg>',
+  okVerde: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>',
+  listaP: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>',
   carrinho: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.5L21.5 7H6"/></svg>',
   okP: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>',
   xP: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>',
@@ -1310,7 +1375,7 @@ function variasEmpresas() {
 function metaDe(t, semCondo) {
   var partes = [];
   if (!semCondo && S.condo === 'todos' && (S.dados.condos || []).length > 1) partes.push(nomeCondo(t.condo));
-  if (ehCompraT(t)) partes.push(t.fase ? t.categoria + ' · ' + t.fase : t.categoria);
+  if (ehCompraT(t) || ehPedidoT(t)) partes.push(t.fase ? t.categoria + ' · ' + t.fase : t.categoria);
   else if (temCategoria(t)) partes.push(t.categoria);
   else if (variasEmpresas()) partes.push(t.empresa);
   if (t.paraVoce) partes.push('direcionada a você');
@@ -1331,7 +1396,9 @@ function cartao(t, agrupado) {
       '<span class="cartao-meta">' + esc(metaDe(t, agrupado)) + anxInd(t) + '</span>' +
       (t.etiqueta ? '<span class="etiqueta">' + esc(t.etiqueta) + '</span>' : '') +
     '</button>' +
-    (ehCompraT(t)
+    (ehPedidoT(t)
+      ? '<button class="concluir abrir-compra" data-abrir="' + esc(t.id) + '" aria-label="Abrir pedido: ' + esc(t.titulo) + '" title="Abrir pedido">' + IC.listaP + '</button>'
+      : ehCompraT(t)
       ? '<button class="concluir abrir-compra" data-abrir="' + esc(t.id) + '" aria-label="Abrir compra: ' + esc(t.titulo) + '" title="Abrir compra">' + IC.carrinho + '</button>'
       : '<button class="concluir" data-concluir="' + esc(t.id) + '" aria-label="Concluir: ' + esc(t.titulo) + '">' + IC.check + '</button>') +
   '</article>';
@@ -2450,6 +2517,7 @@ function desenharDetalhe() {
     '</div></div>';
 
   if (t.compra) h += htmlCompra(t);
+  if (t.pedido) h += htmlPedido(t);
 
   if (pode.ordenar) {
     h += '<div class="caixa-creme"><span>Prioridade</span>' +
@@ -4190,6 +4258,7 @@ function abrirPerfil() {
 /* ================= Nova tarefa (v1.18: por categoria) ================= */
 var FLX = { SIMPLES: 'Simples', COMPRA: 'Compra pontual', PEDIDO: 'Pedido mensal' };
 function ehCompraT(t) { return !!t && t.fluxo === FLX.COMPRA; }
+function ehPedidoT(t) { return !!t && t.fluxo === FLX.PEDIDO; }
 /* Ocorrência é a categoria comum: não ocupa espaço no cartão (como o antigo "Geral"). */
 function temCategoria(t) { return !!(t && t.categoria) && ['Geral', 'Ocorrência', 'Ocorrencia'].indexOf(t.categoria) < 0; }
 var ICO_CAT = {
@@ -4308,11 +4377,11 @@ function abrirNova(opcoes) {
         var ok = b.querySelector('.ok'); if (ok) ok.hidden = !on;
       });
       montarCondo();
-      var compra = cat.fluxo === FLX.COMPRA;
-      if (compra) montarCompra(); else montarSimples();
-      raiz.querySelector('#novaCriar').textContent = compra ? 'Enviar para Compras' : 'Criar tarefa';
+      var compra = cat.fluxo === FLX.COMPRA, pedido = cat.fluxo === FLX.PEDIDO;
+      if (compra) montarCompra(); else if (pedido) montarPedidoNova(raiz); else montarSimples();
+      raiz.querySelector('#novaCriar').textContent = compra ? 'Enviar para Compras' : pedido ? 'Continuar para a lista' : 'Criar tarefa';
       var cab = raiz.querySelector('.jan-cab small');
-      if (cab) cab.textContent = compra ? (nomeCondo(S.nova.condo) + ' · vai para Compras') : 'Fica na lista do condomínio escolhido';
+      if (cab) cab.textContent = compra ? (nomeCondo(S.nova.condo) + ' · vai para Compras') : pedido ? (nomeCondo(S.nova.condo) + ' · cotação com fornecedores') : 'Fica na lista do condomínio escolhido';
       raiz.querySelector('#novaErro').hidden = true;
       if (focar && faixa() === 'computador') { var f = raiz.querySelector(compra ? '[data-cp="item"]' : '#novaTitulo'); if (f) f.focus(); }
     };
@@ -4378,15 +4447,443 @@ function abrirNova(opcoes) {
     });
     raiz.addEventListener('change', function (e) {
       if (e.target.id === 'novaCondo') { guardarItens(); S.nova.condo = e.target.value; montar(false); }
+      else if (e.target.id === 'pdTipo' || e.target.name === 'pdRef') { S.nova.pdTipo = raiz.querySelector('#pdTipo').value; var rr = raiz.querySelector('[name="pdRef"]:checked'); if (rr) S.nova.pdRef = rr.value; montarPedidoNova(raiz); }
       else if (e.target.id === 'novaEmp') montarSimples();
     });
     raiz.querySelector('#formNova').addEventListener('submit', function (e) {
       e.preventDefault();
       if (catAtual().fluxo === FLX.COMPRA) { guardarItens(); criarCompra(raiz, condoAtual(), catAtual().nome, false); }
+      else if (catAtual().fluxo === FLX.PEDIDO) continuarPedidoNova(raiz, condoAtual());
       else criarTarefa(raiz, condoAtual(), false, opcoes, catAtual().nome);
     });
   });
 }
+/* ================= Pedido mensal (v1.19): assistente, jornada, comparação e entrega ================= */
+var UNIDADES = ['un.', 'L', 'ml', 'kg', 'g', 'cx', 'pct', 'fardo', 'galão', 'balde', 'rolo', 'saco', 'frasco', 'lata', 'par', 'm'];
+var UN_RE = /^(\d+(?:[.,]\d+)?)\s*(?:x\s*)?(un\.?|und\.?|unid\.?|unidades?|l|lts?|litros?|ml|kg|quilos?|g|gr|cx|caixas?|pct|pcts|pacotes?|fardos?|gal[aã]o|gal[oõ]es|baldes?|rolos?|sacos?|frascos?|latas?|pares?|m|metros?)?\.?\s+(.+)$/i;
+function normUn(u) {
+  var x = String(u || '').toLowerCase().replace(/\.$/, '');
+  if (!x || /^(un|und|unid|unidade|unidades)$/.test(x)) return 'un.';
+  if (/^(l|lt|lts|litro|litros)$/.test(x)) return 'L';
+  if (/^(kg|quilo|quilos)$/.test(x)) return 'kg';
+  if (/^(g|gr)$/.test(x)) return 'g';
+  if (/^(cx|caixa|caixas)$/.test(x)) return 'cx';
+  if (/^(pct|pcts|pacote|pacotes)$/.test(x)) return 'pct';
+  if (/^(fardo|fardos)$/.test(x)) return 'fardos';
+  if (/^(gal[aã]o)$/.test(x)) return 'galão';
+  if (/^(gal[oõ]es)$/.test(x)) return 'galões';
+  if (/^(metro|metros|m)$/.test(x)) return 'm';
+  return x;
+}
+/* "5 L Cloromax" → { qtd: '5', unidade: 'L', item: 'Cloromax' }; sem número → qtd vazia (a conferência pede). */
+function lerLinhaItem(l) {
+  l = String(l || '').replace(/^[\s\-•*·]+/, '').trim();
+  if (!l) return null;
+  var m = l.match(UN_RE);
+  if (m) return { qtd: m[1].replace('.', ','), unidade: normUn(m[2]), item: m[3].trim() };
+  var m2 = l.match(/^(.+?)\s*[-–:]\s*(\d+(?:[.,]\d+)?)\s*(\S*)$/);
+  if (m2) return { qtd: m2[2], unidade: normUn(m2[3]), item: m2[1].trim() };
+  return { qtd: '', unidade: 'un.', item: l };
+}
+function qtdNum(q) { var n = parseFloat(String(q == null ? '' : q).replace(',', '.')); return isNaN(n) ? null : n; }
+function itemVago(it) { return !/\d/.test(it.item) && it.item.trim().split(/\s+/).length < 2; }
+
+/* --- Nova tarefa › Pedido mensal (tela 1) --- */
+function opcoesPedido(cod) {
+  S.pedOp = S.pedOp || {};
+  if (S.pedOp[cod]) return Promise.resolve(S.pedOp[cod]);
+  return api('tarefas.pedidoOpcoes', { condo: cod }).then(function (r) { if (r.ok) S.pedOp[cod] = r; return r; });
+}
+function montarPedidoNova(raiz) {
+  var corpo = raiz.querySelector('#novaCorpo');
+  var cod = S.nova.condo;
+  var op = S.pedOp && S.pedOp[cod];
+  if (!op) {
+    corpo.innerHTML = '<div class="carregando">Buscando tipos de material e fornecedores…</div>';
+    opcoesPedido(cod).then(function (r) {
+      if (!r.ok) { corpo.innerHTML = '<span class="erro-txt">' + esc(r.mensagem) + '</span>'; return; }
+      if (S.nova.condo === cod && raiz.isConnected) montarPedidoNova(raiz);
+    });
+    return;
+  }
+  var tipos = op.tipos.slice().sort(function (a, b) { return (b.fornecedores.length > 0) - (a.fornecedores.length > 0) || a.nome.localeCompare(b.nome); });
+  if (!S.nova.pdTipo || !tipos.some(function (t) { return t.nome === S.nova.pdTipo; })) S.nova.pdTipo = (tipos.filter(function (t) { return t.fornecedores.length; })[0] || tipos[0]).nome;
+  if (!S.nova.pdRef) S.nova.pdRef = op.referencias.padrao;
+  var ult = op.ultimos[norm(S.nova.pdTipo)] || null;
+  corpo.innerHTML =
+    '<div class="cp-caixa" style="gap:.6em"><label class="cp-form" style="gap:.3em"><span class="rot-campo">Tipo de material</span><select class="campo" id="pdTipo">' +
+      tipos.map(function (t) { return '<option' + (t.nome === S.nova.pdTipo ? ' selected' : '') + '>' + esc(t.nome) + '</option>'; }).join('') + '</select></label>' +
+    '<div class="bloco" style="gap:.35em"><span class="rot-campo" id="rotRef">Referente a</span><div class="chips-linha" role="radiogroup" aria-labelledby="rotRef">' +
+      [op.referencias.atual, op.referencias.proximo].map(function (r) {
+        return '<label class="chip-op" style="display:inline-flex;align-items:center" aria-pressed="' + (S.nova.pdRef === r) + '"><input type="radio" name="pdRef" value="' + r + '" class="sr"' + (S.nova.pdRef === r ? ' checked' : '') + '>' + r + '</label>';
+      }).join('') + '</div></div>' +
+    '<span class="dica-campo" style="margin:0">Título: <b style="color:var(--azul)">' + esc(S.nova.pdTipo + ' ' + S.nova.pdRef) + '</b> · automático</span></div>' +
+    (ult ? '<button type="button" class="bt claro" data-acao-nova="pdRepetir" aria-pressed="' + !!S.nova.pdRepetir + '" style="justify-content:flex-start">' + IC.att + '<span>' + (S.nova.pdRepetir ? 'Vai repetir' : 'Repetir') + ' o pedido de ' + esc(ult.mes) + ' · ' + ult.itens.length + (ult.itens.length === 1 ? ' item' : ' itens') + '</span></button>' : '') +
+    '<p class="dica-campo" style="margin:0">' + (function () { var t = tipos.filter(function (x) { return x.nome === S.nova.pdTipo; })[0]; return t && t.fornecedores.length ? 'Cadastrados para este tipo aqui: ' + esc(t.fornecedores.join(', ')) + '.' : 'Nenhum fornecedor cadastrado para este tipo neste condomínio: você escolhe na etapa de fornecedores.'; })() + '</p>';
+  var rep = corpo.querySelector('[data-acao-nova="pdRepetir"]');
+  if (rep) rep.addEventListener('click', function () { S.nova.pdRepetir = !S.nova.pdRepetir; montarPedidoNova(raiz); });
+}
+function continuarPedidoNova(raiz, cod) {
+  var op = S.pedOp && S.pedOp[cod];
+  if (!op) return;
+  var ult = op.ultimos[norm(S.nova.pdTipo)];
+  var itens = S.nova.pdRepetir && ult ? ult.itens.map(function (x) { return { qtd: String(x.qtd).replace('.', ','), unidade: x.unidade, item: x.item }; }) : [];
+  guardarLocal('ultimoCondo', cod); guardarLocal('ultimaCategoria', 'Pedido mensal');
+  fecharCamadas();
+  abrirPedido({ condo: cod, tipo: S.nova.pdTipo, ref: S.nova.pdRef, itens: itens, passo: 'lista' });
+}
+
+/* --- Assistente (telas 2 a 5) --- */
+function abrirPedido(est) {
+  S.ped = Object.assign({ id: null, itens: [], forn: null, extras: [], emails: null, editando: {}, passo: 'lista' }, est);
+  opcoesPedido(S.ped.condo).then(function (op) {
+    if (!op.ok) { avisar(op.mensagem, true); return; }
+    if (!S.ped.forn) {
+      var t = op.tipos.filter(function (x) { return x.nome === S.ped.tipo; })[0];
+      S.ped.forn = {};
+      (t ? t.fornecedores : []).forEach(function (a) { S.ped.forn[a] = { on: true, cad: true }; });
+    }
+    abrirJanela('Pedido mensal', S.ped.tipo + ' ' + S.ped.ref + ' · ' + nomeCondo(S.ped.condo), '<div class="jan-corpo" id="pdCorpo"></div><div class="pd-rodape" id="pdRodape"></div>', 'centro', function (raiz) {
+      raiz.classList.add('pd-jan');
+      raiz.addEventListener('click', cliquePedido);
+      raiz.addEventListener('keydown', function (e) {
+        if (e.target.id === 'pdEntrada' && e.key === 'Enter') { e.preventDefault(); adicionarLinhas(e.target.value); e.target.value = ''; }
+      });
+      raiz.addEventListener('paste', function (e) {
+        if (e.target.id !== 'pdEntrada') return;
+        var txt = (e.clipboardData || window.clipboardData).getData('text') || '';
+        if (txt.indexOf('\n') < 0) return;
+        e.preventDefault(); adicionarLinhas(txt); e.target.value = '';
+      });
+      raiz.addEventListener('input', function (e) {
+        var k = e.target.getAttribute('data-pdk'), c = e.target.getAttribute('data-pdc');
+        if (k !== null && c) { S.ped.itens[Number(k)][c] = e.target.value; if (S.ped.passo === 'conferir' && c === 'qtd') atualizarConferencia(); }
+        if (e.target.id === 'pdBusca') desenharBuscaForn();
+        var em = e.target.getAttribute('data-pdemail');
+        if (em) { var x = (S.ped.emails || []).filter(function (y) { return y.apelido === em; })[0]; if (x) x.corpo = e.target.value; }
+      });
+      desenharPedido();
+    });
+  });
+}
+function adicionarLinhas(txt) {
+  var novos = String(txt || '').split(/\r?\n/).map(lerLinhaItem).filter(Boolean);
+  if (!novos.length) return;
+  S.ped.itens = S.ped.itens.concat(novos).slice(0, 60);
+  desenharPedido();
+  var f = $('pdEntrada'); if (f) f.focus();
+  if (novos.length > 1) avisar(novos.length + ' itens separados da lista');
+}
+function passoNum() { return { lista: 1, conferir: 2, fornecedores: 3, email: 4 }[S.ped.passo] || 1; }
+function cabPasso(titulo, sub) {
+  return '<div class="pd-passo"><span class="pd-num">Passo ' + passoNum() + ' de 4</span><b>' + esc(titulo) + '</b>' + (sub ? '<small>' + esc(sub) + '</small>' : '') + '</div>';
+}
+function desenharPedido() {
+  var c = $('pdCorpo'), r = $('pdRodape'); if (!c) return;
+  var p = S.ped, h = '', rod = '';
+  var voltar = p.passo !== 'lista' ? '<button class="bt claro" data-acao="pdVoltar">Voltar</button>' : '<span></span>';
+  if (p.passo === 'lista') {
+    h += cabPasso('Colocar a lista', 'Digite um item e Enter, ou cole a lista inteira (uma linha por item).');
+    h += '<label class="sr" for="pdEntrada">Novo item</label><div class="linha-campos"><input class="campo" id="pdEntrada" autocomplete="off" placeholder="Ex.: 3 baldes Cloro granulado"><button class="bt claro" data-acao="pdAdd">Adicionar</button></div>';
+    h += htmlLinhasItens(false);
+    rod = voltar + '<button class="bt" data-acao="pdConferir"' + (p.itens.length ? '' : ' disabled') + '>Conferir lista' + (p.itens.length ? ' · ' + p.itens.length : '') + '</button>';
+  } else if (p.passo === 'conferir') {
+    h += cabPasso('Conferir a lista', p.tipo + ' ' + p.ref + ' · ' + nomeCondo(p.condo));
+    h += '<div id="pdConf"></div>';
+    rod = voltar + '<span class="pd-msg" id="pdMsg"></span><button class="bt" data-acao="pdFornecedores" id="pdSegue">Escolher fornecedores</button>';
+  } else if (p.passo === 'fornecedores') {
+    h += cabPasso('Para quem cotar', p.tipo + ' ' + p.ref + ' · ' + nomeCondo(p.condo));
+    h += htmlFornecedoresPd();
+    var n = Object.keys(p.forn).filter(function (a) { return p.forn[a].on; }).length;
+    rod = voltar + '<button class="bt" data-acao="pdEmails"' + (n ? '' : ' disabled') + '>Ver e-mail' + (n > 1 ? 's' : '') + (n ? ' · ' + n : '') + '</button>';
+  } else if (p.passo === 'email') {
+    h += cabPasso('E-mail de cotação', 'Sai do seu Gmail, um por fornecedor. Confira antes de enviar.');
+    if (!p.emails) h += '<div class="carregando">Montando os e-mails…</div>';
+    else h += p.emails.map(function (e) {
+      var ed = p.editando[e.apelido];
+      return '<article class="cp-caixa pd-email"><div class="kv"><span>Para</span><b>' + esc(e.razao || e.apelido) + '<br><small style="font-weight:400;color:var(--suave)">' + esc(e.para) + '</small></b></div>' +
+        '<div class="kv"><span>Assunto</span><b>' + esc(e.assunto) + '</b></div>' +
+        (ed ? '<label class="sr" for="pdE' + esc(e.apelido) + '">Texto</label><textarea class="campo" rows="12" id="pdE' + esc(e.apelido) + '" data-pdemail="' + esc(e.apelido) + '">' + esc(e.corpo) + '</textarea>'
+          : '<pre class="pd-corpo">' + esc(e.corpo) + '</pre>') +
+        '<button class="bt-link" data-acao="pdEditar" data-ap="' + esc(e.apelido) + '" style="align-self:flex-start">' + (ed ? 'Pronto' : 'Editar') + '</button></article>';
+    }).join('');
+    var ne = p.emails ? p.emails.length : 0;
+    rod = voltar + '<button class="bt claro" data-acao="pdSalvar">Salvar sem enviar</button><button class="bt" data-acao="pdEnviar"' + (ne ? '' : ' disabled') + '>Enviar para ' + ne + (ne === 1 ? ' fornecedor' : ' fornecedores') + '</button>';
+  }
+  c.innerHTML = h; r.innerHTML = rod;
+  if (p.passo === 'conferir') atualizarConferencia();
+  if (p.passo === 'fornecedores') desenharBuscaForn();
+  if (p.passo === 'lista' && faixa() === 'computador') { var f = $('pdEntrada'); if (f) f.focus(); }
+}
+function htmlLinhasItens(conferir) {
+  var p = S.ped;
+  if (!p.itens.length) return '<p class="cartao-meta" style="margin:0">Nenhum item ainda.</p>';
+  return '<div class="pd-lista">' + p.itens.map(function (it, k) {
+    return '<div class="pd-item" data-k="' + k + '"><div class="pd-ln">' +
+      '<label class="sr" for="pdQ' + k + '">Quantidade</label><input class="campo pd-q" id="pdQ' + k + '" data-pdk="' + k + '" data-pdc="qtd" inputmode="decimal" maxlength="7" placeholder="?" value="' + esc(it.qtd) + '">' +
+      '<label class="sr" for="pdU' + k + '">Unidade</label><input class="campo pd-u" id="pdU' + k + '" data-pdk="' + k + '" data-pdc="unidade" list="pdUnidades" maxlength="20" value="' + esc(it.unidade) + '">' +
+      '<label class="sr" for="pdI' + k + '">Item</label><input class="campo pd-i" id="pdI' + k + '" data-pdk="' + k + '" data-pdc="item" maxlength="120" value="' + esc(it.item) + '">' +
+      '<button class="cp-tirar" data-acao="pdTirar" data-k="' + k + '" aria-label="Tirar ' + esc(it.item) + '">' + IC.x + '</button></div>' +
+      (conferir ? '<span class="pd-ms" data-ms="' + k + '"></span>' : '') + '</div>';
+  }).join('') + '</div><datalist id="pdUnidades">' + UNIDADES.map(function (u) { return '<option value="' + u + '">'; }).join('') + '</datalist>';
+}
+function atualizarConferencia() {
+  var p = S.ped, box = $('pdConf'); if (!box) return;
+  var dentro = [], fora = [];
+  p.itens.forEach(function (it, k) { var q = qtdNum(it.qtd); (q === 0 ? fora : dentro).push(k); });
+  if (!box.getAttribute('data-montado')) {
+    box.setAttribute('data-montado', '1');
+    box.innerHTML = htmlLinhasItens(true) + '<div id="pdFora"></div>';
+  }
+  var bloq = 0, aviso = 0;
+  p.itens.forEach(function (it, k) {
+    var el = box.querySelector('.pd-item[data-k="' + k + '"]'), ms = box.querySelector('[data-ms="' + k + '"]');
+    if (!el) return;
+    var q = qtdNum(it.qtd);
+    el.classList.remove('pd-bl', 'pd-av', 'pd-fo');
+    if (q === 0) { el.classList.add('pd-fo'); ms.innerHTML = 'Fora deste pedido (quantidade 0)'; return; }
+    if (q === null || q < 0) { bloq++; el.classList.add('pd-bl'); ms.innerHTML = 'Falta a quantidade'; return; }
+    if (itemVago(it)) { aviso++; el.classList.add('pd-av'); ms.innerHTML = 'Sem tipo ou marca · pode mandar assim <button class="bt-link" data-acao="pdDetalhar" data-k="' + k + '">Detalhar</button>'; return; }
+    ms.innerHTML = '';
+  });
+  var n = dentro.length;
+  var msg = $('pdMsg'), seg = $('pdSegue');
+  if (msg) msg.textContent = (n + (n === 1 ? ' item' : ' itens')) + (bloq ? ' · ' + bloq + ' sem quantidade' : '') + (aviso ? ' · ' + aviso + (aviso === 1 ? ' aviso' : ' avisos') : '') + (fora.length ? ' · ' + fora.length + ' fora' : '');
+  if (seg) seg.disabled = !!bloq || !n;
+}
+function itensValidos() {
+  return S.ped.itens.filter(function (it) { return it.item.trim() && qtdNum(it.qtd) > 0; })
+    .map(function (it) { return { qtd: String(it.qtd).replace(',', '.'), unidade: (it.unidade || 'un.').trim(), item: it.item.trim() }; });
+}
+function htmlFornecedoresPd() {
+  var p = S.ped, op = S.pedOp[p.condo];
+  var porApe = {}; op.fornecedores.forEach(function (f) { porApe[f.apelido] = f; });
+  var linha = function (a) {
+    var f = porApe[a] || { apelido: a }, st = p.forn[a];
+    return '<button class="pd-forn" role="checkbox" aria-checked="' + !!st.on + '" data-acao="pdMarcar" data-ap="' + esc(a) + '"><span class="pd-ck">' + (st.on ? IC.okP : '') + '</span>' +
+      '<span class="pd-fn"><b>' + esc(a) + '</b><small>' + esc([f.contato, f.email].filter(Boolean).join(' · ')) + (st.cad ? '' : st.incluirSempre ? ' · fica cadastrado para ' + esc(p.tipo) : ' · só nesta cotação') + '</small></span></button>';
+  };
+  var cad = Object.keys(p.forn).filter(function (a) { return p.forn[a].cad; });
+  var ext = Object.keys(p.forn).filter(function (a) { return !p.forn[a].cad; });
+  return (cad.length ? '<span class="rotulo">Cadastrados para ' + esc(p.tipo.toLowerCase()) + ' no ' + esc(nomeCondo(p.condo)) + '</span>' + cad.map(linha).join('') : '<p class="cartao-meta" style="margin:0">Nenhum fornecedor cadastrado para este tipo neste condomínio.</p>') +
+    (ext.length ? '<span class="rotulo" style="margin-top:.4em">Adicionados por você</span>' + ext.map(linha).join('') : '') +
+    '<div class="pd-add"><span class="rot-campo">Adicionar fornecedor</span><label class="sr" for="pdBusca">Buscar fornecedor</label><input class="campo" id="pdBusca" autocomplete="off" placeholder="Buscar pelo nome"><div id="pdBuscaRes"></div>' +
+    '<button type="button" class="chave" role="switch" aria-checked="' + !!p.incluirSempre + '" data-acao="pdSempre"><i aria-hidden="true"></i>Incluir sempre para ' + esc(p.tipo) + ' no ' + esc(nomeCondo(p.condo)) + '</button></div>';
+}
+function desenharBuscaForn() {
+  var box = $('pdBuscaRes'), q = $('pdBusca'); if (!box) return;
+  var p = S.ped, op = S.pedOp[p.condo], termo = semAcento(q ? q.value : '');
+  if (!termo) { box.innerHTML = ''; return; }
+  var res = op.fornecedores.filter(function (f) { return !p.forn[f.apelido] && semAcento(f.apelido + ' ' + f.razao + ' ' + f.tipo).indexOf(termo) >= 0; }).slice(0, 6);
+  box.innerHTML = res.length ? res.map(function (f) {
+    return '<button class="pd-res" data-acao="pdIncluir" data-ap="' + esc(f.apelido) + '"><b>' + esc(f.apelido) + '</b><small>' + esc([f.tipo, f.aqui.length ? 'já atende: ' + f.aqui.join(', ') : ''].filter(Boolean).join(' · ')) + '</small><span>' + IC.mais + '</span></button>';
+  }).join('') : '<p class="cartao-meta" style="margin:.3em 0">Nenhum fornecedor com e-mail encontrado.</p>';
+}
+function dadosPedido() {
+  var p = S.ped;
+  return { id: p.id, condo: p.condo, tipo: p.tipo, ref: p.ref, itens: itensValidos(),
+    fornecedores: Object.keys(p.forn).filter(function (a) { return p.forn[a].on; }).map(function (a) { return { apelido: a, incluirSempre: !p.forn[a].cad && !!p.forn[a].incluirSempre }; }) };
+}
+function cliquePedido(e) {
+  var b = e.target.closest('[data-acao]'); if (!b) return;
+  var a = b.getAttribute('data-acao'), p = S.ped;
+  if (!/^pd/.test(a)) return;
+  e.stopPropagation();
+  if (a === 'pdAdd') { var f = $('pdEntrada'); adicionarLinhas(f.value); f.value = ''; return; }
+  if (a === 'pdTirar') { p.itens.splice(Number(b.getAttribute('data-k')), 1); if (p.passo === 'conferir') { $('pdConf').removeAttribute('data-montado'); } desenharPedido(); return; }
+  if (a === 'pdDetalhar') { var i = $('pdI' + b.getAttribute('data-k')); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } return; }
+  if (a === 'pdVoltar') { p.passo = { conferir: 'lista', fornecedores: 'conferir', email: 'fornecedores' }[p.passo] || 'lista'; desenharPedido(); return; }
+  if (a === 'pdConferir') { p.passo = 'conferir'; desenharPedido(); return; }
+  if (a === 'pdFornecedores') { p.passo = 'fornecedores'; desenharPedido(); return; }
+  if (a === 'pdMarcar') { var ap = b.getAttribute('data-ap'); p.forn[ap].on = !p.forn[ap].on; desenharPedido(); return; }
+  if (a === 'pdSempre') { p.incluirSempre = !p.incluirSempre; b.setAttribute('aria-checked', String(p.incluirSempre)); return; }
+  if (a === 'pdIncluir') { p.forn[b.getAttribute('data-ap')] = { on: true, cad: false, incluirSempre: !!p.incluirSempre }; desenharPedido(); return; }
+  if (a === 'pdEditar') { var ap2 = b.getAttribute('data-ap'); p.editando[ap2] = !p.editando[ap2]; desenharPedido(); return; }
+  if (a === 'pdEmails') {
+    p.passo = 'email'; p.emails = null; desenharPedido();
+    api('tarefas.pedidoPrevia', dadosPedido()).then(function (r) {
+      if (!r.ok) { avisar(r.mensagem, true); p.passo = 'fornecedores'; desenharPedido(); return; }
+      p.emails = r.emails; p.editando = {}; desenharPedido();
+    });
+    return;
+  }
+  if (a === 'pdSalvar') {
+    umaVez('pdSalvar', b, 'Salvando…', function () { return api('tarefas.pedidoSalvar', Object.assign(dadosPedido(), { confirmarDuplicada: !!p.dup })); }).then(function (r) {
+      if (r.ignorado) return;
+      if (r.aviso === 'DUPLICADA') { p.dup = true; avisar('Já existe um pedido igual em aberto. Toque de novo para salvar mesmo assim.', true); return; }
+      if (!r.ok) { avisar(r.mensagem, true); return; }
+      fecharCamadas(); avisar('Pedido salvo na lista · ainda não enviado'); recarregar(); abrirTarefa(r.tarefa.id);
+    });
+    return;
+  }
+  if (a === 'pdEnviar') {
+    var d = dadosPedido();
+    d.emails = (p.emails || []).map(function (x) { return { apelido: x.apelido, corpo: x.corpo }; });
+    d.confirmarDuplicada = !!p.dup;
+    umaVez('pdEnviar', b, 'Enviando…', function () { return api('tarefas.pedidoEnviar', d); }).then(function (r) {
+      if (r.ignorado) return;
+      if (r.aviso === 'DUPLICADA') { p.dup = true; avisar('Já existe um pedido igual em aberto. Toque de novo para enviar mesmo assim.', true); return; }
+      if (!r.ok) { avisar(r.mensagem, true); return; }
+      fecharCamadas();
+      avisar('Enviado a ' + r.enviados.join(', ') + (r.falhas && r.falhas.length ? ' · não saiu para ' + r.falhas.join(', ') : ''), !!(r.falhas && r.falhas.length));
+      S.pedOp = {}; recarregar(); abrirTarefa(r.id);
+    });
+  }
+}
+
+/* --- Tarefa aberta: jornada (6), comparação (7) e entrega (8) --- */
+function etapasPedido(pd) {
+  var passos = ['Lista', 'Cotação', 'Aprovação', 'Entrega'];
+  var i = { 'Lista': 0, 'Cotação': 1, 'Aprovação': 2, 'Entrega': 3, 'Recebida': 4 }[pd.etapa];
+  if (i === undefined) i = 0;
+  return '<div class="etapas" role="list" aria-label="Jornada do pedido">' + passos.map(function (p, k) {
+    var cls = k < i ? 'feito' : k === i ? 'atual' : '';
+    return (k ? '<span class="li' + (k <= i ? ' feito' : '') + '" aria-hidden="true"></span>' : '') +
+      '<span class="et ' + cls + '" role="listitem"' + (k === i ? ' aria-current="step"' : '') + '><span class="bo">' + (k < i ? IC.okP : (k + 1)) + '</span>' + p + '</span>';
+  }).join('') + '</div>';
+}
+function linkPdf(id) { return 'https://drive.google.com/file/d/' + encodeURIComponent(id) + '/view'; }
+function htmlItensPedido(pd, aberto) {
+  return '<details class="cp-caixa pd-itens"' + (aberto ? ' open' : '') + '><summary><span class="rotulo">Itens do pedido · ' + pd.itens.length + '</span></summary>' +
+    pd.itens.map(function (it) { return '<div class="cp-prod"><span class="q">' + esc(String(it.qtd).replace('.', ',') + ' ' + it.unidade) + '</span><span>' + esc(it.item) + '</span>' + (it.resultado ? '<span class="pd-res-tag ' + it.resultado.toLowerCase() + '">' + esc(it.resultado) + '</span>' : '') + '</div>'; }).join('') + '</details>';
+}
+function htmlPedido(t) {
+  var pd = t.pedido, p = pd.pode || {};
+  var h = etapasPedido(pd);
+  if (pd.etapa === 'Lista') {
+    h += htmlItensPedido(pd, true);
+    h += '<div class="cp-aviso"><span><b>Ainda não enviado.</b> Escolha os fornecedores e confira o e-mail para mandar a cotação.</span>' +
+      (p.continuar ? '<button class="bt" data-acao="pdContinuar">Continuar cotação</button>' : '') + '</div>';
+    return h;
+  }
+  if (pd.etapa === 'Cotação' || pd.etapa === 'Aprovação') {
+    h += '<div class="cp-caixa"><div class="pd-cab"><span class="rotulo">Fornecedores</span><b>' + pd.responderam + ' de ' + pd.enviados + ' responderam</b></div>' +
+      pd.cotacoes.map(function (c, k) {
+        var sub = c.respondeuEm ? 'Respondeu ' + dataCurta(new Date(c.respondeuEm)) + (c.pdfs.length ? ' · PDF salvo' : ' · sem PDF') : (c.diasSemResposta ? 'Sem resposta há ' + c.diasSemResposta + (c.diasSemResposta === 1 ? ' dia' : ' dias') : 'Enviado hoje · aguardando') + (c.cobradoEm ? ' · cobrado ' + dataCurta(new Date(c.cobradoEm)) : '');
+        var dir = c.respondeuEm ? (c.total !== null ? '<b class="pd-tot">' + esc(c.totalTxt) + '</b>' : '<span class="pd-tag">Agente lê ' + esc(pd.proximaRodada) + '</span>')
+          : (p.cobrar ? '<button class="bt claro pd-cobrar" data-acao="pdCobrar" data-ap="' + esc(c.apelido) + '">Cobrar</button>' : '');
+        return (k ? '<div class="pd-sep"></div>' : '') + '<div class="pd-fr"><span><b>' + esc(c.apelido) + '</b><small>' + esc(sub) + '</small></span>' + dir + '</div>';
+      }).join('') + '</div>';
+    if (pd.responderam) {
+      var pedido = pd.cotacoes.some(function (c) { return c.pedidoAnalise && (!c.analisadoEm || c.analisadoEm < c.pedidoAnalise); });
+      h += '<div class="pd-info">' + IC.relogioP + '<span>' + (pedido ? 'Análise pedida: o agente confere na rodada das <b>' + esc(pd.proximaRodada) + '</b>.' : 'O agente confere os orçamentos item a item na rodada das <b>' + esc(pd.proximaRodada) + '</b>.') + '</span>' +
+        (p.analisar && !pedido ? '<button class="bt-link" data-acao="pdAnalisar">Analisar agora</button>' : '') + '</div>';
+    }
+    h += htmlItensPedido(pd, false);
+    if (p.aprovar) h += '<button class="bt grande" data-acao="pdComparar">Comparar orçamentos · ' + pd.responderam + '</button>';
+    return h;
+  }
+  if (pd.etapa === 'Entrega' || pd.etapa === 'Recebida') {
+    var ap = pd.cotacoes.filter(function (c) { return c.situacao === 'Aprovado'; })[0];
+    if (ap) h += '<div class="cp-caixa"><span class="rotulo">Aprovado</span><div class="pd-fr"><span><b>' + esc(ap.apelido) + '</b><small>' + esc([ap.prazo && 'entrega ' + ap.prazo, ap.pagamento].filter(Boolean).join(' · ') || 'resposta enviada no mesmo e-mail') + '</small></span>' + (ap.total !== null ? '<b class="pd-tot">' + esc(ap.totalTxt) + '</b>' : '') + '</div>' +
+      (ap.pdfs[0] ? '<a class="bt-link" href="' + linkPdf(ap.pdfs[0]) + '" target="_blank" rel="noopener noreferrer" style="align-self:flex-start">Abrir PDF do orçamento</a>' : '') + '</div>';
+    if (p.entrega) {
+      S.pdEnt = S.pdEnt && S.pdEnt.id === t.id ? S.pdEnt : { id: t.id, r: {} };
+      pd.itens.forEach(function (it) { if (!S.pdEnt.r[it.ordem]) S.pdEnt.r[it.ordem] = { resultado: it.resultado, nota: it.nota }; });
+      h += '<div class="cp-caixa pd-ent"><span class="rotulo">Conferir entrega</span>' + pd.itens.map(function (it) {
+        var r = S.pdEnt.r[it.ordem] || {};
+        return '<div class="pd-ent-it"><div class="cp-prod"><span class="q">' + esc(String(it.qtd).replace('.', ',') + ' ' + it.unidade) + '</span><span>' + esc(it.item) + '</span></div>' +
+          '<div class="seg pd-seg" role="group" aria-label="' + esc(it.item) + '">' + ['Veio', 'Faltou', 'Diferente'].map(function (v) { return '<button type="button" data-acao="pdRes" data-o="' + it.ordem + '" data-v="' + v + '" aria-pressed="' + (r.resultado === v) + '">' + v + '</button>'; }).join('') + '</div>' +
+          (r.resultado === 'Diferente' || r.resultado === 'Faltou' ? '<label class="sr" for="pdN' + it.ordem + '">Observação</label><input class="campo" id="pdN' + it.ordem + '" data-pdnota="' + it.ordem + '" maxlength="200" placeholder="O que veio diferente? (opcional)" value="' + esc(r.nota || '') + '">' : '') + '</div>';
+      }).join('') +
+      '<button class="bt-link" data-acao="pdTudoVeio" style="align-self:flex-start">Marcar tudo como veio</button></div>';
+      var pend = pd.itens.some(function (it) { return it.resultado && it.resultado !== 'Veio'; });
+      h += '<button class="bt grande" data-acao="pdEntrega">' + IC.checkOuro + ' Salvar conferência</button>';
+      if (pend) h += '<button class="bt grande claro" data-acao="pdConcluir">Concluir com pendência</button>';
+    } else h += htmlItensPedido(pd, true);
+    return h;
+  }
+  return h;
+}
+function acaoPedido(acao, el) {
+  var t = S.det;
+  if (!t || !t.pedido) return;
+  var pd = t.pedido;
+  if (acao === 'pdContinuar') {
+    abrirPedido({ id: t.id, condo: t.condo, tipo: pd.tipo, ref: pd.ref, passo: 'fornecedores',
+      itens: pd.itens.map(function (x) { return { qtd: String(x.qtd).replace('.', ','), unidade: x.unidade, item: x.item }; }) });
+    return;
+  }
+  if (acao === 'pdCobrar') {
+    var ap = el.getAttribute('data-ap');
+    acaoDetalhe('pedidoCobrar', { apelido: ap }, function () { avisar('Lembrete enviado a ' + ap + ' no mesmo e-mail'); }, el, 'Enviando…');
+    return;
+  }
+  if (acao === 'pdAnalisar') { acaoDetalhe('pedidoAnalisar', {}, function (r) { avisar('O agente confere na rodada das ' + r.rodada); }, el, 'Pedindo…'); return; }
+  if (acao === 'pdComparar') { abrirComparar(); return; }
+  if (acao === 'pdRes') {
+    var o = el.getAttribute('data-o');
+    S.pdEnt.r[o] = Object.assign({}, S.pdEnt.r[o], { resultado: el.getAttribute('data-v') });
+    guardarNotasEnt(); desenharDetalhe(); return;
+  }
+  if (acao === 'pdTudoVeio') { pd.itens.forEach(function (it) { S.pdEnt.r[it.ordem] = { resultado: 'Veio', nota: '' }; }); desenharDetalhe(); return; }
+  if (acao === 'pdEntrega' || acao === 'pdConcluir') {
+    guardarNotasEnt();
+    var itens = Object.keys(S.pdEnt.r).map(function (k) { return { ordem: Number(k), resultado: S.pdEnt.r[k].resultado, nota: S.pdEnt.r[k].nota || '' }; }).filter(function (x) { return x.resultado; });
+    if (acao === 'pdEntrega' && !itens.length) { avisar('Marque como veio cada item recebido.', true); return; }
+    acaoDetalhe('pedidoEntrega', { itens: itens, concluir: acao === 'pdConcluir' }, function (r) {
+      S.pdEnt = null;
+      avisar(r.concluido ? 'Pedido recebido e concluído' : 'Conferência salva · ' + r.faltas.length + (r.faltas.length === 1 ? ' item pendente' : ' itens pendentes'));
+      if (r.concluido) invalidarConcluidas();
+    }, el, 'Salvando…');
+  }
+}
+function guardarNotasEnt() {
+  Array.prototype.forEach.call(document.querySelectorAll('[data-pdnota]'), function (i) {
+    var o = i.getAttribute('data-pdnota'); S.pdEnt.r[o] = Object.assign({}, S.pdEnt.r[o], { nota: i.value });
+  });
+}
+function abrirComparar(apAprovar) {
+  var t = S.det, pd = t.pedido;
+  var resp = pd.cotacoes.filter(function (c) { return c.respondeuEm && c.situacao !== 'Rejeitado'; });
+  var sem = pd.cotacoes.filter(function (c) { return !c.respondeuEm; });
+  var h = '<div class="jan-corpo">';
+  if (apAprovar) {
+    var c0 = resp.filter(function (c) { return c.apelido === apAprovar; })[0];
+    h += '<p class="cartao-meta" style="margin:0">Resposta no mesmo e-mail para <b>' + esc(c0.apelido) + '</b> (' + esc(c0.email) + '). Os demais ficam como Rejeitado (sem e-mail) e o PDF vai para APROVADOS.</p>' +
+      '<label class="rot-campo" for="pdAprTxt">Mensagem</label><textarea class="campo" id="pdAprTxt" rows="9">' + esc((c0.contato ? 'Olá, ' + c0.contato + ', tudo bem?' : 'Olá, tudo bem?') + '\n\n' + pd.aprovacaoTexto) + '</textarea>' +
+      '<div class="cp-botoes"><button class="bt claro" data-cmp="voltar">Voltar</button><button class="bt" data-cmp="enviar" data-ap="' + esc(c0.apelido) + '">Enviar aprovação</button></div></div>';
+  } else {
+    h += resp.map(function (c) {
+      var div = c.divergencias ? '<span class="pd-mt alerta">' + IC.alertaP + esc(c.divergencias) + '</span>' : c.confere === 'Sim' ? '<span class="pd-mt ok">' + IC.okVerde + 'Confere com o pedido</span>' : '';
+      return '<article class="cp-caixa pd-cd' + (c.menor ? ' menor' : '') + '"><div class="pd-cab"><b class="pd-nm">' + esc(c.apelido) + '</b>' + (c.menor ? '<span class="pd-tag ouro">Menor total</span>' : '') + '</div>' +
+        (c.total !== null ? '<span class="pd-total">' + esc(c.totalTxt) + '</span>'
+          : '<div class="linha-campos"><label class="sr" for="pdTot' + esc(c.apelido) + '">Total</label><input class="campo" id="pdTot' + esc(c.apelido) + '" inputmode="decimal" placeholder="Total (R$)"><button class="bt claro" data-cmp="total" data-ap="' + esc(c.apelido) + '">Salvar</button></div>' +
+            '<span class="pd-mt">O agente ainda não leu este orçamento (rodada das ' + esc(pd.proximaRodada) + ').</span>') +
+        div + ((c.prazo || c.pagamento) ? '<span class="pd-mt">' + esc([c.prazo && 'Entrega ' + c.prazo, c.pagamento && 'pagamento ' + c.pagamento].filter(Boolean).join(' · ')) + '</span>' : '') +
+        '<div class="cp-botoes">' + (c.pdfs[0] ? '<a class="bt claro" href="' + linkPdf(c.pdfs[0]) + '" target="_blank" rel="noopener noreferrer">' + IC.doc + 'PDF</a>' : '') +
+        '<button class="bt' + (c.menor ? '' : ' claro') + '" data-cmp="aprovar" data-ap="' + esc(c.apelido) + '">Aprovar</button></div></article>';
+    }).join('') +
+    sem.map(function (c) { return '<div class="cp-caixa pd-sem"><div class="pd-cab"><b class="pd-nm">' + esc(c.apelido) + '</b><small>' + (c.diasSemResposta ? 'sem resposta · ' + c.diasSemResposta + (c.diasSemResposta === 1 ? ' dia' : ' dias') : 'enviado hoje · aguardando') + '</small></div></div>'; }).join('') +
+    '<p class="dica-campo" style="margin:0">Nada é decidido sozinho: o destaque de menor total é só uma ajuda.</p></div>';
+  }
+  abrirJanela(apAprovar ? 'Aprovar orçamento' : 'Orçamentos ' + pd.ref, pd.tipo + ' · ' + nomeCondo(t.condo), h, 'centro', function (raiz) {
+    raiz.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-cmp]'); if (!b) return;
+      var a = b.getAttribute('data-cmp'), ap = b.getAttribute('data-ap');
+      if (a === 'voltar') { abrirComparar(); return; }
+      if (a === 'aprovar') { abrirComparar(ap); return; }
+      if (a === 'total') {
+        var v = raiz.querySelector('#pdTot' + CSS.escape(ap)).value;
+        umaVez('pdTot' + ap, b, 'Salvando…', function () { return api('tarefas.pedidoTotal', { id: t.id, apelido: ap, total: v }); }).then(function (r) {
+          if (r.ignorado) return;
+          if (!r.ok) { avisar(r.mensagem, true); return; }
+          api('tarefas.abrir', { id: t.id }).then(function (rr) { if (rr.ok) { S.det = rr.tarefa; desenharDetalhe(); abrirComparar(); } });
+        });
+        return;
+      }
+      if (a === 'enviar') {
+        var txt = raiz.querySelector('#pdAprTxt').value;
+        umaVez('pdApr', b, 'Enviando…', function () { return api('tarefas.pedidoAprovar', { id: t.id, apelido: ap, corpo: txt }); }).then(function (r) {
+          if (r.ignorado) return;
+          if (!r.ok) { avisar(r.mensagem, true); return; }
+          fecharCamadas(); avisar('Aprovado · resposta enviada a ' + ap); abrirTarefa(t.id, true); recarregar();
+        });
+      }
+    });
+  });
+}
+
 function siteDe(link) {
   var m = String(link || '').trim().match(/^(?:https?:\/\/)?(?:www\.)?([^\/\s?#]+\.[^\/\s?#]+)/i);
   return m ? m[1].toLowerCase() : '';
@@ -4745,6 +5242,7 @@ document.addEventListener('click', function (e) {
     return;
   }
   if (acao && /^cp[A-Z]/.test(acao)) { acaoCompra(acao, b); return; }
+  if (acao && /^pd[A-Z]/.test(acao)) { acaoPedido(acao, b); return; }
   switch (acao) {
     case 'fecharJan': fecharCamadas(); break;
     case 'convidar': fecharCamadas(); abrirConvidar(); break;
