@@ -671,6 +671,30 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
   .jan-corpo{padding:.6em 1em calc(1.5em + var(--baixo-seg))}
   .menu{left:.75em!important;right:.75em!important;min-width:0}
 }
+.evo{display:flex;flex-direction:column;gap:1em;padding:1em 1.25em 1.5em;overflow-y:auto;flex:1;min-height:0}
+.evo-chips{display:flex;gap:.5em;overflow-x:auto;flex:none;padding-bottom:.15em}
+.evo-chips .chip{min-height:2.5em;font-size:.875em}
+.evo-lista{display:flex;flex-direction:column;gap:.75em;max-width:46em;width:100%;margin:0 auto}
+.evo-card{background:#fff;border:1px solid var(--linha2);border-radius:1em;box-shadow:var(--sombra);overflow:hidden}
+.evo-card.aberto{border-color:var(--ouro)}
+.evo-topo{display:flex;flex-direction:column;gap:.4em;width:100%;text-align:left;background:none;border:none;padding:.875em 1em;color:inherit;font:inherit;cursor:pointer}
+.evo-tipo{font-size:.75em;font-weight:600;color:#6B5A3A}
+.evo-txt{font-size:1em;font-weight:600;line-height:1.35;color:var(--azul)}
+.evo-linha{display:flex;align-items:center;gap:.6em;flex-wrap:wrap}
+.evo-selo{font-size:.75em;font-weight:700;border-radius:999px;padding:.3em .75em}
+.evo-selo.azul{background:#E6EEF7;color:var(--azul)}.evo-selo.ouro{background:#F6EEDC;color:#6B4A12}
+.evo-selo.cinza{background:#F1EBDD;color:#3D4863}.evo-selo.agente{background:#EEF1F6;color:#3D4863}
+.evo-det{display:flex;flex-direction:column;gap:.75em;padding:0 1em 1em;border-top:1px solid var(--linha2);padding-top:.875em}
+.evo-bloco{background:var(--creme);border-radius:.75em;padding:.65em .85em}
+.evo-bloco b{display:block;font-size:.75em;letter-spacing:.08em;text-transform:uppercase;color:#6B5A3A;margin-bottom:.25em}
+.evo-bloco p{margin:0;font-size:.9375em;line-height:1.5;white-space:pre-line}
+.evo-acoes{display:flex;flex-wrap:wrap;gap:.5em;align-items:center}
+.evo-mais{display:flex;flex-wrap:wrap;gap:1.25em;width:100%;padding-top:.25em}
+.evo-acoes .bt.link{background:none;color:var(--azul);padding:0;min-height:2.75em;text-decoration:underline;text-decoration-color:var(--ouro);text-underline-offset:3px}
+.evo-comp{display:flex;flex-direction:column;gap:.5em}
+.evo-comp .evo-acoes{justify-content:flex-end;gap:1em}
+.sug-perg{display:flex;flex-direction:column;gap:.5em;margin-top:.35em}
+@media (max-width:767px){.evo{padding:.875em .875em 1.5em}.evo-acoes>.bt{flex:1 1 auto}}
 </style>
 </head>
 <body>
@@ -725,6 +749,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>
         <span style="flex:1">Tarefas</span><span class="cont" id="contLateral">0</span>
       </a>
+      <div id="latSoVoce"></div>
       <span class="lat-titulo cinza">Em breve</span>
       <div id="emBreve"></div>
       <div id="latGestao"></div>
@@ -802,7 +827,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.14';
+var VERSAO_SITE = '1.16';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -889,6 +914,7 @@ var IC = {
   caixaOuro: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5.1L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.5-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.7 1.1z"/></svg>',
   pessoas: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>',
   listaOuro: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>',
+  evolucaoOuro: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>',
   breve: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9AA3B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
   relogio: '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7A5C27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
   chevD: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9AA3B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>',
@@ -1161,6 +1187,8 @@ function desenhar() {
   if (ler('abrirT')) abrirLinkDireto();
   if (!S.filaCarregada) { S.filaCarregada = true; carregarFila(); } else processarFila();
   verificarCompartilhado();
+  if (ler('abrirEvo') && S.portal) { guardar('abrirEvo', null); abrirEvolucao(); }
+  if (ler('abrirSug') && S.portal) { guardar('abrirSug', null); abrirSugestao(true); }
   if (ler('abrirP') && S.portal) { var idP = ler('abrirP'); guardar('abrirP', null); if (S.portal.gestao && S.portal.gestao.pedidos !== null) abrirPedidos(idP); }
   verificarPush();
 }
@@ -2579,10 +2607,12 @@ document.addEventListener('contextmenu', function (e) {
 function guardarLinkDireto() {
   try {
     var q = new URLSearchParams(location.search);
-    var t = q.get('t'), p = q.get('p');
+    var t = q.get('t'), p = q.get('p'), m = q.get('m'), sug = q.get('sug');
     if (t) guardar('abrirT', String(t).slice(0, 40));
     if (p) guardar('abrirP', String(p).replace(/[^A-Za-z0-9-]/g, '').slice(0, 20));
-    if (t || p) history.replaceState(null, '', location.pathname);
+    if (m === 'evolucao') guardar('abrirEvo', '1');
+    if (sug) guardar('abrirSug', String(sug).replace(/[^A-Za-z0-9-]/g, '').slice(0, 20));
+    if (t || p || m || sug) history.replaceState(null, '', location.pathname);
   } catch (e) {}
 }
 function abrirLinkDireto() {
@@ -2703,6 +2733,12 @@ function abrirSino() {
 function executarAviso(tipo, ref) {
   if (tipo === 'pedido') abrirPedidos(ref);
   else if (tipo === 'tarefa') abrirTarefa(ref);
+  else if (tipo === 'evolucao') abrirEvolucao();
+  else if (tipo === 'sugestao') {
+    var av = avisosPortal().filter(function (a) { return a.id === 'S-' + ref; })[0];
+    if (av && !av.lido && av.acao && av.acao.rotulo !== 'Responder') { av.lido = true; desenharSino(); api('portal.lerAvisos', { ids: [av.id] }); }
+    abrirSugestao(true);
+  }
 }
 function lerAlertasDa(idTarefa) {
   var ids = (S.dados.alertas || []).filter(function (a) { return a.tarefa === idTarefa && !a.lido; }).map(function (a) { return a.id; });
@@ -2903,7 +2939,8 @@ function mpLin(acao, icone, titulo, sub, direita, desligado) {
     '<span class="tx"><b>' + esc(titulo) + '</b><small>' + esc(sub) + '</small></span>' + (direita || '') + (desligado ? '' : IC.chevD) + '</button>';
 }
 function htmlMenuPortal() {
-  var p = S.portal || {}, mods = p.modulos || [], g = p.gestao;
+  var p = S.portal || {}, todosMods = p.modulos || [], g = p.gestao;
+  var mods = todosMods.filter(function (m) { return !m.soMaster; }), soVoce = todosMods.filter(function (m) { return m.soMaster; });
   var n = ((S.dados && S.dados.tarefas) || []).length;
   var h = '<div class="mp"><div class="mp-rot">Módulos</div><div class="mp-grade">';
   mods.forEach(function (m) {
@@ -2912,6 +2949,12 @@ function htmlMenuPortal() {
   var breve = EM_BREVE.slice(1, 1 + (mods.length % 2 ? 3 : 2));
   breve.forEach(function (nome) { h += '<div class="mp-mod breve">' + IC.breve + '<b>' + esc(nome) + '</b><small>Em breve</small></div>'; });
   h += '</div>';
+  if (soVoce.length) {
+    var nd = evoDecidirN();
+    h += '<div class="mp-rot">Só para você</div><div class="mp-lista">' +
+      mpLin('evolucao', IC.evolucaoOuro.replace(/#E3C894/g, '#0F2646'), 'Evolução', nd ? (nd === 1 ? '1 para decidir' : nd + ' para decidir') : 'Sugestões e melhorias do app',
+        nd ? '<span class="selo estatico">' + nd + '</span>' : '') + '</div>';
+  }
   if (g) {
     h += '<div class="mp-rot">Gestão</div><div class="mp-lista">';
     if (g.convidar) h += mpLin('convidar', IC.pessoaMais, 'Convidar pessoas', 'Enviar convite pelo WhatsApp');
@@ -2943,6 +2986,12 @@ function abrirMenuPortal() {
   }
 }
 function desenharLateralGestao() {
+  var sv = $('latSoVoce');
+  if (sv) {
+    var temEvo = ((S.portal && S.portal.modulos) || []).some(function (m) { return m.id === 'evolucao'; }), nd = evoDecidirN();
+    sv.innerHTML = temEvo ? '<span class="lat-titulo" style="padding-top:1.6em">Só para você</span><button class="lat-item" data-acao="evolucao">' + IC.evolucaoOuro +
+      '<span style="flex:1">Evolução do app</span>' + (nd ? '<span class="cont">' + nd + '</span>' : '') + '</button>' : '';
+  }
   var g = S.portal && S.portal.gestao, el = $('latGestao');
   if (!el) return;
   if (!g) { el.innerHTML = ''; return; }
@@ -3981,7 +4030,7 @@ function telaDeOrigem() {
   if (S.det) return 'Tarefas › ' + S.det.titulo;
   return 'Tarefas › lista' + (S.condo !== 'todos' ? ' (' + nomeCondo(S.condo) + ')' : '');
 }
-function abrirSugestao() {
+function abrirSugestao(verMinhas) {
   var tipo = null;
   var origem = telaDeOrigem(), idTarefa = S.det ? S.det.id : '';
   var form = function () {
@@ -4021,15 +4070,156 @@ function abrirSugestao() {
           corpo('<div class="jan-corpo">' + (lista.length ? lista.map(function (s) {
             return '<div class="sug-item"><span class="sug-status">' + esc(s.status) + '</span><span>' + esc(s.texto) + '</span>' +
               '<small>' + esc(s.tipo) + ' · ' + esc(quando(s.em)) + '</small>' +
-              (s.resposta ? '<div class="sug-resp"><b>Resposta:</b> ' + esc(s.resposta) + '</div>' : '') + '</div>';
+              (s.resposta ? '<div class="sug-resp"><b>Resposta do síndico:</b> ' + esc(s.resposta) + '</div>' : '') +
+              (s.podeResponder ? '<div class="sug-perg"><div class="sug-resp"><b>Pergunta do síndico:</b> ' + esc(s.pergunta) + '</div>' +
+                '<textarea class="campo" rows="2" maxlength="1000" data-respsug="' + esc(s.id) + '" placeholder="Sua resposta"></textarea>' +
+                '<button class="bt" data-acao="responderSug" data-id="' + esc(s.id) + '" style="align-self:flex-end">Responder</button></div>'
+                : (s.respostaAutor ? '<div class="sug-resp"><b>Sua resposta:</b> ' + esc(s.respostaAutor) + '</div>' : '')) + '</div>';
           }).join('') : '<p class="cartao-meta" style="margin:0">Você ainda não enviou sugestões.</p>') +
             '<div class="jan-rodape"><button class="bt-link" data-acao="novaSug">Nova sugestão</button><button class="bt claro" data-acao="fecharJan">Fechar</button></div></div>');
         });
       } else if (b.getAttribute('data-acao') === 'novaSug') {
         tipo = null; corpo(form());
+      } else if (b.getAttribute('data-acao') === 'responderSug') {
+        var idS = b.getAttribute('data-id'), campo = raiz.querySelector('[data-respsug="' + idS + '"]');
+        var resp = campo ? campo.value.trim() : '';
+        if (!resp) { avisar('Escreva a sua resposta.', true); if (campo) campo.focus(); return; }
+        b.disabled = true; b.textContent = 'Enviando…';
+        api('tarefas.responderSugestao', { id: idS, resposta: resp }).then(function (r) {
+          if (!r.ok) { b.disabled = false; b.textContent = 'Responder'; avisar(r.mensagem, true); return; }
+          avisar('Resposta enviada. Obrigado!');
+          S.portal.avisos = (S.portal.avisos || []).filter(function (a) { return a.id !== 'S-' + idS; });
+          desenharSino();
+          raiz.querySelector('.jan-corpo').outerHTML = '<div class="jan-corpo"><button class="bt-link" data-acao="minhas" hidden></button></div>';
+          raiz.querySelector('[data-acao="minhas"]').click();
+        });
       }
     });
+    if (verMinhas) { var bmin = raiz.querySelector('[data-acao="minhas"]'); if (bmin) bmin.click(); }
   }, true);
+}
+
+/* ================= Evolução do app (só o master) ================= */
+var EVO_ABAS = [
+  { id: 'decidir', rot: 'Para decidir' }, { id: 'planejadas', rot: 'Planejadas' }, { id: 'andamento', rot: 'Em andamento' },
+  { id: 'implementadas', rot: 'No ar' }, { id: 'recusadas', rot: 'Recusadas' }
+];
+var E = null;
+function evoDecidirN() { return (S.portal && S.portal.evolucao && S.portal.evolucao.decidir) || 0; }
+function abrirEvolucao() {
+  if (!(S.portal && S.portal.usuario && S.portal.usuario.master)) return;
+  E = { dados: null, aba: 'decidir', aberto: null, modo: null, ocupado: false };
+  abrirJanela('Evolução do app', 'Carregando…', '<div class="evo" id="evo"><p class="vazio">Carregando…</p></div>', 'gestao', function (raiz) {
+    raiz.addEventListener('click', cliqueEvolucao);
+    carregarEvolucao();
+  });
+}
+function carregarEvolucao() {
+  return api('evolucao.lista').then(function (r) {
+    if (!$('evo')) return;
+    if (!r.ok) { $('evo').innerHTML = '<p class="vazio">' + esc(r.mensagem) + '</p>'; return; }
+    E.dados = r;
+    if (S.portal && S.portal.evolucao) { S.portal.evolucao.decidir = r.abas.decidir.filter(function (s) { return s.status === 'Para decidir'; }).length; desenharLateralGestao(); }
+    desenharEvolucao();
+  });
+}
+function evoRec(s) {
+  if (s.agentePendente) return '<span class="evo-selo agente">Com o agente · volta às 7h40</span>';
+  if (!s.analisadaEm) return '<span class="evo-selo cinza">Aguardando análise</span>';
+  var r = norm(s.recomendacao), cls = r.indexOf('APROV') === 0 ? 'azul' : r.indexOf('PLANEJ') === 0 ? 'ouro' : 'cinza';
+  return '<span class="evo-selo ' + cls + '">' + esc(s.recomendacao ? 'Recomendo ' + s.recomendacao.toLowerCase() : 'Parecer pronto') + '</span>' +
+    (s.esforco ? '<span class="cartao-meta">Esforço ' + esc(s.esforco) + '</span>' : '');
+}
+function norm(s) { return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().trim(); }
+function evoBotoes(s, aba) {
+  var b = function (acao, rot, cls) { return '<button class="bt' + (cls ? ' ' + cls : '') + '" data-evo="' + acao + '">' + rot + '</button>'; };
+  if (aba === 'decidir') return b('aprovar', 'Aprovar') + b('planejar', 'Planejar', 'claro') + b('recusar', 'Recusar', 'claro') +
+    '<div class="evo-mais">' + (s.doMaster ? '' : b('perguntar', 'Perguntar ao autor', 'link')) + b('conversar', 'Conversar com o agente', 'link') + '</div>';
+  if (aba === 'planejadas') return b('aprovar', 'Começar agora') + b('implementar', 'Preparar implementação', 'claro') + b('recusar', 'Recusar', 'claro');
+  if (aba === 'andamento') return b('implementar', 'Preparar implementação', 'claro') + b('noAr', 'Marcar como no ar');
+  return '';
+}
+function evoCompositor(s) {
+  var m = E.modo;
+  if (!m) return '';
+  var cfg = {
+    aprovar: { rot: s.doMaster ? 'Aprovar' : 'Aprovar e enviar', txt: s.msgAprovar, ajuda: 'Agradecimento que vai para ' + primeiro(s.autorNome) + ' (sininho, notificação e e-mail)' },
+    planejar: { rot: s.doMaster ? 'Planejar' : 'Planejar e enviar', txt: s.msgAprovar, ajuda: 'Agradecimento que vai para ' + primeiro(s.autorNome) + ' (sininho, notificação e e-mail)' },
+    recusar: { rot: s.doMaster ? 'Recusar' : 'Recusar e enviar', txt: s.msgRecusar, ajuda: 'Mensagem gentil para ' + primeiro(s.autorNome) + ' (sininho, notificação e e-mail)' },
+    perguntar: { rot: 'Enviar pergunta', txt: '', ajuda: 'Pergunta para ' + primeiro(s.autorNome) + ' (sininho e notificação)' },
+    conversar: { rot: 'Enviar ao agente', txt: '', ajuda: 'O que o agente deve considerar? Ele refaz o parecer na próxima rodada (7h40).' },
+    implementar: { rot: 'Pedir ao agente', txt: '', ajuda: 'Observação opcional. O agente devolve o plano em "Como fazer"; a publicação continua com o seu ok numa conversa.' },
+    noAr: { rot: s.doMaster ? 'Marcar como no ar' : 'Marcar e avisar', txt: null, ajuda: s.doMaster ? 'A sugestão vai para "No ar".' : primeiro(s.autorNome) + ' recebe pelo app um agradecimento dizendo que a ideia dele ajudou a melhorar o app.' }
+  }[m];
+  var semTexto = cfg.txt === null || ((m === 'aprovar' || m === 'planejar' || m === 'recusar') && s.doMaster);
+  return '<div class="evo-comp"><label class="rot-campo" for="evoTxt">' + esc(s.doMaster && !semTexto ? cfg.ajuda : (s.doMaster ? 'Sugestão sua: nada é enviado.' : cfg.ajuda)) + '</label>' +
+    (semTexto ? '' : '<textarea class="campo" id="evoTxt" rows="4" maxlength="1500">' + esc(cfg.txt || '') + '</textarea>') +
+    '<div class="evo-acoes"><button class="bt-link" data-evo="cancelar">Cancelar</button><button class="bt" data-evo="confirmar"' + (E.ocupado ? ' disabled' : '') + '>' + (E.ocupado ? 'Salvando…' : esc(cfg.rot)) + '</button></div></div>';
+}
+function primeiro(n) { return String(n || '').split(' ')[0] || 'a pessoa'; }
+function evoBloco(rot, txt) { return txt ? '<div class="evo-bloco"><b>' + esc(rot) + '</b><p>' + esc(txt) + '</p></div>' : ''; }
+function desenharEvolucao() {
+  var d = E.dados; if (!d) return;
+  var raiz = $('evo').closest('.janela');
+  var nDec = d.abas.decidir.length;
+  raiz.querySelector('.jan-cab small').textContent = 'Sugestões ' + d.competencia + ' · ' + (nDec ? nDec + ' para decidir' : 'nada para decidir');
+  var lista = d.abas[E.aba] || [];
+  var h = '<nav class="evo-chips" aria-label="Seções">' + EVO_ABAS.map(function (a) {
+    var n = (d.abas[a.id] || []).length;
+    return '<button class="chip" data-evoaba="' + a.id + '" aria-pressed="' + (E.aba === a.id) + '">' + a.rot + (n ? '<span class="n">' + n + '</span>' : '') + '</button>';
+  }).join('') + '</nav><div class="evo-lista">';
+  if (!lista.length) h += '<p class="vazio">' + (E.aba === 'decidir' ? 'Nenhuma sugestão esperando você.' : 'Nada por aqui ainda.') + '</p>';
+  lista.forEach(function (s) {
+    var aberto = E.aberto === s.id;
+    h += '<article class="evo-card' + (aberto ? ' aberto' : '') + '">' +
+      '<button class="evo-topo" data-evoabrir="' + esc(s.id) + '" aria-expanded="' + aberto + '">' +
+      '<span class="evo-tipo">' + esc(s.tipo) + ' · ' + esc(s.doMaster ? 'Você' : s.autorNome) + (s.autorEmpresa && !s.doMaster ? ' · ' + esc(gesNomeEmp(s.autorEmpresa)) : '') + ' · ' + esc(quando(s.em)) + '</span>' +
+      '<span class="evo-txt">' + esc(s.texto) + '</span>' +
+      '<span class="evo-linha">' + (s.status === 'Aguardando autor' ? '<span class="evo-selo ouro">Aguardando ' + esc(primeiro(s.autorNome)) + '</span>' : evoRec(s)) + '</span></button>';
+    if (aberto) {
+      h += '<div class="evo-det">' +
+        evoBloco('Parecer do agente', s.parecer) + evoBloco('Como fazer', s.comoFazer) +
+        evoBloco('Sua pergunta', s.pergunta) + evoBloco('Resposta de ' + primeiro(s.autorNome), s.respostaAutor) +
+        evoBloco('Pedido ao agente', s.agentePendente ? s.pedidoAgente : '') + evoBloco('Mensagem enviada', s.resposta) +
+        '<p class="cartao-meta" style="margin:0">' + esc(s.id) + (s.tela ? ' · tela: ' + esc(s.tela) : '') + (s.idTarefa ? ' · ' + esc(s.idTarefa) : '') + '</p>' +
+        (E.modo ? evoCompositor(s) : '<div class="evo-acoes">' + evoBotoes(s, E.aba) + '</div>') + '</div>';
+    }
+    h += '</article>';
+  });
+  $('evo').innerHTML = h + '</div>';
+  var ta = $('evoTxt'); if (ta && E.modo) ta.focus();
+}
+function evoItem(id) {
+  var achado = null;
+  Object.keys(E.dados.abas).forEach(function (k) { E.dados.abas[k].forEach(function (s) { if (s.id === id) achado = s; }); });
+  return achado;
+}
+function cliqueEvolucao(ev) {
+  var b = ev.target.closest('button'); if (!b || !E) return;
+  if (b.hasAttribute('data-evoaba')) { E.aba = b.getAttribute('data-evoaba'); E.aberto = null; E.modo = null; desenharEvolucao(); return; }
+  if (b.hasAttribute('data-evoabrir')) { var id = b.getAttribute('data-evoabrir'); E.aberto = E.aberto === id ? null : id; E.modo = null; desenharEvolucao(); return; }
+  var a = b.getAttribute('data-evo'); if (!a) return;
+  if (a === 'cancelar') { E.modo = null; desenharEvolucao(); return; }
+  if (a !== 'confirmar') { E.modo = a; desenharEvolucao(); return; }
+  var s = evoItem(E.aberto); if (!s || E.ocupado) return;
+  var txt = $('evoTxt') ? $('evoTxt').value.trim() : '';
+  var m = E.modo, chamada;
+  if (m === 'aprovar' || m === 'planejar' || m === 'recusar') chamada = api('evolucao.decidir', { id: s.id, decisao: m, mensagem: txt });
+  else if (m === 'perguntar') { if (!txt) { avisar('Escreva a pergunta.', true); return; } chamada = api('evolucao.perguntar', { id: s.id, pergunta: txt }); }
+  else if (m === 'conversar') { if (!txt) { avisar('Escreva o que o agente deve considerar.', true); return; } chamada = api('evolucao.pedirAgente', { id: s.id, tipo: 'conversar', texto: txt }); }
+  else if (m === 'implementar') chamada = api('evolucao.pedirAgente', { id: s.id, tipo: 'implementar', texto: txt });
+  else if (m === 'noAr') chamada = api('evolucao.noAr', { id: s.id });
+  E.ocupado = true; desenharEvolucao();
+  chamada.then(function (r) {
+    E.ocupado = false;
+    if (!r.ok) { avisar(r.mensagem, true); desenharEvolucao(); return; }
+    var msg = { aprovar: 'Sugestão aprovada', planejar: 'Sugestão planejada', recusar: 'Sugestão recusada', perguntar: 'Pergunta enviada',
+      conversar: 'Pedido enviado ao agente', implementar: 'Pedido enviado ao agente', noAr: 'Marcada como no ar' }[m];
+    if (r.avisado) msg += ' · ' + primeiro(s.autorNome) + ' foi avisado';
+    avisar(msg);
+    E.modo = null; E.aberto = null;
+    carregarEvolucao();
+  }, function () { E.ocupado = false; desenharEvolucao(); });
 }
 
 /* ================= Camadas (janelas, menus, avisos) ================= */
@@ -4100,6 +4290,7 @@ document.addEventListener('click', function (e) {
     case 'fecharJan': fecharCamadas(); break;
     case 'convidar': fecharCamadas(); abrirConvidar(); break;
     case 'pessoas': fecharCamadas(); abrirGestao(); break;
+    case 'evolucao': fecharCamadas(); abrirEvolucao(); break;
     case 'equipe': fecharCamadas(); abrirEquipe(); break;
     case 'perfis': fecharCamadas(); abrirPerfis(); break;
     case 'guia': fecharCamadas(); abrirGuia(); break;
