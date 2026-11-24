@@ -524,6 +524,13 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 .eq-fixo{min-height:2.75em;border-radius:.75em;background:var(--creme2);padding:0 .9em;display:flex;align-items:center;font-weight:600;color:var(--suave2)}
 .eq-regra{background:#fff;border:1px solid var(--linha2);border-radius:.75em;padding:.7em .85em;font-size:.8125em;color:var(--azul)}
 .eq-regra p{margin:.3em 0 0;color:var(--suave)}
+.eq-acoes{display:grid;gap:.5em}
+.ges-item.eq-voce{border:2px solid var(--ouro);box-shadow:0 2px 8px rgba(201,164,106,.18)}
+.eq-prazo{color:#7A5C27;font-weight:600}
+.ges-item.eq-conv{box-shadow:none;background:var(--creme)}
+.ges-item.eq-conv .ic{flex:0 0 2.25em;height:2.25em;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+.ges-tag.ouro{background:var(--ouro-fundo);color:#7A5C27}
+@media (min-width:1024px){.eq-acoes{grid-template-columns:1fr 1fr}}
 .janela.pf{width:64em}
 .pf-corpo{flex:1;min-height:0;padding:1.25em 1.5em 0;gap:1em}
 .pf-intro{margin:0;font-size:.9375em;color:var(--suave);max-width:46em}
@@ -827,7 +834,7 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.16';
+var VERSAO_SITE = '1.17';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -1189,6 +1196,7 @@ function desenhar() {
   verificarCompartilhado();
   if (ler('abrirEvo') && S.portal) { guardar('abrirEvo', null); abrirEvolucao(); }
   if (ler('abrirSug') && S.portal) { guardar('abrirSug', null); abrirSugestao(true); }
+  if (ler('abrirEq') && S.portal) { var idEq = ler('abrirEq'); guardar('abrirEq', null); if (S.portal.gestao && S.portal.gestao.equipe) abrirEquipe(idEq); }
   if (ler('abrirP') && S.portal) { var idP = ler('abrirP'); guardar('abrirP', null); if (S.portal.gestao && S.portal.gestao.pedidos !== null) abrirPedidos(idP); }
   verificarPush();
 }
@@ -2607,12 +2615,13 @@ document.addEventListener('contextmenu', function (e) {
 function guardarLinkDireto() {
   try {
     var q = new URLSearchParams(location.search);
-    var t = q.get('t'), p = q.get('p'), m = q.get('m'), sug = q.get('sug');
+    var t = q.get('t'), p = q.get('p'), m = q.get('m'), sug = q.get('sug'), eq = q.get('eq');
     if (t) guardar('abrirT', String(t).slice(0, 40));
     if (p) guardar('abrirP', String(p).replace(/[^A-Za-z0-9-]/g, '').slice(0, 20));
     if (m === 'evolucao') guardar('abrirEvo', '1');
     if (sug) guardar('abrirSug', String(sug).replace(/[^A-Za-z0-9-]/g, '').slice(0, 20));
-    if (t || p || m || sug) history.replaceState(null, '', location.pathname);
+    if (eq) guardar('abrirEq', String(eq).replace(/[^A-Za-z0-9-]/g, '').slice(0, 20));
+    if (t || p || m || sug || eq) history.replaceState(null, '', location.pathname);
   } catch (e) {}
 }
 function abrirLinkDireto() {
@@ -2734,6 +2743,7 @@ function executarAviso(tipo, ref) {
   if (tipo === 'pedido') abrirPedidos(ref);
   else if (tipo === 'tarefa') abrirTarefa(ref);
   else if (tipo === 'evolucao') abrirEvolucao();
+  else if (tipo === 'equipe') abrirEquipe(ref);
   else if (tipo === 'sugestao') {
     var av = avisosPortal().filter(function (a) { return a.id === 'S-' + ref; })[0];
     if (av && !av.lido && av.acao && av.acao.rotulo !== 'Responder') { av.lido = true; desenharSino(); api('portal.lerAvisos', { ids: [av.id] }); }
@@ -2962,8 +2972,9 @@ function htmlMenuPortal() {
       h += mpLin('pedidos', IC.caixa, 'Pedidos de acesso', g.pedidos ? 'Aguardando sua aprovação' : 'Nenhum pedido aguardando',
         g.pedidos ? '<span class="selo estatico">' + g.pedidos + '</span>' : '');
     }
-    if (g.equipe) h += mpLin('equipe', IC.pessoas, 'Minha equipe', g.equipeAguardando ? (g.equipeAguardando === 1 ? '1 pedido aguardando o síndico' : g.equipeAguardando + ' pedidos aguardando o síndico') : 'Funcionários da sua empresa',
-      g.equipeAguardando ? '<span class="selo estatico">' + g.equipeAguardando + '</span>' : '');
+    if (g.equipe) h += mpLin('equipe', IC.pessoas, 'Minha equipe', g.equipeParaVoce ? (g.equipeParaVoce === 1 ? '1 pedido para você conferir' : g.equipeParaVoce + ' pedidos para você conferir')
+      : (g.equipeAguardando ? (g.equipeAguardando === 1 ? '1 pedido aguardando o síndico' : g.equipeAguardando + ' pedidos aguardando o síndico') : 'Funcionários da sua empresa'),
+      g.equipeParaVoce ? '<span class="selo">' + g.equipeParaVoce + '</span>' : (g.equipeAguardando ? '<span class="selo estatico">' + g.equipeAguardando + '</span>' : ''));
     if (g.pessoas) h += mpLin('pessoas', IC.pessoas, 'Pessoas e empresas', 'Cadastros, perfis e acessos');
     if (g.perfis) h += mpLin('perfis', ICO_PERFIS, 'Perfis e permissões', 'O que cada perfil pode fazer');
     h += '</div>';
@@ -3002,7 +3013,7 @@ function desenharLateralGestao() {
       (g.pedidos ? '<span class="cont vinho">' + g.pedidos + '</span>' : '') + '</button>';
   }
   if (g.equipe) h += '<button class="lat-item" data-acao="equipe">' + IC.pessoas.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Minha equipe</span>' +
-    (g.equipeAguardando ? '<span class="cont">' + g.equipeAguardando + '</span>' : '') + '</button>';
+    ((g.equipeParaVoce || g.equipeAguardando) ? '<span class="cont">' + ((g.equipeParaVoce || 0) + (g.equipeAguardando || 0)) + '</span>' : '') + '</button>';
   if (g.perfis) h += '<button class="lat-item" data-acao="perfis">' + ICO_PERFIS.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Perfis e permissões</span></button>';
   if (g.pessoas) h += '<button class="lat-item" data-acao="pessoas">' + IC.pessoas.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Pessoas e empresas</span></button>';
   el.innerHTML = h;
@@ -3111,7 +3122,7 @@ function listaPedidos(raiz) {
   if (!lista.length) { corpoJanela(raiz, 'Nada pendente', '<p class="vazio">Nenhum pedido aguardando aprovação.</p>'); return; }
   corpoJanela(raiz, lista.length + (lista.length === 1 ? ' aguardando' : ' aguardando'), '<div class="mp-lista">' + lista.map(function (p) {
     return '<button class="mp-lin" data-pedido="' + esc(p.id) + '">' + avatarDe(null, p.nome) +
-      '<span class="tx"><b>' + esc(p.nome) + '</b><small>' + esc(p.empresa) + (p.gestor ? ' · ' + esc(p.tipo || 'Pedido') + ' pelo gestor' : '') + ' · ' + esc(haQuanto(p.em)) + '</small></span>' + IC.chevD + '</button>';
+      '<span class="tx"><b>' + esc(p.nome) + '</b><small>' + esc(p.empresa) + (p.semConferir ? ' · convite do gestor, sem conferência' : (p.viaConvite ? ' · convite do gestor' : (p.gestor ? ' · ' + esc(p.tipo || 'Pedido') + ' pelo gestor' : ''))) + ' · ' + esc(haQuanto(p.em)) + '</small></span>' + IC.chevD + '</button>';
   }).join('') + '</div>');
   raiz.querySelector('.jan-corpo').onclick = function (e) {
     var b = e.target.closest('[data-pedido]'); if (!b) return;
@@ -3144,8 +3155,10 @@ function mostrarPedido(raiz, p) {
     var h = '';
     if (varios) h += '<button class="bt-link" data-pvoltar style="align-self:flex-start">‹ Voltar aos pedidos</button>';
     h += '<div class="conta-box">' + avatarDe(null, p.nome) + '<span class="tx"><b>' + esc(p.nome) + '</b><small>' + esc(p.email) + (p.viaLinkSemCodigo ? '' : ' · ' + esc(p.empresa)) + '</small>' +
-      '<small>' + (p.gestor ? esc(p.tipo || 'Pedido') + ' pedido por ' + esc(p.convidadoPor) + ', gestor da empresa' : (p.convidadoPor ? 'Convite de ' + esc(p.convidadoPor) : 'Pedido pelo link do app')) + ' · ' + esc(haQuanto(p.em)) + '</small></span></div>' +
-      (p.gestor ? '<div class="alerta-ouro">Já vem preenchido com o que o gestor pediu. Confira e ajuste se precisar antes de aprovar.</div>' : '');
+      '<small>' + (p.viaConvite ? 'Entrou pelo convite de ' + esc(p.convidadoPor) + ', gestor da empresa' : p.gestor ? esc(p.tipo || 'Pedido') + ' pedido por ' + esc(p.convidadoPor) + ', gestor da empresa' : (p.convidadoPor ? 'Convite de ' + esc(p.convidadoPor) : 'Pedido pelo link do app')) + ' · ' + esc(haQuanto(p.em)) + '</small></span></div>' +
+      (p.semConferir ? '<div class="alerta-ouro">O gestor não conferiu em ' + esc(String((S.portal && S.portal.gestao && S.portal.gestao.prazoGestorDias) || 3)) + ' dias, então o pedido veio direto para você. Confira se a pessoa é mesmo da ' + esc(p.empresa) + ' e marque os condomínios.</div>'
+        : p.viaConvite ? '<div class="alerta-ouro">Conferido por ' + esc(p.conferidoPor || p.convidadoPor) + ': já vem com os condomínios marcados. Ajuste se precisar e aprove.</div>'
+        : p.gestor ? '<div class="alerta-ouro">Já vem preenchido com o que o gestor pediu. Confira e ajuste se precisar antes de aprovar.</div>' : '');
     if (p.viaLinkSemCodigo) h += '<div class="alerta-ouro"><b>Empresa não informada pelo convite.</b> A pessoa entrou por um link sem empresa. Escolha a empresa antes de aprovar e confira se você a conhece.</div>';
     h += '<span class="rotulo">Empresa</span><div class="pills">' + empresas.map(function (x) {
       return '<button class="pill" data-pempresa="' + esc(x.apelido) + '" aria-pressed="' + (st.empresa === x.apelido) + '">' + esc(x.apelido) + '</button>';
@@ -3612,8 +3625,8 @@ function salvarEmpresaGestao(bt) {
 
 /* ================= Minha equipe (gestor da parceira, v1.13) ================= */
 var EQ = null;
-function abrirEquipe() {
-  EQ = { dados: null, tela: 'lista', sel: null, form: null, conf: '' };
+function abrirEquipe(idConferir) {
+  EQ = { dados: null, tela: 'lista', sel: null, form: null, conf: '', abrirId: typeof idConferir === 'string' ? idConferir : '' };
   abrirJanela('Minha equipe', 'Carregando…', '<div class="jan-corpo"><p class="vazio">Carregando a equipe…</p></div>', 'centro', function (raiz) {
     raiz.querySelector('.jan-corpo').addEventListener('click', cliqueEquipe);
     raiz.querySelector('.jan-corpo').addEventListener('input', function (e) {
@@ -3630,6 +3643,12 @@ function carregarEquipe() {
     var raiz = eqRaiz(); if (!raiz) return;
     if (!r.ok) { corpoJanela(raiz, '', '<p class="vazio">' + esc(r.mensagem) + '</p>'); return; }
     EQ.dados = r;
+    if (EQ.abrirId) {
+      var pa = (r.aguardandoVoce || []).filter(function (x) { return x.id === EQ.abrirId; })[0];
+      EQ.abrirId = '';
+      if (pa) { EQ.tela = 'conferir'; EQ.sel = pa.id; EQ.conf = ''; EQ.form = { papeis: JSON.parse(JSON.stringify(pa.papeis || {})) }; if (!Object.keys(EQ.form.papeis).length && r.condos.length === 1) EQ.form.papeis[r.condos[0].codigo] = 'O'; }
+      else avisar('Este pedido já foi tratado.');
+    }
     desenharEquipe();
   });
 }
@@ -3645,10 +3664,23 @@ function eqResumo(papeis, perfil) {
 function desenharEquipe() {
   var raiz = eqRaiz(); if (!raiz || !EQ.dados) return;
   if (EQ.tela === 'ficha' || EQ.tela === 'novo') return desenharEquipeFicha();
+  if (EQ.tela === 'convite') return desenharEquipeConvite();
+  if (EQ.tela === 'conferir') return desenharEquipeConferir();
   var d = EQ.dados, h = '';
   var ativos = d.membros.filter(function (m) { return m.status === 'Ativo'; });
   var inativos = d.membros.filter(function (m) { return m.status !== 'Ativo'; });
-  h += '<button class="bt grande" data-eq-novo>+ Cadastrar funcionário</button>';
+  var prazo = d.prazoGestorDias || 3;
+  h += '<div class="eq-acoes"><button class="bt grande" data-eq-convidar>' + IC.pessoaMaisOuro + 'Convidar funcionário</button>' +
+    '<button class="bt grande claro" data-eq-novo>+ Cadastrar manualmente</button></div>';
+  var voce = d.aguardandoVoce || [];
+  if (voce.length) {
+    h += '<p class="rotulo eq-rot-ouro">Aguardando você · ' + voce.length + '</p><div class="mp-lista">';
+    voce.forEach(function (p) {
+      h += '<button class="ges-item eq-voce" data-eq-conferir="' + esc(p.id) + '">' + avatarDe(null, p.nome) + '<span class="tx"><b>' + esc(p.nome) + '</b><small>Entrou pelo seu convite · ' + esc(haQuanto(p.em)) +
+        '</small><small class="eq-prazo">' + esc(eqSobe(p.sobeEm)) + '</small></span>' + IC.chevD + '</button>';
+    });
+    h += '</div>';
+  }
   if (d.pendentes.length) {
     h += '<p class="rotulo eq-rot-ouro">Aguardando aprovação do síndico · ' + d.pendentes.length + '</p><div class="mp-lista">';
     d.pendentes.forEach(function (p) {
@@ -3666,7 +3698,18 @@ function desenharEquipe() {
     inativos.forEach(function (m) { h += eqItem(m); });
     h += '</div>';
   }
-  h += '<div class="eq-regra"><b>Como funciona</b><p>Cadastrar alguém ou mudar os condomínios fica aguardando o síndico aprovar. Inativar quem saiu da empresa corta o acesso na hora, e o síndico é avisado.</p></div>';
+  var convs = d.convites || [];
+  if (convs.length) {
+    h += '<p class="rotulo">Convites valendo · ' + convs.length + '</p><div class="mp-lista">';
+    convs.forEach(function (c) {
+      h += '<div class="ges-item eq-conv"><span class="ic">' + IC.link + '</span><span class="tx"><b>Convite de ' + esc(c.criado) + '</b><small>' +
+        esc(eqVence(c.venceDias) + ' · ' + (c.usos ? (c.usos === 1 ? '1 pessoa entrou' : c.usos + ' pessoas entraram') : 'ninguém entrou ainda')) + '</small></span>' +
+        '<button class="bt-link" data-eq-cancconv="' + esc(c.codigo) + '">' + (EQ.conf === 'conv:' + c.codigo ? 'Confirmar' : 'Cancelar') + '</button></div>';
+    });
+    h += '</div>';
+  }
+  h += '<div class="eq-regra"><b>Como funciona</b><p>Mande o convite pelo WhatsApp. Quem entrar pelo link aparece em "Aguardando você": confira se é da sua equipe, marque os condomínios e envie. O síndico aprova. Se você não conferir em ' + prazo + ' dias, o pedido vai direto para o síndico.</p>' +
+    '<p>Mudar os condomínios de alguém também passa pelo síndico. Inativar quem saiu da empresa corta o acesso na hora, e o síndico é avisado.</p></div>';
   corpoJanela(raiz, d.empresa + ' · ' + ativos.length + (ativos.length === 1 ? ' pessoa ativa' : ' pessoas ativas'), h);
 }
 function eqItem(m) {
@@ -3692,14 +3735,7 @@ function desenharEquipeFicha() {
   var gestorAlvo = m && m.perfil === 'Gestor';
   h += '<span class="rotulo">' + (m && m.status !== 'Ativo' ? 'Condomínios ao reativar' : 'Onde trabalha') + '</span>';
   if (gestorAlvo) h += '<p class="dica-campo">É gestor: vê todos os condomínios da empresa. Marque só para direcionar tarefas.</p>';
-  if (!d.condos.length) h += '<p class="dica-campo">A empresa ainda não atende nenhum condomínio. Fale com o síndico.</p>';
-  h += '<div>' + d.condos.map(function (c) {
-    var v = f.papeis[c.codigo] || '';
-    return '<div class="linha-condo"><b>' + esc(c.nome) + '</b><div class="seg" role="group" aria-label="Acesso em ' + esc(c.nome) + '">' +
-      [['', 'Sem acesso'], ['O', 'Operador'], ['L', 'Líder']].map(function (o) {
-        return '<button data-eq-papel="' + esc(c.codigo) + '|' + o[0] + '" aria-pressed="' + (v === o[0]) + '">' + o[1] + '</button>';
-      }).join('') + '</div></div>';
-  }).join('') + '</div>';
+  h += eqCondosHtml(f.papeis);
   h += '<p class="dica-campo" style="margin:0">Operador vê e conclui as tarefas. Líder também organiza a fila e marca urgente.</p>';
   h += '<div class="alerta-ouro">' + (m ? (m.status === 'Ativo' ? 'A mudança vai para o síndico aprovar. Até lá, vale o acesso atual.' : 'A reativação vai para o síndico aprovar.')
     : 'O cadastro vai para o síndico aprovar. Quando for aprovado, a pessoa recebe um e-mail e você vê o aviso no sininho.') + '</div>';
@@ -3711,6 +3747,65 @@ function desenharEquipeFicha() {
   }
   corpoJanela(raiz, m ? d.empresa : 'Cadastrar funcionário', h);
 }
+function eqSobe(dias) {
+  if (dias == null) return '';
+  if (dias <= 0) return 'Vai para o síndico hoje';
+  return dias === 1 ? 'Vai para o síndico amanhã se você não conferir' : 'Vai para o síndico em ' + dias + ' dias se você não conferir';
+}
+function eqVence(dias) { return dias <= 0 ? 'Vence hoje' : (dias === 1 ? 'Vence amanhã' : 'Vence em ' + dias + ' dias'); }
+function eqCondosHtml(papeis) {
+  var d = EQ.dados;
+  if (!d.condos.length) return '<p class="dica-campo">A empresa ainda não atende nenhum condomínio. Fale com o síndico.</p>';
+  return '<div>' + d.condos.map(function (c) {
+    var v = papeis[c.codigo] || '';
+    return '<div class="linha-condo"><b>' + esc(c.nome) + '</b><div class="seg" role="group" aria-label="Acesso em ' + esc(c.nome) + '">' +
+      [['', 'Sem acesso'], ['O', 'Operador'], ['L', 'Líder']].map(function (o) {
+        return '<button data-eq-papel="' + esc(c.codigo) + '|' + o[0] + '" aria-pressed="' + (v === o[0]) + '">' + o[1] + '</button>';
+      }).join('') + '</div></div>';
+  }).join('') + '</div>';
+}
+function eqTextoConvite(codigo) {
+  var d = EQ.dados, dias = d.validadeConviteDias || 7;
+  var link = location.origin + location.pathname + '?c=' + encodeURIComponent(codigo);
+  return 'Olá! ' + (d.voceNome ? d.voceNome + ', da ' : 'A ') + d.empresa + ', convidou você para o app Síndico, da Carvalho & Abreu.\n' +
+    'Toque no link, entre com a sua conta Google e solicite o acesso (o convite vale por ' + dias + ' dias):\n' + link;
+}
+function desenharEquipeConvite() {
+  var raiz = eqRaiz(), d = EQ.dados, h = '';
+  var pronto = !!EQ.codigo;
+  h += '<button class="bt-link ges-voltar" style="display:inline-block" data-eq-voltar>‹ Minha equipe</button>';
+  h += '<span class="rotulo">Mensagem que vai junto</span>';
+  h += '<div class="msg-zap' + (pronto ? '' : ' vazia') + '">' + esc(pronto ? eqTextoConvite(EQ.codigo) : 'Gerando o convite…') + '</div>';
+  h += '<div class="entrada-msg" id="eqErro" role="alert" hidden></div>';
+  h += '<a class="bt grande zap" id="eqZap" target="_blank" rel="noopener" href="' + (pronto ? 'https://wa.me/?text=' + encodeURIComponent(eqTextoConvite(EQ.codigo)) : '#') + '" aria-disabled="' + !pronto + '">' + IC.zapBranco + 'Enviar pelo WhatsApp</a>';
+  h += '<button class="bt grande claro" id="eqCopiar"' + (pronto ? '' : ' disabled') + '>' + IC.link + 'Copiar link</button>';
+  h += '<div class="eq-regra"><b>Depois que a pessoa entrar</b><p>Ela aparece aqui em "Aguardando você". Você confere, marca os condomínios e envia para o síndico aprovar. Quem entra pelo convite entra como Operador; para virar líder, marque L no condomínio.</p></div>';
+  corpoJanela(raiz, 'Convite da ' + d.empresa + ' · vale ' + (d.validadeConviteDias || 7) + ' dias', h);
+  if (!pronto) {
+    umaVez('eqConvidar', null, null, function () { return api('portal.equipeConvidar'); }).then(function (r) {
+      if (!EQ || EQ.tela !== 'convite') return;
+      if (!r.ok) return eqErro(r.mensagem);
+      EQ.codigo = r.codigo; desenharEquipeConvite();
+    });
+  }
+}
+function desenharEquipeConferir() {
+  var raiz = eqRaiz(), d = EQ.dados, f = EQ.form, h = '';
+  var p = (d.aguardandoVoce || []).filter(function (x) { return x.id === EQ.sel; })[0];
+  if (!p) { EQ.tela = 'lista'; return desenharEquipe(); }
+  h += '<button class="bt-link ges-voltar" style="display:inline-block" data-eq-voltar>‹ Minha equipe</button>';
+  h += '<div class="ges-cab">' + avatarDe(null, p.nome) + '<span class="tx"><b>' + esc(p.nome) + '</b><small>' + esc(p.email) + '</small></span>' +
+    '<span class="ges-tag ouro">Pelo seu convite</span></div>';
+  h += '<div class="alerta-ouro">Entrou pelo seu link ' + esc(haQuanto(p.em)) + '. Confira se é mesmo da sua equipe antes de enviar.</div>';
+  h += '<span class="rotulo">Onde vai trabalhar</span>' + eqCondosHtml(f.papeis);
+  h += '<p class="dica-campo" style="margin:0">Operador vê e conclui as tarefas. Líder também organiza a fila e marca urgente.</p>';
+  h += '<div class="entrada-msg" id="eqErro" role="alert" hidden></div>';
+  h += '<button class="bt grande" id="eqConfirmar">Enviar para o síndico aprovar</button>';
+  h += '<p class="dica-campo eq-prazo" style="margin:0;text-align:center">' + esc(eqSobe(p.sobeEm)) + '</p>';
+  h += '<div class="ges-zona" style="margin-top:.4em"><span class="rotulo">Não é da sua equipe?</span><p class="dica-campo" style="margin:0">Recusar apaga o pedido. A pessoa vê que o acesso não foi liberado.</p>' +
+    '<button class="bt perigo" id="eqRecusar" style="width:100%">' + (EQ.conf === 'recusar' ? 'Confirmar: recusar o pedido' : 'Recusar pedido') + '</button></div>';
+  corpoJanela(raiz, 'Conferir pedido', h);
+}
 function eqErro(msg) { var e = document.getElementById('eqErro'); if (e) { e.textContent = msg; e.hidden = false; } }
 function cliqueEquipe(ev) {
   var b = ev.target.closest('button'); if (!b || !EQ || !EQ.dados) return;
@@ -3719,6 +3814,46 @@ function cliqueEquipe(ev) {
   if ((a = b.getAttribute('data-eq-pessoa'))) {
     var m = EQ.dados.membros.filter(function (x) { return x.email === a; })[0]; if (!m) return;
     EQ.tela = 'ficha'; EQ.sel = a; EQ.conf = ''; EQ.form = { papeis: JSON.parse(JSON.stringify(m.papeis || {})) }; desenharEquipe(); return;
+  }
+  if (b.hasAttribute('data-eq-convidar')) { EQ.tela = 'convite'; EQ.sel = null; EQ.conf = ''; desenharEquipe(); return; }
+  if ((a = b.getAttribute('data-eq-conferir'))) {
+    var pc = (EQ.dados.aguardandoVoce || []).filter(function (x) { return x.id === a; })[0]; if (!pc) return;
+    EQ.tela = 'conferir'; EQ.sel = a; EQ.conf = ''; EQ.form = { papeis: JSON.parse(JSON.stringify(pc.papeis || {})) };
+    if (!Object.keys(EQ.form.papeis).length && EQ.dados.condos.length === 1) EQ.form.papeis[EQ.dados.condos[0].codigo] = 'O';
+    desenharEquipe(); return;
+  }
+  if ((a = b.getAttribute('data-eq-cancconv'))) {
+    if (EQ.conf !== 'conv:' + a) { EQ.conf = 'conv:' + a; desenharEquipe(); return; }
+    umaVez('eqCancConv:' + a, b, '…', function () { return api('portal.equipeCancelarConvite', { codigo: a }); }).then(function (r) {
+      if (!r.ok) { avisar(r.mensagem, true); return; }
+      avisar('Convite cancelado. O link não funciona mais'); EQ.conf = ''; if (EQ.codigo === a) EQ.codigo = null; carregarEquipe();
+    });
+    return;
+  }
+  if (b.id === 'eqCopiar') {
+    var txt = eqTextoConvite(EQ.codigo);
+    var okc = function () { avisar('Convite copiado'); };
+    var res = function () { var ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); okc(); } catch (e) { avisar('Não foi possível copiar.', true); } document.body.removeChild(ta); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(okc, res); else res();
+    return;
+  }
+  if (b.id === 'eqConfirmar') {
+    if (!Object.keys(EQ.form.papeis).length) return eqErro('Marque pelo menos um condomínio.');
+    umaVez('eqConfirmar:' + EQ.sel, b, 'Enviando…', function () { return api('portal.equipeConfirmar', { id: EQ.sel, papeis: EQ.form.papeis }); }).then(function (r) {
+      if (!r.ok) return eqErro(r.mensagem);
+      avisar('Enviado para o síndico aprovar');
+      EQ.tela = 'lista'; EQ.sel = null; EQ.form = null; EQ.conf = ''; carregarEquipe(); atualizarPortal();
+    });
+    return;
+  }
+  if (b.id === 'eqRecusar') {
+    if (EQ.conf !== 'recusar') { EQ.conf = 'recusar'; desenharEquipe(); return; }
+    umaVez('eqRecusar:' + EQ.sel, b, 'Recusando…', function () { return api('portal.equipeRecusar', { id: EQ.sel }); }).then(function (r) {
+      if (!r.ok) return eqErro(r.mensagem);
+      avisar('Pedido recusado');
+      EQ.tela = 'lista'; EQ.sel = null; EQ.form = null; EQ.conf = ''; carregarEquipe(); atualizarPortal();
+    });
+    return;
   }
   if (b.hasAttribute('data-eq-voltar')) { EQ.tela = 'lista'; EQ.sel = null; EQ.form = null; EQ.conf = ''; desenharEquipe(); return; }
   if ((a = b.getAttribute('data-eq-papel'))) {
