@@ -111,6 +111,68 @@ button{cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--azul);color:#fff;border-color:var(--azul)}
 .chip[aria-pressed="true"] .n{background:var(--ouro)}
 .outros{min-height:2.75em;border-radius:999px;border:2px dashed var(--linha);background:#fff;color:var(--azul);font-weight:600;font-size:.9375em;padding:0 1em}
+/* v1.23: faixa de categorias (44 px, contador, ponto de urgente, esmaecido na borda) */
+.cats{position:relative;margin:0 -.25em}
+.cats-rolo{display:flex;gap:.5em;overflow-x:auto;scrollbar-width:none;padding:.15em .25em .35em;-webkit-overflow-scrolling:touch}
+.cats-rolo::-webkit-scrollbar{display:none}
+.cats::after{content:"";position:absolute;top:0;bottom:.35em;right:0;width:2.5em;pointer-events:none;background:linear-gradient(90deg,rgba(248,244,236,0),var(--creme,#F8F4EC));transition:opacity .15s}
+.cats::before{content:"";position:absolute;top:0;bottom:.35em;left:0;width:1.5em;pointer-events:none;background:linear-gradient(270deg,rgba(248,244,236,0),var(--creme,#F8F4EC));opacity:0;transition:opacity .15s;z-index:1}
+.cats.fim::after{opacity:0}
+.cats.ini::before{opacity:1}
+.cat-b{position:relative;min-height:2.75em;display:inline-flex;align-items:center;gap:.45em;padding:0 .85em 0 .7em;border-radius:.75em;font-size:.9375em;font-weight:600;background:#fff;color:var(--azul);border:1.5px solid var(--linha);white-space:nowrap;flex:none}
+.cat-b .ci{display:flex;color:#7A5C27}
+.cat-b .n{min-width:1.5em;height:1.5em;padding:0 .4em;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;font-size:.8125em;font-weight:700;background:var(--creme2);color:var(--azul)}
+.cat-b[data-vazia] .n{background:#EEF1F6;color:var(--suave)}
+.cat-b[aria-pressed="true"]{background:var(--azul);border-color:var(--azul);color:#fff}
+.cat-b[aria-pressed="true"] .ci{color:var(--ouro-claro)}
+.cat-b[aria-pressed="true"] .n{background:var(--ouro);color:var(--azul)}
+.cat-urg{position:absolute;top:-.25em;right:-.25em;width:.7em;height:.7em;border-radius:50%;background:var(--ouro);border:2px solid #fff}
+.det-unid{display:flex;flex-wrap:wrap;gap:.35em 1em;font-size:.875em;color:var(--suave2)}
+.det-unid b{color:var(--azul)}
+.bt-mudarcat{align-self:flex-start}
+.obs-auto.sis svg{color:#7A5C27}
+.caixa-aviso{background:var(--ouro-fundo,#F3E6CC);border-radius:.75em;padding:.65em .85em;font-size:.875em;color:#4A3B1C;display:flex;flex-direction:column;gap:.35em}
+.caixa-aviso p{margin:0}
+.ct-selo{display:inline-block;vertical-align:middle;font-size:.6875em;font-weight:700;letter-spacing:.04em;border-radius:999px;padding:.15em .6em;background:#EEF1F6;color:var(--suave2)}
+.ct-selo.comp{background:var(--ouro-fundo,#F3E6CC);color:#5C4A24}
+.ct-selo.breve{background:var(--creme2);color:#7A5C27}
+.ct-sub{font-size:.8125em;color:var(--suave)}
+.ct-lin{display:flex;align-items:center;gap:.4em}
+.ct-lin .mp-lin{flex:1;min-width:0}
+.ct-ord{display:flex;flex-direction:column;gap:.2em}
+.ct-ord button{width:2.75em;height:1.7em;border-radius:.5em;border:1px solid var(--linha);background:#fff;display:flex;align-items:center;justify-content:center;color:var(--azul)}
+.ct-ord button:disabled{opacity:.35}
+.ct-bts{display:flex;gap:.6em;justify-content:flex-end;flex-wrap:wrap;margin:.4em 0 .8em}
+.ct-mini{min-height:2.75em;padding:0 .9em;font-size:.8125em;flex:none}
+.ct-prop{display:flex;align-items:center;justify-content:space-between;gap:.75em;flex-wrap:wrap;background:var(--ouro-fundo,#F3E6CC);border-radius:1em;padding:.75em 1em;margin-bottom:.6em}
+.ct-prop.sem{background:#fff;border:1.5px dashed var(--linha);margin-top:.6em}
+.ct-prop b{display:block;color:var(--azul);font-size:.9375em}
+.ct-prop small{display:block;font-size:.8125em;color:var(--suave)}
+.ct-prop .ct-bts{margin:0}
+.ct-icones .chip{width:2.9em;justify-content:center;padding:0}
+.ct-filtros{display:flex;gap:.6em;flex-wrap:wrap;align-items:center;margin:.75em 0}
+.ct-condo{width:auto;flex:1 1 12em}
+.ct-sel{display:flex;align-items:center;justify-content:space-between;gap:.75em;flex-wrap:wrap}
+.ct-sel b{font-size:.875em;color:var(--azul)}
+.ct-tarefas{display:flex;flex-direction:column;gap:.35em;max-height:22em;overflow:auto;margin:.4em 0 .6em}
+.ct-t{display:flex;align-items:flex-start;gap:.7em;background:#fff;border:1px solid var(--linha2);border-radius:.75em;padding:.6em .75em;cursor:pointer;min-height:2.75em}
+.ct-t input{width:1.25em;height:1.25em;margin:.15em 0 0;flex:none;accent-color:var(--azul)}
+.ct-t b{display:block;font-size:.9em;color:var(--azul)}
+.ct-t small{display:block;font-size:.78em;color:var(--suave)}
+.ct-conf{background:#fff;border:1.5px solid var(--ouro);border-radius:1em;padding:.9em 1em;display:flex;flex-direction:column;gap:.4em;margin:.4em 0 .6em}
+.ct-conf b{color:var(--azul);font-family:Lora,Georgia,serif;font-size:1.05em}
+.ct-conf p{margin:0;font-size:.875em;color:var(--suave2)}
+.ct-hist .ct-h{display:flex;align-items:center;justify-content:space-between;gap:.75em}
+.ct-hist .ct-h p{margin:0}
+.ct-linha{display:flex;align-items:center;justify-content:space-between;gap:.75em}
+.ct-assch{display:flex;flex-wrap:wrap;gap:.3em 1em}
+.ct-assch label{display:flex;align-items:center;gap:.45em;min-height:2.5em;font-size:.875em;color:var(--suave2)}
+.ct-assch input{width:1.15em;height:1.15em;accent-color:var(--azul)}
+.nova-cat{display:flex;align-items:center;justify-content:space-between;gap:.75em;background:#EEF1F6;border-radius:.75em;padding:.4em .5em .4em .8em;min-height:2.75em}
+.nova-cat span{display:flex;align-items:center;gap:.5em;font-weight:600;color:var(--azul)}
+.pf-sec-rot{display:block;padding:.9em 1em .3em}
+.pf-lista>.dica-campo{padding:.4em 1em .8em}
+.nova-nota{margin:0;font-size:.8125em;color:var(--suave);background:var(--creme);border-radius:.75em;padding:.55em .8em}
 
 .area{display:flex;gap:1.5em;align-items:flex-start}
 .lista{flex:1 1 24em;min-width:0;display:flex;flex-direction:column;gap:1.5em}
@@ -1075,10 +1137,11 @@ a.bt{text-decoration:none}
         </div>
         <button class="bt" data-acao="nova" id="btNova" hidden>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-          Nova tarefa
+          <span id="btNovaTxt">Nova tarefa</span>
         </button>
       </div>
       <div id="faixaGuia"></div>
+      <nav class="cats" id="cats" aria-label="Categorias" hidden></nav>
       <nav class="condos" id="condos" aria-label="Condomínios"></nav>
       <div class="area">
         <div class="lista" id="lista"><div class="carregando">Carregando tarefas…</div></div>
@@ -1120,7 +1183,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.22';
+var VERSAO_SITE = '1.23';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -1470,7 +1533,7 @@ var recarregando = false;
 function recarregar() {
   if (recarregando || !S.sessao) return Promise.resolve();
   recarregando = true;
-  return Promise.all([api('portal.inicio'), api('tarefas.inicio')]).then(function (rs) {
+  return Promise.all([api('portal.inicio'), api('tarefas.inicio', S.cat ? { categoria: S.cat } : {})]).then(function (rs) {
     recarregando = false;
     if (rs[0] && rs[0].ok) { S.portal = rs[0]; if (!$('app').hidden) desenharPortal(); }
     if (rs[1] && rs[1].ok) { S.dados = rs[1]; if ($('app').hidden) abrirApp(); else desenhar(); }
@@ -1488,6 +1551,7 @@ function desenhar() {
   $('contLateral').textContent = (d.tarefas || []).length;
   desenharSino();
   desenharAlternancia();
+  desenharCats();
   desenharCondos();
   desenharLista();
   if (S.selId && !S.det) abrirTarefa(S.selId, true);
@@ -1505,7 +1569,9 @@ function desenhar() {
 function desenharCondos() {
   if (S.visao === 'concluidas') { desenharCondosConc(); return; }
   var d = S.dados, condos = d.condos || [];
-  var total = (d.tarefas || []).length;
+  var naCat = (d.tarefas || []).filter(function (t) { return !faixaAtiva() || t.categoria === S.cat; });
+  var total = naCat.length;
+  var pendCondo = function (cod) { return naCat.filter(function (t) { return t.condo === cod; }).length; };
   var html = [];
   var chip = function (id, nome, n) {
     return '<button class="chip" data-condo="' + esc(id) + '" aria-pressed="' + (S.condo === id) + '"><span>' + esc(nome) + '</span><span class="n">' + n + '</span></button>';
@@ -1514,7 +1580,8 @@ function desenharCondos() {
   var muitos = condos.length > 6;
   var resto = [];
   condos.forEach(function (c) {
-    if (!muitos || c.pendentes > 0 || S.condo === c.codigo) html.push(chip(c.codigo, c.nome, c.pendentes));
+    var np = pendCondo(c.codigo);
+    if (!muitos || np > 0 || S.condo === c.codigo) html.push(chip(c.codigo, c.nome, np));
     else resto.push(c);
   });
   if (resto.length) {
@@ -1547,21 +1614,27 @@ function desenharCondosConc() {
 
 function tarefasVisiveis() {
   var lista = S.dados.tarefas || [];
+  if (faixaAtiva()) lista = lista.filter(function (t) { return t.categoria === S.cat; });
   return S.condo === 'todos' ? lista : lista.filter(function (t) { return t.condo === S.condo; });
 }
 
 function variasEmpresas() {
   var set = {};
-  (S.dados.tarefas || []).forEach(function (t) { set[t.empresa] = 1; });
+  (S.dados.tarefas || []).forEach(function (t) { if (!faixaAtiva() || t.categoria === S.cat) set[t.empresa] = 1; });
   return Object.keys(set).length > 1;
 }
 
 function metaDe(t, semCondo) {
   var partes = [];
   if (!semCondo && S.condo === 'todos' && (S.dados.condos || []).length > 1) partes.push(nomeCondo(t.condo));
-  if (ehCompraT(t) || ehPedidoT(t)) partes.push(t.fase ? t.categoria + ' · ' + t.fase : t.categoria);
-  else if (temCategoria(t)) partes.push(t.categoria);
-  else if (variasEmpresas()) partes.push(t.empresa);
+  var comFaixa = faixaAtiva();
+  if (ehCompraT(t) || ehPedidoT(t)) partes.push(t.fase ? (comFaixa ? t.fase : t.categoria + ' · ' + t.fase) : t.categoria);
+  else {
+    if (!comFaixa && temCategoria(t)) partes.push(t.categoria);
+    if (t.assuntoNome) partes.push(t.assuntoNome);
+    if (textoUnidade(t)) partes.push(textoUnidade(t));
+    if (!t.assuntoNome && variasEmpresas()) partes.push(t.empresa);
+  }
   if (t.paraVoce) partes.push('direcionada a você');
   else if (t.direcionadoNome && t.direcionadoNome !== 'Equipe') partes.push('para ' + t.direcionadoNome);
   partes.push(t.nObs ? (t.nObs === 1 ? '1 follow-up' : t.nObs + ' follow-ups') : 'sem follow-up');
@@ -2694,11 +2767,14 @@ function desenharDetalhe() {
     (t.urgente ? '<span class="pilula urg">Urgente ' + t.posicao + '</span>' : '') +
     (t.etiqueta ? '<span class="pilula atraso">' + esc(t.etiqueta) + '</span>' : '') +
     '<span class="pilula forte">' + esc(t.empresa) + '</span>' +
-    (temCategoria(t) ? '<span class="pilula">' + esc(t.categoria) + '</span>' : '') +
+    (temCategoria(t) || faixaAtiva() || t.assuntoNome ? '<span class="pilula">' + esc(t.categoria + (t.assuntoNome ? ' › ' + t.assuntoNome : '')) + '</span>' : '') +
     '<span class="pilula">' + esc(t.paraVoce ? 'Direcionada a você' : t.direcionadoNome === 'Equipe' ? 'Equipe' : 'Para ' + t.direcionadoNome) + '</span>' +
     '<span class="pilula">Criada por ' + esc(t.criadoPor) + ' · ' + esc(quando(t.criadoEm)) + '</span>' +
     (!pend ? '<span class="pilula forte">Concluída por ' + esc(t.concluidoPor) + ' · ' + esc(quando(t.concluidoEm)) + '</span>' : '') +
-    '</div></div>';
+    '</div>' +
+    (t.unidadeCampos && (t.bloco || t.unidade || t.envolvidos) ? '<div class="det-unid">' + (t.bloco ? '<span>Bloco <b>' + esc(t.bloco) + '</b></span>' : '') +
+      (t.unidade ? '<span>Unidade <b>' + esc(t.unidade) + '</b></span>' : '') + (t.envolvidos ? '<span>Envolvidos: <b>' + esc(t.envolvidos) + '</b></span>' : '') + '</div>' : '') +
+    '</div>';
 
   if (t.compra) h += htmlCompra(t);
   if (t.pedido) h += htmlPedido(t);
@@ -2726,7 +2802,9 @@ function desenharDetalhe() {
     gCondo = '<div><label class="rotulo" for="selCondo">Condomínio</label><select class="campo" id="selCondo">' +
       t.condosParaTrocar.map(function (c) { return '<option value="' + esc(c.codigo) + '"' + (c.codigo === t.condo ? ' selected' : '') + '>' + esc(c.nome) + '</option>'; }).join('') + '</select></div>';
   }
-  if (gCondo || gDir || gEmp) h += '<div class="grade2">' + gCondo + gDir + gEmp + '</div>';
+  var gAss = htmlAssuntoDet(t);
+  if (gCondo || gDir || gEmp || gAss) h += '<div class="grade2">' + gCondo + gAss + gDir + gEmp + '</div>';
+  if (pode.mudarCategoria) h += '<button class="bt-link bt-mudarcat" data-acao="mudarCat">Mudar categoria · ' + esc(t.categoria) + '</button>';
 
   if (S.editandoDesc) {
     h += '<div class="bloco"><label class="rotulo" for="txtDesc">Descrição</label>' +
@@ -2744,6 +2822,10 @@ function desenharDetalhe() {
   var obs = t.observacoes || [];
   if (!obs.length) h += '<span class="cartao-meta">Nenhum follow-up ainda.</span>';
   obs.forEach(function (o) {
+    if (o.tipo === 'Sistema') {
+      h += '<div class="obs-auto sis">' + ICO_CAT.repetir + '<span><b>' + esc(String(o.autor).split(' ')[0]) + '</b> · ' + esc(o.texto) + '</span><time>' + esc(quando(o.em)) + '</time></div>';
+      return;
+    }
     if (o.tipo === 'Compra') {
       h += '<div class="obs-auto">' + IC.carrinho.replace('width="20" height="20"', 'width="14" height="14"') + '<span><b>' + esc(String(o.autor).split(' ')[0]) + '</b> · ' + esc(o.texto) + '</span><time>' + esc(quando(o.em)) + '</time></div>';
       return;
@@ -3165,6 +3247,7 @@ function executarAviso(tipo, ref) {
   else if (tipo === 'tarefa') abrirTarefa(ref);
   else if (tipo === 'evolucao') abrirEvolucao();
   else if (tipo === 'equipe') abrirEquipe(ref);
+  else if (tipo === 'assunto') abrirConfiguracoes('assuntos:' + ref);
   else if (tipo === 'sugestao') {
     var av = avisosPortal().filter(function (a) { return a.id === 'S-' + ref; })[0];
     if (av && !av.lido && av.acao && av.acao.rotulo !== 'Responder') { av.lido = true; desenharSino(); api('portal.lerAvisos', { ids: [av.id] }); }
@@ -4335,7 +4418,7 @@ var CF_DIAS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
 var CF_DIAS_LONGOS = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
 
 function abrirConfiguracoes(vista) {
-  CF = { dados: null, vista: vista || 'inicio', edit: {}, busca: '' };
+  CF = { dados: null, vista: vista || 'inicio', edit: {}, busca: '', cats: null, form: {} };
   abrirJanela('Configurações', 'Carregando…', '<div class="jan-corpo cf-corpo"><p class="vazio">Carregando…</p></div>', 'gestao cf', function (raiz) {
     var c = raiz.querySelector('.jan-corpo');
     c.addEventListener('click', cliqueCfg);
@@ -4351,6 +4434,7 @@ function carregarCfg() {
     if (!r.ok) { corpoJanela(raiz, '', '<p class="vazio">' + esc(r.mensagem) + '</p>'); return; }
     CF.dados = r; CF.edit = {};
     desenharCfg();
+    ctCarregar();
   });
 }
 function cfItens() {
@@ -4382,7 +4466,14 @@ function desenharCfg() {
   var g = CF.dados.grupos.filter(function (x) { return x.id === CF.vista; })[0];
   if (g) { h = cfHtmlGrupo(g); sub = g.area === 'modulos' ? 'Módulo' : g.area === 'sistema' ? 'Só leitura' : 'Gerais'; }
   else if (CF.vista === 'historico') { h = cfHtmlHistorico(); sub = 'Histórico e Sistema'; }
-  else if (CF.vista === 'empresas') { h = cfHtmlEmpresas(); sub = 'Empresas parceiras'; }
+  else if (CF.vista === 'empresas') { h = ctHtmlEmpresas(); sub = 'Empresas parceiras'; }
+  else if (/^empresa:/.test(CF.vista)) { h = ctHtmlEmpresa(CF.vista.slice(8)); sub = 'O que a empresa recebe'; }
+  else if (CF.vista === 'categorias') { h = ctHtmlCategorias(); sub = 'Módulo Tarefas'; }
+  else if (CF.vista === 'novaCat') { h = ctHtmlCategoria(null); sub = 'Nova categoria'; }
+  else if (/^categoria:/.test(CF.vista)) { h = ctHtmlCategoria(CF.vista.slice(10)); sub = 'Editar categoria'; }
+  else if (/^assuntos:/.test(CF.vista)) { h = ctHtmlAssuntos(CF.vista.slice(9)); sub = 'Assuntos'; }
+  else if (/^assunto:/.test(CF.vista)) { h = ctHtmlAssunto(CF.vista.slice(8)); sub = 'Editar assunto'; }
+  else if (CF.vista === 'mover') { h = ctHtmlMover(); sub = 'Mover tarefas'; }
   else { CF.vista = 'inicio'; h = cfHtmlInicio(); }
   var m = cfMudancas();
   if (m.length) {
@@ -4420,6 +4511,9 @@ function cfHtmlInicio() {
   var mods = d.grupos.filter(function (g) { return g.area === 'modulos'; });
   h += '<span class="rotulo">Gerais</span><div class="mp-lista">' + gerais.map(linhaGrupo).join('') + '</div>';
   h += '<span class="rotulo">Módulos</span><div class="mp-lista">' + mods.map(linhaGrupo).join('') +
+    cfLinha('data-ct-ir="categorias"', ICO_CAT.lista.replace('width="16" height="16"', 'width="18" height="18"'), 'Tarefas · Categorias e assuntos', ctResumoInicio(),
+      CF.cats && !CF.cats.erro && CF.cats.categorias.some(function (x) { return x.propostas.length; }) ? '<span class="selo estatico">!</span>' : '') +
+    cfLinha('data-ct-ir="mover"', ICO_CAT.repetir.replace('width="16" height="16"', 'width="18" height="18"'), 'Tarefas · Mover tarefas', 'Entre categorias ou assuntos, com histórico') +
     (((S.portal && S.portal.modulos) || []).some(function (m) { return m.id === 'evolucao'; }) ? cfLinha('data-acao="evolucao"', IC.evolucaoOuro.replace(/#E3C894/g, '#0F2646'), 'Evolução do app', 'Sugestões e pareceres') : '') + '</div>';
   var ne = (d.empresas || []).length;
   h += '<span class="rotulo">Pessoas e acesso</span><div class="mp-lista">' +
@@ -4438,7 +4532,7 @@ function cfHtmlGrupo(g) {
   g.secoes.forEach(function (s) {
     h += '<span class="rotulo">' + esc(s.nome) + '</span><div class="cf-sec">' + s.itens.map(cfHtmlItem).join('') + '</div>';
   });
-  if (g.id === 'tarefas') h += '<p class="dica-campo cf-nota">Quem pode criar, ordenar e ver concluídas fica em <button class="cf-inline" data-acao="perfis">Perfis de acesso</button>. Categorias e assuntos chegam na próxima etapa.</p>';
+  if (g.id === 'tarefas') h += '<p class="dica-campo cf-nota">Quem pode criar, ordenar, ver concluídas e usar cada categoria fica em <button class="cf-inline" data-acao="perfis">Perfis de acesso</button>. Categorias e assuntos: <button class="cf-inline" data-ct-ir="categorias">Categorias e assuntos</button>.</p>';
   return h;
 }
 function cfHtmlItem(i) {
@@ -4532,6 +4626,7 @@ function cliqueCfg(ev) {
     if (a !== 'inicio' && a !== 'historico' && a !== 'empresas') CF.busca = '';
     CF.vista = a; desenharCfg(); var c = cfRaiz(); if (c) c.querySelector('.jan-corpo').scrollTop = 0; return;
   }
+  if (cliqueCat(ev, b)) return;
   if (b.id === 'cfDescartar') { CF.edit = {}; desenharCfg(); return; }
   if (b.id === 'cfSalvar') {
     var m = cfMudancas();
@@ -4586,6 +4681,7 @@ function cliqueCfg(ev) {
 function entradaCfg(ev) {
   var el = ev.target; if (!CF || !CF.dados) return;
   if (el.id === 'cfBusca') { CF.busca = el.value; if (ev.type === 'input') desenharCfg(); return; }
+  if (entradaCat(ev)) return;
   var k = el.getAttribute && el.getAttribute('data-cf'); if (!k) return;
   var i = cfItemPorChave(k); if (!i) return;
   if (el.hasAttribute('data-cf-poehora')) return; // só entra ao tocar em "+ Horário"
@@ -4621,6 +4717,7 @@ var PF_DESC = {
   Gestor: ['empresa parceira', 'Responsável pela equipe da empresa parceira; vê todos os condomínios que ela atende.'],
   Colaborador: ['Carvalho & Abreu', 'Equipe da casa com O no condomínio (até a v1.20 contava como Operador). Vê e conclui as tarefas dos condomínios marcados.'],
   'Líder': ['L no condomínio', 'Pessoa marcada com L no condomínio. Organiza a fila da equipe.'],
+  Compras: ['atividade da casa', 'Quem tem a atividade Compras (Andrea). Usa só as categorias ligadas aqui; as ações seguem o fluxo de Aquisições.'],
   Operador: ['empresa parceira', 'Funcionário de empresa parceira com O no condomínio. Vê e conclui as tarefas dos condomínios em que tem O.']
 };
 function abrirPerfis() {
@@ -4637,20 +4734,24 @@ function carregarPerfis() {
     if (!r.ok) { corpoJanela(raiz, '', '<p class="vazio">' + esc(r.mensagem) + '</p>'); return; }
     PF.dados = r;
     PF.edit = {};
-    r.acoes.forEach(function (a) { PF.edit[a.id] = JSON.parse(JSON.stringify(a.valores)); });
+    pfLinhas().forEach(function (a) { PF.edit[a.id] = JSON.parse(JSON.stringify(a.valores)); });
     desenharPerfis();
   });
 }
+/* v1.23: linhas = ações + categorias que cada perfil usa (Compras só tem categorias) */
+function pfLinhas() { return PF.dados.acoes.concat(PF.dados.categorias || []); }
 function pfMudancas() {
   var out = [];
-  PF.dados.acoes.forEach(function (a) {
+  pfLinhas().forEach(function (a) {
     PF.dados.perfis.forEach(function (p) {
-      if (!!PF.edit[a.id][p] !== !!a.valores[p]) out.push({ acao: a.id, perfil: p, valor: !!PF.edit[a.id][p], nome: a.nome, antes: !!a.valores[p] });
+      if (a.valores[p] === null) return;
+      if (!!PF.edit[a.id][p] !== !!a.valores[p]) out.push({ acao: a.codigo ? null : a.id, categoria: a.codigo || null, perfil: p, valor: !!PF.edit[a.id][p], nome: a.codigo ? 'usa ' + a.nome : a.nome, antes: !!a.valores[p] });
     });
   });
   return out;
 }
 function pfSw(a, p) {
+  if (a.valores[p] === null) return '<span class="pf-trava" title="Não se aplica">—</span>';
   var on = !!PF.edit[a.id][p], mudou = on !== !!a.valores[p];
   return '<button class="pf-sw' + (mudou ? ' mudou' : '') + '" role="switch" aria-checked="' + on + '" data-pf="' + esc(a.id) + '|' + esc(p) + '" aria-label="' + esc(p + ' · ' + a.nome) + '"></button>';
 }
@@ -4668,6 +4769,13 @@ function desenharPerfis() {
     h += '<div class="pf-lin" style="grid-template-columns:' + cols + '"><div class="pf-acao"><b>' + esc(a.nome) + '</b><small>' + esc(a.desc) + '</small></div>' +
       '<div class="pf-c"><span class="pf-trava">Sempre</span></div>' + d.perfis.map(function (p) { return '<div class="pf-c">' + pfSw(a, p) + '</div>'; }).join('') + '</div>';
   });
+  if ((d.categorias || []).length) {
+    h += '<div class="pf-fixas-rot"><span class="rotulo">Categorias que usa · vê e trabalha nas tarefas</span></div>';
+    d.categorias.forEach(function (a) {
+      h += '<div class="pf-lin" style="grid-template-columns:' + cols + '"><div class="pf-acao"><b>' + esc(a.nome) + '</b><small>' + esc(a.emBreve ? 'em breve' : a.interna ? 'interna' : 'compartilhada com empresas') + '</small></div>' +
+        '<div class="pf-c"><span class="pf-trava">Sempre</span></div>' + d.perfis.map(function (p) { return '<div class="pf-c">' + pfSw(a, p) + '</div>'; }).join('') + '</div>';
+    });
+  }
   h += '<div class="pf-fixas-rot"><span class="rotulo">Regras fixas (não mudam aqui)</span></div>';
   [['Concluir, escrever follow-up e anexar', [1, 1, 1, 1, 1]], ['Reabrir, trocar empresa ou condomínio, corrigir título', [1, 0, 0, 0, 0]]].forEach(function (r) {
     h += '<div class="pf-lin pf-fixa" style="grid-template-columns:' + cols + '"><div class="pf-acao"><b>' + esc(r[0]) + '</b></div>' +
@@ -4676,14 +4784,21 @@ function desenharPerfis() {
   h += '</section>';
   // celular: um perfil por vez
   h += '<section class="pf-cel" aria-label="Permissões do perfil escolhido"><div class="pf-chips" role="tablist">' + d.perfis.map(function (p) {
-    var n = d.acoes.filter(function (a) { return !!PF.edit[a.id][p] !== !!a.valores[p]; }).length;
+    var n = pfLinhas().filter(function (a) { return a.valores[p] !== null && !!PF.edit[a.id][p] !== !!a.valores[p]; }).length;
     return '<button class="chip" role="tab" data-pf-perfil="' + esc(p) + '" aria-pressed="' + (PF.perfil === p) + '">' + esc(p) + (n ? ' <span class="n">' + n + '</span>' : '') + '</button>';
   }).join('') + '</div>' +
     '<div class="pf-desc"><b>' + esc(PF.perfil) + '</b> · ' + esc(PF_DESC[PF.perfil] ? PF_DESC[PF.perfil][1] : '') + '</div><div class="pf-lista">' +
-    d.acoes.map(function (a) {
+    ((d.categorias || []).length ? '<span class="rotulo pf-sec-rot">Módulo Tarefas · categorias que usa</span>' : '') +
+    (d.categorias || []).map(function (a) {
+      var mudou = !!PF.edit[a.id][PF.perfil] !== !!a.valores[PF.perfil];
+      return '<div class="pf-item' + (mudou ? ' mudou' : '') + '"><span class="tx"><b>' + esc(a.nome) + (a.interna && !a.emBreve ? ' <span class="ct-selo">interna</span>' : '') + (a.emBreve ? ' <span class="ct-selo breve">em breve</span>' : '') + (mudou ? ' <span class="pf-tag">alterado</span>' : '') + '</b></span>' + pfSw(a, PF.perfil) + '</div>';
+    }).join('') +
+    '<span class="rotulo pf-sec-rot">O que pode fazer</span>' +
+    d.acoes.filter(function (a) { return a.valores[PF.perfil] !== null; }).map(function (a) {
       var mudou = !!PF.edit[a.id][PF.perfil] !== !!a.valores[PF.perfil];
       return '<div class="pf-item' + (mudou ? ' mudou' : '') + '"><span class="tx"><b>' + esc(a.nome) + (mudou ? ' <span class="pf-tag">alterado</span>' : '') + '</b><small>' + esc(a.desc) + '</small></span>' + pfSw(a, PF.perfil) + '</div>';
-    }).join('') + '</div>' +
+    }).join('') + (PF.perfil === 'Compras' ? '<p class="dica-campo" style="margin:0">As ações de Compras seguem o fluxo de Aquisições (pedir, registrar a compra, marcar recebida).</p>' : '') +
+    ((d.perfisCasa || []).indexOf(PF.perfil) < 0 ? '<p class="dica-campo" style="margin:0">Perfis de empresa parceira só veem as categorias que a empresa recebe (Configurações › Empresas parceiras).</p>' : '') + '</div>' +
     '<div class="pf-sempre"><span class="rotulo">Sempre valem</span><p>Todos concluem, escrevem follow-up e anexam. Reabrir, trocar empresa ou condomínio e corrigir título são só do master.</p></div></section>';
   // histórico
   h += '<div class="ges-hist pf-hist"><span class="rotulo">Últimas mudanças</span>' + (d.historico.length ? d.historico.map(function (i) {
@@ -4712,17 +4827,18 @@ function cliquePerfis(ev) {
   }
   if ((a = b.getAttribute('data-pf-perfil'))) { PF.perfil = a; desenharPerfis(); return; }
   if (b.id === 'pfDescartar') {
-    PF.dados.acoes.forEach(function (x) { PF.edit[x.id] = JSON.parse(JSON.stringify(x.valores)); });
+    pfLinhas().forEach(function (x) { PF.edit[x.id] = JSON.parse(JSON.stringify(x.valores)); });
     desenharPerfis(); return;
   }
   if (b.id === 'pfSalvar') {
     var m = pfMudancas();
     umaVez('pfSalvar', b, 'Salvando…', function () {
-      return api('portal.salvarPermissoes', { mudancas: m.map(function (x) { return { acao: x.acao, perfil: x.perfil, valor: x.valor }; }) });
+      return api('portal.salvarPermissoes', { mudancas: m.map(function (x) { return x.categoria ? { categoria: x.categoria, perfil: x.perfil, valor: x.valor } : { acao: x.acao, perfil: x.perfil, valor: x.valor }; }) });
     }).then(function (r) {
       if (!r.ok) { avisar(r.mensagem, true); return; }
       avisar(r.mudou === 1 ? 'Permissão atualizada' : r.mudou + ' permissões atualizadas');
       carregarPerfis();
+      recarregar();
     });
   }
 }
@@ -4744,13 +4860,17 @@ var FLX = { SIMPLES: 'Simples', COMPRA: 'Compra pontual', PEDIDO: 'Pedido mensal
 function ehCompraT(t) { return !!t && t.fluxo === FLX.COMPRA; }
 function ehPedidoT(t) { return !!t && t.fluxo === FLX.PEDIDO; }
 /* Ocorrência é a categoria comum: não ocupa espaço no cartão (como o antigo "Geral"). */
-function temCategoria(t) { return !!(t && t.categoria) && ['Geral', 'Ocorrência', 'Ocorrencia'].indexOf(t.categoria) < 0; }
+function temCategoria(t) { return !!(t && t.categoria) && ['Geral', 'Manutenção'].indexOf(t.categoria) < 0 && !(t.categoria === 'Ocorrência' && !t.codigoCategoria); }
 var ICO_CAT = {
   alerta: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 8v4.5M12 16h.01"/></svg>',
   repetir: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5"/></svg>',
   inspecao: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>',
   carrinho: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.6 12.2a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.5L21.5 7H6"/></svg>',
-  lista: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>'
+  lista: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>',
+  ferramenta: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg>',
+  predio: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16M16 9h2a2 2 0 0 1 2 2v10M3 21h18M8 7h4M8 11h4M8 15h4"/></svg>',
+  pessoas: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"/></svg>',
+  documento: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>'
 };
 function catalogoDaTela() {
   var d = S.dados || {};
@@ -4773,12 +4893,16 @@ function abrirNova(opcoes) {
   if (!usaveis.length) return;
   // vindo de um compartilhamento (texto/arquivos): começa pela ocorrência
   var lembrada = lerLocal('ultimaCategoria');
-  var inicial = (opcoes.titulo || opcoes.descricao || opcoes.anexos)
+  // v1.23: abre na categoria da faixa (ou na pedida); a lista de categorias fica atrás de "Trocar categoria"
+  var daFaixa = opcoes.categoria || (faixaAtiva() ? S.cat : null);
+  var naFaixa = daFaixa ? usaveis.filter(function (c) { return c.nome === daFaixa; })[0] : null;
+  var inicial = naFaixa || ((opcoes.titulo || opcoes.descricao || opcoes.anexos)
     ? usaveis.filter(function (c) { return c.fluxo === FLX.SIMPLES; })[0]
-    : usaveis.filter(function (c) { return c.nome === lembrada; })[0];
-  S.nova = { cat: (inicial || usaveis[0]).nome, condo: null, itens: [novoItemCompra()], quando: 'Sem pressa', data: '', motivo: '' };
+    : usaveis.filter(function (c) { return c.nome === lembrada; })[0]);
+  S.nova = { cat: (inicial || usaveis[0]).nome, condo: null, itens: [novoItemCompra()], quando: 'Sem pressa', data: '', motivo: '', assunto: '', assuntoNovo: '', bloco: '', unidade: '', envolvidos: '', listaCats: !naFaixa };
   var h = '<form class="jan-corpo" id="formNova" novalidate>' +
-    (cats.length > 1 ? '<div class="bloco" style="gap:.4em"><span class="rot-campo" id="rotCat">Categoria</span><div class="cat-lista" role="radiogroup" aria-labelledby="rotCat">' +
+    (cats.length > 1 ? '<div class="nova-cat" id="novaCatLinha"' + (naFaixa ? '' : ' hidden') + '><span id="novaCatNome"></span><button type="button" class="bt-link" id="novaTrocarCat">Trocar categoria</button></div>' +
+      '<div class="bloco" id="novaCatLista" style="gap:.4em"' + (naFaixa ? ' hidden' : '') + '><span class="rot-campo" id="rotCat">Categoria</span><div class="cat-lista" role="radiogroup" aria-labelledby="rotCat">' +
       cats.map(function (c) {
         return '<button type="button" class="cat-op" role="radio" data-cat="' + esc(c.nome) + '"' + (c.emBreve ? ' disabled aria-disabled="true"' : '') + ' aria-checked="false">' +
           '<span class="ci">' + (ICO_CAT[c.icone] || ICO_CAT.alerta) + '</span>' +
@@ -4807,27 +4931,36 @@ function abrirNova(opcoes) {
     };
     var montarSimples = function () {
       var c = (d.condos || []).filter(function (x) { return x.codigo === condoAtual(); })[0] || {};
-      var emps = c.empresasParaCriar || [];
+      var cat = catAtual();
+      var pc = c.porCategoria && c.porCategoria[cat.nome];
+      var emps = pc ? pc.empresas : (c.empresasParaCriar || []);
       var empSel = raiz.querySelector('#novaEmp');
       var empAtual = empSel ? empSel.value : emps[0];
       if (emps.indexOf(empAtual) < 0) empAtual = emps[0];
-      var pessoas = (c.pessoas && c.pessoas[empAtual]) || [];
+      var pessoas = (pc ? pc.pessoas[empAtual] : (c.pessoas && c.pessoas[empAtual])) || [];
+      lerCamposCat(raiz);
+      var comUnid = !!cat.unidade;
       var u = d.usuario || {};
       var temMic = u.microfone && (window.SpeechRecognition || window.webkitSpeechRecognition);
       var tituloAntes = raiz.querySelector('#novaTitulo') ? raiz.querySelector('#novaTitulo').value : (opcoes.titulo || '');
       var descAntes = raiz.querySelector('#novaDesc') ? raiz.querySelector('#novaDesc').value : (opcoes.descricao || '');
-      var descOn = raiz.querySelector('#novaChaveDesc') ? raiz.querySelector('#novaChaveDesc').getAttribute('aria-checked') === 'true' : !!opcoes.descricao;
+      var descOn = comUnid || (raiz.querySelector('#novaChaveDesc') ? raiz.querySelector('#novaChaveDesc').getAttribute('aria-checked') === 'true' : !!opcoes.descricao);
       raiz.querySelector('#novaCorpo').innerHTML =
+        (cat.interna && u.master ? '<p class="nova-nota"><b>Interna.</b> Só os perfis que você habilitou veem.' + (cat.unidade ? ' Avisos mostram só condomínio e unidade.' : '') + '</p>' : '') +
+        htmlUnidadeNova(cat, S.nova) +
+        htmlAssuntoNova(cat, S.nova) +
         (emps.length > 1 ? '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="novaEmp">Empresa</label><select class="campo" id="novaEmp">' +
           emps.map(function (e) { return '<option' + (e === empAtual ? ' selected' : '') + '>' + esc(e) + '</option>'; }).join('') + '</select></div>'
           : '<input type="hidden" id="novaEmp" value="' + esc(emps[0] || '') + '">') +
         '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="novaTitulo">Título</label>' +
-        '<div class="linha-campos"><input class="campo" id="novaTitulo" maxlength="120" autocomplete="off" placeholder="Ex.: Trocar lâmpada do hall" required value="' + esc(tituloAntes) + '">' +
+        '<div class="linha-campos"><input class="campo" id="novaTitulo" maxlength="120" autocomplete="off" placeholder="' + (comUnid ? 'Ex.: Obra sem plano de reforma' : 'Ex.: Trocar lâmpada do hall') + '" required value="' + esc(tituloAntes) + '">' +
         (temMic ? '<button type="button" class="mic" id="novaMic" aria-label="Ditar o título">' + IC.mic + '</button>' : '') + '</div></div>' +
         (pessoas.length ? '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="novaDir">Direcionar para</label><select class="campo" id="novaDir"><option value="Equipe">Equipe (todos veem)</option>' +
           pessoas.map(function (p) { return '<option value="' + esc(p.email) + '">' + esc(p.nome) + '</option>'; }).join('') + '</select></div>' : '') +
-        '<button type="button" class="chave" role="switch" aria-checked="' + descOn + '" id="novaChaveDesc"><i aria-hidden="true"></i>Adicionar descrição</button>' +
-        '<textarea class="campo" id="novaDesc" rows="3" maxlength="2000" placeholder="Uma explicação simples, se precisar"' + (descOn ? '' : ' hidden') + '>' + esc(descAntes) + '</textarea>' +
+        (comUnid ? '<label class="rot-campo" for="novaDesc">O que aconteceu</label><input type="hidden" id="novaChaveDesc" aria-checked="true">'
+          : '<button type="button" class="chave" role="switch" aria-checked="' + descOn + '" id="novaChaveDesc"><i aria-hidden="true"></i>Adicionar descrição</button>') +
+        '<textarea class="campo" id="novaDesc" rows="3" maxlength="2000" placeholder="' + (comUnid ? 'Ex.: obra começou nesta semana sem o plano de reforma' : 'Uma explicação simples, se precisar') + '"' + (descOn ? '' : ' hidden') + '>' + esc(descAntes) + '</textarea>' +
+        htmlEnvolvidosNova(cat, S.nova) +
         (opcoes.anexos ? '<p class="nova-anexos">' + IC.clipP + '<span>' + opcoes.anexos + (opcoes.anexos === 1 ? ' arquivo recebido será anexado' : ' arquivos recebidos serão anexados') + ' à tarefa</span></p>' : '');
       var mic = raiz.querySelector('#novaMic');
       if (mic) ligarMicrofone(mic, raiz.querySelector('#novaTitulo'));
@@ -4861,9 +4994,12 @@ function abrirNova(opcoes) {
         var ok = b.querySelector('.ok'); if (ok) ok.hidden = !on;
       });
       montarCondo();
+      var linhaCat = raiz.querySelector('#novaCatNome');
+      if (linhaCat) linhaCat.innerHTML = (ICO_CAT[cat.icone] || ICO_CAT.alerta) + esc(cat.nome);
       var compra = cat.fluxo === FLX.COMPRA, pedido = cat.fluxo === FLX.PEDIDO;
       if (compra) montarCompra(); else if (pedido) montarPedidoNova(raiz); else montarSimples();
-      raiz.querySelector('#novaCriar').textContent = compra ? 'Enviar para Compras' : pedido ? 'Continuar para a lista' : 'Criar tarefa';
+      raiz.querySelector('#novaCriar').textContent = compra ? 'Enviar para Compras' : pedido ? 'Continuar para a lista' : cat.unidade ? 'Registrar ' + cat.nome.toLowerCase() : 'Criar tarefa';
+      var titJan = raiz.querySelector('.jan-cab b'); if (titJan) titJan.textContent = rotNova(cat.nome);
       var cab = raiz.querySelector('.jan-cab small');
       if (cab) cab.textContent = compra ? (nomeCondo(S.nova.condo) + ' · vai para Compras') : pedido ? (nomeCondo(S.nova.condo) + ' · cotação com fornecedores') : 'Fica na lista do condomínio escolhido';
       raiz.querySelector('#novaErro').hidden = true;
@@ -4882,7 +5018,10 @@ function abrirNova(opcoes) {
     };
     raiz.addEventListener('click', function (e) {
       var c = e.target.closest('.cat-op');
-      if (c && !c.disabled) { guardarItens(); S.nova.cat = c.getAttribute('data-cat'); montar(true); return; }
+      if (c && !c.disabled) { guardarItens(); S.nova.cat = c.getAttribute('data-cat'); S.nova.assunto = ''; S.nova.assuntoNovo = ''; montar(true); return; }
+      if (e.target.closest('#novaTrocarCat')) { raiz.querySelector('#novaCatLista').hidden = false; raiz.querySelector('#novaCatLinha').hidden = true; return; }
+      var ch = e.target.closest('[data-ass]');
+      if (ch) { lerCamposCat(raiz); var v = ch.getAttribute('data-ass'); S.nova.assunto = S.nova.assunto === v ? '' : v; montarSimples(); if (v === '__outro' && S.nova.assunto) { var ia = raiz.querySelector('#novaAssNovo'); if (ia) ia.focus(); } return; }
       var q = e.target.closest('[data-quando]');
       if (q) { guardarItens(); S.nova.quando = q.getAttribute('data-quando'); montarCompra(); if (S.nova.quando === 'Escolher') { var dt = raiz.querySelector('#cpData'); if (dt) { dt.focus(); try { dt.showPicker(); } catch (x) {} } } return; }
       var t = e.target.closest('[data-cptirar]');
@@ -4942,6 +5081,651 @@ function abrirNova(opcoes) {
     });
   });
 }
+/* ================= Categorias e assuntos (v1.23, SUG-0005) ================= */
+/* Faixa de categorias na lista, Ocorrência (bloco/unidade), assunto com "Outro…", Mudar categoria (master)
+   e, em Configurações: Categorias, Editar categoria, Assuntos, Editar assunto, Mover tarefas (com histórico e
+   "Mover de volta") e o que cada empresa parceira recebe. */
+var NOVA_ROT = { 'Manutenção': 'Nova manutenção', 'Ocorrência': 'Nova ocorrência', 'Aquisições': 'Nova aquisição', 'Pedido mensal': 'Novo pedido mensal', 'Inspeção': 'Nova inspeção', 'Programada': 'Nova programada' };
+function rotNova(nome) { return NOVA_ROT[nome] || 'Nova tarefa'; }
+function catsDaFaixa() {
+  var d = S.dados || {};
+  var lista = catalogoDaTela().filter(function (c) { return !c.emBreve; }).map(function (c) { return c.nome; });
+  (d.tarefas || []).forEach(function (t) { if (t.categoria && lista.indexOf(t.categoria) < 0) lista.push(t.categoria); });
+  return lista;
+}
+function faixaAtiva() { return S.visao !== 'concluidas' && catsDaFaixa().length > 1; }
+function contagemCat(nome) {
+  var p = S.dados && S.dados.parcial;
+  if (p && p.contagens) { var c = p.contagens[nome]; return c ? { n: c.abertas, u: c.urgentes } : { n: 0, u: 0 }; }
+  var ts = (S.dados.tarefas || []).filter(function (t) { return t.categoria === nome; });
+  return { n: ts.length, u: ts.filter(function (t) { return t.urgente; }).length };
+}
+function catDaTela(nome) { return catalogoDaTela().filter(function (c) { return c.nome === nome; })[0] || null; }
+function garantirCat() {
+  var cats = catsDaFaixa();
+  if (S.catUrl) {
+    var achou = catalogoDaTela().filter(function (c) { return c.codigo === S.catUrl; })[0];
+    S.catUrl = null;
+    if (achou && cats.indexOf(achou.nome) >= 0) { S.cat = achou.nome; guardarLocal('catLista', S.cat); }
+  }
+  if (S.dados && S.dados.parcial && S.dados.parcial.categoria) S.cat = S.cat || S.dados.parcial.categoria;
+  if (!S.cat) S.cat = lerLocal('catLista');
+  if (cats.indexOf(S.cat) < 0) S.cat = cats.filter(function (n) { return contagemCat(n).n > 0; })[0] || cats[0] || null;
+}
+function desenharCats() {
+  var el = $('cats'); if (!el) return;
+  garantirCat();
+  var ativa = faixaAtiva();
+  el.hidden = !ativa;
+  document.body.classList.toggle('com-cats', ativa);
+  var rotNovaTxt = ativa && S.cat ? rotNova(S.cat) : 'Nova tarefa';
+  var cat = ativa ? catDaTela(S.cat) : null;
+  var podeNaCat = cat && cat.cria !== false && condosDaCategoria(cat.nome).length;
+  if ($('btNovaTxt')) $('btNovaTxt').textContent = podeNaCat ? rotNovaTxt : 'Nova tarefa';
+  if (!ativa) { el.innerHTML = ''; return; }
+  el.innerHTML = '<div class="cats-rolo" id="catsRolo">' + catsDaFaixa().map(function (nome) {
+    var c = contagemCat(nome), info = catDaTela(nome);
+    return '<button class="cat-b" data-cat-faixa="' + esc(nome) + '" aria-pressed="' + (S.cat === nome) + '"' + (c.n ? '' : ' data-vazia="1"') + '>' +
+      '<span class="ci" aria-hidden="true">' + (ICO_CAT[(info && info.icone) || 'alerta'] || ICO_CAT.alerta) + '</span><span>' + esc(nome) + '</span>' +
+      '<span class="n">' + c.n + '</span>' + (c.u ? '<span class="cat-urg" aria-label="' + c.u + (c.u === 1 ? ' urgente' : ' urgentes') + '"></span>' : '') + '</button>';
+  }).join('') + '</div>';
+  var rolo = $('catsRolo');
+  var bordas = function () { el.classList.toggle('fim', rolo.scrollLeft + rolo.clientWidth >= rolo.scrollWidth - 4); el.classList.toggle('ini', rolo.scrollLeft > 4); };
+  rolo.addEventListener('scroll', bordas, { passive: true });
+  var sel = rolo.querySelector('[aria-pressed="true"]');
+  if (sel && sel.scrollIntoView && rolo.scrollWidth > rolo.clientWidth) { var x = sel.offsetLeft - 16; rolo.scrollLeft = Math.max(0, x); }
+  bordas();
+}
+function trocarCat(nome) {
+  if (nome === S.cat) return;
+  S.cat = nome; guardarLocal('catLista', nome);
+  try {
+    var info = catDaTela(nome), u = new URL(location.href);
+    if (info && info.codigo) u.searchParams.set('c', info.codigo); else u.searchParams.delete('c');
+    history.replaceState(null, '', u.toString());
+  } catch (e) {}
+  var p = S.dados && S.dados.parcial;
+  if (p && p.categoria !== nome) {
+    $('lista').innerHTML = '<div class="carregando">Carregando ' + esc(nome) + '…</div>';
+    desenharCats();
+    api('tarefas.inicio', { categoria: nome }).then(function (r) { if (r && r.ok) { S.dados = r; desenhar(); } else if (r) avisar(r.mensagem, true); });
+    return;
+  }
+  desenharCats(); desenharCondos(); desenharLista();
+}
+function textoUnidade(t) { return [t.bloco ? 'Bloco ' + t.bloco : '', t.unidade ? 'Unid. ' + t.unidade : ''].filter(Boolean).join(' · '); }
+
+/* ---------- Nova tarefa: assunto e campos de unidade ---------- */
+function htmlAssuntoNova(cat, estado) {
+  var ass = (cat && cat.assuntos) || [];
+  var propor = cat && cat.propor;
+  if (!ass.length) return ''; // categoria sem assuntos (Manutenção começa assim): o campo não aparece
+  var sel = estado.assunto || '';
+  return '<div class="bloco" style="gap:.4em"><span class="rot-campo" id="rotAss">Assunto' + (cat.assuntoObrig ? '' : ' · opcional') + '</span>' +
+    '<div class="chips-linha" role="radiogroup" aria-labelledby="rotAss">' +
+    ass.map(function (a) { return '<button type="button" class="chip-op" role="radio" data-ass="' + esc(a.codigo) + '" aria-pressed="' + (sel === a.codigo) + '" aria-checked="' + (sel === a.codigo) + '"' + (a.dica ? ' title="' + esc(a.dica) + '"' : '') + '>' + esc(a.nome) + '</button>'; }).join('') +
+    (propor ? '<button type="button" class="chip-op" role="radio" data-ass="__outro" aria-pressed="' + (sel === '__outro') + '" aria-checked="' + (sel === '__outro') + '">Outro…</button>' : '') + '</div>' +
+    (sel === '__outro' ? '<label class="sr" for="novaAssNovo">Nome do assunto</label><input class="campo" id="novaAssNovo" maxlength="40" autocomplete="off" placeholder="Nome do assunto" value="' + esc(estado.assuntoNovo || '') + '">' +
+      '<p class="dica-campo" style="margin:0">' + (S.dados.usuario.master ? 'O assunto fica como proposta em Configurações › Categorias e assuntos.' : 'O síndico recebe a proposta e decide se inclui. A tarefa fica sem assunto até lá.') + '</p>' : '') +
+    '</div>';
+}
+function htmlUnidadeNova(cat, estado) {
+  if (!cat || !cat.unidade) return '';
+  return '<div class="linha-campos"><label style="flex:1"><span class="rot-campo">Bloco</span><input class="campo" id="novaBloco" maxlength="20" autocomplete="off" value="' + esc(estado.bloco || '') + '"></label>' +
+    '<label style="flex:1"><span class="rot-campo">Unidade</span><input class="campo" id="novaUnid" maxlength="20" autocomplete="off" inputmode="text" value="' + esc(estado.unidade || '') + '"></label></div>';
+}
+function htmlEnvolvidosNova(cat, estado) {
+  if (!cat || !cat.unidade) return '';
+  return '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="novaEnv">Envolvidos · opcional</label><input class="campo" id="novaEnv" maxlength="300" autocomplete="off" placeholder="Ex.: morador da 42B, porteiro do turno" value="' + esc(estado.envolvidos || '') + '"></div>';
+}
+function lerCamposCat(raiz) {
+  var n = S.nova || {};
+  var g = function (id) { var el = raiz.querySelector(id); return el ? el.value : undefined; };
+  if (g('#novaAssNovo') !== undefined) n.assuntoNovo = g('#novaAssNovo');
+  if (g('#novaBloco') !== undefined) n.bloco = g('#novaBloco');
+  if (g('#novaUnid') !== undefined) n.unidade = g('#novaUnid');
+  if (g('#novaEnv') !== undefined) n.envolvidos = g('#novaEnv');
+}
+function dadosCatNova(raiz, cat) {
+  lerCamposCat(raiz);
+  var n = S.nova || {}, d = {};
+  if (n.assunto === '__outro') { if ((n.assuntoNovo || '').trim()) d.assuntoNovo = n.assuntoNovo.trim(); }
+  else if (n.assunto) d.assunto = n.assunto;
+  if (cat && cat.unidade) { d.bloco = n.bloco || ''; d.unidade = n.unidade || ''; d.envolvidos = n.envolvidos || ''; }
+  return d;
+}
+function validarCatNova(cat) {
+  var n = S.nova || {};
+  if (n.assunto === '__outro' && !(n.assuntoNovo || '').trim()) return 'Escreva o nome do assunto ou escolha um da lista.';
+  if (cat && cat.assuntoObrig && !n.assunto) return 'Escolha o assunto.';
+  return '';
+}
+
+/* ---------- Tarefa aberta: assunto e Mudar categoria ---------- */
+function htmlAssuntoDet(t) {
+  var p = t.pode || {};
+  if (!p.assunto) return '';
+  var ass = t.assuntosCat || [];
+  if (!ass.length) return '';
+  return '<div><label class="rotulo" for="selAss">Assunto</label><select class="campo" id="selAss"><option value="">Sem assunto</option>' +
+    ass.map(function (a) { return '<option value="' + esc(a.codigo) + '"' + (a.codigo === t.assunto ? ' selected' : '') + '>' + esc(a.nome) + '</option>'; }).join('') +
+    (t.podePropor ? '<option value="__outro">Outro… (propor)</option>' : '') + '</select></div>';
+}
+function mudarAssuntoDet(v) {
+  var t = S.det; if (!t) return;
+  if (v !== '__outro') { acaoDetalhe('mudarAssunto', { assunto: v }, function () { avisar(v ? 'Assunto salvo' : 'Assunto tirado'); }, $('selAss')); return; }
+  var h = '<form class="jan-corpo" id="formPropor"><label class="rot-campo" for="proporNome">Nome do assunto</label><input class="campo" id="proporNome" maxlength="40" autocomplete="off" required>' +
+    '<p class="dica-campo" style="margin:0">' + (S.dados.usuario.master ? 'Fica como proposta em Configurações › Categorias e assuntos.' : 'O síndico recebe a proposta e decide se inclui.') + '</p>' +
+    '<div class="jan-rodape"><button class="bt claro" type="button" data-acao="fecharJan">Cancelar</button><button class="bt" type="submit">Propor assunto</button></div></form>';
+  abrirJanela('Propor assunto', t.categoria, h, 'centro', function (raiz) {
+    raiz.querySelector('#proporNome').focus();
+    raiz.querySelector('#formPropor').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nome = raiz.querySelector('#proporNome').value.trim(); if (!nome) return;
+      fecharCamadas();
+      acaoDetalhe('mudarAssunto', { assuntoNovo: nome }, function () { avisar('Assunto proposto'); });
+    });
+  });
+  desenharDetalhe();
+}
+function abrirMudarCategoria() {
+  var t = S.det; if (!t || !t.categoriasPara) return;
+  var MC = { para: null, assunto: '', previa: null };
+  var opcoes = t.categoriasPara;
+  var desenharMC = function (raiz) {
+    var h = '<div class="jan-corpo"><p class="dica-campo" style="margin:0">Só você vê esta opção. A mudança fica registrada no follow-up da tarefa.</p><div class="cat-lista" role="radiogroup" aria-label="Categoria">';
+    opcoes.forEach(function (c) {
+      var atual = c.nome === t.categoria;
+      var sub = atual ? 'categoria atual' : c.interna ? 'interna' + (t.empresa && !c.recebe && t.empresa !== 'CARVALHO & ABREU' ? ' · ' + t.empresa + ' não usa esta categoria' : '') :
+        (!c.recebe ? t.empresa + ' não usa esta categoria' : 'compartilhada com ' + (c.empresas || []).join(', '));
+      var info = catDaTela(c.nome);
+      h += '<button type="button" class="cat-op" role="radio" data-mc="' + esc(c.codigo) + '" aria-checked="' + (MC.para === c.codigo) + '"' + (atual ? ' disabled' : '') + '>' +
+        '<span class="ci">' + (ICO_CAT[(info && info.icone) || 'alerta'] || ICO_CAT.alerta) + '</span><span class="cn"><b>' + esc(c.nome) + '</b> · ' + esc(sub) + '</span>' +
+        '<span class="ok"' + (MC.para === c.codigo ? '' : ' hidden') + '>' + IC.okAzul + '</span></button>';
+    });
+    h += '<div class="cat-op" aria-disabled="true" style="opacity:.62;background:var(--creme)"><span class="ci">' + ICO_CAT.carrinho + '</span><span class="cn"><b>Aquisições e Pedido mensal</b> · têm etapas próprias e não recebem tarefa de outra categoria</span></div></div>';
+    var pv = MC.previa;
+    if (MC.para) {
+      var catP = catDaTela(opcoes.filter(function (c) { return c.codigo === MC.para; })[0].nome);
+      var ass = (catP && catP.assuntos) || [];
+      if (ass.length) {
+        h += '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="mcAss">Assunto na categoria nova · opcional</label><select class="campo" id="mcAss"><option value="">Sem assunto (classificar depois)</option>' +
+          ass.map(function (a) { return '<option value="' + esc(a.codigo) + '"' + (MC.assunto === a.codigo ? ' selected' : '') + '>' + esc(a.nome) + '</option>'; }).join('') + '</select></div>';
+      }
+    }
+    if (pv) {
+      var linhas = [];
+      if (pv.semAcesso.length) linhas.push('Está com <b>' + esc(pv.semAcesso[0].nome) + '</b>, que não usa ' + esc(pv.para) + '. Ela passa para <b>você</b> como responsável e sai da lista dele.');
+      if (pv.trocaEmpresa.length) linhas.push('A ' + esc(pv.trocaEmpresa[0].empresa) + ' não atua em ' + esc(pv.para) + ': a tarefa passa para a Carvalho & Abreu' + (t.urgente ? ' e sai das urgentes' : '') + '.');
+      if (!MC.assunto && t.assunto) linhas.push('O assunto é escolhido de novo (fica em branco se você não escolher).');
+      if (linhas.length) h += '<div class="caixa-aviso">' + linhas.map(function (x) { return '<p>' + x + '</p>'; }).join('') + '</div>';
+    }
+    h += '<span class="erro-txt" id="mcErro" role="alert" hidden></span><div class="jan-rodape"><button class="bt claro" type="button" data-acao="fecharJan">Cancelar</button>' +
+      '<button class="bt" type="button" id="mcOk"' + (MC.para ? '' : ' disabled') + '>' + (MC.para ? 'Mover para ' + esc(opcoes.filter(function (c) { return c.codigo === MC.para; })[0].nome) : 'Escolha a categoria') + '</button></div></div>';
+    raiz.querySelector('.jan-corpo').outerHTML = h;
+  };
+  var previa = function (raiz) {
+    api('tarefas.lotePrevia', { ids: [t.id], para: MC.para, paraAssunto: MC.assunto }).then(function (r) {
+      if (!r.ok) { avisar(r.mensagem, true); return; }
+      MC.previa = r; desenharMC(raiz);
+    });
+  };
+  abrirJanela('Mudar categoria', t.titulo, '<div class="jan-corpo"></div>', 'centro', function (raiz) {
+    desenharMC(raiz);
+    raiz.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-mc]');
+      if (b && !b.disabled) { MC.para = b.getAttribute('data-mc'); MC.assunto = ''; MC.previa = null; desenharMC(raiz); previa(raiz); return; }
+      if (e.target.closest('#mcOk') && MC.para) {
+        var bt = raiz.querySelector('#mcOk');
+        umaVez('mudarCat:' + t.id, bt, 'Movendo…', function () { return api('tarefas.loteMover', { ids: [t.id], para: MC.para, paraAssunto: MC.assunto }); }).then(function (r) {
+          if (!r || r.ignorado) return;
+          if (!r.ok) { var er = raiz.querySelector('#mcErro'); er.textContent = r.mensagem; er.hidden = false; return; }
+          fecharCamadas();
+          var nome = opcoes.filter(function (c) { return c.codigo === MC.para; })[0].nome;
+          avisar('Tarefa movida para ' + nome);
+          if (faixaAtiva()) { S.cat = nome; guardarLocal('catLista', nome); }
+          abrirTarefa(t.id, true); recarregar();
+        });
+      }
+    });
+    raiz.addEventListener('change', function (e) { if (e.target.id === 'mcAss') { MC.assunto = e.target.value; previa(raiz); } });
+  });
+}
+
+/* ---------- Configurações › Categorias e assuntos, Mover tarefas, Empresas ---------- */
+var CT_ICONES_NOME = { alerta: 'Alerta', ferramenta: 'Ferramenta', predio: 'Prédio', pessoas: 'Pessoas', documento: 'Documento', repetir: 'Repetir', inspecao: 'Inspeção', carrinho: 'Carrinho', lista: 'Lista' };
+function ctCat(cod) { return ((CF.cats && CF.cats.categorias) || []).filter(function (c) { return c.codigo === cod; })[0] || null; }
+function ctAss(cod) { var a = null; ((CF.cats && CF.cats.categorias) || []).forEach(function (c) { c.assuntos.forEach(function (x) { if (x.codigo === cod) a = x; }); }); return a; }
+function ctCarregar() {
+  return api('tarefas.catAdmin').then(function (r) {
+    if (!CF) return;
+    CF.cats = r.ok ? r : { erro: r.mensagem, categorias: [] };
+    if (CF.vista && /^(categorias|categoria|assuntos|assunto|novaCat|mover|empresa)/.test(CF.vista)) desenharCfg();
+    else if (CF.vista === 'inicio') desenharCfg();
+  });
+}
+function ctResumoInicio() {
+  var c = CF.cats;
+  if (!c) return 'Carregando…';
+  if (c.erro) return c.erro;
+  var uso = c.categorias.filter(function (x) { return !x.emBreve && !x.oculta; }).length;
+  var breve = c.categorias.filter(function (x) { return x.emBreve; }).length;
+  var props = 0; c.categorias.forEach(function (x) { props += x.propostas.length; });
+  return uso + ' em uso · ' + breve + ' em breve' + (props ? ' · ' + props + (props === 1 ? ' proposta de assunto' : ' propostas de assunto') : '');
+}
+function ctSelo(c) {
+  if (c.emBreve) return '<span class="ct-selo breve">Em breve</span>';
+  if (c.oculta) return '<span class="ct-selo">Oculta</span>';
+  if (c.fluxo !== 'Simples') return '<span class="ct-selo">Interna</span>';
+  return c.interna ? '<span class="ct-selo">Interna</span>' : '<span class="ct-selo comp">Compartilhada</span>';
+}
+function ctSubCat(c) {
+  if (c.emBreve) return c.fluxo + ' · ' + (c.explicacao || 'chega numa próxima fase');
+  var p = [];
+  if (c.fluxo === 'Simples' && !c.interna) p.push('com ' + c.empresas.join(', '));
+  if (c.fluxo !== 'Simples') p.push('fluxo ' + c.fluxo);
+  var na = c.assuntos.filter(function (a) { return a.estado === 'Ativo'; }).length;
+  if (na) p.push(na + (na === 1 ? ' assunto' : ' assuntos'));
+  p.push(c.abertas + (c.abertas === 1 ? ' aberta' : ' abertas'));
+  if (c.concluidas) p.push(c.concluidas + (c.concluidas === 1 ? ' concluída' : ' concluídas'));
+  return p.join(' · ');
+}
+function ctIco(nome) { return (ICO_CAT[nome] || ICO_CAT.alerta).replace('width="16" height="16"', 'width="18" height="18"'); }
+function ctHtmlCategorias() {
+  var h = cfHtmlCab('Categorias e assuntos');
+  var c = CF.cats;
+  if (!c) return h + '<p class="vazio">Carregando…</p>';
+  if (c.erro) return h + '<p class="vazio">' + esc(c.erro) + '</p>';
+  var uso = c.categorias.filter(function (x) { return !x.emBreve && !x.oculta; });
+  var props = []; c.categorias.forEach(function (x) { x.propostas.forEach(function (p) { props.push({ c: x, p: p }); }); });
+  if (props.length) {
+    h += '<span class="rotulo">Propostas de assunto</span><div class="mp-lista">' + props.map(function (x) {
+      return cfLinha('data-ct-ir="assuntos:' + esc(x.c.codigo) + '"', ctIco(x.c.icone), '“' + x.p.nome + '” em ' + x.c.nome, x.p.autor + (x.p.idTarefa ? ' · ' + x.p.idTarefa : ''), '<span class="selo estatico">!</span>');
+    }).join('') + '</div>';
+  }
+  h += '<span class="rotulo">Em uso · na ordem da faixa</span><div class="mp-lista">' + uso.map(function (x, k) {
+    return '<div class="ct-lin"><button class="mp-lin" data-ct-ir="categoria:' + esc(x.codigo) + '"><span class="ico">' + ctIco(x.icone) + '</span><span class="tx"><b>' + esc(x.nome) + ' ' + ctSelo(x) + '</b><small>' + esc(ctSubCat(x)) + '</small></span>' + IC.chevD + '</button>' +
+      '<div class="ct-ord"><button data-ct-ordem="' + esc(x.codigo) + '|-1" aria-label="Subir ' + esc(x.nome) + '"' + (k ? '' : ' disabled') + '>' + IC.cima + '</button><button data-ct-ordem="' + esc(x.codigo) + '|1" aria-label="Descer ' + esc(x.nome) + '"' + (k < uso.length - 1 ? '' : ' disabled') + '>' + IC.baixo + '</button></div></div>';
+  }).join('') + '</div>';
+  var breve = c.categorias.filter(function (x) { return x.emBreve; });
+  if (breve.length) h += '<span class="rotulo">Em breve · só você vê</span><div class="mp-lista">' + breve.map(function (x) {
+    return cfLinha('data-ct-ir="categoria:' + esc(x.codigo) + '"', ctIco(x.icone), x.nome, ctSubCat(x), ctSelo(x));
+  }).join('') + '</div>';
+  var ocultas = c.categorias.filter(function (x) { return x.oculta && !x.emBreve; });
+  if (ocultas.length) h += '<span class="rotulo">Ocultas</span><div class="mp-lista">' + ocultas.map(function (x) {
+    return cfLinha('data-ct-ir="categoria:' + esc(x.codigo) + '"', ctIco(x.icone), x.nome, ctSubCat(x), ctSelo(x));
+  }).join('') + '</div>';
+  h += '<div class="ct-bts"><button class="bt claro" data-ct-ir="mover">Mover tarefas em lote</button><button class="bt" data-ct-ir="novaCat">+ Nova categoria</button></div>';
+  h += '<p class="dica-campo cf-nota">Quem usa cada categoria fica em <button class="cf-inline" data-acao="perfis">Perfis de acesso</button>; o que cada empresa recebe, em <button class="cf-inline" data-cf-ir="empresas">Empresas parceiras</button>.</p>';
+  return h;
+}
+function ctForm(cod) {
+  CF.form = CF.form || {};
+  var k = 'cat:' + (cod || 'nova');
+  if (!CF.form[k]) {
+    var c = cod ? ctCat(cod) : null;
+    CF.form[k] = c ? { nome: c.nome, explicacao: c.explicacao, icone: c.icone, assuntoObrig: c.assuntoObrig, unidade: c.unidade, discreto: c.discreto, estado: c.oculta ? 'Oculta' : 'Ativa' }
+      : { nome: '', explicacao: '', icone: 'alerta', assuntoObrig: false, unidade: false, discreto: false, estado: 'Ativa' };
+  }
+  return CF.form[k];
+}
+function ctSw(id, on, rot, sub, desab) {
+  return '<div class="cf-item"><div class="cf-tx"><b>' + esc(rot) + '</b>' + (sub ? '<small>' + esc(sub) + '</small>' : '') + '</div>' +
+    '<button class="pf-sw" role="switch" data-ct-sw="' + id + '" aria-checked="' + !!on + '" aria-label="' + esc(rot) + '"' + (desab ? ' disabled' : '') + '></button></div>';
+}
+function ctHtmlCategoria(cod) {
+  var c = cod ? ctCat(cod) : null;
+  if (cod && !c) return cfHtmlCab('Categoria') + '<p class="vazio">Categoria não encontrada.</p>';
+  var f = ctForm(cod);
+  var simples = !c || c.fluxo === 'Simples';
+  var h = '<div class="cf-cab"><button class="cf-voltar" data-ct-ir="categorias">' + IC.voltar + '<span>Categorias</span></button><h2>' + esc(c ? c.nome : 'Nova categoria') + '</h2>' +
+    (c ? '<small class="ct-sub">' + ctSelo(c) + ' ' + esc(c.abertas + (c.abertas === 1 ? ' aberta' : ' abertas') + ' · ' + c.concluidas + (c.concluidas === 1 ? ' concluída' : ' concluídas')) + '</small>' : '') + '</div>';
+  h += '<div class="cf-sec"><div class="cf-item"><div class="cf-tx"><label for="ctNome"><b>Nome</b></label>' + (c ? '<small>Corrigir o nome (ex.: erro de digitação) não mexe nas tarefas: elas passam a mostrar o nome novo, e quem usa recebe um aviso no sininho.</small>' : '') + '</div>' +
+    '<input class="cf-in" id="ctNome" data-ct-campo="nome" maxlength="30" value="' + esc(f.nome) + '" placeholder="Ex.: Reformas"></div>' +
+    '<div class="cf-item"><div class="cf-tx"><label for="ctExpl"><b>Explicação curta</b></label><small>Aparece embaixo do nome em Nova tarefa.</small></div><input class="cf-in" id="ctExpl" data-ct-campo="explicacao" maxlength="60" value="' + esc(f.explicacao) + '"></div></div>';
+  h += '<span class="rotulo">Ícone</span><div class="cf-chips ct-icones">' + ((CF.cats && CF.cats.icones) || Object.keys(CT_ICONES_NOME)).map(function (i) {
+    return '<button class="chip" data-ct-icone="' + esc(i) + '" aria-pressed="' + (f.icone === i) + '" aria-label="' + esc(CT_ICONES_NOME[i] || i) + '">' + ctIco(i) + '</button>';
+  }).join('') + '</div>';
+  if (simples) {
+    h += '<span class="rotulo">Formulário</span><div class="cf-sec">' +
+      ctSw('assuntoObrig', f.assuntoObrig, 'Assunto obrigatório ao criar', f.assuntoObrig ? 'Ligado: quem cria precisa escolher um assunto' : 'Desligado: a pessoa pode deixar sem assunto') +
+      ctSw('unidade', f.unidade, 'Bloco, unidade e envolvidos', 'Campos extras para registros com moradores') +
+      ctSw('discreto', f.discreto, 'Aviso discreto', 'O push mostra só o condomínio e a unidade, nunca o título') + '</div>';
+  }
+  if (c) {
+    h += '<span class="rotulo">Quem tem acesso</span><div class="cf-sec"><div class="cf-item ro"><div class="cf-tx"><b>Perfis</b><small>' + esc(c.perfis.join(', ')) + '</small></div><button class="bt-link" data-acao="perfis" style="align-self:flex-start">Perfis de acesso</button></div>' +
+      '<div class="cf-item ro"><div class="cf-tx"><b>Empresas parceiras</b><small>' + esc(c.empresas.length ? c.empresas.join(', ') : 'Interna · nenhuma empresa parceira') + '</small></div>' + (simples ? '<button class="bt-link" data-cf-ir="empresas" style="align-self:flex-start">Empresas parceiras</button>' : '') + '</div></div>' +
+      '<p class="dica-campo cf-nota">O acesso é definido nos perfis e no que cada empresa recebe.</p>';
+    if (simples) {
+      var ativos = c.assuntos.filter(function (a) { return a.estado === 'Ativo'; });
+      h += '<span class="rotulo">Assuntos</span>' + cfLinha('data-ct-ir="assuntos:' + esc(c.codigo) + '"', IC.listaP || ICO_CAT.lista, ativos.length ? ativos.length + (ativos.length === 1 ? ' ativo' : ' ativos') : 'Sem assuntos',
+        ativos.length ? ativos.slice(0, 3).map(function (a) { return a.nome; }).join(', ') + (ativos.length > 3 ? '…' : '') : 'Criar assuntos para separar as tarefas desta categoria', c.propostas.length ? '<span class="selo estatico">' + c.propostas.length + '</span>' : '');
+    }
+    h += '<p class="dica-campo cf-nota">Fluxo: <b>' + esc(c.fluxo) + '</b> · escolhido ao criar; não muda depois.</p>';
+  } else h += '<p class="dica-campo cf-nota">Fluxo: <b>Simples</b> (como Manutenção e Ocorrência). Só você usa até ligar a categoria nos Perfis de acesso.</p>';
+  h += '<span class="erro-txt" id="ctErro" role="alert" hidden></span><div class="ct-bts">';
+  if (c && simples && !c.emBreve) {
+    if (!c.abertas && !c.concluidas) h += '<button class="bt claro" data-ct-acao="excluirCat" data-ct-ref="' + esc(c.codigo) + '">Excluir</button>';
+    h += '<button class="bt claro" data-ct-acao="ocultarCat" data-ct-ref="' + esc(c.codigo) + '">' + (f.estado === 'Oculta' ? 'Voltar a usar' : 'Ocultar') + '</button>';
+  }
+  h += '<button class="bt" data-ct-acao="salvarCat" data-ct-ref="' + esc(c ? c.codigo : '') + '">' + (c ? 'Salvar' : 'Criar categoria') + '</button></div>';
+  return h;
+}
+function ctHtmlAssuntos(cod) {
+  var c = ctCat(cod);
+  if (!c) return cfHtmlCab('Assuntos') + '<p class="vazio">Categoria não encontrada.</p>';
+  var h = '<div class="cf-cab"><button class="cf-voltar" data-ct-ir="categoria:' + esc(cod) + '">' + IC.voltar + '<span>' + esc(c.nome) + '</span></button><h2>Assuntos</h2><small class="ct-sub">' + esc(c.nome) + ' · use as setas para ordenar</small></div>';
+  c.propostas.forEach(function (p) {
+    h += '<div class="ct-prop"><div><b>Proposta: “' + esc(p.nome) + '”</b><small>' + esc(p.autor) + ' escolheu Outro…' + (p.idTarefa ? ' em ' + esc(p.idTarefa) : '') + '</small></div>' +
+      '<div class="ct-bts"><button class="bt claro" data-ct-acao="recusarProp" data-ct-ref="' + esc(p.id) + '">Recusar</button><button class="bt" data-ct-acao="incluirProp" data-ct-ref="' + esc(p.id) + '">Incluir</button></div></div>';
+  });
+  var ativos = c.assuntos.filter(function (a) { return a.estado === 'Ativo'; });
+  h += '<span class="rotulo">Ativos · na ordem do formulário</span><div class="mp-lista">' + (ativos.length ? ativos.map(function (a, k) {
+    return '<div class="ct-lin"><button class="mp-lin" data-ct-ir="assunto:' + esc(a.codigo) + '"><span class="tx"><b>' + esc(a.nome) + '</b><small>' + a.abertas + (a.abertas === 1 ? ' aberta' : ' abertas') + ' · ' + a.concluidas + (a.concluidas === 1 ? ' concluída' : ' concluídas') + (a.dica ? ' · ' + esc(a.dica) : '') + '</small></span>' + IC.chevD + '</button>' +
+      '<div class="ct-ord"><button data-ct-ordemass="' + esc(a.codigo) + '|-1" aria-label="Subir ' + esc(a.nome) + '"' + (k ? '' : ' disabled') + '>' + IC.cima + '</button><button data-ct-ordemass="' + esc(a.codigo) + '|1" aria-label="Descer ' + esc(a.nome) + '"' + (k < ativos.length - 1 ? '' : ' disabled') + '>' + IC.baixo + '</button></div></div>';
+  }).join('') : '<p class="dica-campo" style="margin:0">Nenhum assunto ainda. ' + esc(c.nome) + ' funciona sem assunto até você criar o primeiro.</p>') + '</div>';
+  if (c.semAssunto) h += '<div class="ct-prop sem"><div><b>Sem assunto</b><small>' + c.semAssunto + (c.semAssunto === 1 ? ' aberta' : ' abertas') + ' sem assunto</small></div><button class="bt claro" data-ct-ir="mover:' + esc(c.codigo) + ':sem">Classificar</button></div>';
+  var ocultos = c.assuntos.filter(function (a) { return a.estado !== 'Ativo'; });
+  if (ocultos.length) h += '<span class="rotulo">Ocultos e substituídos · não aparecem para criar</span><div class="mp-lista">' + ocultos.map(function (a) {
+    return '<div class="ct-lin"><button class="mp-lin" data-ct-ir="assunto:' + esc(a.codigo) + '"><span class="tx"><b>' + esc(a.nome) + ' <span class="ct-selo">' + (a.estado === 'Aposentado' ? 'Substituído' : 'Oculto') + '</span></b><small>' + (a.substituidoPor ? 'virou ' + esc(a.substituidoPor) + ' · ' : '') + (a.abertas + a.concluidas) + ' tarefas</small></span>' + IC.chevD + '</button>' +
+      (a.estado === 'Oculto' ? '<button class="bt claro ct-mini" data-ct-acao="reativarAss" data-ct-ref="' + esc(a.codigo) + '">Reativar</button>' : '') + '</div>';
+  }).join('') + '</div>';
+  var na = CF.novoAss || { nome: '', dica: '' };
+  h += '<span class="rotulo">Novo assunto</span><div class="cf-sec"><div class="cf-item"><div class="linha-campos" style="flex-wrap:wrap"><label style="flex:1 1 12em"><span class="rot-campo">Nome</span><input class="cf-in" id="ctAssNome" data-ct-novo="nome" maxlength="40" value="' + esc(na.nome) + '"></label>' +
+    '<label style="flex:2 1 14em"><span class="rot-campo">Dica para quem cria · opcional</span><input class="cf-in" id="ctAssDica" data-ct-novo="dica" maxlength="80" value="' + esc(na.dica) + '"></label>' +
+    '<button class="bt" data-ct-acao="novoAss" data-ct-ref="' + esc(c.codigo) + '">Incluir</button></div></div></div>';
+  h += '<span class="erro-txt" id="ctErro" role="alert" hidden></span><div class="ct-bts"><button class="bt claro" data-ct-ir="mover:' + esc(c.codigo) + '">Mover tarefas entre assuntos</button></div>';
+  return h;
+}
+function ctHtmlAssunto(cod) {
+  var a = ctAss(cod), c = null;
+  ((CF.cats && CF.cats.categorias) || []).forEach(function (x) { if (x.assuntos.indexOf(a) >= 0) c = x; });
+  if (!a || !c) return cfHtmlCab('Assunto') + '<p class="vazio">Assunto não encontrado.</p>';
+  CF.form = CF.form || {};
+  var f = CF.form['ass:' + cod] = CF.form['ass:' + cod] || { nome: a.nome, dica: a.dica, novo: '', levar: true, conf: false };
+  var n = a.abertas + a.concluidas;
+  var h = '<div class="cf-cab"><button class="cf-voltar" data-ct-ir="assuntos:' + esc(c.codigo) + '">' + IC.voltar + '<span>Assuntos de ' + esc(c.nome) + '</span></button><h2>' + esc(a.nome) + '</h2><small class="ct-sub">' + esc(c.nome) + ' · ' + n + (n === 1 ? ' tarefa' : ' tarefas') + '</small></div>';
+  if (a.estado === 'Aposentado') return h + '<p class="dica-campo cf-nota">Substituído por <b>' + esc(a.substituidoPor) + '</b>. Fica só como histórico das tarefas que continuaram com ele.</p>';
+  h += '<div class="cf-sec"><div class="cf-item"><div class="cf-tx"><label for="ctANome"><b>Nome</b></label><small>Renomear é para corrigir o nome (ex.: erro de digitação): as tarefas passam a mostrar o nome novo.</small></div><input class="cf-in" id="ctANome" data-ct-acampo="nome" data-ct-ref="' + esc(cod) + '" maxlength="40" value="' + esc(f.nome) + '"></div>' +
+    '<div class="cf-item"><div class="cf-tx"><label for="ctADica"><b>Dica para quem cria</b><small>opcional</small></label></div><input class="cf-in" id="ctADica" data-ct-acampo="dica" data-ct-ref="' + esc(cod) + '" maxlength="80" value="' + esc(f.dica) + '"></div></div>';
+  h += '<span class="erro-txt" id="ctErro" role="alert" hidden></span><div class="ct-bts"><button class="bt" data-ct-acao="salvarAss" data-ct-ref="' + esc(cod) + '">Salvar</button></div>';
+  h += '<span class="rotulo">Substituir por um assunto novo</span><div class="cf-sec"><div class="cf-item"><div class="cf-tx"><small>Para quando o sentido muda: cria um assunto novo e aposenta este. Você escolhe se as ' + n + ' tarefas vão junto ou ficam no antigo, como histórico.</small></div>' +
+    '<label><span class="rot-campo">Nome do novo</span><input class="cf-in" id="ctANovo" data-ct-acampo="novo" data-ct-ref="' + esc(cod) + '" maxlength="40" value="' + esc(f.novo) + '"></label>' +
+    (n ? '<button class="chave" role="switch" data-ct-levar="' + esc(cod) + '" aria-checked="' + f.levar + '"><i aria-hidden="true"></i>Levar as ' + n + (n === 1 ? ' tarefa' : ' tarefas') + ' para o novo</button>' : '') +
+    (f.conf ? '<div class="caixa-aviso"><p>Criar “' + esc(f.novo) + '” e aposentar “' + esc(a.nome) + '”' + (n ? (f.levar ? ', levando as ' + n + ' tarefas (com histórico e Mover de volta).' : '; as tarefas ficam no antigo.') : '.') + '</p></div>' +
+      '<div class="ct-bts"><button class="bt claro" data-ct-acao="cancelarSubst" data-ct-ref="' + esc(cod) + '">Cancelar</button><button class="bt" data-ct-acao="substituirAss" data-ct-ref="' + esc(cod) + '">Substituir</button></div>'
+      : '<button class="bt claro" data-ct-acao="revisarSubst" data-ct-ref="' + esc(cod) + '" style="align-self:flex-start">Revisar substituição</button>') + '</div></div>';
+  h += '<span class="rotulo">' + (a.estado === 'Oculto' ? 'Oculto' : 'Ocultar') + '</span><div class="cf-sec"><div class="cf-item"><div class="cf-tx"><small>' + (a.estado === 'Oculto' ? 'Não aparece para criar. As tarefas continuam com este assunto.' : 'Some do formulário de nova tarefa. As ' + n + ' tarefas continuam com este assunto e aparecem nos filtros.') + '</small></div>' +
+    '<div class="ct-bts" style="justify-content:flex-start"><button class="bt claro" data-ct-acao="' + (a.estado === 'Oculto' ? 'reativarAss' : 'ocultarAss') + '" data-ct-ref="' + esc(cod) + '">' + (a.estado === 'Oculto' ? 'Reativar' : 'Ocultar assunto') + '</button>' +
+    (!n ? '<button class="bt claro" data-ct-acao="excluirAss" data-ct-ref="' + esc(cod) + '">Excluir</button>' : '') + '</div></div></div>';
+  return h;
+}
+/* Mover tarefas (lote) */
+function ctMv() {
+  if (!CF.mv) CF.mv = { de: '', deAss: '', para: '', paraAss: '', status: 'abertas', condo: 'todos', lista: null, marcadas: {}, previa: null, historico: null };
+  return CF.mv;
+}
+function ctSimples() { return ((CF.cats && CF.cats.categorias) || []).filter(function (c) { return c.fluxo === 'Simples' && !c.emBreve; }); }
+function ctOpsCat(sel, vazio) {
+  return (vazio ? '<option value="">' + esc(vazio) + '</option>' : '') + ctSimples().map(function (c) { return '<option value="' + esc(c.codigo) + '"' + (c.codigo === sel ? ' selected' : '') + '>' + esc(c.nome) + (c.oculta ? ' (oculta)' : '') + '</option>'; }).join('');
+}
+function ctOpsAss(cod, sel, comSem, rotTodos) {
+  var c = ctCat(cod); if (!c) return '';
+  return '<option value="">' + esc(rotTodos) + '</option>' + (comSem ? '<option value="sem"' + (sel === 'sem' ? ' selected' : '') + '>Sem assunto</option>' : '') +
+    c.assuntos.filter(function (a) { return a.estado !== 'Aposentado' || !comSem; }).map(function (a) { return '<option value="' + esc(a.codigo) + '"' + (a.codigo === sel ? ' selected' : '') + '>' + esc(a.nome) + '</option>'; }).join('');
+}
+function ctHtmlMover() {
+  var m = ctMv();
+  var h = '<div class="cf-cab"><button class="cf-voltar" data-ct-ir="categorias">' + IC.voltar + '<span>Categorias</span></button><h2>Mover tarefas</h2><small class="ct-sub">Entre categorias ou assuntos · fica tudo no histórico</small></div>';
+  if (!CF.cats || CF.cats.erro) return h + '<p class="vazio">' + esc((CF.cats && CF.cats.erro) || 'Carregando…') + '</p>';
+  var condos = (S.dados && S.dados.condos) || [];
+  h += '<div class="cf-sec"><div class="cf-item"><div class="grade2"><div><label class="rot-campo" for="mvDe">De</label><select class="cf-in" id="mvDe" data-mv="de">' + ctOpsCat(m.de, 'Escolha a categoria') + '</select></div>' +
+    (m.de ? '<div><label class="rot-campo" for="mvDeAss">Assunto</label><select class="cf-in" id="mvDeAss" data-mv="deAss">' + ctOpsAss(m.de, m.deAss, true, 'Todos os assuntos') + '</select></div>' : '') + '</div></div>' +
+    '<div class="cf-item"><div class="grade2"><div><label class="rot-campo" for="mvPara">Para</label><select class="cf-in" id="mvPara" data-mv="para">' + ctOpsCat(m.para, 'Escolha a categoria') + '</select></div>' +
+    (m.para ? '<div><label class="rot-campo" for="mvParaAss">Assunto</label><select class="cf-in" id="mvParaAss" data-mv="paraAss">' + ctOpsAss(m.para, m.paraAss, false, m.para === m.de ? 'Manter o assunto' : 'Sem assunto') + '</select></div>' : '') + '</div></div></div>';
+  h += '<div class="ct-filtros"><div class="chips-linha" role="group" aria-label="Situação">' + [['todas', 'Abertas e concluídas'], ['abertas', 'Só abertas']].map(function (x) {
+    return '<button class="chip-op" data-mv-status="' + x[0] + '" aria-pressed="' + (m.status === x[0]) + '">' + x[1] + '</button>'; }).join('') + '</div>' +
+    '<label class="sr" for="mvCondo">Condomínio</label><select class="cf-in ct-condo" id="mvCondo" data-mv="condo"><option value="todos">Todos os condomínios</option>' + condos.map(function (c) { return '<option value="' + esc(c.codigo) + '"' + (m.condo === c.codigo ? ' selected' : '') + '>' + esc(c.nome) + '</option>'; }).join('') + '</select></div>';
+  if (!m.de) h += '<p class="dica-campo cf-nota">Escolha de onde as tarefas saem para ver a lista.</p>';
+  else if (!m.lista) h += '<p class="vazio">Carregando tarefas…</p>';
+  else {
+    var ts = m.lista.tarefas, nm = Object.keys(m.marcadas).filter(function (k) { return m.marcadas[k]; }).length;
+    var todas = ts.length && ts.every(function (t) { return m.marcadas[t.id]; });
+    h += '<div class="ct-sel"><button class="chave" role="switch" data-mv-todas="1" aria-checked="' + todas + '"' + (ts.length ? '' : ' disabled') + '><i aria-hidden="true"></i>Selecionar todas · ' + ts.length + '</button><b>' + nm + (nm === 1 ? ' marcada' : ' marcadas') + '</b></div>';
+    h += '<div class="ct-tarefas">' + (ts.length ? ts.map(function (t) {
+      return '<label class="ct-t"><input type="checkbox" data-mv-t="' + esc(t.id) + '"' + (m.marcadas[t.id] ? ' checked' : '') + '><span><b>' + esc(t.titulo) + '</b><small>' + esc(nomeCondo(t.condo) + ' · ' + (t.aberta ? 'aberta' : 'concluída') + ' · criada por ' + t.criadoPor + (t.assuntoNome ? ' · ' + t.assuntoNome : '') + (t.empresa !== 'CARVALHO & ABREU' ? ' · ' + t.empresa : '')) + '</small></span></label>';
+    }).join('') : '<p class="dica-campo" style="margin:0">Nenhuma tarefa com esses filtros.</p>') + (m.lista.total > ts.length ? '<p class="dica-campo">Mostrando ' + ts.length + ' de ' + m.lista.total + '. Use os filtros para afinar.</p>' : '') + '</div>';
+    var pv = m.previa;
+    if (pv) {
+      h += '<div class="ct-conf"><b>Mover ' + pv.total + (pv.total === 1 ? ' tarefa' : ' tarefas') + ' para ' + esc(pv.para) + (pv.paraAssunto ? ' › ' + esc(pv.paraAssunto) : '') + '?</b>' +
+        '<p>' + [pv.abertas ? pv.abertas + (pv.abertas === 1 ? ' aberta' : ' abertas') : '', pv.concluidas ? pv.concluidas + (pv.concluidas === 1 ? ' concluída' : ' concluídas') : ''].filter(Boolean).join(' e ') + ', em ' + pv.condos + (pv.condos === 1 ? ' condomínio' : ' condomínios') + '.</p>' +
+        '<p>Nada se perde: follow-ups, fotos, anexos e prazos continuam iguais. Cada tarefa ganha uma linha no follow-up: “Categoria: ' + esc(pv.de.join(', ')) + ' → ' + esc(pv.para) + '”.</p>' +
+        (pv.semAcesso.length ? '<p>' + pv.semAcesso.length + (pv.semAcesso.length === 1 ? ' tarefa está com ' : ' tarefas estão com ') + '<b>' + esc(pv.semAcesso.map(function (x) { return x.nome; }).filter(function (x, i, a) { return a.indexOf(x) === i; }).join(', ')) + '</b>, que não usa ' + esc(pv.para) + ': passa' + (pv.semAcesso.length === 1 ? '' : 'm') + ' para <b>você</b> como responsável.</p>' : '') +
+        (pv.trocaEmpresa.length ? '<p>' + pv.trocaEmpresa.length + (pv.trocaEmpresa.length === 1 ? ' tarefa é' : ' tarefas são') + ' de empresa que não atua em ' + esc(pv.para) + ': passa' + (pv.trocaEmpresa.length === 1 ? '' : 'm') + ' para a Carvalho & Abreu.</p>' : '') +
+        (pv.assuntoEmBranco ? '<p>O assunto de ' + pv.assuntoEmBranco + (pv.assuntoEmBranco === 1 ? ' tarefa fica' : ' tarefas fica') + ' em branco para você classificar.</p>' : '') +
+        (pv.semMudanca ? '<p>' + pv.semMudanca + ' já estão assim e ficam como estão.</p>' : '') +
+        '<div class="ct-bts"><button class="bt claro" data-ct-acao="cancelarLote">Cancelar</button><button class="bt" data-ct-acao="moverLote"' + (pv.total ? '' : ' disabled') + '>Mover ' + pv.total + (pv.total === 1 ? ' tarefa' : ' tarefas') + '</button></div></div>';
+    } else h += '<div class="ct-bts"><button class="bt" data-ct-acao="revisarLote"' + (nm && m.para ? '' : ' disabled') + '>' + (!m.para ? 'Escolha o destino' : 'Revisar e mover ' + nm + (nm === 1 ? ' tarefa' : ' tarefas')) + '</button></div>';
+  }
+  h += '<span class="erro-txt" id="ctErro" role="alert" hidden></span>';
+  h += '<span class="rotulo">Histórico de mudanças · tudo fica registrado</span><div class="ges-hist ct-hist">' + (!m.historico ? '<p class="dica-campo" style="margin:0">Carregando…</p>' : m.historico.length ? m.historico.map(function (x) {
+    var dt = x.em ? new Date(x.em) : null;
+    var q = dt ? dt.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }) + ' ' + dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : '';
+    return '<div class="ct-h"><p><b>' + esc(x.tipo) + '</b> · ' + esc(x.resumo) + (x.qtd ? ' · ' + x.qtd + (x.qtd === 1 ? ' tarefa' : ' tarefas') : '') + '<br><small>' + esc(q + ' · ' + x.quem) + (x.desfeita ? ' · desfeita' : '') + '</small></p>' +
+      (x.podeDesfazer ? '<button class="bt claro ct-mini" data-ct-acao="desfazerLote" data-ct-ref="' + esc(x.id) + '">' + (CF.desfazer === x.id ? 'Confirmar' : 'Mover de volta') + '</button>' : '') + '</div>';
+  }).join('') : '<p class="dica-campo" style="margin:0">Nenhuma mudança ainda.</p>') + '</div>';
+  return h;
+}
+function ctMvListar() {
+  var m = ctMv();
+  m.lista = null; m.previa = null; m.marcadas = {};
+  if (!m.de) { desenharCfg(); return; }
+  desenharCfg();
+  api('tarefas.loteListar', { de: m.de, deAssunto: m.deAss, status: m.status, condo: m.condo }).then(function (r) {
+    if (!CF || CF.mv !== m) return;
+    if (!r.ok) { avisar(r.mensagem, true); m.lista = { tarefas: [], total: 0 }; desenharCfg(); return; }
+    m.lista = r; desenharCfg();
+  });
+}
+function ctMvHistorico() {
+  var m = ctMv();
+  api('tarefas.mudancas').then(function (r) { if (!CF || CF.mv !== m) return; m.historico = r.ok ? r.itens : []; if (/^mover/.test(CF.vista)) desenharCfg(); });
+}
+/* Empresas parceiras: o que cada uma recebe */
+function ctHtmlEmpresas() {
+  var h = cfHtmlCab('Empresas parceiras');
+  var es = CF.dados.empresas || [];
+  if (!es.length) return h + '<p class="vazio">Nenhuma empresa parceira ativa.</p>';
+  h += '<div class="mp-lista">' + es.map(function (e) {
+    return cfLinha('data-ct-ir="empresa:' + esc(e.apelido) + '"', IC.pessoas, e.apelido, e.pessoas + (e.pessoas === 1 ? ' pessoa' : ' pessoas') + ' · recebe ' + (e.categorias.length ? e.categorias.join(', ') : 'nenhuma categoria'));
+  }).join('') + '</div>';
+  h += '<p class="dica-campo cf-nota">Pessoas e condomínios de cada empresa ficam em <button class="cf-inline" data-acao="pessoas">Pessoas e empresas</button>.</p>';
+  return h;
+}
+function ctHtmlEmpresa(ap) {
+  var e = (CF.dados.empresas || []).filter(function (x) { return x.apelido === ap; })[0];
+  if (!e) return cfHtmlCab('Empresa') + '<p class="vazio">Empresa não encontrada.</p>';
+  CF.form = CF.form || {};
+  var f = CF.form['emp:' + ap] = CF.form['emp:' + ap] || JSON.parse(JSON.stringify(e.recebe));
+  var h = '<div class="cf-cab"><button class="cf-voltar" data-cf-ir="empresas">' + IC.voltar + '<span>Empresas parceiras</span></button><h2>' + esc(e.apelido) + '</h2><small class="ct-sub">' + e.pessoas + (e.pessoas === 1 ? ' pessoa' : ' pessoas') + ' · ' + esc(e.condos.length + (e.condos.length === 1 ? ' condomínio' : ' condomínios')) + '</small></div>';
+  h += '<span class="rotulo">Módulos compartilhados</span><div class="cf-sec"><div class="cf-item ro"><div class="cf-tx"><b>Tarefas</b><small>Ressarcimentos e Evolução do app são só seus.</small></div></div></div>';
+  h += '<span class="rotulo">Categorias em que atua</span><div class="cf-sec">' + f.map(function (r, k) {
+    var c = ctCat(r.codigo);
+    var ass = c ? c.assuntos.filter(function (a) { return a.estado === 'Ativo'; }) : [];
+    var alguns = r.assuntos !== 'Todos';
+    var mudou = JSON.stringify(r) !== JSON.stringify(e.recebe[k]);
+    return '<div class="cf-item' + (mudou ? ' mudou' : '') + '"><div class="ct-linha"><div class="cf-tx"><b>' + esc(r.nome) + '</b>' + (r.emBreve ? '<small>em breve</small>' : '') + '</div>' +
+      '<button class="pf-sw" role="switch" data-emp-sw="' + k + '" aria-checked="' + r.on + '" aria-label="' + esc(e.apelido + ' recebe ' + r.nome) + '"' + (r.emBreve ? ' disabled' : '') + '></button></div>' +
+      (r.on && ass.length ? '<div class="chips-linha"><button class="chip-op" data-emp-todos="' + k + '" aria-pressed="' + !alguns + '">Todos os assuntos</button><button class="chip-op" data-emp-alguns="' + k + '" aria-pressed="' + alguns + '">Só alguns</button></div>' +
+        (alguns ? '<div class="ct-assch">' + ass.map(function (a) { return '<label><input type="checkbox" data-emp-ass="' + k + '|' + esc(a.codigo) + '"' + (r.assuntos.indexOf(a.codigo) >= 0 ? ' checked' : '') + '> ' + esc(a.nome) + '</label>'; }).join('') + '</div>' : '') : '') + '</div>';
+  }).join('') + '<div class="cf-item ro"><div class="cf-tx"><b>Aquisições e Pedido mensal</b><small>Só da Carvalho & Abreu.</small></div></div></div>';
+  h += '<p class="dica-campo cf-nota">Cada pessoa da empresa continua limitada pelo próprio perfil e pelos condomínios dela. A empresa só vê as tarefas dela: nunca as de outra empresa ou da casa.</p>';
+  var mud = JSON.stringify(f) !== JSON.stringify(e.recebe);
+  h += '<span class="erro-txt" id="ctErro" role="alert" hidden></span><div class="ct-bts">' + (mud ? '<button class="bt claro" data-ct-acao="descartarEmp" data-ct-ref="' + esc(ap) + '">Descartar</button>' : '') + '<button class="bt" data-ct-acao="salvarEmp" data-ct-ref="' + esc(ap) + '"' + (mud ? '' : ' disabled') + '>Salvar</button></div>';
+  return h;
+}
+function ctErro(msg) { var el = document.querySelector('#camadas #ctErro'); if (el) { el.textContent = msg; el.hidden = false; } else avisar(msg, true); }
+function ctIr(v) {
+  var p = v.split(':');
+  if (p[0] === 'mover') {
+    var m = ctMv();
+    if (p[1]) { m.de = p[1]; m.deAss = p[2] || ''; m.para = m.para || (p[2] === 'sem' ? p[1] : ''); }
+    CF.vista = 'mover'; ctMvHistorico();
+    if (m.de) ctMvListar(); else desenharCfg();
+  } else { CF.vista = v; desenharCfg(); }
+  var c = cfRaiz(); if (c) c.querySelector('.jan-corpo').scrollTop = 0;
+}
+function ctChamar(b, acao, dados, ok) {
+  return umaVez('ct:' + acao + ':' + (dados.codigo || dados.id || ''), b, 'Salvando…', function () { return api(acao, dados); }).then(function (r) {
+    if (!r || r.ignorado) return;
+    if (!r.ok) { ctErro(r.mensagem); return; }
+    ok(r);
+  });
+}
+/** Cliques das telas de categorias dentro de Configurações. Devolve true se tratou. */
+function cliqueCat(ev, b) {
+  var a;
+  if ((a = b.getAttribute('data-ct-ir'))) { ctIr(a); return true; }
+  if ((a = b.getAttribute('data-ct-ordem')) || (a = b.getAttribute('data-ct-ordemass'))) {
+    var ass = b.hasAttribute('data-ct-ordemass'), pr = a.split('|'), cod = pr[0], dir = +pr[1];
+    var lista, cat = null;
+    if (ass) { CF.cats.categorias.forEach(function (c) { if (c.assuntos.some(function (x) { return x.codigo === cod; })) cat = c; }); lista = cat.assuntos.filter(function (x) { return x.estado === 'Ativo'; }); }
+    else lista = CF.cats.categorias.filter(function (x) { return !x.emBreve && !x.oculta; });
+    var i = lista.map(function (x) { return x.codigo; }).indexOf(cod), j = i + dir;
+    if (i < 0 || j < 0 || j >= lista.length) return true;
+    var cods = lista.map(function (x) { return x.codigo; }); var tmp = cods[i]; cods[i] = cods[j]; cods[j] = tmp;
+    // mostra na hora e grava
+    var mapa = {}; lista.forEach(function (x) { mapa[x.codigo] = x; });
+    if (ass) { var resto = cat.assuntos.filter(function (x) { return x.estado !== 'Ativo'; }); cat.assuntos = cods.map(function (c) { return mapa[c]; }).concat(resto); }
+    else { var outras = CF.cats.categorias.filter(function (x) { return x.emBreve || x.oculta; }); CF.cats.categorias = cods.map(function (c) { return mapa[c]; }).concat(outras); }
+    desenharCfg();
+    api(ass ? 'tarefas.assOrdenar' : 'tarefas.catOrdenar', ass ? { categoria: cat.codigo, codigos: cods } : { codigos: cods }).then(function (r) {
+      if (!r.ok) { avisar(r.mensagem, true); ctCarregar(); } else if (!ass) { recarregar(); }
+    });
+    return true;
+  }
+  if ((a = b.getAttribute('data-ct-icone'))) { var fm = ctForm(CF.vista === 'novaCat' ? null : CF.vista.split(':')[1]); fm.icone = a; desenharCfg(); return true; }
+  if ((a = b.getAttribute('data-ct-sw'))) { var f2 = ctForm(CF.vista === 'novaCat' ? null : CF.vista.split(':')[1]); f2[a] = !f2[a]; desenharCfg(); return true; }
+  if ((a = b.getAttribute('data-ct-levar'))) { var f3 = CF.form['ass:' + a]; f3.levar = !f3.levar; f3.conf = false; desenharCfg(); return true; }
+  if ((a = b.getAttribute('data-mv-status'))) { ctMv().status = a; ctMvListar(); return true; }
+  if (b.hasAttribute('data-mv-todas')) {
+    var m = ctMv(), ts = (m.lista && m.lista.tarefas) || [];
+    var todas = ts.every(function (t) { return m.marcadas[t.id]; });
+    ts.forEach(function (t) { m.marcadas[t.id] = !todas; }); m.previa = null; desenharCfg(); return true;
+  }
+  if ((a = b.getAttribute('data-emp-sw'))) { var fe = CF.form['emp:' + CF.vista.slice(8)]; fe[+a].on = !fe[+a].on; if (!fe[+a].on) fe[+a].assuntos = 'Todos'; desenharCfg(); return true; }
+  if ((a = b.getAttribute('data-emp-todos'))) { CF.form['emp:' + CF.vista.slice(8)][+a].assuntos = 'Todos'; desenharCfg(); return true; }
+  if ((a = b.getAttribute('data-emp-alguns'))) { var fx = CF.form['emp:' + CF.vista.slice(8)][+a]; if (fx.assuntos === 'Todos') fx.assuntos = []; desenharCfg(); return true; }
+  if (!(a = b.getAttribute('data-ct-acao'))) return false;
+  var ref = b.getAttribute('data-ct-ref') || '';
+  var volta = function (msg, vista) { if (msg) avisar(msg); CF.form = {}; CF.novoAss = null; if (vista) CF.vista = vista; ctCarregar(); recarregar(); };
+  switch (a) {
+    case 'salvarCat': case 'ocultarCat': {
+      var cod2 = ref || null, f = ctForm(cod2);
+      if (a === 'ocultarCat') f.estado = f.estado === 'Oculta' ? 'Ativa' : 'Oculta';
+      if (!f.nome.trim()) { ctErro('Escreva o nome da categoria.'); return true; }
+      ctChamar(b, 'tarefas.catSalvar', { codigo: cod2 || '', nome: f.nome, explicacao: f.explicacao, icone: f.icone, assuntoObrig: f.assuntoObrig, unidade: f.unidade, discreto: f.discreto, estado: f.estado }, function (r) {
+        volta(r.nova ? 'Categoria criada · ligue nos Perfis de acesso quem pode usar' : r.renomeadas !== undefined ? 'Nome corrigido em ' + r.renomeadas + (r.renomeadas === 1 ? ' tarefa' : ' tarefas') : (a === 'ocultarCat' ? (f.estado === 'Oculta' ? 'Categoria oculta' : 'Categoria de volta à faixa') : 'Categoria salva'), r.nova ? 'categoria:' + r.codigo : null);
+      });
+      if (a === 'ocultarCat') f.estado = f.estado === 'Oculta' ? 'Ativa' : 'Oculta'; // só vale depois de salvar
+      return true;
+    }
+    case 'excluirCat':
+      if (CF.desfazer !== 'excl:' + ref) { CF.desfazer = 'excl:' + ref; b.textContent = 'Confirmar exclusão'; return true; }
+      ctChamar(b, 'tarefas.catExcluir', { codigo: ref }, function () { volta('Categoria excluída', 'categorias'); });
+      return true;
+    case 'incluirProp': case 'recusarProp':
+      ctChamar(b, 'tarefas.propostaDecidir', { id: ref, incluir: a === 'incluirProp' }, function (r) { volta(a === 'incluirProp' ? 'Assunto incluído' + (r.decididas > 1 ? ' · ' + r.decididas + ' propostas' : '') : 'Proposta recusada'); atualizarPortal(); });
+      return true;
+    case 'novoAss': {
+      var na = CF.novoAss || { nome: '', dica: '' };
+      if (!na.nome.trim()) { ctErro('Escreva o nome do assunto.'); return true; }
+      ctChamar(b, 'tarefas.assSalvar', { categoria: ref, nome: na.nome, dica: na.dica }, function () { volta('Assunto incluído'); });
+      return true;
+    }
+    case 'salvarAss': {
+      var fa = CF.form['ass:' + ref], at = ctAss(ref);
+      ctChamar(b, 'tarefas.assSalvar', { codigo: ref, nome: fa.nome, dica: fa.dica, estado: at.estado }, function () { volta('Assunto salvo'); });
+      return true;
+    }
+    case 'ocultarAss': case 'reativarAss': {
+      var at2 = ctAss(ref);
+      ctChamar(b, 'tarefas.assSalvar', { codigo: ref, nome: at2.nome, dica: at2.dica, estado: a === 'ocultarAss' ? 'Oculto' : 'Ativo' }, function () { volta(a === 'ocultarAss' ? 'Assunto oculto' : 'Assunto reativado'); });
+      return true;
+    }
+    case 'excluirAss':
+      if (CF.desfazer !== 'exa:' + ref) { CF.desfazer = 'exa:' + ref; b.textContent = 'Confirmar exclusão'; return true; }
+      var catA = null; CF.cats.categorias.forEach(function (c) { if (c.assuntos.some(function (x) { return x.codigo === ref; })) catA = c; });
+      ctChamar(b, 'tarefas.assExcluir', { codigo: ref }, function () { volta('Assunto excluído', 'assuntos:' + catA.codigo); });
+      return true;
+    case 'revisarSubst': { var fs = CF.form['ass:' + ref]; if (!fs.novo.trim()) { ctErro('Escreva o nome do assunto novo.'); return true; } fs.conf = true; desenharCfg(); return true; }
+    case 'cancelarSubst': CF.form['ass:' + ref].conf = false; desenharCfg(); return true;
+    case 'substituirAss': {
+      var fs2 = CF.form['ass:' + ref];
+      ctChamar(b, 'tarefas.assSubstituir', { codigo: ref, novoNome: fs2.novo, levarTarefas: !!fs2.levar }, function (r) { volta('Assunto substituído' + (r.movidas ? ' · ' + r.movidas + (r.movidas === 1 ? ' tarefa levada' : ' tarefas levadas') : ''), 'assunto:' + r.codigo); });
+      return true;
+    }
+    case 'revisarLote': {
+      var m2 = ctMv(), ids = Object.keys(m2.marcadas).filter(function (k) { return m2.marcadas[k]; });
+      ctChamar(b, 'tarefas.lotePrevia', { ids: ids, para: m2.para, paraAssunto: m2.paraAss }, function (r) { m2.previa = r; desenharCfg(); });
+      return true;
+    }
+    case 'cancelarLote': ctMv().previa = null; desenharCfg(); return true;
+    case 'moverLote': {
+      var m3 = ctMv(), ids2 = Object.keys(m3.marcadas).filter(function (k) { return m3.marcadas[k]; });
+      ctChamar(b, 'tarefas.loteMover', { ids: ids2, para: m3.para, paraAssunto: m3.paraAss }, function (r) {
+        avisar(r.movidas + (r.movidas === 1 ? ' tarefa movida' : ' tarefas movidas'));
+        ctMvListar(); ctMvHistorico(); ctCarregar(); recarregar();
+      });
+      return true;
+    }
+    case 'desfazerLote':
+      if (CF.desfazer !== ref) { CF.desfazer = ref; desenharCfg(); return true; }
+      CF.desfazer = null;
+      ctChamar(b, 'tarefas.moverDeVolta', { id: ref }, function (r) {
+        avisar(r.voltou + (r.voltou === 1 ? ' tarefa voltou' : ' tarefas voltaram') + (r.pulou ? ' · ' + r.pulou + ' já tinham mudado e ficaram' : ''));
+        ctMvListar(); ctMvHistorico(); ctCarregar(); recarregar();
+      });
+      return true;
+    case 'descartarEmp': delete CF.form['emp:' + ref]; desenharCfg(); return true;
+    case 'salvarEmp': {
+      var fe2 = CF.form['emp:' + ref];
+      var falta = fe2.filter(function (r) { return r.on && r.assuntos !== 'Todos' && !r.assuntos.length; })[0];
+      if (falta) { ctErro('Em ' + falta.nome + ', marque pelo menos um assunto ou escolha "Todos os assuntos".'); return true; }
+      ctChamar(b, 'portal.salvarEmpresaCategorias', { empresa: ref, categorias: fe2.map(function (r) { return { codigo: r.codigo, on: r.on, assuntos: r.assuntos === 'Todos' ? 'Todos' : r.assuntos }; }) }, function (r) {
+        avisar(r.mudou ? 'Salvo · vale a partir de agora' : 'Nada mudou');
+        delete CF.form['emp:' + ref]; carregarCfg();
+      });
+      return true;
+    }
+  }
+  return false;
+}
+/** Digitação e seleção nas telas de categorias. Devolve true se tratou. */
+function entradaCat(ev) {
+  var el = ev.target, a;
+  if ((a = el.getAttribute('data-ct-campo'))) { ctForm(CF.vista === 'novaCat' ? null : CF.vista.split(':')[1])[a] = el.value; return true; }
+  if ((a = el.getAttribute('data-ct-novo'))) { CF.novoAss = CF.novoAss || { nome: '', dica: '' }; CF.novoAss[a] = el.value; return true; }
+  if ((a = el.getAttribute('data-ct-acampo'))) { var f = CF.form['ass:' + el.getAttribute('data-ct-ref')]; f[a] = el.value; if (a === 'novo') f.conf = false; return true; }
+  if ((a = el.getAttribute('data-mv'))) {
+    if (ev.type !== 'change') return true;
+    var m = ctMv(); m[a] = el.value;
+    if (a === 'de') { m.deAss = ''; }
+    if (a === 'para') { m.paraAss = ''; }
+    if (a === 'de' || a === 'deAss' || a === 'condo') ctMvListar(); else { m.previa = null; desenharCfg(); }
+    return true;
+  }
+  if ((a = el.getAttribute('data-mv-t'))) { if (ev.type !== 'change') return true; ctMv().marcadas[a] = el.checked; ctMv().previa = null; desenharCfg(); return true; }
+  if ((a = el.getAttribute('data-emp-ass'))) {
+    if (ev.type !== 'change') return true;
+    var pr = a.split('|'), r = CF.form['emp:' + CF.vista.slice(8)][+pr[0]];
+    if (r.assuntos === 'Todos') r.assuntos = [];
+    r.assuntos = r.assuntos.filter(function (x) { return x !== pr[1]; }); if (el.checked) r.assuntos.push(pr[1]);
+    desenharCfg(); return true;
+  }
+  return false;
+}
+
 /* ================= Pedido mensal (v1.19): assistente, jornada, comparação e entrega ================= */
 var UNIDADES = ['un.', 'L', 'ml', 'kg', 'g', 'cx', 'pct', 'fardo', 'galão', 'balde', 'rolo', 'saco', 'frasco', 'lata', 'par', 'm'];
 var UN_RE = /^(\d+(?:[.,]\d+)?)\s*(?:x\s*)?(un\.?|und\.?|unid\.?|unidades?|l|lts?|litros?|ml|kg|quilos?|g|gr|cx|caixas?|pct|pcts|pacotes?|fardos?|gal[aã]o|gal[oõ]es|baldes?|rolos?|sacos?|frascos?|latas?|pares?|m|metros?)?\.?\s+(.+)$/i;
@@ -5406,6 +6190,10 @@ function criarTarefa(raiz, condo, confirmar, opcoes, categoria) {
   var erro = raiz.querySelector('#novaErro');
   if (!titulo) { erro.textContent = 'Escreva o título da tarefa.'; erro.hidden = false; raiz.querySelector('#novaTitulo').focus(); return; }
   var chaveOn = raiz.querySelector('#novaChaveDesc').getAttribute('aria-checked') === 'true';
+  var infoCat = catDaTela(categoria);
+  lerCamposCat(raiz);
+  var falhaCat = validarCatNova(infoCat);
+  if (falhaCat) { erro.textContent = falhaCat; erro.hidden = false; return; }
   var dados = {
     condo: condo,
     empresa: raiz.querySelector('#novaEmp').value,
@@ -5415,6 +6203,7 @@ function criarTarefa(raiz, condo, confirmar, opcoes, categoria) {
     descricao: chaveOn ? raiz.querySelector('#novaDesc').value : '',
     confirmarDuplicada: !!confirmar
   };
+  Object.assign(dados, dadosCatNova(raiz, infoCat));
   var bt = raiz.querySelector('#novaCriar');
   bt.disabled = true; bt.textContent = 'Criando…'; erro.hidden = true;
   api('tarefas.criar', dados).then(function (r) {
@@ -5430,10 +6219,12 @@ function criarTarefa(raiz, condo, confirmar, opcoes, categoria) {
     guardarLocal('ultimoCondo', condo); if (categoria) guardarLocal('ultimaCategoria', categoria);
     fecharCamadas();
     var nova = r.tarefa;
-    if (nova && podeCompartilhar(nova.condo)) {
+    var rotCriada = r.proposta ? 'Tarefa criada · assunto proposto' : 'Tarefa criada';
+    if (nova && nova.categoria && faixaAtiva() && nova.categoria !== S.cat) { S.cat = nova.categoria; guardarLocal('catLista', nova.categoria); }
+    if (nova && podeCompartilhar(nova.condo) && !(infoCat && infoCat.unidade)) {
       S.ultimaCriada = nova;
-      avisar('Tarefa criada', false, { rotulo: 'Compartilhar', seg: 7, fn: function () { compartilharCriada(); } });
-    } else avisar('Tarefa criada');
+      avisar(rotCriada, false, { rotulo: 'Compartilhar', seg: 7, fn: function () { compartilharCriada(); } });
+    } else avisar(rotCriada);
     if (S.condo !== 'todos' && S.condo !== condo) S.condo = condo;
     if (nova && opcoes.aoCriar) {
       S.dados.tarefas = (S.dados.tarefas || []).concat([nova]);
@@ -5708,6 +6499,7 @@ document.addEventListener('click', function (e) {
   if (b.hasAttribute('data-concluir')) { confirmarConcluir(b.getAttribute('data-concluir')); return; }
   if (b.hasAttribute('data-abrir')) { abrirTarefa(b.getAttribute('data-abrir')); return; }
   if (b.hasAttribute('data-condo')) { S.condo = b.getAttribute('data-condo'); desenharCondos(); desenharLista(); return; }
+  if (b.hasAttribute('data-cat-faixa')) { trocarCat(b.getAttribute('data-cat-faixa')); return; }
   if (b.hasAttribute('data-visao')) { trocarVisao(b.getAttribute('data-visao')); return; }
   if (b.hasAttribute('data-anexar')) { abrirAnexar(b.getAttribute('data-anexar')); if (b.getAttribute('data-anexar') === 'Documento') { /* folha já abre no documento */ } return; }
   if (b.hasAttribute('data-verfoto')) { abrirFoto(b.getAttribute('data-verfoto')); return; }
@@ -5743,6 +6535,7 @@ document.addEventListener('click', function (e) {
     case 'verificarPedido': verificarPedido(b); break;
     case 'fecharDet': fecharDetalhe(); break;
     case 'nova': abrirNova(); break;
+    case 'mudarCat': abrirMudarCategoria(); break;
     case 'sugerir': abrirSugestao(); break;
     case 'topo': fecharDetalhe(); window.scrollTo({ top: 0, behavior: 'smooth' }); break;
     case 'sair': fecharCamadas(); sair(); break;
@@ -5778,6 +6571,7 @@ document.addEventListener('change', function (e) {
   if (el.id === 'selDir') acaoDetalhe('direcionar', { para: el.value }, function () { avisar('Direcionamento salvo'); }, el);
   if (el.id === 'selEmp') acaoDetalhe('trocarEmpresa', { empresa: el.value }, function () { avisar('Empresa alterada'); }, el);
   if (el.id === 'selCondo') trocarCondominio(el.value);
+  if (el.id === 'selAss') mudarAssuntoDet(el.value);
   if (el.id === 'concEmpresa') { S.conc.empresa = el.value; carregarConcluidas(); }
 });
 document.addEventListener('submit', function (e) {
@@ -6465,6 +7259,7 @@ function iniciar() {
   try {
     var qsC = new URLSearchParams(location.search);
     if (qsC.get('compartilhado')) { guardar('compartilhado', '1'); history.replaceState(null, '', location.pathname); }
+    if (/^CAT-\d+$/.test(qsC.get('c') || '')) S.catUrl = qsC.get('c'); // v1.23: ?c= abre a categoria
   } catch (e) {}
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js?v=3', { scope: './' }).catch(function () {});
   lerConviteUrl();
