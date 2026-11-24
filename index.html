@@ -811,7 +811,7 @@ a.bt{text-decoration:none}
 .evo-comp .evo-acoes{justify-content:flex-end;gap:1em}
 .sug-perg{display:flex;flex-direction:column;gap:.5em;margin-top:.35em}
 @media (max-width:767px){.evo{padding:.875em .875em 1.5em}.evo-acoes>.bt{flex:1 1 auto}}
-/* Ressarcimentos (v1.20) */
+/* Ressarcimentos (v1.20; batimento v1.21) */
 .rs{display:flex;flex-direction:column;gap:1.25em;padding:1em 1.5em 1.75em;overflow-y:auto;flex:1;min-height:0;background:var(--creme)}
 .rs-topo{display:flex;flex-wrap:wrap;align-items:center;gap:.5em 1em;position:sticky;top:-1em;z-index:3;background:var(--creme);margin:-1em -1.5em 0;padding:.5em 1.5em 0;border-bottom:1px solid var(--linha2)}
 .rs-topo .abas{flex-wrap:wrap}
@@ -893,6 +893,32 @@ a.bt{text-decoration:none}
 .rs-tab th:last-child,.rs-tab td:last-child{padding-right:1.5em;text-align:right}
 .rs-tab .numdoc{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.8125em;color:var(--azul)}
 .rs-tab .dir{text-align:right;font-weight:600;white-space:nowrap}
+/* Batimento por extrato (v1.21) */
+.rs-bat-env{background:#fff;border:2px dashed var(--ouro);border-radius:1.25em;padding:1.75em 1.5em;display:flex;flex-direction:column;align-items:center;gap:.8em;text-align:center;max-width:40em}
+.rs-bat-env b{font-family:Lora,Georgia,serif;font-size:1.2em;color:var(--azul)}
+.rs-bat-env span{font-size:.9375em;line-height:1.5;color:var(--suave2);max-width:30em}
+.rs-bat-env label.bt{cursor:pointer}
+.rs-bat-env label.bt:focus-within{outline:3px solid var(--ouro);outline-offset:2px}
+.rs-bat-topo{background:#fff;border-radius:1.25em;padding:1em 1.5em;box-shadow:var(--sombra);display:flex;flex-wrap:wrap;align-items:center;gap:.6em 1.25em}
+.rs-bat-topo .tx{display:flex;flex-direction:column;gap:.2em;flex:1 1 16em;min-width:0}
+.rs-bat-topo .tx b{color:var(--azul);font-weight:600}
+.rs-bat-sec{display:flex;flex-direction:column;gap:.7em}
+.rs-bat-sec .cab{display:flex;flex-wrap:wrap;align-items:center;gap:.6em}
+.rs-bat-sec h3{margin:0;font-size:1.0625em;font-weight:700;color:var(--azul);flex:1 1 auto}
+.rs-bat-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(19em,1fr));gap:1em}
+.rs-bat-card{background:#fff;border-radius:1.25em;padding:1.1em 1.4em;box-shadow:var(--sombra);display:flex;flex-direction:column;gap:.5em;border:2px solid var(--ouro)}
+.rs-bat-card.ok{border-color:#B9D7C1}.rs-bat-card.neutro{border-color:var(--linha)}
+.rs-bat-card .lin{display:flex;align-items:baseline;justify-content:space-between;gap:1em}
+.rs-bat-card .lin b{color:var(--azul)}
+.rs-bat-card .vl{font-family:Lora,Georgia,serif;font-weight:700;font-size:1.25em;color:var(--azul);white-space:nowrap}
+.rs-bat-card ul{margin:0;padding:.6em 0 0;list-style:none;display:flex;flex-direction:column;gap:.35em;border-top:1px solid var(--creme2);font-size:.875em}
+.rs-bat-card li{display:flex;justify-content:space-between;gap:1em;color:var(--suave2)}
+.rs-bat-card li .numdoc{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.9em;color:var(--azul)}
+.rs-bat-acoes{display:flex;flex-wrap:wrap;gap:.5em;padding-top:.2em}
+.rs-bat-mais{background:#fff;border-radius:1.25em;padding:.8em 1.4em;box-shadow:var(--sombra)}
+.rs-bat-mais summary{cursor:pointer;font-weight:600;color:var(--suave2);min-height:2.25em;display:flex;align-items:center}
+.rs-bat-mais ul{margin:.5em 0 .2em;padding:0;list-style:none;display:flex;flex-direction:column;gap:.45em;font-size:.875em;color:var(--suave2)}
+.rs-bat-mais li{display:flex;justify-content:space-between;gap:1em}
 .rs-baixa{display:inline-flex;flex-wrap:wrap;gap:.4em;align-items:center;justify-content:flex-end}
 .rs-baixa input{min-height:2.5em;border:1px solid var(--linha);border-radius:.6em;padding:0 .5em}
 .rs-passos{display:flex;flex-direction:column;gap:.5em}
@@ -1054,7 +1080,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.20';
+var VERSAO_SITE = '1.21';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -5776,11 +5802,14 @@ function rsKm(v) { return Number(v || 0).toLocaleString('pt-BR', { minimumFracti
 /* --- Acompanhamento --- */
 function rsHtmlAcomp() {
   var a = RS.acomp;
+  if (!a && RS.verAcomp === 'bat') a = { abertos: [], concluidos: [] };
   if (!a) return '<p class="vazio">Carregando…</p>';
   if (a.erro) return '<p class="vazio">' + esc(a.erro) + '</p>';
   var ver = RS.verAcomp, lista = ver === 'abertos' ? a.abertos : a.concluidos;
   var h = '<nav class="rs-chips" aria-label="Filtro"><button class="chip" data-rsver="abertos" aria-pressed="' + (ver === 'abertos') + '">A receber<span class="n">' + a.abertos.length + '</span></button>' +
-    '<button class="chip" data-rsver="concluidos" aria-pressed="' + (ver === 'concluidos') + '">Recebidos (últimos 30)</button></nav>';
+    '<button class="chip" data-rsver="concluidos" aria-pressed="' + (ver === 'concluidos') + '">Recebidos (últimos 30)</button>' +
+    '<button class="chip" data-rsver="bat" aria-pressed="' + (ver === 'bat') + '">Batimento por extrato</button></nav>';
+  if (ver === 'bat') return h + rsHtmlBat();
   if (!lista.length) return h + '<p class="vazio">' + (ver === 'abertos' ? 'Nada a receber. Tudo em dia.' : 'Nenhum recebido ainda.') + '</p>';
   h += '<div class="rs-tab"><table><thead><tr><th>Documento</th><th>Condomínio</th><th>Tipo</th><th style="text-align:right">Valor</th><th>' + (ver === 'abertos' ? 'Enviado em' : 'Recebido em') + '</th><th>Situação</th><th><span class="sr">Ação</span></th></tr></thead><tbody>';
   lista.forEach(function (l) {
@@ -5841,6 +5870,8 @@ function cliqueRess(ev) {
   else if (a === 'abrirBaixa') { RS.baixa = { linha: Number(b.getAttribute('data-rslinha')), data: rsHoje() }; rsDesenhar(); }
   else if (a === 'cancBaixa') { RS.baixa = null; rsDesenhar(); }
   else if (a === 'baixa') rsBaixa(b);
+  else if (a === 'batNovo') { RS.bat = null; rsDesenhar(); }
+  else if (/^bat/.test(a)) rsBatAcao(a, b.getAttribute('data-rsk'), b);
 }
 function entradaRess(ev) {
   var t = ev.target; if (!RS) return;
@@ -5874,8 +5905,14 @@ function rsLerArquivo(inp) {
   var f = inp.files && inp.files[0]; if (!f) return;
   var max = (RS.cfg && RS.cfg.tamMaxMB) || 10;
   if (f.size > max * 1024 * 1024) { avisar('Arquivo maior que ' + max + ' MB. Tire outra foto ou envie um PDF menor.', true); inp.value = ''; return; }
-  if (!/^image\/|^application\/pdf$/.test(f.type)) { avisar('Envie uma foto ou um PDF.', true); inp.value = ''; return; }
   var alvo = inp.getAttribute('data-rsarq'), rd = new FileReader();
+  if (alvo === 'bat') {
+    if (!/\.(pdf|ofx)$/i.test(f.name) && f.type !== 'application/pdf') { avisar('Envie o extrato em PDF ou OFX.', true); inp.value = ''; return; }
+    rd.onload = function () { rsBatLer({ nome: f.name, mime: f.type || (/\.ofx$/i.test(f.name) ? 'application/x-ofx' : 'application/pdf'), base64: String(rd.result) }); };
+    rd.onerror = function () { avisar('Não consegui ler o arquivo. Tente de novo.', true); };
+    rd.readAsDataURL(f); return;
+  }
+  if (!/^image\/|^application\/pdf$/.test(f.type)) { avisar('Envie uma foto ou um PDF.', true); inp.value = ''; return; }
   rd.onload = function () {
     var arq = { nome: f.name, mime: f.type, base64: String(rd.result) };
     if (alvo === 'nf') RS.nf.arq = arq; else rsComp(alvo).item.arq = arq;
@@ -5983,6 +6020,108 @@ function rsBaixa(b) {
     avisar((l.numDoc || 'Lançamento') + ' baixado como CONCLUÍDO.');
     rsCarregarAcomp(); rsAtualizarResumo();
   }).catch(function () { rsCarregarAcomp(); });
+}
+
+/* ---------- batimento por extrato (v1.21): o motor lê o extrato e agrupa; a baixa só sai com o toque ---------- */
+function rsBatLer(arq) {
+  RS.bat = { lendo: true, nome: arq.nome, res: null, feito: {}, msg: {} }; rsDesenhar();
+  api('ressarcimentos.batimentoLer', { arquivo: rsArqEnvio(arq) }).then(function (r) {
+    if (!RS || !RS.bat) return;
+    if (!r.ok) { RS.bat = null; rsDesenhar(); avisar(r.mensagem, true); return; }
+    RS.bat.lendo = false; RS.bat.res = r; rsDesenhar();
+  }).catch(function () { if (RS) { RS.bat = null; rsDesenhar(); } });
+}
+function rsBatDia(iso) { var p = String(iso || '').split('-'); return p.length === 3 ? p[2] + '/' + p[1] : ''; }
+function rsBatItens(k) {
+  var r = RS.bat.res, p = String(k).split(':'), g = (p[0] === 'b' ? r.bateu : p[0] === 's' ? r.somas : p[0] === 'e' ? r.escolher : r.semNota)[Number(p[1])];
+  if (!g) return null;
+  var itens = p[0] === 'b' ? [g.item] : p[0] === 's' ? g.itens : p[0] === 'e' ? [g.opcoes[Number(p[2])]] : (g.sugestao || []);
+  return { g: g, itens: itens.map(function (x) { return { linha: x.linha, numDoc: x.numDoc, valor: x.valor, recebidoEm: g.credito.data }; }) };
+}
+function rsBatAcao(a, k, b) {
+  var B = RS.bat; if (!B || !B.res) return;
+  if (a === 'batNao' || a === 'batIgnorar') { B.feito[k] = 'nao'; rsDesenhar(); return; }
+  var lote = [], chaves = [];
+  if (a === 'batTodos') B.res.bateu.forEach(function (g, i) { if (!B.feito['b:' + i]) { chaves.push('b:' + i); lote = lote.concat(rsBatItens('b:' + i).itens); } });
+  else { var x = rsBatItens(k); if (!x) return; chaves.push(k.split(':').slice(0, 2).join(':')); lote = x.itens; }
+  if (!lote.length) return;
+  b.disabled = true; b.textContent = 'Salvando…';
+  api('ressarcimentos.batimentoBaixar', { itens: lote }).then(function (r) {
+    if (!r.ok) { avisar(r.mensagem, true); rsDesenhar(); return; }
+    chaves.forEach(function (c) { B.feito[c] = 'ok'; });
+    avisar(lote.length === 1 ? (lote[0].numDoc || 'Lançamento') + ' baixado como CONCLUÍDO.' : lote.length + ' lançamentos baixados como CONCLUÍDO.');
+    RS.acomp = null; rsCarregarAcomp(); rsAtualizarResumo(); rsDesenhar();
+  }).catch(function () { rsDesenhar(); });
+}
+function rsBatLinhas(itens) {
+  return '<ul>' + itens.map(function (x) {
+    return '<li><span class="numdoc">' + esc(x.numDoc || x.descricao || 'Linha ' + x.linha) + '</span><span>' + esc(rsMoeda(x.valor)) + '</span></li>';
+  }).join('') + '</ul>';
+}
+function rsHtmlBat() {
+  var B = RS.bat;
+  if (!B) return '<div class="rs-bat-env"><b>Enviar extrato da conta</b><span>PDF ou OFX do Sicoob. O app lê os PIX recebidos de condomínio e cruza com o que está em aberto. Nada é baixado sem o seu toque.</span>' +
+    '<label class="bt">Escolher arquivo<input type="file" class="sr" data-rsarq="bat" accept=".pdf,.ofx,application/pdf"></label>' +
+    '<span style="font-size:.8125em">O OFX é o mais confiável. O extrato fica na pasta BATIMENTOS e vai para a lixeira em 7 dias.</span></div>';
+  if (B.lendo) return '<div class="rs-ocupado" role="status"><b>Lendo ' + esc(B.nome) + '…</b><span>Separando os créditos de condomínio e procurando as notas em aberto. Leva uns 20 segundos.</span></div>';
+  var r = B.res, h = '', f = B.feito;
+  var nB = r.bateu.filter(function (g, i) { return !f['b:' + i]; }).length;
+  var nS = r.somas.filter(function (g, i) { return !f['s:' + i]; }).length + r.escolher.filter(function (g, i) { return !f['e:' + i]; }).length;
+  var nN = r.semNota.filter(function (g, i) { return !f['n:' + i]; }).length;
+  var per = r.periodo ? rsData(r.periodo.de) + ' a ' + rsData(r.periodo.ate) : '';
+  h += '<div class="rs-bat-topo"><div class="tx"><span class="rotulo">Batimento por extrato</span><b>' + esc(r.formato + (per ? ' · ' + per : '') + ' · ' + r.creditos + ' créditos de condomínio') + '</b></div>' +
+    '<span class="rs-selo verde">' + (nB ? nB + ' bateram' : 'nada a baixar') + '</span>' + (nS ? '<span class="rs-selo ouro">' + nS + ' para confirmar</span>' : '') +
+    (nN ? '<span class="rs-selo azul">' + nN + ' sem nota</span>' : '') + '<button class="bt claro" data-rs="batNovo">Novo extrato</button></div>';
+
+  if (r.bateu.length) {
+    h += '<section class="rs-bat-sec"><div class="cab"><h3>Bateu com uma nota</h3>' + (nB > 1 ? '<button class="bt" data-rs="batTodos">Dar baixa nos ' + nB + '</button>' : '') + '</div>' +
+      '<div class="rs-tab"><table><thead><tr><th>Crédito</th><th>Condomínio</th><th style="text-align:right">Valor</th><th>Nota</th><th>Enviada em</th><th><span class="sr">Ação</span></th></tr></thead><tbody>';
+    r.bateu.forEach(function (g, i) {
+      var k = 'b:' + i;
+      h += '<tr><td style="color:var(--suave2)">' + esc(rsBatDia(g.credito.data)) + '</td><td>' + esc(g.credito.condominio) + '</td><td class="dir">' + esc(rsMoeda(g.credito.valor)) + '</td>' +
+        '<td class="numdoc">' + esc(g.item.numDoc || g.item.descricao) + '</td><td style="color:var(--suave2)">' + esc(rsData(g.item.enviadoEm)) + '</td><td>' +
+        (f[k] ? '<span class="rs-selo verde">Concluído</span>' : '<button class="bt claro" data-rs="batBaixa" data-rsk="' + k + '" style="min-height:2.5em;font-size:.8125em">Dar baixa</button>') + '</td></tr>';
+    });
+    h += '</tbody></table></div></section>';
+  }
+  if (r.somas.length || r.escolher.length) {
+    h += '<section class="rs-bat-sec"><h3>Confirmar</h3><div class="rs-bat-grade">';
+    r.somas.forEach(function (g, i) {
+      var k = 's:' + i, st = f[k];
+      h += '<div class="rs-bat-card' + (st === 'ok' ? ' ok' : st ? ' neutro' : '') + '"><div class="lin"><b>' + esc(g.credito.condominio) + '</b><span class="vl">' + esc(rsMoeda(g.credito.valor)) + '</span></div>' +
+        '<span class="cartao-meta">PIX em ' + esc(rsBatDia(g.credito.data)) + ' · um depósito, soma exata de ' + g.itens.length + ' notas</span>' + rsBatLinhas(g.itens) +
+        (st ? '<span class="rs-selo ' + (st === 'ok' ? 'verde' : 'azul') + '" style="align-self:flex-start">' + (st === 'ok' ? g.itens.length + ' notas concluídas' : 'Continua em aberto') + '</span>'
+          : '<div class="rs-bat-acoes"><button class="bt" data-rs="batSoma" data-rsk="' + k + '">Confirmar baixa das ' + g.itens.length + '</button><button class="bt claro" data-rs="batNao" data-rsk="' + k + '">Não é isso</button></div>') + '</div>';
+    });
+    r.escolher.forEach(function (g, i) {
+      var k = 'e:' + i, st = f[k];
+      h += '<div class="rs-bat-card' + (st === 'ok' ? ' ok' : st ? ' neutro' : '') + '"><div class="lin"><b>' + esc(g.credito.condominio) + '</b><span class="vl">' + esc(rsMoeda(g.credito.valor)) + '</span></div>' +
+        '<span class="cartao-meta">PIX em ' + esc(rsBatDia(g.credito.data)) + ' · ' + g.opcoes.length + ' notas com esse valor. Qual foi paga?</span>' +
+        (st ? '<span class="rs-selo ' + (st === 'ok' ? 'verde' : 'azul') + '" style="align-self:flex-start">' + (st === 'ok' ? 'Baixada' : 'Continua em aberto') + '</span>'
+          : '<div class="rs-bat-acoes">' + g.opcoes.map(function (o, j) { return '<button class="bt claro" data-rs="batEscolha" data-rsk="' + k + ':' + j + '">' + esc(o.numDoc || o.descricao) + '</button>'; }).join('') +
+            '<button class="bt-link" data-rs="batNao" data-rsk="' + k + '">Nenhuma</button></div>') + '</div>';
+    });
+    h += '</div></section>';
+  }
+  if (r.semNota.length) {
+    h += '<section class="rs-bat-sec"><h3>Crédito de condomínio sem nota em aberto</h3><div class="rs-bat-grade">';
+    r.semNota.forEach(function (g, i) {
+      var k = 'n:' + i, st = f[k], sug = g.sugestao;
+      h += '<div class="rs-bat-card neutro' + (st === 'ok' ? ' ok' : '') + '"><div class="lin"><b>' + esc(g.credito.condominio + ' · ' + rsBatDia(g.credito.data)) + '</b><span class="vl">' + esc(rsMoeda(g.credito.valor)) + '</span></div>' +
+        '<span class="cartao-meta">' + esc(g.credito.pagador) + '</span>' +
+        (sug ? '<span style="font-size:.875em;line-height:1.5;color:var(--suave2)">Bate com lançamentos já concluídos sem data de recebimento:</span>' + rsBatLinhas(sug) : '<span style="font-size:.875em;color:var(--suave2)">Não bate com nada enviado nem com a soma de lançamentos.</span>') +
+        (st ? '<span class="rs-selo ' + (st === 'ok' ? 'verde' : 'azul') + '" style="align-self:flex-start">' + (st === 'ok' ? 'Recebimento registrado' : 'Ignorado') + '</span>'
+          : '<div class="rs-bat-acoes">' + (sug ? '<button class="bt" data-rs="batSug" data-rsk="' + k + '">Registrar recebimento</button>' : '') +
+            '<button class="bt claro" data-rs="batIgnorar" data-rsk="' + k + '">Não é ressarcimento</button></div>') + '</div>';
+    });
+    h += '</div></section>';
+  }
+  var mais = r.jaBaixados.map(function (g) { return { c: g.credito, t: 'já baixado (' + g.itens.map(function (x) { return x.numDoc || x.descricao; }).join(', ') + ')' }; })
+    .concat(r.antes.map(function (g) { return { c: g.credito, t: 'antes dos envios em aberto' }; }));
+  if (mais.length) h += '<details class="rs-bat-mais"><summary>' + mais.length + (mais.length === 1 ? ' crédito que não entra' : ' créditos que não entram') + ' no batimento</summary><ul>' +
+    mais.map(function (m) { return '<li><span>' + esc(rsBatDia(m.c.data) + ' · ' + m.c.condominio + ' · ' + m.t) + '</span><span>' + esc(rsMoeda(m.c.valor)) + '</span></li>'; }).join('') + '</ul></details>';
+  if (!r.bateu.length && !r.somas.length && !r.escolher.length && !r.semNota.length) h += '<p class="vazio">Nenhum crédito novo para baixar neste extrato.</p>';
+  return h + '<div class="rs-info">Regra: mesmo condomínio (pelo CNPJ do PIX), mesmo valor e crédito no dia do envio ou depois. PIX de pessoas e débitos ficam de fora.</div>';
 }
 
 /* ================= Início ================= */
