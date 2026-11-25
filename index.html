@@ -282,6 +282,35 @@ button.obs-auto:hover{background:var(--creme)}
 .anx-doc span{display:flex;flex-direction:column}
 .anx-doc small{font-weight:500;color:var(--suave);font-size:.8125em}
 .anx-nota{margin:0;font-size:.8125em;color:var(--suave)}
+.anx-tile.anx-vid{background:linear-gradient(135deg,#243B5E,var(--azul))}
+.anx-vid .anx-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff}
+.anx-vid .anx-play svg{width:1.75em;height:1.75em;filter:drop-shadow(0 1px 3px rgba(0,0,0,.45))}
+.anx-vid .anx-dur{position:absolute;right:.3em;bottom:.3em;background:rgba(0,0,0,.72);color:#fff;font-size:.6875em;font-weight:600;border-radius:.4em;padding:.05em .4em;font-variant-numeric:tabular-nums}
+.anx-vid.enviando .anx-prog{background:rgba(15,38,70,.55)}
+.anx-vleg{margin:.7em 0 0;font-size:.8125em;color:var(--suave);display:flex;flex-direction:column;gap:.2em}
+.anx-vleg b{color:var(--azul);font-weight:600}
+.anx-g2.v3{grid-template-columns:repeat(auto-fit,minmax(9em,1fr))}
+.vid-jan{display:flex;flex-direction:column;gap:.75em}
+.vid-jan video{width:100%;max-height:60vh;border-radius:.75em;background:#0B1A31}
+.vid-jan .vid-acoes{display:flex;gap:.6em;flex-wrap:wrap}
+.vid-jan .vid-erro{margin:0;font-size:.875em;color:var(--vinho)}
+.vid-long{text-align:center;display:flex;flex-direction:column;gap:.6em}
+.vid-long p{margin:0;font-size:.9375em}
+.grav{position:fixed;inset:0;z-index:90;background:#0B1A31;color:#fff;display:flex;flex-direction:column;padding-top:var(--topo-seg)}
+.grav-topo{display:flex;align-items:center;justify-content:space-between;padding:.75em 1em;gap:1em}
+.grav-topo small{color:#C9D0DC;font-size:.8125em}
+.grav-x{width:2.75em;height:2.75em;border-radius:50%;border:1px solid #4B5B76;background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer}
+.grav-palco{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;position:relative}
+.grav-palco video{max-width:100%;max-height:100%;background:#000}
+.grav-tempo{position:absolute;top:.75em;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.6);border-radius:1em;padding:.2em .8em;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:.5em}
+.grav-tempo i{width:.6em;height:.6em;border-radius:50%;background:#E5484D;display:inline-block}
+.grav-rod{display:flex;align-items:center;justify-content:center;gap:1em;padding:1em 1em calc(1.25em + var(--baixo-seg))}
+.grav-rec{width:4.5em;height:4.5em;border-radius:50%;border:4px solid #fff;background:transparent;padding:0;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.grav-rec i{width:3.2em;height:3.2em;border-radius:50%;background:#E5484D;display:block}
+.grav-rec.parar i{width:1.7em;height:1.7em;border-radius:.35em}
+.grav-bt{min-height:3em;padding:0 1.25em;border-radius:.875em;border:1.5px solid #4B5B76;background:transparent;color:#fff;font-weight:600;cursor:pointer}
+.grav-bt.ouro{background:var(--ouro);border-color:var(--ouro);color:var(--azul)}
+.grav-msg{padding:0 1.25em;text-align:center;color:#C9D0DC;font-size:.875em}
 .anx-lembrete{display:flex;gap:.6em;align-items:flex-start;background:#FBF3E2;border:1px solid #EAD7AE;border-radius:.75em;padding:.75em .875em;font-size:.875em;color:#5A4520}
 .anx-lembrete svg{flex:none;width:1.25em;height:1.25em;stroke:#7A5C27}
 .cartao-anx{display:inline-flex;gap:.6em;margin-left:.5em;vertical-align:-.1em}
@@ -1184,7 +1213,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.24.1';
+var VERSAO_SITE = '1.25';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -1297,6 +1326,8 @@ var IC = {
   lupa: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7D8699" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>',
   camera: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
   imagem: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>',
+  video: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5l5-3v9l-5-3z"/></svg>',
+  play: '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>',
   mais: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A5C27" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
   lixo: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>',
   nuvem: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A5C27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V8M8 12l4-4 4 4"/><path d="M20 16.6A5 5 0 0 0 18 7h-1.3A8 8 0 1 0 4 15.3"/></svg>',
@@ -1995,6 +2026,146 @@ function prepararFoto(file) {
   return carregarImagem(file).then(function (img) { return Promise.all([reduzir(img, 1600, 0.78), reduzir(img, 320, 0.7)]); });
 }
 
+/* ---------- Vídeo (v1.25) ---------- */
+function regrasVideo() {
+  var r = (S.dados && S.dados.regras && S.dados.regras.video) || {};
+  return { pode: !!r.pode, maxMB: r.maxMB || 50, maxSeg: r.maxSeg || 60, porTarefa: r.porTarefa || 5 };
+}
+function ehVideoArq(f) { return !!f && (/^video\//.test(f.type || '') || (!f.type && /\.(mp4|mov|m4v|3gp|3gpp|webm)$/i.test(f.name || ''))); }
+function contarVideos(t) {
+  return ((t && t.anexos) || []).filter(function (a) { return a.video; }).length + ((S.envios[t.id] || []).filter(function (x) { return x.video; }).length);
+}
+function durTxt(seg) { seg = Math.round(seg || 0); return Math.floor(seg / 60) + ':' + ('0' + (seg % 60)).slice(-2); }
+function durLimiteTxt(seg) { return seg % 60 === 0 ? (seg / 60) + (seg === 60 ? ' minuto' : ' minutos') : seg + ' segundos'; }
+/* Lê a duração e tira um quadro de 320 px para a miniatura. Se o aparelho não abrir o vídeo (ex.: HEVC), segue sem os dois. */
+function lerVideo(file) {
+  return new Promise(function (ok) {
+    var u = URL.createObjectURL(file), v = document.createElement('video'), fim = false, seg = 0, tm;
+    var sair = function (mini) {
+      if (fim) return; fim = true; clearTimeout(tm);
+      try { v.pause(); v.removeAttribute('src'); v.load(); } catch (e) {}
+      URL.revokeObjectURL(u);
+      ok({ seg: seg, mini: mini || null });
+    };
+    tm = setTimeout(function () { sair(null); }, 9000);
+    v.muted = true; v.playsInline = true; v.preload = 'metadata';
+    v.onerror = function () { sair(null); };
+    v.onloadedmetadata = function () {
+      seg = isFinite(v.duration) ? Math.round(v.duration) : 0;
+      try { v.currentTime = Math.min(1, (v.duration || 2) / 2); } catch (e) { sair(null); }
+    };
+    v.onseeked = function () {
+      try {
+        var k = Math.min(1, 320 / Math.max(v.videoWidth || 320, v.videoHeight || 320));
+        var c = document.createElement('canvas');
+        c.width = Math.max(1, Math.round((v.videoWidth || 320) * k)); c.height = Math.max(1, Math.round((v.videoHeight || 180) * k));
+        c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
+        c.toBlob(function (b) { sair(b); }, 'image/jpeg', 0.7);
+      } catch (e) { sair(null); }
+    };
+    v.src = u;
+  });
+}
+function folhaVideoLongo(idT, seg) {
+  var t = tarefaPorId(idT) || S.det || {}, R = regrasVideo();
+  abrirJanela('Vídeo muito longo', (t.condo ? nomeCondo(t.condo) + ' · ' : '') + idT,
+    '<div class="jan-corpo vid-long"><p>Este vídeo tem <b>' + durTxt(seg) + '</b>. O limite é de <b>' + durLimiteTxt(R.maxSeg) + '</b>.</p>' +
+    '<p class="anx-nota">Grave de novo ou escolha um vídeo mais curto. Nada foi enviado.</p>' +
+    '<button type="button" class="bt" data-vlongo="outro">Escolher outro vídeo</button>' +
+    '<button type="button" class="bt claro" data-vlongo="cancelar">Cancelar</button></div>', 'centro', function (raiz) {
+      raiz.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-vlongo]'); if (!b) return;
+        fecharCamadas();
+        if (b.getAttribute('data-vlongo') === 'outro') escolherArquivos('videogal', function (fs) { fs.slice(0, 5).forEach(function (f) { enviarAnexo(idT, f, 'Documento'); }); });
+      });
+    });
+}
+
+/* Gravador do próprio app: 720p, ~2 Mbps, para quando chegar ao limite. Sem câmera liberada, cai no gravador do aparelho. */
+function gravarVideo(idT, modo) {
+  var R = regrasVideo();
+  var usarAparelho = function () {
+    escolherArquivos('videocam', function (fs) {
+      if (modo === 'obs') { S.anexoObs[idT] = { file: fs[0], etapa: 'Documento' }; desenharDetalhe(); return; }
+      fs.slice(0, 1).forEach(function (f) { enviarAnexo(idT, f, 'Documento'); });
+    });
+  };
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.MediaRecorder) { usarAparelho(); return; }
+  var tipos = ['video/mp4;codecs=avc1.42E01E,mp4a.40.2', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm'];
+  var mime = tipos.filter(function (m) { return MediaRecorder.isTypeSupported(m); })[0] || '';
+  navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } }, audio: true }).then(function (stream) {
+    var el = document.createElement('div');
+    el.className = 'grav'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-modal', 'true'); el.setAttribute('aria-label', 'Gravar vídeo');
+    el.innerHTML = '<div class="grav-topo"><div><b>Gravar vídeo</b><br><small>Até ' + durLimiteTxt(R.maxSeg) + '</small></div>' +
+      '<button type="button" class="grav-x" data-g="fechar" aria-label="Fechar">' + IC.fechar + '</button></div>' +
+      '<div class="grav-palco"><video id="gravVid" playsinline muted autoplay></video><div class="grav-tempo" id="gravTempo" hidden><i></i><span>0:00</span></div></div>' +
+      '<p class="grav-msg" id="gravMsg">Toque no botão vermelho para começar.</p>' +
+      '<div class="grav-rod" id="gravRod"><button type="button" class="grav-rec" id="gravRec" data-g="rec" aria-label="Começar a gravar"><i></i></button></div>';
+    document.body.appendChild(el);
+    var vid = el.querySelector('#gravVid'), tempo = el.querySelector('#gravTempo'), msg = el.querySelector('#gravMsg'), rod = el.querySelector('#gravRod');
+    vid.srcObject = stream;
+    var rec = null, partes = [], t0 = 0, tick = null, arquivo = null, seg = 0, urlPrev = null;
+    var fechar = function () {
+      clearInterval(tick);
+      try { if (rec && rec.state !== 'inactive') { rec.onstop = null; rec.stop(); } } catch (e) {}
+      stream.getTracks().forEach(function (t) { t.stop(); });
+      if (urlPrev) URL.revokeObjectURL(urlPrev);
+      if (el.parentNode) el.parentNode.removeChild(el);
+      document.removeEventListener('keydown', teclaGrav);
+    };
+    var teclaGrav = function (e) { if (e.key === 'Escape') fechar(); };
+    document.addEventListener('keydown', teclaGrav);
+    var parar = function () { if (rec && rec.state === 'recording') rec.stop(); };
+    var comecar = function () {
+      partes = [];
+      var op = { videoBitsPerSecond: 2000000, audioBitsPerSecond: 64000 }; if (mime) op.mimeType = mime;
+      try { rec = new MediaRecorder(stream, op); } catch (e) { rec = new MediaRecorder(stream); }
+      rec.ondataavailable = function (e) { if (e.data && e.data.size) partes.push(e.data); };
+      rec.onstop = function () {
+        clearInterval(tick); tempo.hidden = true;
+        seg = Math.max(1, Math.round((Date.now() - t0) / 1000));
+        var tipo = (rec.mimeType || mime || 'video/webm').split(';')[0];
+        var ext = /mp4/.test(tipo) ? 'mp4' : 'webm';
+        var blob = new Blob(partes, { type: tipo });
+        var d = new Date(), z = function (n) { return ('0' + n).slice(-2); };
+        arquivo = new File([blob], 'video-' + d.getFullYear() + z(d.getMonth() + 1) + z(d.getDate()) + '-' + z(d.getHours()) + z(d.getMinutes()) + '.' + ext, { type: tipo });
+        urlPrev = URL.createObjectURL(blob);
+        vid.srcObject = null; vid.muted = false; vid.controls = true; vid.autoplay = false; vid.src = urlPrev;
+        msg.textContent = durTxt(seg) + ' · ' + tamanhoTxt(blob.size);
+        rod.innerHTML = '<button type="button" class="grav-bt" data-g="refazer">Gravar de novo</button><button type="button" class="grav-bt ouro" data-g="usar">Usar vídeo</button>';
+      };
+      rec.start(1000);
+      t0 = Date.now(); tempo.hidden = false;
+      var b = el.querySelector('#gravRec'); b.classList.add('parar'); b.setAttribute('aria-label', 'Parar de gravar');
+      msg.textContent = 'Gravando… toque no quadrado para parar.';
+      tick = setInterval(function () {
+        var s = Math.round((Date.now() - t0) / 1000);
+        tempo.querySelector('span').textContent = durTxt(s) + ' / ' + durTxt(R.maxSeg);
+        if (s >= R.maxSeg) parar();
+      }, 250);
+    };
+    el.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-g]'); if (!b) return;
+      var g = b.getAttribute('data-g');
+      if (g === 'fechar') fechar();
+      else if (g === 'rec') { if (rec && rec.state === 'recording') parar(); else comecar(); }
+      else if (g === 'refazer') {
+        if (urlPrev) { URL.revokeObjectURL(urlPrev); urlPrev = null; }
+        vid.removeAttribute('src'); vid.controls = false; vid.muted = true; vid.srcObject = stream; vid.play();
+        rod.innerHTML = '<button type="button" class="grav-rec" id="gravRec" data-g="rec" aria-label="Começar a gravar"><i></i></button>';
+        msg.textContent = 'Toque no botão vermelho para começar.';
+      } else if (g === 'usar') {
+        var f = arquivo, dur = seg; fechar();
+        if (modo === 'obs') { S.anexoObs[idT] = { file: f, etapa: 'Documento', duracao: dur }; desenharDetalhe(); var ob = $('txtObs'); if (ob) ob.focus(); return; }
+        enviarAnexo(idT, f, 'Documento', { duracao: dur });
+      }
+    });
+  }).catch(function () {
+    avisar('Sem acesso à câmera. Vou abrir o gravador do aparelho.', true);
+    usarAparelho();
+  });
+}
+
 /* ---------- Enviar ---------- */
 function ajustarContagem(idTarefa, etapa, delta) {
   var t = ((S.dados && S.dados.tarefas) || []).filter(function (x) { return x.id === idTarefa; })[0];
@@ -2005,26 +2176,39 @@ function ajustarContagem(idTarefa, etapa, delta) {
 
 function enviarAnexo(idTarefa, file, etapa, extra) {
   extra = extra || {};
+  var video = ehVideoArq(file);
+  if (video) etapa = 'Documento'; // vídeo é anexo comum
   var foto = etapa !== 'Documento';
   var item = { idCliente: novoIdCliente(), idTarefa: idTarefa, etapa: etapa, origem: extra.origem || 'app', idObs: extra.idObs || '',
-    original: file.size, criadoEm: Date.now() };
+    original: file.size, criadoEm: Date.now(), video: video, duracao: 0 };
   var envios = S.envios[idTarefa] || (S.envios[idTarefa] = []);
-  var tmp = { tmp: item.idCliente, etapa: etapa, nome: file.name || 'foto.jpg', progresso: 0, url: null, estado: 'preparando' };
+  var tmp = { tmp: item.idCliente, etapa: etapa, nome: file.name || (video ? 'video.mp4' : 'foto.jpg'), progresso: 0, url: null, estado: 'preparando', video: video, duracao: 0 };
   envios.push(tmp);
   desenharAnexos();
-  var prep = foto ? prepararFoto(file) : Promise.resolve([file, null]);
+  var prep = video ? lerVideo(file).then(function (v) {
+    var R = regrasVideo();
+    if (!R.pode) throw { mensagem: 'Vídeo está liberado só para a Carvalho & Abreu.' };
+    var seg = extra.duracao || v.seg || 0;
+    if (seg > R.maxSeg + 1) { folhaVideoLongo(idTarefa, seg); throw { silencioso: true }; }
+    if (file.size > R.maxMB * 1048576) throw { mensagem: 'O vídeo passa de ' + R.maxMB + ' MB. Grave um trecho mais curto.' };
+    item.duracao = seg; tmp.duracao = seg;
+    return [file, v.mini];
+  }) : foto ? prepararFoto(file) : Promise.resolve([file, null]);
   return prep.then(function (par) {
     item.blob = par[0]; item.mini = par[1];
     if (item.mini) tmp.url = URL.createObjectURL(item.mini);
-    var limite = ((S.dados.regras && S.dados.regras.tamArquivoMB) || 25) * 1048576;
-    if (item.blob.size > limite) throw { mensagem: 'O arquivo passa de ' + Math.round(limite / 1048576) + ' MB. Envie um link no follow-up.' };
-    item.nome = foto ? String(file.name || 'foto').replace(/\.[^.]+$/, '') + '.jpg' : (file.name || 'arquivo');
-    item.tipo = foto ? 'image/jpeg' : (file.type || 'application/octet-stream');
+    if (!video) {
+      var limite = ((S.dados.regras && S.dados.regras.tamArquivoMB) || 25) * 1048576;
+      if (item.blob.size > limite) throw { mensagem: 'O arquivo passa de ' + Math.round(limite / 1048576) + ' MB. Envie um link no follow-up.' };
+    }
+    item.nome = foto ? String(file.name || 'foto').replace(/\.[^.]+$/, '') + '.jpg' : (file.name || (video ? 'video.mp4' : 'arquivo'));
+    item.tipo = foto ? 'image/jpeg' : (file.type || (video ? (/\.mov$/i.test(item.nome) ? 'video/quicktime' : 'video/mp4') : 'application/octet-stream'));
     if (!foto && !(item.blob instanceof Blob)) item.blob = new Blob([item.blob], { type: item.tipo });
     return filaGravar(item).then(function () { return enviarItem(item, tmp); });
   }).catch(function (e) {
     filaApagar(item.idCliente);
     tirarEnvio(idTarefa, tmp);
+    if (e && e.silencioso) { desenharAnexos(); return { ok: false }; }
     avisar((e && e.mensagem) || (e && e.message === 'formato' ? 'Não deu para abrir esta foto. Tente tirar pela câmera ou escolher outra.' : 'Não foi possível enviar. Tente de novo.'), true);
     desenharAnexos();
     return { ok: false };
@@ -2058,7 +2242,9 @@ function escolherArquivos(tipo, aoEscolher) {
   inp.style.display = 'none';
   if (tipo === 'camera') { inp.accept = 'image/*'; inp.setAttribute('capture', 'environment'); }
   else if (tipo === 'galeria') { inp.accept = 'image/*'; inp.multiple = true; }
-  else inp.accept = '.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.ppt,.pptx,.dwg,.zip,image/*';
+  else if (tipo === 'videocam') { inp.accept = 'video/*'; inp.setAttribute('capture', 'environment'); }
+  else if (tipo === 'videogal') { inp.accept = 'video/*'; inp.multiple = true; }
+  else inp.accept = '.pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.ppt,.pptx,.dwg,.zip,image/*,video/*';
   inp.addEventListener('change', function () {
     var fs = Array.prototype.slice.call(inp.files || []);
     document.body.removeChild(inp);
@@ -2073,6 +2259,8 @@ function abrirAnexar(etapaInicial, modo) {
   var etapa = etapaInicial === 'Depois' ? 'Depois' : 'Antes';
   var mb = (S.dados.regras && S.dados.regras.tamArquivoMB) || 25;
   var pc = faixa() === 'computador';
+  var RV = regrasVideo();
+  var podeVid = RV.pode && !t.compra && contarVideos(t) < RV.porTarefa;
   var h = '<div class="jan-corpo">' +
     '<div class="rot-campo">Foto da ocorrência</div>' +
     '<div class="seg seg-largo" role="group" aria-label="Etapa da foto">' +
@@ -2081,6 +2269,11 @@ function abrirAnexar(etapaInicial, modo) {
     '<div class="anx-g2">' +
       (pc ? '' : '<button type="button" class="anx-gb" data-pegar="camera">' + IC.camera + '<span>Tirar foto</span></button>') +
       '<button type="button" class="anx-gb" data-pegar="galeria">' + IC.imagem + '<span>' + (pc ? 'Escolher fotos' : 'Da galeria') + '</span></button></div>' +
+    (podeVid ? '<div class="rot-campo">Vídeo <small style="font-weight:500">(opcional)</small></div>' +
+      '<div class="anx-g2">' +
+        (pc ? '' : '<button type="button" class="anx-gb" data-pegar="gravar">' + IC.video + '<span>Gravar vídeo</span></button>') +
+        '<button type="button" class="anx-gb" data-pegar="videogal">' + IC.video + '<span>' + (pc ? 'Escolher vídeo' : 'Da galeria') + '</span></button></div>' +
+      '<small class="anx-nota">Até ' + durLimiteTxt(RV.maxSeg) + ' · ' + RV.maxMB + ' MB</small>' : '') +
     '<div class="rot-campo">Documento</div>' +
     '<button type="button" class="menu-item anx-doc" data-pegar="doc">' + IC.doc + '<span><b>Escolher arquivo</b><small>PDF, planilha, Word ou imagem · até ' + mb + ' MB</small></span></button>' +
     '<p class="anx-nota">As fotos são otimizadas no próprio aparelho antes de enviar: chegam em segundos e ocupam pouco espaço.' + (pc ? ' Você também pode arrastar fotos e arquivos direto para a tarefa.' : '') + '</p></div>';
@@ -2094,11 +2287,12 @@ function abrirAnexar(etapaInicial, modo) {
       }
       var p = e.target.closest('[data-pegar]'); if (!p) return;
       var tipo = p.getAttribute('data-pegar');
-      var et = tipo === 'doc' ? 'Documento' : etapa;
       var idT = t.id;
+      if (tipo === 'gravar') { fecharCamadas(); gravarVideo(idT, modo); return; }
+      var et = (tipo === 'doc' || tipo === 'videogal') ? 'Documento' : etapa;
       escolherArquivos(tipo, function (fs) {
         fecharCamadas();
-        if (modo === 'obs') { S.anexoObs[idT] = { file: fs[0], etapa: et }; desenharDetalhe(); var el = $('txtObs'); if (el) el.focus(); return; }
+        if (modo === 'obs') { S.anexoObs[idT] = { file: fs[0], etapa: ehVideoArq(fs[0]) ? 'Documento' : et }; desenharDetalhe(); var el = $('txtObs'); if (el) el.focus(); return; }
         fs.slice(0, 10).forEach(function (f) { enviarAnexo(idT, f, et); });
       });
     });
@@ -2138,7 +2332,35 @@ function htmlAnexos(t) {
     });
     h += '</section>';
   }
-  var docs = ax.filter(function (a) { return a.etapa === 'Documento'; }), envDocs = envDe('Documento');
+  var RV = regrasVideo();
+  var videos = ax.filter(function (a) { return a.video; }), envVid = env.filter(function (x) { return x.video; });
+  var podeVid = podeFoto && RV.pode && videos.length + envVid.length < RV.porTarefa;
+  if (videos.length || envVid.length || (podeFoto && RV.pode)) {
+    h += '<section class="bloco anx" aria-label="Vídeos" data-drop="Documento"><div class="anx-cab"><span class="rotulo">Vídeos</span>' +
+      (podeVid ? '<button class="bt-link" data-anexar="Documento">+ Vídeo</button>' : '') + '</div><div class="anx-faixa">';
+    videos.forEach(function (a) {
+      var b = S.baixando[a.id];
+      h += '<button class="anx-tile anx-vid" data-vervideo="' + esc(a.id) + '" aria-label="Vídeo de ' + durTxt(a.duracao) + '">' +
+        (a.temMini ? (S.mini[a.id] ? '<img src="' + S.mini[a.id] + '" alt="">' : '<img data-mini="' + esc(a.id) + '" alt="">') : '') +
+        '<span class="anx-play">' + IC.play + '</span>' + (a.duracao ? '<span class="anx-dur">' + durTxt(a.duracao) + '</span>' : '') +
+        (b != null ? '<span class="anx-prog">' + b + '%</span>' : '') + '</button>';
+    });
+    envVid.forEach(function (x) {
+      h += '<div class="anx-tile anx-vid enviando' + (x.estado === 'aguardando' ? ' aguardando' : '') + '" aria-label="' + (x.estado === 'aguardando' ? 'Vídeo aguardando sinal' : 'Enviando vídeo') + '">' + (x.url ? '<img src="' + x.url + '" alt="">' : '') +
+        (x.duracao ? '<span class="anx-dur">' + durTxt(x.duracao) + '</span>' : '') +
+        '<span class="anx-prog">' + (x.estado === 'aguardando' ? IC.semSinal : x.progresso ? x.progresso + '%' : '<i class="anx-gira"></i>') + '</span></div>';
+    });
+    if (podeVid) h += '<button class="anx-add" data-anexar="Documento" aria-label="Adicionar vídeo">' + IC.mais + '<span>Vídeo</span></button>';
+    h += '</div>';
+    var ativos = envVid.filter(function (x) { return x.estado === 'enviando'; })[0], esperando = envVid.filter(function (x) { return x.estado === 'aguardando'; })[0];
+    if (ativos || esperando) {
+      h += '<div class="anx-vleg">' + (ativos ? '<span><b>Enviando vídeo · ' + (ativos.progresso || 0) + '%</b></span>' : '') +
+        (esperando ? '<span>Sem sinal: o vídeo' + (esperando.duracao ? ' de ' + durTxt(esperando.duracao) : '') + ' fica na fila e segue sozinho quando a conexão voltar.</span>' : '') + '</div>';
+    }
+    if (!videos.length && !envVid.length) h += '<span class="cartao-meta">Nenhum vídeo ainda.' + (faixa() === 'computador' ? ' Arraste um vídeo para cá.' : '') + '</span>';
+    h += '</section>';
+  }
+  var docs = ax.filter(function (a) { return a.etapa === 'Documento' && !a.video; }), envDocs = envDe('Documento').filter(function (x) { return !x.video; });
   if (docs.length || envDocs.length || pode) {
     h += '<section class="bloco anx" aria-label="Arquivos" data-drop="Documento"><div class="anx-cab"><span class="rotulo">' + (compra ? 'Comprovante e nota fiscal' : 'Arquivos') + '</span>' +
       (pode ? '<button class="bt-link" data-anexar="Documento">+ ' + (compra ? 'Anexar' : 'Anexar arquivo') + '</button>' : '') + '</div>';
@@ -2227,6 +2449,36 @@ function abrirDocumento(id) {
   }).catch(function (e) {
     delete S.baixando[id]; desenharAnexos();
     avisar((e && e.mensagem) || 'Não foi possível baixar agora.', true);
+  });
+}
+function abrirVideo(id) {
+  var a = anexoPorId(id); if (!a || S.baixando[id] != null) return;
+  S.baixando[id] = 0; desenharAnexos();
+  baixarArquivo(a, function (p) { S.baixando[id] = p; desenharAnexos(); }).then(function (blob) {
+    delete S.baixando[id]; desenharAnexos();
+    var url = URL.createObjectURL(blob);
+    var t = S.det || {};
+    abrirJanela('Vídeo ' + durTxt(a.duracao), (t.condo ? nomeCondo(t.condo) + ' · ' : '') + a.idTarefa,
+      '<div class="jan-corpo vid-jan"><video id="vidTocar" controls playsinline preload="metadata" src="' + url + '"></video>' +
+      '<p class="vid-erro" id="vidErro" hidden>Este vídeo não toca aqui. Toque em Baixar para abrir no aparelho.</p>' +
+      '<small class="anx-nota">' + esc(tamanhoTxt(a.tamanho) + ' · ' + a.por + ' · ' + quando(a.em)) + '</small>' +
+      '<div class="vid-acoes"><button type="button" class="bt claro" data-vid="baixar">Baixar</button>' +
+      (a.podeExcluir ? '<button type="button" class="bt claro" data-vid="excluir">Excluir</button>' : '') + '</div></div>', 'centro', function (raiz) {
+        var el = raiz.querySelector('#vidTocar');
+        el.addEventListener('error', function () { raiz.querySelector('#vidErro').hidden = false; });
+        raiz.addEventListener('click', function (e) {
+          var b = e.target.closest('[data-vid]'); if (!b) return;
+          if (b.getAttribute('data-vid') === 'baixar') salvarBlob(blob, nomeCurtoAnexo(a), false);
+          else {
+            if (b.getAttribute('data-confirmar') !== '1') { b.setAttribute('data-confirmar', '1'); b.textContent = 'Toque de novo para excluir'; return; }
+            var fantasma = document.createElement('button'); fantasma.setAttribute('data-confirmar', '1');
+            fecharCamadas(); confirmarExcluirAnexo(id, fantasma);
+          }
+        });
+      });
+  }).catch(function (e) {
+    delete S.baixando[id]; desenharAnexos();
+    avisar((e && e.mensagem) || 'Não foi possível abrir o vídeo agora.', true);
   });
 }
 function salvarBlob(blob, nome, tentarAbrir) {
@@ -2336,7 +2588,7 @@ function confirmarExcluirAnexo(id, bt) {
     if (S.det) S.det.anexos = (S.det.anexos || []).filter(function (x) { return x.id !== id; });
     if (S.det && r.observacao) S.det.observacoes = (S.det.observacoes || []).concat([r.observacao]);
     ajustarContagem(a.idTarefa, a.etapa, -1);
-    avisar(a.etapa === 'Documento' ? 'Arquivo excluído' : 'Foto excluída');
+    avisar(a.video ? 'Vídeo excluído' : a.etapa === 'Documento' ? 'Arquivo excluído' : 'Foto excluída');
     if (S.visor) fecharVisor();
     desenharDetalhe();
   });
@@ -2417,6 +2669,7 @@ function enviarItem(item, tmp) {
   tmp.estado = 'enviando'; desenharAnexos();
   var base = { id: item.idTarefa, etapa: item.etapa, nome: item.nome, tipo: item.tipo, tamanho: item.blob.size,
     idObs: item.idObs || '', origem: item.origem || 'app', idCliente: item.idCliente };
+  if (item.video) base.duracao = item.duracao || 0;
   return (item.mini ? blobParaB64(item.mini) : Promise.resolve('')).then(function (m64) {
     base.miniatura = m64;
     if (item.blob.size <= ANX_PARTE) {
@@ -2441,7 +2694,7 @@ function tratarRespostaEnvio(item, tmp, r) {
   if (!r.ok) { avisar(r.mensagem, true); desenharAnexos(); return r; }
   var a = r.anexo;
   if (item.mini) { S.mini[a.id] = tmp.url || URL.createObjectURL(item.mini); cacheGravar('mini-' + a.id, item.mini); }
-  if (foto) cacheGravar('arq-' + a.id, item.blob);
+  if (foto || (item.video && item.blob.size <= 10 * 1048576)) cacheGravar('arq-' + a.id, item.blob);
   if (S.det && S.det.id === item.idTarefa) {
     if (!(S.det.anexos || []).some(function (x) { return x.id === a.id; })) S.det.anexos = (S.det.anexos || []).concat([a]);
     if (r.observacao && !(S.det.observacoes || []).some(function (o) { return o.id === r.observacao.id; })) S.det.observacoes = (S.det.observacoes || []).concat([r.observacao]);
@@ -2449,7 +2702,7 @@ function tratarRespostaEnvio(item, tmp, r) {
   if (!r.repetido) ajustarContagem(item.idTarefa, item.etapa, 1);
   var t = tarefaPorId(item.idTarefa);
   if (r.observacao && t) t.nObs = (t.nObs || 0) + 1;
-  avisar(foto ? 'Foto ' + ETAPA_ROT[item.etapa] + ' enviada' + (item.original > item.blob.size * 1.5 ? ' · ' + tamanhoTxt(item.original) + ' → ' + tamanhoTxt(item.blob.size) : '') : 'Arquivo anexado');
+  avisar(item.video ? 'Vídeo anexado' : foto ? 'Foto ' + ETAPA_ROT[item.etapa] + ' enviada' + (item.original > item.blob.size * 1.5 ? ' · ' + tamanhoTxt(item.original) + ' → ' + tamanhoTxt(item.blob.size) : '') : 'Arquivo anexado');
   if (S.det && S.det.id === item.idTarefa) desenharDetalhe(); else desenhar();
   return r;
 }
@@ -2468,7 +2721,7 @@ function processarFila() {
       var tmp = lista.filter(function (x) { return x.tmp === item.idCliente; })[0];
       if (tmp && tmp.estado === 'enviando') { proximo(); return; }
       if (!tmp) {
-        tmp = { tmp: item.idCliente, etapa: item.etapa, nome: item.nome, progresso: 0, url: item.mini ? URL.createObjectURL(item.mini) : null, estado: 'aguardando' };
+        tmp = { tmp: item.idCliente, etapa: item.etapa, nome: item.nome, progresso: 0, url: item.mini ? URL.createObjectURL(item.mini) : null, estado: 'aguardando', video: !!item.video, duracao: item.duracao || 0 };
         lista.push(tmp);
       }
       enviarItem(item, tmp).then(function (r) {
@@ -2486,7 +2739,7 @@ function carregarFila() {
     itens.forEach(function (item) {
       var lista = S.envios[item.idTarefa] || (S.envios[item.idTarefa] = []);
       if (lista.some(function (x) { return x.tmp === item.idCliente; })) return;
-      lista.push({ tmp: item.idCliente, etapa: item.etapa, nome: item.nome, progresso: 0, url: item.mini ? URL.createObjectURL(item.mini) : null, estado: 'aguardando' });
+      lista.push({ tmp: item.idCliente, etapa: item.etapa, nome: item.nome, progresso: 0, url: item.mini ? URL.createObjectURL(item.mini) : null, estado: 'aguardando', video: !!item.video, duracao: item.duracao || 0 });
     });
     avisar(itens.length + (itens.length === 1 ? ' anexo aguardando envio' : ' anexos aguardando envio'));
     desenharAnexos();
@@ -2522,7 +2775,7 @@ function abrirCompartilhado() {
   var soFotos = fs.length && fs.every(function (f) { return /^image\//.test(f.type); });
   S.compEtapa = soFotos ? 'Antes' : 'Documento';
   var miniaturas = fs.slice(0, 4).map(function (f) {
-    return /^image\//.test(f.type) ? '<img src="' + URL.createObjectURL(f) + '" alt="">' : '<span class="comp-doc">' + IC.doc + '<small>' + esc(f.name) + '</small></span>';
+    return /^image\//.test(f.type) ? '<img src="' + URL.createObjectURL(f) + '" alt="">' : ehVideoArq(f) ? '<span class="comp-doc">' + IC.video + '<small>' + esc(f.name) + '</small></span>' : '<span class="comp-doc">' + IC.doc + '<small>' + esc(f.name) + '</small></span>';
   }).join('') + (fs.length > 4 ? '<span class="comp-mais">+' + (fs.length - 4) + '</span>' : '');
   var h = '<div class="jan-corpo comp">' +
     (fs.length ? '<div class="comp-recebidos">' + miniaturas + '</div>' : '') +
@@ -2853,7 +3106,7 @@ function desenharDetalhe() {
   });
   if (pode.observar) {
     var clipObs = S.anexoObs[t.id];
-    if (clipObs) h += '<div class="obs-anexo">' + IC.clipP + '<span>' + esc(clipObs.etapa === 'Documento' ? clipObs.file.name : 'Foto ' + ETAPA_ROT[clipObs.etapa] + ' · ' + clipObs.file.name) + '</span><button data-acao="tirarClip" aria-label="Tirar anexo">' + IC.x + '</button></div>';
+    if (clipObs) h += '<div class="obs-anexo">' + IC.clipP + '<span>' + esc(ehVideoArq(clipObs.file) ? 'Vídeo · ' + clipObs.file.name : clipObs.etapa === 'Documento' ? clipObs.file.name : 'Foto ' + ETAPA_ROT[clipObs.etapa] + ' · ' + clipObs.file.name) + '</span><button data-acao="tirarClip" aria-label="Tirar anexo">' + IC.x + '</button></div>';
     h += '<div class="linha-campos">' + (pode.anexar ? '<button class="bt-clip" data-acao="clipObs" aria-label="Anexar foto ou arquivo ao follow-up" title="Anexar">' + IC.clip + '</button>' : '') + '<label class="sr" for="txtObs">Escrever follow-up</label>' +
       '<textarea class="campo" id="txtObs" rows="1" maxlength="1000" placeholder="Escrever follow-up" style="resize:none">' + esc(S.rascunhoObs[t.id] || '') + '</textarea>' +
       '<button class="bt claro" data-acao="enviarObs">Enviar</button></div>';
@@ -3217,14 +3470,14 @@ function enviarObs() {
   var texto = el.value.trim();
   var id = S.det.id;
   var clip = S.anexoObs[id];
-  if (!texto && clip) texto = clip.etapa === 'Documento' ? 'Enviou o arquivo ' + clip.file.name + '.' : 'Enviou uma foto ' + ETAPA_ROT[clip.etapa] + '.';
+  if (!texto && clip) texto = ehVideoArq(clip.file) ? 'Enviou um vídeo.' : clip.etapa === 'Documento' ? 'Enviou o arquivo ' + clip.file.name + '.' : 'Enviou uma foto ' + ETAPA_ROT[clip.etapa] + '.';
   if (!texto) { el.focus(); return; }
   el.disabled = true;
   api('tarefas.observar', { id: id, texto: texto }).then(function (r) {
     el.disabled = false;
     if (!r.ok) { avisar(r.mensagem, true); return; }
     S.rascunhoObs[id] = '';
-    if (clip) { delete S.anexoObs[id]; enviarAnexo(id, clip.file, clip.etapa, { idObs: r.observacao.id }); }
+    if (clip) { delete S.anexoObs[id]; enviarAnexo(id, clip.file, clip.etapa, { idObs: r.observacao.id, duracao: clip.duracao || 0 }); }
     if (S.det && S.det.id === id) {
       S.det.observacoes = (S.det.observacoes || []).concat([r.observacao]);
       desenharDetalhe();
@@ -6568,6 +6821,7 @@ document.addEventListener('click', function (e) {
   if (b.hasAttribute('data-visao')) { trocarVisao(b.getAttribute('data-visao')); return; }
   if (b.hasAttribute('data-anexar')) { abrirAnexar(b.getAttribute('data-anexar')); if (b.getAttribute('data-anexar') === 'Documento') { /* folha já abre no documento */ } return; }
   if (b.hasAttribute('data-verfoto')) { abrirFoto(b.getAttribute('data-verfoto')); return; }
+  if (b.hasAttribute('data-vervideo')) { abrirVideo(b.getAttribute('data-vervideo')); return; }
   if (b.hasAttribute('data-baixar')) { abrirDocumento(b.getAttribute('data-baixar')); return; }
   if (b.hasAttribute('data-excluiranx')) { confirmarExcluirAnexo(b.getAttribute('data-excluiranx'), b); return; }
   if (b.hasAttribute('data-grupo')) { alternarGrupo(b.getAttribute('data-grupo')); return; }

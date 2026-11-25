@@ -42,6 +42,7 @@
           "name": "arquivos",
           "accept": [
             "image/*",
+            "video/*",
             "application/pdf",
             "application/*",
             "text/*"
