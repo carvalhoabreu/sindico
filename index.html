@@ -1090,6 +1090,63 @@ a.bt{text-decoration:none}
   .rs-card{padding:1em}
   .rs-card-val{align-items:flex-start}
 }
+/* v1.27: Inspeção */
+.ins-prog{height:.45em;border-radius:999px;background:var(--creme2);overflow:hidden}
+.ins-prog i{display:block;height:100%;background:var(--ouro);border-radius:999px}
+.ins-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:.5em}
+.ins-nums div{background:#fff;border:1px solid var(--linha);border-radius:1em;padding:.75em .5em;display:flex;flex-direction:column;align-items:center;gap:.15em}
+.ins-nums b{font-family:Lora,Georgia,serif;font-size:1.75em;color:var(--azul);line-height:1}
+.ins-nums .ap b{color:var(--vinho)}
+.ins-nums span{font-size:.75em;font-weight:600;color:var(--suave)}
+.ins-ger,.ins-volta{display:flex;align-items:center;gap:.75em;width:100%;text-align:left;background:none;border:none;border-top:1px solid var(--linha2);padding:.6em 0;font:inherit;color:var(--texto);cursor:pointer}
+.ins-ger:first-of-type{border-top:none}
+.ins-ger span:first-child,.ins-volta>span{flex:1;min-width:0;display:flex;flex-direction:column;gap:.1em}
+.ins-ger small,.ins-volta small{font-size:.8em;color:var(--suave)}
+/* v1.27 · Programadas (etapa 6.3) */
+.prg-tag{flex:none;font-size:.6875em;font-weight:700;border-radius:.4em;padding:.25em .55em;white-space:nowrap}
+.prg-tag.g{background:#E6F2EA;color:#1F6B3A}.prg-tag.a{background:#FFF6E5;color:#8A5200}.prg-tag.r{background:#FBE9E7;color:#9B2C2C}.prg-tag.b{background:#E8EDF5;color:#0F2646}.prg-tag.z{background:#EFEADF;color:#5B6475}
+.prg-atr{background:#FBE9E7;border-radius:1em;padding:.75em 1em;display:flex;flex-direction:column;gap:.25em;font-size:.875em;color:#7A2A2A;border:none;text-align:left;width:100%;font-family:inherit;cursor:pointer}
+.prg-atr b{display:flex;justify-content:space-between;gap:.5em;color:#9B2C2C}
+#prgCorpo>*{flex-shrink:0}
+.ins-volta,.ins-prazo{flex-shrink:0}
+.prg-seg{display:flex;border:1px solid var(--linha);border-radius:.75em;overflow:hidden}
+.prg-seg button{flex:1;min-height:2.75em;border:none;background:#fff;font:600 .875em Inter,system-ui,sans-serif;color:var(--suave2);cursor:pointer}
+.prg-seg button[aria-pressed="true"]{background:var(--azul);color:#fff}
+.prg-seg button:disabled{opacity:.45;cursor:default}
+.prg-prev{font-size:.8125em;color:var(--suave2);line-height:1.6;margin:0}
+.prg-ger{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.prg-ger li button{display:flex;align-items:center;gap:.6em;width:100%;min-height:2.75em;background:none;border:none;border-top:1px solid var(--linha2);font:inherit;font-size:.875em;color:var(--texto);text-align:left;cursor:pointer;padding:.3em 0}
+.prg-ger li button span{flex:1}
+.ins-id{font-size:.75em;font-weight:700;color:var(--azul);background:var(--ouro-fundo);border-radius:999px;padding:.25em .6em;white-space:nowrap}
+.ins-volta{background:#fff;border:1px solid var(--linha);border-radius:1em;padding:.75em 1em}
+.ins-volta svg{flex:none;color:var(--azul)}
+.ins-prazo{background:#fff;border:1px solid var(--linha);border-radius:1em;padding:.6em 1em}
+.ins-res{display:inline-block;font-size:.75em;font-weight:700;border-radius:999px;padding:.1em .55em;background:var(--creme2);color:var(--suave2)}
+.ins-res.ok{background:#E4EFE6;color:#245A33}.ins-res.ap{background:var(--vinho-fundo);color:var(--vinho)}.ins-res.na{background:var(--creme2);color:var(--suave2)}
+.ins-lista li{padding:.3em 0}
+.ins-exec{gap:.8em}
+.ins-sub{margin:0;font-size:.875em;color:var(--suave2);font-weight:600}
+.ins-topo{display:flex;justify-content:space-between;align-items:center;gap:.5em;font-size:.8125em;font-weight:600;color:var(--suave2)}
+.ins-card{background:#fff;border:1px solid var(--linha);border-radius:1.1em;padding:1.1em 1.1em 1em;display:flex;flex-direction:column;gap:.5em}
+.ins-card h3{margin:0;font-family:Lora,Georgia,serif;font-size:1.25em;color:var(--azul);line-height:1.25}
+.ins-dica{margin:0;font-size:.875em;color:var(--suave2)}
+.ins-exige{margin:0;display:flex;align-items:center;gap:.4em;font-size:.8125em;font-weight:600;color:var(--azul)}
+.ins-atual{margin:0;font-size:.8125em;color:var(--suave)}
+.ins-fot summary{cursor:pointer;font-size:.8125em;font-weight:600;color:var(--azul);padding:.25em 0}
+.ins-fotos{margin-top:.4em}
+.ins-botoes{display:flex;flex-direction:column;gap:.5em}
+.ins-b{min-height:3.25em;border-radius:.9em;border:1.5px solid var(--linha);background:#fff;font:600 1em Inter,system-ui,sans-serif;color:var(--azul);display:flex;align-items:center;justify-content:center;gap:.5em;cursor:pointer}
+.ins-b.ok{border-color:#9CC3A6}.ins-b.ok[aria-pressed="true"]{background:#245A33;border-color:#245A33;color:#fff}
+.ins-b.ap{border-color:#D9B0AA;color:var(--vinho)}.ins-b.ap[aria-pressed="true"]{background:var(--vinho);border-color:var(--vinho);color:#fff}
+.ins-b.na[aria-pressed="true"]{background:var(--suave2);border-color:var(--suave2);color:#fff}
+.ins-rod{justify-content:space-between}
+.ins-ao-salvar{background:var(--ouro-fundo);border-radius:1em;padding:.8em 1em;display:flex;flex-direction:column;gap:.3em;font-size:.875em;color:var(--texto)}
+.ins-ao-salvar small{color:var(--suave2)}
+.rot-itens{display:flex;flex-direction:column;gap:.5em}
+.rot-grupo .campo{font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.8125em;color:var(--azul);background:var(--creme2)}
+.rot-item{background:#fff;border:1px solid var(--linha);border-radius:.9em;padding:.55em;display:flex;flex-direction:column;gap:.4em}
+.rot-dica{font-size:.875em}
+.rot-foto{flex:none;min-width:6.5em}
 </style>
 </head>
 <body>
@@ -1223,7 +1280,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.26';
+var VERSAO_SITE = '1.27';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -1593,6 +1650,7 @@ function desenhar() {
   ['btNova', 'icNova', 'bbNova'].forEach(function (id) { $(id).hidden = !podeCriar; });
   $('contLateral').textContent = (d.tarefas || []).length;
   desenharSino();
+  if (S.portal && (podeRoteiros() + '' + podeProgramadas()) !== S.rotNoMenu) { S.rotNoMenu = podeRoteiros() + '' + podeProgramadas(); desenharPortal(); } // v1.27: Roteiros e Programadas no menu
   desenharAlternancia();
   desenharCats();
   desenharCondos();
@@ -1600,6 +1658,7 @@ function desenhar() {
   if (S.selId && !S.det) abrirTarefa(S.selId, true);
   if (ler('abrirT')) abrirLinkDireto();
   if (!S.filaCarregada) { S.filaCarregada = true; carregarFila(); } else processarFila();
+  setTimeout(insProcessarFila, 2500); // v1.27: respostas de inspeção guardadas sem sinal
   verificarCompartilhado();
   if (ler('abrirEvo') && S.portal) { guardar('abrirEvo', null); abrirEvolucao(); }
   if (ler('abrirRess') && S.portal) { guardar('abrirRess', null); abrirRessarcimentos(); }
@@ -1671,13 +1730,17 @@ function metaDe(t, semCondo) {
   var partes = [];
   if (!semCondo && S.condo === 'todos' && (S.dados.condos || []).length > 1) partes.push(nomeCondo(t.condo));
   var comFaixa = faixaAtiva();
-  if (ehCompraT(t) || ehPedidoT(t)) partes.push(t.fase ? (comFaixa ? t.fase : t.categoria + ' · ' + t.fase) : t.categoria);
+  if (ehInspecaoT(t)) partes.push((comFaixa ? '' : 'Inspeção · ') + (t.fase || 'Agendada') + (t.prazo ? ' · ' + dataCurta(t.prazo) : '')); // v1.27
+  else if (ehCompraT(t) || ehPedidoT(t)) partes.push(t.fase ? (comFaixa ? t.fase : t.categoria + ' · ' + t.fase) : t.categoria);
   else {
     if (!comFaixa && temCategoria(t)) partes.push(t.categoria);
     if (t.assuntoNome) partes.push(t.assuntoNome);
     if (textoUnidade(t)) partes.push(textoUnidade(t));
     if (!t.assuntoNome && variasEmpresas()) partes.push(t.empresa);
   }
+  if (t.programada) partes.push('Programada ' + (t.programada.compTxt || '')); // v1.27 (6.3): selo
+  if (t.soAcompanha) partes.push('você acompanha');
+  else if (t.prazo && !ehInspecaoT(t)) partes.push((t.programada ? 'para ' : 'prazo ') + dataCurta(t.prazo));
   if (t.paraVoce) partes.push(origemParaVoce(t) || 'direcionada a você');
   else if (t.direcionadoNome && t.direcionadoNome !== 'Equipe') partes.push('para ' + t.direcionadoNome);
   partes.push(t.nObs ? (t.nObs === 1 ? '1 follow-up' : t.nObs + ' follow-ups') : 'sem follow-up');
@@ -1696,7 +1759,9 @@ function cartao(t, agrupado) {
       '<span class="cartao-meta">' + esc(metaDe(t, agrupado)) + anxInd(t) + '</span>' +
       (t.etiqueta ? '<span class="etiqueta">' + esc(t.etiqueta) + '</span>' : '') +
     '</button>' +
-    (ehPedidoT(t)
+    (ehInspecaoT(t) || t.soAcompanha
+      ? '<button class="concluir abrir-compra" data-abrir="' + esc(t.id) + '" aria-label="' + (t.soAcompanha ? 'Acompanhar: ' : 'Abrir inspeção: ') + esc(t.titulo) + '" title="' + (t.soAcompanha ? 'Acompanhar' : 'Abrir inspeção') + '">' + ICO_CAT.inspecao + '</button>'
+      : ehPedidoT(t)
       ? '<button class="concluir abrir-compra" data-abrir="' + esc(t.id) + '" aria-label="Abrir pedido: ' + esc(t.titulo) + '" title="Abrir pedido">' + IC.listaP + '</button>'
       : ehCompraT(t)
       ? '<button class="concluir abrir-compra" data-abrir="' + esc(t.id) + '" aria-label="Abrir compra: ' + esc(t.titulo) + '" title="Abrir compra">' + IC.carrinho + '</button>'
@@ -2190,9 +2255,9 @@ function enviarAnexo(idTarefa, file, etapa, extra) {
   if (video) etapa = 'Documento'; // vídeo é anexo comum
   var foto = etapa !== 'Documento';
   var item = { idCliente: novoIdCliente(), idTarefa: idTarefa, etapa: etapa, origem: extra.origem || 'app', idObs: extra.idObs || '',
-    original: file.size, criadoEm: Date.now(), video: video, duracao: 0 };
+    original: file.size, criadoEm: Date.now(), video: video, duracao: 0, item: extra.item || 0 };
   var envios = S.envios[idTarefa] || (S.envios[idTarefa] = []);
-  var tmp = { tmp: item.idCliente, etapa: etapa, nome: file.name || (video ? 'video.mp4' : 'foto.jpg'), progresso: 0, url: null, estado: 'preparando', video: video, duracao: 0 };
+  var tmp = { tmp: item.idCliente, etapa: etapa, nome: file.name || (video ? 'video.mp4' : 'foto.jpg'), progresso: 0, url: null, estado: 'preparando', video: video, duracao: 0, item: extra.item || 0 };
   envios.push(tmp);
   desenharAnexos();
   var prep = video ? lerVideo(file).then(function (v) {
@@ -2311,7 +2376,8 @@ function abrirAnexar(etapaInicial, modo) {
 
 /* ---------- Desenho dos blocos ---------- */
 function htmlAnexos(t) {
-  var ax = t.anexos || [], env = S.envios[t.id] || [];
+  // v1.27: fotos dos itens da inspeção ficam no item, não no bloco Fotos
+  var ax = (t.anexos || []).filter(function (a) { return !a.item; }), env = (S.envios[t.id] || []).filter(function (x) { return !x.item; });
   var pode = !!(t.pode && t.pode.anexar);
   var compra = !!t.compra; // aquisição: sem fotos de antes/depois; arquivos = comprovante e nota fiscal
   var podeFoto = pode && !compra;
@@ -2394,6 +2460,7 @@ function desenharAnexos() {
   if (!el || !S.det) return;
   el.innerHTML = htmlAnexos(S.det);
   carregarMiniaturas();
+  if (S.ins) insDesenhar();
 }
 
 function carregarMiniaturas() {
@@ -2680,6 +2747,7 @@ function enviarItem(item, tmp) {
   var base = { id: item.idTarefa, etapa: item.etapa, nome: item.nome, tipo: item.tipo, tamanho: item.blob.size,
     idObs: item.idObs || '', origem: item.origem || 'app', idCliente: item.idCliente };
   if (item.video) base.duracao = item.duracao || 0;
+  if (item.item) base.item = item.item; // v1.27: foto de item da inspeção
   return (item.mini ? blobParaB64(item.mini) : Promise.resolve('')).then(function (m64) {
     base.miniatura = m64;
     if (item.blob.size <= ANX_PARTE) {
@@ -2712,6 +2780,7 @@ function tratarRespostaEnvio(item, tmp, r) {
   if (!r.repetido) ajustarContagem(item.idTarefa, item.etapa, 1);
   var t = tarefaPorId(item.idTarefa);
   if (r.observacao && t) t.nObs = (t.nObs || 0) + 1;
+  if (item.item) { avisar('Foto do item ' + item.item + ' enviada'); if (S.det && S.det.id === item.idTarefa) desenharDetalhe(); if (S.ins) insDesenhar(); insEnviarFila(item.idTarefa); return r; }
   avisar(item.video ? 'Vídeo anexado' : foto ? 'Foto ' + ETAPA_ROT[item.etapa] + ' enviada' + (item.original > item.blob.size * 1.5 ? ' · ' + tamanhoTxt(item.original) + ' → ' + tamanhoTxt(item.blob.size) : '') : 'Arquivo anexado');
   if (S.det && S.det.id === item.idTarefa) desenharDetalhe(); else desenhar();
   return r;
@@ -2731,7 +2800,7 @@ function processarFila() {
       var tmp = lista.filter(function (x) { return x.tmp === item.idCliente; })[0];
       if (tmp && tmp.estado === 'enviando') { proximo(); return; }
       if (!tmp) {
-        tmp = { tmp: item.idCliente, etapa: item.etapa, nome: item.nome, progresso: 0, url: item.mini ? URL.createObjectURL(item.mini) : null, estado: 'aguardando', video: !!item.video, duracao: item.duracao || 0 };
+        tmp = { tmp: item.idCliente, etapa: item.etapa, nome: item.nome, progresso: 0, url: item.mini ? URL.createObjectURL(item.mini) : null, estado: 'aguardando', video: !!item.video, duracao: item.duracao || 0, item: item.item || 0 };
         lista.push(tmp);
       }
       enviarItem(item, tmp).then(function (r) {
@@ -2749,7 +2818,7 @@ function carregarFila() {
     itens.forEach(function (item) {
       var lista = S.envios[item.idTarefa] || (S.envios[item.idTarefa] = []);
       if (lista.some(function (x) { return x.tmp === item.idCliente; })) return;
-      lista.push({ tmp: item.idCliente, etapa: item.etapa, nome: item.nome, progresso: 0, url: item.mini ? URL.createObjectURL(item.mini) : null, estado: 'aguardando', video: !!item.video, duracao: item.duracao || 0 });
+      lista.push({ tmp: item.idCliente, etapa: item.etapa, nome: item.nome, progresso: 0, url: item.mini ? URL.createObjectURL(item.mini) : null, estado: 'aguardando', video: !!item.video, duracao: item.duracao || 0, item: item.item || 0 });
     });
     avisar(itens.length + (itens.length === 1 ? ' anexo aguardando envio' : ' anexos aguardando envio'));
     desenharAnexos();
@@ -2997,6 +3066,7 @@ function abrirTarefa(id, silencioso) {
     if (!r.ok) { avisar(r.mensagem, true); fecharDetalhe(); recarregar(); return; }
     S.det = r.tarefa;
     desenharDetalhe();
+    if (r.tarefa.inspecao && insFilaN(id)) insEnviarFila(id); // v1.27: respostas guardadas sem sinal
     lerAlertasDa(id);
     if (S.abrirAnexarDepois === id) { S.abrirAnexarDepois = null; abrirAnexar('Depois'); }
   });
@@ -3045,6 +3115,8 @@ function desenharDetalhe() {
 
   if (t.compra) h += htmlCompra(t);
   if (t.pedido) h += htmlPedido(t);
+  if (t.inspecao) h += htmlInspecao(t); // v1.27
+  h += htmlDaInspecao(t);
 
   if (pode.ordenar) {
     h += '<div class="caixa-creme"><span>Prioridade</span>' +
@@ -3136,6 +3208,7 @@ function desenharDetalhe() {
   $('detalhe').innerHTML = h;
   ajustarAltura($('txtObs'));
   carregarMiniaturas();
+  if (S.ins && S.ins.id === t.id) insDesenhar();
 }
 
 /* ---------- Aquisições = fluxo Compra pontual (v1.18) ---------- */
@@ -3811,7 +3884,7 @@ function desenharPortal() {
 }
 function temMenuPortal() {
   var p = S.portal || {};
-  return !!p.gestao || (p.modulos || []).length > 1;
+  return !!p.gestao || (p.modulos || []).length > 1 || podeRoteiros() || podeProgramadas();
 }
 function mpLin(acao, icone, titulo, sub, direita, desligado) {
   return '<button class="mp-lin" ' + (desligado ? 'disabled' : 'data-acao="' + acao + '"') + '><span class="ico">' + icone + '</span>' +
@@ -3838,6 +3911,9 @@ function htmlMenuPortal() {
         nd ? '<span class="selo estatico">' + nd + '</span>' : '') +
       (g && g.configuracoes ? mpLin('configuracoes', ICO_CFG, 'Configurações', 'Parâmetros gerais e de cada módulo') : '') + '</div>';
   }
+  if (podeRoteiros() || podeProgramadas()) h += '<div class="mp-rot">Tarefas</div><div class="mp-lista">' + // v1.27
+    (podeProgramadas() ? mpLin('programadas', ICO_CAT.repetir.replace('width="16" height="16"', 'width="20" height="20"'), 'Programadas', 'Tarefas que se repetem, geradas sozinhas') : '') +
+    (podeRoteiros() ? mpLin('roteiros', ICO_CAT.inspecao.replace('width="16" height="16"', 'width="20" height="20"'), 'Roteiros', 'Itens das inspeções, por condomínio') : '') + '</div>';
   if (g) {
     h += '<div class="mp-rot">Gestão</div><div class="mp-lista">';
     if (g.convidar) h += mpLin('convidar', IC.pessoaMais, 'Convidar pessoas', 'Enviar convite pelo WhatsApp');
@@ -3885,8 +3961,11 @@ function desenharLateralGestao() {
   if (eb) eb.innerHTML = emBreve().map(function (m) { return '<div class="lat-breve"><i aria-hidden="true"></i><span>' + esc(m) + '</span></div>'; }).join('');
   var g = S.portal && S.portal.gestao, el = $('latGestao');
   if (!el) return;
-  if (!g) { el.innerHTML = ''; return; }
-  var h = '<span class="lat-titulo" style="padding-top:1.6em">Gestão</span>';
+  var hRot = podeRoteiros() || podeProgramadas() ? '<span class="lat-titulo" style="padding-top:1.6em">Tarefas</span>' + // v1.27
+    (podeProgramadas() ? '<button class="lat-item" data-acao="programadas">' + ICO_CAT.repetir.replace('width="16" height="16"', 'width="20" height="20"').replace('currentColor', '#C9A46A') + '<span style="flex:1">Programadas</span></button>' : '') +
+    (podeRoteiros() ? '<button class="lat-item" data-acao="roteiros">' + ICO_CAT.inspecao.replace('width="16" height="16"', 'width="20" height="20"').replace('currentColor', '#C9A46A') + '<span style="flex:1">Roteiros</span></button>' : '') : '';
+  if (!g) { el.innerHTML = hRot; return; }
+  var h = hRot + '<span class="lat-titulo" style="padding-top:1.6em">Gestão</span>';
   if (g.convidar) h += '<button class="lat-item" data-acao="convidar">' + IC.pessoaMaisOuro + '<span style="flex:1">Convidar pessoas</span></button>';
   if (g.pedidos !== null && g.pedidos !== undefined) {
     h += '<button class="lat-item" data-acao="pedidos" aria-label="Pedidos de acesso">' + IC.caixaOuro + '<span style="flex:1">Pedidos</span>' +
@@ -5224,7 +5303,7 @@ function abrirPerfil() {
 }
 
 /* ================= Nova tarefa (v1.18: por categoria) ================= */
-var FLX = { SIMPLES: 'Simples', COMPRA: 'Compra pontual', PEDIDO: 'Pedido mensal' };
+var FLX = { SIMPLES: 'Simples', COMPRA: 'Compra pontual', PEDIDO: 'Pedido mensal', ROTEIRO: 'Roteiro' };
 function ehCompraT(t) { return !!t && t.fluxo === FLX.COMPRA; }
 function ehPedidoT(t) { return !!t && t.fluxo === FLX.PEDIDO; }
 /* Ocorrência é a categoria comum: não ocupa espaço no cartão (como o antigo "Geral"). */
@@ -5364,12 +5443,12 @@ function abrirNova(opcoes) {
       montarCondo();
       var linhaCat = raiz.querySelector('#novaCatNome');
       if (linhaCat) linhaCat.innerHTML = (ICO_CAT[cat.icone] || ICO_CAT.alerta) + esc(cat.nome);
-      var compra = cat.fluxo === FLX.COMPRA, pedido = cat.fluxo === FLX.PEDIDO;
-      if (compra) montarCompra(); else if (pedido) montarPedidoNova(raiz); else montarSimples();
-      raiz.querySelector('#novaCriar').textContent = compra ? 'Enviar para Compras' : pedido ? 'Continuar para a lista' : cat.unidade ? 'Registrar ' + cat.nome.toLowerCase() : 'Criar tarefa';
+      var compra = cat.fluxo === FLX.COMPRA, pedido = cat.fluxo === FLX.PEDIDO, insp = cat.fluxo === FLX.ROTEIRO;
+      if (compra) montarCompra(); else if (pedido) montarPedidoNova(raiz); else if (insp) montarInspecaoNova(raiz, S.nova.condo); else montarSimples();
+      raiz.querySelector('#novaCriar').textContent = insp ? 'Agendar inspeção' : compra ? 'Enviar para Compras' : pedido ? 'Continuar para a lista' : cat.unidade ? 'Registrar ' + cat.nome.toLowerCase() : 'Criar tarefa';
       var titJan = raiz.querySelector('.jan-cab b'); if (titJan) titJan.textContent = rotNova(cat.nome);
       var cab = raiz.querySelector('.jan-cab small');
-      if (cab) cab.textContent = compra ? (nomeCondo(S.nova.condo) + ' · vai para Compras') : pedido ? (nomeCondo(S.nova.condo) + ' · cotação com fornecedores') : 'Fica na lista do condomínio escolhido';
+      if (cab) cab.textContent = insp ? (nomeCondo(S.nova.condo) + ' · roteiro guiado, item a item') : compra ? (nomeCondo(S.nova.condo) + ' · vai para Compras') : pedido ? (nomeCondo(S.nova.condo) + ' · cotação com fornecedores') : 'Fica na lista do condomínio escolhido';
       raiz.querySelector('#novaErro').hidden = true;
       if (focar && faixa() === 'computador') { var f = raiz.querySelector(compra ? '[data-cp="item"]' : '#novaTitulo'); if (f) f.focus(); }
     };
@@ -5440,15 +5519,689 @@ function abrirNova(opcoes) {
       if (e.target.id === 'novaCondo') { guardarItens(); S.nova.condo = e.target.value; montar(false); }
       else if (e.target.id === 'pdTipo' || e.target.name === 'pdRef') { S.nova.pdTipo = raiz.querySelector('#pdTipo').value; var rr = raiz.querySelector('[name="pdRef"]:checked'); if (rr) S.nova.pdRef = rr.value; montarPedidoNova(raiz); }
       else if (e.target.id === 'novaEmp') montarSimples();
+      else if (/^ins(Rot|Data|Emp|Dir)$/.test(e.target.id)) { lerInspecaoNova(raiz); if (e.target.id !== 'insData' && e.target.id !== 'insDir') montarInspecaoNova(raiz, condoAtual()); }
     });
     raiz.querySelector('#formNova').addEventListener('submit', function (e) {
       e.preventDefault();
       if (catAtual().fluxo === FLX.COMPRA) { guardarItens(); criarCompra(raiz, condoAtual(), catAtual().nome, false); }
       else if (catAtual().fluxo === FLX.PEDIDO) continuarPedidoNova(raiz, condoAtual());
+      else if (catAtual().fluxo === FLX.ROTEIRO) criarInspecaoNova(raiz, condoAtual());
       else criarTarefa(raiz, condoAtual(), false, opcoes, catAtual().nome);
     });
   });
 }
+/* ================= Inspeção (v1.27, etapa 6.2) ================= */
+/* Roteiros (Tarefas › Roteiros), Nova inspeção, execução guiada item a item (Conforme / Apontamento / N/A com um toque),
+   fotos por item, apontamento (nota + fotos) que vira Manutenção para a Carvalho & Abreu, resumo e concluir.
+   Sem sinal: as respostas ficam guardadas no aparelho (localStorage "insFila") e vão sozinhas; as fotos usam a fila de anexos. */
+function ehInspecaoT(t) { return !!t && t.fluxo === FLX.ROTEIRO; }
+function podeRoteiros() { var u = (S.dados && S.dados.usuario) || {}; return !!(u.acoes && u.acoes.inspecoes); }
+function dataBRdeIso(s) { var m = String(s || '').match(/^(\d{4})-(\d{2})-(\d{2})$/); return m ? m[3] + '/' + m[2] + '/' + m[1] : ''; }
+function dataCurta(s) {
+  var m = String(s || '').match(/^(\d{4})-(\d{2})-(\d{2})$/); if (!m) return '';
+  var hoje = diaSP(new Date()), am = diaSP(new Date(Date.now() + 86400000));
+  if (s === hoje) return 'hoje'; if (s === am) return 'amanhã';
+  var d = new Date(m[1] + '-' + m[2] + '-' + m[3] + 'T12:00:00-03:00');
+  return ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'][d.getUTCDay()] + ', ' + m[3] + '/' + m[2];
+}
+var RES_ROT = { 'Conforme': 'Conforme', 'Apontamento': 'Apontamento', 'N/A': 'N/A' };
+
+/* ---------- Fila das respostas (sem sinal) ---------- */
+function insFilaLer() { try { return JSON.parse(lerLocal('insFila') || '{}') || {}; } catch (e) { return {}; } }
+function insFilaGravar(f) { guardarLocal('insFila', JSON.stringify(f)); }
+function insFilaDe(id) { return insFilaLer()[id] || {}; }
+function insFilaN(id) { return Object.keys(insFilaDe(id)).length; }
+function insFotosPendentes(id, ordem) { return (S.envios[id] || []).filter(function (x) { return x.item === ordem; }).length; }
+function insGuardar(id, ordem, resultado, nota) {
+  var f = insFilaLer(); f[id] = f[id] || {};
+  f[id][ordem] = { ordem: ordem, resultado: resultado, nota: nota || '', em: Date.now() };
+  insFilaGravar(f);
+}
+/* Manda o que está guardado de uma inspeção. Respostas que esperam foto ainda na fila ficam para a próxima. */
+function insEnviarFila(id) {
+  var pend = insFilaDe(id), ordens = Object.keys(pend);
+  if (!ordens.length || navigator.onLine === false || S.insEnviando === id) return Promise.resolve(null);
+  var prontas = ordens.filter(function (o) { return !insFotosPendentes(id, Number(o)); });
+  if (!prontas.length) return Promise.resolve(null);
+  S.insEnviando = id;
+  return api('tarefas.insResponder', { id: id, respostas: prontas.map(function (o) { return pend[o]; }) }).then(function (r) {
+    S.insEnviando = null;
+    if (!r.ok) {
+      if (r.codigo === 'REDE') return r;
+      var f0 = insFilaLer(); delete f0[id]; insFilaGravar(f0); // inspeção concluída, sem acesso etc.: não adianta guardar
+      avisar(r.mensagem, true);
+      if (S.det && S.det.id === id) abrirTarefa(id, true);
+      return r;
+    }
+    var f = insFilaLer(), cur = f[id] || {};
+    prontas.forEach(function (o) { if (cur[o] && cur[o].em === pend[o].em) delete cur[o]; });
+    (r.erros || []).forEach(function (e) {
+      // ainda esperando a foto subir: volta para a fila
+      if (/foto/i.test(e.mensagem) && insFotosPendentes(id, e.ordem)) cur[e.ordem] = pend[e.ordem];
+    });
+    if (Object.keys(cur).length) f[id] = cur; else delete f[id];
+    insFilaGravar(f);
+    var erros = (r.erros || []).filter(function (e) { return !(/foto/i.test(e.mensagem) && insFotosPendentes(id, e.ordem)); });
+    if (erros.length) avisar(erros[0].mensagem + (erros.length > 1 ? ' (+' + (erros.length - 1) + ')' : ''), true);
+    if ((r.geradas || []).length) avisar(r.geradas.length === 1 ? 'Apontamento salvo · tarefa ' + r.geradas[0] + ' criada para a Carvalho & Abreu' : r.geradas.length + ' apontamentos salvos · tarefas criadas para a Carvalho & Abreu');
+    if (S.det && S.det.id === id && r.inspecao) {
+      S.det.inspecao = r.inspecao;
+      insAplicarFila(S.det);
+      desenharDetalhe(); if (S.ins) insDesenhar();
+    }
+    return r;
+  }, function () { S.insEnviando = null; return { ok: false, codigo: 'REDE' }; });
+}
+function insProcessarFila() {
+  if (!S.sessao || !S.dados || navigator.onLine === false) return;
+  var f = insFilaLer();
+  Object.keys(f).reduce(function (p, id) { return p.then(function () { return insEnviarFila(id); }); }, Promise.resolve());
+}
+/* Mostra no aparelho as respostas ainda guardadas (otimista). */
+function insAplicarFila(t) {
+  if (!t || !t.inspecao) return;
+  var pend = insFilaDe(t.id);
+  t.inspecao.itens.forEach(function (it) {
+    var p = pend[it.ordem];
+    it.pendente = !!p;
+    if (p) { it.resultado = p.resultado; it.nota = p.nota; }
+  });
+  var rs = { total: t.inspecao.itens.length, respondidos: 0, conformes: 0, apontamentos: 0, na: 0 };
+  t.inspecao.itens.forEach(function (x) { if (!x.resultado) return; rs.respondidos++; if (x.resultado === 'Conforme') rs.conformes++; else if (x.resultado === 'Apontamento') rs.apontamentos++; else rs.na++; });
+  rs.txt = rs.conformes + (rs.conformes === 1 ? ' conforme' : ' conformes') + ' · ' + rs.apontamentos + (rs.apontamentos === 1 ? ' apontamento' : ' apontamentos') + ' · ' + rs.na + ' N/A';
+  t.inspecao.resumo = rs;
+}
+window.addEventListener('online', function () { setTimeout(insProcessarFila, 1500); });
+
+/* ---------- Bloco da inspeção na tarefa aberta ---------- */
+function etapasInspecao(etapa) {
+  var passos = ['Agendada', 'Em andamento', 'Concluída'], iAtual = passos.indexOf(etapa);
+  return '<div class="etapas" role="list" aria-label="Etapas da inspeção">' + passos.map(function (p, k) {
+    var cls = k < iAtual || etapa === 'Concluída' ? 'feito' : k === iAtual ? 'atual' : '';
+    return (k ? '<span class="li' + (k <= iAtual ? ' feito' : '') + '" aria-hidden="true"></span>' : '') +
+      '<span class="et ' + cls + '" role="listitem"' + (k === iAtual && etapa !== 'Concluída' ? ' aria-current="step"' : '') + '><span class="bo">' +
+      (cls === 'feito' ? IC.okP : (k + 1)) + '</span>' + esc(p) + '</span>';
+  }).join('') + '</div>';
+}
+function htmlResumoNum(rs) {
+  return '<div class="ins-nums"><div><b>' + rs.conformes + '</b><span>' + (rs.conformes === 1 ? 'Conforme' : 'Conformes') + '</span></div>' +
+    '<div class="ap"><b>' + rs.apontamentos + '</b><span>' + (rs.apontamentos === 1 ? 'Apontamento' : 'Apontamentos') + '</span></div>' +
+    '<div><b>' + rs.na + '</b><span>N/A</span></div></div>';
+}
+function htmlGeradas(ins) {
+  if (!ins.geradas.length) return '';
+  return '<div class="cp-caixa"><span class="rotulo">Apontamentos e tarefas geradas</span>' + ins.geradas.map(function (g) {
+    var it = ins.itens.filter(function (x) { return x.ordem === g.ordem; })[0] || {};
+    return '<button class="ins-ger" data-abrir="' + esc(g.id) + '"><span><b>' + esc(it.nota || g.item) + '</b><small>' + esc((g.grupo ? g.grupo + ' · ' : '') + 'item ' + g.ordem +
+      (g.fotos ? ' · ' + g.fotos + (g.fotos === 1 ? ' foto' : ' fotos') : '') + ' · Manutenção para Carvalho & Abreu') + '</small></span><span class="ins-id">' + esc(g.id) + '</span></button>';
+  }).join('') + '</div>';
+}
+function htmlInspecao(t) {
+  var ins = t.inspecao; if (!ins) return '';
+  insAplicarFila(t);
+  var rs = ins.resumo, p = ins.pode || {}, nFila = insFilaN(t.id);
+  var h = etapasInspecao(ins.etapa);
+  var atrasada = ins.etapa !== 'Concluída' && ins.data && ins.data < diaSP(new Date());
+  h += '<div class="cp-caixa">' +
+    '<div class="kv"><span>Data da inspeção</span><b>' + esc(dataBRdeIso(ins.data)) + (atrasada ? ' · atrasada' : ins.data === diaSP(new Date()) ? ' · hoje' : '') + '</b></div>' +
+    '<div class="kv"><span>Roteiro</span><b>' + esc(ins.roteiro || '—') + ' · ' + rs.total + (rs.total === 1 ? ' item' : ' itens') + '</b></div>' +
+    '<div class="ins-prog" role="progressbar" aria-valuemin="0" aria-valuemax="' + rs.total + '" aria-valuenow="' + rs.respondidos + '" aria-label="Itens respondidos"><i style="width:' + (rs.total ? Math.round(rs.respondidos * 100 / rs.total) : 0) + '%"></i></div>' +
+    '<span class="cartao-meta">' + rs.respondidos + ' de ' + rs.total + ' respondidos' + (rs.respondidos ? ' · ' + esc(rs.txt) : '') + '</span></div>';
+  if (nFila) h += '<div class="anx-fila">' + IC.semSinal + '<span><b>Sem sinal.</b> ' + nFila + (nFila === 1 ? ' resposta guardada' : ' respostas guardadas') + ' no aparelho; ' + (nFila === 1 ? 'vai sozinha' : 'vão sozinhas') + ' quando o sinal voltar.</span><button class="bt-link" data-ins="enviarFila">Tentar agora</button></div>';
+  if (ins.etapa === 'Concluída') h += htmlResumoNum(rs);
+  h += htmlGeradas(ins);
+  if (p.responder) {
+    if (p.iniciar && !rs.respondidos) h += '<button class="bt grande" data-ins="iniciar">' + ICO_CAT.inspecao + ' Iniciar inspeção</button>';
+    else if (rs.respondidos === rs.total && rs.total) h += '<button class="bt grande" data-ins="resumo">' + IC.checkOuro + ' Ver resumo e concluir</button>';
+    else h += '<button class="bt grande" data-ins="continuar">' + ICO_CAT.inspecao + ' Continuar inspeção · item ' + (proximoSemResposta(ins) + 1) + ' de ' + rs.total + '</button>';
+  } else if (ins.etapa !== 'Concluída') {
+    h += '<p class="nova-nota">' + (ins.etapa === 'Agendada' ? 'Quem foi designado inicia no dia e responde item a item.' : 'Em andamento com ' + esc(t.direcionadoNome) + '.') + '</p>';
+  }
+  h += '<details class="historico ins-lista"><summary>Itens (' + rs.total + ')</summary><ol>' + ins.itens.map(function (it) {
+    return '<li><span class="ins-res ' + resClasse(it.resultado) + '">' + esc(it.resultado ? RES_ROT[it.resultado] : '—') + '</span> ' + esc(it.item) +
+      (it.grupo ? ' <small>· ' + esc(it.grupo) + '</small>' : '') + (it.nota ? '<br><small>' + esc(it.nota) + '</small>' : '') + (it.pendente ? ' <small>· guardada no aparelho</small>' : '') + '</li>';
+  }).join('') + '</ol></details>';
+  return h;
+}
+function resClasse(r) { return r === 'Conforme' ? 'ok' : r === 'Apontamento' ? 'ap' : r === 'N/A' ? 'na' : ''; }
+function proximoSemResposta(ins, desde) {
+  var n = ins.itens.length, ini = desde || 0;
+  for (var k = 0; k < n; k++) { var i = (ini + k) % n; if (!ins.itens[i].resultado) return i; }
+  return Math.min(ini, n - 1);
+}
+function htmlDaInspecao(t) {
+  var h = '';
+  if (t.soAcompanha) h += '<div class="cp-aviso"><span><b>Você acompanha esta tarefa.</b> Ela nasceu da sua inspeção; a Carvalho & Abreu faz a triagem e direciona.</span></div>';
+  var di = t.daInspecao;
+  if (di) h += '<button class="ins-volta" data-abrir="' + esc(di.id) + '">' + ICO_CAT.inspecao + '<span>Apontamento da inspeção <b>' + esc(di.id) + '</b>' +
+    (di.titulo ? ' · ' + esc(di.titulo) : '') + (di.ordem ? '<small>Item ' + di.ordem + (di.grupo ? ' · ' + esc(di.grupo) : '') + ' · ' + esc(di.item) + '</small>' : '') + '</span>' + IC.chevD + '</button>';
+  var pg = t.programada; // v1.27 (6.3): selo e caminho para o cadastro
+  if (pg) {
+    var tx = '<span><span>Programada <b>' + esc(pg.codigo) + '</b>' + (pg.periodicidade ? ' · ' + esc(pg.periodicidade) : '') + '</span><small>Competência ' + esc(pg.compTxt) + (pg.comp ? ' · para ' + esc(dataBRdeIso(pg.comp)) : '') + '</small></span>';
+    h += pg.podeAbrir && podeProgramadas() ? '<button class="ins-volta" data-acao="programadas" data-prg="' + esc(pg.codigo) + '">' + ICO_CAT.repetir + tx + IC.chevD + '</button>'
+      : '<div class="ins-volta" style="cursor:default">' + ICO_CAT.repetir + tx + '</div>';
+  }
+  if (t.prazo && !t.inspecao && t.status !== 'Concluída') h += '<div class="kv ins-prazo"><span>' + (pg ? 'Para' : 'Prazo') + '</span><b>' + esc(dataBRdeIso(t.prazo)) + '</b></div>';
+  return h;
+}
+
+/* ---------- Execução guiada (janela) ---------- */
+function abrirExecucao(indice) {
+  var t = S.det; if (!t || !t.inspecao) return;
+  insAplicarFila(t);
+  S.ins = { id: t.id, i: typeof indice === 'number' ? indice : proximoSemResposta(t.inspecao), vista: 'item', apont: null };
+  abrirJanela(t.titulo, nomeCondo(t.condo) + ' · ' + t.id + ' · Inspeção', '<div class="jan-corpo ins-exec" id="insCorpo"></div>', 'centro', function (raiz) {
+    raiz.addEventListener('click', insClique);
+    raiz.addEventListener('input', function (e) { if (e.target.id === 'insNota' && S.ins && S.ins.apont) S.ins.apont.nota = e.target.value; });
+    insDesenhar();
+  });
+}
+function insItemAtual() { var t = S.det; return t && t.inspecao && S.ins ? t.inspecao.itens[S.ins.i] : null; }
+function insFotosDoItem(ordem) {
+  var t = S.det, ax = ((t && t.anexos) || []).filter(function (a) { return a.item === ordem; });
+  var env = ((t && S.envios[t.id]) || []).filter(function (x) { return x.item === ordem; });
+  return { ax: ax, env: env, n: ax.length + env.length };
+}
+function htmlFotosItem(ordem, podeAdd, max) {
+  var f = insFotosDoItem(ordem);
+  return '<div class="anx-faixa ins-fotos">' + f.ax.map(function (a, k) {
+    return '<button class="anx-tile" data-verfoto="' + esc(a.id) + '" aria-label="Foto ' + (k + 1) + ' do item">' + (S.mini[a.id] ? '<img src="' + S.mini[a.id] + '" alt="">' : '<img data-mini="' + esc(a.id) + '" alt="">') + '</button>';
+  }).join('') + f.env.map(function (x) {
+    return '<div class="anx-tile enviando' + (x.estado === 'aguardando' ? ' aguardando' : '') + '" aria-label="' + (x.estado === 'aguardando' ? 'Foto aguardando sinal' : 'Enviando foto') + '">' + (x.url ? '<img src="' + x.url + '" alt="">' : '') +
+      '<span class="anx-prog">' + (x.estado === 'aguardando' ? IC.semSinal : x.progresso ? x.progresso + '%' : '<i class="anx-gira"></i>') + '</span></div>';
+  }).join('') + (podeAdd && f.n < max ? '<button class="anx-add" data-ins="foto" aria-label="Adicionar foto do item">' + IC.camera + '<span>Foto</span></button>' : '') + '</div>';
+}
+function insDesenhar() {
+  var el = document.getElementById('insCorpo'), t = S.det;
+  if (!el || !t || !S.ins || t.id !== S.ins.id || !t.inspecao) return;
+  var ins = t.inspecao, rs = ins.resumo, n = ins.itens.length, nFila = insFilaN(t.id);
+  var semSinal = navigator.onLine === false || nFila ? '<div class="anx-fila">' + IC.semSinal + '<span><b>' + (navigator.onLine === false ? 'Sem sinal' : 'Guardado no aparelho') + '</b> · ' +
+    (nFila ? nFila + (nFila === 1 ? ' resposta na fila; envia sozinha' : ' respostas na fila; enviam sozinhas') + ' quando o sinal voltar.' : 'pode seguir respondendo; envia sozinho depois.') + '</span></div>' : '';
+  var h = '';
+  if (S.ins.vista === 'resumo') {
+    var faltam = rs.total - rs.respondidos;
+    h = semSinal + '<p class="ins-sub">' + rs.respondidos + ' de ' + rs.total + ' respondidos</p>' + htmlResumoNum(rs) + htmlGeradas(ins) +
+      (ins.itens.some(function (x) { return x.resultado === 'Apontamento' && !x.idTarefa; }) ? '<p class="nova-nota">Apontamentos guardados no aparelho viram tarefa quando o sinal voltar.</p>' : '') +
+      (faltam ? '<p class="erro-txt">Faltam ' + faltam + (faltam === 1 ? ' item' : ' itens') + '.</p>' : '') +
+      '<div class="jan-rodape ins-rod"><button class="bt claro" data-ins="voltarItens">Voltar aos itens</button>' +
+      '<button class="bt" data-ins="concluir"' + (faltam || nFila ? ' disabled' : '') + '>' + IC.checkOuro + ' Concluir inspeção</button></div>' +
+      (nFila && !faltam ? '<p class="nova-nota">Para concluir, espere as respostas guardadas subirem.</p>' : '') +
+      '<p class="nova-nota">Relatório em PDF chega na próxima versão.</p>';
+    el.innerHTML = h; carregarMiniaturas(); return;
+  }
+  var it = ins.itens[S.ins.i];
+  if (S.ins.vista === 'apont') {
+    var a = S.ins.apont, R = ins.regras || {}, fa = insFotosDoItem(it.ordem);
+    var obrigFoto = R.fotoApont || it.exigeFoto;
+    h = '<p class="ins-sub">Item ' + it.ordem + ' · ' + esc(it.item) + '</p>' +
+      '<div class="seg seg-largo" role="group" aria-label="Resposta">' + ['Conforme', 'Apontamento', 'N/A'].map(function (r) {
+        return '<button type="button" data-ins="trocaRes" data-res="' + r + '" aria-pressed="' + (r === 'Apontamento') + '">' + r + '</button>';
+      }).join('') + '</div>' +
+      '<label class="rot-campo" for="insNota">Nota' + (R.notaApont ? ' (obrigatória)' : ' · opcional') + '</label>' +
+      '<textarea class="campo" id="insNota" rows="3" maxlength="1000" placeholder="O que foi encontrado">' + esc(a.nota || '') + '</textarea>' +
+      '<span class="rot-campo">Fotos' + (obrigFoto ? ' (obrigatória' : ' (opcional') + ' · ' + fa.n + ' de ' + (R.fotosPorItem || 5) + ')</span>' +
+      htmlFotosItem(it.ordem, true, R.fotosPorItem || 5) +
+      '<div class="ins-ao-salvar"><b>Ao salvar</b><span>Nasce uma tarefa de <b>Manutenção</b> para a <b>Carvalho & Abreu</b>, com prazo de ' + (R.prazoApont || 7) + (R.prazoApont === 1 ? ' dia' : ' dias') + '. Ela leva as fotos, a nota, o item e o link de volta para esta inspeção.</span>' +
+      '<small>Quem inspecionou continua vendo a tarefa, sem poder agir. A casa faz a triagem e direciona.</small></div>' +
+      '<span class="erro-txt" id="insErro" role="alert" hidden></span>' +
+      '<div class="jan-rodape ins-rod"><button class="bt claro" data-ins="cancelarApont">Voltar</button><button class="bt" data-ins="salvarApont">Salvar apontamento</button></div>';
+    el.innerHTML = h; carregarMiniaturas(); return;
+  }
+  var fi = insFotosDoItem(it.ordem);
+  var travado = !!it.idTarefa;
+  h = semSinal +
+    '<div class="ins-topo"><span>Item ' + (S.ins.i + 1) + ' de ' + n + (it.grupo ? ' · ' + esc(it.grupo) : '') + '</span><span>' + rs.respondidos + (rs.respondidos === 1 ? ' respondido' : ' respondidos') + '</span></div>' +
+    '<div class="ins-prog" aria-hidden="true"><i style="width:' + Math.round(rs.respondidos * 100 / n) + '%"></i></div>' +
+    '<div class="ins-card">' +
+      '<h3>' + esc(it.item) + '</h3>' +
+      (it.dica ? '<p class="ins-dica">Dica: ' + esc(it.dica) + '</p>' : '') +
+      (it.exigeFoto ? '<p class="ins-exige">' + IC.cameraP + ' Foto exigida neste item</p>' : '') +
+      (it.resultado ? '<p class="ins-atual">Resposta: <span class="ins-res ' + resClasse(it.resultado) + '">' + esc(RES_ROT[it.resultado]) + '</span>' + (it.pendente ? ' · guardada no aparelho' : '') + (it.idTarefa ? ' · gerou ' + esc(it.idTarefa) : '') + '</p>' : '') +
+      (it.nota ? '<p class="ins-dica">' + esc(it.nota) + '</p>' : '') +
+      (fi.n || it.exigeFoto || it.resultado ? '<details class="ins-fot"' + (fi.n || it.exigeFoto ? ' open' : '') + '><summary>Fotos (' + fi.n + ')</summary>' + htmlFotosItem(it.ordem, !travado, (ins.regras && ins.regras.fotosPorItem) || 5) + '</details>' : '') +
+    '</div>' +
+    (travado ? '<p class="nova-nota">Este item já gerou a tarefa ' + esc(it.idTarefa) + '. A resposta não muda; trate pela tarefa.</p>' :
+    '<div class="ins-botoes">' +
+      '<button class="ins-b ok" data-ins="res" data-res="Conforme" aria-pressed="' + (it.resultado === 'Conforme') + '">' + IC.okP + '<span>Conforme</span></button>' +
+      '<button class="ins-b ap" data-ins="res" data-res="Apontamento" aria-pressed="' + (it.resultado === 'Apontamento') + '">' + ICO_CAT.alerta + '<span>Apontamento</span></button>' +
+      '<button class="ins-b na" data-ins="res" data-res="N/A" aria-pressed="' + (it.resultado === 'N/A') + '"><span>Não se aplica</span></button>' +
+    '</div>') +
+    '<span class="erro-txt" id="insErro" role="alert" hidden></span>' +
+    '<div class="jan-rodape ins-rod"><button class="bt claro" data-ins="ant"' + (S.ins.i ? '' : ' disabled') + '>Anterior</button>' +
+      (rs.respondidos === n ? '<button class="bt" data-ins="verResumo">Resumo</button>' : '<button class="bt claro" data-ins="prox"' + (S.ins.i < n - 1 ? '' : ' disabled') + '>Próximo</button>') + '</div>' +
+    '<p class="nova-nota">Um toque responde e passa para o próximo item. Só dá para concluir com todos respondidos.</p>';
+  el.innerHTML = h;
+  carregarMiniaturas();
+}
+function insErro(msg) { var e = document.getElementById('insErro'); if (e) { e.textContent = msg; e.hidden = !msg; } else if (msg) avisar(msg, true); }
+function insResponder(resultado, nota) {
+  var t = S.det, it = insItemAtual(); if (!t || !it) return;
+  var R = t.inspecao.regras || {}, fi = insFotosDoItem(it.ordem);
+  if (resultado === 'Conforme' && it.exigeFoto && !fi.n) { insErro('Este item pede foto: toque em Foto antes de responder.'); var d0 = document.querySelector('.ins-fot'); if (d0) d0.open = true; return; }
+  if (resultado === 'Apontamento') {
+    if (R.notaApont && !String(nota || '').trim()) { insErro('Escreva a nota do apontamento.'); return; }
+    if ((R.fotoApont || it.exigeFoto) && !fi.n) { insErro('O apontamento precisa de pelo menos uma foto.'); return; }
+  }
+  insGuardar(t.id, it.ordem, resultado, nota);
+  insAplicarFila(t);
+  S.ins.vista = 'item'; S.ins.apont = null;
+  var ins = t.inspecao;
+  if (ins.resumo.respondidos === ins.itens.length) S.ins.vista = 'resumo';
+  else S.ins.i = proximoSemResposta(ins, S.ins.i + 1);
+  insDesenhar(); desenharDetalhe();
+  insEnviarFila(t.id);
+}
+function insClique(e) {
+  var b = e.target.closest('[data-ins]'); if (!b || !S.ins) return;
+  var a = b.getAttribute('data-ins'), t = S.det, it = insItemAtual();
+  if (a === 'res') {
+    var r = b.getAttribute('data-res');
+    if (r === 'Apontamento') { S.ins.vista = 'apont'; S.ins.apont = { nota: it.resultado === 'Apontamento' ? it.nota : '' }; insDesenhar(); var n = document.getElementById('insNota'); if (n && faixa() === 'computador') n.focus(); return; }
+    insResponder(r, '');
+  } else if (a === 'trocaRes') {
+    var r2 = b.getAttribute('data-res');
+    if (r2 !== 'Apontamento') { S.ins.vista = 'item'; insResponder(r2, ''); }
+  } else if (a === 'salvarApont') {
+    var nota = (document.getElementById('insNota') || {}).value || '';
+    insResponder('Apontamento', nota);
+  } else if (a === 'cancelarApont') { S.ins.vista = 'item'; S.ins.apont = null; insDesenhar(); }
+  else if (a === 'foto') {
+    var ordem = it.ordem;
+    if (S.ins.vista === 'apont') S.ins.apont.nota = (document.getElementById('insNota') || {}).value || '';
+    escolherArquivos('foto', function (fs) { fs.slice(0, 5).forEach(function (f) { enviarAnexo(t.id, f, 'Antes', { item: ordem }); }); });
+  }
+  else if (a === 'ant') { S.ins.i = Math.max(0, S.ins.i - 1); insDesenhar(); }
+  else if (a === 'prox') { S.ins.i = Math.min(t.inspecao.itens.length - 1, S.ins.i + 1); insDesenhar(); }
+  else if (a === 'verResumo') { S.ins.vista = 'resumo'; insDesenhar(); }
+  else if (a === 'voltarItens') { S.ins.vista = 'item'; S.ins.i = proximoSemResposta(t.inspecao, 0); insDesenhar(); }
+  else if (a === 'concluir') insConcluir(b);
+}
+function insConcluir(b) {
+  var t = S.det; if (!t) return;
+  b.disabled = true;
+  api('tarefas.insConcluir', { id: t.id }).then(function (r) {
+    b.disabled = false;
+    if (!r.ok) { insErro(r.mensagem); return; }
+    fecharCamadas(); S.ins = null;
+    avisar('Inspeção concluída · ' + r.resumo.txt);
+    recarregar();
+    abrirTarefa(t.id, true);
+  });
+}
+/* Cliques do bloco da inspeção na tarefa aberta */
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('#detalhe [data-ins]'); if (!b || !S.det) return;
+  var a = b.getAttribute('data-ins'), t = S.det;
+  if (a === 'iniciar') {
+    if (navigator.onLine === false) { abrirExecucao(0); return; }
+    b.disabled = true;
+    api('tarefas.insIniciar', { id: t.id }).then(function (r) {
+      b.disabled = false;
+      if (!r.ok && r.codigo !== 'REDE') { avisar(r.mensagem, true); abrirTarefa(t.id, true); return; }
+      if (t.inspecao) t.inspecao.etapa = 'Em andamento';
+      abrirExecucao(0);
+      api('tarefas.abrir', { id: t.id }).then(function (x) { if (x.ok && S.det && S.det.id === t.id) { S.det = x.tarefa; desenharDetalhe(); insDesenhar(); } });
+    });
+  } else if (a === 'continuar') abrirExecucao();
+  else if (a === 'resumo') { abrirExecucao(); S.ins.vista = 'resumo'; insDesenhar(); }
+  else if (a === 'enviarFila') insEnviarFila(t.id);
+});
+
+/* ---------- Nova inspeção (dentro de Nova tarefa) ---------- */
+function montarInspecaoNova(raiz, cod) {
+  S.insOp = S.insOp || {};
+  var corpo = raiz.querySelector('#novaCorpo');
+  var op = S.insOp[cod];
+  if (!op) {
+    corpo.innerHTML = '<div class="carregando">Carregando roteiros…</div>';
+    api('tarefas.insOpcoes', { condo: cod }).then(function (r) {
+      if (!r.ok) { corpo.innerHTML = '<p class="erro-txt">' + esc(r.mensagem) + '</p>'; return; }
+      S.insOp[cod] = r;
+      if (S.nova && S.nova.condo === cod) montarInspecaoNova(raiz, cod);
+    });
+    return;
+  }
+  var n = S.nova;
+  if (!op.roteiros.length) {
+    corpo.innerHTML = '<p class="nova-nota">Nenhum roteiro ativo vale para ' + esc(nomeCondo(cod)) + '.</p>' +
+      (podeRoteiros() ? '<button type="button" class="bt claro" data-acao="roteiros">Montar um roteiro</button>' : '');
+    return;
+  }
+  if (!op.roteiros.some(function (x) { return x.codigo === n.insRot; })) n.insRot = op.roteiros[0].codigo;
+  if (!op.destinos.some(function (x) { return x.empresa === n.insEmp; })) n.insEmp = (op.destinos[0] || {}).empresa;
+  if (!n.insData) n.insData = diaSP(new Date(Date.now() + 86400000));
+  var rot = op.roteiros.filter(function (x) { return x.codigo === n.insRot; })[0];
+  var dest = op.destinos.filter(function (x) { return x.empresa === n.insEmp; })[0] || { pessoas: [] };
+  corpo.innerHTML =
+    '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="insRot">Roteiro</label><select class="campo" id="insRot">' +
+      op.roteiros.map(function (x) { return '<option value="' + esc(x.codigo) + '"' + (x.codigo === n.insRot ? ' selected' : '') + '>' + esc(x.codigo + ' · ' + x.nome) + '</option>'; }).join('') + '</select>' +
+      '<span class="dica-campo">' + rot.nItens + (rot.nItens === 1 ? ' item' : ' itens') + (rot.nFoto ? ' · ' + rot.nFoto + (rot.nFoto === 1 ? ' pede foto' : ' pedem foto') : '') + '</span></div>' +
+    '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="insData">Data da inspeção</label><input class="campo" type="date" id="insData" min="' + esc(op.hoje) + '" value="' + esc(n.insData) + '"></div>' +
+    (op.destinos.length ? '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="insEmp">Empresa que executa</label><select class="campo" id="insEmp">' +
+      op.destinos.map(function (x) { return '<option' + (x.empresa === n.insEmp ? ' selected' : '') + '>' + esc(x.empresa) + '</option>'; }).join('') + '</select></div>' +
+    '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="insDir">Responsável · opcional</label><select class="campo" id="insDir"><option value="Equipe">Qualquer pessoa da empresa</option>' +
+      dest.pessoas.map(function (p) { return '<option value="' + esc(p.email) + '"' + (p.email === n.insDir ? ' selected' : '') + '>' + esc(p.nome) + '</option>'; }).join('') + '</select>' +
+      '<span class="dica-campo">Só aparecem empresas e pessoas que têm a categoria Inspeção.</span></div>'
+      : '<p class="erro-txt">Nenhuma empresa deste condomínio executa Inspeção. Ligue em Configurações › Empresas parceiras.</p>') +
+    '<div class="ins-ao-salvar"><span>A inspeção nasce <b>Agendada</b>. Quem for designado vê na lista de tarefas, inicia no dia e responde item a item, mesmo sem sinal.</span></div>';
+}
+function lerInspecaoNova(raiz) {
+  var n = S.nova; if (!n) return;
+  var g = function (id) { var el = raiz.querySelector('#' + id); return el ? el.value : null; };
+  if (g('insRot') !== null) n.insRot = g('insRot');
+  if (g('insData') !== null) n.insData = g('insData');
+  if (g('insEmp') !== null) { if (n.insEmp !== g('insEmp')) n.insDir = ''; n.insEmp = g('insEmp'); }
+  if (g('insDir') !== null && raiz.querySelector('#insEmp') && n.insEmp === g('insEmp')) n.insDir = g('insDir');
+}
+function criarInspecaoNova(raiz, cod) {
+  lerInspecaoNova(raiz);
+  var n = S.nova, err = raiz.querySelector('#novaErro'), bt = raiz.querySelector('#novaCriar');
+  var falha = function (m) { err.textContent = m; err.hidden = false; };
+  if (!n.insRot) return falha('Escolha um roteiro.');
+  if (!n.insData) return falha('Escolha a data da inspeção.');
+  if (!n.insEmp) return falha('Escolha a empresa que executa.');
+  bt.disabled = true;
+  api('tarefas.insCriar', { condo: cod, roteiro: n.insRot, data: n.insData, empresa: n.insEmp, direcionado: n.insDir || 'Equipe' }).then(function (r) {
+    bt.disabled = false;
+    if (!r.ok) return falha(r.mensagem);
+    guardarLocal('ultimoCondo', cod); guardarLocal('ultimaCategoria', n.cat);
+    fecharCamadas();
+    avisar('Inspeção agendada · ' + dataBRdeIso(n.insData));
+    recarregar();
+    if (r.tarefa) abrirTarefa(r.tarefa.id);
+  });
+}
+
+/* ---------- Roteiros (Tarefas › Roteiros) ---------- */
+function abrirRoteiros() {
+  if (!podeRoteiros()) return;
+  abrirJanela('Roteiros', 'Tarefas › Roteiros · para quem monta roteiros', '<div class="jan-corpo" id="rotCorpo"><div class="carregando">Carregando…</div></div>', 'centro', function (raiz) {
+    raiz.addEventListener('click', rotClique);
+    raiz.addEventListener('input', rotDigitou);
+    raiz.addEventListener('change', rotDigitou);
+    api('tarefas.insRoteiros').then(function (r) {
+      if (!r.ok) { raiz.querySelector('#rotCorpo').innerHTML = '<p class="erro-txt">' + esc(r.mensagem) + '</p>'; return; }
+      S.rot = { dados: r, ed: null };
+      rotDesenhar();
+    });
+  });
+}
+function rotCondosTxt(r) {
+  if (r.condos === 'Todos') return 'todos os condomínios';
+  return r.condos.map(function (c) { return nomeCondo(c).toUpperCase(); }).join(', ');
+}
+function rotDesenhar() {
+  var el = document.getElementById('rotCorpo'); if (!el || !S.rot) return;
+  var d = S.rot.dados, ed = S.rot.ed;
+  if (!ed) {
+    el.innerHTML = '<span class="rotulo">Roteiros</span><div class="mp-lista">' + (d.roteiros.length ? d.roteiros.map(function (r) {
+      return '<button class="mp-lin" data-rot="abrir" data-cod="' + esc(r.codigo) + '"><span class="ico">' + ICO_CAT.inspecao + '</span><span class="tx"><b>' + esc(r.codigo + ' · ' + r.nome) + (r.ativo ? '' : ' (inativo)') + '</b><small>' +
+        r.nItens + (r.nItens === 1 ? ' item' : ' itens') + ' · ' + esc(rotCondosTxt(r)) + '</small></span>' + IC.chevD + '</button>';
+    }).join('') : '<p class="vazio">Nenhum roteiro ainda.</p>') + '</div>' +
+      '<button class="bt grande" data-rot="novo">' + IC.mais + ' Novo roteiro</button>' +
+      '<p class="nova-nota">Mudar o roteiro depois não altera inspeções já feitas: cada inspeção guarda a própria cópia dos itens.</p>';
+    return;
+  }
+  var max = d.maxItens || 60, so = !ed.podeEditar;
+  var condosHtml = (d.todosOsCondos ? '<button type="button" class="chip-op" data-rot="todos" aria-pressed="' + (ed.condos === 'Todos') + '"' + (so ? ' disabled' : '') + '>Todos</button>' : '') +
+    d.condos.map(function (c) { var on = ed.condos === 'Todos' || ed.condos.indexOf(c.codigo) >= 0; return '<button type="button" class="chip-op" data-rot="condo" data-cod="' + esc(c.codigo) + '" aria-pressed="' + on + '"' + (so || ed.condos === 'Todos' ? ' disabled' : '') + '>' + esc(c.nome) + '</button>'; }).join('');
+  var grupoAnt = null;
+  el.innerHTML = '<label class="rot-campo" for="rotNome">Nome do roteiro</label><input class="campo" id="rotNome" maxlength="60" autocomplete="off" placeholder="Ex.: Ronda da zeladoria" value="' + esc(ed.nome) + '"' + (so ? ' disabled' : '') + '>' +
+    '<span class="rot-campo">Condomínios</span><div class="chips-linha">' + condosHtml + '</div>' +
+    '<div class="ins-topo"><span class="rotulo">' + esc(ed.codigo ? ed.codigo + ' · itens' : 'Itens') + '</span><span>' + ed.itens.length + ' de ' + max + '</span></div>' +
+    '<div class="rot-itens">' + ed.itens.map(function (it, k) {
+      var novoGrupo = it.grupo && it.grupo !== grupoAnt; grupoAnt = it.grupo || grupoAnt;
+      return (novoGrupo || it.abrirGrupo ? '<div class="rot-grupo"><label class="sr" for="rg' + k + '">Grupo</label><input class="campo" id="rg' + k + '" data-rotg="' + k + '" maxlength="40" placeholder="Grupo (ex.: Piscina)" value="' + esc(it.grupo) + '"' + (so ? ' disabled' : '') + '></div>' : '') +
+        '<div class="rot-item" data-k="' + k + '"><div class="linha-campos"><label class="sr" for="ri' + k + '">Item ' + (k + 1) + '</label><input class="campo" id="ri' + k + '" data-roti="' + k + '" maxlength="120" placeholder="O que conferir" value="' + esc(it.item) + '"' + (so ? ' disabled' : '') + '>' +
+        (so ? '' : '<button type="button" class="seta" data-rot="cima" data-k="' + k + '" aria-label="Subir item"' + (k ? '' : ' disabled') + '>' + IC.cima + '</button><button type="button" class="cp-tirar" data-rot="tirar" data-k="' + k + '" aria-label="Tirar item">' + IC.x + '</button>') + '</div>' +
+        '<div class="linha-campos"><label class="sr" for="rd' + k + '">Dica</label><input class="campo rot-dica" id="rd' + k + '" data-rotd="' + k + '" maxlength="200" placeholder="Dica · opcional" value="' + esc(it.dica) + '"' + (so ? ' disabled' : '') + '>' +
+        '<button type="button" class="chip-op rot-foto" data-rot="foto" data-k="' + k + '" aria-pressed="' + !!it.exigeFoto + '"' + (so ? ' disabled' : '') + '>' + (it.exigeFoto ? 'Foto' : 'Sem foto') + '</button></div></div>';
+    }).join('') + '</div>' +
+    (so ? '<p class="nova-nota">Você vê este roteiro, mas não edita.</p>' : '<div class="linha-campos"><button type="button" class="cp-mais" data-rot="maisItem"' + (ed.itens.length >= max ? ' disabled' : '') + '>+ Item</button>' +
+      '<button type="button" class="cp-mais" data-rot="maisGrupo"' + (ed.itens.length >= max ? ' disabled' : '') + '>+ Grupo</button></div>' +
+      (ed.codigo ? '<button type="button" class="chave" role="switch" aria-checked="' + !!ed.ativo + '" data-rot="ativo"><i aria-hidden="true"></i>Roteiro ativo</button>' : '')) +
+    '<span class="erro-txt" id="rotErro" role="alert" hidden></span>' +
+    '<div class="jan-rodape"><button class="bt claro" data-rot="lista">Voltar</button>' + (so ? '' : '<button class="bt" data-rot="salvar">Salvar roteiro</button>') + '</div>' +
+    '<p class="nova-nota">Mudar o roteiro depois não altera inspeções já feitas: cada inspeção guarda a própria cópia dos itens.</p>';
+}
+function rotDigitou(e) {
+  var ed = S.rot && S.rot.ed; if (!ed) return;
+  var el = e.target, k;
+  if (el.id === 'rotNome') ed.nome = el.value;
+  else if ((k = el.getAttribute('data-roti')) !== null) ed.itens[k].item = el.value;
+  else if ((k = el.getAttribute('data-rotd')) !== null) ed.itens[k].dica = el.value;
+  else if ((k = el.getAttribute('data-rotg')) !== null) {
+    var antigo = ed.itens[k].grupo; k = Number(k);
+    for (var j = k; j < ed.itens.length && (j === k || ed.itens[j].grupo === antigo); j++) ed.itens[j].grupo = el.value;
+  }
+}
+function rotClique(e) {
+  var b = e.target.closest('[data-rot]'); if (!b || !S.rot) return;
+  var a = b.getAttribute('data-rot'), ed = S.rot.ed, d = S.rot.dados, k = Number(b.getAttribute('data-k'));
+  var max = d.maxItens || 60;
+  if (a === 'abrir') {
+    var r = d.roteiros.filter(function (x) { return x.codigo === b.getAttribute('data-cod'); })[0];
+    S.rot.ed = { codigo: r.codigo, nome: r.nome, condos: r.condos === 'Todos' ? 'Todos' : r.condos.slice(), ativo: r.ativo, podeEditar: r.podeEditar,
+      itens: r.itens.map(function (x) { return { grupo: x.grupo, item: x.item, dica: x.dica, exigeFoto: x.exigeFoto }; }) };
+  } else if (a === 'novo') {
+    S.rot.ed = { codigo: '', nome: '', condos: d.todosOsCondos ? 'Todos' : (d.condos.length === 1 ? [d.condos[0].codigo] : []), ativo: true, podeEditar: true, itens: [{ grupo: '', item: '', dica: '', exigeFoto: false, abrirGrupo: true }] };
+  } else if (a === 'lista') S.rot.ed = null;
+  else if (a === 'todos') ed.condos = ed.condos === 'Todos' ? [] : 'Todos';
+  else if (a === 'condo') { var c = b.getAttribute('data-cod'), i = ed.condos.indexOf(c); if (i >= 0) ed.condos.splice(i, 1); else ed.condos.push(c); }
+  else if (a === 'foto') ed.itens[k].exigeFoto = !ed.itens[k].exigeFoto;
+  else if (a === 'tirar') { ed.itens.splice(k, 1); if (!ed.itens.length) ed.itens.push({ grupo: '', item: '', dica: '', exigeFoto: false, abrirGrupo: true }); }
+  else if (a === 'cima' && k > 0) { var x = ed.itens[k]; ed.itens[k] = ed.itens[k - 1]; ed.itens[k - 1] = x; }
+  else if (a === 'maisItem' && ed.itens.length < max) { var ult = ed.itens[ed.itens.length - 1]; ed.itens.push({ grupo: ult ? ult.grupo : '', item: '', dica: '', exigeFoto: false }); }
+  else if (a === 'maisGrupo' && ed.itens.length < max) ed.itens.push({ grupo: '', item: '', dica: '', exigeFoto: false, abrirGrupo: true });
+  else if (a === 'ativo') ed.ativo = !ed.ativo;
+  else if (a === 'salvar') { rotSalvar(b); return; }
+  else return;
+  rotDesenhar();
+  if (a === 'maisItem' || a === 'maisGrupo' || a === 'novo') {
+    var campos = document.querySelectorAll(a === 'maisItem' ? '[data-roti]' : a === 'novo' ? '#rotNome' : '[data-rotg]');
+    if (campos.length) campos[campos.length - 1].focus();
+  }
+}
+function rotSalvar(b) {
+  var ed = S.rot.ed, err = document.getElementById('rotErro');
+  var falha = function (m) { err.textContent = m; err.hidden = false; };
+  if (!ed.nome.trim()) return falha('Dê um nome ao roteiro.');
+  if (ed.condos !== 'Todos' && !ed.condos.length) return falha('Escolha pelo menos um condomínio.');
+  var itens = ed.itens.filter(function (x) { return x.item.trim(); });
+  if (!itens.length) return falha('O roteiro precisa de pelo menos um item.');
+  b.disabled = true;
+  api('tarefas.insRoteiroSalvar', { codigo: ed.codigo, nome: ed.nome, condos: ed.condos, ativo: ed.ativo, itens: itens }).then(function (r) {
+    b.disabled = false;
+    if (!r.ok) return falha(r.mensagem);
+    avisar((r.novo ? 'Roteiro criado · ' : 'Roteiro salvo · ') + r.roteiro.codigo);
+    S.insOp = {};
+    api('tarefas.insRoteiros').then(function (x) { if (x.ok && S.rot) { S.rot.dados = x; S.rot.ed = null; rotDesenhar(); } });
+  });
+}
+
+/* ---------- Programadas (Tarefas › Programadas) · v1.27, etapa 6.3 ----------
+   Cadastro das tarefas que se repetem. O motor gera a tarefa sozinho (gatilho de hora em hora), na data menos a
+   antecedência: simples vira Manutenção; com roteiro vira Inspeção. A tarefa gerada leva o selo "Programada". */
+function podeProgramadas() { var u = (S.dados && S.dados.usuario) || {}; return !!(u.acoes && u.acoes.programadas); }
+function abrirProgramadas(abrirCod) {
+  if (!podeProgramadas()) return;
+  abrirJanela('Programadas', 'Tarefas › Programadas · tarefas que se repetem', '<div class="jan-corpo" id="prgCorpo"><div class="carregando">Carregando…</div></div>', 'centro', function (raiz) {
+    raiz.addEventListener('click', prgClique);
+    raiz.addEventListener('input', prgDigitou);
+    raiz.addEventListener('change', prgDigitou);
+    api('tarefas.prgListar').then(function (r) {
+      if (!r.ok) { raiz.querySelector('#prgCorpo').innerHTML = '<p class="erro-txt">' + esc(r.mensagem) + '</p>'; return; }
+      // filtro inicial: o condomínio aberto na lista, se ele tiver programada; senão todos
+      var fil = r.condos.length === 1 ? r.condos[0].codigo
+        : S.condo && S.condo !== 'todos' && r.programadas.some(function (p) { return p.condo === S.condo; }) ? S.condo : 'todos';
+      S.prg = { dados: r, filtro: fil, ed: null, op: {} };
+      var p = abrirCod && r.programadas.filter(function (x) { return x.codigo === abrirCod; })[0];
+      if (p) prgEditar(p); else prgDesenhar();
+    });
+  });
+}
+var PRG_MESES = { 'Mensal': 1, 'Bimestral': 2, 'Trimestral': 3, 'Semestral': 6, 'Anual': 12 };
+function prgIsoMais(iso, n) { var d = new Date(iso + 'T12:00:00-03:00'); return isNaN(d) ? '' : diaSP(new Date(d.getTime() + n * 86400000)); }
+function prgDepois(iso, per, aCada, diaBase) {
+  if (per === 'Semanal') return prgIsoMais(iso, 7);
+  if (per === 'Quinzenal') return prgIsoMais(iso, 14);
+  if (per === 'A cada N dias') return prgIsoMais(iso, Math.max(1, Number(aCada) || 1));
+  var m = String(iso).match(/^(\d{4})-(\d{2})-(\d{2})$/); if (!m) return '';
+  var a = Number(m[1]), mm = Number(m[2]) + (PRG_MESES[per] || 1);
+  while (mm > 12) { mm -= 12; a++; }
+  var dia = Math.min(Number(diaBase) || Number(m[3]), new Date(Date.UTC(a, mm, 0)).getUTCDate());
+  return a + '-' + ('0' + mm).slice(-2) + '-' + ('0' + dia).slice(-2);
+}
+function prgSub(p) {
+  return p.periodicidade + (p.periodicidade === 'A cada N dias' && p.aCada ? ' (' + p.aCada + ')' : '') + ' · ' +
+    (p.tipo === 'Roteiro' ? 'com roteiro ' + p.roteiro : 'simples') + ' · ' + (p.ativa ? p.empresa : 'pausada');
+}
+function prgDesenhar() {
+  var el = document.getElementById('prgCorpo'); if (!el || !S.prg) return;
+  var d = S.prg.dados, ed = S.prg.ed;
+  if (ed) { prgDesenharEd(el); return; }
+  var fil = S.prg.filtro;
+  var lista = d.programadas.filter(function (p) { return fil === 'todos' || p.condo === fil; });
+  var atr = d.atrasadas.filter(function (a) { return fil === 'todos' || a.condo === fil; });
+  var h = atr.map(function (a) {
+    return '<button type="button" class="prg-atr" data-abrir="' + esc(a.id) + '"><b><span>' + esc(a.titulo + ' ' + a.compTxt) + '</span><span class="prg-tag r">Atrasada</span></b>' +
+      '<span>' + (fil === 'todos' && d.condos.length > 1 ? esc(nomeCondo(a.condo).toUpperCase()) + ' · ' : '') + (a.seguinte ? 'A de ' + esc(a.seguinte) + ' foi gerada mesmo assim. ' : '') + 'A atrasada conta no relatório.</span></button>';
+  }).join('');
+  // só os condomínios com programada (e o filtro atual): a lista de chips não cresce com a carteira inteira
+  var comPrg = d.condos.filter(function (c) { return c.codigo === fil || d.programadas.some(function (p) { return p.condo === c.codigo; }); });
+  if (d.condos.length > 1 && comPrg.length > 1) h += '<div class="chips-linha"><button type="button" class="chip-op" data-prg="filtro" data-cod="todos" aria-pressed="' + (fil === 'todos') + '">Todos os condomínios</button>' +
+    comPrg.map(function (c) { return '<button type="button" class="chip-op" data-prg="filtro" data-cod="' + esc(c.codigo) + '" aria-pressed="' + (fil === c.codigo) + '">' + esc(c.nome) + '</button>'; }).join('') + '</div>';
+  h += '<span class="rotulo">' + (lista.length === 1 ? '1 cadastrada' : lista.length + ' cadastradas') + '</span><div class="mp-lista">' + (lista.length ? lista.map(function (p) {
+    var si = p.situacao || {};
+    return '<button class="mp-lin" data-prg="abrir" data-cod="' + esc(p.codigo) + '"' + (si.mensagem ? ' title="' + esc(si.mensagem) + '"' : '') + '><span class="ico">' + (p.tipo === 'Roteiro' ? ICO_CAT.inspecao : ICO_CAT.repetir) + '</span><span class="tx"><b>' + esc(p.titulo) + '</b><small>' +
+      (fil === 'todos' && d.condos.length > 1 ? esc(nomeCondo(p.condo).toUpperCase()) + ' · ' : '') + esc(prgSub(p)) + '</small><small>Próxima: ' + esc(dataBRdeIso(p.proxima)) + (si.mensagem ? ' · ' + esc(si.mensagem) : '') + '</small></span>' +
+      '<span class="prg-tag ' + esc(si.cor || 'z') + '">' + esc(si.txt || '') + '</span></button>';
+  }).join('') : '<p class="vazio">Nenhuma programada ainda.</p>') + '</div>' +
+    '<button class="bt grande" data-prg="novo">' + IC.mais + ' Nova programada</button>' +
+    '<p class="nova-nota">O app gera a tarefa sozinho, ' + (d.antecedenciaPadrao === 1 ? '1 dia' : d.antecedenciaPadrao + ' dias') + ' antes da data (ou a antecedência de cada uma), a partir das ' + ('0' + d.horaGera).slice(-2) + 'h. Sem roteiro vira uma Manutenção; com roteiro, uma Inspeção. Quem recebe vê o selo Programada.</p>';
+  el.innerHTML = h;
+}
+function prgEditar(p) {
+  S.prg.ed = p ? { codigo: p.codigo, condo: p.condo, titulo: p.titulo, descricao: p.descricao || '', tipo: p.tipo, roteiro: p.roteiro, periodicidade: p.periodicidade,
+    aCada: p.aCada || '', proxima: p.proxima, proximaOriginal: p.proxima, antecedencia: p.antecedencia === null || p.antecedencia === undefined ? '' : String(p.antecedencia), empresa: p.empresa, responsavel: p.responsavel || '',
+    ativa: p.ativa, podeEditar: p.podeEditar, geradas: p.geradas || [], atualizadaPor: p.atualizadaPor, atualizadaEm: p.atualizadaEm }
+    : { codigo: '', condo: S.prg.filtro !== 'todos' ? S.prg.filtro : (S.prg.dados.condos[0] || {}).codigo, titulo: '', descricao: '', tipo: 'Simples', roteiro: '', periodicidade: 'Mensal',
+      aCada: '', proxima: '', antecedencia: '', empresa: '', responsavel: '', ativa: true, podeEditar: true, geradas: [] };
+  prgCarregarOpcoes();
+}
+function prgCarregarOpcoes() {
+  var ed = S.prg.ed, cod = ed.condo;
+  if (!cod || S.prg.op[cod]) { prgDesenhar(); return; }
+  var el = document.getElementById('prgCorpo'); if (el) el.innerHTML = '<div class="carregando">Carregando…</div>';
+  api('tarefas.prgOpcoes', { condo: cod }).then(function (r) {
+    if (!S.prg) return;
+    if (!r.ok) { S.prg.op[cod] = { erro: r.mensagem, roteiros: [], destinos: { Simples: [], Roteiro: [] } }; } else S.prg.op[cod] = r;
+    prgDesenhar();
+  });
+}
+function prgDestinosEd() {
+  var ed = S.prg.ed, op = S.prg.op[ed.condo] || { destinos: {} };
+  return (op.destinos && op.destinos[ed.tipo]) || [];
+}
+function prgDesenharEd(el) {
+  var d = S.prg.dados, ed = S.prg.ed, op = S.prg.op[ed.condo] || { roteiros: [], destinos: { Simples: [], Roteiro: [] } }, so = !ed.podeEditar;
+  var dis = so ? ' disabled' : '';
+  var rotOk = op.inspecaoLigada && op.roteiros.length;
+  if (ed.tipo === 'Roteiro' && !op.roteiros.some(function (r) { return r.codigo === ed.roteiro; })) ed.roteiro = (op.roteiros[0] || {}).codigo || '';
+  var dest = prgDestinosEd();
+  if (!dest.some(function (x) { return x.empresa === ed.empresa; })) ed.empresa = (dest[0] || {}).empresa || '';
+  var pessoas = ((dest.filter(function (x) { return x.empresa === ed.empresa; })[0] || {}).pessoas) || [];
+  if (ed.responsavel && !pessoas.some(function (p) { return p.email === ed.responsavel; })) ed.responsavel = '';
+  var opt = function (v, t, sel) { return '<option value="' + esc(v) + '"' + (sel ? ' selected' : '') + '>' + esc(t) + '</option>'; };
+  var hoje = d.hoje || diaSP(new Date());
+  var h = '';
+  h += '<label class="rot-campo" for="prgCondo">Condomínio</label><select class="campo" id="prgCondo"' + (ed.codigo || so ? ' disabled' : '') + '>' +
+    d.condos.map(function (c) { return opt(c.codigo, c.nome, c.codigo === ed.condo); }).join('') + '</select>';
+  h += '<label class="rot-campo" for="prgTitulo">Título</label><input class="campo" id="prgTitulo" maxlength="120" autocomplete="off" placeholder="Ex.: Limpeza da caixa d\'água" value="' + esc(ed.titulo) + '"' + dis + '>';
+  h += '<span class="rot-campo">Tipo</span><div class="prg-seg" role="group" aria-label="Tipo"><button type="button" data-prg="tipo" data-v="Simples" aria-pressed="' + (ed.tipo === 'Simples') + '"' + dis + '>Simples</button>' +
+    '<button type="button" data-prg="tipo" data-v="Roteiro" aria-pressed="' + (ed.tipo === 'Roteiro') + '"' + (so || (!rotOk && ed.tipo !== 'Roteiro') ? ' disabled' : '') + '>Com roteiro</button></div>';
+  if (!rotOk && ed.tipo !== 'Roteiro') h += '<p class="nova-nota">' + (op.inspecaoLigada === false ? 'A Inspeção está desligada: só programadas simples.' : 'Nenhum roteiro ativo vale para ' + esc(nomeCondo(ed.condo)) + '.' + (podeRoteiros() ? ' Monte um em Tarefas › Roteiros.' : '')) + '</p>';
+  if (ed.tipo === 'Roteiro') h += '<label class="rot-campo" for="prgRoteiro">Roteiro</label><select class="campo" id="prgRoteiro"' + dis + '>' +
+    op.roteiros.map(function (r) { return opt(r.codigo, r.codigo + ' · ' + r.nome + ' (' + r.nItens + (r.nItens === 1 ? ' item' : ' itens') + ')', r.codigo === ed.roteiro); }).join('') + '</select>';
+  h += '<label class="rot-campo" for="prgPer">Periodicidade</label><select class="campo" id="prgPer"' + dis + '>' + d.periodicidades.map(function (p) { return opt(p, p, p === ed.periodicidade); }).join('') + '</select>';
+  if (ed.periodicidade === 'A cada N dias') h += '<label class="rot-campo" for="prgACada">A cada quantos dias</label><input class="campo" id="prgACada" type="number" inputmode="numeric" min="1" max="730" value="' + esc(ed.aCada) + '"' + dis + '>';
+  h += '<div class="linha-campos"><label style="flex:1"><span class="rot-campo">Próxima data</span><input class="campo" type="date" id="prgProx" min="' + esc(ed.proximaOriginal && ed.proximaOriginal < hoje ? ed.proximaOriginal : hoje) + '" value="' + esc(ed.proxima) + '"' + dis + '></label>' +
+    '<label style="flex:1"><span class="rot-campo">Antecedência (dias)</span><input class="campo" type="number" inputmode="numeric" min="0" max="30" id="prgAnt" placeholder="padrão ' + d.antecedenciaPadrao + '" value="' + esc(ed.antecedencia) + '"' + dis + '></label></div>';
+  h += '<label class="rot-campo" for="prgEmp">Empresa</label>' + (dest.length ? '<select class="campo" id="prgEmp"' + dis + '>' + dest.map(function (x) { return opt(x.empresa, x.empresa, x.empresa === ed.empresa); }).join('') + '</select>'
+    : '<p class="nova-nota">Nenhuma empresa ' + (ed.tipo === 'Roteiro' ? 'executa Inspeção' : 'recebe Manutenção') + ' neste condomínio.</p>');
+  h += '<label class="rot-campo" for="prgResp">Responsável · opcional</label><select class="campo" id="prgResp"' + dis + '>' + opt('', 'Quem tiver acesso (Equipe)', !ed.responsavel) +
+    pessoas.map(function (p) { return opt(p.email, p.nome || p.email, p.email === ed.responsavel); }).join('') + '</select>';
+  h += '<label class="rot-campo" for="prgDesc">Descrição · opcional</label><textarea class="campo" id="prgDesc" rows="2" maxlength="2000"' + dis + '>' + esc(ed.descricao) + '</textarea>';
+  if (ed.codigo) h += '<button type="button" class="chave" role="switch" aria-checked="' + !!ed.ativa + '" data-prg="ativa"' + dis + '><i aria-hidden="true"></i>Programada ativa</button>';
+  // próximas gerações (mesma regra do motor)
+  var ant = ed.antecedencia === '' ? d.antecedenciaPadrao : Math.max(0, Math.min(30, Number(ed.antecedencia) || 0));
+  var prev = '';
+  if (ed.proxima && ed.ativa) {
+    var iso = ed.proxima, base = Number(ed.proxima.slice(8, 10)), ps = [];
+    for (var k = 0; k < 3 && iso; k++) { ps.push(iso); iso = prgDepois(iso, ed.periodicidade, ed.aCada, base); }
+    var g0 = prgIsoMais(ps[0], -ant);
+    prev = (g0 <= hoje ? 'Gera hoje' : 'Gera em ' + dataBRdeIso(g0)) + ' para ' + dataBRdeIso(ps[0]) + (ps.length > 1 ? '<br>Depois: ' + ps.slice(1).map(dataBRdeIso).join(' · ') : '');
+  } else prev = ed.ativa ? 'Escolha a próxima data.' : 'Pausada: não gera nada até ser reativada.';
+  h += '<section class="cp-aviso" style="background:var(--creme)"><span class="rotulo" style="margin:0">Próximas gerações</span><p class="prg-prev">' + prev + '</p>' +
+    '<p class="prg-prev">' + (ed.tipo === 'Roteiro' ? 'Gera uma Inspeção agendada para a data.' : 'Gera uma Manutenção comum com a data como prazo.') + '</p></section>';
+  if (ed.geradas && ed.geradas.length) h += '<span class="rotulo">Últimas geradas</span><ul class="prg-ger">' + ed.geradas.map(function (g) {
+    return '<li><button type="button" data-abrir="' + esc(g.id) + '"><span><b>' + esc(g.compTxt) + '</b> · ' + esc(g.id) + '</span>' +
+      '<span class="prg-tag ' + (g.atrasada ? 'r' : g.pendente ? 'b' : 'g') + '">' + (g.atrasada ? 'Atrasada' : g.pendente ? 'Aberta' : 'Concluída') + '</span>' + IC.chevD + '</button></li>';
+  }).join('') + '</ul>';
+  if (so) h += '<p class="nova-nota">Você vê esta programada, mas não edita.</p>';
+  if (ed.codigo && ed.atualizadaPor) h += '<p class="nova-nota">Última alteração: ' + esc(ed.atualizadaPor) + (ed.atualizadaEm ? ' · ' + esc(dataBRdeIso(String(ed.atualizadaEm).slice(0, 10))) : '') + '</p>';
+  h += '<span class="erro-txt" id="prgErro" role="alert" hidden></span>' +
+    '<div class="jan-rodape"><button class="bt claro" data-prg="lista">Voltar</button>' + (so ? '' : '<button class="bt" data-prg="salvar">Salvar programada</button>') + '</div>';
+  el.innerHTML = h;
+}
+function prgDigitou(e) {
+  var ed = S.prg && S.prg.ed; if (!ed) return;
+  var el = e.target, id = el.id, redesenha = e.type === 'change';
+  if (id === 'prgTitulo') ed.titulo = el.value;
+  else if (id === 'prgDesc') ed.descricao = el.value;
+  else if (id === 'prgCondo') { if (e.type !== 'change') return; ed.condo = el.value; ed.empresa = ''; ed.responsavel = ''; ed.roteiro = ''; prgCarregarOpcoes(); return; }
+  else if (id === 'prgRoteiro') ed.roteiro = el.value;
+  else if (id === 'prgPer') ed.periodicidade = el.value;
+  else if (id === 'prgACada') ed.aCada = el.value;
+  else if (id === 'prgProx') ed.proxima = el.value;
+  else if (id === 'prgAnt') ed.antecedencia = el.value;
+  else if (id === 'prgEmp') { ed.empresa = el.value; ed.responsavel = ''; }
+  else if (id === 'prgResp') ed.responsavel = el.value;
+  else return;
+  if (redesenha && /^(prgPer|prgProx|prgAnt|prgACada|prgEmp)$/.test(id)) prgDesenhar();
+}
+function prgClique(e) {
+  var b = e.target.closest('[data-prg]'); if (!b || !S.prg) return;
+  var a = b.getAttribute('data-prg'), ed = S.prg.ed, d = S.prg.dados;
+  if (a === 'filtro') { S.prg.filtro = b.getAttribute('data-cod'); prgDesenhar(); return; }
+  if (a === 'abrir') { prgEditar(d.programadas.filter(function (x) { return x.codigo === b.getAttribute('data-cod'); })[0]); return; }
+  if (a === 'novo') { prgEditar(null); var c = document.getElementById('prgTitulo'); if (c) c.focus(); return; }
+  if (a === 'lista') { S.prg.ed = null; prgDesenhar(); return; }
+  if (!ed) return;
+  if (a === 'tipo') { ed.tipo = b.getAttribute('data-v'); ed.empresa = ''; ed.responsavel = ''; }
+  else if (a === 'ativa') ed.ativa = !ed.ativa;
+  else if (a === 'salvar') { prgSalvar(b); return; }
+  else return;
+  prgDesenhar();
+}
+function prgSalvar(b) {
+  var ed = S.prg.ed, err = document.getElementById('prgErro');
+  var falha = function (m) { err.textContent = m; err.hidden = false; err.scrollIntoView({ block: 'nearest' }); };
+  if (!ed.titulo.trim()) return falha('Dê um título à programada.');
+  if (!ed.proxima) return falha('Escolha a próxima data.');
+  if (ed.tipo === 'Roteiro' && !ed.roteiro) return falha('Escolha o roteiro.');
+  if (!ed.empresa) return falha('Escolha a empresa.');
+  if (ed.periodicidade === 'A cada N dias' && !(Number(ed.aCada) >= 1)) return falha('Informe de quantos em quantos dias.');
+  b.disabled = true;
+  api('tarefas.prgSalvar', { codigo: ed.codigo, condo: ed.condo, titulo: ed.titulo, descricao: ed.descricao, tipo: ed.tipo, roteiro: ed.tipo === 'Roteiro' ? ed.roteiro : '',
+    periodicidade: ed.periodicidade, aCada: ed.aCada, proxima: ed.proxima, antecedencia: ed.antecedencia, empresa: ed.empresa, responsavel: ed.responsavel, ativa: ed.ativa }).then(function (r) {
+    b.disabled = false;
+    if (!r.ok) return falha(r.mensagem);
+    avisar((r.novo ? 'Programada criada · ' : 'Programada salva · ') + r.programada.codigo + (r.programada.situacao && r.programada.situacao.txt === 'Gera hoje' ? ' · gera hoje' : ''));
+    api('tarefas.prgListar').then(function (x) { if (x.ok && S.prg) { S.prg.dados = x; S.prg.ed = null; prgDesenhar(); } });
+  });
+}
+
 /* ================= Categorias e assuntos (v1.23, SUG-0005) ================= */
 /* Faixa de categorias na lista, Ocorrência (bloco/unidade), assunto com "Outro…", Mudar categoria (master)
    e, em Configurações: Categorias, Editar categoria, Assuntos, Editar assunto, Mover tarefas (com histórico e
@@ -6951,6 +7704,8 @@ document.addEventListener('click', function (e) {
     case 'equipe': fecharCamadas(); abrirEquipe(); break;
     case 'perfis': fecharCamadas(); abrirPerfis(); break;
     case 'configuracoes': fecharCamadas(); abrirConfiguracoes(); break;
+    case 'roteiros': fecharCamadas(); abrirRoteiros(); break; // v1.27
+    case 'programadas': var prgCod = b.getAttribute('data-prg'); fecharCamadas(); abrirProgramadas(prgCod); break; // v1.27 (6.3)
     case 'guia': fecharCamadas(); abrirGuia(); break;
     case 'fecharFaixaGuia': guardarLocal('faixaGuiaFechada', hojeLocal()); desenharFaixaGuia(); break;
     case 'pedidos': fecharCamadas(); abrirPedidos(); break;
