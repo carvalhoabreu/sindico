@@ -810,6 +810,16 @@ a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 .pd-item.pd-bl{border:2px solid #B44A4A}.pd-item.pd-bl .pd-q{border-color:#B44A4A}.pd-item.pd-bl .pd-ms{color:var(--vinho)}
 .pd-item.pd-av{border-color:#EAD7AE;background:#FFFCF5}.pd-item.pd-av .pd-ms{color:#7A5C27}
 .pd-item.pd-fo{opacity:.6;background:var(--creme)}.pd-item.pd-fo .pd-ms{color:var(--suave)}
+.cf-area{width:100%;box-sizing:border-box;resize:vertical;line-height:1.45;font:inherit;min-height:5.5em}
+.pd-foto{display:flex;align-items:center;gap:.7em;width:100%;min-height:3em;padding:.7em .85em;border:1.5px dashed #C9A46A;border-radius:.85em;background:#FFFDF8;font:inherit;text-align:left;color:var(--azul);cursor:pointer;box-sizing:border-box}
+.pd-foto span{display:flex;flex-direction:column;min-width:0}.pd-foto b{font-size:.9375em}.pd-foto small{font-size:.75em;color:var(--suave)}
+.pd-foto.lendo,.pd-foto.lida{cursor:default;border-style:solid;border-color:#EAD7AE}
+.pd-foto-menu{display:flex;flex-direction:column;gap:.5em;border:1px solid var(--linha);border-radius:.85em;padding:.75em;background:#fff}
+.pd-foto-bts{display:flex;gap:.5em}.pd-foto-bt{flex:1;flex-direction:column;gap:.3em;min-height:4.5em;cursor:pointer}
+.pd-pe{display:flex;align-items:center;gap:.5em}.pd-pe:not(:has(.pd-dafoto)):has(.pd-ms:empty){display:none}.pd-pe .pd-ms{flex:1}
+.pd-dafoto{margin-left:auto;flex:none;font-size:.6875em;font-weight:600;color:#7A5C27;background:#F6EEDC;border-radius:.4em;padding:.05em .45em;margin-right:.2em}
+.pd-cobra{display:block;color:#7A5C27!important;font-weight:600}
+.pd-cobrar.sugerido{border-color:#C9A46A;background:#FFFDF8}
 .pd-forn{display:flex;align-items:center;gap:.75em;width:100%;text-align:left;font:inherit;background:#fff;border:1.5px solid var(--linha);border-radius:.85em;padding:.7em .75em;cursor:pointer}
 .pd-forn[aria-checked="true"]{border-color:var(--azul)}
 .pd-ck{width:1.5em;height:1.5em;border-radius:.45em;border:2px solid #9AA3B8;display:flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box}
@@ -1213,7 +1223,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.25';
+var VERSAO_SITE = '1.26';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -3191,11 +3201,27 @@ function htmlCompra(t) {
       '<label><span class="rot-campo">Previsão de entrega · opcional</span><input class="campo" type="date" id="cpPrevisao" min="' + diaSP(new Date()) + '"></label>' +
       '<div class="cp-botoes"><button class="bt claro" data-acao="cpPrecoEditar">Atualizar preço</button><button class="bt" data-acao="cpRegistrar">Registrar compra</button></div></div>';
   }
+  if (p.virarCotacao) h += htmlVirarCotacao(t);
   if (p.recusar && c.etapa !== 'Aguardando aprovação') {
     h += S.recusandoCompra === t.id ? '<div class="cp-aviso recusa">' + htmlRecusa() + '</div>'
       : '<button class="bt-link" data-acao="cpRecusar" style="align-self:flex-start">Recusar esta compra</button>';
   }
   return h;
+}
+/* v1.26: aquisição que vira Cotação (mesmo ID; os produtos viram a lista; "Mover de volta" desfaz). */
+function htmlVirarCotacao(t) {
+  if (S.virandoCot !== t.id) return '<button class="bt claro" data-acao="cpCotacao" style="align-self:stretch">' + IC.doc + '<span>Pedir orçamento a fornecedores</span></button>';
+  var op = S.pedOp && S.pedOp[t.condo];
+  if (!op) return '<div class="cp-caixa"><div class="carregando">Buscando tipos de material…</div></div>';
+  if (!op.ok) return '<div class="cp-aviso"><span>' + esc(op.mensagem || 'Não foi possível abrir a cotação.') + '</span></div>';
+  if (!S.virandoTipo || !op.tipos.some(function (x) { return x.nome === S.virandoTipo; })) S.virandoTipo = op.tipos[0] ? op.tipos[0].nome : '';
+  var n = t.compra.itens.length;
+  return '<div class="cp-caixa cp-form"><span class="rotulo">Transformar em Cotação?</span>' +
+    '<p class="dica-campo" style="margin:0">A tarefa sai de Aquisições e segue pelos fornecedores, com o mesmo ID (' + esc(t.id) + '). ' + (n === 1 ? 'O produto vira' : 'Os ' + n + ' produtos viram') + ' a lista e os links ficam no follow-up.</p>' +
+    '<label class="cp-form" style="gap:.3em"><span class="rot-campo">Tipo de material</span><select class="campo" id="cpTipoCot">' +
+      op.tipos.map(function (x) { return '<option' + (x.nome === S.virandoTipo ? ' selected' : '') + '>' + esc(x.nome) + '</option>'; }).join('') + '</select></label>' +
+    '<p class="dica-campo" style="margin:0">Quem pediu continua vendo a tarefa e recebe o aviso quando os orçamentos chegarem. Dá para desfazer em Configurações › Mover tarefas.</p>' +
+    '<div class="cp-botoes" style="flex-wrap:wrap"><button class="bt claro" data-acao="cpCotacaoCancelar" style="flex:1 1 auto">Cancelar</button><button class="bt" data-acao="cpCotacaoConfirmar" style="flex:2 1 auto">Ir para fornecedores</button></div></div>';
 }
 function htmlRecusa() {
   return '<label class="cp-form" style="gap:.35em"><span class="rot-campo">Motivo da recusa (Compras recebe)</span><textarea class="campo" id="cpMotivoRecusa" rows="2" maxlength="300" placeholder="Ex.: fora do orçamento deste mês"></textarea></label>' +
@@ -3209,6 +3235,27 @@ function acaoCompra(acao, el) {
   if (acao === 'cpPrecoCancelar') { S.editandoPreco = null; desenharDetalhe(); return; }
   if (acao === 'cpRecusar') { S.recusandoCompra = t.id; desenharDetalhe(); var m = $('cpMotivoRecusa'); if (m) m.focus(); return; }
   if (acao === 'cpRecusarCancelar') { S.recusandoCompra = null; desenharDetalhe(); return; }
+  if (acao === 'cpCotacao') {
+    S.virandoCot = t.id; S.virandoTipo = ''; desenharDetalhe();
+    if (!(S.pedOp && S.pedOp[t.condo])) opcoesPedido(t.condo).then(function (r) { S.pedOp = S.pedOp || {}; if (!r.ok) S.pedOp[t.condo] = r; if (S.det && S.det.id === t.id) desenharDetalhe(); });
+    return;
+  }
+  if (acao === 'cpCotacaoCancelar') { S.virandoCot = null; desenharDetalhe(); return; }
+  if (acao === 'cpCotacaoConfirmar') {
+    var tipo = v('cpTipoCot') || S.virandoTipo, idT2 = t.id, cod2 = t.condo;
+    umaVez('cpCotacao:' + idT2, el, 'Transformando…', function () { return api('tarefas.pedidoDeAquisicao', { id: idT2, tipo: tipo }); }).then(function (r) {
+      if (r.ignorado) return;
+      if (!r.ok) { avisar(r.mensagem, true); desenharDetalhe(); return; }
+      S.virandoCot = null;
+      var m = String(r.tarefa.titulo || '').match(/^(.*) (\d{2}\/\d{4})$/);
+      var itens = (r.tarefa.pedido && r.tarefa.pedido.itens) || [];
+      recarregar();
+      abrirPedido({ id: idT2, condo: cod2, tipo: m ? m[1] : tipo, ref: m ? m[2] : '', passo: 'fornecedores',
+        itens: itens.map(function (x) { return { qtd: String(x.qtd).replace('.', ','), unidade: x.unidade, item: x.item }; }) });
+      avisar('Virou Cotação · escolha os fornecedores');
+    });
+    return;
+  }
   if (acao === 'cpComprovante') { var idT = t.id; escolherArquivos('doc', function (fs) { fs.slice(0, 10).forEach(function (f) { enviarAnexo(idT, f, 'Documento'); }); }); return; }
   if (acao === 'cpPrecoSalvar') {
     if (!v('cpPreco')) { avisar('Informe o preço encontrado.', true); $('cpPreco').focus(); return; }
@@ -4899,6 +4946,9 @@ function cfHtmlItem(i) {
         '<input class="cf-in cf-hora" id="' + id + '" ' + c + ' data-cf-poehora="1" type="time" aria-label="Novo horário"><button class="cf-mais" ' + c + ' data-cf-addhora="' + id + '">+ Horário</button></div>';
       break;
     }
+    case 'textoLongo': // v1.26: várias linhas (assinatura do e-mail de cotação)
+      h += '<textarea class="cf-in cf-area" id="' + id + '" ' + c + ' rows="' + Math.min(8, Math.max(3, String(v).split('\n').length + 1)) + '" maxlength="500">' + esc(v) + '</textarea>';
+      break;
     case 'faixa': {
       var fx = String(v).split('-');
       h += '<div class="cf-faixa2"><input class="cf-in cf-hora" id="' + id + '" ' + c + ' data-cf-fx="0" type="time" value="' + esc(fx[0] || '') + '"><span>até</span><input class="cf-in cf-hora" ' + c + ' data-cf-fx="1" type="time" value="' + esc(fx[1] || '') + '" aria-label="Fim do silêncio"></div>';
@@ -5403,7 +5453,7 @@ function abrirNova(opcoes) {
 /* Faixa de categorias na lista, Ocorrência (bloco/unidade), assunto com "Outro…", Mudar categoria (master)
    e, em Configurações: Categorias, Editar categoria, Assuntos, Editar assunto, Mover tarefas (com histórico e
    "Mover de volta") e o que cada empresa parceira recebe. */
-var NOVA_ROT = { 'Manutenção': 'Nova manutenção', 'Ocorrência': 'Nova ocorrência', 'Aquisições': 'Nova aquisição', 'Pedido mensal': 'Novo pedido mensal', 'Inspeção': 'Nova inspeção', 'Programada': 'Nova programada' };
+var NOVA_ROT = { 'Manutenção': 'Nova manutenção', 'Ocorrência': 'Nova ocorrência', 'Aquisições': 'Nova aquisição', 'Pedido mensal': 'Nova cotação', 'Cotação': 'Nova cotação', 'Inspeção': 'Nova inspeção', 'Programada': 'Nova programada' };
 function rotNova(nome) { return NOVA_ROT[nome] || 'Nova tarefa'; }
 function catsDaFaixa() {
   var d = S.dados || {};
@@ -5561,7 +5611,7 @@ function abrirMudarCategoria() {
         '<span class="ci">' + (ICO_CAT[(info && info.icone) || 'alerta'] || ICO_CAT.alerta) + '</span><span class="cn"><b>' + esc(c.nome) + '</b> · ' + esc(sub) + '</span>' +
         '<span class="ok"' + (MC.para === c.codigo ? '' : ' hidden') + '>' + IC.okAzul + '</span></button>';
     });
-    h += '<div class="cat-op" aria-disabled="true" style="opacity:.62;background:var(--creme)"><span class="ci">' + ICO_CAT.carrinho + '</span><span class="cn"><b>Aquisições e Pedido mensal</b> · têm etapas próprias e não recebem tarefa de outra categoria</span></div></div>';
+    h += '<div class="cat-op" aria-disabled="true" style="opacity:.62;background:var(--creme)"><span class="ci">' + ICO_CAT.carrinho + '</span><span class="cn"><b>Aquisições e Cotação</b> · têm etapas próprias e não recebem tarefa de outra categoria</span></div></div>';
     var pv = MC.previa;
     if (MC.para) {
       var catP = catDaTela(opcoes.filter(function (c) { return c.codigo === MC.para; })[0].nome);
@@ -5876,7 +5926,7 @@ function ctHtmlEmpresa(ap) {
       '<button class="pf-sw" role="switch" data-emp-sw="' + k + '" aria-checked="' + r.on + '" aria-label="' + esc(e.apelido + ' recebe ' + r.nome) + '"' + (r.emBreve ? ' disabled' : '') + '></button></div>' +
       (r.on && ass.length ? '<div class="chips-linha"><button class="chip-op" data-emp-todos="' + k + '" aria-pressed="' + !alguns + '">Todos os assuntos</button><button class="chip-op" data-emp-alguns="' + k + '" aria-pressed="' + alguns + '">Só alguns</button></div>' +
         (alguns ? '<div class="ct-assch">' + ass.map(function (a) { return '<label><input type="checkbox" data-emp-ass="' + k + '|' + esc(a.codigo) + '"' + (r.assuntos.indexOf(a.codigo) >= 0 ? ' checked' : '') + '> ' + esc(a.nome) + '</label>'; }).join('') + '</div>' : '') : '') + '</div>';
-  }).join('') + '<div class="cf-item ro"><div class="cf-tx"><b>Aquisições e Pedido mensal</b><small>Só da Carvalho & Abreu.</small></div></div></div>';
+  }).join('') + '<div class="cf-item ro"><div class="cf-tx"><b>Aquisições e Cotação</b><small>Só da Carvalho & Abreu.</small></div></div></div>';
   h += '<p class="dica-campo cf-nota">Cada pessoa da empresa continua limitada pelo próprio perfil e pelos condomínios dela. A empresa só vê as tarefas dela: nunca as de outra empresa ou da casa.</p>';
   var mud = JSON.stringify(f) !== JSON.stringify(e.recebe);
   h += '<span class="erro-txt" id="ctErro" role="alert" hidden></span><div class="ct-bts">' + (mud ? '<button class="bt claro" data-ct-acao="descartarEmp" data-ct-ref="' + esc(ap) + '">Descartar</button>' : '') + '<button class="bt" data-ct-acao="salvarEmp" data-ct-ref="' + esc(ap) + '"' + (mud ? '' : ' disabled') + '>Salvar</button></div>';
@@ -6044,7 +6094,7 @@ function entradaCat(ev) {
   return false;
 }
 
-/* ================= Pedido mensal (v1.19): assistente, jornada, comparação e entrega ================= */
+/* ================= Cotação (era "Pedido mensal"; v1.19, renomeada na 1.26): assistente, jornada, comparação e entrega ================= */
 var UNIDADES = ['un.', 'L', 'ml', 'kg', 'g', 'cx', 'pct', 'fardo', 'galão', 'balde', 'rolo', 'saco', 'frasco', 'lata', 'par', 'm'];
 var UN_RE = /^(\d+(?:[.,]\d+)?)\s*(?:x\s*)?(un\.?|und\.?|unid\.?|unidades?|l|lts?|litros?|ml|kg|quilos?|g|gr|cx|caixas?|pct|pcts|pacotes?|fardos?|gal[aã]o|gal[oõ]es|baldes?|rolos?|sacos?|frascos?|latas?|pares?|m|metros?)?\.?\s+(.+)$/i;
 function normUn(u) {
@@ -6071,10 +6121,13 @@ function lerLinhaItem(l) {
   if (m2) return { qtd: m2[2], unidade: normUn(m2[3]), item: m2[1].trim() };
   return { qtd: '', unidade: 'un.', item: l };
 }
+function nomeCot() { var o = S.pedOp && S.ped && S.pedOp[S.ped.condo]; return (o && o.regras && o.regras.nome) || 'Cotação'; }
+function maxItensCot() { var o = S.pedOp && S.ped && S.pedOp[S.ped.condo]; return (o && o.regras && o.regras.maxItens) || 60; }
+function fotoCotLigada() { var o = S.pedOp && S.ped && S.pedOp[S.ped.condo]; return !!(o && o.regras && o.regras.foto); }
 function qtdNum(q) { var n = parseFloat(String(q == null ? '' : q).replace(',', '.')); return isNaN(n) ? null : n; }
 function itemVago(it) { return !/\d/.test(it.item) && it.item.trim().split(/\s+/).length < 2; }
 
-/* --- Nova tarefa › Pedido mensal (tela 1) --- */
+/* --- Nova tarefa › Cotação (tela 1) --- */
 function opcoesPedido(cod) {
   S.pedOp = S.pedOp || {};
   if (S.pedOp[cod]) return Promise.resolve(S.pedOp[cod]);
@@ -6104,7 +6157,7 @@ function montarPedidoNova(raiz) {
         return '<label class="chip-op" style="display:inline-flex;align-items:center" aria-pressed="' + (S.nova.pdRef === r) + '"><input type="radio" name="pdRef" value="' + r + '" class="sr"' + (S.nova.pdRef === r ? ' checked' : '') + '>' + r + '</label>';
       }).join('') + '</div></div>' +
     '<span class="dica-campo" style="margin:0">Título: <b style="color:var(--azul)">' + esc(S.nova.pdTipo + ' ' + S.nova.pdRef) + '</b> · automático</span></div>' +
-    (ult ? '<button type="button" class="bt claro" data-acao-nova="pdRepetir" aria-pressed="' + !!S.nova.pdRepetir + '" style="justify-content:flex-start">' + IC.att + '<span>' + (S.nova.pdRepetir ? 'Vai repetir' : 'Repetir') + ' o pedido de ' + esc(ult.mes) + ' · ' + ult.itens.length + (ult.itens.length === 1 ? ' item' : ' itens') + '</span></button>' : '') +
+    (ult ? '<button type="button" class="bt claro" data-acao-nova="pdRepetir" aria-pressed="' + !!S.nova.pdRepetir + '" style="justify-content:flex-start">' + IC.att + '<span>' + (S.nova.pdRepetir ? 'Vai repetir' : 'Repetir') + ' a cotação de ' + esc(ult.mes) + ' · ' + ult.itens.length + (ult.itens.length === 1 ? ' item' : ' itens') + '</span></button>' : '') +
     '<p class="dica-campo" style="margin:0">' + (function () { var t = tipos.filter(function (x) { return x.nome === S.nova.pdTipo; })[0]; return t && t.fornecedores.length ? 'Cadastrados para este tipo aqui: ' + esc(t.fornecedores.join(', ')) + '.' : 'Nenhum fornecedor cadastrado para este tipo neste condomínio: você escolhe na etapa de fornecedores.'; })() + '</p>';
   var rep = corpo.querySelector('[data-acao-nova="pdRepetir"]');
   if (rep) rep.addEventListener('click', function () { S.nova.pdRepetir = !S.nova.pdRepetir; montarPedidoNova(raiz); });
@@ -6114,7 +6167,7 @@ function continuarPedidoNova(raiz, cod) {
   if (!op) return;
   var ult = op.ultimos[norm(S.nova.pdTipo)];
   var itens = S.nova.pdRepetir && ult ? ult.itens.map(function (x) { return { qtd: String(x.qtd).replace('.', ','), unidade: x.unidade, item: x.item }; }) : [];
-  guardarLocal('ultimoCondo', cod); guardarLocal('ultimaCategoria', 'Pedido mensal');
+  guardarLocal('ultimoCondo', cod); guardarLocal('ultimaCategoria', nomeCot());
   fecharCamadas();
   abrirPedido({ condo: cod, tipo: S.nova.pdTipo, ref: S.nova.pdRef, itens: itens, passo: 'lista' });
 }
@@ -6129,7 +6182,7 @@ function abrirPedido(est) {
       S.ped.forn = {};
       (t ? t.fornecedores : []).forEach(function (a) { S.ped.forn[a] = { on: true, cad: true }; });
     }
-    abrirJanela('Pedido mensal', S.ped.tipo + ' ' + S.ped.ref + ' · ' + nomeCondo(S.ped.condo), '<div class="jan-corpo" id="pdCorpo"></div><div class="pd-rodape" id="pdRodape"></div>', 'centro', function (raiz) {
+    abrirJanela(nomeCot(), S.ped.tipo + ' ' + S.ped.ref + ' · ' + nomeCondo(S.ped.condo), '<div class="jan-corpo" id="pdCorpo"></div><div class="pd-rodape" id="pdRodape"></div>', 'centro', function (raiz) {
       raiz.classList.add('pd-jan');
       raiz.addEventListener('click', cliquePedido);
       raiz.addEventListener('keydown', function (e) {
@@ -6140,6 +6193,9 @@ function abrirPedido(est) {
         var txt = (e.clipboardData || window.clipboardData).getData('text') || '';
         if (txt.indexOf('\n') < 0) return;
         e.preventDefault(); adicionarLinhas(txt); e.target.value = '';
+      });
+      raiz.addEventListener('change', function (e) {
+        if (e.target.getAttribute && e.target.getAttribute('data-pdfoto') && e.target.files && e.target.files[0]) lerFotoLista(e.target.files[0]);
       });
       raiz.addEventListener('input', function (e) {
         var k = e.target.getAttribute('data-pdk'), c = e.target.getAttribute('data-pdc');
@@ -6152,13 +6208,46 @@ function abrirPedido(est) {
     });
   });
 }
-function adicionarLinhas(txt) {
+function adicionarLinhas(txt, daFoto) {
   var novos = String(txt || '').split(/\r?\n/).map(lerLinhaItem).filter(Boolean);
-  if (!novos.length) return;
-  S.ped.itens = S.ped.itens.concat(novos).slice(0, 60);
+  if (!novos.length) return 0;
+  if (daFoto) novos.forEach(function (x) { x.daFoto = true; });
+  var max = maxItensCot(), antes = S.ped.itens.length;
+  S.ped.itens = S.ped.itens.concat(novos).slice(0, max);
+  var entrou = S.ped.itens.length - antes;
+  if (daFoto) return entrou;
   desenharPedido();
   var f = $('pdEntrada'); if (f) f.focus();
-  if (novos.length > 1) avisar(novos.length + ' itens separados da lista');
+  if (entrou < novos.length) avisar('Cabem ' + max + ' itens por cotação: ' + (novos.length - entrou) + ' ficaram de fora.', true);
+  else if (novos.length > 1) avisar(novos.length + ' itens separados da lista');
+  return entrou;
+}
+/* v1.26: foto da lista. O aparelho reduz a foto, o motor lê (OCR do Google) e a lista cai em "Conferir". */
+function lerFotoLista(file) {
+  var p = S.ped; if (!p || !file) return;
+  if (!/^image\//.test(file.type || '') && !/\.(jpe?g|png|heic|heif|webp)$/i.test(file.name || '')) { avisar('Escolha uma foto da lista.', true); return; }
+  p.lendoFoto = true; p.fotoMenu = false; desenharPedido();
+  carregarImagem(file).then(function (img) { return reduzir(img, 1800, 0.85); }).then(function (blob) {
+    p.foto = blob;
+    return blobParaB64(blob).then(function (b64) { return api('tarefas.pedidoFoto', { dados: b64, tipo: 'image/jpeg', nome: 'lista.jpg' }); });
+  }).then(function (r) {
+    p.lendoFoto = false;
+    if (!r.ok) { p.foto = null; avisar(r.mensagem, true); desenharPedido(); return; }
+    var n = r.linhas && r.linhas.length ? adicionarLinhas(r.linhas.join('\n'), true) : 0;
+    if (!n) { p.foto = null; avisar('Não consegui ler itens nesta foto. Tente mais de perto, com boa luz, ou digite a lista.', true); desenharPedido(); return; }
+    p.lidosFoto = n;
+    p.passo = 'conferir'; desenharPedido();
+  }, function () {
+    p.lendoFoto = false; p.foto = null;
+    avisar('Não deu para abrir esta foto. Tente tirar de novo ou escolher outra.', true); desenharPedido();
+  });
+}
+/* Depois de salvar ou enviar: a foto da lista vira anexo comum da tarefa (fila sem sinal incluída). */
+function anexarFotoLista(id) {
+  var p = S.ped; if (!p || !p.foto || !id) return;
+  var f; try { f = new File([p.foto], 'Foto da lista.jpg', { type: 'image/jpeg' }); } catch (e) { f = p.foto; f.name = 'Foto da lista.jpg'; }
+  p.foto = null;
+  enviarAnexo(id, f, 'Documento');
 }
 function passoNum() { return { lista: 1, conferir: 2, fornecedores: 3, email: 4 }[S.ped.passo] || 1; }
 function cabPasso(titulo, sub) {
@@ -6169,12 +6258,23 @@ function desenharPedido() {
   var p = S.ped, h = '', rod = '';
   var voltar = p.passo !== 'lista' ? '<button class="bt claro" data-acao="pdVoltar">Voltar</button>' : '<span></span>';
   if (p.passo === 'lista') {
-    h += cabPasso('Colocar a lista', 'Digite um item e Enter, ou cole a lista inteira (uma linha por item).');
+    h += cabPasso('Colocar a lista', 'Digite um item e Enter, cole a lista inteira (uma linha por item)' + (fotoCotLigada() ? ' ou tire uma foto dela.' : '.'));
     h += '<label class="sr" for="pdEntrada">Novo item</label><div class="linha-campos"><input class="campo" id="pdEntrada" autocomplete="off" placeholder="Ex.: 3 baldes Cloro granulado"><button class="bt claro" data-acao="pdAdd">Adicionar</button></div>';
+    if (p.lendoFoto) h += '<div class="pd-foto lendo" role="status">' + IC.relogioP + '<span><b>Lendo a foto…</b><small>Leva alguns segundos.</small></span></div>';
+    else if (fotoCotLigada()) {
+      h += p.fotoMenu
+        ? '<div class="pd-foto-menu" role="group" aria-label="Foto da lista"><span class="rot-campo">Foto da lista · escrita à mão ou impressa</span><div class="pd-foto-bts">' +
+            '<label class="bt claro pd-foto-bt">' + IC.camera + '<span>Tirar foto</span><input type="file" accept="image/*" capture="environment" class="sr" data-pdfoto="1"></label>' +
+            '<label class="bt claro pd-foto-bt">' + IC.imagem + '<span>Da galeria</span><input type="file" accept="image/*" class="sr" data-pdfoto="1"></label></div>' +
+            '<p class="dica-campo" style="margin:0">Os itens lidos entram embaixo dos que já estão na lista. A foto fica anexada à tarefa.</p>' +
+            '<button class="bt-link" data-acao="pdFotoMenu" style="align-self:flex-start">Agora não</button></div>'
+        : '<button class="pd-foto" data-acao="pdFotoMenu">' + IC.cameraP + '<span><b>Foto da lista</b><small>O app lê os itens e você confere</small></span></button>';
+    }
     h += htmlLinhasItens(false);
     rod = voltar + '<button class="bt" data-acao="pdConferir"' + (p.itens.length ? '' : ' disabled') + '>Conferir lista' + (p.itens.length ? ' · ' + p.itens.length : '') + '</button>';
   } else if (p.passo === 'conferir') {
     h += cabPasso('Conferir a lista', p.tipo + ' ' + p.ref + ' · ' + nomeCondo(p.condo));
+    if (p.lidosFoto) h += '<div class="pd-foto lida" role="status">' + IC.cameraP + '<span><b>' + p.lidosFoto + (p.lidosFoto === 1 ? ' item lido' : ' itens lidos') + ' da foto</b><small>Confira cada um antes de seguir. A foto vai anexada à tarefa.</small></span></div>';
     h += '<div id="pdConf"></div>';
     rod = voltar + '<span class="pd-msg" id="pdMsg"></span><button class="bt" data-acao="pdFornecedores" id="pdSegue">Escolher fornecedores</button>';
   } else if (p.passo === 'fornecedores') {
@@ -6210,7 +6310,7 @@ function htmlLinhasItens(conferir) {
       '<label class="sr" for="pdU' + k + '">Unidade</label><input class="campo pd-u" id="pdU' + k + '" data-pdk="' + k + '" data-pdc="unidade" list="pdUnidades" maxlength="20" value="' + esc(it.unidade) + '">' +
       '<label class="sr" for="pdI' + k + '">Item</label><input class="campo pd-i" id="pdI' + k + '" data-pdk="' + k + '" data-pdc="item" maxlength="120" value="' + esc(it.item) + '">' +
       '<button class="cp-tirar" data-acao="pdTirar" data-k="' + k + '" aria-label="Tirar ' + esc(it.item) + '">' + IC.x + '</button></div>' +
-      (conferir ? '<span class="pd-ms" data-ms="' + k + '"></span>' : '') + '</div>';
+      (conferir ? '<div class="pd-pe"><span class="pd-ms" data-ms="' + k + '"></span>' + (it.daFoto ? '<span class="pd-dafoto">da foto</span>' : '') + '</div>' : '') + '</div>';
   }).join('') + '</div><datalist id="pdUnidades">' + UNIDADES.map(function (u) { return '<option value="' + u + '">'; }).join('') + '</datalist>';
 }
 function atualizarConferencia() {
@@ -6276,6 +6376,7 @@ function cliquePedido(e) {
   if (!/^pd/.test(a)) return;
   e.stopPropagation();
   if (a === 'pdAdd') { var f = $('pdEntrada'); adicionarLinhas(f.value); f.value = ''; return; }
+  if (a === 'pdFotoMenu') { p.fotoMenu = !p.fotoMenu; desenharPedido(); return; }
   if (a === 'pdTirar') { p.itens.splice(Number(b.getAttribute('data-k')), 1); if (p.passo === 'conferir') { $('pdConf').removeAttribute('data-montado'); } desenharPedido(); return; }
   if (a === 'pdDetalhar') { var i = $('pdI' + b.getAttribute('data-k')); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } return; }
   if (a === 'pdVoltar') { p.passo = { conferir: 'lista', fornecedores: 'conferir', email: 'fornecedores' }[p.passo] || 'lista'; desenharPedido(); return; }
@@ -6296,9 +6397,10 @@ function cliquePedido(e) {
   if (a === 'pdSalvar') {
     umaVez('pdSalvar', b, 'Salvando…', function () { return api('tarefas.pedidoSalvar', Object.assign(dadosPedido(), { confirmarDuplicada: !!p.dup })); }).then(function (r) {
       if (r.ignorado) return;
-      if (r.aviso === 'DUPLICADA') { p.dup = true; avisar('Já existe um pedido igual em aberto. Toque de novo para salvar mesmo assim.', true); return; }
+      if (r.aviso === 'DUPLICADA') { p.dup = true; avisar('Já existe uma cotação igual em aberto. Toque de novo para salvar mesmo assim.', true); return; }
       if (!r.ok) { avisar(r.mensagem, true); return; }
-      fecharCamadas(); avisar('Pedido salvo na lista · ainda não enviado'); recarregar(); abrirTarefa(r.tarefa.id);
+      anexarFotoLista(r.tarefa.id);
+      fecharCamadas(); avisar('Cotação salva na lista · ainda não enviada'); recarregar(); abrirTarefa(r.tarefa.id);
     });
     return;
   }
@@ -6308,8 +6410,9 @@ function cliquePedido(e) {
     d.confirmarDuplicada = !!p.dup;
     umaVez('pdEnviar', b, 'Enviando…', function () { return api('tarefas.pedidoEnviar', d); }).then(function (r) {
       if (r.ignorado) return;
-      if (r.aviso === 'DUPLICADA') { p.dup = true; avisar('Já existe um pedido igual em aberto. Toque de novo para enviar mesmo assim.', true); return; }
+      if (r.aviso === 'DUPLICADA') { p.dup = true; avisar('Já existe uma cotação igual em aberto. Toque de novo para enviar mesmo assim.', true); return; }
       if (!r.ok) { avisar(r.mensagem, true); return; }
+      anexarFotoLista(r.id);
       fecharCamadas();
       avisar('Enviado a ' + r.enviados.join(', ') + (r.falhas && r.falhas.length ? ' · não saiu para ' + r.falhas.join(', ') : ''), !!(r.falhas && r.falhas.length));
       S.pedOp = {}; recarregar(); abrirTarefa(r.id);
@@ -6319,10 +6422,10 @@ function cliquePedido(e) {
 
 /* --- Tarefa aberta: jornada (6), comparação (7) e entrega (8) --- */
 function etapasPedido(pd) {
-  var passos = ['Lista', 'Cotação', 'Aprovação', 'Entrega'];
-  var i = { 'Lista': 0, 'Cotação': 1, 'Aprovação': 2, 'Entrega': 3, 'Recebida': 4 }[pd.etapa];
+  var passos = ['Lista', 'Orçamentos', 'Aprovação', 'Entrega'];
+  var i = { 'Lista': 0, 'Cotação': 1, 'Orçamentos': 1, 'Aprovação': 2, 'Entrega': 3, 'Recebida': 4 }[pd.etapa];
   if (i === undefined) i = 0;
-  return '<div class="etapas" role="list" aria-label="Jornada do pedido">' + passos.map(function (p, k) {
+  return '<div class="etapas" role="list" aria-label="Jornada da cotação">' + passos.map(function (p, k) {
     var cls = k < i ? 'feito' : k === i ? 'atual' : '';
     return (k ? '<span class="li' + (k <= i ? ' feito' : '') + '" aria-hidden="true"></span>' : '') +
       '<span class="et ' + cls + '" role="listitem"' + (k === i ? ' aria-current="step"' : '') + '><span class="bo">' + (k < i ? IC.okP : (k + 1)) + '</span>' + p + '</span>';
@@ -6330,7 +6433,7 @@ function etapasPedido(pd) {
 }
 function linkPdf(id) { return 'https://drive.google.com/file/d/' + encodeURIComponent(id) + '/view'; }
 function htmlItensPedido(pd, aberto) {
-  return '<details class="cp-caixa pd-itens"' + (aberto ? ' open' : '') + '><summary><span class="rotulo">Itens do pedido · ' + pd.itens.length + '</span></summary>' +
+  return '<details class="cp-caixa pd-itens"' + (aberto ? ' open' : '') + '><summary><span class="rotulo">Itens da cotação · ' + pd.itens.length + '</span></summary>' +
     pd.itens.map(function (it) { return '<div class="cp-prod"><span class="q">' + esc(String(it.qtd).replace('.', ',') + ' ' + it.unidade) + '</span><span>' + esc(it.item) + '</span>' + (it.resultado ? '<span class="pd-res-tag ' + it.resultado.toLowerCase() + '">' + esc(it.resultado) + '</span>' : '') + '</div>'; }).join('') + '</details>';
 }
 function htmlPedido(t) {
@@ -6342,13 +6445,14 @@ function htmlPedido(t) {
       (p.continuar ? '<button class="bt" data-acao="pdContinuar">Continuar cotação</button>' : '') + '</div>';
     return h;
   }
-  if (pd.etapa === 'Cotação' || pd.etapa === 'Aprovação') {
+  if (pd.etapa === 'Orçamentos' || pd.etapa === 'Cotação' || pd.etapa === 'Aprovação') {
     h += '<div class="cp-caixa"><div class="pd-cab"><span class="rotulo">Fornecedores</span><b>' + pd.responderam + ' de ' + pd.enviados + ' responderam</b></div>' +
       pd.cotacoes.map(function (c, k) {
-        var sub = c.respondeuEm ? 'Respondeu ' + dataCurta(new Date(c.respondeuEm)) + (c.pdfs.length ? ' · PDF salvo' : ' · sem PDF') : (c.diasSemResposta ? 'Sem resposta há ' + c.diasSemResposta + (c.diasSemResposta === 1 ? ' dia' : ' dias') : 'Enviado hoje · aguardando') + (c.cobradoEm ? ' · cobrado ' + dataCurta(new Date(c.cobradoEm)) : '');
+        var sub = c.respondeuEm ? 'Respondeu ' + dataCurta(new Date(c.respondeuEm)) + (c.pdfs.length ? ' · PDF salvo' : ' · sem PDF') + (c.foraDoFio ? ' · em e-mail novo, achado pelo assunto' : '') : (c.diasSemResposta ? 'Sem resposta há ' + c.diasSemResposta + (c.diasSemResposta === 1 ? ' dia' : ' dias') : 'Enviado hoje · aguardando') + (c.cobradoEm ? ' · cobrado ' + dataCurta(new Date(c.cobradoEm)) : '');
         var dir = c.respondeuEm ? (c.total !== null ? '<b class="pd-tot">' + esc(c.totalTxt) + '</b>' : '<span class="pd-tag">Agente lê ' + esc(pd.proximaRodada) + '</span>')
-          : (p.cobrar ? '<button class="bt claro pd-cobrar" data-acao="pdCobrar" data-ap="' + esc(c.apelido) + '">Cobrar</button>' : '');
-        return (k ? '<div class="pd-sep"></div>' : '') + '<div class="pd-fr"><span><b>' + esc(c.apelido) + '</b><small>' + esc(sub) + '</small></span>' + dir + '</div>';
+          : (p.cobrar ? '<button class="bt claro pd-cobrar' + (c.cobrarSugerido ? ' sugerido' : '') + '" data-acao="pdCobrar" data-ap="' + esc(c.apelido) + '">Cobrar</button>' : '');
+        return (k ? '<div class="pd-sep"></div>' : '') + '<div class="pd-fr"><span><b>' + esc(c.apelido) + '</b><small>' + esc(sub) + '</small>' +
+          (c.cobrarSugerido && p.cobrar ? '<small class="pd-cobra">Já dá para cobrar</small>' : '') + '</span>' + dir + '</div>';
       }).join('') + '</div>';
     if (pd.responderam) {
       var pedido = pd.cotacoes.some(function (c) { return c.pedidoAnalise && (!c.analisadoEm || c.analisadoEm < c.pedidoAnalise); });
@@ -6409,7 +6513,7 @@ function acaoPedido(acao, el) {
     if (acao === 'pdEntrega' && !itens.length) { avisar('Marque como veio cada item recebido.', true); return; }
     acaoDetalhe('pedidoEntrega', { itens: itens, concluir: acao === 'pdConcluir' }, function (r) {
       S.pdEnt = null;
-      avisar(r.concluido ? 'Pedido recebido e concluído' : 'Conferência salva · ' + r.faltas.length + (r.faltas.length === 1 ? ' item pendente' : ' itens pendentes'));
+      avisar(r.concluido ? 'Cotação recebida e concluída' : 'Conferência salva · ' + r.faltas.length + (r.faltas.length === 1 ? ' item pendente' : ' itens pendentes'));
       if (r.concluido) invalidarConcluidas();
     }, el, 'Salvando…');
   }
@@ -6887,6 +6991,7 @@ document.addEventListener('click', function (e) {
 document.addEventListener('change', function (e) {
   var el = e.target;
   if (el.id === 'outroCondo' && el.value) { S.condo = el.value; desenharCondos(); desenharLista(); }
+  if (el.id === 'cpTipoCot') S.virandoTipo = el.value;
   if (el.id === 'selDir') acaoDetalhe('direcionar', { para: el.value }, function () { avisar('Direcionamento salvo'); }, el);
   if (el.id === 'selEmp') acaoDetalhe('trocarEmpresa', { empresa: el.value }, function () { avisar('Empresa alterada'); }, el);
   if (el.id === 'selCondo') trocarCondominio(el.value);
