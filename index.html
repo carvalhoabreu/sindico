@@ -1184,7 +1184,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.24';
+var VERSAO_SITE = '1.24.1';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -2772,7 +2772,7 @@ function desenharDetalhe() {
     (t.etiqueta ? '<span class="pilula atraso">' + esc(t.etiqueta) + '</span>' : '') +
     '<span class="pilula forte">' + esc(t.empresa) + '</span>' +
     (temCategoria(t) || faixaAtiva() || t.assuntoNome ? '<span class="pilula">' + esc(t.categoria + (t.assuntoNome ? ' › ' + t.assuntoNome : '')) + '</span>' : '') +
-    '<span class="pilula">' + esc(t.paraVoce ? 'Direcionada a você' : t.direcionadoNome === 'Equipe' ? 'Equipe' : 'Para ' + t.direcionadoNome) + '</span>' +
+    '<span class="pilula">' + esc(t.paraVoce ? 'Direcionada a você' : t.direcionadoNome === 'Equipe' || /^Equipe de /.test(t.direcionadoNome) ? t.direcionadoNome : 'Para ' + t.direcionadoNome) + '</span>' +
     '<span class="pilula">Criada por ' + esc(t.criadoPor) + ' · ' + esc(quando(t.criadoEm)) + '</span>' +
     (!pend ? '<span class="pilula forte">Concluída por ' + esc(t.concluidoPor) + ' · ' + esc(quando(t.concluidoEm)) + '</span>' : '') +
     '</div>' +
@@ -4782,7 +4782,7 @@ var PF_DESC = {
   Gestor: ['empresa parceira', 'Responsável pela equipe da empresa parceira; vê todos os condomínios que ela atende.'],
   Colaborador: ['Carvalho & Abreu', 'Equipe da casa com O no condomínio (até a v1.20 contava como Operador). Vê e conclui as tarefas dos condomínios marcados.'],
   'Líder': ['L no condomínio', 'Pessoa marcada com L no condomínio. Organiza a fila da equipe.'],
-  Compras: ['atividade da casa', 'Quem tem a atividade Compras (Andrea). Usa só as categorias ligadas aqui; as ações seguem o fluxo de Aquisições.'],
+  Compras: ['atividade da casa', 'Quem tem a atividade Compras. Usa só as categorias ligadas aqui; as ações seguem o fluxo de Aquisições.'],
   Operador: ['empresa parceira', 'Funcionário de empresa parceira com O no condomínio. Vê e conclui as tarefas dos condomínios em que tem O.']
 };
 function abrirPerfis() {
