@@ -513,6 +513,7 @@ body.janela-aberta .sugerir-flut{display:none}
 .msg-zap{background:var(--ouro-fundo);border-radius:.875em .875em .875em .25em;padding:.75em .9em;font-size:.875em;white-space:pre-line;overflow-wrap:anywhere;color:var(--texto)}
 .msg-zap.vazia{background:var(--creme);color:var(--suave)}
 .bt.zap{background:#1F7A4D;text-decoration:none}
+.fc-corpo{display:flex;flex-direction:column;gap:.75em}.fc-pe{display:flex;justify-content:space-between;align-items:center;min-height:2.75em}.fc-desf{font-weight:700}
 a.bt[aria-disabled="true"]{opacity:.55;pointer-events:none}
 .pills{display:flex;gap:.5em;flex-wrap:wrap}
 .pill{min-height:2.5em;padding:0 .9em;border-radius:999px;border:1.5px solid var(--linha);font-size:.875em;font-weight:600;color:var(--azul);background:#fff}
@@ -1183,7 +1184,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.23';
+var VERSAO_SITE = '1.24';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -1268,6 +1269,7 @@ var IC = {
   compart: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/></svg>',
   lapis: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>',
   link: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16325C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg>',
+  copiar: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16325C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>',
   abrir: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16325C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
   zap: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.7z"/></svg>',
   pessoaMais: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>',
@@ -1635,7 +1637,7 @@ function metaDe(t, semCondo) {
     if (textoUnidade(t)) partes.push(textoUnidade(t));
     if (!t.assuntoNome && variasEmpresas()) partes.push(t.empresa);
   }
-  if (t.paraVoce) partes.push('direcionada a você');
+  if (t.paraVoce) partes.push(origemParaVoce(t) || 'direcionada a você');
   else if (t.direcionadoNome && t.direcionadoNome !== 'Equipe') partes.push('para ' + t.direcionadoNome);
   partes.push(t.nObs ? (t.nObs === 1 ? '1 follow-up' : t.nObs + ' follow-ups') : 'sem follow-up');
   partes.push(haQuanto(t.criadoEm));
@@ -2690,6 +2692,7 @@ function concluir(id) {
   var t = (S.dados.tarefas || []).filter(function (x) { return x.id === id; })[0];
   if (!t) return;
   emCurso['concluir:' + id] = true;
+  var textoZap = textoConclusao(t, (S.dados.usuario || {}).nome, new Date(), ultimoFollow(id)), snap = { id: t.id, condo: t.condo, titulo: t.titulo };
   invalidarConcluidas();
   S.dados.tarefas = S.dados.tarefas.filter(function (x) { return x.id !== id; });
   var c = (S.dados.condos || []).filter(function (x) { return x.codigo === t.condo; })[0];
@@ -2701,7 +2704,8 @@ function concluir(id) {
     if (r.jaConcluida) { avisar('Essa tarefa já tinha sido concluída' + (r.por ? ' por ' + r.por : '') + '.'); recarregar(); return; }
     if (!r.ok) { avisar(r.mensagem, true); recarregar(); return; }
     var seg = r.desfazerSeg || (S.dados.regras && S.dados.regras.desfazerSeg) || 5;
-    avisar('Tarefa concluída', false, { rotulo: 'Desfazer', seg: seg, fn: function () { desfazer(id); } });
+    if (S.dados.regras && S.dados.regras.avisoZap === false) avisar('Tarefa concluída', false, { rotulo: 'Desfazer', seg: seg, fn: function () { desfazer(id); } });
+    else folhaConclusao(snap, seg, textoZap);
     setTimeout(recarregar, (seg + 1) * 1000);
   });
 }
@@ -2789,8 +2793,7 @@ function desenharDetalhe() {
   var gDir = '', gEmp = '';
   if (pode.direcionar) {
     gDir = '<div><label class="rotulo" for="selDir">Direcionada para</label><select class="campo" id="selDir">' +
-      '<option value="Equipe">Equipe (todos veem)</option>' +
-      (t.pessoas || []).map(function (p) { return '<option value="' + esc(p.email) + '"' + (p.email === t.direcionado ? ' selected' : '') + '>' + esc(p.nome) + '</option>'; }).join('') +
+      opcoesDirecionar(t.pessoas, t.direcionado, t.empresa) +
       '</select></div>';
   }
   if (pode.trocarEmpresa && (t.empresasDoCondo || []).length > 1) {
@@ -3043,20 +3046,80 @@ function tarefaPorId(id) {
 }
 function linkDe(id) { return location.origin + location.pathname + '?t=' + encodeURIComponent(id); }
 function textoDe(t) { return nomeCondo(t.condo).toUpperCase() + ' - ' + t.titulo; }
-function copiarLink(id) {
-  var link = linkDe(id);
-  var ok = function () { avisar('Link copiado'); };
+function copiarTexto(texto, aviso) {
+  var ok = function () { avisar(aviso || 'Texto copiado'); };
   var reserva = function () {
-    var ta = document.createElement('textarea'); ta.value = link; ta.setAttribute('readonly', '');
+    var ta = document.createElement('textarea'); ta.value = texto; ta.setAttribute('readonly', '');
     ta.style.position = 'absolute'; ta.style.left = '-9999px'; document.body.appendChild(ta); ta.select();
-    try { document.execCommand('copy'); ok(); } catch (e) { avisar('Não deu para copiar. Link: ' + link, true); }
+    try { document.execCommand('copy'); ok(); } catch (e) { avisar('Não deu para copiar o texto.', true); }
     document.body.removeChild(ta);
   };
-  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(ok, reserva); else reserva();
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(texto).then(ok, reserva); else reserva();
+}
+function copiarLink(id) { copiarTexto(linkDe(id), 'Link copiado'); }
+/* v1.24 (SUG-0002): aviso de conclusão para o grupo do WhatsApp. Texto puro, sem nada interno da casa. */
+function primeiroNome(n) { var p = String(n || '').trim().split(/\s+/)[0] || ''; return p.charAt(0).toUpperCase() + p.slice(1); }
+function ultimoFollow(id) {
+  var d = S.det; if (!d || d.id !== id) return '';
+  var l = (d.observacoes || []).filter(function (o) { return !o.excluida && o.texto && ['Sistema', 'Compra', 'Anexo'].indexOf(o.tipo) < 0; });
+  var x = l.length ? String(l[l.length - 1].texto).replace(/\s+/g, ' ').trim() : '';
+  return x.length > 200 ? x.slice(0, 197).replace(/\s+\S*$/, '') + '…' : x;
+}
+function textoConclusao(t, por, quando, follow) {
+  var q = quando || new Date();
+  return '✅ *Tarefa concluída* — ' + nomeCondo(t.condo).toUpperCase() + '\n' + t.titulo + '\n' +
+    'Concluída por ' + primeiroNome(por) + ' em ' + dataCurta(q) + ', ' + horaSP(q) +
+    (follow ? '\n' + follow : '') + '\nVer no app: ' + linkDe(t.id);
+}
+function textoConcluida(t) { return textoConclusao(t, t.concluidoPor, t.concluidoEm ? new Date(t.concluidoEm) : new Date(), ultimoFollow(t.id)); }
+function textoCompart(t) { return t.status === 'Concluída' ? textoConcluida(t) : textoDe(t) + '\nAbra no app Síndico: ' + linkDe(t.id); }
+function avisarWhats(texto) {
+  if (navigator.share && faixa() !== 'computador') { navigator.share({ text: texto }).catch(function () {}); return; }
+  window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+}
+/* Folha que aparece logo depois de concluir: avisar no WhatsApp, copiar o texto ou desfazer. */
+function folhaConclusao(t, seg, texto) {
+  var id = t.id, fim = Date.now() + seg * 1000;
+  var h = '<div class="jan-corpo fc-corpo">' +
+    '<button class="bt grande" type="button" data-fc="zap">' + IC.zap.replace('#1D9E75', '#C9A46A') + '<span>Avisar no WhatsApp</span></button>' +
+    '<button class="bt claro grande" type="button" data-fc="copiar">Copiar texto</button>' +
+    '<div class="fc-pe"><button class="bt-link" type="button" data-acao="fecharJan">Agora não</button>' +
+    '<button class="bt-link fc-desf" type="button" data-fc="desfazer">Desfazer · <span id="fcSeg">' + seg + '</span> s</button></div></div>';
+  abrirJanela('Tarefa concluída', nomeCondo(t.condo) + ' · ' + t.titulo, h, 'centro', function (raiz) {
+    var tm = setInterval(function () {
+      var el = raiz.querySelector('#fcSeg');
+      if (!el || !document.body.contains(raiz)) { clearInterval(tm); return; }
+      var r = Math.max(0, Math.ceil((fim - Date.now()) / 1000));
+      if (r <= 0) { clearInterval(tm); var d = raiz.querySelector('[data-fc="desfazer"]'); if (d) d.remove(); } else el.textContent = r;
+    }, 500);
+    raiz.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-fc]'); if (!b) return;
+      var o = b.getAttribute('data-fc');
+      clearInterval(tm);
+      if (o === 'zap') { fecharCamadas(); avisarWhats(texto); }
+      if (o === 'copiar') { fecharCamadas(); copiarTexto(texto, 'Texto copiado'); }
+      if (o === 'desfazer') { fecharCamadas(); desfazer(id); }
+    });
+  });
+}
+function opcoesDirecionar(pessoas, sel, empresa) {
+  pessoas = pessoas || [];
+  var op = function (p) { return '<option value="' + esc(p.email) + '"' + (p.email === sel ? ' selected' : '') + '>' + esc(p.nome) + '</option>'; };
+  var equipe = pessoas.filter(function (p) { return p.grupo !== 'casa'; }), casa = pessoas.filter(function (p) { return p.grupo === 'casa'; });
+  var oculto = sel === 'casa' ? '<option value="casa" selected disabled>Carvalho &amp; Abreu</option>' : '';
+  var eq = '<option value="Equipe">Equipe (todos veem)</option>' + equipe.map(op).join('');
+  if (!casa.length && !oculto) return eq;
+  return '<optgroup label="' + esc(empresa || 'Equipe') + '">' + eq + '</optgroup><optgroup label="Carvalho &amp; Abreu">' + oculto + casa.map(op).join('') + '</optgroup>';
+}
+function origemParaVoce(t) {
+  var u = (S.dados && S.dados.usuario) || {};
+  if (!t.empresa || !u.empresa || t.empresa === u.empresa || !t.criadoPor || t.criadoPor === u.nome) return '';
+  return 'enviada por ' + primeiroNome(t.criadoPor) + ' · ' + t.empresa;
 }
 function compartilhar(id) {
   var t = tarefaPorId(id); if (!t) return;
   var link = linkDe(id), texto = textoDe(t);
+  if (t.status === 'Concluída' && navigator.share && faixa() !== 'computador') { avisarWhats(textoConcluida(t)); return; }
   if (navigator.share && faixa() !== 'computador') {
     navigator.share({ title: texto, text: texto + '\nAbra no app Síndico:', url: link }).catch(function () {});
     return;
@@ -3066,10 +3129,11 @@ function compartilhar(id) {
 /* Menu curto: ao segurar o cartão (celular) ou com o botão direito; no computador também é o "compartilhar". */
 function abrirOpcoes(id, soCompartilhar) {
   var t = tarefaPorId(id); if (!t) return;
-  var noPc = faixa() === 'computador' || !navigator.share;
+  var noPc = faixa() === 'computador' || !navigator.share, conc = t.status === 'Concluída';
   var h = '<div class="jan-corpo"><div class="opc-lista">' +
-    (noPc ? '<button class="menu-item" data-opc="zap">' + IC.zap + 'Enviar pelo WhatsApp</button>'
-          : '<button class="menu-item" data-opc="share">' + '<span style="color:#16325C;display:inline-flex">' + IC.compart + '</span>Compartilhar</button>') +
+    (noPc ? '<button class="menu-item" data-opc="zap">' + IC.zap + (conc ? 'Avisar no WhatsApp' : 'Enviar pelo WhatsApp') + '</button>'
+          : '<button class="menu-item" data-opc="share">' + '<span style="color:#16325C;display:inline-flex">' + IC.compart + '</span>' + (conc ? 'Avisar no WhatsApp' : 'Compartilhar') + '</button>') +
+    '<button class="menu-item" data-opc="copiartexto">' + IC.copiar + 'Copiar texto</button>' +
     '<button class="menu-item" data-opc="copiar">' + IC.link + 'Copiar link</button>' +
     (soCompartilhar ? '' : '<button class="menu-item" data-opc="abrir">' + IC.abrir + 'Abrir tarefa</button>') +
     '</div></div>';
@@ -3078,8 +3142,9 @@ function abrirOpcoes(id, soCompartilhar) {
       var b = e.target.closest('[data-opc]'); if (!b) return;
       var o = b.getAttribute('data-opc');
       fecharCamadas();
-      if (o === 'zap') window.open('https://wa.me/?text=' + encodeURIComponent(textoDe(t) + '\nAbra no app Síndico: ' + linkDe(id)), '_blank', 'noopener');
-      if (o === 'share') navigator.share({ title: textoDe(t), text: textoDe(t) + '\nAbra no app Síndico:', url: linkDe(id) }).catch(function () {});
+      if (o === 'zap') window.open('https://wa.me/?text=' + encodeURIComponent(textoCompart(t)), '_blank', 'noopener');
+      if (o === 'share') { if (conc) avisarWhats(textoConcluida(t)); else navigator.share({ title: textoDe(t), text: textoDe(t) + '\nAbra no app Síndico:', url: linkDe(id) }).catch(function () {}); }
+      if (o === 'copiartexto') copiarTexto(textoCompart(t), 'Texto copiado');
       if (o === 'copiar') copiarLink(id);
       if (o === 'abrir') abrirTarefa(id);
     });
@@ -4955,8 +5020,8 @@ function abrirNova(opcoes) {
         '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="novaTitulo">Título</label>' +
         '<div class="linha-campos"><input class="campo" id="novaTitulo" maxlength="120" autocomplete="off" placeholder="' + (comUnid ? 'Ex.: Obra sem plano de reforma' : 'Ex.: Trocar lâmpada do hall') + '" required value="' + esc(tituloAntes) + '">' +
         (temMic ? '<button type="button" class="mic" id="novaMic" aria-label="Ditar o título">' + IC.mic + '</button>' : '') + '</div></div>' +
-        (pessoas.length ? '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="novaDir">Direcionar para</label><select class="campo" id="novaDir"><option value="Equipe">Equipe (todos veem)</option>' +
-          pessoas.map(function (p) { return '<option value="' + esc(p.email) + '">' + esc(p.nome) + '</option>'; }).join('') + '</select></div>' : '') +
+        (pessoas.length ? '<div class="bloco" style="gap:.4em"><label class="rot-campo" for="novaDir">Direcionar para</label><select class="campo" id="novaDir">' +
+          opcoesDirecionar(pessoas, '', empAtual) + '</select></div>' : '') +
         (comUnid ? '<label class="rot-campo" for="novaDesc">O que aconteceu</label><input type="hidden" id="novaChaveDesc" aria-checked="true">'
           : '<button type="button" class="chave" role="switch" aria-checked="' + descOn + '" id="novaChaveDesc"><i aria-hidden="true"></i>Adicionar descrição</button>') +
         '<textarea class="campo" id="novaDesc" rows="3" maxlength="2000" placeholder="' + (comUnid ? 'Ex.: obra começou nesta semana sem o plano de reforma' : 'Uma explicação simples, se precisar') + '"' + (descOn ? '' : ' hidden') + '>' + esc(descAntes) + '</textarea>' +
