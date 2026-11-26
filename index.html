@@ -993,6 +993,23 @@ a.bt{text-decoration:none}
 .rs-arq img{width:5em;height:5em;object-fit:cover;border-radius:.75em;border:1px solid var(--linha)}
 .rs-arq .nome{font-size:.8125em;color:var(--suave2);word-break:break-all}
 .rs-nome{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.875em;line-height:1.5;color:var(--azul);background:var(--creme);border-radius:.75em;padding:.85em 1em;word-break:break-word}
+.rs-filtros{display:flex;flex-wrap:wrap;gap:.6em 1em;align-items:center}
+.rs-filtros .campo{flex:0 1 18em}
+.rs-total{display:flex;justify-content:space-between;align-items:baseline;gap:1em;background:#fff;border-radius:1em;padding:.8em 1.25em;box-shadow:var(--sombra)}
+.rs-total span{font-size:.8125em;font-weight:600;color:var(--suave2)}
+.rs-total b{font-family:Lora,Georgia,serif;font-size:1.35em;color:var(--azul)}
+.rs-num b.verde{color:#1F7A4F}.rs-num .venc{color:#B3261E;font-weight:600}
+.rs-barra{display:grid;grid-template-columns:minmax(6em,10em) 1fr auto;gap:.75em;align-items:center;min-height:2.25em}
+.rb-rot{font-size:.875em;color:var(--azul);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rb-trilho{height:.9em;background:var(--creme2);border-radius:999px;overflow:hidden;display:block}
+.rb-cheio{display:flex;height:100%}.rb-cheio i{display:block;height:100%}
+.rs-barra b{font-size:.875em;color:var(--azul);white-space:nowrap}
+.rs-leg{display:flex;flex-wrap:wrap;gap:.4em 1.1em;font-size:.8125em;color:var(--suave2)}
+.rs-leg i{display:inline-block;width:.8em;height:.8em;border-radius:50%;margin-right:.4em;vertical-align:-.05em}
+.rs-venc{display:flex;justify-content:space-between;gap:1em;padding:.5em 0;border-top:1px solid var(--linha2)}
+.rs-venc span{display:flex;flex-direction:column;gap:.15em;min-width:0}.rs-venc small{font-size:.8125em;color:var(--suave)}
+.rs-venc .dir{text-align:right}.rs-venc .dir small{color:#B3261E}
+@media (max-width:640px){.rs-grade3{grid-template-columns:1fr}.rs-barra{grid-template-columns:1fr auto}.rs-barra .rb-trilho{grid-column:1/-1;order:3}.rs-filtros .campo{flex:1 1 100%}}
 .rs-chips{display:flex;flex-wrap:wrap;gap:.5em}
 .rs-chip{min-height:2.75em;padding:0 1em;border-radius:999px;font-size:.875em;font-weight:600;background:#fff;color:var(--azul);border:2px solid var(--linha)}
 .rs-chip[aria-pressed="true"]{background:var(--azul);color:#fff;border-color:var(--azul)}
@@ -1331,7 +1348,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.28';
+var VERSAO_SITE = '1.29';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -8075,7 +8092,7 @@ setInterval(function () { if (document.visibilityState === 'visible' && S.sessao
 /* Só o master (decisão de 24/11/2026). Regras: skill ressarcimentos-carvalho-abreu e doc de diretrizes.
    O app monta o nome do arquivo; nada sai sem "Aprovar e enviar". */
 var RS = null;
-var RS_ABAS = [{ id: 'inicio', rot: 'Início' }, { id: 'nf', rot: 'Nova NF' }, { id: 'desl', rot: 'Deslocamento' }, { id: 'rev', rot: 'Revisão' }, { id: 'acomp', rot: 'Acompanhamento' }];
+var RS_ABAS = [{ id: 'inicio', rot: 'Início' }, { id: 'painel', rot: 'Painel' }, { id: 'nf', rot: 'Nova NF' }, { id: 'desl', rot: 'Deslocamento' }, { id: 'rev', rot: 'Revisão' }, { id: 'acomp', rot: 'Acompanhamento' }];
 var RS_CASO = {
   AS: 'NF para arquivo', AD: 'NF para arquivo + deslocamento', RS: 'Compra a ressarcir', RD: 'Compra a ressarcir + deslocamento',
   FATURADO: 'Retirada de material faturado', 'REUNIÃO': 'Reunião ou visita'
@@ -8111,7 +8128,7 @@ function rsNovoDesl() { return { motivo: 'FATURADO', sel: {}, modo: 'cad', forn:
 
 function abrirRessarcimentos(aba) {
   if (!(S.portal && S.portal.usuario && S.portal.usuario.master) || !temRess()) return;
-  RS = { aba: aba || 'inicio', cfg: null, rev: null, acomp: null, verAcomp: 'abertos', aberto: null, confTodos: false, baixa: null,
+  RS = { aba: aba || 'inicio', f: { condo: '', tipo: '' }, pn: null, cfg: null, rev: null, acomp: null, verAcomp: 'abertos', aberto: null, confTodos: false, baixa: null,
     nf: rsNovaNF(), d: rsNovoDesl(), ocupado: '', entradaInfo: false };
   abrirJanela('Ressarcimentos', 'Carregando…', '<div class="rs" id="rs"><p class="vazio">Carregando…</p></div>', 'gestao', function (raiz) {
     raiz.addEventListener('click', cliqueRess);
@@ -8132,6 +8149,7 @@ function rsIrAba(aba) {
   rsDesenhar();
   if (aba === 'rev') rsCarregarRev();
   if (aba === 'acomp') rsCarregarAcomp();
+  if (aba === 'painel') rsCarregarPainel();
   if (aba === 'inicio') rsAtualizarResumo();
   var c = $('rs'); if (c) c.scrollTop = 0;
 }
@@ -8160,6 +8178,7 @@ function rsDesenhar() {
   }).join('') + '</div></div>';
   if (RS.ocupado) h += '<div class="rs-ocupado" role="status"><b>' + esc(RS.ocupado) + '</b><span>Pode levar até 1 minuto por condomínio. Não feche esta janela.</span></div>';
   else if (RS.aba === 'inicio') h += rsHtmlInicio();
+  else if (RS.aba === 'painel') h += rsHtmlPainel();
   else if (RS.aba === 'nf') h += rsHtmlNF();
   else if (RS.aba === 'desl') h += rsHtmlDesl();
   else if (RS.aba === 'rev') h += rsHtmlRev();
@@ -8401,10 +8420,16 @@ function rsHtmlAcomp() {
   if (!a) return '<p class="vazio">Carregando…</p>';
   if (a.erro) return '<p class="vazio">' + esc(a.erro) + '</p>';
   var ver = RS.verAcomp, lista = ver === 'abertos' ? a.abertos : a.concluidos;
+  lista = lista.filter(rsPassaFiltro);
   var h = '<nav class="rs-chips" aria-label="Filtro"><button class="chip" data-rsver="abertos" aria-pressed="' + (ver === 'abertos') + '">A receber<span class="n">' + a.abertos.length + '</span></button>' +
     '<button class="chip" data-rsver="concluidos" aria-pressed="' + (ver === 'concluidos') + '">Recebidos (últimos 30)</button>' +
     '<button class="chip" data-rsver="bat" aria-pressed="' + (ver === 'bat') + '">Batimento por extrato</button></nav>';
   if (ver === 'bat') return h + rsHtmlBat();
+  h += rsHtmlFiltros(lista.map(function (l) { return l.codigo; }));
+  if (lista.length) {
+    var soma = lista.reduce(function (t, l) { return t + (Number(l.valor) || 0); }, 0);
+    h += '<div class="rs-total" role="status"><span>' + (ver === 'abertos' ? 'A receber' : 'Recebido') + ' · ' + lista.length + (lista.length === 1 ? ' item' : ' itens') + '</span><b>' + rsMoeda(soma) + '</b></div>';
+  }
   if (!lista.length) return h + '<p class="vazio">' + (ver === 'abertos' ? 'Nada a receber. Tudo em dia.' : 'Nenhum recebido ainda.') + '</p>';
   h += '<div class="rs-tab"><table><thead><tr><th>Documento</th><th>Condomínio</th><th>Tipo</th><th style="text-align:right">Valor</th><th>' + (ver === 'abertos' ? 'Enviado em' : 'Recebido em') + '</th><th>Situação</th><th><span class="sr">Ação</span></th></tr></thead><tbody>';
   lista.forEach(function (l) {
@@ -8420,6 +8445,81 @@ function rsHtmlAcomp() {
     h += '</td></tr>';
   });
   return h + '</tbody></table></div>';
+}
+
+
+/* ---------- Painel e filtro global (v1.29, fase 1): o motor manda tudo numa leitura; filtro e soma no aparelho ---------- */
+var RS_TIPOS = [{ id: '', rot: 'Todos' }, { id: 'COMPRA', rot: 'Compras' }, { id: 'DESLOCAMENTO', rot: 'Deslocamentos' }, { id: 'IMPRESSÃO', rot: 'Impressões' }];
+var RS_COR = { COMPRA: '#14305C', DESLOCAMENTO: '#D9A81E', 'IMPRESSÃO': '#9AA3B2' };
+function rsPassaFiltro(l) {
+  var f = RS.f; if (!f) return true;
+  if (f.condo && l.codigo !== f.condo) return false;
+  if (f.tipo && rsSemAcento(l.tipo) !== rsSemAcento(f.tipo)) return false;
+  return true;
+}
+function rsCarregarPainel() {
+  return api('ressarcimentos.painel').then(function (r) {
+    if (!RS) return;
+    RS.pn = r.ok ? r : { erro: r.mensagem };
+    if (RS.aba === 'painel' && $('rs')) rsDesenhar();
+  });
+}
+/* Barra de filtros: condomínio (só os que aparecem nos dados) + tipo. Vale para Painel e Acompanhamento. */
+function rsHtmlFiltros(codigos) {
+  var vistos = {}, cods = (codigos || []).concat(RS.f.condo ? [RS.f.condo] : []).filter(function (c) { if (!c || vistos[c]) return false; vistos[c] = 1; return true; });
+  cods.sort(function (a, b) { return rsNomeCondo(a) < rsNomeCondo(b) ? -1 : 1; });
+  var h = '<div class="rs-filtros"><label class="sr" for="rsFCondo">Condomínio</label><select id="rsFCondo" class="campo" data-rsf="condo">' +
+    '<option value="">Todos os condomínios</option>' + cods.map(function (c) { return '<option value="' + esc(c) + '"' + (RS.f.condo === c ? ' selected' : '') + '>' + esc(rsNomeCondo(c)) + '</option>'; }).join('') + '</select>' +
+    '<nav class="rs-chips" aria-label="Tipo">' + RS_TIPOS.map(function (t) {
+      return '<button class="chip" data-rsft="' + esc(t.id) + '" aria-pressed="' + (RS.f.tipo === t.id) + '">' + t.rot + '</button>';
+    }).join('') + '</nav></div>';
+  return h;
+}
+function rsBarra(rot, partes, total, max) {
+  var w = max > 0 ? Math.max(total / max * 100, total > 0 ? 2 : 0) : 0, segs = partes.filter(function (p) { return p.v > 0; }).map(function (p) {
+    return '<i style="width:' + (total > 0 ? p.v / total * 100 : 0) + '%;background:' + p.cor + '" title="' + esc(p.rot) + ' ' + esc(rsMoeda(p.v)) + '"></i>';
+  }).join('');
+  return '<div class="rs-barra"><span class="rb-rot">' + esc(rot) + '</span><span class="rb-trilho"><span class="rb-cheio" style="width:' + w + '%">' + segs + '</span></span><b>' + esc(rsMoeda(total)) + '</b></div>';
+}
+function rsHtmlPainel() {
+  var a = RS.pn;
+  if (!a) return '<p class="vazio">Carregando…</p>';
+  if (a.erro) return '<p class="vazio">' + esc(a.erro) + '</p>';
+  var todos = a.itens, its = todos.filter(rsPassaFiltro);
+  var h = rsHtmlFiltros(todos.map(function (l) { return l.codigo; }));
+  if (!its.length) return h + '<p class="vazio">Nada lançado neste filtro desde ' + esc(rsData(a.desde)) + '.</p>';
+  var tot = 0, rec = 0, abr = 0, nAbr = 0, venc = [], porTipo = {}, porCondo = {};
+  its.forEach(function (l) {
+    tot += l.valor;
+    if (l.situacao === 'CONCLUÍDO') rec += l.valor; else { abr += l.valor; nAbr++; }
+    if (l.vencido) venc.push(l);
+    var t = rsSemAcento(l.tipo); porTipo[t] = (porTipo[t] || 0) + l.valor;
+    var c = porCondo[l.codigo] || (porCondo[l.codigo] = { total: 0, t: {} });
+    c.total += l.valor; c.t[t] = (c.t[t] || 0) + l.valor;
+  });
+  var vv = venc.reduce(function (s, l) { return s + l.valor; }, 0), pct = tot > 0 ? Math.round(rec / tot * 100) : 0;
+  h += '<div class="rs-grade3 nums">' +
+    '<div class="rs-num"><span class="rotulo">Total lançado</span><b>' + rsMoeda(tot) + '</b><small>' + its.length + (its.length === 1 ? ' lançamento' : ' lançamentos') + ' desde ' + esc(rsData(a.desde)) + '</small></div>' +
+    '<div class="rs-num"><span class="rotulo">Já recebido</span><b class="verde">' + rsMoeda(rec) + '</b><small>' + pct + '% do total</small></div>' +
+    '<div class="rs-num"><span class="rotulo">A receber</span><b>' + rsMoeda(abr) + '</b><small>' + nAbr + (nAbr === 1 ? ' item' : ' itens') + (venc.length ? ' · <span class="venc">' + venc.length + ' vencido' + (venc.length === 1 ? '' : 's') + ' (' + rsMoeda(vv) + ')</span>' : '') + '</small></div></div>';
+  var tipos = ['COMPRA', 'DESLOCAMENTO', 'IMPRESSAO'], rotT = { COMPRA: 'Compras', DESLOCAMENTO: 'Deslocamentos', IMPRESSAO: 'Impressões' }, corT = { COMPRA: RS_COR.COMPRA, DESLOCAMENTO: RS_COR.DESLOCAMENTO, IMPRESSAO: RS_COR['IMPRESSÃO'] };
+  var maxT = Math.max.apply(null, tipos.map(function (t) { return porTipo[t] || 0; }));
+  h += '<div class="rs-cx"><h2 class="rs-h2">Por tipo</h2>' + tipos.map(function (t) {
+    return rsBarra(rotT[t], [{ rot: rotT[t], v: porTipo[t] || 0, cor: corT[t] }], porTipo[t] || 0, maxT);
+  }).join('') + '</div>';
+  var cods = Object.keys(porCondo).sort(function (x, y) { return porCondo[y].total - porCondo[x].total; }), maxC = cods.length ? porCondo[cods[0]].total : 0;
+  h += '<div class="rs-cx"><h2 class="rs-h2">Por condomínio</h2><div class="rs-leg">' + tipos.map(function (t) {
+    return '<span><i style="background:' + corT[t] + '"></i>' + rotT[t] + '</span>';
+  }).join('') + '</div>' + cods.map(function (c) {
+    return rsBarra(rsNomeCondo(c), tipos.map(function (t) { return { rot: rotT[t], v: porCondo[c].t[t] || 0, cor: corT[t] }; }), porCondo[c].total, maxC);
+  }).join('') + '</div>';
+  if (venc.length) {
+    venc.sort(function (x, y) { return y.diasUteis - x.diasUteis; });
+    h += '<div class="rs-cx"><h2 class="rs-h2">Para cobrar</h2>' + venc.map(function (l) {
+      return '<div class="rs-venc"><span><b>' + esc(rsNomeCondo(l.codigo)) + '</b><small>' + esc(l.numDoc || l.descricao) + '</small></span><span class="dir"><b>' + esc(rsMoeda(l.valor)) + '</b><small>' + l.diasUteis + ' dias úteis</small></span></div>';
+    }).join('') + '<button class="bt-link" data-rs="irAcomp" style="align-self:flex-start">Abrir Acompanhamento</button></div>';
+  }
+  return h;
 }
 
 /* ---------- eventos ---------- */
@@ -8443,6 +8543,7 @@ function cliqueRess(ev) {
   }
   if (b.hasAttribute('data-rsforn')) { RS.d.forn = b.getAttribute('data-rsforn'); rsDesenhar(); return; }
   if (b.hasAttribute('data-rsmodo')) { RS.d.modo = b.getAttribute('data-rsmodo'); rsDesenhar(); return; }
+  if (b.hasAttribute('data-rsft')) { RS.f.tipo = b.getAttribute('data-rsft'); RS.baixa = null; rsDesenhar(); return; }
   if (b.hasAttribute('data-rsver')) { RS.verAcomp = b.getAttribute('data-rsver'); RS.baixa = null; rsDesenhar(); return; }
   var a = b.getAttribute('data-rs'); if (!a) return;
   if (a === 'irRev') rsIrAba('rev');
@@ -8488,6 +8589,7 @@ function entradaRess(ev) {
 function mudancaRess(ev) {
   var t = ev.target; if (!RS) return;
   if (t.type === 'file') { rsLerArquivo(t); return; }
+  if (t.getAttribute('data-rsf') === 'condo') { RS.f.condo = t.value; RS.baixa = null; rsDesenhar(); return; }
   var k = t.getAttribute('data-rsnf');
   if (k === 'codigo' || k === 'loja' || k === 'tipo') { RS.nf[k] = t.value; rsDesenhar(); return; }
   if (k === 'data') { RS.nf.data = t.value; var nm = $('rsNomeNF'); if (nm) nm.textContent = rsNomeNF(); return; }
