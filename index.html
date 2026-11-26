@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Síndico · Carvalho &amp; Abreu</title>
+<script>try{if(localStorage.getItem('lateral')==='recolhida')document.documentElement.setAttribute('data-lateral','recolhida')}catch(e){}</script>
 <meta name="description" content="Portal da Carvalho & Abreu Sindicância Profissional.">
 <meta name="theme-color" content="#0F2646">
 <meta name="mobile-web-app-capable" content="yes">
@@ -1215,6 +1216,99 @@ a.bt{text-decoration:none}
 .rot-item{background:#fff;border:1px solid var(--linha);border-radius:.9em;padding:.55em;display:flex;flex-direction:column;gap:.4em}
 .rot-dica{font-size:.875em}
 .rot-foto{flex:none;min-width:6.5em}
+
+/* ================= v1.30 (Etapa D.1): tokens e componentes da casca ================= */
+/* Tokens: toda tela nova usa estes nomes (cores da marca, raio, alvo de toque, espaços e tempo de animação). */
+:root{
+  --raio:.75em; --raio-g:1.25em; --toque:2.75em;
+  --esp-1:.25em; --esp-2:.5em; --esp-3:.75em; --esp-4:1em; --esp-5:1.5em; --esp-6:2em;
+  --mov:.2s; --verde:#1E7B5A; --verde-fundo:#E1F3EA;
+  --lateral:15em; --topo-h:4.4em; --baixo-h:0px;
+}
+html[data-lateral="recolhida"]{--lateral:4em}
+@media (prefers-reduced-motion:reduce){:root{--mov:0s}}
+
+/* --- Lateral (computador): fixa na altura da tela, recolhível para a faixa de ícones --- */
+.lat-item{position:relative}
+.lat-item[aria-current="page"]{color:var(--ouro-claro)}
+.lat-item[aria-current="page"]::before{content:"";position:absolute;left:-.875em;top:.5em;bottom:.5em;width:4px;border-radius:0 4px 4px 0;background:var(--ouro)}
+.lat-item:hover{background:rgba(255,255,255,.07)}
+.lat-recolher:hover{background:var(--azul2)}
+.lat-item[aria-current="page"]:hover{background:rgba(201,164,106,.24)}
+.lat-recolher{display:flex;align-items:center;gap:.75em;min-height:3.4em;margin-top:.5em;padding:0 .9em;border:none;border-top:1px solid rgba(255,255,255,.12);background:var(--azul);color:#C9D1E0;font-weight:600;font-size:.875em;width:100%;text-align:left;flex:none;position:sticky;bottom:0;z-index:1}
+.lat-recolher svg{flex:none;transition:transform var(--mov) ease}
+.lat-recolher span{flex:1;white-space:nowrap}
+.lat-recolher kbd{font:inherit;font-size:.85em;line-height:1;border:1px solid rgba(255,255,255,.35);border-radius:.4em;padding:.2em .55em;color:#C9D1E0}
+.lat-dica{position:fixed;z-index:60;background:#0A1C36;color:#fff;font-size:.8125rem;font-weight:600;padding:.5em .8em;border-radius:.5em;box-shadow:0 6px 18px rgba(0,0,0,.3);pointer-events:none;white-space:nowrap;transform:translateY(-50%)}
+@media (min-width:1024px){
+  .lateral{width:var(--lateral);padding-bottom:0;position:sticky;top:var(--topo-h);height:calc(100vh - var(--topo-h));height:calc(100dvh - var(--topo-h));align-self:flex-start;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.25) transparent;transition:width var(--mov) ease,padding var(--mov) ease}
+  .lat-item>span,.lat-breve span,.lat-titulo,.lat-rodape{white-space:nowrap}
+  html[data-lateral="recolhida"] .lateral{padding-left:.625em;padding-right:.625em}
+  html[data-lateral="recolhida"] .lat-item{justify-content:center;padding:0;gap:0}
+  html[data-lateral="recolhida"] .lat-item>span:not(.cont),html[data-lateral="recolhida"] .lat-breve,html[data-lateral="recolhida"] .lat-rodape,html[data-lateral="recolhida"] .lat-recolher span,html[data-lateral="recolhida"] .lat-recolher kbd{display:none}
+  html[data-lateral="recolhida"] .lat-titulo{font-size:0;height:1px;padding:0!important;margin:.7em .5em;background:rgba(255,255,255,.16);overflow:hidden}
+  html[data-lateral="recolhida"] .lat-titulo:first-child,html[data-lateral="recolhida"] .lat-titulo.cinza{display:none}
+  html[data-lateral="recolhida"] .lat-item .cont{position:absolute;top:.1em;right:.05em;min-width:1.5em;height:1.5em;font-size:.6875em;box-shadow:0 0 0 2px var(--azul)}
+  html[data-lateral="recolhida"] .lat-item[aria-current="page"]::before{left:-.625em}
+  html[data-lateral="recolhida"] .lat-recolher{justify-content:center;padding:0}
+  html[data-lateral="recolhida"] .lat-recolher svg{transform:rotate(180deg)}
+  html[data-lateral="recolhida"] .aviso{left:6em}
+}
+
+/* --- Módulo integrado: mesma casca das Tarefas (lateral + cabeçalho), sem camada sobreposta --- */
+.mod-host{padding:0!important;gap:0;position:sticky;top:var(--topo-h);height:calc(100vh - var(--topo-h) - var(--baixo-h));height:calc(100dvh - var(--topo-h) - var(--baixo-h));align-self:flex-start;overflow:hidden;animation:modEntra var(--mov) ease}
+#principal{animation:modEntra var(--mov) ease}
+@keyframes modEntra{from{opacity:0}to{opacity:1}}
+.janela.gestao.integrada{position:static;transform:none;left:auto;top:auto;right:auto;bottom:auto;width:100%;max-width:none;height:100%;max-height:none;border-radius:0;box-shadow:none;background:var(--creme);z-index:auto;padding-top:0}
+.janela.integrada>.mod-cab{background:none;color:var(--azul);border-bottom:none;padding:1.75em 1.5em .5em}
+.janela.integrada>.mod-cab>div{flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:.25em 1em}
+.janela.integrada>.mod-cab h1{margin:0;font-family:Lora,Georgia,serif;font-weight:700;font-size:1.75em;line-height:1.15;color:var(--azul)}
+.janela.integrada>.mod-cab small{display:block;font-size:.875em;color:var(--suave)}
+body.mod-outro .sugerir-flut{display:none}
+@media (max-width:1023px){.janela.integrada>.mod-cab{padding:1.25em 1.5em .25em}}
+@media (max-width:767px){
+  .janela.integrada>.mod-cab{padding:.875em .875em .25em;flex-wrap:nowrap}
+  .janela.integrada>.mod-cab h1{font-size:1.375em}
+  .janela.integrada>.mod-cab small{font-size:.8125em}
+}
+
+/* --- Botão que grava (gravar()): trava na hora, círculo, ✓ e largura fixa --- */
+.ocupado:disabled,.bt.ocupado[disabled]{opacity:.72}
+.ocupado.gv-ico::before{width:1.25em;height:1.25em}
+.gv-campo:disabled{background-color:var(--creme2);color:var(--suave2)}
+.gv-ok,.gv-ok:disabled,.bt.gv-ok[disabled]{background:var(--verde)!important;border-color:var(--verde)!important;color:#fff!important;opacity:1}
+.gv-ok svg{display:none}
+.gv-ok::before{content:"";width:.4em;height:.75em;border:solid #fff;border-width:0 .16em .16em 0;transform:rotate(45deg) translate(-.08em,-.08em);flex:none}
+.aviso button{white-space:nowrap;flex:none}
+.ocupado.girando,.gv-ok{overflow:hidden}
+.aviso.lento{background:#FFF2CC;color:#5C4300;border:1px solid #E9D48C}
+@media (prefers-reduced-motion:reduce){.ocupado.girando::before{animation-duration:2s}}
+/* ================= v1.30 (Etapa D.2): Alterar ordem por condomínio ================= */
+.ord-topo{display:flex;align-items:center;gap:var(--esp-2);min-height:var(--toque)}
+.ord-topo .ord-nome{display:flex;align-items:center;gap:.6em;font-size:.8125em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--azul);min-width:0}
+.ord-topo .ord-nome::before{content:"";width:1.1em;height:3px;border-radius:2px;background:var(--ouro);flex:none}
+.ord-esp{flex:1}
+.grupo-topo{display:flex;align-items:center;gap:var(--esp-2)}
+.grupo-topo .grupo-cab{flex:1;min-width:0}
+.ord-bts{display:flex;align-items:center;gap:var(--esp-2);flex:none}
+.bt-ord{display:inline-flex;align-items:center;justify-content:center;gap:.45em;min-height:calc(var(--toque) / .875);padding:0 .9em;border-radius:var(--raio);border:1.5px solid var(--azul);background:#fff;color:var(--azul);font-weight:600;font-size:.875em;white-space:nowrap;flex:none}
+.bt-ord:hover{border-color:var(--ouro)}
+.bt-ord:disabled{opacity:.4}
+.bt-ord.claro{border:1px solid var(--linha)}
+.bt-ord.pronto{background:var(--ouro);border-color:var(--ouro);font-weight:700;min-width:9.25em}
+.bt-ord.pronto:hover{border-color:var(--azul)}
+.ord-dica{margin:0;background:#FFF6D6;color:#4A3A00;border-radius:var(--raio);padding:.65em .85em;font-size:.8125em;line-height:1.45}
+.ord-bloco{margin:var(--esp-1) 0 0;font-size:.75em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--suave)}
+.ord-bloco.urg{color:var(--vinho)}
+.ord-setas{display:flex;gap:6px;flex:none}
+.ord-seta{width:var(--toque);height:var(--toque);border-radius:.625em;border:1.5px solid var(--azul);background:#fff;display:flex;align-items:center;justify-content:center;padding:0}
+.ord-seta:disabled{opacity:.3}
+.ord-seta:not(:disabled):hover{border-color:var(--ouro);background:var(--ouro-fundo)}
+.ordenando{display:flex;flex-direction:column;gap:.6em}
+.ordenando .cartao-abrir{cursor:default}
+.cartao.brilho{border-color:var(--ouro)!important;box-shadow:0 0 0 4px rgba(201,164,106,.45)!important;transition:box-shadow var(--mov) ease,border-color var(--mov) ease}
+@media (max-width:767px){.ordenando .posicao{display:none}.bt-ord{padding:0 .75em}.bt-ord.pronto{min-width:8.75em}.ord-topo .ord-nome{font-size:.75em}}
+@media (prefers-reduced-motion:reduce){.cartao.brilho{transition:none}}
 </style>
 </head>
 <body>
@@ -1265,20 +1359,24 @@ a.bt{text-decoration:none}
   <div class="corpo">
     <nav class="lateral" aria-label="Módulos">
       <span class="lat-titulo">Módulos</span>
-      <a class="lat-item" href="#" aria-current="page">
+      <button class="lat-item" type="button" data-acao="modTarefas" data-mod="tarefas" aria-current="page">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>
         <span style="flex:1">Tarefas</span><span class="cont" id="contLateral">0</span>
-      </a>
+      </button>
       <div id="latSoVoce"></div>
       <span class="lat-titulo cinza">Em breve</span>
       <div id="emBreve"></div>
       <div id="latGestao"></div>
       <div class="lat-esp"></div>
       <div class="lat-rodape"><a href="privacidade.html">Política de privacidade</a> · <span id="versaoLat"></span></div>
+      <button class="lat-recolher" type="button" id="btLateral" aria-pressed="false" aria-keyshortcuts="[">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/></svg>
+        <span id="btLateralTxt">Recolher menu</span><kbd aria-hidden="true">[</kbd>
+      </button>
     </nav>
 
     <nav class="coluna-icones" aria-label="Módulos">
-      <button class="ic" aria-current="page">
+      <button class="ic" data-acao="modTarefas" data-mod="tarefas" aria-current="page">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>
         Tarefas
       </button>
@@ -1316,6 +1414,8 @@ a.bt{text-decoration:none}
         </section>
       </div>
     </main>
+    <!-- v1.30: os outros módulos abrem aqui, integrados (mesma casca das Tarefas) -->
+    <main class="principal mod-host" id="modHost" hidden></main>
   </div>
 
   <button class="sugerir-flut" data-acao="sugerir" aria-label="Sugerir melhoria">
@@ -1324,7 +1424,7 @@ a.bt{text-decoration:none}
   </button>
 
   <nav class="barra-baixo" aria-label="Menu principal">
-    <button class="bb" aria-current="page" data-acao="topo">
+    <button class="bb" aria-current="page" data-acao="topo" data-mod="tarefas">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>
       Tarefas<i aria-hidden="true"></i>
     </button>
@@ -1340,6 +1440,7 @@ a.bt{text-decoration:none}
 </div>
 
 <div id="camadas"></div>
+<div id="latDica" class="lat-dica" role="tooltip" hidden></div>
 <div id="avisoArea" aria-live="polite"></div>
 
 <script>
@@ -1348,7 +1449,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.29';
+var VERSAO_SITE = '1.30';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -1420,6 +1521,7 @@ function nomeCondo(cod) {
 }
 
 var IC = {
+  ordem: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4v16M7 4L3 8M7 4l4 4M17 20V4M17 20l-4-4M17 20l4-4"/></svg>', // v1.30 (D.2)
   check: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
   checkOuro: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
   cima: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2646" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>',
@@ -1496,6 +1598,7 @@ function chamar(corpo) {
     .catch(function () { return { ok: false, codigo: 'REDE', mensagem: 'Sem conexão. Confira a internet e tente de novo.' }; });
 }
 function api(acao, dados) {
+  if (!API_LEITURA[acao] && !API_PROPRIA[acao]) return gravar(acao, dados); // v1.30: toda escrita passa por gravar()
   return chamar({ fn: 'api', sessao: S.sessao, acao: acao, dados: dados || {} }).then(function (r) {
     if (!r.ok && (r.codigo === 'SESSAO' || r.codigo === 'NAO_AUTORIZADO' && acao === 'tarefas.inicio')) {
       sair(r.mensagem);
@@ -1647,7 +1750,8 @@ function trocarConta() {
 
 function sair(msg) {
   if (S.sessao) chamar({ fn: 'api', sessao: S.sessao, acao: 'portal.sair', dados: {} });
-  S.sessao = null; S.dados = null; S.det = null; S.selId = null;
+  S.sessao = null; S.dados = null; S.det = null; S.selId = null; S.roteado = false;
+  mostrarModulo('tarefas');
   guardar('sessao', null); guardar('google', null);
   try { google.accounts.id.disableAutoSelect(); } catch (e) {}
   fecharCamadas();
@@ -1688,6 +1792,7 @@ function abrirApp() {
   $('versaoLat').textContent = 'v' + VERSAO_SITE;
   desenharPortal();
   aplicarTela();
+  desenharBotaoLateral(); medirCasca();
   if (S.dados) desenhar(); else recarregar();
 }
 function papelTexto(u) {
@@ -1695,6 +1800,117 @@ function papelTexto(u) {
   var nome = u.master ? 'Master' : p ? p.charAt(0).toUpperCase() + p.slice(1) : '';
   return nome + (u.empresa && !u.master ? ' · ' + u.empresa : '');
 }
+
+/* ================= Módulos e endereços (v1.30, Etapa D.1) =================
+   Casca única: todo módulo abre na área principal, com a lateral e o cabeçalho de sempre, e tem endereço
+   próprio (?m=<módulo>) — o voltar do navegador e o link direto funcionam. Módulo novo = uma entrada aqui. */
+var MODULOS = {
+  tarefas: { pode: function () { return true; } },
+  ressarcimentos: { pode: function () { return !!(S.portal && S.portal.usuario && S.portal.usuario.master) && temRess(); }, abrir: function (arg) { rsMontar(arg); } },
+  evolucao: { pode: function () { return !!(S.portal && S.portal.usuario && S.portal.usuario.master); }, abrir: function () { evoMontar(); } }
+};
+var modAtual = 'tarefas';
+function modDaUrl() {
+  try { var m = new URLSearchParams(location.search).get('m'); return m && MODULOS.hasOwnProperty(m) ? m : 'tarefas'; } catch (e) { return 'tarefas'; }
+}
+function urlDoMod(id) {
+  var q = new URLSearchParams(location.search);
+  if (id === 'tarefas') q.delete('m'); else q.set('m', id);
+  var t = q.toString();
+  return location.pathname + (t ? '?' + t : '');
+}
+/* Vai para um módulo. op: { arg, substituir (não cria passo no histórico), semHistorico (veio do voltar/avançar) }. */
+function ir(id, op) {
+  op = op || {};
+  if (!MODULOS.hasOwnProperty(id) || !MODULOS[id].pode()) id = 'tarefas';
+  if (!op.semHistorico) {
+    try {
+      var temM = new URLSearchParams(location.search).has('m');
+      if (modDaUrl() !== id || (id === 'tarefas' && temM)) history[op.substituir ? 'replaceState' : 'pushState']({ m: id }, '', urlDoMod(id));
+    } catch (e) {}
+  }
+  if (id === modAtual && op.arg === undefined) return;
+  mostrarModulo(id, op.arg);
+}
+function mostrarModulo(id, arg) {
+  var host = $('modHost'), pr = $('principal'), tar = id === 'tarefas';
+  if (id !== modAtual) fecharCamadas();
+  if (!tar && S.selId) fecharDetalhe();
+  host.innerHTML = '';
+  modAtual = id;
+  pr.hidden = !tar; host.hidden = tar;
+  document.body.classList.toggle('mod-outro', !tar);
+  marcarModulo(); medirCasca();
+  if (!tar) MODULOS[id].abrir(arg);
+  window.scrollTo(0, 0);
+}
+/* Tela de um módulo integrado: mesmo cabeçalho das Tarefas (título + linha de apoio). */
+function moduloTela(titulo, sub, corpoHtml, montar) {
+  var host = $('modHost');
+  host.innerHTML = '<section class="janela gestao integrada" aria-label="' + esc(titulo) + '">' +
+    '<div class="jan-cab mod-cab"><div><h1>' + esc(titulo) + '</h1><small>' + esc(sub) + '</small></div></div>' + corpoHtml + '</section>';
+  if (montar) montar(host.querySelector('.janela'));
+}
+/* Marca o módulo aberto (dourado) na lateral, na coluna de ícones e na barra de baixo. */
+function marcarModulo() {
+  Array.prototype.forEach.call(document.querySelectorAll('.lateral .lat-item, .coluna-icones .ic, .barra-baixo .bb'), function (el) {
+    var m = el.getAttribute('data-mod') || el.getAttribute('data-acao');
+    if (!MODULOS.hasOwnProperty(m)) return;
+    if (m === modAtual) el.setAttribute('aria-current', 'page'); else el.removeAttribute('aria-current');
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.lateral .lat-item'), function (el) { // nome do item para a faixa de ícones
+    var sp = el.querySelector('span:not(.cont)');
+    if (sp && !el.getAttribute('aria-label')) el.setAttribute('aria-label', sp.textContent.trim());
+  });
+}
+/* Altura do topo e da barra de baixo, para a lateral e os módulos ocuparem a tela certinho. */
+function medirCasca() {
+  var t = document.querySelector('.topo'), b = document.querySelector('.barra-baixo');
+  if (!t || $('app').hidden) return;
+  var st = document.documentElement.style;
+  st.setProperty('--topo-h', t.offsetHeight + 'px');
+  st.setProperty('--baixo-h', (b && b.offsetHeight ? b.offsetHeight : 0) + 'px');
+}
+window.addEventListener('popstate', function () { if (S.sessao && !$('app').hidden) ir(modDaUrl(), { semHistorico: true }); });
+
+/* ---- Lateral recolhível (computador): faixa de ícones, lembrada neste navegador; atalho "[" ---- */
+function lateralRecolhida() { return document.documentElement.getAttribute('data-lateral') === 'recolhida'; }
+function desenharBotaoLateral() {
+  var b = $('btLateral'); if (!b) return;
+  var rec = lateralRecolhida(), rot = rec ? 'Expandir menu' : 'Recolher menu';
+  b.setAttribute('aria-pressed', rec ? 'true' : 'false');
+  b.setAttribute('aria-label', rot + ' (tecla [)');
+  $('btLateralTxt').textContent = rot;
+}
+function alternarLateral() {
+  var rec = !lateralRecolhida();
+  if (rec) document.documentElement.setAttribute('data-lateral', 'recolhida'); else document.documentElement.removeAttribute('data-lateral');
+  guardarLocal('lateral', rec ? 'recolhida' : 'expandida');
+  desenharBotaoLateral(); esconderDica();
+}
+document.addEventListener('keydown', function (e) {
+  if (e.key !== '[' || e.ctrlKey || e.metaKey || e.altKey || faixa() !== 'computador' || $('app').hidden) return;
+  var t = e.target;
+  if (t && (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) || t.isContentEditable)) return;
+  e.preventDefault(); alternarLateral();
+});
+/* Com a lateral recolhida, o nome do item aparece ao passar o mouse ou focar pelo teclado. */
+function mostrarDica(el) {
+  var d = $('latDica'); if (!d) return;
+  if (!lateralRecolhida() || faixa() !== 'computador') { d.hidden = true; return; }
+  var r = el.getBoundingClientRect();
+  d.textContent = el.getAttribute('aria-label') || '';
+  d.style.left = (r.right + 10) + 'px'; d.style.top = (r.top + r.height / 2) + 'px';
+  d.hidden = !d.textContent;
+}
+function esconderDica() { var d = $('latDica'); if (d) d.hidden = true; }
+['mouseover', 'focusin'].forEach(function (ev) {
+  document.addEventListener(ev, function (e) {
+    var el = e.target.closest && e.target.closest('.lateral .lat-item, .lateral .lat-recolher');
+    if (el) mostrarDica(el); else esconderDica();
+  });
+});
+document.addEventListener('focusout', esconderDica);
 
 /* ================= Dados ================= */
 var recarregando = false;
@@ -1728,8 +1944,7 @@ function desenhar() {
   if (!S.filaCarregada) { S.filaCarregada = true; carregarFila(); } else processarFila();
   setTimeout(insProcessarFila, 2500); // v1.27: respostas de inspeção guardadas sem sinal
   verificarCompartilhado();
-  if (ler('abrirEvo') && S.portal) { guardar('abrirEvo', null); abrirEvolucao(); }
-  if (ler('abrirRess') && S.portal) { guardar('abrirRess', null); abrirRessarcimentos(); }
+  if (!S.roteado && S.portal) { S.roteado = true; ir(modDaUrl(), { substituir: true }); } // v1.30: ?m= abre o módulo (link direto)
   if (ler('abrirSug') && S.portal) { guardar('abrirSug', null); abrirSugestao(true); }
   if (ler('abrirEq') && S.portal) { var idEq = ler('abrirEq'); guardar('abrirEq', null); if (S.portal.gestao && S.portal.gestao.equipe) abrirEquipe(idEq); }
   if (ler('abrirP') && S.portal) { var idP = ler('abrirP'); guardar('abrirP', null); if (S.portal.gestao && S.portal.gestao.pedidos !== null) abrirPedidos(idP); }
@@ -1816,18 +2031,19 @@ function metaDe(t, semCondo) {
   return partes.join(' · ');
 }
 
-function cartao(t, agrupado) {
-  var k = agrupado ? (t.urgente ? ' k-urg' : t.paraVoce ? ' k-voce' : '') : '';
-  return '<article class="cartao' + k + (S.selId === t.id ? ' sel' : '') + '" data-id="' + esc(t.id) + '">' +
-    (t.urgente ? '<div class="posicao" aria-label="Urgente ' + t.posicao + '">' + t.posicao + '</div>' : '') +
-    '<button class="cartao-abrir" data-abrir="' + esc(t.id) + '">' +
+function cartao(t, agrupado, ord) {
+  var k = ord ? (t.urgente ? ' k-urg' : '') : agrupado ? (t.urgente ? ' k-urg' : t.paraVoce ? ' k-voce' : '') : '';
+  var pos = ord && t.urgente ? ord.k + 1 : t.posicao;
+  return '<article class="cartao' + k + (S.selId === t.id && !ord ? ' sel' : '') + (ord && S.ordem && S.ordem.brilho === t.id ? ' brilho' : '') + '" data-id="' + esc(t.id) + '">' +
+    (t.urgente ? '<div class="posicao" aria-label="Urgente ' + pos + '">' + pos + '</div>' : '') +
+    (ord ? '<div class="cartao-abrir">' : '<button class="cartao-abrir" data-abrir="' + esc(t.id) + '">') +
       '<span class="cartao-titulo">' + esc(t.titulo) +
         (podeCompartilhar(t.condo) ? '<span class="compart" data-compartilhar="' + esc(t.id) + '" role="button" aria-label="Compartilhar: ' + esc(t.titulo) + '">' + IC.compart + '</span>' : '') +
       '</span>' +
       '<span class="cartao-meta">' + esc(metaDe(t, agrupado)) + anxInd(t) + '</span>' +
       (t.etiqueta ? '<span class="etiqueta">' + esc(t.etiqueta) + '</span>' : '') +
-    '</button>' +
-    (ehInspecaoT(t) || t.soAcompanha
+    (ord ? '</div>' : '</button>') +
+    (ord ? ordSetas(t, ord) : ehInspecaoT(t) || t.soAcompanha
       ? '<button class="concluir abrir-compra" data-abrir="' + esc(t.id) + '" aria-label="' + (t.soAcompanha ? 'Acompanhar: ' : 'Abrir inspeção: ') + esc(t.titulo) + '" title="' + (t.soAcompanha ? 'Acompanhar' : 'Abrir inspeção') + '">' + ICO_CAT.inspecao + '</button>'
       : ehPedidoT(t)
       ? '<button class="concluir abrir-compra" data-abrir="' + esc(t.id) + '" aria-label="Abrir pedido: ' + esc(t.titulo) + '" title="Abrir pedido">' + IC.listaP + '</button>'
@@ -1841,15 +2057,20 @@ function desenharLista() {
   if (S.visao === 'concluidas') { carregarConcluidas(); return; }
   var vis = tarefasVisiveis();
   if (agrupadoPorCondo()) { desenharListaPorCondo(vis); return; }
+  var cod1 = S.condo !== 'todos' ? S.condo : ((S.dados.condos || [])[0] || {}).codigo;
+  var btsTopo = vis.length ? ordBotoes(cod1, vis) : '';
+  var topo = btsTopo ? '<div class="ord-topo"><span class="ord-nome">' + esc(nomeCondo(cod1)) + '</span><span class="ord-esp"></span>' + btsTopo + '</div>' : '';
+  if (ordAtivo(cod1)) { $('lista').innerHTML = topo + ordCorpo(cod1, vis, false); ordDepois(); return; }
   var urg = vis.filter(function (t) { return t.urgente; });
   var voce = vis.filter(function (t) { return !t.urgente && t.paraVoce; });
   var eq = vis.filter(function (t) { return !t.urgente && !t.paraVoce; });
-  var html = '';
-  if (urg.length) html += '<section class="secao urg"><h2>Urgentes</h2>' + urg.map(cartao).join('') + '</section>';
-  if (voce.length) html += '<section class="secao voce"><h2>Para você</h2>' + voce.map(cartao).join('') + '</section>';
-  html += '<section class="secao"><h2>Equipe</h2>' + (eq.length ? eq.map(cartao).join('') :
+  var html = topo;
+  if (urg.length) html += '<section class="secao urg"><h2>Urgentes</h2>' + urg.map(function (t) { return cartao(t); }).join('') + '</section>';
+  if (voce.length) html += '<section class="secao voce"><h2>Para você</h2>' + voce.map(function (t) { return cartao(t); }).join('') + '</section>';
+  html += '<section class="secao"><h2>Equipe</h2>' + (eq.length ? eq.map(function (t) { return cartao(t); }).join('') :
     '<p class="vazio">' + (vis.length ? 'Nada mais para a equipe.' : 'Tudo em dia por aqui.') + '</p>') + '</section>';
   $('lista').innerHTML = html;
+  ordDepois();
 }
 
 /* ================= Lista por condomínio (v1.8) ================= */
@@ -1891,20 +2112,147 @@ function desenharListaPorCondo(vis) {
       var pa = a.urgente ? 0 : a.paraVoce ? 1 : 2, pb = b.urgente ? 0 : b.paraVoce ? 1 : 2;
       return pa - pb;
     });
-    html += '<section class="grupo' + (aberto ? '' : ' fechado') + '">' +
-      '<button class="grupo-cab" data-grupo="' + esc(g.cod) + '" aria-expanded="' + aberto + '">' +
+    var emOrdem = ordAtivo(g.cod);
+    if (emOrdem) aberto = true;
+    var bts = aberto ? ordBotoes(g.cod, g.tarefas) : '';
+    html += '<section class="grupo' + (aberto ? '' : ' fechado') + '">' + (bts ? '<div class="grupo-topo">' : '') +
+      '<button class="grupo-cab" data-grupo="' + esc(g.cod) + '" aria-expanded="' + aberto + '"' + (emOrdem ? ' disabled' : '') + '>' +
         '<span class="grupo-nome">' + esc(nomeCondo(g.cod)) + '</span>' +
         '<span class="grupo-n">' + g.tarefas.length + '</span>' +
         (g.urg ? '<span class="grupo-urg">' + g.urg + (g.urg === 1 ? ' urgente' : ' urgentes') + '</span>' : '') +
-        '<span class="grupo-esp"></span>' + (aberto ? IC.chevBaixo : IC.chevDir) +
-      '</button>' +
-      (aberto ? '<div class="grupo-corpo">' + ts.map(function (t) { return cartao(t, true); }).join('') + '</div>' : '') +
+        '<span class="grupo-esp"></span>' + (emOrdem ? '' : aberto ? IC.chevBaixo : IC.chevDir) +
+      '</button>' + (bts ? bts + '</div>' : '') +
+      (emOrdem ? '<div class="grupo-corpo">' + ordCorpo(g.cod, g.tarefas, true) + '</div>'
+        : aberto ? '<div class="grupo-corpo">' + ts.map(function (t) { return cartao(t, true); }).join('') + '</div>' : '') +
     '</section>';
   });
   if (!grupos.length) html += '<p class="vazio">Tudo em dia por aqui.</p>';
   var sem = (S.dados.condos || []).length - grupos.length;
   if (grupos.length && sem > 0) html += '<p class="grupos-sem">' + sem + (sem === 1 ? ' condomínio sem pendências' : ' condomínios sem pendências') + '</p>';
   $('lista').innerHTML = html;
+  ordDepois();
+}
+
+/* ================= Alterar ordem por condomínio (v1.30, Etapa D.2) =================
+   A ordem é a fila do condomínio, a mesma para todos: urgentes num bloco no topo, depois as demais.
+   No modo, o ✓ do cartão vira ▲▼ (44 px); nada é gravado até "Pronto" (uma gravação só, pelo gravar()).
+   "Para você" é só um destaque de quem vê: no modo, a tarefa aparece no lugar real da fila. */
+function podeOrdenarCondo(cod) { var c = (S.dados.condos || []).filter(function (x) { return x.codigo === cod; })[0]; return !!(c && c.podeOrdenar); }
+function ordAtivo(cod) { return !!(S.ordem && S.ordem.condo === cod); }
+function ordNum(t) { return t.ordem === null || t.ordem === undefined ? Infinity : t.ordem; }
+function ordCmpTxt(a, b) { return a < b ? -1 : a > b ? 1 : 0; }
+/* Fila de hoje do condomínio (sem o destaque "Para você"), como o motor guarda. */
+function ordFila(ts) {
+  var urg = ts.filter(function (t) { return t.urgente; }).sort(function (a, b) { return (a.posicao - b.posicao) || ordCmpTxt(a.condo + a.empresa, b.condo + b.empresa); });
+  var dem = ts.filter(function (t) { return !t.urgente; }).sort(function (a, b) { return (ordNum(a) - ordNum(b)) || ordCmpTxt(a.criadoEm, b.criadoEm); });
+  return { urg: urg.map(function (t) { return t.id; }), dem: dem.map(function (t) { return t.id; }) };
+}
+/* Mesma regra do motor (ordenarLista_): urgentes, "Para você", depois a fila. */
+function ordenarTarefasLocal() {
+  (S.dados.tarefas || []).sort(function (a, b) {
+    if (a.urgente !== b.urgente) return a.urgente ? -1 : 1;
+    if (a.urgente) return (a.posicao - b.posicao) || ordCmpTxt(a.condo + a.empresa, b.condo + b.empresa);
+    if (a.paraVoce !== b.paraVoce) return a.paraVoce ? -1 : 1;
+    return (ordNum(a) - ordNum(b)) || ordCmpTxt(a.criadoEm, b.criadoEm);
+  });
+}
+function ordBotoes(cod, ts) {
+  if (!podeOrdenarCondo(cod) || S.visao === 'concluidas') return '';
+  if (ordAtivo(cod)) {
+    var sv = S.ordem.salvando;
+    return '<div class="ord-bts"><button type="button" class="bt-ord claro" data-ord="cancelar"' + (sv ? ' disabled' : '') + '>Cancelar</button>' +
+      '<button type="button" class="bt-ord pronto' + (sv ? ' ocupado girando' : '') + '" data-ord="pronto"' + (sv ? ' disabled aria-busy="true"' : '') + '><span>' + (sv ? 'Salvando…' : 'Pronto') + '</span></button></div>';
+  }
+  var f = ordFila(ts);
+  if (f.urg.length < 2 && f.dem.length < 2) return ''; // nada para trocar de lugar
+  return '<button type="button" class="bt-ord" data-ord="iniciar" data-cod="' + esc(cod) + '"' + (S.ordem ? ' disabled' : '') +
+    ' aria-label="Alterar ordem: ' + esc(nomeCondo(cod)) + '">' + IC.ordem + '<span>Alterar ordem</span></button>';
+}
+/* Junta o que está no modo com a lista de agora (pode ter chegado tarefa nova ou saído uma concluída). */
+function ordReconciliar(ts) {
+  var o = S.ordem, f = ordFila(ts), tem = {};
+  ts.forEach(function (t) { tem[t.id] = t; });
+  ['urg', 'dem'].forEach(function (b) {
+    var base = f[b], lista = o[b].filter(function (id) { return tem[id] && base.indexOf(id) >= 0; });
+    base.forEach(function (id) { if (lista.indexOf(id) < 0) lista.push(id); });
+    o[b] = lista;
+  });
+  return tem;
+}
+function ordCorpo(cod, ts, agrupado) {
+  var tem = ordReconciliar(ts), o = S.ordem;
+  var voce = ts.some(function (t) { return t.paraVoce && !t.urgente; });
+  var h = '<p class="ord-dica" role="status">Toque nas setas para mudar a ordem. ' + (o.urg.length ? 'As urgentes ficam sempre no bloco de cima. ' : '') +
+    (voce ? 'As direcionadas a você aparecem no lugar da fila e continuam em destaque para você. ' : '') + 'Só vale ao tocar em <b>Pronto</b>.</p>';
+  var bloco = function (b, rot, cls) {
+    var ids = o[b]; if (!ids.length) return '';
+    return '<h3 class="ord-bloco' + cls + '">' + rot + '</h3>' + ids.map(function (id, k) { return cartao(tem[id], agrupado, { b: b, k: k, n: ids.length }); }).join('');
+  };
+  return '<div class="ordenando">' + h +
+    bloco('urg', 'Urgentes · ficam sempre no topo', ' urg') + bloco('dem', o.urg.length ? 'Demais tarefas' : 'Tarefas', '') + '</div>';
+}
+function ordSetas(t, ord) {
+  var nome = esc(t.titulo), dis = S.ordem && S.ordem.salvando;
+  return '<div class="ord-setas">' +
+    '<button type="button" class="ord-seta" data-ordmover="-1" data-id="' + esc(t.id) + '" aria-label="Subir: ' + nome + '"' + (ord.k === 0 || dis ? ' disabled' : '') + '>' + IC.cima + '</button>' +
+    '<button type="button" class="ord-seta" data-ordmover="1" data-id="' + esc(t.id) + '" aria-label="Descer: ' + nome + '"' + (ord.k === ord.n - 1 || dis ? ' disabled' : '') + '>' + IC.baixo + '</button></div>';
+}
+function ordIniciar(cod) {
+  if (S.ordem || !podeOrdenarCondo(cod)) return;
+  var ts = tarefasVisiveis().filter(function (t) { return t.condo === cod; });
+  var f = ordFila(ts);
+  S.ordem = { condo: cod, urg: f.urg.slice(), dem: f.dem.slice(), orig: f, brilho: null, foco: null, salvando: false };
+  desenharLista();
+  var p = document.querySelector('[data-ord="pronto"]'); if (p) try { p.closest('.grupo, #lista').scrollIntoView({ block: 'nearest' }); } catch (e) {}
+}
+function ordMover(id, passo, foco) {
+  var o = S.ordem; if (!o || o.salvando) return;
+  var b = o.urg.indexOf(id) >= 0 ? 'urg' : 'dem', l = o[b], k = l.indexOf(id), j = k + passo;
+  if (k < 0 || j < 0 || j >= l.length) return; // urgentes não passam para baixo, demais não passam à frente das urgentes
+  l[k] = l[j]; l[j] = id;
+  o.brilho = id; o.foco = { id: id, passo: passo, teclado: !!foco };
+  clearTimeout(o.tBrilho);
+  o.tBrilho = setTimeout(function () { if (S.ordem === o) { o.brilho = null; var c = document.querySelector('.cartao.brilho'); if (c) c.classList.remove('brilho'); } }, 1200);
+  desenharLista();
+}
+/* Depois de desenhar: o foco volta para a mesma seta do cartão movido e ele fica à vista. */
+function ordDepois() {
+  var o = S.ordem; if (!o || !o.foco) return;
+  var f = o.foco; o.foco = null;
+  var card = document.querySelector('.ordenando .cartao[data-id="' + (window.CSS && CSS.escape ? CSS.escape(f.id) : f.id) + '"]');
+  if (!card) return;
+  var bt = card.querySelector('[data-ordmover="' + f.passo + '"]');
+  if (!bt || bt.disabled) bt = card.querySelector('.ord-seta:not(:disabled)');
+  try { card.scrollIntoView({ block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); } catch (e) {}
+  if (bt) try { bt.focus({ preventScroll: true }); } catch (e) {}
+}
+function ordMudou() { var o = S.ordem; return o && (o.urg.join() !== o.orig.urg.join() || o.dem.join() !== o.orig.dem.join()); }
+function ordCancelar() { if (!S.ordem || S.ordem.salvando) return; S.ordem = null; desenharLista(); }
+function ordPronto(bt) {
+  var o = S.ordem; if (!o || o.salvando) return;
+  if (!ordMudou()) { S.ordem = null; desenharLista(); return; }
+  var dados = { condo: o.condo, urgentes: o.urg.slice(), demais: o.dem.slice() };
+  o.salvando = true;
+  api('tarefas.reordenar', dados).then(function (r) { // gravar(): trava o botão, "Salvando…", lento, erro, idCliente
+    if (r.ignorado) return;
+    if (S.ordem !== o) return;
+    if (!r.ok) {
+      o.salvando = false;
+      if (r.codigo === 'REDE' || r.codigo === 'EM_CURSO') return; // o gravar() já avisou ("Tentar de novo"); a ordem continua aqui
+      avisar(r.mensagem || 'Não foi possível salvar a ordem.', true);
+      if (r.codigo === 'CONFLITO') { S.ordem = null; recarregar(); }
+      return;
+    }
+    var mapa = {}; (r.tarefas || []).forEach(function (x) { mapa[x.id] = x; });
+    (S.dados.tarefas || []).forEach(function (t) {
+      var x = mapa[t.id]; if (!x) return;
+      t.urgente = x.urgente; t.posicao = x.posicao; t.ordem = x.ordem; if (x.versao) t.versao = x.versao;
+    });
+    ordenarTarefasLocal();
+    var b = document.querySelector('[data-ord="pronto"]');
+    if (b) { var sp = b.querySelector('span'); if (sp) sp.textContent = 'Ordem salva'; }
+    setTimeout(function () { if (S.ordem === o) { S.ordem = null; desenharLista(); } }, GV.OK);
+  }, function () { o.salvando = false; if (S.ordem === o) desenharLista(); });
 }
 
 function alternarGrupo(cod) {
@@ -3022,37 +3370,162 @@ function novaPeloCompartilhado(busca, raiz) {
   });
 }
 
-/* ================= Salvando: trava contra clique duplo ================= */
-var emCurso = {};
-/* Marca o botão (ou campo) como ocupado; a bolinha só aparece se demorar mais de 250 ms. Devolve a função que libera. */
+/* ================= gravar(): toda escrita no motor passa por aqui (v1.30, Etapa D.1) =================
+   api() manda para cá qualquer ação que não esteja na lista de leituras — botão novo já nasce protegido.
+   No clique: trava o botão (e os campos em volta), mostra "Salvando…" com o círculo e mantém a largura.
+   Deu certo: ✓ rápido. Passou de 8 s: aviso de internet lenta, sem liberar o botão. Deu erro: o botão volta,
+   o que foi digitado continua e aparece "Não foi salvo · Tentar de novo".
+   Cada gravação leva um idCliente: se o mesmo pedido chegar duas vezes ao motor, ele grava uma vez só. */
+var API_LEITURA = {}, API_SILENCIOSA = {}, API_PROPRIA = {}, API_COM_FILA = {};
+('portal.inicio portal.pedidos portal.gestao portal.historicoCadastro portal.equipe portal.permissoes portal.configuracoes ' +
+ 'tarefas.inicio tarefas.abrir tarefas.concluidas tarefas.miniaturas tarefas.anexoBaixar tarefas.minhasSugestoes tarefas.pedidoOpcoes ' +
+ 'tarefas.pedidoPrevia tarefas.pedidoFoto tarefas.catAdmin tarefas.loteListar tarefas.lotePrevia tarefas.mudancas tarefas.insRoteiros ' +
+ 'tarefas.insOpcoes tarefas.prgListar tarefas.prgOpcoes tarefas.relInicio tarefas.relResumo tarefas.relCumprimento tarefas.relDesempenho ' +
+ 'tarefas.relBaixar evolucao.lista ressarcimentos.config ressarcimentos.resumo ressarcimentos.revisao ressarcimentos.acompanhamento ' +
+ 'ressarcimentos.painel ressarcimentos.batimentoLer').split(' ').forEach(function (a) { API_LEITURA[a] = 1; });
+/* Gravam sem botão (marcar como lido, registrar o aparelho): levam idCliente, mas não mexem na tela. */
+['portal.lerAvisos', 'tarefas.lerAlertas', 'portal.registrarPush'].forEach(function (a) { API_SILENCIOSA[a] = 1; });
+/* Envio de anexos: já tem fila no aparelho, idCliente e retomada próprios (v1.10). */
+['tarefas.anexoIniciar', 'tarefas.anexoParte'].forEach(function (a) { API_PROPRIA[a] = 1; });
+/* Têm fila própria sem sinal (a tela do módulo já avisa "Guardado no aparelho"): sem o aviso central de erro. */
+['tarefas.insResponder'].forEach(function (a) { API_COM_FILA[a] = 1; });
+
+var GV = { emCurso: {}, repetir: {}, origem: null, ext: null, LENTO: 8000, OK: 800, JANELA: 3000 };
+function gvHash(t) { var h = 5381, i = t.length; while (i) h = (h * 33) ^ t.charCodeAt(--i); return (h >>> 0).toString(36) + '.' + t.length.toString(36); }
+/* Guarda o último botão (ou campo) acionado: é ele que o gravar() trava. */
+function gvMarcar(e) {
+  var t = e.target; if (!t || !t.closest) return;
+  var el = e.type === 'change' ? (/^(SELECT|INPUT|TEXTAREA)$/.test(t.tagName) && t.type !== 'file' ? t : null)
+    : e.type === 'keydown' ? (e.key === 'Enter' && /^(INPUT|TEXTAREA)$/.test(t.tagName) ? t : null)
+    : t.closest('button, a.bt, label.bt, [role="button"]');
+  if (el) GV.origem = { el: el, t: Date.now() };
+}
+['click', 'change', 'keydown'].forEach(function (ev) { document.addEventListener(ev, gvMarcar, true); });
+
+function gvSeletor(el) {
+  if (el.id) return '#' + el.id;
+  var a = el.getAttribute('data-acao');
+  return a ? el.tagName.toLowerCase() + '[data-acao="' + a + '"]' : '';
+}
+/* Trava os campos em volta do botão; devolve a função que solta tudo. */
+function gvTravar(o) {
+  var el = o.el, campos = [], liberar = null;
+  if (!o.externo && !el.hasAttribute('aria-busy')) liberar = ocupar(el, 'Salvando…');
+  var cx = el.closest('form, .rs-form, .rs-card, .evo-card, .jan-corpo, .bloco, .janela:not(.integrada)');
+  o.digitou = /^(INPUT|TEXTAREA)$/.test(el.tagName) || !!(cx && cx.querySelector('textarea, input[type="text"], input:not([type])'));
+  if (cx && /^(INPUT|TEXTAREA)$/.test(el.tagName)) { // gravou com Enter: o botão de enviar do mesmo bloco também trava
+    var bt = cx.querySelector('button[type="submit"], button[data-acao^="enviar"], button[data-acao^="salvar"]'), soltaBt = null;
+    if (bt && !bt.hasAttribute('aria-busy')) { soltaBt = ocupar(bt, 'Salvando…'); var l0 = liberar; liberar = function (ok) { if (l0) l0(ok); soltaBt(ok); }; }
+  }
+  if (cx) Array.prototype.forEach.call(cx.querySelectorAll('input, textarea, select'), function (c) {
+    if (!c.disabled && c !== el && c.type !== 'file') { c.disabled = true; c.classList.add('gv-campo'); campos.push(c); }
+  });
+  return function (ok) {
+    campos.forEach(function (c) { c.disabled = false; c.classList.remove('gv-campo'); });
+    if (liberar) liberar(ok);
+  };
+}
+function gvLento() {
+  if (document.getElementById('gvLento')) return;
+  clearTimeout(avisoTimer);
+  $('avisoArea').innerHTML = '<div class="aviso lento" role="status" id="gvLento"><span>Ainda salvando… a internet está lenta. Não precisa tocar de novo.</span></div>';
+}
+function gvErro(o, sel) {
+  setTimeout(function () { // depois do aviso da própria tela, para este (com "Tentar de novo") ficar por cima
+    var alvo = o && document.body.contains(o.el) ? o.el : null;
+    if (!alvo && sel) { var c = document.querySelectorAll(sel); if (c.length === 1) alvo = c[0]; }
+    var botao = alvo && !/^(SELECT|INPUT|TEXTAREA)$/.test(alvo.tagName) && !alvo.disabled;
+    var dig = o && o.digitou;
+    avisar(navigator.onLine === false ? 'Sem internet. Não foi salvo' + (dig ? '; o que você digitou continua aqui.' : '. Tente de novo quando o sinal voltar.')
+      : 'Não foi salvo.' + (dig ? ' O que você digitou continua no campo.' : ' Confira a internet e tente de novo.'),
+      true, botao ? { rotulo: 'Tentar de novo', seg: 12, fn: function () { if (document.body.contains(alvo)) alvo.click(); } } : null);
+  }, 40);
+}
+function gravar(acao, dados) {
+  var sil = !!API_SILENCIOSA[acao], txt;
+  try { txt = JSON.stringify(dados || {}); } catch (e) { txt = String(Math.random()); }
+  var chave = acao + '|' + gvHash(txt);
+  if (GV.emCurso[chave]) { // o mesmo pedido já está a caminho: não manda de novo; quem pediu de novo recebe a resposta marcada "ignorado"
+    return GV.emCurso[chave].then(function (r) { var c = {}; for (var k in r) c[k] = r[k]; c.ignorado = true; return c; });
+  }
+  var o = sil ? null : GV.ext ? { el: GV.ext, externo: true }
+    : (GV.origem && Date.now() - GV.origem.t < GV.JANELA && document.body.contains(GV.origem.el) ? { el: GV.origem.el } : null);
+  var sel = o ? gvSeletor(o.el) : '';
+  var rep = GV.repetir[chave];
+  var idc = rep && rep.ate > Date.now() ? rep.id : novoIdCliente(); // nova tentativa do mesmo pedido: mesmo idCliente
+  var solta = o ? gvTravar(o) : function () {};
+  var lento = sil ? null : setTimeout(gvLento, GV.LENTO);
+  var fim = function () { clearTimeout(lento); delete GV.emCurso[chave]; var n = document.getElementById('gvLento'); if (n) n.remove(); };
+  var p = chamar({ fn: 'api', sessao: S.sessao, acao: acao, dados: dados || {}, idCliente: idc }).then(function (r) {
+    fim();
+    if (!r.ok && r.codigo === 'SESSAO') { solta(false); sair(r.mensagem); throw r; }
+    if (!r.ok && (r.codigo === 'REDE' || r.codigo === 'EM_CURSO')) {
+      GV.repetir[chave] = { id: idc, ate: Date.now() + 600000 };
+      solta(false);
+      if (!sil && !API_COM_FILA[acao]) gvErro(o, sel);
+      return r;
+    }
+    delete GV.repetir[chave];
+    solta(!!r.ok);
+    return r;
+  }, function (e) { fim(); solta(false); throw e; });
+  GV.emCurso[chave] = p;
+  return p;
+}
+
+/* Parte visual: marca o botão (ou campo) como ocupado na hora do clique. Devolve a função que libera
+   (liberar(true) mostra o ✓ por um instante). */
 function ocupar(el, texto) {
   if (!el || !el.classList) return function () {};
   var ehCampo = el.tagName === 'SELECT' || el.tagName === 'INPUT' || el.tagName === 'TEXTAREA';
-  var antes = el.innerHTML, rot = null, timer = null;
+  var antes = el.innerHTML, rot = null, larg = el.style.minWidth, largMax = el.style.maxWidth, eraDis = !!el.disabled, durante = null, temTexto = false, alvo = null, w = 0;
+  var cabe = function () { // o texto novo não cabe na largura de antes: fica só o círculo (ou só o ✓), sem pulo no layout
+    if (temTexto && w && el.scrollWidth > w + 1) { alvo.textContent = ''; el.classList.add('gv-ico'); }
+  };
   el.classList.add('ocupado'); el.setAttribute('aria-busy', 'true');
   if (ehCampo) {
     el.disabled = true;
     rot = el.id && document.querySelector('label[for="' + el.id + '"]');
     if (rot) rot.classList.add('salvando-rot');
   } else {
-    if (texto && el.querySelector('span') && !el.classList.contains('edit-tit')) el.querySelector('span').textContent = texto;
-    else if (texto && !el.querySelector('svg')) el.textContent = texto;
-    timer = setTimeout(function () { el.classList.add('girando'); }, 250);
+    w = el.offsetWidth; if (w) { el.style.minWidth = w + 'px'; el.style.maxWidth = w + 'px'; } // mantém a largura: sem pulo no layout
+    if (texto && el.querySelector('span') && !el.classList.contains('edit-tit')) { alvo = el.querySelector('span'); alvo.textContent = texto; temTexto = true; }
+    else if (texto && !el.querySelector('svg')) { alvo = el; el.textContent = texto; temTexto = true; }
+    if (!temTexto && !el.textContent.trim()) el.classList.add('gv-ico'); // só ícone: o ícone vira o círculo, do mesmo tamanho
+    el.classList.add('girando');
+    cabe();
+    if (el.tagName === 'BUTTON') el.disabled = true; // nem clique nem Enter
+    durante = el.innerHTML;
   }
-  return function () {
-    clearTimeout(timer);
+  return function (ok) {
     if (!document.body.contains(el)) return;
     el.classList.remove('ocupado', 'girando'); el.removeAttribute('aria-busy');
-    if (ehCampo) { el.disabled = false; if (rot) rot.classList.remove('salvando-rot'); } else el.innerHTML = antes;
+    if (ehCampo) { el.disabled = false; if (rot) rot.classList.remove('salvando-rot'); return; }
+    var intacto = el.innerHTML === durante; // a tela pode ter trocado o conteúdo do botão enquanto salvava
+    var volta = function () { if (intacto) el.innerHTML = antes; el.style.minWidth = larg; el.style.maxWidth = largMax; if (el.tagName === 'BUTTON') el.disabled = eraDis; };
+    if (ok !== true || !intacto) { el.classList.remove('gv-ico'); volta(); return; }
+    el.classList.add('gv-ok'); // ✓ rápido
+    if (temTexto) { alvo.textContent = 'Salvo'; cabe(); }
+    var noOk = el.innerHTML;
+    setTimeout(function () {
+      if (!document.body.contains(el)) return;
+      el.classList.remove('gv-ok', 'gv-ico');
+      intacto = el.innerHTML === noOk;
+      volta();
+    }, GV.OK);
   };
 }
-/* Executa uma gravação uma vez só por vez (mesma chave = ignora o segundo toque). */
+/* Executa uma gravação uma vez só por vez (mesma chave = ignora o segundo toque). O botão é o "el". */
+var emCurso = {};
 function umaVez(chave, el, texto, fazer) {
   if (emCurso[chave]) return Promise.resolve({ ok: false, ignorado: true });
   emCurso[chave] = true;
-  var liberar = ocupar(el, texto);
-  return Promise.resolve().then(fazer).then(function (r) { delete emCurso[chave]; liberar(); return r; },
-    function (e) { delete emCurso[chave]; liberar(); throw e; });
+  var liberar = ocupar(el, texto), p;
+  GV.ext = el && el.classList ? el : null;
+  try { p = Promise.resolve(fazer()); } catch (e) { p = Promise.reject(e); }
+  GV.ext = null;
+  return p.then(function (r) { delete emCurso[chave]; liberar(r && r.ok === true); return r; },
+    function (e) { delete emCurso[chave]; liberar(false); throw e; });
 }
 
 /* ================= Concluir: confirmação + desfazer ================= */
@@ -3119,6 +3592,7 @@ function desfazer(id) {
 
 /* ================= Tarefa aberta ================= */
 function abrirTarefa(id, silencioso) {
+  if (!silencioso && modAtual !== 'tarefas') ir('tarefas'); // v1.30: a tarefa abre no módulo Tarefas
   guardarLocal('ultimaTarefa', id);
   S.selId = id; S.editandoDesc = false; S.editandoTitulo = false;
   if (S.editandoPreco !== id) S.editandoPreco = null;
@@ -3187,9 +3661,7 @@ function desenharDetalhe() {
   h += htmlDaInspecao(t);
 
   if (pode.ordenar) {
-    h += '<div class="caixa-creme"><span>Prioridade</span>' +
-      '<button class="seta" data-mover="cima" aria-label="Subir uma posição">' + IC.cima + '</button>' +
-      '<button class="seta" data-mover="baixo" aria-label="Descer uma posição">' + IC.baixo + '</button>' +
+    h += '<div class="caixa-creme"><span>Prioridade</span>' + // v1.30 (D.2): a ordem muda na lista, em "Alterar ordem"
       '<button class="bt ouro" data-acao="urgente">' + (t.urgente ? 'Tirar das urgentes' : 'Marcar urgente') + '</button></div>';
   }
 
@@ -3602,7 +4074,7 @@ function dispararSegurar(id) {
   abrirOpcoes(id, false);
 }
 document.addEventListener('touchstart', function (e) {
-  var id = cartaoIdDe(e.target); if (!id || e.target.closest('.concluir')) return;
+  var id = cartaoIdDe(e.target); if (!id || e.target.closest('.concluir, .ord-seta')) return;
   var p = e.touches[0]; segurar.x = p.clientX; segurar.y = p.clientY;
   clearTimeout(segurar.timer);
   segurar.timer = setTimeout(function () { dispararSegurar(id); }, 550);
@@ -3619,6 +4091,14 @@ document.addEventListener('contextmenu', function (e) {
   e.preventDefault(); clearTimeout(segurar.timer); dispararSegurar(id);
 });
 
+/* Alterar ordem pelo teclado (computador): Alt+↑ / Alt+↓ no cartão; Esc cancela. v1.30 (D.2) */
+document.addEventListener('keydown', function (e) {
+  if (!S.ordem || !e.target || !e.target.closest) return;
+  var card = e.target.closest('.ordenando .cartao');
+  if (card && e.altKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) { e.preventDefault(); ordMover(card.getAttribute('data-id'), e.key === 'ArrowUp' ? -1 : 1, true); return; }
+  if (e.key === 'Escape' && e.target.closest('.ordenando, .ord-bts')) { e.preventDefault(); ordCancelar(); }
+});
+
 /* Link direto: ?t=MAXC-T-00012 abre a tarefa depois do login. */
 function guardarLinkDireto() {
   try {
@@ -3626,11 +4106,9 @@ function guardarLinkDireto() {
     var t = q.get('t'), p = q.get('p'), m = q.get('m'), sug = q.get('sug'), eq = q.get('eq');
     if (t) guardar('abrirT', String(t).slice(0, 40));
     if (p) guardar('abrirP', String(p).replace(/[^A-Za-z0-9-]/g, '').slice(0, 20));
-    if (m === 'evolucao') guardar('abrirEvo', '1');
-    if (m === 'ressarcimentos') guardar('abrirRess', '1');
     if (sug) guardar('abrirSug', String(sug).replace(/[^A-Za-z0-9-]/g, '').slice(0, 20));
     if (eq) guardar('abrirEq', String(eq).replace(/[^A-Za-z0-9-]/g, '').slice(0, 20));
-    if (t || p || m || sug || eq) history.replaceState(null, '', location.pathname);
+    if (t || p || sug || eq) history.replaceState(null, '', location.pathname + (m && MODULOS.hasOwnProperty(m) ? '?m=' + m : '')); // v1.30: o ?m= fica no endereço
   } catch (e) {}
 }
 function abrirLinkDireto() {
@@ -3662,6 +4140,7 @@ function enviarObs() {
   if (!texto) { el.focus(); return; }
   el.disabled = true;
   api('tarefas.observar', { id: id, texto: texto }).then(function (r) {
+    if (r.ignorado) return;
     el.disabled = false;
     if (!r.ok) { avisar(r.mensagem, true); return; }
     S.rascunhoObs[id] = '';
@@ -3964,7 +4443,7 @@ function htmlMenuPortal() {
   var n = ((S.dados && S.dados.tarefas) || []).length;
   var h = '<div class="mp"><div class="mp-rot">Módulos</div><div class="mp-grade">';
   mods.forEach(function (m) {
-    h += '<button class="mp-mod atual" data-acao="fecharJan">' + IC.listaOuro + '<b>' + esc(m.nome) + '</b><small>' + n + (n === 1 ? ' pendente' : ' pendentes') + '</small></button>';
+    h += '<button class="mp-mod' + (modAtual === 'tarefas' ? ' atual' : '') + '" data-acao="modTarefas">' + IC.listaOuro + '<b>' + esc(m.nome) + '</b><small>' + n + (n === 1 ? ' pendente' : ' pendentes') + '</small></button>';
   });
   var breve = emBreve().slice(1, 1 + (mods.length % 2 ? 3 : 2));
   breve.forEach(function (nome) { h += '<div class="mp-mod breve">' + IC.breve + '<b>' + esc(nome) + '</b><small>Em breve</small></div>'; });
@@ -4034,7 +4513,7 @@ function desenharLateralGestao() {
     (podeProgramadas() ? '<button class="lat-item" data-acao="programadas">' + ICO_CAT.repetir.replace('width="16" height="16"', 'width="20" height="20"').replace('currentColor', '#C9A46A') + '<span style="flex:1">Programadas</span></button>' : '') +
     (podeRoteiros() ? '<button class="lat-item" data-acao="roteiros">' + ICO_CAT.inspecao.replace('width="16" height="16"', 'width="20" height="20"').replace('currentColor', '#C9A46A') + '<span style="flex:1">Roteiros</span></button>' : '') +
     (podeRelatorios() ? '<button class="lat-item" data-acao="relatorios">' + ICO_REL.replace('currentColor', '#C9A46A') + '<span style="flex:1">Relatórios</span></button>' : '') : '';
-  if (!g) { el.innerHTML = hRot; return; }
+  if (!g) { el.innerHTML = hRot; marcarModulo(); return; }
   var h = hRot + '<span class="lat-titulo" style="padding-top:1.6em">Gestão</span>';
   if (g.convidar) h += '<button class="lat-item" data-acao="convidar">' + IC.pessoaMaisOuro + '<span style="flex:1">Convidar pessoas</span></button>';
   if (g.pedidos !== null && g.pedidos !== undefined) {
@@ -4046,6 +4525,7 @@ function desenharLateralGestao() {
   if (g.perfis) h += '<button class="lat-item" data-acao="perfis">' + ICO_PERFIS.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Perfis de acesso</span></button>';
   if (g.pessoas) h += '<button class="lat-item" data-acao="pessoas">' + IC.pessoas.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Pessoas e empresas</span></button>';
   el.innerHTML = h;
+  marcarModulo();
 }
 function atualizarPortal() {
   return api('portal.inicio').then(function (r) { if (r && r.ok) { S.portal = r; desenharPortal(); } }).catch(function () {});
@@ -7818,10 +8298,11 @@ var EVO_ABAS = [
 ];
 var E = null;
 function evoDecidirN() { return (S.portal && S.portal.evolucao && S.portal.evolucao.decidir) || 0; }
-function abrirEvolucao() {
+function abrirEvolucao() { ir('evolucao'); } // v1.30: módulo integrado (?m=evolucao)
+function evoMontar() {
   if (!(S.portal && S.portal.usuario && S.portal.usuario.master)) return;
   E = { dados: null, aba: 'decidir', aberto: null, modo: null, ocupado: false };
-  abrirJanela('Evolução do app', 'Carregando…', '<div class="evo" id="evo"><p class="vazio">Carregando…</p></div>', 'gestao', function (raiz) {
+  moduloTela('Evolução do app', 'Carregando…', '<div class="evo" id="evo"><p class="vazio">Carregando…</p></div>', function (raiz) {
     raiz.addEventListener('click', cliqueEvolucao);
     carregarEvolucao();
   });
@@ -7978,6 +8459,8 @@ document.addEventListener('click', function (e) {
   if (!b) return;
   if (b.id === 'fundoDet') { fecharDetalhe(); return; }
   var acao = b.getAttribute('data-acao');
+  if (b.hasAttribute('data-ordmover')) { ordMover(b.getAttribute('data-id'), Number(b.getAttribute('data-ordmover')), e.detail === 0); return; } // v1.30 (D.2)
+  if (b.hasAttribute('data-ord')) { var oa = b.getAttribute('data-ord'); if (oa === 'iniciar') ordIniciar(b.getAttribute('data-cod')); else if (oa === 'cancelar') ordCancelar(); else ordPronto(b); return; }
   if (b.hasAttribute('data-concluir')) { confirmarConcluir(b.getAttribute('data-concluir')); return; }
   if (b.hasAttribute('data-abrir')) { abrirTarefa(b.getAttribute('data-abrir')); return; }
   if (b.hasAttribute('data-condo')) { S.condo = b.getAttribute('data-condo'); desenharCondos(); desenharLista(); return; }
@@ -8008,6 +8491,7 @@ document.addEventListener('click', function (e) {
     case 'pessoas': fecharCamadas(); abrirGestao(); break;
     case 'evolucao': fecharCamadas(); abrirEvolucao(); break;
     case 'ressarcimentos': fecharCamadas(); abrirRessarcimentos(); break;
+    case 'modTarefas': fecharCamadas(); ir('tarefas'); break; // v1.30
     case 'equipe': fecharCamadas(); abrirEquipe(); break;
     case 'perfis': fecharCamadas(); abrirPerfis(); break;
     case 'configuracoes': fecharCamadas(); abrirConfiguracoes(); break;
@@ -8023,7 +8507,7 @@ document.addEventListener('click', function (e) {
     case 'nova': abrirNova(); break;
     case 'mudarCat': abrirMudarCategoria(); break;
     case 'sugerir': abrirSugestao(); break;
-    case 'topo': fecharDetalhe(); window.scrollTo({ top: 0, behavior: 'smooth' }); break;
+    case 'topo': if (modAtual !== 'tarefas') { ir('tarefas'); break; } fecharDetalhe(); window.scrollTo({ top: 0, behavior: 'smooth' }); break;
     case 'sair': fecharCamadas(); sair(); break;
     case 'atualizar': fecharCamadas(); recarregar().then(function () { avisar('Lista atualizada'); }); break;
     case 'urgente': marcarUrgente(); break;
@@ -8047,6 +8531,7 @@ document.addEventListener('click', function (e) {
       acaoDetalhe('descricao', { texto: txt, versao: S.det.versao }, function () { S.editandoDesc = false; avisar('Descrição salva'); }, b);
       break;
   }
+  if (b.id === 'btLateral') alternarLateral();
   if (b.id === 'btSino') abrirSino();
   if (b.id === 'btMarca') abrirMenuPortal();
   if (b.id === 'btPerfil') abrirPerfil();
@@ -8082,6 +8567,7 @@ var ultimaFaixa = faixa();
 window.addEventListener('resize', function () {
   var f = faixa();
   if (f !== ultimaFaixa) { ultimaFaixa = f; if (S.sessao && !$('app').hidden) { aplicarTela(); abrirApp(); } }
+  medirCasca();
 });
 document.addEventListener('visibilitychange', function () {
   if (document.visibilityState === 'visible' && S.sessao && !$('app').hidden) recarregar();
@@ -8126,11 +8612,12 @@ function rsDrive(id) { return 'https://drive.google.com/file/d/' + encodeURIComp
 function rsNovaNF() { return { arq: null, ra: 'R', ds: 'D', codigo: '', loja: '', tipo: 'NF', valor: '', numero: '', data: rsHoje(), desc: '', comps: [] }; }
 function rsNovoDesl() { return { motivo: 'FATURADO', sel: {}, modo: 'cad', forn: '', busca: '', outro: { nome: '', endereco: '', bairro: '', cidade: 'São José dos Campos - SP', cep: '', salvar: true }, data: rsHoje(), desc: '', comps: [], passo: 1 }; }
 
-function abrirRessarcimentos(aba) {
+function abrirRessarcimentos(aba) { ir('ressarcimentos', { arg: aba }); } // v1.30: módulo integrado (?m=ressarcimentos); só mudou a forma de abrir
+function rsMontar(aba) {
   if (!(S.portal && S.portal.usuario && S.portal.usuario.master) || !temRess()) return;
   RS = { aba: aba || 'inicio', f: { condo: '', tipo: '' }, pn: null, cfg: null, rev: null, acomp: null, verAcomp: 'abertos', aberto: null, confTodos: false, baixa: null,
     nf: rsNovaNF(), d: rsNovoDesl(), ocupado: '', entradaInfo: false };
-  abrirJanela('Ressarcimentos', 'Carregando…', '<div class="rs" id="rs"><p class="vazio">Carregando…</p></div>', 'gestao', function (raiz) {
+  moduloTela('Ressarcimentos', 'Carregando…', '<div class="rs" id="rs"><p class="vazio">Carregando…</p></div>', function (raiz) {
     raiz.addEventListener('click', cliqueRess);
     raiz.addEventListener('input', entradaRess);
     raiz.addEventListener('change', mudancaRess);
