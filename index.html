@@ -1283,6 +1283,53 @@ body.mod-outro .sugerir-flut{display:none}
 .ocupado.girando,.gv-ok{overflow:hidden}
 .aviso.lento{background:#FFF2CC;color:#5C4300;border:1px solid #E9D48C}
 @media (prefers-reduced-motion:reduce){.ocupado.girando::before{animation-duration:2s}}
+/* ================= v1.31 (Fase 3 · Etapa 2): Ressarcimentos › Impressão — tokens do bloco v1.30 ================= */
+.rs-imp-cab{display:flex;align-items:baseline;gap:var(--esp-2) var(--esp-3);flex-wrap:wrap}
+.rs-qtds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--esp-4)}
+.rs-qtd{display:flex;flex-direction:column;gap:var(--esp-3);border:2px solid var(--linha);border-radius:var(--raio-g);padding:var(--esp-4);transition:border-color var(--mov) ease}
+.rs-qtd.on{border-color:var(--azul)}
+.rs-qtd-tx{display:flex;flex-direction:column;gap:.1em;min-width:0}
+.rs-qtd-tx b{font-size:1em;color:var(--azul)}
+.rs-qtd-tx small,.rs-qtd-sub{font-size:.8125em;color:var(--suave2)}
+.rs-qtd-ctl{display:flex;align-items:center;gap:var(--esp-2)}
+.rs-pm{flex:none;width:calc(var(--toque) + var(--esp-1));height:calc(var(--toque) + var(--esp-1));border-radius:var(--raio);border:2px solid var(--linha);background:#fff;color:var(--azul);display:flex;align-items:center;justify-content:center;padding:0}
+.rs-pm:hover:not(:disabled){border-color:var(--azul)}
+.rs-pm:disabled{opacity:.5;cursor:default}
+.rs-qtd-n{width:4.5em;height:calc(var(--toque) + var(--esp-1));box-sizing:border-box;text-align:center;font-size:1.25em;font-weight:700;color:var(--azul);border:1px solid var(--linha);border-radius:var(--raio);background:#fff;padding:0}
+.rs-qtd-n:disabled,.rs-imp .campo:disabled{background:var(--creme2);color:var(--suave2)}
+.rs-imp-md{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+.rs-imp-tab{display:grid;grid-template-columns:minmax(0,2fr) minmax(2.5em,.6fr) minmax(0,1fr) minmax(0,1fr);gap:var(--esp-2) var(--esp-3);font-size:.8125em;align-items:baseline}
+.rs-imp-tab [role="columnheader"]{font-weight:600;color:var(--suave2);padding-bottom:var(--esp-1);border-bottom:1px solid var(--linha2)}
+.rs-imp-tab b{color:var(--azul);font-weight:600}
+.rs-imp-tab .dir{text-align:right}
+.rs-imp-tab .vazio-lin{grid-column:1/-1;color:var(--suave2)}
+.rs-imp-tot{display:flex;justify-content:space-between;align-items:baseline;gap:var(--esp-3);border-top:1px solid var(--linha2);padding-top:var(--esp-3);margin-top:var(--esp-3)}
+.rs-imp-tot span{display:flex;flex-direction:column;gap:.1em;min-width:0}
+.rs-imp-tot b{font-size:.8125em;font-weight:600;color:var(--suave2)}
+.rs-imp-tot small{font-size:.8125em;color:var(--suave2)}
+.rs-imp-tot strong{font-family:Lora,Georgia,serif;font-weight:700;font-size:1.6em;color:var(--azul);white-space:nowrap}
+.rs-imp-doc{display:block;margin-top:var(--esp-3);font-size:.8125em;line-height:1.5;color:var(--suave2)}
+.rs-imp-falta{font-size:.8125em;color:var(--suave2);text-align:center}
+.rs-imp-falta[hidden]{display:none}
+.rs-imp{display:flex;flex-direction:column;gap:var(--esp-4)}
+.rs-duas.rs-imp{flex-direction:row}
+.rs-imp-cx{background:#fff;border-radius:var(--raio-g);padding:var(--esp-4);box-shadow:var(--sombra)}
+.rs-imp-rod{flex-direction:column;gap:var(--esp-2);z-index:2}
+.rs-imp-rod .rs-imp-tot{border-top:none;padding-top:0;margin-top:0}
+.rs-imp-rod .rs-imp-tot strong{font-size:1.5em}
+@media (max-width:1180px) and (min-width:768px){.rs-imp-md{grid-template-columns:1fr}}
+@media (max-width:767px){
+  .rs-qtds{grid-template-columns:1fr;gap:0}
+  .rs-qtd{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--esp-1) var(--esp-2);align-items:center;border:none;border-radius:0;padding:0}
+  .rs-qtd+.rs-qtd{border-top:1px solid var(--linha2);margin-top:var(--esp-4);padding-top:var(--esp-4)}
+  .rs-qtd .rs-qtd-sub{grid-column:1/-1;text-align:right}
+  .rs-qtd-n{width:3.75em}
+  .rs-imp-md{grid-template-columns:1fr}
+}
+/* Alvos de toque ≥ 44 px em qualquer escala (chips, campos e abas do módulo ficavam com 39–43 px no computador) */
+.rs-imp .rs-chip{min-height:max(44px,2.75em)}
+.rs-imp .campo{min-height:max(44px,2.75em)}
+.rs-topo .abas button{min-height:max(44px,2.75em)}
 /* ================= v1.30 (Etapa D.2): Alterar ordem por condomínio ================= */
 .ord-topo{display:flex;align-items:center;gap:var(--esp-2);min-height:var(--toque)}
 .ord-topo .ord-nome{display:flex;align-items:center;gap:.6em;font-size:.8125em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--azul);min-width:0}
@@ -1449,7 +1496,7 @@ body.mod-outro .sugerir-flut{display:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.30';
+var VERSAO_SITE = '1.31';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -8578,7 +8625,7 @@ setInterval(function () { if (document.visibilityState === 'visible' && S.sessao
 /* Só o master (decisão de 24/11/2026). Regras: skill ressarcimentos-carvalho-abreu e doc de diretrizes.
    O app monta o nome do arquivo; nada sai sem "Aprovar e enviar". */
 var RS = null;
-var RS_ABAS = [{ id: 'inicio', rot: 'Início' }, { id: 'painel', rot: 'Painel' }, { id: 'nf', rot: 'Nova NF' }, { id: 'desl', rot: 'Deslocamento' }, { id: 'rev', rot: 'Revisão' }, { id: 'acomp', rot: 'Acompanhamento' }];
+var RS_ABAS = [{ id: 'inicio', rot: 'Início' }, { id: 'painel', rot: 'Painel' }, { id: 'nf', rot: 'Nova NF' }, { id: 'desl', rot: 'Deslocamento' }, { id: 'imp', rot: 'Impressão' }, { id: 'rev', rot: 'Revisão' }, { id: 'acomp', rot: 'Acompanhamento' }];
 var RS_CASO = {
   AS: 'NF para arquivo', AD: 'NF para arquivo + deslocamento', RS: 'Compra a ressarcir', RD: 'Compra a ressarcir + deslocamento',
   FATURADO: 'Retirada de material faturado', 'REUNIÃO': 'Reunião ou visita'
@@ -8616,7 +8663,7 @@ function abrirRessarcimentos(aba) { ir('ressarcimentos', { arg: aba }); } // v1.
 function rsMontar(aba) {
   if (!(S.portal && S.portal.usuario && S.portal.usuario.master) || !temRess()) return;
   RS = { aba: aba || 'inicio', f: { condo: '', tipo: '' }, pn: null, cfg: null, rev: null, acomp: null, verAcomp: 'abertos', aberto: null, confTodos: false, baixa: null,
-    nf: rsNovaNF(), d: rsNovoDesl(), ocupado: '', entradaInfo: false };
+    nf: rsNovaNF(), d: rsNovoDesl(), imp: RS_IMP || (RS_IMP = rsNovaImp()), ocupado: '', entradaInfo: false };
   moduloTela('Ressarcimentos', 'Carregando…', '<div class="rs" id="rs"><p class="vazio">Carregando…</p></div>', function (raiz) {
     raiz.addEventListener('click', cliqueRess);
     raiz.addEventListener('input', entradaRess);
@@ -8668,6 +8715,7 @@ function rsDesenhar() {
   else if (RS.aba === 'painel') h += rsHtmlPainel();
   else if (RS.aba === 'nf') h += rsHtmlNF();
   else if (RS.aba === 'desl') h += rsHtmlDesl();
+  else if (RS.aba === 'imp') h += rsHtmlImp();
   else if (RS.aba === 'rev') h += rsHtmlRev();
   else h += rsHtmlAcomp();
   el.innerHTML = h;
@@ -8854,6 +8902,165 @@ function rsHtmlDeslPassos() {
   return h;
 }
 
+/* --- Impressão (v1.31, Fase 3 · Etapa 2) ---
+   Uma tela só, também no celular (sem passos). Celular e tablet: blocos empilhados e rodapé fixo com total e botão;
+   computador: formulário + prévia da nota ao lado. As quantidades valem para cada condomínio marcado: uma nota de débito cada.
+   Custos por página: ressarcimentos.config → parametros.impressao { pb, col } (PARAMETROS DO MÓDULO); conta em centavos.
+   Gravação: ressarcimentos.criarImpressao pelo gravar() (idCliente: pedido repetido grava uma vez só); depois, Revisão.
+   O rascunho fica em RS_IMP: girar o celular (troca de faixa remonta o módulo) não apaga o que foi digitado. */
+var RS_IMP = null, RS_IMP_MAX = 5000;
+var RS_IMP_ICO = {
+  menos: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg>',
+  mais: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
+};
+function rsNovaImp() { return { sel: {}, pb: 0, col: 0, motivo: '', data: rsHoje(), salvando: false }; }
+function rsImpCustos() { var p = RS && RS.cfg && RS.cfg.parametros && RS.cfg.parametros.impressao; return p && p.pb > 0 && p.col > 0 ? p : null; }
+function rsSelImp() { var s = RS.imp.sel; return RS.cfg.condominios.map(function (c) { return c.codigo; }).filter(function (c) { return s[c]; }); }
+function rsImpCalc() {
+  var m = RS.imp, k = rsImpCustos() || { pb: 0, col: 0 }, n = rsSelImp().length;
+  var pbC = Math.round(m.pb * k.pb * 100), colC = Math.round(m.col * k.col * 100);
+  return { n: n, k: k, pbC: pbC, colC: colC, nota: pbC + colC, total: (pbC + colC) * n };
+}
+function rsImpCent(c) { return rsMoeda(c / 100); }
+function rsImpFalta() {
+  var m = RS.imp, f = [];
+  if (!rsImpCustos()) return 'Os custos por página não estão configurados.';
+  if (!rsSelImp().length) f.push('escolha o condomínio');
+  if (!(m.pb + m.col)) f.push('informe as páginas');
+  if (!m.motivo.trim()) f.push('escreva o motivo');
+  if (!m.data) f.push('informe a data');
+  else if (m.data > rsHoje()) return 'A data não pode ser depois de hoje.';
+  if (!f.length) return '';
+  var t = f.length > 1 ? f.slice(0, -1).join(', ') + ' e ' + f[f.length - 1] : f[0];
+  return 'Para registrar, ' + t + '.';
+}
+function rsImpTxtControle() { // igual ao motor: "07 COLORIDAS + 13 P&B - MOTIVO"
+  var m = RS.imp, dois = function (n) { return n < 10 ? '0' + n : String(n); }, p = [];
+  if (m.col > 0) p.push(dois(m.col) + ' COLORIDAS');
+  if (m.pb > 0) p.push(dois(m.pb) + ' P&B');
+  return p.join(' + ') + ' - ' + (m.motivo.trim() || 'MOTIVO').toUpperCase();
+}
+function rsImpNotasTxt(c) { return c.n === 0 ? 'Escolha um condomínio' : c.n === 1 ? '1 nota' : c.n + ' notas de ' + rsImpCent(c.nota) + ' cada'; }
+function rsImpBtTxt(c) { return c.n > 1 ? 'Registrar ' + c.n + ' notas' : 'Registrar impressão'; }
+
+function rsImpQtd(tipo, rot, custo, dis) {
+  var m = RS.imp, q = m[tipo], minus = rot.toLowerCase();
+  return '<div class="rs-qtd' + (q > 0 ? ' on' : '') + '" id="rsImpQ_' + tipo + '"><div class="rs-qtd-tx"><b>' + rot + '</b><small>' +
+      (custo ? esc(rsMoeda(custo)) + ' por página' : 'Custo não configurado') + '</small></div>' +
+    '<div class="rs-qtd-ctl" role="group" aria-label="Páginas ' + minus + '">' +
+      '<button class="rs-pm" data-rsimp="menos" data-tipo="' + tipo + '" aria-label="Menos páginas ' + minus + '"' + dis + '>' + RS_IMP_ICO.menos + '</button>' +
+      '<input class="rs-qtd-n" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" data-rsimpc="' + tipo + '" aria-label="Páginas ' + minus + '" value="' + q + '"' + dis + '>' +
+      '<button class="rs-pm" data-rsimp="mais" data-tipo="' + tipo + '" aria-label="Mais páginas ' + minus + '"' + dis + '>' + RS_IMP_ICO.mais + '</button></div>' +
+    '<span class="rs-qtd-sub" id="rsImpSub_' + tipo + '">' + esc(q + ' × ' + rsMoeda(custo || 0) + ' = ' + rsMoeda(q * (custo || 0))) + '</span></div>';
+}
+function rsImpNotaHtml() {
+  var m = RS.imp, c = rsImpCalc(), lin = [];
+  if (m.col > 0) lin.push(['Impressão colorida', m.col, c.k.col, c.colC]);
+  if (m.pb > 0) lin.push(['Impressão preto e branco', m.pb, c.k.pb, c.pbC]);
+  var h = '<div class="rs-imp-tab" role="table" aria-label="Itens da nota"><span role="columnheader">Item</span><span role="columnheader">Qtd.</span><span role="columnheader">Unitário</span><span role="columnheader" class="dir">Valor</span>';
+  if (!lin.length) h += '<span class="vazio-lin">Informe as páginas para ver os itens.</span>';
+  lin.forEach(function (l) { h += '<b>' + l[0] + '</b><span>' + l[1] + '</span><span>' + esc(rsMoeda(l[2])) + '</span><span class="dir">' + esc(rsImpCent(l[3])) + '</span>'; });
+  var mes = (m.data || rsHoje()).slice(0, 7).replace('-', ''), sel = rsSelImp();
+  return h + '</div><div class="rs-imp-tot"><span><b>Total a ressarcir</b><small>' + esc(rsImpNotasTxt(c)) + '</small></span><strong>' + esc(rsImpCent(c.total)) + '</strong></div>' +
+    '<span class="rs-imp-doc">' + (sel.length > 1 ? 'Um documento por condomínio (' + esc(sel[0]) + '-' + mes + 'NNN-M e assim por diante)' : 'Documento ' + esc(sel[0] || 'CÓDIGO') + '-' + mes + 'NNN-M') +
+    ', numerado automaticamente. Linha IMPRESSÃO na controle: "' + esc(rsImpTxtControle()) + '".</span>';
+}
+function rsHtmlImp() {
+  var m = RS.imp, k = rsImpCustos(), c = rsImpCalc(), dis = m.salvando ? ' disabled' : '', cel = faixa() !== 'computador', falta = rsImpFalta();
+  var aviso = k ? '' : '<div class="rs-info vinho" role="alert"><span class="rotulo">Falta configurar</span><span>Os custos por página não estão em PARAMETROS DO MÓDULO ' +
+    '(IMPRESSAO_CUSTO_PB e IMPRESSAO_CUSTO_COLORIDA). Preencha lá e abra esta aba de novo.</span></div>';
+  var s1 = '<div class="rs-bloco"><div class="rs-imp-cab"><span class="rotulo">1 · Condomínios</span><span class="cartao-meta" id="rsImpNSel">' + rsImpNSelTxt(c.n) + '</span></div>' +
+    '<div class="rs-chips" role="group" aria-label="Condomínios">' + RS.cfg.condominios.map(function (x) {
+      return '<button class="rs-chip" data-rsimp="condo" data-cod="' + esc(x.codigo) + '" aria-pressed="' + !!m.sel[x.codigo] + '"' + dis + '>' + esc(x.nome) + '</button>';
+    }).join('') + '</div></div>';
+  var s2 = '<div class="rs-bloco"><span class="rotulo">2 · Páginas impressas</span><div class="rs-qtds">' +
+    rsImpQtd('pb', 'Preto e branco', k && k.pb, dis) + rsImpQtd('col', 'Colorida', k && k.col, dis) + '</div></div>';
+  var s3 = '<div class="rs-bloco"><span class="rotulo">3 · Motivo e data</span><div class="rs-campos rs-imp-md">' +
+    '<label class="rs-campo">Motivo da impressão<input class="campo" maxlength="80" autocomplete="off" placeholder="Ex.: formulários dos salões" data-rsimpc="motivo" value="' + esc(m.motivo) + '"' + dis + '></label>' +
+    '<label class="rs-campo">Data<input class="campo" type="date" max="' + rsHoje() + '" data-rsimpc="data" value="' + esc(m.data) + '"' + dis + '></label></div></div>';
+  var info = '<div class="rs-info"><span>A nota de débito e o e-mail ficam prontos em poucos segundos. Nada é enviado antes da sua aprovação em Revisão.</span></div>';
+  var bt = '<button class="bt grande" data-rsimp="registrar" id="rsBtImp"' + (falta || m.salvando ? ' disabled' : '') + '>' + esc(rsImpBtTxt(c)) + '</button>' +
+    '<span class="rs-imp-falta" id="rsImpFalta" aria-live="polite"' + (falta && k ? '' : ' hidden') + '>' + esc(falta) + '</span>';
+  if (cel) {
+    return '<div class="rs-imp" id="rsImp">' + aviso + '<section class="rs-imp-cx" aria-label="Condomínios">' + s1 + '</section>' +
+      '<section class="rs-imp-cx" aria-label="Páginas impressas">' + s2 + '</section><section class="rs-imp-cx" aria-label="Motivo e data">' + s3 + '</section>' + info + '</div>' +
+      '<div class="rs-rodape rs-imp-rod"><div class="rs-imp-tot"><span><b>Total a ressarcir</b><small id="rsImpNotas">' + esc(rsImpNotasTxt(c)) + '</small></span>' +
+      '<strong id="rsImpTotal">' + esc(rsImpCent(c.total)) + '</strong></div>' + bt + '</div>';
+  }
+  return '<div class="rs-duas rs-imp" id="rsImp"><section class="rs-form" aria-label="Impressão">' + aviso + s1 + s2 + s3 + '</section>' +
+    '<aside class="rs-lado"><div class="rs-cx"><span class="rotulo">Como fica a nota de débito</span><div id="rsImpNota">' + rsImpNotaHtml() + '</div></div>' + info + bt + '</aside></div>';
+}
+function rsImpNSelTxt(n) { return n + (n === 1 ? ' selecionado' : ' selecionados') + ' · cada um vira uma nota'; }
+/* Atualiza números, botão e prévia sem redesenhar a tela (o foco e o teclado ficam onde estão). */
+function rsImpAtualizar() {
+  var m = RS.imp, c = rsImpCalc(), falta = rsImpFalta(), el;
+  if ((el = $('rsImpNSel'))) el.textContent = rsImpNSelTxt(c.n);
+  ['pb', 'col'].forEach(function (t) {
+    var q = $('rsImpQ_' + t), s = $('rsImpSub_' + t), custo = c.k[t];
+    if (q) q.classList.toggle('on', m[t] > 0);
+    if (s) s.textContent = m[t] + ' × ' + rsMoeda(custo) + ' = ' + rsImpCent(t === 'pb' ? c.pbC : c.colC);
+  });
+  if ((el = $('rsImpTotal'))) el.textContent = rsImpCent(c.total);
+  if ((el = $('rsImpNotas'))) el.textContent = rsImpNotasTxt(c);
+  if ((el = $('rsImpNota'))) el.innerHTML = rsImpNotaHtml();
+  if (m.salvando) return; // o botão está em "Salvando…" (gravar())
+  if ((el = $('rsBtImp'))) { el.textContent = rsImpBtTxt(c); el.disabled = !!falta; }
+  if ((el = $('rsImpFalta'))) { el.textContent = falta; el.hidden = !falta || !rsImpCustos(); }
+}
+function rsImpTravar(on) {
+  Array.prototype.forEach.call(document.querySelectorAll('#rs [data-rsimp], #rs [data-rsimpc]'), function (e) { if (e.id !== 'rsBtImp') e.disabled = on; });
+}
+function rsImpClique(b) {
+  var m = RS.imp, a = b.getAttribute('data-rsimp');
+  if (m.salvando) return;
+  if (a === 'condo') {
+    var cod = b.getAttribute('data-cod');
+    if (m.sel[cod]) delete m.sel[cod]; else m.sel[cod] = true;
+    b.setAttribute('aria-pressed', String(!!m.sel[cod]));
+  } else if (a === 'mais' || a === 'menos') {
+    var t = b.getAttribute('data-tipo');
+    m[t] = Math.max(0, Math.min(RS_IMP_MAX, m[t] + (a === 'mais' ? 1 : -1)));
+    var inp = document.querySelector('#rs [data-rsimpc="' + t + '"]'); if (inp) inp.value = String(m[t]);
+  } else if (a === 'registrar') { rsSalvarImp(); return; }
+  rsImpAtualizar();
+}
+function rsImpCampo(t, saiu) {
+  var m = RS.imp, k = t.getAttribute('data-rsimpc');
+  if (k === 'pb' || k === 'col') {
+    var so = t.value.replace(/\D/g, '');
+    if (so !== t.value) t.value = so;
+    m[k] = Math.min(RS_IMP_MAX, parseInt(so, 10) || 0);
+    if (saiu || String(m[k]) !== so && so !== '') t.value = String(m[k]); // ao sair do campo, vazio vira 0; acima do máximo, o máximo
+  } else if (k === 'motivo') m.motivo = t.value;
+  else if (k === 'data') m.data = t.value;
+  rsImpAtualizar();
+}
+function rsSalvarImp() {
+  var m = RS.imp; if (m.salvando) return;
+  var falta = rsImpFalta(); if (falta) { avisar(falta, true); return; }
+  var sel = rsSelImp();
+  m.salvando = true; rsImpTravar(true);
+  api('ressarcimentos.criarImpressao', { codigos: sel, pb: m.pb, col: m.col, motivo: m.motivo.trim(), data: m.data }).then(function (r) {
+    if (r && r.ignorado) return; // mesmo pedido já a caminho: quem responde é o primeiro
+    m.salvando = false;
+    if (!r || !r.ok) { // erro: tudo volta como estava (o gravar() já avisa quando é a internet)
+      rsImpTravar(false); rsImpAtualizar();
+      if (r && r.codigo !== 'REDE' && r.codigo !== 'EM_CURSO' && r.mensagem) avisar(r.mensagem, true);
+      return;
+    }
+    var ped = r.pedidos || [], ok = ped.filter(function (p) { return p.ok; }), ruins = ped.filter(function (p) { return !p.ok; });
+    var msg = ok.length === 1 && !ruins.length ? 'Nota ' + (ok[0].numero || '') + ' preparada. Confira e aprove em Revisão.'
+      : (ok.length ? ok.length + (ok.length === 1 ? ' nota preparada.' : ' notas preparadas.') + ' ' : '') +
+        (ruins.length ? ruins.map(function (p) { return rsNomeCondo(p.codigo) + ': ' + (p.erro || 'veja em Revisão.'); }).join(' · ') : 'Confira e aprove em Revisão.');
+    RS_IMP = rsNovaImp();
+    setTimeout(function () { // depois do ✓ do botão
+      if (RS) { RS.imp = RS_IMP; RS.rev = null; if (modAtual === 'ressarcimentos' && $('rs') && RS.aba === 'imp') rsIrAba('rev'); }
+      avisar(msg, ruins.length > 0);
+      rsAtualizarResumo();
+    }, GV.OK);
+  }).catch(function () { m.salvando = false; rsImpTravar(false); rsImpAtualizar(); });
+}
+
 /* --- Revisão --- */
 function rsHtmlRev() {
   var lista = RS.rev;
@@ -9016,7 +9223,8 @@ function rsComp(i) {
 }
 function cliqueRess(ev) {
   var b = ev.target.closest('button'); if (!b || !RS || b.disabled) return;
-  if (b.hasAttribute('data-rsaba')) { if (!RS.ocupado) rsIrAba(b.getAttribute('data-rsaba')); return; }
+  if (b.hasAttribute('data-rsaba')) { if (!RS.ocupado && !RS.imp.salvando) rsIrAba(b.getAttribute('data-rsaba')); return; }
+  if (b.hasAttribute('data-rsimp')) { rsImpClique(b); return; } // v1.31
   if (b.hasAttribute('data-rsop')) {
     var campo = b.getAttribute('data-rsop'), v = b.getAttribute('data-rsv');
     if (campo === 'motivo') RS.d.motivo = v; else RS.nf[campo] = v;
@@ -9058,6 +9266,7 @@ function cliqueRess(ev) {
 }
 function entradaRess(ev) {
   var t = ev.target; if (!RS) return;
+  if (t.hasAttribute('data-rsimpc')) { rsImpCampo(t); return; } // v1.31
   var k = t.getAttribute('data-rsnf');
   if (k && k !== 'codigo' && k !== 'loja' && k !== 'tipo') { RS.nf[k] = t.value; var nm = $('rsNomeNF'); if (nm) nm.textContent = rsNomeNF(); return; }
   k = t.getAttribute('data-rsd');
@@ -9075,6 +9284,7 @@ function entradaRess(ev) {
 }
 function mudancaRess(ev) {
   var t = ev.target; if (!RS) return;
+  if (t.hasAttribute('data-rsimpc')) { rsImpCampo(t, true); return; } // v1.31
   if (t.type === 'file') { rsLerArquivo(t); return; }
   if (t.getAttribute('data-rsf') === 'condo') { RS.f.condo = t.value; RS.baixa = null; rsDesenhar(); return; }
   var k = t.getAttribute('data-rsnf');
