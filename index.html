@@ -1102,6 +1102,57 @@ a.bt{text-decoration:none}
 .ins-ger:first-of-type{border-top:none}
 .ins-ger span:first-child,.ins-volta>span{flex:1;min-width:0;display:flex;flex-direction:column;gap:.1em}
 .ins-ger small,.ins-volta small{font-size:.8em;color:var(--suave)}
+/* v1.28 · Relatórios (etapa 6.4) */
+#relCorpo>*{flex-shrink:0}
+.rel-filtros select{min-width:0}
+.rel-volta{display:inline-flex;align-items:center;gap:.25em;align-self:flex-start;background:none;border:none;padding:.25em 0;font:600 .875em Inter,system-ui,sans-serif;color:var(--azul);cursor:pointer;min-height:2.75em}
+.rel-volta svg{width:18px;height:18px}
+.rel-cab{display:flex;flex-direction:column;gap:.15em}
+.rel-cab h3{margin:0;font-family:Lora,Georgia,serif;font-size:1.25em;color:var(--azul)}
+.rel-cab small{font-size:.75em;font-weight:700;letter-spacing:.06em;color:var(--suave)}
+.rel-nums{grid-template-columns:repeat(4,1fr)}
+.ins-nums .ok b{color:#1F6B3A}
+.rel-ins-lista{display:flex;flex-direction:column;gap:.5em}
+.rel-ins{display:flex;align-items:center;gap:.6em;background:#fff;border:1px solid var(--linha);border-radius:1em;padding:.5em .6em .5em 1em}
+.rel-ins-tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:.15em;background:none;border:none;padding:.25em 0;text-align:left;font:inherit;color:var(--texto);cursor:pointer}
+.rel-ins-tx b{font-size:.9375em;color:var(--azul)}
+.rel-ins-tx small{font-size:.8em;color:var(--suave)}
+.rel-ins-ac{display:flex;align-items:center;gap:.35em;flex:none}
+.bt.peq{min-height:2.75em;padding:0 .9em;font-size:.8125em}
+.rel-ico{width:2.75em;height:2.75em;border-radius:.75em;border:1px solid var(--linha);background:#fff;color:var(--azul);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.rel-gerando{font-size:.8em;font-weight:600;color:var(--suave2);max-width:13em;text-align:right}
+.rel-barras,.rel-simples,.rel-prg{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.rel-barras li{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 2.2em;align-items:center;gap:.75em;padding:.55em 0;border-top:1px solid var(--linha2)}
+.rel-barras li:first-child,.rel-simples li:first-child,.rel-prg li:first-child{border-top:none}
+.rel-bt{display:flex;flex-direction:column;gap:.1em;min-width:0}
+.rel-bt b{font-size:.9375em;color:var(--texto)}
+.rel-bt small{font-size:.75em;color:var(--suave)}
+.rel-bt em{font-style:normal;color:var(--vinho);font-weight:600}
+.rel-barra{height:.5em;background:var(--creme2);border-radius:999px;overflow:hidden}
+.rel-barra i{display:block;height:100%;background:var(--ouro);border-radius:999px}
+.rel-n{text-align:right;font-family:Lora,Georgia,serif;font-weight:700;color:var(--azul)}
+.rel-simples li{display:flex;justify-content:space-between;gap:.75em;padding:.5em 0;border-top:1px solid var(--linha2);font-size:.9375em}
+.rel-simples b{color:var(--azul)}
+.rel-atr{display:flex;flex-direction:column;gap:.4em}
+.rel-pct{margin:0;font-size:.875em;color:var(--suave2)}
+.rel-pct b{color:var(--azul)}
+.rel-prg li{display:flex;align-items:center;gap:.75em;padding:.6em 0;border-top:1px solid var(--linha2)}
+.rel-prg li>span:first-child{flex:1;min-width:0;display:flex;flex-direction:column;gap:.15em}
+.rel-prg b{font-size:.9375em;color:var(--texto)}
+.rel-prg small{font-size:.8em;color:var(--suave)}
+.rel-emp{background:#fff;border:1px solid var(--linha);border-radius:1em;padding:.85em 1em;display:flex;flex-direction:column;gap:.6em}
+.rel-emp-cab{display:flex;justify-content:space-between;align-items:baseline;gap:.75em}
+.rel-emp-cab b{font-family:Lora,Georgia,serif;color:var(--azul)}
+.rel-emp-cab small{font-size:.8em;color:var(--suave);white-space:nowrap}
+.rel-emp-nums{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.4em}
+@media (max-width:420px){.rel-emp-nums{grid-template-columns:repeat(3,minmax(0,1fr))}.rel-emp-cab{flex-direction:column;gap:.1em}.rel-emp-cab small{white-space:normal}}
+.rel-emp-nums div{background:var(--creme);border-radius:.75em;padding:.5em .35em;display:flex;flex-direction:column;align-items:center;gap:.1em;text-align:center}
+.rel-emp-nums b{font-family:Lora,Georgia,serif;font-size:1.15em;color:var(--azul)}
+.rel-emp-nums .ap b{color:var(--vinho)}
+.rel-emp-nums span{font-size:.6875em;font-weight:600;color:var(--suave)}
+.rel-acoes{display:flex;gap:.5em;flex-wrap:wrap}
+.rel-acoes .bt{flex:1;min-width:9em}
+@media (max-width:420px){.rel-nums{grid-template-columns:repeat(2,1fr)}.rel-ins{flex-wrap:wrap}.rel-ins-ac{width:100%;justify-content:flex-end}}
 /* v1.27 · Programadas (etapa 6.3) */
 .prg-tag{flex:none;font-size:.6875em;font-weight:700;border-radius:.4em;padding:.25em .55em;white-space:nowrap}
 .prg-tag.g{background:#E6F2EA;color:#1F6B3A}.prg-tag.a{background:#FFF6E5;color:#8A5200}.prg-tag.r{background:#FBE9E7;color:#9B2C2C}.prg-tag.b{background:#E8EDF5;color:#0F2646}.prg-tag.z{background:#EFEADF;color:#5B6475}
@@ -1280,7 +1331,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.27';
+var VERSAO_SITE = '1.28';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -1650,7 +1701,7 @@ function desenhar() {
   ['btNova', 'icNova', 'bbNova'].forEach(function (id) { $(id).hidden = !podeCriar; });
   $('contLateral').textContent = (d.tarefas || []).length;
   desenharSino();
-  if (S.portal && (podeRoteiros() + '' + podeProgramadas()) !== S.rotNoMenu) { S.rotNoMenu = podeRoteiros() + '' + podeProgramadas(); desenharPortal(); } // v1.27: Roteiros e Programadas no menu
+  if (S.portal && (podeRoteiros() + '' + podeProgramadas() + podeRelatorios()) !== S.rotNoMenu) { S.rotNoMenu = podeRoteiros() + '' + podeProgramadas() + podeRelatorios(); desenharPortal(); } // v1.27: Roteiros e Programadas no menu; v1.28: Relatórios
   desenharAlternancia();
   desenharCats();
   desenharCondos();
@@ -3884,7 +3935,7 @@ function desenharPortal() {
 }
 function temMenuPortal() {
   var p = S.portal || {};
-  return !!p.gestao || (p.modulos || []).length > 1 || podeRoteiros() || podeProgramadas();
+  return !!p.gestao || (p.modulos || []).length > 1 || podeRoteiros() || podeProgramadas() || podeRelatorios();
 }
 function mpLin(acao, icone, titulo, sub, direita, desligado) {
   return '<button class="mp-lin" ' + (desligado ? 'disabled' : 'data-acao="' + acao + '"') + '><span class="ico">' + icone + '</span>' +
@@ -3911,9 +3962,10 @@ function htmlMenuPortal() {
         nd ? '<span class="selo estatico">' + nd + '</span>' : '') +
       (g && g.configuracoes ? mpLin('configuracoes', ICO_CFG, 'Configurações', 'Parâmetros gerais e de cada módulo') : '') + '</div>';
   }
-  if (podeRoteiros() || podeProgramadas()) h += '<div class="mp-rot">Tarefas</div><div class="mp-lista">' + // v1.27
+  if (podeRoteiros() || podeProgramadas() || podeRelatorios()) h += '<div class="mp-rot">Tarefas</div><div class="mp-lista">' + // v1.27; v1.28 Relatórios
     (podeProgramadas() ? mpLin('programadas', ICO_CAT.repetir.replace('width="16" height="16"', 'width="20" height="20"'), 'Programadas', 'Tarefas que se repetem, geradas sozinhas') : '') +
-    (podeRoteiros() ? mpLin('roteiros', ICO_CAT.inspecao.replace('width="16" height="16"', 'width="20" height="20"'), 'Roteiros', 'Itens das inspeções, por condomínio') : '') + '</div>';
+    (podeRoteiros() ? mpLin('roteiros', ICO_CAT.inspecao.replace('width="16" height="16"', 'width="20" height="20"'), 'Roteiros', 'Itens das inspeções, por condomínio') : '') +
+    (podeRelatorios() ? mpLin('relatorios', ICO_REL, 'Relatórios', 'Inspeção em PDF e os mensais') : '') + '</div>';
   if (g) {
     h += '<div class="mp-rot">Gestão</div><div class="mp-lista">';
     if (g.convidar) h += mpLin('convidar', IC.pessoaMais, 'Convidar pessoas', 'Enviar convite pelo WhatsApp');
@@ -3961,9 +4013,10 @@ function desenharLateralGestao() {
   if (eb) eb.innerHTML = emBreve().map(function (m) { return '<div class="lat-breve"><i aria-hidden="true"></i><span>' + esc(m) + '</span></div>'; }).join('');
   var g = S.portal && S.portal.gestao, el = $('latGestao');
   if (!el) return;
-  var hRot = podeRoteiros() || podeProgramadas() ? '<span class="lat-titulo" style="padding-top:1.6em">Tarefas</span>' + // v1.27
+  var hRot = podeRoteiros() || podeProgramadas() || podeRelatorios() ? '<span class="lat-titulo" style="padding-top:1.6em">Tarefas</span>' + // v1.27; v1.28 Relatórios
     (podeProgramadas() ? '<button class="lat-item" data-acao="programadas">' + ICO_CAT.repetir.replace('width="16" height="16"', 'width="20" height="20"').replace('currentColor', '#C9A46A') + '<span style="flex:1">Programadas</span></button>' : '') +
-    (podeRoteiros() ? '<button class="lat-item" data-acao="roteiros">' + ICO_CAT.inspecao.replace('width="16" height="16"', 'width="20" height="20"').replace('currentColor', '#C9A46A') + '<span style="flex:1">Roteiros</span></button>' : '') : '';
+    (podeRoteiros() ? '<button class="lat-item" data-acao="roteiros">' + ICO_CAT.inspecao.replace('width="16" height="16"', 'width="20" height="20"').replace('currentColor', '#C9A46A') + '<span style="flex:1">Roteiros</span></button>' : '') +
+    (podeRelatorios() ? '<button class="lat-item" data-acao="relatorios">' + ICO_REL.replace('currentColor', '#C9A46A') + '<span style="flex:1">Relatórios</span></button>' : '') : '';
   if (!g) { el.innerHTML = hRot; return; }
   var h = hRot + '<span class="lat-titulo" style="padding-top:1.6em">Gestão</span>';
   if (g.convidar) h += '<button class="lat-item" data-acao="convidar">' + IC.pessoaMaisOuro + '<span style="flex:1">Convidar pessoas</span></button>';
@@ -6019,6 +6072,243 @@ function rotSalvar(b) {
   });
 }
 
+/* ---------- Relatórios (Tarefas › Relatórios) · v1.28, etapa 6.4 ----------
+   Só quem tem a ação "Ver relatórios" (Master e perfis da casa; parceira com a ação vê só a própria empresa).
+   Tela inicial (competência e condomínio), três mensais em tela com "Copiar texto" e PDF, e o relatório da
+   inspeção em PDF (gerado no motor, fica anexado à inspeção). O título sempre leva a competência MM/AAAA. */
+function podeRelatorios() { var u = (S.dados && S.dados.usuario) || {}; return !!(u.acoes && u.acoes.relatorios); }
+var ICO_REL = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>';
+var ICO_PDF = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 14h6M9 17h4"/></svg>';
+var REL_TIPOS = [
+  { id: 'inspecao', titulo: 'Relatório da inspeção', sub: 'PDF na marca, com fotos e apontamentos', tag: 'PDF', ico: ICO_PDF },
+  { id: 'resumo', titulo: 'Resumo mensal do condomínio', sub: 'Abertas, concluídas e atrasadas por categoria', tag: 'Tela', ico: ICO_REL },
+  { id: 'cumprimento', titulo: 'Cumprimento das Programadas', sub: 'No prazo, atrasadas, por vencer e não geradas', tag: 'Tela', ico: ICO_CAT.repetir.replace('width="16" height="16"', 'width="20" height="20"') },
+  { id: 'desempenho', titulo: 'Desempenho por empresa', sub: 'Prazo médio, atrasos e apontamentos resolvidos', tag: 'Tela', ico: IC.pessoas.replace(/#0F2646/g, 'currentColor') }
+];
+function abrirRelatorios() {
+  if (!podeRelatorios()) return;
+  abrirJanela('Relatórios', 'Tarefas › Relatórios', '<div class="jan-corpo" id="relCorpo"><div class="carregando">Carregando…</div></div>', 'centro', function (raiz) {
+    raiz.addEventListener('click', relClique);
+    raiz.addEventListener('change', relMudou);
+    S.rel = { vista: 'inicio', condo: S.condo && S.condo !== 'todos' ? S.condo : 'todos', comp: '', gerando: {} };
+    relCarregarInicio();
+  });
+}
+function relCorpo() { return document.getElementById('relCorpo'); }
+/** Nome do arquivo baixado sem acento (alguns navegadores trocam o nome acentuado por "download"). */
+function relNomeArq(n) { return String(n || 'relatorio.pdf').normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+function relCarregarInicio() {
+  var el = relCorpo(); if (!el || !S.rel) return;
+  el.innerHTML = '<div class="carregando">Carregando…</div>';
+  api('tarefas.relInicio', { comp: S.rel.comp, condo: S.rel.condo }).then(function (r) {
+    if (!S.rel) return;
+    if (!r.ok) { el.innerHTML = '<p class="erro-txt">' + esc(r.mensagem) + '</p>'; return; }
+    S.rel.ini = r; S.rel.comp = r.comp;
+    if (!r.condos.some(function (c) { return c.codigo === S.rel.condo; })) S.rel.condo = r.condos.length === 1 ? r.condos[0].codigo : 'todos';
+    relDesenhar();
+  });
+}
+function relNomeCondo(cod) { return cod === 'todos' ? 'Todos os condomínios' : nomeCondo(cod); }
+function relFiltros() {
+  var r = S.rel.ini, opt = function (v, t, sel) { return '<option value="' + esc(v) + '"' + (sel ? ' selected' : '') + '>' + esc(t) + '</option>'; };
+  return '<div class="linha-campos rel-filtros"><label style="flex:1"><span class="rot-campo">Competência</span><select class="campo" id="relComp">' +
+    r.competencias.map(function (c) { return opt(c.comp, c.txt, c.comp === S.rel.comp); }).join('') + '</select></label>' +
+    '<label style="flex:1.6"><span class="rot-campo">Condomínio</span><select class="campo" id="relCondo">' +
+    (r.condos.length > 1 ? opt('todos', 'Todos os condomínios', S.rel.condo === 'todos') : '') +
+    r.condos.map(function (c) { return opt(c.codigo, c.nome, c.codigo === S.rel.condo); }).join('') + '</select></label></div>';
+}
+function relDesenhar() {
+  var el = relCorpo(); if (!el || !S.rel || !S.rel.ini) return;
+  if (S.rel.vista !== 'inicio') { relDesenharMensal(el); return; }
+  var r = S.rel.ini, compTxt = r.compTxt;
+  var h = relFiltros() + '<div class="mp-lista">' + REL_TIPOS.map(function (t) {
+    return '<button class="mp-lin" data-rel="tipo" data-tipo="' + t.id + '"><span class="ico">' + t.ico + '</span><span class="tx"><b>' + esc(t.titulo) + '</b><small>' + esc(t.sub) + '</small></span>' +
+      '<span class="prg-tag ' + (t.tag === 'PDF' ? 'b' : 'z') + '">' + t.tag + '</span>' + IC.chevD + '</button>';
+  }).join('') + '</div>';
+  h += '<span class="rotulo" id="relInsRot">Inspeções concluídas em ' + esc(compTxt) + '</span>';
+  h += r.inspecoes.length ? '<div class="rel-ins-lista">' + r.inspecoes.map(relLinhaInspecao).join('') + '</div>'
+    : '<p class="vazio">Nenhuma inspeção concluída em ' + esc(compTxt) + (S.rel.condo !== 'todos' ? ' no ' + esc(nomeCondo(S.rel.condo)) : '') + '.</p>';
+  h += '<p class="nova-nota">Os três relatórios mensais abrem em tela, com “Copiar texto” e PDF. O título sempre leva a competência MM/AAAA.' +
+    (r.param.fechamento ? ' Até o dia ' + r.param.fechamento + ' a tela abre no mês anterior.' : '') + '</p>';
+  el.innerHTML = h;
+}
+function relLinhaInspecao(x) {
+  var g = S.rel.gerando[x.id];
+  var sub = (x.apontamentos ? (x.apontamentos === 1 ? '1 apontamento' : x.apontamentos + ' apontamentos') : 'Sem apontamentos') + ' · ' + x.empresa +
+    (S.rel.condo === 'todos' ? ' · ' + nomeCondo(x.condo).toUpperCase() : '');
+  var acoes = g ? '<span class="rel-gerando" role="status">' + esc(g) + '</span>'
+    : x.pdf ? '<button type="button" class="bt claro peq" data-rel="baixar" data-id="' + esc(x.id) + '">Baixar PDF</button>' +
+      '<button type="button" class="rel-ico" data-rel="gerar" data-id="' + esc(x.id) + '" aria-label="Gerar o PDF de novo" title="Gerar de novo">' + ICO_CAT.repetir + '</button>'
+      : '<button type="button" class="bt claro peq" data-rel="gerar" data-id="' + esc(x.id) + '">Gerar PDF</button>';
+  return '<div class="rel-ins"><button type="button" class="rel-ins-tx" data-abrir="' + esc(x.id) + '"><b>' + esc(x.titulo) + ' · ' + esc(dataBRdeIso(x.data).slice(0, 5)) + '</b><small>' + esc(sub) + '</small>' +
+    (x.pdf ? '<small>PDF de ' + esc(quando(x.pdf.em)) + ' · ' + esc(tamanhoTxt(x.pdf.tamanho)) + '</small>' : '') + '</button><span class="rel-ins-ac">' + acoes + '</span></div>';
+}
+function relMudou(e) {
+  var el = e.target; if (!S.rel) return;
+  if (el.id === 'relComp') S.rel.comp = el.value;
+  else if (el.id === 'relCondo') S.rel.condo = el.value;
+  else return;
+  if (S.rel.vista === 'inicio') relCarregarInicio(); else relAbrirMensal(S.rel.vista);
+}
+function relClique(e) {
+  var b = e.target.closest('[data-rel]'); if (!b || !S.rel) return;
+  var a = b.getAttribute('data-rel');
+  if (a === 'tipo') {
+    var t = b.getAttribute('data-tipo');
+    if (t === 'inspecao') {
+      var rot = document.getElementById('relInsRot'); if (rot) rot.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!S.rel.ini.inspecoes.length) avisar('Nenhuma inspeção concluída em ' + S.rel.ini.compTxt + '. Troque a competência ou o condomínio.');
+      return;
+    }
+    relAbrirMensal(t); return;
+  }
+  if (a === 'voltar') { S.rel.vista = 'inicio'; S.rel.dados = null; relCarregarInicio(); return; }
+  if (a === 'gerar') { relGerarInspecao(b.getAttribute('data-id')); return; }
+  if (a === 'baixar') { relBaixarInspecao(b.getAttribute('data-id'), b); return; }
+  if (a === 'copiar') { if (S.rel.dados) copiarTexto(relTexto(S.rel.dados), 'Texto copiado'); return; }
+  if (a === 'pdf') { relPdfMensal(b); return; }
+}
+function relInsDe(id) { return ((S.rel.ini && S.rel.ini.inspecoes) || []).filter(function (x) { return x.id === id; })[0]; }
+function relRedesenharInspecoes() { if (S.rel && S.rel.vista === 'inicio') relDesenhar(); }
+function relGerarInspecao(id) {
+  var x = relInsDe(id); if (!x || S.rel.gerando[id]) return;
+  S.rel.gerando[id] = 'Gerando o PDF…'; relRedesenharInspecoes();
+  var lento = setTimeout(function () { if (S.rel && S.rel.gerando[id]) { S.rel.gerando[id] = 'Reduzindo as fotos… pode levar até 1 minuto'; relRedesenharInspecoes(); } }, 6000);
+  api('tarefas.relInspecaoPdf', { id: id }).then(function (r) {
+    clearTimeout(lento);
+    if (!S.rel) return;
+    delete S.rel.gerando[id];
+    if (!r.ok) { relRedesenharInspecoes(); avisar(r.mensagem, true); return; }
+    var falta = r.fotos ? r.fotos.semFoto : 0;
+    var msg = 'PDF pronto' + (falta ? ' · ' + (falta === 1 ? '1 foto ficou' : falta + ' fotos ficaram') + ' de fora (estão na inspeção)' : '');
+    if (r.dados) { salvarBlob(b64ParaBlob(r.dados, r.tipo), relNomeArq(r.nome), faixa() === 'computador'); relRedesenharInspecoes(); avisar(msg); return; }
+    x.pdf = r.anexo; relRedesenharInspecoes();
+    avisar(msg + (r.substituiu ? ' · o anterior foi substituído' : ''), false, { rotulo: 'Baixar', seg: 8, fn: function () { relBaixarInspecao(id); } });
+  }).catch(function () { clearTimeout(lento); if (S.rel) { delete S.rel.gerando[id]; relRedesenharInspecoes(); } });
+}
+function relBaixarInspecao(id, bt) {
+  var x = relInsDe(id); if (!x || !x.pdf || S.rel.gerando[id]) return;
+  S.rel.gerando[id] = 'Baixando…'; relRedesenharInspecoes();
+  var partes = [];
+  var pedaco = function (inicio) {
+    return api('tarefas.relBaixar', { id: x.pdf.id, inicio: inicio }).then(function (r) {
+      if (!r.ok) throw r;
+      var bl = b64ParaBlob(r.dados, r.tipo); partes.push(bl);
+      if (r.fim || !bl.size) return new Blob(partes, { type: r.tipo });
+      if (S.rel) { S.rel.gerando[id] = 'Baixando… ' + Math.min(99, Math.round((inicio + bl.size) / r.total * 100)) + '%'; relRedesenharInspecoes(); }
+      return pedaco(inicio + bl.size);
+    });
+  };
+  pedaco(0).then(function (blob) {
+    if (S.rel) { delete S.rel.gerando[id]; relRedesenharInspecoes(); }
+    salvarBlob(blob, relNomeArq(x.pdf.nome), faixa() === 'computador');
+  }).catch(function (e) {
+    if (S.rel) { delete S.rel.gerando[id]; relRedesenharInspecoes(); }
+    avisar((e && e.mensagem) || 'Não foi possível baixar agora.', true);
+  });
+}
+var REL_ACAO = { resumo: 'tarefas.relResumo', cumprimento: 'tarefas.relCumprimento', desempenho: 'tarefas.relDesempenho' };
+function relAbrirMensal(tipo) {
+  S.rel.vista = tipo; S.rel.dados = null;
+  var el = relCorpo(); if (!el) return;
+  el.innerHTML = '<button type="button" class="rel-volta" data-rel="voltar">' + IC.setaEsq + ' Relatórios</button>' + relFiltros() + '<div class="carregando">Carregando…</div>';
+  api(REL_ACAO[tipo], { comp: S.rel.comp, condo: S.rel.condo }).then(function (r) {
+    if (!S.rel || S.rel.vista !== tipo) return;
+    if (!r.ok) { el.querySelector('.carregando').outerHTML = '<p class="erro-txt">' + esc(r.mensagem) + '</p>'; return; }
+    S.rel.dados = r; relDesenhar();
+  });
+}
+function relNum(n, rot, cls) { return '<div class="' + (cls || '') + '"><b>' + esc(n === null || n === undefined ? '—' : n) + '</b><span>' + esc(rot) + '</span></div>'; }
+function relDec(n) { return n === null || n === undefined ? '—' : n < 1 ? '< 1' : String(n).replace('.', ','); }
+function relTxtPrg(p) {
+  if (p.naoGerada) return 'Não gerou para ' + dataBRdeIso(p.naoGerada.para) + ' · ' + p.naoGerada.motivo;
+  if (!p.geradas.length) return 'Vence em ' + dataBRdeIso(p.proxima);
+  var conta = function (s) { return p.geradas.filter(function (g) { return g.situacao === s; }); };
+  var np = conta('No prazo').length, at = conta('Atrasada'), pv = conta('Por vencer'), out = [];
+  if (np) out.push(np + ' de ' + p.geradas.length + ' no prazo');
+  if (at.length) out.push((at.length === 1 ? '1 atrasada' : at.length + ' atrasadas') + ' (' + at.map(function (g) { return g.compTxt; }).join(', ') + ')');
+  if (pv.length) out.push(pv.length === 1 ? 'vence em ' + dataBRdeIso(pv[0].prazo) : pv.length + ' por vencer');
+  return out.join(' · ');
+}
+var REL_COR = { 'No prazo': 'g', 'Atrasada': 'r', 'Não gerada': 'r', 'Por vencer': 'a', 'Por vir': 'z' };
+function relDesenharMensal(el) {
+  var d = S.rel.dados, tipo = S.rel.vista;
+  var h = '<button type="button" class="rel-volta" data-rel="voltar">' + IC.setaEsq + ' Relatórios</button>' + relFiltros();
+  if (!d) { el.innerHTML = h + '<div class="carregando">Carregando…</div>'; return; }
+  var cs = esc(String(d.condoNome || '').toUpperCase());
+  if (tipo === 'resumo') {
+    var t = d.totais, max = Math.max.apply(null, d.porCategoria.map(function (c) { return c.total; }).concat([1]));
+    h += '<div class="rel-cab"><h3>Resumo mensal ' + esc(d.compTxt) + '</h3><small>' + cs + ' · tarefas por categoria e assunto' + (d.atual ? ' · parcial, até ' + esc(dataBRdeIso(d.ref).slice(0, 5)) : '') + '</small></div>';
+    h += '<div class="ins-nums rel-nums">' + relNum(t.abertas, 'Abertas') + relNum(t.concluidas, 'Concluídas') + relNum(t.atrasadas, 'Atrasadas', t.atrasadas ? 'ap' : '') + relNum(t.novas, 'Novas') + '</div>';
+    h += '<span class="rotulo">Por categoria</span>' + (d.porCategoria.length ? '<ul class="rel-barras">' + d.porCategoria.map(function (c) {
+      return '<li><span class="rel-bt"><b>' + esc(c.nome) + '</b><small>' + c.abertas + (c.abertas === 1 ? ' aberta' : ' abertas') + ' · ' + c.concluidas + (c.concluidas === 1 ? ' concluída' : ' concluídas') +
+        (c.atrasadas ? ' · <em>' + c.atrasadas + (c.atrasadas === 1 ? ' atrasada' : ' atrasadas') + '</em>' : '') + '</small></span><span class="rel-barra"><i style="width:' + Math.round(c.total / max * 100) + '%"></i></span><span class="rel-n">' + c.total + '</span></li>';
+    }).join('') + '</ul>' : '<p class="vazio">Nenhuma tarefa no mês.</p>');
+    if (d.assuntos.length) h += '<span class="rotulo">Assuntos mais frequentes</span><ul class="rel-simples">' + d.assuntos.map(function (a) { return '<li><span>' + esc(a.nome) + '</span><b>' + a.n + '</b></li>'; }).join('') + '</ul>';
+    if (d.atrasadas.length) h += '<span class="rotulo">Atrasadas</span><div class="rel-atr">' + d.atrasadas.map(function (a) {
+      return '<button type="button" class="prg-atr" data-abrir="' + esc(a.id) + '"><b><span>' + esc(a.titulo) + '</span><span class="prg-tag r">' + a.dias + (a.dias === 1 ? ' dia' : ' dias') + '</span></b><span>' +
+        esc(a.id + ' · ' + a.empresa + ' · prazo ' + dataBRdeIso(a.prazo)) + '</span></button>';
+    }).join('') + (d.nAtrasadas > d.atrasadas.length ? '<p class="vazio">e mais ' + (d.nAtrasadas - d.atrasadas.length) + '.</p>' : '') + '</div>';
+    h += '<p class="nova-nota">Concluídas depois do prazo: ' + t.concluidasComAtraso + ' · geradas por Programadas: ' + t.programadas + ' · de apontamento de inspeção: ' + t.apontamentos + ' · inspeções concluídas: ' + t.inspecoes +
+      '. “Atrasada” = aberta com prazo vencido há ' + (d.diasAtraso === 1 ? '1 dia' : d.diasAtraso + ' dias') + ' ou mais.</p>';
+  } else if (tipo === 'cumprimento') {
+    var u = d.totais;
+    h += '<div class="rel-cab"><h3>Cumprimento das Programadas ' + esc(d.compTxt) + '</h3><small>' + cs + ' · gerado no prazo ou não</small></div>';
+    h += '<div class="ins-nums rel-nums">' + relNum(u.noPrazo, 'No prazo', u.noPrazo ? 'ok' : '') + relNum(u.atrasadas, 'Atrasadas', u.atrasadas ? 'ap' : '') + relNum(u.porVencer, 'Por vencer') + relNum(u.naoGeradas, u.naoGeradas === 1 ? 'Não gerada' : 'Não geradas', u.naoGeradas ? 'ap' : '') + '</div>';
+    h += '<p class="rel-pct">' + (d.pct === null ? 'Nenhuma gerada já vencida no mês.' : 'Cumprimento: <b>' + u.noPrazo + ' de ' + d.vencidas + '</b> geradas já vencidas (' + d.pct + '%)') + '</p>';
+    h += '<span class="rotulo">Por programada</span>' + (d.programadas.length ? '<ul class="rel-prg">' + d.programadas.map(function (p) {
+      return '<li><span><b>' + esc(p.titulo) + '</b><small>' + esc(relTxtPrg(p)) + '</small>' + (S.rel.condo === 'todos' ? '<small>' + esc(nomeCondo(p.condo).toUpperCase()) + '</small>' : '') + '</span>' +
+        '<span class="prg-tag ' + (REL_COR[p.situacao] || 'z') + '">' + esc(p.situacao) + '</span></li>';
+    }).join('') + '</ul>' : '<p class="vazio">Nenhuma programada no mês' + (d.nCadastradas ? '' : ' (nenhuma cadastrada)') + '.</p>');
+    h += '<p class="nova-nota">“Atrasada” considera ' + (d.diasAtraso === 1 ? '1 dia' : d.diasAtraso + ' dias') + ' depois do prazo (Configurações). “Não gerada” aparece quando a data de gerar passou e nada foi criado.</p>';
+  } else {
+    h += '<div class="rel-cab"><h3>Desempenho por empresa ' + esc(d.compTxt) + '</h3><small>' + cs + ' · tarefas recebidas e concluídas</small></div>';
+    h += d.empresas.length ? d.empresas.map(function (e) {
+      return '<div class="rel-emp"><div class="rel-emp-cab"><b>' + esc(e.empresa) + '</b><small>' + e.recebidas + (e.recebidas === 1 ? ' recebida' : ' recebidas') + (e.abertas ? ' · ' + e.abertas + (e.abertas === 1 ? ' aberta' : ' abertas') : '') + (e.inspecoes ? ' · ' + e.inspecoes + (e.inspecoes === 1 ? ' inspeção' : ' inspeções') : '') + '</small></div>' +
+        '<div class="rel-emp-nums">' + relNum(e.concluidas, 'Concluídas') + relNum(e.prazoMedio === null ? null : relDec(e.prazoMedio) + ' d', 'Prazo médio') +
+        relNum(e.atrasos, 'Atrasos', e.atrasos ? 'ap' : '') + relNum(e.pctNoPrazo === null ? null : e.pctNoPrazo + '%', 'No prazo') +
+        relNum(e.apontTotal ? e.apontResolvidos + '/' + e.apontTotal : null, 'Apont. resolvidos') + '</div></div>';
+    }).join('') : '<p class="vazio">Nenhuma tarefa no mês.</p>';
+    h += '<p class="nova-nota">Prazo médio conta do recebimento à conclusão. Apontamentos resolvidos são as tarefas que vieram de inspeção e foram concluídas no mês.</p>';
+  }
+  h += '<div class="rel-acoes"><button type="button" class="bt claro" data-rel="copiar">' + IC.copiar + ' Copiar texto</button><button type="button" class="bt" data-rel="pdf">' + ICO_PDF.replace('width="20" height="20"', 'width="18" height="18"') + ' Gerar PDF</button></div>';
+  el.innerHTML = h;
+}
+/** Texto para o WhatsApp: "[Relatório] MM/AAAA · CONDOMÍNIO: ..." */
+function relTexto(d) {
+  var c = String(d.condoNome || '').toUpperCase(), L = [];
+  if (d.tipo === 'resumo') {
+    var t = d.totais;
+    L.push('*Resumo mensal ' + d.compTxt + ' · ' + c + '*' + (d.atual ? ' (parcial, até ' + dataBRdeIso(d.ref).slice(0, 5) + ')' : ''));
+    L.push(t.abertas + ' abertas · ' + t.concluidas + ' concluídas · ' + t.atrasadas + ' atrasadas · ' + t.novas + ' novas');
+    if (d.porCategoria.length) { L.push(''); L.push('Por categoria:'); d.porCategoria.forEach(function (x) { L.push('• ' + x.nome + ': ' + x.total + ' (' + x.abertas + ' abertas, ' + x.concluidas + ' concluídas' + (x.atrasadas ? ', ' + x.atrasadas + ' atrasadas' : '') + ')'); }); }
+    if (d.assuntos.length) { L.push(''); L.push('Assuntos: ' + d.assuntos.map(function (a) { return a.nome + ' ' + a.n; }).join(', ')); }
+    if (d.atrasadas.length) { L.push(''); L.push('Atrasadas:'); d.atrasadas.forEach(function (a) { L.push('• ' + a.titulo + ' (' + a.empresa + ', prazo ' + dataBRdeIso(a.prazo) + ')'); }); }
+  } else if (d.tipo === 'cumprimento') {
+    var u = d.totais;
+    L.push('*Cumprimento das Programadas ' + d.compTxt + ' · ' + c + '*');
+    L.push(u.noPrazo + ' no prazo · ' + u.atrasadas + ' atrasadas · ' + u.porVencer + ' por vencer · ' + u.naoGeradas + ' não geradas' + (d.pct === null ? '' : ' · cumprimento ' + d.pct + '%'));
+    if (d.programadas.length) { L.push(''); d.programadas.forEach(function (p) { L.push('• ' + p.titulo + ': ' + p.situacao + ' (' + relTxtPrg(p) + ')'); }); }
+  } else {
+    L.push('*Desempenho por empresa ' + d.compTxt + ' · ' + c + '*');
+    d.empresas.forEach(function (e) {
+      L.push('• ' + e.empresa + ': ' + e.recebidas + ' recebidas, ' + e.concluidas + ' concluídas' + (e.prazoMedio === null ? '' : ', prazo médio ' + relDec(e.prazoMedio) + ' d') +
+        ', ' + e.atrasos + ' atrasos' + (e.apontTotal ? ', apontamentos ' + e.apontResolvidos + '/' + e.apontTotal : '') + (e.inspecoes ? ', ' + e.inspecoes + ' inspeções' : ''));
+    });
+  }
+  return L.join('\n');
+}
+function relPdfMensal(b) {
+  var d = S.rel.dados; if (!d || b.disabled) return;
+  var antes = b.innerHTML; b.disabled = true; b.textContent = 'Gerando…';
+  api('tarefas.relPdf', { tipo: d.tipo, comp: d.comp, condo: d.condo }).then(function (r) {
+    b.disabled = false; b.innerHTML = antes;
+    if (!r.ok) { avisar(r.mensagem, true); return; }
+    salvarBlob(b64ParaBlob(r.dados, r.tipo), relNomeArq(r.nome), faixa() === 'computador');
+    avisar('PDF pronto' + (r.gravado ? ' · guardado na pasta Relatórios' : ''));
+  }).catch(function () { b.disabled = false; b.innerHTML = antes; });
+}
+
 /* ---------- Programadas (Tarefas › Programadas) · v1.27, etapa 6.3 ----------
    Cadastro das tarefas que se repetem. O motor gera a tarefa sozinho (gatilho de hora em hora), na data menos a
    antecedência: simples vira Manutenção; com roteiro vira Inspeção. A tarefa gerada leva o selo "Programada". */
@@ -7706,6 +7996,7 @@ document.addEventListener('click', function (e) {
     case 'configuracoes': fecharCamadas(); abrirConfiguracoes(); break;
     case 'roteiros': fecharCamadas(); abrirRoteiros(); break; // v1.27
     case 'programadas': var prgCod = b.getAttribute('data-prg'); fecharCamadas(); abrirProgramadas(prgCod); break; // v1.27 (6.3)
+    case 'relatorios': fecharCamadas(); abrirRelatorios(); break; // v1.28 (6.4)
     case 'guia': fecharCamadas(); abrirGuia(); break;
     case 'fecharFaixaGuia': guardarLocal('faixaGuiaFechada', hojeLocal()); desenharFaixaGuia(); break;
     case 'pedidos': fecharCamadas(); abrirPedidos(); break;
