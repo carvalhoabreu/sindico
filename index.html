@@ -1547,7 +1547,7 @@ body:has(.rs-ap-jan) #gvLento{display:none} /* o aviso de internet lenta aparece
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.32';
+var VERSAO_SITE = '1.33';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -8772,12 +8772,20 @@ var RS_PASSOS = ['Motivo', 'Condomínios', 'Destino', 'Conferir'];
 
 function temRess() { return ((S.portal && S.portal.modulos) || []).some(function (m) { return m.id === 'ressarcimentos'; }); }
 function rsBadge() { return (S.rsResumo && S.rsResumo.emRevisao) || 0; }
+/* v1.33: atualiza no lugar o subtítulo da janela e o "(n)" da aba Revisão, sem redesenhar a tela (não perde o que está sendo digitado). */
+function rsAtualizarRotulos() {
+  var el = $('rs'); if (!el || !RS || !RS.cfg) return;
+  var raiz = el.closest('.janela'), n = rsBadge(), sm = raiz && raiz.querySelector('.jan-cab small');
+  if (sm) sm.textContent = n ? (n === 1 ? '1 aguardando sua aprovação' : n + ' aguardando sua aprovação') : 'Notas, deslocamentos e reembolsos';
+  var ab = el.querySelector('[data-rsaba="rev"]');
+  if (ab) ab.textContent = 'Revisão' + (n ? ' (' + n + ')' : '');
+}
 function rsAtualizarResumo() {
   if (!temRess() || S.rsPedindo) return;
   S.rsPedindo = true;
   api('ressarcimentos.resumo').then(function (r) {
     S.rsPedindo = false;
-    if (r && r.ok) { S.rsResumo = r; desenharLateralGestao(); if (RS && RS.aba === 'inicio' && $('rs')) rsDesenhar(); }
+    if (r && r.ok) { S.rsResumo = r; desenharLateralGestao(); if (RS && RS.aba === 'inicio' && $('rs')) rsDesenhar(); else rsAtualizarRotulos(); }
   }).catch(function () { S.rsPedindo = false; });
 }
 function rsHoje() { return diaSP(new Date()); }
@@ -9330,10 +9338,15 @@ function rsApConcluir(ap, r) {
   else avisar(msg);
   var tirar = function () {
     if (!RS) return;
-    if (Array.isArray(RS.rev)) RS.rev = RS.rev.filter(function (x) { return x.id !== ap.id; });
+    if (Array.isArray(RS.rev)) {
+      var era = RS.rev.filter(function (x) { return x.id === ap.id; })[0];
+      if (era && era.etapa === 'REVISÃO' && S.rsResumo && S.rsResumo.emRevisao > 0) S.rsResumo.emRevisao--; // v1.33: o número cai na hora; o resumo do motor confirma em seguida
+      RS.rev = RS.rev.filter(function (x) { return x.id !== ap.id; });
+    }
     if (RS.aberto === ap.id) RS.aberto = null;
     RS.pn = null; RS.acomp = null; RS.confTodos = false;
     if (modAtual === 'ressarcimentos' && RS.aba === 'rev' && $('rs')) rsDesenhar();
+    desenharLateralGestao();
     rsAtualizarResumo();
   };
   var card = document.querySelector('[data-rscard="' + (window.CSS && CSS.escape ? CSS.escape(ap.id) : ap.id) + '"]');
