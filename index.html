@@ -1475,6 +1475,150 @@ body:has(.rs-ap-jan) #gvLento{display:none} /* o aviso de internet lenta aparece
 .cartao.brilho{border-color:var(--ouro)!important;box-shadow:0 0 0 4px rgba(201,164,106,.45)!important;transition:box-shadow var(--mov) ease,border-color var(--mov) ease}
 @media (max-width:767px){.ordenando .posicao{display:none}.bt-ord{padding:0 .75em}.bt-ord.pronto{min-width:8.75em}.ord-topo .ord-nome{font-size:.75em}}
 @media (prefers-reduced-motion:reduce){.cartao.brilho{transition:none}}
+/* ================= v1.36 (P2): Perfil dos condomínios (?m=perfil) — tokens do bloco v1.30 ================= */
+.lat-item>svg{flex:none}
+.pc{display:flex;flex-direction:column;overflow-y:auto;flex:1;min-height:0;padding:var(--esp-4) 1.5em var(--esp-6)}
+.pc-larg{display:flex;flex-direction:column;gap:var(--esp-4);width:100%;max-width:64em;margin:0 auto}
+.pc-estreito{max-width:38em}
+.pc .bt,.pc .campo,.pc .bt-link{min-height:max(var(--toque),44px)}
+.pc-voltar{display:inline-flex;align-items:center;gap:var(--esp-1);align-self:flex-start;text-decoration:none;padding:0 .25em 0 0}
+.pc-topo{display:flex;flex-wrap:wrap;gap:var(--esp-3)}
+.pc-card{background:#fff;border:1px solid var(--linha2);border-radius:var(--raio-g);box-shadow:var(--sombra);padding:var(--esp-5)}
+.pc-card h2{margin:0;font-family:Lora,Georgia,serif;font-weight:700;font-size:1.25em;color:var(--azul);line-height:1.2}
+.pc-sec-cab{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--esp-2) var(--esp-4);margin-bottom:var(--esp-3)}
+.pc-sec-cab small{font-size:.8125em;color:var(--suave)}
+.pc-rot{font-size:.6875em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#7C5E24}
+.pc-nota{margin:0 0 var(--esp-3);font-size:.875em;color:var(--suave);line-height:1.45}
+.pc-meta{font-size:.8125em;color:var(--suave);line-height:1.4}
+.pc-barra{height:.375em;background:var(--creme2);border-radius:3px;overflow:hidden;margin:var(--esp-2) 0 var(--esp-1)}
+.pc-barra i{display:block;height:100%;background:var(--ouro);border-radius:3px;transition:width var(--mov) ease}
+.pc-chips{display:flex;flex-wrap:wrap;gap:var(--esp-1) var(--esp-2);margin-top:var(--esp-2)}
+.pc-chip{display:inline-flex;align-items:center;font-size:.75em;font-weight:600;padding:.2em .7em;border-radius:999px;border:1px solid var(--linha);color:var(--suave);background:#fff;white-space:nowrap;line-height:1.5}
+.pc-chip.ok{border-color:#B9DCCB;color:var(--verde);background:var(--verde-fundo)}
+.pc-chip.ouro{border-color:var(--ouro);color:#7C5E24;background:var(--ouro-fundo)}
+.pc-acoes{display:flex;flex-wrap:wrap;gap:var(--esp-2) var(--esp-3);margin-top:var(--esp-3)}
+.pc-acoes-col{flex-direction:column}
+.pc-acoes+.pc-nota{margin-top:var(--esp-3)}
+.pc-acoes-col .bt{width:100%}
+.pc-acoes-mini{margin-top:var(--esp-1);gap:var(--esp-1) var(--esp-5)}
+.pc-acoes-mini .bt-link{display:inline-flex;align-items:center}
+a.bt{text-decoration:none}
+.pc-alerta{display:flex;flex-direction:column;gap:.2em;text-align:left;padding:var(--esp-3) var(--esp-4);border-radius:var(--raio);border:1px solid #E7C9C2;background:var(--vinho-fundo);color:var(--vinho);font-size:.875em;min-height:var(--toque)}
+.pc-alerta b{font-weight:700}
+/* lista */
+.pc-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(19em,1fr));gap:var(--esp-3)}
+.pc-cond{display:flex;flex-direction:column;align-items:stretch;text-align:left;background:#fff;border:1.5px solid var(--linha2);border-radius:var(--raio-g);box-shadow:var(--sombra);padding:var(--esp-4) var(--esp-4) var(--esp-3);color:inherit;min-height:var(--toque);transition:border-color var(--mov) ease}
+.pc-cond:hover{border-color:var(--ouro)}
+.pc-cond.tem{border-color:var(--ouro-claro)}
+.pc-cond-cab{display:flex;align-items:baseline;gap:var(--esp-2)}
+.pc-cond-cab b{font-size:1.0625em;font-weight:600;color:var(--azul);flex:0 1 auto;overflow-wrap:anywhere}
+.pc-cond-cab small{font-size:.75em;font-weight:600;letter-spacing:.08em;color:var(--suave);flex:1}
+.pc-cond-cab svg{flex:none;align-self:center}
+.pc-cond-tx{font-size:.8125em;color:var(--suave)}
+/* página do condomínio */
+.pc-resumo-tx{margin:var(--esp-2) 0 0;font-size:.9375em;color:var(--texto)}
+.pc-resumo-tx b{color:var(--azul)}
+.pc-ap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--esp-3) var(--esp-5);align-items:center;padding:var(--esp-4) 0;border-top:1px solid var(--linha2)}
+.pc-ap-tx{display:flex;flex-direction:column;gap:.3em}
+.pc-ap-perg{font-weight:600;color:var(--azul);font-size:1em;line-height:1.3}
+.pc-ap-val{font-size:1.0625em}
+.pc-ap-val b{color:var(--azul)}
+.pc-de{color:var(--suave);text-decoration:line-through;text-decoration-color:rgba(92,102,128,.5)}
+.pc-vazio{color:var(--suave);font-size:.875em}
+.pc-ap-bts{display:flex;gap:var(--esp-2);flex-wrap:wrap;justify-content:flex-end}
+.pc-esc{border:none;margin:.25em 0 0;padding:0;display:flex;flex-direction:column;gap:var(--esp-1)}
+.pc-esc legend{font-size:.8125em;color:var(--suave);padding:0;margin-bottom:var(--esp-1)}
+.pc-op{display:flex;align-items:center;gap:var(--esp-3);min-height:var(--toque);padding:.35em .75em;border:1.5px solid var(--linha);border-radius:var(--raio);cursor:pointer;background:#fff}
+.pc-op:has(input:checked){border-color:var(--ouro);background:var(--ouro-fundo)}
+.pc-op input{width:1.25em;height:1.25em;accent-color:var(--azul);flex:none;margin:0}
+.pc-op span{display:flex;flex-direction:column}
+.pc-op b{color:var(--azul);font-weight:600}
+.pc-op small{font-size:.75em;color:var(--suave)}
+.pc-adm{margin-top:var(--esp-2);padding:var(--esp-3);border-radius:var(--raio);background:var(--vinho-fundo);color:var(--vinho);font-size:.875em}
+.pc-adm p{margin:0 0 var(--esp-2)}
+.pc-notaitem{padding:var(--esp-3) 0;border-top:1px solid var(--linha2)}
+.pc-notatx{white-space:pre-wrap;margin-top:.25em;line-height:1.5}
+.pc-pubs{display:grid;grid-template-columns:repeat(auto-fit,minmax(18em,1fr));gap:var(--esp-3)}
+.pc-pub{border:1.5px solid var(--linha);border-radius:var(--raio);padding:var(--esp-4);background:var(--creme)}
+.pc-pub.ativo{background:#fff;border-color:var(--ouro-claro)}
+.pc-pub-cab{display:flex;align-items:center;justify-content:space-between;gap:var(--esp-2);flex-wrap:wrap;margin-bottom:var(--esp-2)}
+.pc-pub-cab b{color:var(--azul);font-size:1.0625em}
+.pc-pub .pc-nota{margin-bottom:var(--esp-2)}
+.bt.pc-wa{background:var(--verde)}
+.pc-pisca{animation:pcPisca 1.4s ease 1}
+@keyframes pcPisca{0%,100%{box-shadow:var(--sombra)}30%{box-shadow:0 0 0 4px var(--ouro-claro)}}
+@media (prefers-reduced-motion:reduce){.pc-pisca{animation:none}}
+.pc-det{padding:0}
+.pc-det summary{display:flex;align-items:baseline;gap:var(--esp-3);padding:var(--esp-4) var(--esp-5);min-height:var(--toque);cursor:pointer;list-style:none}
+.pc-det summary::-webkit-details-marker{display:none}
+.pc-det summary::after{content:"";width:.55em;height:.55em;border:solid var(--suave);border-width:0 2px 2px 0;transform:rotate(45deg);margin-left:auto;align-self:center;transition:transform var(--mov)}
+.pc-det[open] summary::after{transform:rotate(-135deg)}
+.pc-det summary small{font-size:.8125em;color:var(--suave)}
+.pc-ficha{margin:0;padding:0 var(--esp-5) var(--esp-4);display:grid;grid-template-columns:repeat(auto-fill,minmax(16em,1fr));gap:0 var(--esp-5)}
+.pc-ficha div{padding:var(--esp-2) 0;border-top:1px solid var(--linha2)}
+.pc-ficha dt{font-size:.8125em;color:var(--suave)}
+.pc-ficha dd{margin:.1em 0 0;font-weight:600;color:var(--azul)}
+.pc-ficha dd.vaz{font-weight:400;color:var(--suave2);font-style:italic}
+.pc-hist{list-style:none;margin:0;padding:0 var(--esp-5) var(--esp-4)}
+.pc-hist li{display:flex;gap:var(--esp-3);align-items:baseline;padding:var(--esp-2) 0;border-top:1px solid var(--linha2);font-size:.9375em}
+.pc-hist li>span:last-child{display:flex;flex-direction:column}
+.pc-hist small{font-size:.8125em;color:var(--suave)}
+.pc-hist-st{flex:none;min-width:6.5em;font-size:.75em;font-weight:700;color:var(--suave)}
+.pc-hist-st.st-APROVADA,.pc-hist-st.st-CONFIRMADA{color:var(--verde)}
+.pc-hist-st.st-RECUSADA{color:var(--vinho)}
+/* Completar eu mesmo */
+.pc-q-prog{display:flex;justify-content:space-between;font-size:.8125em;color:var(--suave)}
+.pc-q-perg{font-size:1.5em!important;margin:.3em 0 .5em!important;text-wrap:balance}
+.pc-q-perg:focus{outline:none}
+.pc-opcs{display:flex;flex-direction:column;gap:var(--esp-2);margin:var(--esp-2) 0}
+.pc-opc{display:flex;align-items:center;min-height:3.625em;padding:0 1.1em;border-radius:var(--raio);border:1.5px solid var(--linha);background:#fff;color:var(--azul);font-weight:600;font-size:1.0625em;text-align:left;transition:border-color var(--mov) ease}
+.pc-opc:hover{border-color:var(--ouro)}
+.pc-opc.ocupado{border-color:var(--ouro);background:var(--ouro-fundo)}
+.pc-sug{display:flex;align-items:center;justify-content:space-between;gap:var(--esp-3);flex-wrap:wrap;margin:0 0 var(--esp-3);padding:var(--esp-3);border-left:3px solid var(--ouro);background:var(--ouro-fundo);border-radius:0 var(--raio) var(--raio) 0}
+.pc-sug span{display:flex;flex-direction:column;font-size:.9375em}
+.pc-sug small{font-size:.8125em;color:var(--suave)}
+.pc-q-pe{display:flex;align-items:center;justify-content:space-between;gap:var(--esp-3);margin-top:var(--esp-5);padding-top:var(--esp-3);border-top:1px solid var(--linha2)}
+.pc-q-pe .bt-link:disabled{opacity:.4;cursor:default}
+.pc-fim{text-align:center}
+.pc-fim p{margin:var(--esp-2) 0}
+.pc-selo{width:4em;height:4em;border-radius:50%;border:2px solid var(--ouro);display:grid;place-items:center;margin:var(--esp-2) auto var(--esp-3)}
+.pc-selo svg{width:1.75em;height:1.75em}
+/* formulário de condomínio novo */
+.pc-form{display:flex;flex-direction:column}
+.pc-lbl{font-size:.875em;font-weight:600;color:var(--suave2);margin:var(--esp-4) 0 var(--esp-1)}
+.pc-lbl:first-child{margin-top:0}
+.pc-lbl small{font-weight:400;color:var(--suave)}
+.pc-cod{text-transform:uppercase;letter-spacing:.2em;font-weight:700;max-width:9em}
+.pc-check{display:flex;gap:var(--esp-3);align-items:flex-start;margin:var(--esp-5) 0 var(--esp-2);cursor:pointer;min-height:var(--toque)}
+.pc-check input{width:1.35em;height:1.35em;margin:.1em 0 0;accent-color:var(--azul);flex:none}
+.pc-check span{display:flex;flex-direction:column;gap:.15em}
+.pc-check b{color:var(--azul)}
+.pc-check small{font-size:.8125em;color:var(--suave);line-height:1.4}
+.pc-erro{margin:var(--esp-2) 0 0;padding:var(--esp-2) var(--esp-3);border-radius:var(--raio);background:var(--vinho-fundo);color:var(--vinho);font-size:.875em;font-weight:600}
+/* perguntas */
+.pc-prob{border-color:#E7C9C2}
+.pc-prob ul{margin:0;padding-left:1.2em;color:var(--vinho);font-size:.875em}
+.pc-perg{list-style:none;margin:0;padding:0}
+.pc-perg li{display:flex;gap:var(--esp-3);padding:var(--esp-2) 0;border-top:1px solid var(--linha2)}
+.pc-perg li>span:last-child{display:flex;flex-direction:column;gap:.1em}
+.pc-perg b{font-weight:500;color:var(--texto)}
+.pc-perg small{font-size:.75em;color:var(--suave)}
+.pc-perg em{font-style:normal;font-size:.75em;font-weight:600;color:var(--vinho)}
+.pc-perg li.off{opacity:.5}
+.pc-ord{flex:none;min-width:2em;font-size:.75em;font-weight:700;color:#7C5E24;padding-top:.2em}
+@media (max-width:1023px){.pc{padding:var(--esp-3) 1.25em var(--esp-6)}.pc-ap{grid-template-columns:minmax(0,1fr)}.pc-ap-bts{justify-content:flex-start}}
+@media (max-width:767px){
+  .pc{padding:var(--esp-2) .875em var(--esp-6)}
+  .pc-card{padding:var(--esp-4)}
+  .pc-grade{grid-template-columns:minmax(0,1fr)}
+  .pc-ap{grid-template-columns:minmax(0,1fr)}
+  .pc-ap-bts{justify-content:stretch}
+  .pc-ap-bts .bt{flex:1 1 auto}
+  .pc-topo .bt{flex:1 1 auto}
+  .pc-acoes>.bt,.pc-acoes>a.bt{flex:1 1 auto}
+  .pc-det summary{padding:var(--esp-4)}
+  .pc-ficha,.pc-hist{padding-left:var(--esp-4);padding-right:var(--esp-4)}
+}
 </style>
 </head>
 <body>
@@ -1615,7 +1759,7 @@ body:has(.rs-ap-jan) #gvLento{display:none} /* o aviso de internet lenta aparece
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.35';
+var VERSAO_SITE = '1.36';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -1973,7 +2117,8 @@ function papelTexto(u) {
 var MODULOS = {
   tarefas: { pode: function () { return true; } },
   ressarcimentos: { pode: function () { return !!(S.portal && S.portal.usuario && S.portal.usuario.master) && temRess(); }, abrir: function (arg) { rsMontar(arg); } },
-  evolucao: { pode: function () { return !!(S.portal && S.portal.usuario && S.portal.usuario.master); }, abrir: function () { evoMontar(); } }
+  evolucao: { pode: function () { return !!(S.portal && S.portal.usuario && S.portal.usuario.master); }, abrir: function () { evoMontar(); } },
+  perfil: { pode: function () { return temPerfil(); }, abrir: function () { pcMontar(); } } // v1.36 (P2): Perfil dos condomínios
 };
 var modAtual = 'tarefas';
 function modDaUrl() {
@@ -1981,6 +2126,7 @@ function modDaUrl() {
 }
 function urlDoMod(id) {
   var q = new URLSearchParams(location.search);
+  if (id !== 'perfil') q.delete('pv'); // v1.36: a tela interna do Perfil não segue para outro módulo
   if (id === 'tarefas') q.delete('m'); else q.set('m', id);
   var t = q.toString();
   return location.pathname + (t ? '?' + t : '');
@@ -3548,7 +3694,7 @@ var API_LEITURA = {}, API_SILENCIOSA = {}, API_PROPRIA = {}, API_COM_FILA = {};
  'tarefas.pedidoPrevia tarefas.pedidoFoto tarefas.catAdmin tarefas.loteListar tarefas.lotePrevia tarefas.mudancas tarefas.insRoteiros ' +
  'tarefas.insOpcoes tarefas.prgListar tarefas.prgOpcoes tarefas.relInicio tarefas.relResumo tarefas.relCumprimento tarefas.relDesempenho ' +
  'tarefas.relBaixar evolucao.lista ressarcimentos.config ressarcimentos.resumo ressarcimentos.revisao ressarcimentos.acompanhamento ' +
- 'ressarcimentos.painel ressarcimentos.batimentoLer').split(' ').forEach(function (a) { API_LEITURA[a] = 1; });
+ 'ressarcimentos.painel ressarcimentos.batimentoLer perfil.lista perfil.condominio perfil.completar perfil.perguntas').split(' ').forEach(function (a) { API_LEITURA[a] = 1; });
 /* Gravam sem botão (marcar como lido, registrar o aparelho): levam idCliente, mas não mexem na tela. */
 ['portal.lerAvisos', 'tarefas.lerAlertas', 'portal.registrarPush'].forEach(function (a) { API_SILENCIOSA[a] = 1; });
 /* Envio de anexos: já tem fila no aparelho, idCliente e retomada próprios (v1.10). */
@@ -4706,6 +4852,8 @@ function htmlMenuPortal() {
     h += '<div class="mp-rot">Só para você</div><div class="mp-lista">' +
       (temRess() ? mpLin('ressarcimentos', ICO_RESS.replace(/#E3C894/g, '#0F2646'), 'Ressarcimentos', nr ? (nr === 1 ? '1 aguardando aprovação' : nr + ' aguardando aprovação') : 'Notas, deslocamentos e reembolsos',
         nr ? '<span class="selo estatico">' + nr + '</span>' : '') : '') +
+      (temPerfil() ? mpLin('perfil', ICO_PERFIL.replace(/#E3C894/g, '#0F2646'), 'Perfil dos condomínios', pcN() ? (pcN() === 1 ? '1 resposta para aprovar' : pcN() + ' respostas para aprovar') : 'Ficha, formulário e respostas',
+        pcN() ? '<span class="selo estatico">' + pcN() + '</span>' : '') : '') + // v1.36 (P2)
       mpLin('evolucao', IC.evolucaoOuro.replace(/#E3C894/g, '#0F2646'), 'Evolução', nd ? (nd === 1 ? '1 para decidir' : nd + ' para decidir') : 'Sugestões e melhorias do app',
         nd ? '<span class="selo estatico">' + nd + '</span>' : '') +
       (g && g.configuracoes ? mpLin('configuracoes', ICO_CFG, 'Configurações', 'Parâmetros gerais e de cada módulo') : '') + '</div>';
@@ -4750,12 +4898,14 @@ function desenharLateralGestao() {
   if (sv) {
     var temEvo = ((S.portal && S.portal.modulos) || []).some(function (m) { return m.id === 'evolucao'; }), nd = evoDecidirN();
     var temRs = temRess(), nr = rsBadge();
-    sv.innerHTML = (temEvo || temRs) ? '<span class="lat-titulo" style="padding-top:1.6em">Só para você</span>' +
+    sv.innerHTML = (temEvo || temRs || temPerfil()) ? '<span class="lat-titulo" style="padding-top:1.6em">Só para você</span>' +
       (temRs ? '<button class="lat-item" data-acao="ressarcimentos">' + ICO_RESS + '<span style="flex:1">Ressarcimentos</span>' + (nr ? '<span class="cont">' + nr + '</span>' : '') + '</button>' : '') +
+      (temPerfil() ? '<button class="lat-item" data-acao="perfil" aria-label="Perfil dos condomínios">' + ICO_PERFIL + '<span style="flex:1">Perfil</span>' + (pcN() ? '<span class="cont">' + pcN() + '</span>' : '') + '</button>' : '') + // v1.36 (P2)
       (temEvo ? '<button class="lat-item" data-acao="evolucao">' + IC.evolucaoOuro +
       '<span style="flex:1">Evolução do app</span>' + (nd ? '<span class="cont">' + nd + '</span>' : '') + '</button>' : '') +
       (S.portal.gestao && S.portal.gestao.configuracoes ? '<button class="lat-item" data-acao="configuracoes">' + ICO_CFG.replace(/#0F2646/g, '#C9A46A') + '<span style="flex:1">Configurações</span></button>' : '') : '';
     if (temRs && !S.rsResumo) rsAtualizarResumo();
+    if (temPerfil() && !S.pcResumo) pcAtualizarN(); // v1.36 (P2): número para aprovar
   }
   var eb = $('emBreve');
   if (eb) eb.innerHTML = emBreve().map(function (m) { return '<div class="lat-breve"><i aria-hidden="true"></i><span>' + esc(m) + '</span></div>'; }).join('');
@@ -8927,6 +9077,7 @@ document.addEventListener('click', function (e) {
     case 'convidar': fecharCamadas(); abrirConvidar(); break;
     case 'pessoas': fecharCamadas(); abrirGestao(); break;
     case 'evolucao': fecharCamadas(); abrirEvolucao(); break;
+    case 'perfil': fecharCamadas(); abrirPerfil(); break; // v1.36 (P2)
     case 'ressarcimentos': fecharCamadas(); abrirRessarcimentos(); break;
     case 'modTarefas': fecharCamadas(); ir('tarefas'); break; // v1.30
     case 'equipe': fecharCamadas(); abrirEquipe(); break;
@@ -9021,6 +9172,523 @@ var RS_CASO = {
   FATURADO: 'Retirada de material faturado', 'REUNIÃO': 'Reunião ou visita'
 };
 var RS_PASSOS = ['Motivo', 'Condomínios', 'Destino', 'Conferir'];
+
+/* ================= Perfil dos condomínios (site 1.36, etapa P2 · motor 0.36.0) =================
+   Módulo integrado ?m=perfil, só o master (V1; o destino final é dentro de Meus condomínios).
+   Telas (parâmetro pv no endereço, para o voltar do navegador funcionar):
+     ''         lista dos condomínios (X de N preenchidos, links ativos, para aprovar)
+     c.CÓDIGO   página do condomínio: resumo, aprovar lado a lado, notas, enviar formulário (WhatsApp/Copiar), ficha
+     k.CÓDIGO   Completar eu mesmo: só as perguntas sem resposta, grava direto na ficha
+     novo       cadastro mínimo de condomínio novo
+     perguntas  perguntas do formulário (como estão na aba PERFIL - PERGUNTAS) + atalhos
+   Leituras (API_LEITURA): perfil.lista, perfil.condominio, perfil.completar, perfil.perguntas. O resto passa por gravar(). */
+var ICO_PERFIL = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E3C894" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16"/><path d="M15 9h4a1 1 0 0 1 1 1v11"/><path d="M3 21h18"/><path d="M8 8h3M8 12h3M8 16h3"/></svg>';
+var PC_WA = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c.4 2.3 2.2 4.1 4.5 4.5l1-1.2 2 .8c-.2 1.2-1.2 1.9-2.4 1.8-3.7-.4-6.6-3.3-7-7-.1-1.2.6-2.2 1.8-2.4l.8 2z"/></svg>';
+var PC_PUB = {
+  Equipe: { nome: 'Equipe do prédio', desc: 'Zelador, porteiro, limpeza e manutenção: as perguntas da ficha.' },
+  Relacionamento: { nome: 'Relacionamento', desc: 'Ex-síndico, conselheiro ou administradora, ao assumir: a ficha + seguro, administradora, prestadores e notas de transição.' }
+};
+var PC = null;
+function temPerfil() { return !!(S.portal && S.portal.usuario && S.portal.usuario.master) && ((S.portal.modulos || []).some(function (m) { return m.id === 'perfil'; })); }
+function pcN() { return (S.pcResumo && S.pcResumo.paraAprovar) || 0; }
+/* Número "para aprovar" do menu: vem do perfil.lista (uma leitura ao abrir o portal e depois de cada decisão). */
+function pcAtualizarN() {
+  if (!temPerfil() || S.pcPedindo) return;
+  S.pcPedindo = true;
+  api('perfil.lista').then(function (r) {
+    S.pcPedindo = false;
+    if (r && r.ok) { S.pcResumo = { paraAprovar: r.paraAprovar || 0 }; if (PC) PC.lista = r; desenharLateralGestao(); pcRotuloCab(); }
+    else if (!S.pcResumo) S.pcResumo = { paraAprovar: 0 };
+  }).catch(function () { S.pcPedindo = false; if (!S.pcResumo) S.pcResumo = { paraAprovar: 0 }; });
+}
+function pcPv() { try { return new URLSearchParams(location.search).get('pv') || ''; } catch (e) { return ''; } }
+function pcUrl(pv) {
+  var q = new URLSearchParams(location.search);
+  q.set('m', 'perfil'); if (pv) q.set('pv', pv); else q.delete('pv');
+  return location.pathname + '?' + q.toString();
+}
+function pcIr(pv, substituir) {
+  try { history[substituir ? 'replaceState' : 'pushState']({ m: 'perfil', pv: pv }, '', pcUrl(pv)); } catch (e) {}
+  pcMostrar(pv);
+}
+function abrirPerfil() {
+  if (modAtual === 'perfil' && $('pc')) { if (pcPv()) pcIr(''); else pcMostrar(''); return; }
+  ir('perfil');
+}
+function pcMontar() {
+  var antes = PC;
+  PC = { vista: null, lista: antes && antes.lista, cond: null, comp: null, perg: null, escolha: {}, admErro: {}, destaque: '' };
+  moduloTela('Perfil dos condomínios', 'Carregando…', '<div class="pc" id="pc"><p class="vazio">Carregando…</p></div>', function (raiz) {
+    raiz.addEventListener('click', pcClique);
+    raiz.addEventListener('change', pcMudanca);
+    raiz.addEventListener('input', pcEntrada);
+    raiz.addEventListener('keydown', pcTecla);
+    pcMostrar(pcPv());
+  });
+}
+window.addEventListener('popstate', function () {
+  if (modAtual === 'perfil' && modDaUrl() === 'perfil' && PC && $('pc') && pcPv() !== PC.vista) pcMostrar(pcPv());
+});
+function pcCab(titulo, sub) {
+  var raiz = $('pc') && $('pc').closest('.janela'); if (!raiz) return;
+  var h = raiz.querySelector('.mod-cab h1'), s = raiz.querySelector('.mod-cab small');
+  if (h && titulo != null) h.textContent = titulo;
+  if (s && sub != null) s.textContent = sub;
+}
+function pcRotuloCab() {
+  if (!PC || PC.vista !== '' || !$('pc')) return;
+  var n = pcN(), L = PC.lista;
+  pcCab(null, n ? (n === 1 ? '1 resposta para aprovar' : n + ' respostas para aprovar') : (L ? L.totalPerguntas + ' perguntas por condomínio' : ''));
+}
+function pcCorpo(html, manterRolagem) {
+  var el = $('pc'); if (!el) return;
+  var topo = el.scrollTop;
+  el.innerHTML = html;
+  el.scrollTop = manterRolagem ? topo : 0;
+}
+function pcMostrar(pv) {
+  if (!PC) return;
+  PC.vista = pv;
+  var m;
+  if (!pv) return pcLista();
+  if ((m = pv.match(/^c\.([A-Z]{4})$/))) return pcCondo(m[1]);
+  if ((m = pv.match(/^k\.([A-Z]{4})$/))) return pcCompletar(m[1]);
+  if (pv === 'novo') return pcNovo();
+  if (pv === 'perguntas') return pcPerguntas();
+  PC.vista = ''; return pcLista();
+}
+function pcVoltar(pv, rot) { return '<button class="bt-link pc-voltar" data-pc="' + esc(pv) + '">' + IC.voltar + '<span>' + esc(rot) + '</span></button>'; }
+function pcBarra(a, b) { var p = b ? Math.round(a / b * 100) : 0; return '<div class="pc-barra" role="img" aria-label="' + a + ' de ' + b + ' preenchidos"><i style="width:' + p + '%"></i></div>'; }
+function pcData(iso, comHora) {
+  if (!iso) return '';
+  var d = new Date(iso); if (isNaN(d)) return '';
+  var o = { timeZone: TZ, day: '2-digit', month: '2-digit' };
+  if (comHora) { o.hour = '2-digit'; o.minute = '2-digit'; }
+  return new Intl.DateTimeFormat('pt-BR', o).format(d).replace(',', '');
+}
+function pcNomeCondo(cod) {
+  var c = PC && PC.lista && PC.lista.condominios.filter(function (x) { return x.codigo === cod; })[0];
+  return c ? c.nome : nomeCondo(cod);
+}
+function pcErro(r) { if (r && (r.codigo === 'REDE' || r.codigo === 'EM_CURSO')) return; /* o gravar() já avisou, com Tentar de novo */ avisar((r && r.mensagem) || 'Não foi possível. Tente de novo.', true); }
+
+/* ---------- Lista ---------- */
+function pcLista() {
+  pcCab('Perfil dos condomínios', 'Carregando…');
+  if (PC.lista) pcDesLista(); else pcCorpo('<p class="vazio">Carregando…</p>');
+  api('perfil.lista').then(function (r) {
+    if (!PC || PC.vista !== '' || !$('pc')) return;
+    if (!r.ok) { if (!PC.lista) pcCorpo('<p class="vazio">' + esc(r.mensagem) + '</p>'); else pcErro(r); return; }
+    PC.lista = r; S.pcResumo = { paraAprovar: r.paraAprovar || 0 }; desenharLateralGestao();
+    pcDesLista(true);
+  });
+}
+function pcDesLista(manter) {
+  var L = PC.lista; if (!L) return;
+  pcRotuloCab();
+  var h = '<div class="pc-larg">';
+  h += '<div class="pc-topo"><button class="bt" data-pc="novo">' + IC.mais.replace('#7A5C27', '#E3C894') + '<span>Condomínio novo</span></button>' +
+    '<button class="bt claro" data-pc="perguntas"><span>Perguntas do formulário</span></button></div>';
+  if ((L.problemas || []).length) h += '<button class="pc-alerta" data-pc="perguntas"><b>' + (L.problemas.length === 1 ? '1 pergunta da planilha está com problema' : L.problemas.length + ' perguntas da planilha estão com problema') +
+    '</b><span>Ficam fora do formulário até serem corrigidas. Toque para ver.</span></button>';
+  h += '<div class="pc-grade">' + L.condominios.map(function (c) {
+    var r = c.resumo, lk = c.links || {}, chips = '';
+    ['Equipe', 'Relacionamento'].forEach(function (p) { if (lk[p]) chips += '<span class="pc-chip ok">' + (p === 'Equipe' ? 'Equipe' : 'Relacionamento') + ' até ' + esc(lk[p].validade.slice(0, 5)) + '</span>'; });
+    if (r.paraAprovar) chips += '<span class="pc-chip ouro">' + r.paraAprovar + ' para aprovar</span>';
+    if (!c.ativo) chips += '<span class="pc-chip">Inativo</span>';
+    return '<button class="pc-cond' + (r.paraAprovar ? ' tem' : '') + '" data-pc="c.' + esc(c.codigo) + '">' +
+      '<span class="pc-cond-cab"><b>' + esc(c.nome) + '</b><small>' + esc(c.codigo) + '</small>' + IC.chevD + '</span>' +
+      pcBarra(r.preenchidos, r.total) +
+      '<span class="pc-cond-tx">' + r.preenchidos + ' de ' + r.total + ' preenchidos' + (r.semResposta ? ' · ' + r.semResposta + ' sem resposta' : '') + '</span>' +
+      (chips ? '<span class="pc-chips">' + chips + '</span>' : '') + '</button>';
+  }).join('') + '</div></div>';
+  pcCorpo(h, manter);
+}
+
+/* ---------- Página do condomínio ---------- */
+function pcCondo(cod, manter) {
+  if (!PC.cond || PC.cond.condominio.codigo !== cod) { PC.cond = null; PC.escolha = {}; PC.admErro = {}; pcCab(pcNomeCondo(cod), 'Carregando…'); pcCorpo('<p class="vazio">Carregando…</p>'); }
+  return api('perfil.condominio', { codigo: cod }).then(function (r) {
+    if (!PC || PC.vista !== 'c.' + cod || !$('pc')) return r;
+    if (!r.ok) { pcCorpo(pcVoltar('', 'Todos os condomínios') + '<p class="vazio">' + esc(r.mensagem) + '</p>'); return r; }
+    var mesmo = PC.cond && PC.cond.condominio.codigo === cod;
+    PC.cond = r;
+    pcDesCondo(manter || mesmo);
+    if (PC.gerarRel === cod) { PC.gerarRel = ''; pcGerarLink('Relacionamento', false); }
+    return r;
+  });
+}
+function pcAgruparPend(c) { // respostas pendentes de um campo, agrupadas pelo valor (a mais nova primeiro)
+  var g = [];
+  c.pendentes.forEach(function (r) {
+    var k = norm(r.valor), x = g.filter(function (y) { return y.k === k; })[0];
+    if (!x) { x = { k: k, valor: r.valor, ids: [], quem: [] }; g.push(x); }
+    x.ids.push(r.id); x.quem.push(r);
+  });
+  return g;
+}
+function pcQuem(lista) {
+  var a = lista.slice(0, 2).map(function (r) { return esc(r.nome) + ' (' + esc(r.posto) + ')'; }).join(', ');
+  return a + (lista.length > 2 ? ' e mais ' + (lista.length - 2) : '') + ' · ' + pcData(lista[0].data, true);
+}
+function pcDesCondo(manter) {
+  var d = PC.cond, c = d.condominio, r = d.resumo, cod = c.codigo;
+  var faltam = Math.max(0, r.total - r.preenchidos);
+  pcCab(c.nome, r.preenchidos + ' de ' + r.total + ' preenchidos' + (r.paraAprovar ? ' · ' + r.paraAprovar + ' para aprovar' : ''));
+  var h = '<div class="pc-larg">' + pcVoltar('', 'Todos os condomínios');
+  // resumo + ações
+  h += '<section class="pc-card pc-resumo"><div class="pc-rot">Perfil' + (c.nomeCompleto ? ' · ' + esc(c.nomeCompleto) : '') + (c.ativo ? '' : ' · <span class="pc-chip">Inativo</span>') + '</div>' +
+    pcBarra(r.preenchidos, r.total) +
+    '<p class="pc-resumo-tx"><b>' + r.preenchidos + ' de ' + r.total + '</b> preenchidos · ' + r.semResposta + ' sem resposta · ' + (r.paraAprovar ? '<b>' + r.paraAprovar + ' para aprovar</b>' : 'nada para aprovar') + '</p>' +
+    '<div class="pc-acoes">' + (faltam ? '<button class="bt" data-pc="k.' + esc(cod) + '"><span>Completar eu mesmo (' + faltam + ')</span></button>' : '') +
+    '<button class="bt claro" data-pcir="pcEnviar"><span>Enviar formulário</span></button>' +
+    (r.paraAprovar ? '<button class="bt claro" data-pcir="pcAprovar"><span>Ver respostas (' + r.paraAprovar + ')</span></button>' : '') + '</div></section>';
+  // para aprovar
+  var comPend = d.campos.filter(function (x) { return x.pendentes.length; });
+  if (comPend.length) {
+    var semConf = comPend.filter(function (x) { return !x.conflito; }).length;
+    h += '<section class="pc-card" id="pcAprovar"><div class="pc-sec-cab"><h2>Respostas para aprovar</h2>' +
+      (semConf ? '<button class="bt ouro" data-pcacao="semConflito"><span>Aprovar todas sem conflito (' + semConf + ')</span></button>' : '') + '</div>' +
+      '<p class="pc-nota">Aprovar grava só aquele campo na ficha (CARACTERÍSTICAS). Respostas iguais ao que já está na ficha e “Não sei” não aparecem aqui.</p>';
+    h += comPend.map(function (x) { return pcHtmlAprovar(x); }).join('') + '</section>';
+  }
+  // notas
+  if (d.notas.length) {
+    h += '<section class="pc-card"><div class="pc-sec-cab"><h2>Notas de transição</h2><small>Só leitura · não vão para a ficha</small></div>' +
+      d.notas.map(function (n) {
+        return '<div class="pc-notaitem"><div class="pc-meta">' + esc(n.pergunta) + ' · ' + esc(n.nome) + ' (' + esc(n.posto) + ') · ' + pcData(n.data, true) + '</div><div class="pc-notatx">' + esc(n.valor) + '</div></div>';
+      }).join('') + '</section>';
+  }
+  // enviar formulário
+  h += '<section class="pc-card" id="pcEnviar"><div class="pc-sec-cab"><h2>Enviar formulário</h2><small>Link sem login · vale ' + (d.prazoDias || 30) + ' dias</small></div><div class="pc-pubs">' +
+    ['Equipe', 'Relacionamento'].map(function (p) { return pcHtmlPublico(p); }).join('') + '</div></section>';
+  // ficha (só leitura) e histórico
+  var aplic = d.campos.filter(function (x) { return x.aplica && (x.publico === 'Equipe' || x.publico === 'Ambos'); });
+  h += '<details class="pc-card pc-det"><summary><h2>Ficha do condomínio</h2><small>' + r.preenchidos + ' de ' + r.total + ' preenchidos</small></summary><dl class="pc-ficha">' +
+    aplic.map(function (x) { return '<div><dt>' + esc(x.pergunta) + '</dt><dd' + (x.atual ? '' : ' class="vaz"') + '>' + esc(x.atual || 'Sem resposta') + '</dd></div>'; }).join('') + '</dl></details>';
+  if (d.historico.length) h += '<details class="pc-card pc-det"><summary><h2>Histórico</h2><small>Últimas ' + d.historico.length + '</small></summary><ul class="pc-hist">' +
+    d.historico.map(function (x) {
+      return '<li><span class="pc-hist-st st-' + esc(norm(x.status).replace(/[^A-Z]/g, '')) + '">' + esc(x.status) + '</span><span><b>' + esc(x.pergunta) + '</b> ' + esc(x.valor || '—') +
+        '<small>' + esc(x.nome) + (x.posto ? ' (' + esc(x.posto) + ')' : '') + ' · ' + pcData(x.data, true) + '</small></span></li>';
+    }).join('') + '</ul></details>';
+  h += '</div>';
+  pcCorpo(h, manter);
+  if (PC.destaque) { var el = $(PC.destaque); PC.destaque = ''; if (el) { el.scrollIntoView({ block: 'start' }); el.classList.add('pc-pisca'); } }
+}
+function pcHtmlAprovar(x) {
+  var g = pcAgruparPend(x), adm = PC.admErro[x.id], esc1 = PC.escolha[x.id];
+  var h = '<div class="pc-ap" data-campo="' + esc(x.id) + '"><div class="pc-ap-tx"><div class="pc-meta">' + esc(x.grupo) + ' · ' + esc(x.campo) + '</div><div class="pc-ap-perg">' + esc(x.pergunta) + '</div>';
+  if (!x.conflito) {
+    var v = g[0];
+    h += '<div class="pc-ap-val">' + (x.atual ? '<span class="pc-de">' + esc(x.atual) + '</span>' : '<span class="pc-vazio">vazio</span>') + ' → <b>' + esc(v.valor) + '</b></div><div class="pc-meta">' + pcQuem(v.quem) + '</div>';
+    if (adm) h += pcHtmlAdm(x, v.ids[0]);
+    h += '</div><div class="pc-ap-bts"><button class="bt claro" data-pcacao="recusar" data-ids="' + esc(x.pendentes.map(function (r) { return r.id; }).join(',')) + '"><span>Recusar</span></button>' +
+      '<button class="bt" data-pcacao="aprovar" data-ids="' + esc(v.ids[0]) + '"><span>Aprovar</span></button></div></div>';
+    return h;
+  }
+  h += '<fieldset class="pc-esc"><legend>Respostas diferentes — escolha uma:</legend>';
+  g.forEach(function (v, i) {
+    h += '<label class="pc-op"><input type="radio" name="esc_' + esc(x.id) + '" value="' + i + '"' + (esc1 === String(i) ? ' checked' : '') + '><span><b>' + esc(v.valor) + '</b><small>' + pcQuem(v.quem) + '</small></span></label>';
+  });
+  if (x.atual) h += '<label class="pc-op"><input type="radio" name="esc_' + esc(x.id) + '" value="manter"' + (esc1 === 'manter' ? ' checked' : '') + '><span><b>Manter o que está na ficha: ' + esc(x.atual) + '</b><small>Recusa as respostas acima</small></span></label>';
+  h += '</fieldset>';
+  if (adm) h += pcHtmlAdm(x, adm.id);
+  var idsTodos = x.pendentes.map(function (r) { return r.id; }).join(',');
+  var alvo = esc1 === 'manter' ? '' : (esc1 != null && g[+esc1] ? g[+esc1].ids[0] : '');
+  h += '</div><div class="pc-ap-bts"><button class="bt claro" data-pcacao="recusar" data-ids="' + esc(idsTodos) + '"><span>Recusar todas</span></button>' +
+    (esc1 === 'manter' ? '<button class="bt" data-pcacao="recusar" data-ids="' + esc(idsTodos) + '"><span>Manter a ficha</span></button>'
+      : '<button class="bt" data-pcacao="aprovar" data-ids="' + esc(alvo) + '"' + (alvo ? '' : ' disabled') + '><span>Aprovar a escolhida</span></button>') + '</div></div>';
+  return h;
+}
+function pcHtmlAdm(x, id) {
+  return '<div class="pc-adm"><p>' + esc(PC.admErro[x.id].motivo) + '. Cadastre-a na FORNECEDORES (APELIDO) para o e-mail dela aparecer na ficha, ou guarde a resposta como nota.</p>' +
+    '<button class="bt claro" data-pcacao="comoNota" data-ids="' + esc(id) + '"><span>Guardar como nota</span></button></div>';
+}
+function pcLinkAtivo(publico) { return ((PC.cond && PC.cond.links) || []).filter(function (l) { return l.ativo && l.publico === publico; })[0] || null; }
+function pcHtmlPublico(p) {
+  var l = pcLinkAtivo(p), info = PC_PUB[p];
+  var antigos = ((PC.cond && PC.cond.links) || []).filter(function (x) { return !x.ativo && x.publico === p; }).length;
+  var h = '<div class="pc-pub' + (l ? ' ativo' : '') + '" id="pcPub' + p + '"><div class="pc-pub-cab"><b>' + esc(info.nome) + '</b>' +
+    (l ? '<span class="pc-chip ok">Ativo até ' + esc(l.validade) + '</span>' : '<span class="pc-chip">Sem link ativo</span>') + '</div><p class="pc-nota">' + esc(info.desc) + '</p>';
+  if (l) {
+    h += '<p class="pc-meta">' + l.acessos + (l.acessos === 1 ? ' acesso' : ' acessos') + ' · ' + l.respostas + (l.respostas === 1 ? ' resposta' : ' respostas') + '</p>' +
+      '<div class="pc-acoes"><a class="bt pc-wa" href="' + esc(l.whatsUrl) + '" target="_blank" rel="noopener">' + PC_WA + '<span>Enviar pelo WhatsApp</span></a>' +
+      '<button class="bt claro" data-pccopiar="' + esc(p) + '">' + IC.copiar + '<span>Copiar link</span></button></div>' +
+      '<div class="pc-acoes pc-acoes-mini"><button class="bt-link" data-pcacao="novoLink" data-pub="' + esc(p) + '">Gerar link novo</button>' +
+      '<button class="bt-link" data-pcacao="desativar" data-id="' + esc(l.id) + '" data-pub="' + esc(p) + '">Desativar</button></div>';
+  } else {
+    h += '<div class="pc-acoes"><button class="bt" data-pcacao="gerarLink" data-pub="' + esc(p) + '"><span>Gerar link</span></button></div>';
+  }
+  if (antigos) h += '<p class="pc-meta">' + (antigos === 1 ? '1 link anterior (desativado ou vencido)' : antigos + ' links anteriores (desativados ou vencidos)') + '</p>';
+  return h + '</div>';
+}
+function pcGerarLink(publico, novo) {
+  var cod = PC.cond.condominio.codigo;
+  return api('perfil.link', { codigo: cod, publico: publico, novo: !!novo }).then(function (r) {
+    if (r.ignorado) return r;
+    if (!r.ok) { pcErro(r); return r; }
+    PC.destaque = 'pcPub' + publico;
+    avisar(r.criado ? 'Link criado. Agora é só enviar.' : 'Este link já estava ativo.');
+    pcAtualizarN();
+    return pcCondo(cod, true);
+  });
+}
+function pcDecidir(acao, ids, b) {
+  var cod = PC.cond.condominio.codigo, lista = ids ? ids.split(',').filter(String) : [];
+  var chamada = acao === 'semConflito' ? api('perfil.aprovarSemConflito', { codigo: cod })
+    : api(acao === 'recusar' ? 'perfil.recusar' : 'perfil.aprovar', { ids: lista, comoNota: acao === 'comoNota' });
+  return chamada.then(function (r) {
+    if (r.ignorado) return;
+    if (!r.ok) { pcErro(r); return; }
+    var campo = b && b.closest('.pc-ap') && b.closest('.pc-ap').getAttribute('data-campo');
+    (r.erros || []).forEach(function (e) {
+      if (e.admNaoCadastrada && campo) PC.admErro[campo] = { id: e.id, motivo: e.motivo.charAt(0).toUpperCase() + e.motivo.slice(1) };
+    });
+    var outros = (r.erros || []).filter(function (e) { return !e.admNaoCadastrada; });
+    if (acao !== 'semConflito' && campo && !(r.erros || []).length) { delete PC.admErro[campo]; delete PC.escolha[campo]; }
+    if (acao === 'semConflito') avisar(r.feitas ? (r.feitas === 1 ? '1 resposta aprovada' : r.feitas + ' respostas aprovadas') + (r.ficaram ? ' · ' + r.ficaram + ' ficaram para você decidir' : '') : 'Nada sem conflito para aprovar.');
+    else if (outros.length) avisar(outros[0].motivo.charAt(0).toUpperCase() + outros[0].motivo.slice(1), true);
+    else if (r.feitas) avisar(acao === 'recusar' ? 'Recusada' : acao === 'comoNota' ? 'Guardada como nota' : 'Aprovada e gravada na ficha');
+    S.pcPedindo = false; pcAtualizarN();
+    pcCondo(cod, true);
+  });
+}
+function pcConfirmar(titulo, sub, texto, rotulo, fn) {
+  var h = '<div class="jan-corpo"><p class="cartao-meta" style="margin:0">' + esc(texto) + '</p><div class="conf-rodape">' +
+    '<button class="bt claro" type="button" data-acao="fecharJan">Cancelar</button><button class="bt" type="button" id="pcConfOk"><span>' + esc(rotulo) + '</span></button></div></div>';
+  abrirJanela(titulo, sub, h, 'centro', function (raiz) {
+    var ok = raiz.querySelector('#pcConfOk');
+    ok.addEventListener('click', function () {
+      if (ok.hasAttribute('aria-busy')) return;
+      Promise.resolve(fn()).then(function (r) { if (r && r.ok) fecharCamadas(); });
+    });
+    setTimeout(function () { try { ok.focus(); } catch (e) {} }, 50);
+  });
+}
+
+/* ---------- Completar eu mesmo ---------- */
+function pcCompletar(cod) {
+  pcCab(pcNomeCondo(cod), 'Completar eu mesmo · carregando…');
+  pcCorpo('<p class="vazio">Carregando…</p>');
+  api('perfil.completar', { codigo: cod }).then(function (r) {
+    if (!PC || PC.vista !== 'k.' + cod || !$('pc')) return;
+    if (!r.ok) { pcCorpo(pcVoltar('c.' + cod, 'Voltar ao condomínio') + '<p class="vazio">' + esc(r.mensagem) + '</p>'); return; }
+    PC.comp = { cod: cod, nome: r.condominio.nome, perguntas: r.perguntas, valores: r.valores || {}, id: null, feitos: {}, pulados: {}, fim: false };
+    pcCompPassar(null);
+  });
+}
+function pcCompAplica(p) {
+  var c = p.mostrarSe; if (!c) return true;
+  var C = PC.comp, v = C.valores[c.campo];
+  if (v === undefined || v === null || String(v).trim() === '') return true;
+  var a = parseFloat(String(v).replace(',', '.')), b = parseFloat(String(c.valor).replace(',', '.')), num = !isNaN(a) && !isNaN(b);
+  switch (c.op) {
+    case '=': return num ? a === b : norm(v) === norm(c.valor);
+    case '!=': return num ? a !== b : norm(v) !== norm(c.valor);
+    case '>': return num && a > b;
+    case '<': return num && a < b;
+    case '>=': return num && a >= b;
+    case '<=': return num && a <= b;
+  }
+  return true;
+}
+function pcCompLista() { return PC.comp.perguntas.filter(pcCompAplica); }
+function pcCompPassar(depoisDe) {
+  var C = PC.comp, L = pcCompLista(), k = depoisDe ? C.perguntas.indexOf(C.perguntas.filter(function (p) { return p.id === depoisDe; })[0]) : -1;
+  var prox = L.filter(function (p) { return C.perguntas.indexOf(p) > k && !C.feitos[p.id]; })[0];
+  C.id = prox ? prox.id : null; C.fim = !prox;
+  pcDesComp(true);
+}
+function pcDesComp() {
+  var C = PC.comp, L = pcCompLista(), nFeitos = Object.keys(C.feitos).length;
+  pcCab(C.nome, 'Completar eu mesmo · grava direto na ficha');
+  var h = '<div class="pc-larg pc-estreito">' + pcVoltar('c.' + C.cod, 'Voltar ao condomínio');
+  if (C.fim) {
+    var np = Object.keys(C.pulados).filter(function (id) { return !C.feitos[id]; }).length;
+    h += '<section class="pc-card pc-fim"><div class="pc-selo">' + IC.checkOuro + '</div><h2>' + (nFeitos ? 'Pronto' : 'Nada gravado') + '</h2>' +
+      '<p>' + (nFeitos ? (nFeitos === 1 ? '1 campo gravado' : nFeitos + ' campos gravados') + ' na ficha do ' + esc(C.nome) + ', com o seu nome no histórico.' : 'Nenhum campo foi preenchido agora.') + '</p>' +
+      (np ? '<p class="pc-nota">' + (np === 1 ? 'O que você pulou continua' : 'Os ' + np + ' que você pulou continuam') + ' como sem resposta.</p>' : '') +
+      '<div class="pc-acoes" style="justify-content:center">' + (np ? '<button class="bt claro" data-pcacao="compDeNovo"><span>Ver os pulados</span></button>' : '') +
+      '<button class="bt" data-pc="c.' + esc(C.cod) + '"><span>Voltar ao condomínio</span></button></div></section></div>';
+    pcCorpo(h); return;
+  }
+  var p = C.perguntas.filter(function (x) { return x.id === C.id; })[0], i = L.indexOf(p);
+  h += '<section class="pc-card pc-q"><div class="pc-q-prog"><span>' + (i + 1) + ' de ' + L.length + ' sem resposta</span><span>' + (nFeitos ? nFeitos + ' gravado' + (nFeitos === 1 ? '' : 's') : '') + '</span></div>' +
+    '<div class="pc-barra"><i style="width:' + Math.round(i / Math.max(1, L.length) * 100) + '%"></i></div>' +
+    '<div class="pc-rot" style="margin-top:1em">' + esc(p.grupo || '') + '</div><h2 class="pc-q-perg" tabindex="-1">' + esc(p.pergunta) + '</h2>' + (p.ajuda ? '<p class="pc-nota">' + esc(p.ajuda) + '</p>' : '');
+  if (p.sugestao) h += '<div class="pc-sug"><span>Resposta da equipe aguardando você: <b>' + esc(p.sugestao.valor) + '</b><small>' + esc(p.sugestao.nome) + ' (' + esc(p.sugestao.posto) + ') · ' + pcData(p.sugestao.data, true) + '</small></span>' +
+    '<button class="bt ouro" data-pcsalvar="' + esc(p.sugestao.valor) + '"><span>Usar esta</span></button></div>';
+  if (p.tipo === 'Lista') h += '<div class="pc-opcs">' + p.opcoes.map(function (o) { return '<button class="pc-opc" data-pcsalvar="' + esc(o.rotulo) + '"><span>' + esc(o.rotulo) + '</span></button>'; }).join('') + '</div>';
+  else {
+    var campo = p.tipo === 'Texto longo' ? '<textarea class="campo" id="pcResp" rows="4" maxlength="2000"></textarea>'
+      : '<input class="campo" id="pcResp"' + (p.tipo === 'Número' ? ' inputmode="decimal"' : p.tipo === 'Data' ? ' type="date" min="1990-01-01" max="2100-12-31"' : ' maxlength="200"') + ' autocomplete="off">';
+    h += '<label class="sr" for="pcResp">' + esc(p.pergunta) + '</label>' + campo + '<div class="pc-acoes"><button class="bt" data-pcacao="compSalvar"><span>Salvar</span></button></div>';
+  }
+  h += '<div class="pc-q-pe"><button class="bt-link" data-pcacao="compVoltar"' + (i > 0 ? '' : ' disabled') + '>Anterior</button><button class="bt claro" data-pcacao="compPular"><span>Pular</span></button></div></section></div>';
+  pcCorpo(h);
+  var foco = $('pcResp') || document.querySelector('#pc .pc-q-perg');
+  if (foco) try { foco.focus({ preventScroll: true }); } catch (e) {}
+}
+function pcCompSalvar(valor) {
+  var C = PC.comp, p = C.perguntas.filter(function (x) { return x.id === C.id; })[0];
+  if (!p) return;
+  var v = String(valor == null ? '' : valor).trim();
+  if (p.tipo === 'Data' && /^\d{4}-\d{2}-\d{2}$/.test(v)) v = v.slice(8, 10) + '/' + v.slice(5, 7) + '/' + v.slice(0, 4);
+  if (!v) { avisar('Escreva a resposta ou toque em Pular.', true); return; }
+  api('perfil.salvarCampo', { codigo: C.cod, id: p.id, valor: v }).then(function (r) {
+    if (r.ignorado || !PC || PC.comp !== C) return;
+    if (!r.ok) { pcErro(r); return; }
+    C.feitos[p.id] = r.valor; delete C.pulados[p.id];
+    var o = p.tipo === 'Lista' ? p.opcoes.filter(function (x) { return x.rotulo === r.valor; })[0] : null;
+    C.valores[p.campo] = o ? o.valor : r.valor; // vale para as condições (ex.: 0 elevadores esconde a marca)
+    PC.cond = null; S.pcPedindo = false; pcAtualizarN();
+    setTimeout(function () { if (PC && PC.comp === C) pcCompPassar(p.id); }, 250);
+  });
+}
+
+/* ---------- Condomínio novo ---------- */
+function pcNovo() {
+  pcCab('Condomínio novo', 'Cadastro mínimo · cria a linha na CARACTERÍSTICAS');
+  PC.novo = PC.novo || { nome: '', curto: '', codigo: '', codigoMexido: false, ativo: false };
+  var n = PC.novo;
+  var h = '<div class="pc-larg pc-estreito">' + pcVoltar('', 'Todos os condomínios') + '<form class="pc-card pc-form" id="pcNovoForm" novalidate>' +
+    '<label class="pc-lbl" for="pcNome">Nome completo do condomínio</label><input class="campo" id="pcNome" maxlength="80" autocomplete="off" placeholder="Ex.: Residencial Jardim Aquarius" value="' + esc(n.nome) + '">' +
+    '<label class="pc-lbl" for="pcCurto">Nome curto <small>(como aparece no app e nos e-mails)</small></label><input class="campo" id="pcCurto" maxlength="30" autocomplete="off" placeholder="Ex.: Jardim Aquarius" value="' + esc(n.curto) + '">' +
+    '<label class="pc-lbl" for="pcCod">Código <small>(4 letras, não muda depois)</small></label><input class="campo pc-cod" id="pcCod" maxlength="4" autocomplete="off" autocapitalize="characters" placeholder="JDAQ" value="' + esc(n.codigo) + '">' +
+    '<label class="pc-check"><input type="checkbox" id="pcAtivo"' + (n.ativo ? ' checked' : '') + '><span><b>Já está ativo</b><small>Deixe desmarcado durante a transição: as rotinas automáticas (boletos, contas, relatórios) ainda não incluem o condomínio.</small></span></label>' +
+    '<p class="pc-erro" id="pcNovoErro" role="alert" hidden></p>' +
+    '<div class="pc-acoes pc-acoes-col"><button class="bt" type="button" data-pcacao="novoSalvar" data-depois="eu"><span>Salvar e responder eu mesmo</span></button>' +
+    '<button class="bt claro" type="button" data-pcacao="novoSalvar" data-depois="enviar"><span>Salvar e enviar ao contato principal</span></button></div>' +
+    '<p class="pc-nota">O contato principal (ex-síndico, conselheiro ou administradora) recebe o link de Relacionamento. Tudo o que ele responder passa por você antes de valer.</p></form></div>';
+  pcCorpo(h);
+}
+function pcSugerirCodigo(curto) {
+  var p = norm(curto).replace(/[^A-Z ]/g, '').split(' ').filter(function (x) { return x && ['DE', 'DO', 'DA', 'DOS', 'DAS', 'E'].indexOf(x) < 0; });
+  if (!p.length) return '';
+  var s = p.length === 1 ? p[0].slice(0, 4) : p.length === 2 ? p[0].slice(0, 2) + p[1].slice(0, 2) : p.map(function (x) { return x[0]; }).join('').slice(0, 4);
+  return (s + p.join('')).slice(0, 4);
+}
+function pcNovoSalvar(depois) {
+  var n = PC.novo, er = $('pcNovoErro');
+  var falha = function (m, id) { er.textContent = m; er.hidden = false; if (id && $(id)) $(id).focus(); };
+  er.hidden = true;
+  if (n.nome.trim().length < 3) return falha('Escreva o nome completo do condomínio.', 'pcNome');
+  if (n.curto.trim().length < 2) return falha('Escreva o nome curto.', 'pcCurto');
+  if (!/^[A-Z]{4}$/.test(n.codigo)) return falha('O código tem 4 letras (ex.: JDAQ).', 'pcCod');
+  if (PC.lista && PC.lista.condominios.some(function (c) { return c.codigo === n.codigo; })) return falha('Já existe um condomínio com o código ' + n.codigo + '.', 'pcCod');
+  api('perfil.condominioNovo', { nome: n.nome.trim(), nomeCurto: n.curto.trim(), codigo: n.codigo, ativo: !!n.ativo }).then(function (r) {
+    if (r.ignorado) return;
+    if (!r.ok) { if (r.codigo !== 'REDE' && r.codigo !== 'EM_CURSO') falha(r.mensagem); return; }
+    avisar(r.nome + ' cadastrado (linha ' + r.linha + ' da CARACTERÍSTICAS)');
+    PC.novo = null; PC.lista = null; PC.cond = null;
+    if (depois === 'enviar') { PC.gerarRel = r.codigo; PC.destaque = 'pcEnviar'; pcIr('c.' + r.codigo, true); }
+    else pcIr('k.' + r.codigo, true);
+  });
+}
+
+/* ---------- Perguntas do formulário ---------- */
+function pcPerguntas() {
+  pcCab('Perguntas do formulário', 'Carregando…');
+  pcCorpo('<p class="vazio">Carregando…</p>');
+  api('perfil.perguntas').then(function (r) {
+    if (!PC || PC.vista !== 'perguntas' || !$('pc')) return;
+    if (!r.ok) { pcCorpo(pcVoltar('', 'Todos os condomínios') + '<p class="vazio">' + esc(r.mensagem) + '</p>'); return; }
+    PC.perg = r; pcDesPerguntas();
+  });
+}
+function pcDesPerguntas(manter) {
+  var r = PC.perg, ativas = r.perguntas.filter(function (p) { return p.ativa && !p.problema; }).length;
+  pcCab('Perguntas do formulário', ativas + ' ativas · ' + r.perguntas.length + ' na planilha');
+  var h = '<div class="pc-larg">' + pcVoltar('', 'Todos os condomínios') +
+    '<section class="pc-card"><p class="pc-nota" style="margin-top:0">' + esc(r.aviso) + '</p><div class="pc-acoes">' +
+    '<a class="bt" href="' + esc(r.urlPlanilha) + '" target="_blank" rel="noopener"><span>Abrir a planilha</span></a>' +
+    '<button class="bt claro" data-pcacao="recarregar"><span>Recarregar</span></button>' +
+    '<button class="bt claro" data-pcacao="config"><span>Configurações do formulário</span></button></div>' +
+    '<p class="pc-meta">Configurações: validade do link, WhatsApp e nome do síndico, postos e mensagens de envio.</p></section>';
+  if ((r.problemas || []).length) h += '<section class="pc-card pc-prob"><h2>Com problema na planilha</h2><p class="pc-nota">Estas linhas ficam fora do formulário até serem corrigidas.</p><ul>' +
+    r.problemas.map(function (x) { return '<li><b>' + esc(x.id || '?') + '</b> ' + esc(x.problema || x.motivo || '') + '</li>'; }).join('') + '</ul></section>';
+  var grupos = [];
+  r.perguntas.slice().sort(function (a, b) { return (a.ordem || 0) - (b.ordem || 0); }).forEach(function (p) {
+    var g = grupos.filter(function (x) { return x.nome === (p.grupo || 'Sem grupo'); })[0];
+    if (!g) { g = { nome: p.grupo || 'Sem grupo', itens: [] }; grupos.push(g); }
+    g.itens.push(p);
+  });
+  h += grupos.map(function (g) {
+    return '<section class="pc-card"><div class="pc-sec-cab"><h2>' + esc(g.nome) + '</h2><small>' + g.itens.length + '</small></div><ol class="pc-perg">' +
+      g.itens.map(function (p) {
+        var cond = p.mostrarSe ? ' · só se ' + esc(p.mostrarSe.campo + ' ' + p.mostrarSe.op + ' ' + p.mostrarSe.valor) : '';
+        return '<li class="' + (!p.ativa ? 'off' : '') + (p.problema ? ' prob' : '') + '"><span class="pc-ord">' + esc(p.ordem) + '</span><span><b>' + esc(p.pergunta) + '</b><small>' +
+          esc(p.publico) + ' · ' + esc(norm(p.destino) === 'NOTA' ? 'Nota (não vai para a ficha)' : p.destino) + ' · ' + esc(p.tipo || '?') + cond + (p.ativa ? '' : ' · Desligada') + '</small>' +
+          (p.problema ? '<em>' + esc(p.problema) + '</em>' : '') + '</span></li>';
+      }).join('') + '</ol></section>';
+  }).join('') + '</div>';
+  pcCorpo(h, manter);
+}
+
+/* ---------- Eventos do módulo ---------- */
+function pcClique(e) {
+  var b = e.target.closest('button, a[data-pc]');
+  if (!b || b.disabled) return;
+  if (b.hasAttribute('data-pc')) { e.preventDefault(); pcIr(b.getAttribute('data-pc')); return; }
+  if (b.hasAttribute('data-pcir')) { var alvo = $(b.getAttribute('data-pcir')); if (alvo) alvo.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); return; }
+  if (b.hasAttribute('data-pccopiar')) { var l = pcLinkAtivo(b.getAttribute('data-pccopiar')); if (l) copiarTexto(l.url, 'Link copiado'); return; }
+  if (b.hasAttribute('data-pcsalvar')) { pcCompSalvar(b.getAttribute('data-pcsalvar')); return; }
+  var a = b.getAttribute('data-pcacao'), C = PC.comp;
+  switch (a) {
+    case 'aprovar': case 'recusar': case 'comoNota': if (b.getAttribute('data-ids')) pcDecidir(a, b.getAttribute('data-ids'), b); break;
+    case 'semConflito': pcDecidir('semConflito', '', b); break;
+    case 'gerarLink': pcGerarLink(b.getAttribute('data-pub'), false); break;
+    case 'novoLink':
+      var pub = b.getAttribute('data-pub');
+      pcConfirmar('Gerar link novo?', PC_PUB[pub].nome + ' · ' + PC.cond.condominio.nome, 'O link atual deixa de funcionar na hora. Quem abrir o antigo verá a tela de link inativo, com o botão para falar com você.', 'Gerar link novo',
+        function () { return pcGerarLink(pub, true); });
+      break;
+    case 'desativar':
+      var idL = b.getAttribute('data-id'), pubD = b.getAttribute('data-pub');
+      pcConfirmar('Desativar o link?', PC_PUB[pubD].nome + ' · ' + PC.cond.condominio.nome, 'O link para de funcionar na hora. As respostas que já chegaram continuam aqui.', 'Desativar',
+        function () {
+          return api('perfil.desativarLink', { id: idL }).then(function (r) {
+            if (r.ignorado) return r;
+            if (!r.ok) { pcErro(r); return r; }
+            avisar('Link desativado'); pcAtualizarN(); pcCondo(PC.cond.condominio.codigo, true); return r;
+          });
+        });
+      break;
+    case 'compSalvar': var cp = $('pcResp'); if (cp) pcCompSalvar(cp.value); break;
+    case 'compPular': if (C) { C.pulados[C.id] = 1; pcCompPassar(C.id); } break;
+    case 'compVoltar':
+      if (C) { var L = pcCompLista(), i = L.indexOf(C.perguntas.filter(function (x) { return x.id === C.id; })[0]); var ant = L.slice(0, Math.max(0, i)).filter(function (p) { return !C.feitos[p.id]; }).pop(); if (ant) { C.id = ant.id; pcDesComp(); } }
+      break;
+    case 'compDeNovo': if (C) { C.pulados = {}; C.fim = false; pcCompPassar(null); } break;
+    case 'novoSalvar': pcNovoSalvar(b.getAttribute('data-depois')); break;
+    case 'recarregar':
+      api('perfil.recarregar').then(function (r) { if (r.ignorado) return; if (!r.ok) { pcErro(r); return; } PC.lista = r; avisar('Perguntas recarregadas da planilha'); pcPerguntas(); });
+      break;
+    case 'config': abrirConfiguracoes('perfil'); break;
+  }
+}
+function pcMudanca(e) {
+  var t = e.target;
+  if (t.name && t.name.indexOf('esc_') === 0) { PC.escolha[t.name.slice(4)] = t.value; var ap = t.closest('.pc-ap'), x = PC.cond.campos.filter(function (c) { return c.id === t.name.slice(4); })[0]; if (ap && x) { ap.outerHTML = pcHtmlAprovar(x); var n = document.querySelector('#pc input[name="' + t.name + '"][value="' + t.value + '"]'); if (n) n.focus(); } return; }
+  if (t.id === 'pcAtivo' && PC.novo) PC.novo.ativo = t.checked;
+}
+function pcEntrada(e) {
+  var t = e.target, n = PC.novo;
+  if (!n || !/^pc(Nome|Curto|Cod)$/.test(t.id)) return;
+  if (t.id === 'pcNome') {
+    n.nome = t.value;
+    if (!n.curtoMexido) { n.curto = t.value.replace(/^(condom[ií]nio|residencial|edif[ií]cio|conjunto)\s+/i, '').slice(0, 30); $('pcCurto').value = n.curto; }
+  }
+  if (t.id === 'pcCurto') { n.curto = t.value; n.curtoMexido = true; }
+  if (t.id === 'pcCod') { var v = norm(t.value).replace(/[^A-Z]/g, '').slice(0, 4); if (t.value !== v) t.value = v; n.codigo = v; n.codigoMexido = !!v; }
+  if (t.id !== 'pcCod' && !n.codigoMexido) { n.codigo = pcSugerirCodigo(n.curto); $('pcCod').value = n.codigo; }
+  $('pcNovoErro').hidden = true;
+}
+function pcTecla(e) {
+  if (e.key !== 'Enter' || e.shiftKey || e.target.tagName !== 'INPUT') return;
+  if (e.target.id === 'pcResp') { e.preventDefault(); var b = document.querySelector('#pc [data-pcacao="compSalvar"]'); if (b) b.click(); }
+  else if (/^pc(Nome|Curto|Cod)$/.test(e.target.id)) e.preventDefault();
+}
 
 function temRess() { return ((S.portal && S.portal.modulos) || []).some(function (m) { return m.id === 'ressarcimentos'; }); }
 function rsBadge() { return (S.rsResumo && S.rsResumo.emRevisao) || 0; }

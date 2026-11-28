@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0F2646">
+<title>Perfil do condomínio · Carvalho &amp; Abreu</title>
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* Perfil do condomínio — formulário sem login (site 1.36, etapa P2). Uma pergunta por tela, para o celular.
+   Mesma marca do portal: azul-marinho, dourado só de acento, creme de fundo; Lora nos títulos, Inter no texto. */
+:root{
+  --azul:#0F2646; --azul2:#16325C; --ouro:#C9A46A; --ouro-claro:#E3C894; --ouro-fundo:#F3E6CC; --ouro-txt:#7C5E24;
+  --creme:#F8F4EC; --creme2:#F1EBDD; --linha:#E2DACA; --linha-bt:#CFC6B3;
+  --texto:#1E2B45; --suave:#5C6680; --verde:#1E7B5A; --verde-fundo:#E1F3EA; --vinho:#8A2E2E; --vinho-fundo:#F6E9E6;
+  --raio:.875rem; --toque:3.625rem; --mov:.18s;
+  --topo-seg:env(safe-area-inset-top,0px); --baixo-seg:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-reduced-motion:reduce){:root{--mov:0s}}
+*{box-sizing:border-box;min-width:0}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--texto);font:17px/1.5 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--ouro);outline-offset:2px}
+h1:focus{outline:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+h1,h2{font-family:Lora,Georgia,serif;font-weight:700;color:var(--azul);margin:0;line-height:1.2;text-wrap:balance}
+
+/* Moldura: no celular ocupa a tela; no computador vira um cartão centralizado */
+.app{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;background:var(--creme);max-width:34rem;margin:0 auto}
+@media (min-width:768px){
+  body{background:#EDE6D6}
+  .app{min-height:0;height:min(52rem,calc(100dvh - 4rem));margin:2rem auto;border-radius:1.5rem;overflow:hidden;box-shadow:0 18px 48px rgba(15,38,70,.16)}
+}
+/* Faixa da marca (topo do formulário) */
+.faixa{background:var(--azul);color:#fff;padding:calc(.75rem + var(--topo-seg)) 1.125rem .75rem;display:flex;align-items:center;gap:.75rem;border-bottom:2px solid var(--ouro);flex:none}
+.faixa img{width:2.5rem;height:2.5rem;border-radius:50%;background:#fff;border:2px solid var(--ouro);flex:none}
+.faixa .t{line-height:1.25;flex:1}
+.faixa .t b{display:block;font:700 1.0625rem Lora,Georgia,serif}
+.faixa .t span{font-size:.8125rem;color:var(--ouro-claro)}
+/* Progresso */
+.prog{flex:none;padding:.75rem 1.125rem 0}
+.barra{height:.375rem;background:#E6DECD;border-radius:3px;overflow:hidden}
+.barra i{display:block;height:100%;background:var(--ouro);border-radius:3px;transition:width var(--mov) ease}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:.5rem;font-size:.8125rem;color:var(--suave);padding-top:.375rem;min-height:1.6rem}
+.salvo{display:inline-flex;align-items:center;gap:.35rem;font-weight:600}
+.salvo.ok{color:var(--verde)}
+.salvo.fila{color:var(--ouro-txt)}
+.salvo.erro{color:var(--vinho)}
+.salvo .gira{width:.8rem;height:.8rem;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:gira .8s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.salvo .gira{animation-duration:2.4s}}
+/* Corpo e rodapé */
+.corpo{flex:1;overflow-y:auto;padding:1.25rem 1.125rem 1.5rem;-webkit-overflow-scrolling:touch}
+.corpo.entra{animation:entra var(--mov) ease}
+@keyframes entra{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.pe{flex:none;display:flex;gap:.625rem;padding:.75rem 1.125rem calc(.875rem + var(--baixo-seg));border-top:1px solid var(--linha);background:var(--creme)}
+.grupo{font-size:.8125rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ouro-txt)}
+.perg{font-size:1.5rem;margin:.375rem 0 .5rem}
+.ajuda{color:var(--suave);font-size:.9375rem;margin:0 0 1rem}
+.p{margin:0 0 .875rem}
+.miudo{font-size:.8125rem;color:var(--suave)}
+/* Botões */
+.bt{min-height:3rem;padding:0 1.125rem;border-radius:.75rem;border:1.5px solid var(--linha-bt);background:#fff;color:var(--azul);font-weight:600;font-size:1rem;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;flex:1;transition:background var(--mov),border-color var(--mov)}
+.bt.pri{background:var(--azul);border-color:var(--azul);color:#fff}
+.bt.pri:disabled{background:#8C96A8;border-color:#8C96A8;opacity:1;cursor:default}
+.bt.so{flex:none}
+.bt.largo{width:100%;flex:none}
+.bt:active:not(:disabled){transform:translateY(1px)}
+.opc{display:flex;align-items:center;justify-content:space-between;gap:.75rem;width:100%;min-height:var(--toque);margin:0 0 .625rem;padding:.5rem 1.125rem;border:1.5px solid var(--linha-bt);border-radius:var(--raio);background:#fff;color:var(--azul);font-weight:600;font-size:1.125rem;text-align:left;transition:border-color var(--mov),background var(--mov)}
+.opc:hover{border-color:var(--ouro)}
+.opc[aria-pressed="true"]{border:2px solid var(--ouro);background:var(--ouro-fundo)}
+.opc[aria-pressed="true"]::after{content:"";width:.5rem;height:.95rem;border:solid var(--ouro-txt);border-width:0 .18rem .18rem 0;transform:rotate(45deg) translate(-.1rem,-.1rem);flex:none}
+.opc .atual{font-size:.75rem;font-weight:600;color:var(--suave);margin-left:auto}
+.postos{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.postos .opc{margin:0;font-size:1rem;min-height:3.25rem;padding:.4rem .875rem}
+.campo{width:100%;min-height:3.25rem;border:1.5px solid var(--linha-bt);border-radius:.75rem;padding:.65rem 1rem;font-size:1.0625rem;background:#fff;color:var(--texto)}
+.campo:focus{border-color:var(--ouro);outline:none;box-shadow:0 0 0 3px rgba(201,164,106,.35)}
+textarea.campo{min-height:9rem;resize:vertical;line-height:1.5}
+.rot{display:block;font-size:.875rem;font-weight:600;color:var(--suave);margin:1rem 0 .375rem}
+.erro-campo{color:var(--vinho);font-size:.875rem;font-weight:600;margin:.5rem 0 0}
+.passo{display:flex;align-items:center;gap:.625rem;margin:.25rem 0 1rem}
+.passo button{width:3.5rem;height:3.5rem;border-radius:50%;border:1.5px solid var(--linha-bt);background:#fff;color:var(--azul);font-size:1.625rem;font-weight:600;flex:none;display:grid;place-items:center;padding:0}
+.passo .campo{text-align:center;font:700 1.75rem Lora,Georgia,serif;color:var(--azul)}
+/* Conferência dos preenchidos */
+.conf{list-style:none;margin:0;padding:0}
+.conf li{display:flex;align-items:center;gap:.75rem;padding:.75rem 0;border-bottom:1px solid var(--linha)}
+.conf .l{flex:1;font-size:.875rem;color:var(--suave);line-height:1.35}
+.conf .l b{display:block;color:var(--azul);font-size:1rem;margin-top:.15rem}
+.conf .l b.mudou::before{content:"Corrigido: ";font-weight:600;color:var(--ouro-txt)}
+.conf .bt{flex:none;min-height:2.75rem;font-size:.9375rem;padding:0 .875rem}
+.selo-grande{width:5rem;height:5rem;border-radius:50%;border:2px solid var(--ouro);display:grid;place-items:center;margin:2rem auto 1.25rem;color:var(--ouro-txt)}
+.centro{text-align:center}
+.aviso{margin:0 0 1rem;padding:.75rem .875rem;border-radius:.75rem;font-size:.9375rem;background:var(--ouro-fundo);color:#5C4300;border:1px solid #E9D48C}
+.aviso.erro{background:var(--vinho-fundo);color:var(--vinho);border-color:#E7C9C2}
+.aviso .bt{margin-top:.625rem}
+.ass{font-size:.875rem;color:var(--suave);border-left:2px solid var(--ouro);padding-left:.75rem;margin:1.25rem 0 0}
+/* Marca grande (abertura e link expirado) */
+.marca{background:radial-gradient(120% 90% at 50% 0%,#1A3A66 0%,var(--azul) 70%);color:#fff;text-align:center;padding:calc(2.5rem + var(--topo-seg)) 1.25rem 2rem;border-bottom:2px solid var(--ouro);flex:none}
+.marca img{width:5.5rem;height:5.5rem;border-radius:50%;background:#fff;border:3px solid var(--ouro)}
+.marca .n{font:700 1.5rem/1.1 Lora,Georgia,serif;margin-top:.75rem;letter-spacing:.01em}
+.marca .s{font-size:.8125rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ouro-claro);margin-top:.375rem}
+.rodape{flex:none;text-align:center;font-size:.8125rem;line-height:1.5;color:var(--suave);padding:1rem 1.125rem calc(1.125rem + var(--baixo-seg));border-top:1px solid var(--linha)}
+.wa svg{flex:none}
+.carregando{display:flex;flex-direction:column;align-items:center;gap:1rem;padding-top:3rem;color:var(--suave)}
+.carregando i{width:2rem;height:2rem;border-radius:50%;border:3px solid var(--linha);border-top-color:var(--ouro);animation:gira .9s linear infinite}
+</style>
+</head>
+<body>
+<main class="app" id="app" aria-live="polite">
+  <div class="marca"><img src="logo.png" alt="" width="88" height="88"><div class="n">Carvalho &amp; Abreu</div><div class="s">Sindicância Profissional</div></div>
+  <div class="corpo"><div class="carregando"><i aria-hidden="true"></i><span>Abrindo o formulário…</span></div></div>
+</main>
+<div class="sr" role="status" id="falar"></div>
+<script>
+(function () {
+'use strict';
+/* ================= Configuração ================= */
+var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
+var VERSAO = '1.36';
+var LENTO = 8000;              // passou disso: aviso de internet lenta
+var NOTA_AJUDA = 'Escreva do seu jeito. Isto fica só para o síndico ler.';
+var IC_WA = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c.4 2.3 2.2 4.1 4.5 4.5l1-1.2 2 .8c-.2 1.2-1.2 1.9-2.4 1.8-3.7-.4-6.6-3.3-7-7-.1-1.2.6-2.2 1.8-2.4l.8 2z"/></svg>';
+var IC_OK = '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+
+/* ================= Utilidades ================= */
+var $app = document.getElementById('app');
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (m) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]; }); }
+function norm(s) { return String(s == null ? '' : s).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ').trim().toUpperCase(); }
+function primeiro(n) { return String(n || '').trim().split(/\s+/)[0] || ''; }
+function falar(t) { var f = document.getElementById('falar'); f.textContent = ''; setTimeout(function () { f.textContent = t; }, 30); }
+function idAleatorio(n) {
+  var a = new Uint8Array(n), s = '', abc = 'abcdefghijkmnopqrstuvwxyz23456789';
+  try { crypto.getRandomValues(a); } catch (e) { for (var i = 0; i < n; i++) a[i] = Math.floor(Math.random() * 256); }
+  for (var j = 0; j < n; j++) s += abc[a[j] % abc.length];
+  return s;
+}
+function lerLocal(k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } }
+function guardarLocal(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+function chamar(corpo) {
+  return fetch(MOTOR, { method: 'POST', body: JSON.stringify(corpo), redirect: 'follow' })
+    .then(function (r) { return r.json(); })
+    .catch(function () { return { ok: false, codigo: 'REDE', mensagem: 'Sem conexão.' }; });
+}
+
+/* ================= Estado =================
+   F: o que veio do motor (abrir). E: o que a pessoa fez, guardado no aparelho por link (para parar e continuar depois). */
+var TOKEN = '';
+try { TOKEN = String(new URLSearchParams(location.search).get('t') || '').trim().toLowerCase(); } catch (e) { TOKEN = ''; }
+var CHAVE = 'pfl_' + TOKEN.slice(0, 32);
+var F = null, E = null, PERG = {}, ENVIO = { emCurso: false, lentoTimer: null, lento: false, limite: false, falhou: false };
+var tela = { fase: 'carregando', id: null, corrigindo: false, outroPosto: '' };
+var travado = false; // evita o toque duplo enquanto a tela troca
+
+function novoEstado() { return { sessao: idAleatorio(20), nome: '', posto: '', resp: {}, fila: [], fase: 'intro', id: null, inicio: Date.now() }; }
+function salvarEstado() { if (E) guardarLocal(CHAVE, E); }
+
+/* ================= Perguntas ================= */
+function valorAtual(p) {
+  if (!p.atual) return '';
+  if (p.tipo === 'Lista') {
+    var o = p.opcoes.filter(function (x) { return norm(x.valor) === norm(p.atual) || norm(x.rotulo) === norm(p.atual); })[0];
+    return o ? o.rotulo : p.atual;
+  }
+  return p.atual;
+}
+/* Valor de um campo para as condições (MOSTRAR SE): a resposta desta pessoa vale mais que o que está na ficha. */
+function valorDoCampo(campo) {
+  var achou = null;
+  F.perguntas.forEach(function (p) {
+    if (achou !== null || !p.campo || norm(p.campo) !== norm(campo)) return;
+    var r = E.resp[p.id];
+    if (r && !r.naoSei) achou = String(r.v);
+    else if (r && r.naoSei) achou = '';
+    else achou = p.atual || '';
+  });
+  return achou === null ? '' : achou;
+}
+/* A pergunta se aplica? Mesma regra do motor: sem valor no campo da condição, mostra (a pessoa pode não saber). */
+function aplica(p) {
+  var c = p.mostrarSe;
+  if (!c) return true;
+  var v = valorDoCampo(c.campo);
+  if (String(v).trim() === '') return true;
+  var a = parseFloat(String(v).replace(',', '.')), b = parseFloat(String(c.valor).replace(',', '.')), num = !isNaN(a) && !isNaN(b);
+  switch (c.op) {
+    case '=': return num ? a === b : norm(v) === norm(c.valor);
+    case '!=': return num ? a !== b : norm(v) !== norm(c.valor);
+    case '>': return num && a > b;
+    case '<': return num && a < b;
+    case '>=': return num && a >= b;
+    case '<=': return num && a <= b;
+  }
+  return true;
+}
+/* Primeiro as perguntas em branco; as já preenchidas vão para a tela final "Está certo?". */
+function emBranco() { return F.perguntas.filter(function (p) { return (p.nota || !p.atual) && aplica(p); }); }
+function preenchidas() { return F.perguntas.filter(function (p) { return !p.nota && p.atual && aplica(p); }); }
+
+/* ================= Envio (cada resposta grava na hora; sem sinal fica na fila do aparelho) ================= */
+function registrar(p, r) {
+  var item = { id: p.id, v: r.v, rot: r.rot, naoSei: !!r.naoSei, st: 'fila', idc: 'r' + Date.now().toString(36) + idAleatorio(6) };
+  E.resp[p.id] = item;
+  E.fila = E.fila.filter(function (x) { return x !== p.id; }); // a resposta nova substitui a que ainda não tinha ido
+  E.fila.push(p.id);
+  salvarEstado();
+  enviar();
+}
+function enviar() {
+  if (ENVIO.emCurso || ENVIO.limite || !E || !E.fila.length) { desenharSalvo(); return; }
+  var id = E.fila[0], r = E.resp[id];
+  if (!r) { E.fila.shift(); salvarEstado(); enviar(); return; }
+  ENVIO.emCurso = true;
+  r.st = 'enviando';
+  desenharSalvo();
+  clearTimeout(ENVIO.lentoTimer);
+  ENVIO.lentoTimer = setTimeout(function () { ENVIO.lento = true; desenharSalvo(); }, LENTO);
+  var resp = r.naoSei ? { id: id, naoSei: true } : { id: id, valor: r.rot != null ? r.rot : r.v };
+  chamar({ fn: 'perfil', acao: 'responder', link: TOKEN, idCliente: r.idc, dados: { sessao: E.sessao, nome: E.nome, posto: E.posto, respostas: [resp] } }).then(function (x) {
+    clearTimeout(ENVIO.lentoTimer); ENVIO.lento = false; ENVIO.emCurso = false;
+    var atual = E.resp[id];
+    if (x && x.ok) {
+      ENVIO.falhou = false;
+      if (atual && atual.idc === r.idc) { atual.st = 'ok'; delete atual.msg; }
+      if (E.fila[0] === id && (!atual || atual.idc === r.idc)) E.fila.shift();
+      salvarEstado(); enviar(); return;
+    }
+    var cod = x && x.codigo;
+    if (cod === 'LINK_INATIVO') { F.contato = x.contato || F.contato; mostrarExpirado(F.condominio && F.condominio.nome); return; }
+    if (cod === 'REDE' || cod === 'EM_CURSO' || cod === 'ERRO') { // sem sinal: tenta de novo sozinho, com o mesmo idCliente
+      if (atual) atual.st = 'fila';
+      ENVIO.falhou = cod === 'REDE';
+      salvarEstado(); desenharSalvo();
+      setTimeout(enviar, navigator.onLine === false ? 4000 : 6000);
+      return;
+    }
+    if (cod === 'LIMITE') { ENVIO.limite = true; if (atual) atual.st = 'fila'; salvarEstado(); desenhar(); return; }
+    // VALIDACAO: esta resposta não foi aceita; sai da fila e aparece no fim para corrigir
+    if (atual && atual.idc === r.idc) { atual.st = 'erro'; atual.msg = (x && x.mensagem) || 'Resposta não aceita.'; }
+    if (E.fila[0] === id) E.fila.shift();
+    salvarEstado(); enviar();
+    if (tela.fase === 'fim' || tela.fase === 'conferir') desenhar();
+  });
+}
+window.addEventListener('online', function () { setTimeout(enviar, 500); });
+function pendentes() { return E ? E.fila.length : 0; }
+function comErro() { return E ? Object.keys(E.resp).map(function (k) { return E.resp[k]; }).filter(function (r) { return r.st === 'erro' && PERG[r.id]; }) : []; }
+function htmlSalvo() {
+  if (!E) return '';
+  if (ENVIO.limite) return '<span class="salvo erro">Envio pausado</span>';
+  var n = pendentes();
+  if (!n) return Object.keys(E.resp).length ? '<span class="salvo ok">✓ Salvo</span>' : '';
+  if (navigator.onLine === false || ENVIO.falhou) return '<span class="salvo fila">' + (navigator.onLine === false ? 'Sem internet' : 'Sem conexão') + ' · ' + n + ' guardada' + (n === 1 ? '' : 's') + ' no aparelho</span>';
+  if (ENVIO.lento) return '<span class="salvo fila"><span class="gira" aria-hidden="true"></span>Internet lenta · enviando</span>';
+  return '<span class="salvo fila"><span class="gira" aria-hidden="true"></span>Salvando…</span>';
+}
+function desenharSalvo() {
+  var el = document.getElementById('salvo');
+  if (el) el.innerHTML = htmlSalvo();
+  if (tela.fase === 'fim') { var f = document.getElementById('fimEnvio'); if (f) f.innerHTML = htmlFimEnvio(); }
+}
+
+/* ================= Telas ================= */
+function faixa(sub) {
+  return '<header class="faixa"><img src="logo.png" alt="" width="40" height="40"><div class="t"><b>Perfil do condomínio</b><span>' + esc(sub || F.condominio.nome) + '</span></div></header>';
+}
+function montar(html, foco) {
+  $app.innerHTML = html;
+  var c = $app.querySelector('.corpo');
+  if (c) { c.classList.add('entra'); c.scrollTop = 0; }
+  var alvo = foco ? $app.querySelector(foco) : $app.querySelector('h1');
+  if (alvo) { if (!alvo.hasAttribute('tabindex') && alvo.tagName === 'H1') alvo.setAttribute('tabindex', '-1'); try { alvo.focus({ preventScroll: true }); } catch (e) { alvo.focus(); } }
+  travado = false;
+}
+function desenhar() {
+  var fase = tela.fase;
+  if (fase === 'intro') return telaIntro();
+  if (fase === 'quem') return telaQuem();
+  if (fase === 'pergunta') return telaPergunta();
+  if (fase === 'conferir') return telaConferir();
+  if (fase === 'fim') return telaFim();
+}
+function ir(fase, id, doHistorico) {
+  if (tela.fase === 'expirado') return; // o link caiu no meio: a tela de link inativo fica
+  tela.fase = fase; tela.id = id || null;
+  E.fase = fase; E.id = tela.id; salvarEstado();
+  if (!doHistorico) { // cada tela é um passo do histórico: o "voltar" do celular volta uma pergunta, não sai do formulário
+    try { history[history.state && history.state.pfl ? 'pushState' : 'replaceState']({ pfl: 1, f: fase, id: tela.id, c: !!tela.corrigindo }, ''); } catch (e) {}
+  }
+  desenhar();
+}
+window.addEventListener('popstate', function (ev) {
+  var st = ev.state;
+  if (!E || !F || !st || !st.pfl || tela.fase === 'expirado') return;
+  tela.corrigindo = !!st.c;
+  ir(st.f, st.id, true);
+});
+
+function minutos() { var n = emBranco().length; return Math.max(2, Math.round(n * 12 / 60)); }
+function telaIntro() {
+  var rel = F.publico === 'Relacionamento', nome = F.condominio.nome, c = F.contato || {};
+  var continuar = E.nome && Object.keys(E.resp).length;
+  var h = faixa() + '<div class="corpo">';
+  if (rel) h += '<h1 class="perg" style="font-size:1.75rem;margin-top:.75rem">Estou assumindo o ' + esc(nome) + ' e conto com a sua ajuda</h1>' +
+    '<p class="p ajuda">Você conhece a história do condomínio. Responda só o que souber — pode tocar em “Não sei”. No fim, há um espaço para contar o que eu preciso saber.</p>' +
+    '<p class="p ajuda">Leva uns ' + minutos() + ' minutos. Dá para parar e continuar depois pelo mesmo link' + (F.validade ? ', que vale até ' + esc(F.validade) : '') + '.</p>' +
+    '<p class="ass">' + esc(c.nome || 'Willian Carvalho') + ' · Síndico Profissional<br>Carvalho &amp; Abreu Sindicância Profissional</p>';
+  else h += '<h1 class="perg" style="font-size:1.75rem;margin-top:.75rem">Ajude a gente a conhecer o ' + esc(nome) + '</h1>' +
+    '<p class="p ajuda">São perguntas rápidas sobre o prédio. Responda só o que souber — pode tocar em “Não sei”.</p>' +
+    '<p class="p ajuda">Leva uns ' + minutos() + ' minutos. Dá para parar e continuar depois pelo mesmo link' + (F.validade ? ', que vale até ' + esc(F.validade) : '') + '.</p>';
+  h += '<p class="miudo" style="margin-top:1.25rem">O síndico confere tudo antes de atualizar a ficha do condomínio. Não pedimos senhas nem dados bancários.</p></div>';
+  h += '<div class="pe">' + (continuar ? '<button class="bt pri" data-a="continuar">Continuar de onde parei</button>' : '<button class="bt pri" data-a="comecar">Começar</button>') + '</div>';
+  montar(h);
+}
+function telaQuem() {
+  var postos = F.postos || [], sel = E.posto, ehOutro = /^outro\b/i.test(sel);
+  var h = faixa() + '<div class="corpo"><h1 class="perg">Quem está respondendo?</h1>' +
+    '<label class="rot" for="nome">Seu nome</label><input class="campo" id="nome" maxlength="60" autocomplete="name" autocapitalize="words" placeholder="Ex.: Maria Souza" value="' + esc(E.nome) + '">' +
+    '<span class="rot" id="rotPosto">Qual é o seu posto?</span><div class="postos" role="group" aria-labelledby="rotPosto">' +
+    postos.map(function (p) {
+      var on = /^outro\b/i.test(p) ? ehOutro : sel === p;
+      return '<button class="opc" data-posto="' + esc(p) + '" aria-pressed="' + on + '">' + esc(p) + '</button>';
+    }).join('') + '</div>' +
+    '<div id="outroCx"' + (ehOutro ? '' : ' hidden') + '><label class="rot" for="outro">Qual?</label><input class="campo" id="outro" maxlength="45" placeholder="Ex.: síndica anterior" value="' + esc(ehOutro ? sel.replace(/^outro:?\s*/i, '') : '') + '"></div>' +
+    '<p class="erro-campo" id="erroQuem" hidden></p></div>' +
+    '<div class="pe"><button class="bt so" data-a="voltar">Voltar</button><button class="bt pri" data-a="quemOk">Continuar</button></div>';
+  montar(h, E.nome ? null : '#nome');
+}
+function posicao(p) {
+  var L = emBranco(), i = L.indexOf(p);
+  return { i: i, total: L.length, extra: preenchidas().length ? 1 : 0 };
+}
+function telaPergunta() {
+  var p = PERG[tela.id];
+  if (!p) return proxima(null);
+  var corr = tela.corrigindo, ps = posicao(p), r = E.resp[p.id];
+  var tot = ps.total + ps.extra, n = corr ? tot : ps.i + 1;
+  var pct = corr ? 96 : Math.round((ps.i) / Math.max(1, tot) * 100);
+  var atualTxt = valorAtual(p);
+  var meu = r && !r.naoSei ? (r.rot != null ? r.rot : r.v) : '';
+  var inicial = meu !== '' ? meu : (corr ? atualTxt : '');
+  var h = faixa() + '<div class="prog"><div class="barra"><i style="width:' + pct + '%"></i></div><div class="meta"><span>' +
+    (corr ? 'Corrigindo' : n + ' de ' + ps.total) + '</span><span id="salvo">' + htmlSalvo() + '</span></div></div>';
+  h += '<div class="corpo"><div class="grupo">' + esc(p.grupo || '') + '</div><h1 class="perg">' + esc(p.pergunta) + '</h1>';
+  var ajuda = p.ajuda || (p.nota ? NOTA_AJUDA : '');
+  if (ajuda) h += '<p class="ajuda">' + esc(ajuda) + '</p>';
+  if (r && r.st === 'erro') h += '<p class="aviso erro">' + esc(r.msg) + '</p>';
+  if (p.tipo === 'Lista') {
+    h += '<div role="group" aria-label="Opções">' + p.opcoes.map(function (o) {
+      var on = meu !== '' ? norm(meu) === norm(o.rotulo) : false;
+      var naFicha = corr && atualTxt && norm(atualTxt) === norm(o.rotulo);
+      return '<button class="opc" data-opc="' + esc(o.rotulo) + '" aria-pressed="' + on + '"><span>' + esc(o.rotulo) + '</span>' + (naFicha && !on ? '<span class="atual">na ficha hoje</span>' : '') + '</button>';
+    }).join('') + '</div>';
+  } else if (p.tipo === 'Número') {
+    h += '<div class="passo"><button data-passo="-1" aria-label="Diminuir">−</button><input class="campo" id="resp" inputmode="decimal" autocomplete="off" aria-label="' + esc(p.pergunta) + '" value="' + esc(inicial) + '" placeholder="0"><button data-passo="1" aria-label="Aumentar">+</button></div>' +
+      '<p class="erro-campo" id="erroResp" hidden></p><button class="bt pri largo" data-a="confirmar">Confirmar</button>';
+  } else if (p.tipo === 'Data') {
+    h += '<input class="campo" id="resp" type="date" min="1990-01-01" max="2100-12-31" aria-label="' + esc(p.pergunta) + '" value="' + esc(paraIso(inicial)) + '">' +
+      '<p class="erro-campo" id="erroResp" hidden></p><button class="bt pri largo" data-a="confirmar" style="margin-top:.875rem">Confirmar</button>';
+  } else if (p.tipo === 'Texto longo') {
+    h += '<textarea class="campo" id="resp" maxlength="2000" aria-label="' + esc(p.pergunta) + '" placeholder="Escreva aqui">' + esc(inicial) + '</textarea>' +
+      '<p class="erro-campo" id="erroResp" hidden></p><button class="bt pri largo" data-a="confirmar" style="margin-top:.875rem">Confirmar</button>';
+  } else {
+    h += '<input class="campo" id="resp" maxlength="200" autocomplete="off" aria-label="' + esc(p.pergunta) + '" placeholder="Escreva aqui" value="' + esc(inicial) + '">' +
+      '<p class="erro-campo" id="erroResp" hidden></p><button class="bt pri largo" data-a="confirmar" style="margin-top:.875rem">Confirmar</button>';
+  }
+  h += '</div><div class="pe"><button class="bt so" data-a="voltar">Voltar</button>' +
+    (corr ? '<button class="bt" data-a="manter">Manter como está</button>' : '<button class="bt" data-a="naosei">Não sei</button>') + '</div>';
+  montar(h);
+}
+function paraIso(v) { var m = String(v || '').match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); return m ? m[3] + '-' + ('0' + m[2]).slice(-2) + '-' + ('0' + m[1]).slice(-2) : (/^\d{4}-\d{2}-\d{2}$/.test(v) ? v : ''); }
+function deIso(v) { var m = String(v || '').match(/^(\d{4})-(\d{2})-(\d{2})$/); return m ? m[3] + '/' + m[2] + '/' + m[1] : ''; }
+function telaConferir() {
+  var L = preenchidas(), erros = comErro();
+  var h = faixa() + '<div class="prog"><div class="barra"><i style="width:96%"></i></div><div class="meta"><span>Quase lá</span><span id="salvo">' + htmlSalvo() + '</span></div></div><div class="corpo">';
+  if (erros.length) h += '<div class="aviso erro">' + (erros.length === 1 ? 'Uma resposta precisa de ajuste' : erros.length + ' respostas precisam de ajuste') + ':<ul style="margin:.4rem 0 0;padding-left:1.1rem">' +
+    erros.map(function (r) { return '<li><button class="bt" style="min-height:2.75rem;margin:.25rem 0;flex:none" data-corrigir="' + esc(r.id) + '">' + esc(PERG[r.id].pergunta) + '</button></li>'; }).join('') + '</ul></div>';
+  if (L.length) {
+    h += '<h1 class="perg">Isto já está na ficha. Está certo?</h1><p class="ajuda">Toque em Corrigir só se algo mudou.</p><ul class="conf">' +
+      L.map(function (p) {
+        var r = E.resp[p.id], mudou = r && !r.naoSei, v = mudou ? (r.rot != null ? r.rot : r.v) : valorAtual(p);
+        return '<li><span class="l">' + esc(p.pergunta) + '<b' + (mudou ? ' class="mudou"' : '') + '>' + esc(v) + '</b></span><button class="bt" data-corrigir="' + esc(p.id) + '" aria-label="Corrigir: ' + esc(p.pergunta) + '">Corrigir</button></li>';
+      }).join('') + '</ul>';
+  } else h += '<h1 class="perg">Tudo respondido</h1><p class="ajuda">Confira se não esqueceu nada e toque em Concluir.</p>';
+  h += '</div><div class="pe"><button class="bt so" data-a="voltar">Voltar</button><button class="bt pri" data-a="concluir">' + (L.length ? 'Está tudo certo' : 'Concluir') + '</button></div>';
+  montar(h);
+}
+function htmlFimEnvio() {
+  var n = pendentes();
+  if (ENVIO.limite) return '<p class="aviso">Muitas respostas por este link hoje. As que faltam ficaram guardadas neste aparelho e seguem amanhã quando você abrir o link de novo. Se preferir, fale com o síndico.</p>';
+  if (!n) return '';
+  return '<p class="aviso">' + (navigator.onLine === false || ENVIO.falhou ? 'Sem conexão agora. ' : 'Enviando… ') + (n === 1 ? '1 resposta ainda não chegou' : n + ' respostas ainda não chegaram') +
+    ' ao síndico. Deixe esta página aberta ou abra o link de novo depois — nada se perde.</p>';
+}
+function telaFim() {
+  var vals = Object.keys(E.resp).map(function (k) { return E.resp[k]; }).filter(function (r) { return PERG[r.id]; });
+  var ns = vals.filter(function (r) { return r.naoSei; }).length, ok = vals.length - ns;
+  var h = faixa() + '<div class="corpo centro"><div class="selo-grande">' + IC_OK + '</div>' +
+    '<h1 class="perg">Obrigado' + (primeiro(E.nome) ? ', ' + esc(primeiro(E.nome)) : '') + '!</h1>' +
+    '<div id="fimEnvio">' + htmlFimEnvio() + '</div>' +
+    '<p class="ajuda">' + (ok || ns ? 'Recebemos ' + (ok ? ok + (ok === 1 ? ' resposta' : ' respostas') : '') + (ok && ns ? ' e ' : '') + (ns ? ns + ' “Não sei”' : '') + '. ' : '') +
+    'O síndico vai conferir antes de atualizar a ficha.</p>' +
+    '<p class="ajuda">Se lembrar de algo, é só abrir o mesmo link de novo' + (F.validade ? ' (vale até ' + esc(F.validade) + ')' : '') + '.</p></div>' +
+    '<div class="pe"><button class="bt" data-a="revisar">Revisar minhas respostas</button></div>';
+  montar(h);
+}
+function mostrarExpirado(nome) {
+  var c = (F && F.contato) || {};
+  tela.fase = 'expirado';
+  var h = '<div class="marca"><img src="logo.png" alt="" width="88" height="88"><div class="n">Carvalho &amp; Abreu</div><div class="s">Sindicância Profissional</div></div>' +
+    '<div class="corpo centro" style="padding-top:2rem"><h1 class="perg">Este link não está mais ativo</h1>' +
+    '<p class="ajuda">Por segurança, cada link do Perfil' + (nome ? ' do ' + esc(nome) : ' do condomínio') + ' vale por um período e pode ser desativado pelo síndico.</p>' +
+    '<p class="ajuda">Fale com o síndico para receber um novo.</p>' +
+    (c.url ? '<a class="bt pri largo wa" href="' + esc(c.url) + '" target="_blank" rel="noopener noreferrer" style="text-decoration:none;margin-top:.5rem">' + IC_WA + ' Falar com o síndico</a>' +
+      '<p class="miudo" style="margin-top:.75rem">Abre o WhatsApp com a mensagem pronta:<br>“' + esc(c.mensagem || '') + '”</p>' : '') +
+    '</div><div class="rodape">' + esc(c.nome || 'Willian Carvalho') + ' · ' + esc(c.cargo || 'Síndico Profissional') + '<br>' + esc(c.empresa || 'Carvalho & Abreu Sindicância Profissional') + '</div>';
+  montar(h);
+}
+function mostrarFalha(msg) {
+  var h = '<div class="marca"><img src="logo.png" alt="" width="88" height="88"><div class="n">Carvalho &amp; Abreu</div><div class="s">Sindicância Profissional</div></div>' +
+    '<div class="corpo centro" style="padding-top:2rem"><h1 class="perg">Não foi possível abrir</h1><p class="ajuda">' + esc(msg) + '</p>' +
+    '<button class="bt pri largo" data-a="recarregar" style="margin-top:.5rem">Tentar de novo</button></div>';
+  montar(h);
+}
+
+/* ================= Navegação ================= */
+function proxima(atualId) {
+  var L = emBranco();
+  if (atualId) {
+    var p = PERG[atualId], i = L.indexOf(p);
+    if (i < 0) { // deixou de se aplicar (ex.: respondeu 0 elevadores): segue pela ordem do catálogo
+      var k = F.perguntas.indexOf(p);
+      L = L.filter(function (x) { return F.perguntas.indexOf(x) > k; });
+      return L.length ? ir('pergunta', L[0].id) : ir('conferir');
+    }
+    return i + 1 < L.length ? ir('pergunta', L[i + 1].id) : ir('conferir');
+  }
+  return L.length ? ir('pergunta', L[0].id) : ir('conferir');
+}
+function anterior() {
+  if (tela.corrigindo) { tela.corrigindo = false; return ir('conferir'); }
+  if (tela.fase === 'quem') return ir('intro');
+  if (tela.fase === 'conferir') { var L = emBranco(); return L.length ? ir('pergunta', L[L.length - 1].id) : ir('quem'); }
+  if (tela.fase === 'fim') return ir('conferir');
+  var Lp = emBranco(), i = Lp.indexOf(PERG[tela.id]);
+  return i > 0 ? ir('pergunta', Lp[i - 1].id) : ir('quem');
+}
+function depoisDeResponder(id) {
+  if (tela.corrigindo) { tela.corrigindo = false; return ir('conferir'); }
+  proxima(id);
+}
+/* Texto, número e data: confere antes de seguir (a mesma regra do motor), para não descobrir o erro só no fim. */
+function lerCampo(p) {
+  var el = document.getElementById('resp'), s = String(el.value || '').trim();
+  if (!s) return { erro: 'Escreva a resposta ou toque em “Não sei”.' };
+  if (p.tipo === 'Número') {
+    var t = s.replace(/\s/g, '');
+    if (/^\d{1,3}(\.\d{3})+(,\d+)?$/.test(t)) t = t.replace(/\./g, '');
+    t = t.replace(',', '.');
+    if (!/^\d+(\.\d+)?$/.test(t) || Number(t) > 10000000) return { erro: 'Use só números (ex.: 2 ou 20000).' };
+    return { v: Number(t), rot: s };
+  }
+  if (p.tipo === 'Data') {
+    var d = deIso(s);
+    if (!d) return { erro: 'Escolha a data.' };
+    var y = +s.slice(0, 4);
+    if (y < 1990 || y > 2100) return { erro: 'Data fora do esperado.' };
+    return { v: d, rot: d };
+  }
+  return { v: s, rot: s };
+}
+function mostrarErroCampo(msg) { var e = document.getElementById('erroResp'); if (e) { e.textContent = msg; e.hidden = false; } var c = document.getElementById('resp'); if (c) c.focus(); }
+
+$app.addEventListener('click', function (ev) {
+  var b = ev.target.closest('button');
+  if (!b || b.disabled) return;
+  var a = b.getAttribute('data-a');
+  if (b.hasAttribute('data-posto')) {
+    E.posto = b.getAttribute('data-posto');
+    var outro = /^outro\b/i.test(E.posto);
+    Array.prototype.forEach.call($app.querySelectorAll('[data-posto]'), function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    document.getElementById('outroCx').hidden = !outro;
+    if (outro) document.getElementById('outro').focus();
+    document.getElementById('erroQuem').hidden = true;
+    salvarEstado();
+    return;
+  }
+  if (b.hasAttribute('data-corrigir')) { tela.corrigindo = true; ir('pergunta', b.getAttribute('data-corrigir')); return; }
+  if (b.hasAttribute('data-passo')) {
+    var cp = document.getElementById('resp'), n = parseFloat(String(cp.value || '0').replace(/\./g, '').replace(',', '.')) || 0;
+    cp.value = String(Math.max(0, Math.round(n) + Number(b.getAttribute('data-passo'))));
+    return;
+  }
+  if (travado) return;
+  var p = tela.id && PERG[tela.id];
+  if (b.hasAttribute('data-opc') && p) {
+    travado = true; // toque duplo não grava duas vezes nem pula duas perguntas
+    var rot = b.getAttribute('data-opc'), o = p.opcoes.filter(function (x) { return x.rotulo === rot; })[0];
+    Array.prototype.forEach.call($app.querySelectorAll('[data-opc]'), function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    registrar(p, { v: o ? o.valor : rot, rot: rot });
+    falar('Salvo: ' + rot);
+    setTimeout(function () { depoisDeResponder(p.id); }, 220);
+    return;
+  }
+  switch (a) {
+    case 'comecar': ir('quem'); break;
+    case 'continuar':
+      if (!E.nome || !E.posto) { ir('quem'); break; }
+      if (E.fase === 'pergunta' && E.id && PERG[E.id]) ir('pergunta', E.id); else if (E.fase === 'fim' || E.fase === 'conferir') ir('conferir'); else proxima(null);
+      break;
+    case 'voltar': anterior(); break;
+    case 'quemOk':
+      var nome = String(document.getElementById('nome').value || '').replace(/\s+/g, ' ').trim();
+      var er = document.getElementById('erroQuem');
+      if (nome.length < 2) { er.textContent = 'Escreva o seu nome.'; er.hidden = false; document.getElementById('nome').focus(); break; }
+      if (!E.posto) { er.textContent = 'Toque no seu posto.'; er.hidden = false; break; }
+      if (/^outro\b/i.test(E.posto)) { var q = String(document.getElementById('outro').value || '').trim(); E.posto = q ? 'Outro: ' + q.slice(0, 45) : 'Outro'; }
+      E.nome = nome.slice(0, 60); salvarEstado();
+      travado = true; proxima(null); break;
+    case 'confirmar':
+      if (!p) break;
+      var lido = lerCampo(p);
+      if (lido.erro) { mostrarErroCampo(lido.erro); break; }
+      travado = true;
+      registrar(p, lido);
+      depoisDeResponder(p.id); break;
+    case 'naosei':
+      if (!p) break;
+      travado = true;
+      registrar(p, { naoSei: true });
+      falar('Registrado: não sei');
+      depoisDeResponder(p.id); break;
+    case 'manter': tela.corrigindo = false; ir('conferir'); break;
+    case 'concluir': ir('fim'); break;
+    case 'revisar': ir('conferir'); break;
+    case 'recarregar': location.reload(); break;
+  }
+});
+$app.addEventListener('keydown', function (ev) {
+  if (ev.key !== 'Enter' || ev.shiftKey || ev.target.tagName !== 'INPUT') return;
+  ev.preventDefault();
+  var bt = $app.querySelector(ev.target.id === 'nome' || ev.target.id === 'outro' ? '[data-a="quemOk"]' : '[data-a="confirmar"]');
+  if (bt) bt.click();
+});
+$app.addEventListener('input', function (ev) {
+  if (ev.target.id === 'nome') { E.nome = ev.target.value; salvarEstado(); }
+  var e = document.getElementById(ev.target.id === 'resp' ? 'erroResp' : 'erroQuem'); if (e) e.hidden = true;
+});
+
+/* ================= Início ================= */
+function abrir() {
+  if (!/^[a-f0-9]{32}$/.test(TOKEN)) { // endereço incompleto: pede só o contato ao motor (mesma tela do link vencido)
+    chamar({ fn: 'perfil', acao: 'abrir', link: '' }).then(function (r) { F = { contato: (r && r.contato) || {} }; mostrarExpirado(''); });
+    return;
+  }
+  var lento = setTimeout(function () { var s = $app.querySelector('.carregando span'); if (s) s.textContent = 'A internet está lenta… só mais um instante.'; }, LENTO);
+  chamar({ fn: 'perfil', acao: 'abrir', link: TOKEN }).then(function (r) {
+    clearTimeout(lento);
+    if (!r || !r.ok) { mostrarFalha(r && r.codigo === 'REDE' ? 'Sem conexão. Confira a internet e tente de novo.' : (r && r.mensagem) || 'Tente de novo em instantes.'); return; }
+    F = r;
+    if (!r.ativo) { mostrarExpirado(r.condominio && (r.condominio.nome || r.condominio)); return; }
+    F.perguntas = (r.perguntas || []).map(function (p) { p.opcoes = p.opcoes || []; return p; });
+    PERG = {}; F.perguntas.forEach(function (p) { PERG[p.id] = p; });
+    E = lerLocal(CHAVE);
+    if (!E || !E.sessao) E = novoEstado();
+    E.resp = E.resp || {}; E.fila = (E.fila || []).filter(function (id) { return E.resp[id]; });
+    Object.keys(E.resp).forEach(function (id) { if (E.resp[id].st === 'enviando') E.resp[id].st = 'fila'; });
+    document.title = 'Perfil do ' + F.condominio.nome + ' · Carvalho & Abreu';
+    ir('intro');
+    enviar(); // o que ficou guardado da última vez segue agora
+  });
+}
+abrir();
+})();
+</script>
+</body>
+</html>
