@@ -314,6 +314,18 @@ button.obs-auto:hover{background:var(--creme)}
 .grav-msg{padding:0 1.25em;text-align:center;color:#C9D0DC;font-size:.875em}
 .anx-lembrete{display:flex;gap:.6em;align-items:flex-start;background:#FBF3E2;border:1px solid #EAD7AE;border-radius:.75em;padding:.75em .875em;font-size:.875em;color:#5A4520}
 .anx-lembrete svg{flex:none;width:1.25em;height:1.25em;stroke:#7A5C27}
+/* v1.40: solucao final obrigatoria ao concluir */
+.sol-campo{display:flex;flex-direction:column;gap:.4em;margin:.25em 0}
+.sol-campo textarea{min-height:6em;resize:vertical}
+.sol-ajuda{display:flex;justify-content:space-between;gap:.75em;font-size:.8125em;color:var(--suave)}
+.sol-ajuda.falta b{color:#8A5A1B}
+.obs-sol{border:1px solid #CFE3D2;background:#F2F8F3;border-radius:.75em;padding:.65em .8em;display:flex;flex-direction:column;gap:.35em}
+.obs-sol .sol-cab{display:flex;align-items:center;gap:.5em;font-size:.8125em;color:#2F6B3F}
+.obs-sol .sol-cab svg{flex:none;width:1.1em;height:1.1em;stroke:#2F6B3F}
+.obs-sol .sol-cab time{margin-left:auto;color:var(--suave)}
+.obs-sol .sol-tx{font-size:.9375em;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--texto,inherit)}
+.obs-sol.excluida{opacity:.6}
+.obs-sol.excluida .sol-tx{text-decoration:line-through}
 .cartao-anx{display:inline-flex;gap:.6em;margin-left:.5em;vertical-align:-.1em}
 .cartao-anx span{display:inline-flex;align-items:center;gap:.2em;font-weight:600}
 .obs-chip{text-align:left;display:inline-flex;align-items:center;gap:.4em;align-self:flex-start;min-height:2.25em;padding:0 .75em;margin-top:.35em;border-radius:.6em;border:1px solid var(--linha);background:var(--creme);font-size:.8125em;font-weight:600;color:var(--azul);cursor:pointer}
@@ -1891,7 +1903,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.39';
+var VERSAO_SITE = '1.40';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -4386,30 +4398,44 @@ function confirmarConcluir(id) {
   t = Object.assign({}, t, { nAntes: tl.nAntes || 0 });
   var h = '<div class="jan-corpo">' +
     '<p class="conf-tit">' + esc(t.titulo) + '</p>' +
+    '<div class="sol-campo"><label class="rot-campo" for="confSolucao">Descreva a solução final</label>' +
+    '<textarea class="campo" id="confSolucao" rows="4" maxlength="1000" placeholder="O que foi feito para resolver? Ex.: troquei o disjuntor e testei o circuito" aria-required="true"></textarea>' +
+    '<div class="sol-ajuda falta" id="confSolAjuda"><span>Obrigatório para concluir.</span><b id="confSolN"></b></div></div>' +
     (lembrarDepois
       ? '<div class="anx-lembrete">' + IC.camera + '<span>Esta tarefa tem <b>' + t.nAntes + (t.nAntes === 1 ? ' foto' : ' fotos') + ' do antes</b> e nenhuma do depois. Registrar o resultado ajuda no relatório aos moradores.</span></div>' +
         '<div class="conf-rodape"><button class="bt claro" type="button" data-acao="fecharJan">Cancelar</button>' +
-        '<button class="bt claro" type="button" id="confConcluir"><span>Concluir sem foto</span></button>' +
+        '<button class="bt claro" type="button" id="confConcluir" disabled><span>Concluir sem foto</span></button>' +
         '<button class="bt" type="button" data-fotodepois="' + esc(id) + '">' + IC.cameraOuro + '<span>Adicionar foto do depois</span></button></div></div>'
       : '<p class="cartao-meta" style="margin:0">Ela sai da lista de pendentes. Logo depois aparece a opção Desfazer, caso tenha sido engano.</p>' +
         '<div class="conf-rodape"><button class="bt claro" type="button" data-acao="fecharJan">Cancelar</button>' +
-        '<button class="bt" type="button" id="confConcluir">' + IC.checkOuro + '<span>Concluir tarefa</span></button></div></div>');
+        '<button class="bt" type="button" id="confConcluir" disabled>' + IC.checkOuro + '<span>Concluir tarefa</span></button></div></div>');
   abrirJanela('Concluir esta tarefa?', nomeCondo(t.condo) + ' · ' + t.id, h, 'centro', function (raiz) {
     var ok = raiz.querySelector('#confConcluir');
+    var tx = raiz.querySelector('#confSolucao'), aj = raiz.querySelector('#confSolAjuda'), nn = raiz.querySelector('#confSolN');
+    var SOL_MIN = 10; // igual ao motor (SOLUCAO_MIN)
+    function letras() { return String(tx.value || '').replace(/\s+/g, '').length; }
+    function confere() {
+      var n = letras(), pronto = n >= SOL_MIN;
+      ok.disabled = !pronto;
+      aj.classList.toggle('falta', !pronto);
+      nn.textContent = pronto ? '' : (n ? 'Faltam ' + (SOL_MIN - n) + ' letras' : 'Mínimo de ' + SOL_MIN + ' letras');
+    }
+    tx.addEventListener('input', confere); confere();
     ok.addEventListener('click', function () {
-      if (ok.classList.contains('ocupado')) return;
+      if (ok.classList.contains('ocupado') || letras() < SOL_MIN) { if (letras() < SOL_MIN) { try { tx.focus(); } catch (e) {} } return; }
       ok.classList.add('ocupado');
-      fecharCamadas(); concluir(id);
+      var solucao = String(tx.value || '').trim();
+      fecharCamadas(); concluir(id, solucao);
     });
     var fd = raiz.querySelector('[data-fotodepois]');
     if (fd) fd.addEventListener('click', function () {
       fecharCamadas();
       if (S.det && S.det.id === id) abrirAnexar('Depois'); else { S.abrirAnexarDepois = id; abrirTarefa(id); }
     });
-    setTimeout(function () { try { (fd || ok).focus(); } catch (e) {} }, 50);
+    setTimeout(function () { try { tx.focus(); } catch (e) {} }, 50);
   });
 }
-function concluir(id) {
+function concluir(id, solucao) {
   if (emCurso['concluir:' + id]) return;
   var t = (S.dados.tarefas || []).filter(function (x) { return x.id === id; })[0];
   if (!t) return;
@@ -4421,7 +4447,7 @@ function concluir(id) {
   if (c) c.pendentes = Math.max(0, c.pendentes - 1);
   if (S.selId === id) fecharDetalhe();
   desenhar();
-  api('tarefas.concluir', { id: id }).then(function (r) {
+  api('tarefas.concluir', { id: id, solucao: solucao || '' }).then(function (r) {
     delete emCurso['concluir:' + id];
     if (r.jaConcluida) { avisar('Essa tarefa já tinha sido concluída' + (r.por ? ' por ' + r.por : '') + '.'); recarregar(); return; }
     if (!r.ok) { avisar(r.mensagem, true); recarregar(); return; }
@@ -4556,6 +4582,12 @@ function desenharDetalhe() {
     }
     if (o.tipo === 'Compra') {
       h += '<div class="obs-auto">' + IC.carrinho.replace('width="20" height="20"', 'width="14" height="14"') + '<span><b>' + esc(String(o.autor).split(' ')[0]) + '</b> · ' + esc(o.texto) + '</span><time>' + esc(quando(o.em)) + '</time></div>';
+      return;
+    }
+    if (o.tipo === 'Solução') {
+      h += '<div class="obs-sol' + (o.excluida ? ' excluida' : '') + '"><div class="sol-cab"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>' +
+        '<span><b>Solução final</b> · ' + esc(String(o.autor).split(' ')[0]) + (o.excluida ? ' · desfeita' : '') + '</span><time>' + esc(quando(o.em)) + '</time></div>' +
+        '<div class="sol-tx">' + esc(o.texto) + '</div></div>';
       return;
     }
     if (o.tipo === 'Anexo') {
@@ -4824,7 +4856,7 @@ function copiarLink(id) { copiarTexto(linkDe(id), 'Link copiado'); }
 function primeiroNome(n) { var p = String(n || '').trim().split(/\s+/)[0] || ''; return p.charAt(0).toUpperCase() + p.slice(1); }
 function ultimoFollow(id) {
   var d = S.det; if (!d || d.id !== id) return '';
-  var l = (d.observacoes || []).filter(function (o) { return !o.excluida && o.texto && ['Sistema', 'Compra', 'Anexo'].indexOf(o.tipo) < 0; });
+  var l = (d.observacoes || []).filter(function (o) { return !o.excluida && o.texto && ['Sistema', 'Compra', 'Anexo', 'Solução'].indexOf(o.tipo) < 0; });
   var x = l.length ? String(l[l.length - 1].texto).replace(/\s+/g, ' ').trim() : '';
   return x.length > 200 ? x.slice(0, 197).replace(/\s+\S*$/, '') + '…' : x;
 }
