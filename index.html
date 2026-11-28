@@ -1619,6 +1619,124 @@ a.bt{text-decoration:none}
   .pc-det summary{padding:var(--esp-4)}
   .pc-ficha,.pc-hist{padding-left:var(--esp-4);padding-right:var(--esp-4)}
 }
+/* ================= v1.36 (C2): Meus condomínios e Como chegar — tokens do bloco v1.30 ================= */
+.cd{padding:.5em 1.5em 2.5em;max-width:76em}
+.cd-barra{display:flex;flex-wrap:wrap;gap:.75em;align-items:center;margin-bottom:1em}
+.cd-busca{flex:1 1 18em;display:flex;align-items:center;gap:.5em;min-height:44px;padding:0 .875em;background:#fff;border:1px solid var(--linha);border-radius:.75em;color:var(--suave)}
+.cd-busca input{flex:1;min-width:0;border:0;outline:0;background:none;font-size:.9375em;color:var(--texto);min-height:2.6em}
+.cd-chips{display:flex;flex-wrap:wrap;gap:.5em}
+.cd-chip{min-height:44px;padding:0 1em;border-radius:999px;border:1px solid var(--linha);background:none;color:var(--azul);font-size:.875em}
+.cd-chip[aria-pressed="true"]{border-color:var(--ouro);background:#fff;font-weight:600}
+.cd-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(19em,1fr));gap:.875em}
+.cd-card{background:#fff;border:1px solid var(--linha2);border-radius:1em;box-shadow:var(--sombra);display:flex;flex-direction:column}
+.cd-abrir{display:flex;flex-direction:column;gap:.25em;text-align:left;background:none;border:0;padding:.875em 1em .5em;min-height:44px;color:var(--azul)}
+.cd-linha1{display:flex;align-items:center;gap:.5em}
+.cd-linha1 b{flex:1;font-family:Lora,Georgia,serif;font-size:1.0625em;font-weight:700}
+.cd-abrir small{color:var(--suave);font-size:.8125em}
+.cd-cod{font-size:.75em;font-weight:600;letter-spacing:.04em;color:var(--suave2);border:1px solid var(--linha);border-radius:.4em;padding:.1em .45em;font-family:Inter,sans-serif}
+.cd-rodape{display:flex;align-items:center;justify-content:space-between;gap:.5em;padding:.25em .75em .75em 1em}
+.cd-sem{display:flex;align-items:center;gap:.4em;font-size:.8125em;color:var(--suave2)}
+.cd-ponto{width:.65em;height:.65em;border-radius:50%;flex:none;display:inline-block;background:#8A8F98}
+.cd-ponto.vermelho{background:#B3261E}.cd-ponto.amarelo{background:#B7791F}.cd-ponto.verde{background:#2E7D4F}.cd-ponto.cinza{background:#8A8F98}
+.bt.cd-rota,.cd .bt.ouro,.cc .bt,.det-rota .bt{min-height:44px;padding:0 .9em;font-size:.875em;white-space:nowrap}
+.cd-pag{display:flex;flex-direction:column;gap:.875em;max-width:60em}
+.cd-pag-cab{display:flex;flex-wrap:wrap;align-items:center;gap:.5em .75em}
+.cd-pag-cab h2{flex:1 1 12em;margin:0;font-family:Lora,Georgia,serif;font-size:1.375em;color:var(--azul)}
+.cd-voltar{min-height:44px;padding:0 .75em}
+.cd-abas{display:flex;gap:.25em;overflow-x:auto;border-bottom:1px solid var(--linha);-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.cd-abas::-webkit-scrollbar{display:none}
+.cd-abas button{flex:none;min-height:44px;padding:0 .875em;border:0;background:none;border-bottom:3px solid transparent;color:var(--suave);font-size:.9375em;white-space:nowrap}
+.cd-abas button[aria-selected="true"]{border-bottom-color:var(--ouro);color:var(--azul);font-weight:700}
+.cd-corpo{display:flex;flex-direction:column;gap:.75em}
+.cd-bloco{background:#fff;border:1px solid var(--linha2);border-radius:1em;padding:1em}
+.cd-bloco h3{margin:0 0 .6em;font-family:Lora,Georgia,serif;font-size:1.0625em;color:var(--azul)}
+.cd-grade-kv{display:grid;grid-template-columns:repeat(auto-fill,minmax(13em,1fr));gap:.875em 1.25em}
+.cd-kv{display:flex;flex-direction:column;gap:.15em;min-width:0}
+.cd-kv span{font-size:.75em;color:var(--suave)}
+.cd-kv b{font-weight:500;color:var(--texto);overflow-wrap:anywhere}
+.cd-nd{color:var(--suave);font-weight:400;font-style:normal}
+.cd-nf{border-color:var(--ouro)}
+.cd-nf .cd-kv{margin-top:.6em}
+.cd-nf-emitir{display:flex;flex-direction:column;gap:.15em;background:var(--creme);border-radius:.6em;padding:.6em .75em}
+.cd-nf-emitir span{font-size:.75em;color:var(--suave)}
+.cd-assunto{font-weight:600;background:var(--creme);border-radius:.6em;padding:.55em .75em;color:var(--azul);overflow-wrap:anywhere}
+.cd-acoes{display:flex;flex-wrap:wrap;gap:.5em;margin-top:.75em}
+.cd-dica{margin:.5em 0 0;font-size:.8125em;color:var(--suave)}
+.cd-alerta{margin:.5em 0 0;font-size:.8125em;color:var(--vinho)}
+.cd-acesso-tx{margin:0;line-height:1.45}
+.cd-turnos{display:grid;grid-template-columns:repeat(auto-fit,minmax(12em,1fr));gap:1em}
+.cd-turnos ul{list-style:none;margin:.3em 0 0;padding:0;display:flex;flex-direction:column;gap:.4em}
+.cd-turnos li{display:flex;flex-wrap:wrap;gap:.25em .75em;align-items:center;min-height:44px}
+.cd-rot{font-size:.75em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7C5E24}
+.cd-tel{color:var(--azul);font-weight:600;min-height:44px;display:inline-flex;align-items:center}
+.cd-lazer{display:flex;flex-wrap:wrap;gap:.5em}
+.cd-laz{border:1px solid var(--ouro);border-radius:999px;padding:.4em .85em;font-size:.875em;color:var(--azul)}
+.cd-laz.nao{border-color:var(--linha);color:var(--suave);text-decoration:line-through}
+.cd-laz.nd{border:1px dashed var(--linha);color:var(--suave)}
+.cd-resumo{display:flex;flex-wrap:wrap;gap:.5em}
+.cd-tag{font-size:.8125em;border:1px solid;border-radius:999px;padding:.3em .75em;color:var(--texto);background:#fff}
+.cd-tag.vermelho{border-color:#B3261E}.cd-tag.amarelo{border-color:#B7791F}.cd-tag.verde{border-color:#2E7D4F}
+.cd-item{display:flex;align-items:flex-start;gap:.75em;background:#fff;border:1px solid var(--linha2);border-radius:.875em;padding:.75em .875em}
+.cd-item>div{flex:1;display:flex;flex-direction:column;gap:.2em;min-width:0}
+.cd-item .cd-ponto{margin-top:.4em;width:.75em;height:.75em}
+.cd-item b{color:var(--azul)}
+.cd-sit{font-size:.875em;color:var(--texto)}
+.cd-item small{font-size:.8125em;color:var(--suave);overflow-wrap:anywhere}
+.cd-prox{color:var(--suave2)!important}
+.cd-selo{flex:none;font-size:.75em;border:1px solid var(--linha);border-radius:.4em;padding:.15em .5em;color:var(--suave)}
+.cd-selo.app{border-color:var(--ouro);color:var(--azul)}
+@media (max-width:767px){.cd{padding:.25em 1em 6em}.cd-grade{grid-template-columns:1fr}.cd-grade-kv{grid-template-columns:1fr 1fr}}
+@media (max-width:400px){.cd-grade-kv{grid-template-columns:1fr}}
+/* Como chegar (folha que sobe no celular; janela no computador) */
+@media (min-width:768px){.janela.centro.cc-jan{width:28em}}
+.cc{display:flex;flex-direction:column;gap:.75em}
+.cc-end{display:flex;align-items:flex-start;gap:.75em;background:var(--creme);border-radius:.875em;padding:.75em .875em}
+.cc-end-tx{flex:1;display:flex;flex-direction:column;gap:.2em;min-width:0}
+.cc-end-tx b{font-family:Lora,Georgia,serif;color:var(--azul)}
+.cc-end-tx span{font-size:.9375em;overflow-wrap:anywhere}
+.cc-mapa-bt{flex:none;border-color:var(--ouro)!important;font-size:.8125em!important}
+.cc-mapa{position:relative;height:10.5em;border-radius:.75em;overflow:hidden;border:1px solid var(--linha);background:#E9EEF0}
+.cc-mapa iframe{width:100%;height:100%;border:0;display:block}
+.cc-mapa-link{position:absolute;inset:0}
+.cc-atrib{position:absolute;right:.4em;bottom:.3em;font-size:.6875em;background:rgba(255,255,255,.85);padding:.1em .35em;border-radius:.3em;color:var(--suave2);pointer-events:none}
+.cc-acesso{display:flex;gap:.6em;align-items:flex-start;border:1px solid var(--ouro);border-radius:.875em;padding:.75em .875em;color:#7C5E24}
+.cc-acesso small{display:block;font-size:.75em;font-weight:600}
+.cc-acesso p{margin:.15em 0 0;color:var(--texto)}
+.cc-port{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5em;border-top:1px solid var(--linha2);padding-top:.6em}
+.cc-port small{display:block;font-size:.75em;color:var(--suave)}
+.cc-port-bts{display:flex;gap:.5em}
+.cc-apps{display:grid;grid-template-columns:1fr 1fr;gap:.6em}
+.cc-apps .bt{min-height:52px;font-size:.9375em;text-decoration:none}
+.cc-lembrar{display:flex;align-items:center;gap:.6em;min-height:44px;font-size:.875em}
+.cc-lembrar input{width:1.3em;height:1.3em;accent-color:var(--azul)}
+/* Rota nas Tarefas */
+.rota-bt{flex:none;width:44px;height:44px;border-radius:.75em;border:1.5px solid var(--ouro);background:#fff;color:#7C5E24;display:flex;align-items:center;justify-content:center;padding:0}
+.det-rota{display:flex;align-items:center;gap:.75em;background:#fff;border:1px solid var(--linha2);border-radius:1em;padding:.75em .875em}
+.det-rota.destaque{border-color:var(--ouro)}
+.det-rota-tx{flex:1;display:flex;flex-direction:column;gap:.15em;min-width:0}
+.det-rota-tx b{color:var(--azul);font-size:.9375em}
+.det-rota-tx span{font-size:.875em;overflow-wrap:anywhere}
+.det-rota-tx small{font-size:.8125em;color:var(--suave2)}
+@media (prefers-reduced-motion:reduce){.cc-mapa,.cd-card{transition:none}}
+
+/* C4: bloco Perfil */
+.cd-pf-barra{height:6px;border-radius:3px;background:rgba(15,38,70,.1);overflow:hidden;margin:.2em 0 .5em}
+.cd-pf-barra i{display:block;height:100%;background:#C9A46A;border-radius:3px}
+.cd-pf-tx{margin:0 0 .7em;font-size:.88em;color:#5B6678;display:flex;flex-wrap:wrap;gap:.4em;align-items:center}
+.cd-pf-acoes{display:flex;flex-wrap:wrap;gap:8px}
+.cd-pf-acoes .bt{min-height:44px}
+
+/* C3: termo, acesso da parceira, sugerir */
+.cd-termo{max-width:40em;margin:0 auto;background:#fff;border:1px solid rgba(15,38,70,.12);border-radius:16px;padding:1.2em 1.2em 1em}
+.cd-termo h2{font-family:Lora,serif;color:#0F2646;font-size:1.25em;margin:0 0 .6em}
+.cd-termo-tx p{margin:0 0 .8em;line-height:1.55;color:#24324A}
+.cd-termo-bts{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:.8em}
+.cd-termo-bts .bt,.cd-acesso-bts .bt{min-height:44px}
+.cd-acesso-bts{display:flex;flex-wrap:wrap;gap:8px;margin-top:.6em}
+.cd-acesso-bts a.bt{display:inline-flex;align-items:center;text-decoration:none}
+.cd-sug label{display:block;font-weight:600;color:#0F2646;margin-bottom:.4em}
+.cd-sug textarea{width:100%;box-sizing:border-box;border:1px solid rgba(15,38,70,.25);border-radius:10px;padding:.7em;font:inherit;min-height:7em;resize:vertical}
+.cd-cfg-abas .chip-op{min-height:44px}
 </style>
 </head>
 <body>
@@ -1759,7 +1877,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.36';
+var VERSAO_SITE = '1.37';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -2111,6 +2229,408 @@ function papelTexto(u) {
   return nome + (u.empresa && !u.master ? ' · ' + u.empresa : '');
 }
 
+/* ================= v1.36 (C2): Meus condomínios + Como chegar (componente único) =================
+   Só leitura (motor 0.37.0: condominios.lista / abrir / nf; a rota também vem em tarefas.inicio e tarefas.abrir).
+   V1 só para o master. Como chegar: Google Maps / Waze por link (sem API), mini mapa OpenStreetMap carregado só ao tocar. */
+var CD = { dados: null, filtro: 'todos', busca: '', cod: null, aba: 'cadastro', pagina: null, carregando: false };
+var ICO_PREDIO = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A46A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16M16 9h2a2 2 0 0 1 2 2v10M3 21h18M8 7h4M8 11h4M8 15h4"/></svg>';
+var ICO_ROTA = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="5" r="2.5"/><path d="M8.5 19H15a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h6.5"/></svg>';
+var ICO_MAPA = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg>';
+var ICO_INFO = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.5"/></svg>';
+var ICO_TEL = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h3l2 5-2 1a11 11 0 0 0 6 6l1-2 5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>';
+var ICO_MAIL = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>';
+var CD_ABAS = [['cadastro', 'Cadastro'], ['estrutura', 'Estrutura'], ['unidades', 'Unidades'], ['portaria', 'Portaria e acesso'], ['lazer', 'Lazer'], ['ficha', 'Ficha técnica'], ['prestadores', 'Prestadores']];
+var CD_COR_TXT = { vermelho: 'Atenção', amarelo: 'Conferir', verde: 'Em dia', cinza: 'Sem ficha' };
+
+function temCondominios() { return ((S.portal && S.portal.modulos) || []).some(function (m) { return m.id === 'condominios'; }); }
+function abrirCondominios(cod) { CD.cod = cod || null; ir('condominios', cod ? { arg: cod } : {}); }
+
+function cdMontar(arg) {
+  if (!temCondominios()) return;
+  if (arg) CD.cod = arg;
+  else { try { CD.cod = new URLSearchParams(location.search).get('cond') || null; } catch (e) { CD.cod = null; } }
+  moduloTela('Meus condomínios', cdParceiro() ? 'Como chegar e dados dos condomínios' : 'Cadastro, ficha técnica e como chegar', '<div class="cd" id="cd"><p class="vazio">Carregando…</p></div>', function (raiz) {
+    raiz.addEventListener('click', cdClique);
+    raiz.addEventListener('input', function (e) { if (e.target.id === 'cdBusca') { CD.busca = e.target.value; cdDesenharCards(); } });
+    if (CD.dados) cdDesenhar();
+    cdCarregar();
+  });
+}
+function cdCarregar() {
+  CD.carregando = true;
+  return api('condominios.lista').then(function (r) {
+    CD.carregando = false;
+    if (!$('cd')) return;
+    if (!r.ok) { $('cd').innerHTML = '<p class="vazio">' + esc(r.mensagem) + '</p>'; return; }
+    CD.dados = r;
+    if (r.termo) { cdDesenharTermo(); return; } // C3: parceira ainda não aceitou o termo
+    if (CD.cod) cdAbrirPagina(CD.cod, true); else cdDesenhar();
+  });
+}
+function cdDesenhar() {
+  if (!$('cd') || !CD.dados) return;
+  if (CD.dados.termo) { cdDesenharTermo(); return; }
+  if (CD.cod && CD.pagina && CD.pagina.codigo === CD.cod) { cdDesenharPagina(); return; }
+  var l = CD.dados.condominios || [];
+  var temFicha = l.some(function (c) { return !!c.ficha; });
+  if (!temFicha) CD.filtro = 'todos';
+  var nAt = l.filter(function (c) { return c.ficha && (c.ficha.cor === 'vermelho' || c.ficha.cor === 'amarelo'); }).length;
+  var nSem = l.filter(function (c) { return c.ficha && c.ficha.cor === 'cinza'; }).length;
+  var chip = function (id, rot) { return '<button class="cd-chip" data-cdfiltro="' + id + '" aria-pressed="' + (CD.filtro === id) + '">' + rot + '</button>'; };
+  $('cd').innerHTML = '<div class="cd-barra"><label class="cd-busca"><span class="sr">Buscar condomínio</span>' +
+    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>' +
+    '<input id="cdBusca" type="search" placeholder="Buscar por nome ou código" autocomplete="off" value="' + esc(CD.busca) + '"></label>' +
+    (temFicha ? '<div class="cd-chips" role="group" aria-label="Filtrar">' + chip('todos', 'Todos · ' + l.length) + chip('atencao', 'Atenção · ' + nAt) + chip('semficha', 'Sem ficha · ' + nSem) + '</div>' : '') + '</div>' +
+    '<div class="cd-grade" id="cdGrade"></div>';
+  cdDesenharCards();
+}
+function cdDesenharCards() {
+  var g = $('cdGrade'); if (!g) return;
+  var q = norm(CD.busca);
+  var l = (CD.dados.condominios || []).filter(function (c) {
+    if (CD.filtro === 'atencao' && (!c.ficha || (c.ficha.cor !== 'vermelho' && c.ficha.cor !== 'amarelo'))) return false;
+    if (CD.filtro === 'semficha' && (!c.ficha || c.ficha.cor !== 'cinza')) return false;
+    return !q || norm(c.nome).indexOf(q) >= 0 || norm(c.codigo).indexOf(q) >= 0;
+  });
+  g.innerHTML = l.length ? l.map(function (c) {
+    return '<article class="cd-card">' +
+      '<button class="cd-abrir" data-cdabrir="' + esc(c.codigo) + '" aria-label="Abrir ' + esc(c.nome) + '">' +
+        '<span class="cd-linha1"><b>' + esc(c.nome) + '</b><span class="cd-cod">' + esc(c.codigo) + '</span></span>' +
+        '<small>' + esc([c.administradora, c.bairro].filter(Boolean).join(' · ')) + '</small></button>' +
+      '<div class="cd-rodape">' + (c.ficha ? '<span class="cd-sem"><i class="cd-ponto ' + esc(c.ficha.cor) + '" aria-hidden="true"></i>Ficha: ' + esc(c.ficha.texto) + '</span>' : '<span class="cd-sem"></span>') +
+        (c.rota && c.rota.mapsUrl ? '<button class="bt ouro cd-rota" data-rota="' + esc(c.codigo) + '">' + ICO_ROTA + 'Como chegar</button>' : '') + '</div>' +
+      '</article>';
+  }).join('') : '<p class="vazio">Nenhum condomínio com esse filtro.</p>';
+}
+function cdClique(e) {
+  var b = e.target.closest('button, a'); if (!b) return;
+  if (b.hasAttribute('data-cdfiltro')) { CD.filtro = b.getAttribute('data-cdfiltro'); cdDesenhar(); return; }
+  if (b.hasAttribute('data-cdabrir')) { cdAbrirPagina(b.getAttribute('data-cdabrir')); return; }
+  if (b.hasAttribute('data-cdvoltar')) { cdVoltarLista(); return; }
+  if (b.hasAttribute('data-cdaba')) { CD.aba = b.getAttribute('data-cdaba'); cdDesenharPagina(); var t = document.querySelector('.cd-abas [aria-selected="true"]'); if (t) t.focus(); return; }
+  if (b.hasAttribute('data-cdtermo')) { cdAceitarTermo(b); return; }
+  if (b.hasAttribute('data-cdsugerir')) { cdAbrirSugerir(b.getAttribute('data-cdsugerir')); return; }
+  if (b.hasAttribute('data-cdperfil')) { cdIrPerfil(b.getAttribute('data-cdperfil')); return; }
+  if (b.hasAttribute('data-cdcopiarnf')) { if (CD.pagina) copiarTexto(CD.pagina.nf.texto, 'Dados da nota copiados'); return; }
+}
+function cdUrl(cod) {
+  try {
+    var q = new URLSearchParams(location.search);
+    q.set('m', 'condominios'); if (cod) q.set('cond', cod); else q.delete('cond');
+    return location.pathname + '?' + q.toString();
+  } catch (e) { return location.pathname; }
+}
+function cdAbrirPagina(cod, semHist) {
+  CD.cod = cod;
+  if (!semHist) { try { history.pushState({ m: 'condominios', cond: cod }, '', cdUrl(cod)); } catch (e) {} }
+  if (CD.pagina && CD.pagina.codigo === cod) { cdDesenharPagina(); return; }
+  if ($('cd')) $('cd').innerHTML = '<p class="vazio">Carregando…</p>';
+  api('condominios.abrir', { codigo: cod }).then(function (r) {
+    if (!$('cd') || CD.cod !== cod) return;
+    if (!r.ok && r.codigo === 'TERMO') { CD.dados = null; cdCarregar(); return; }
+    if (!r.ok) { $('cd').innerHTML = '<p class="vazio">' + esc(r.mensagem) + '</p><button class="bt claro" data-cdvoltar>Voltar à lista</button>'; return; }
+    CD.pagina = r;
+    cdDesenharPagina();
+    window.scrollTo(0, 0);
+  });
+}
+function cdVoltarLista(semHist) {
+  CD.cod = null;
+  if (!semHist) { try { history.pushState({ m: 'condominios' }, '', cdUrl(null)); } catch (e) {} }
+  cdDesenhar();
+}
+window.addEventListener('popstate', function () {
+  if (modAtual !== 'condominios' || !$('cd')) return;
+  var c = null; try { c = new URLSearchParams(location.search).get('cond'); } catch (e) {}
+  if (c) cdAbrirPagina(c, true); else cdVoltarLista(true);
+});
+
+function cdV(v) { return v === '' || v === null || v === undefined ? '<span class="cd-nd">Não informado</span>' : esc(String(v)); }
+function cdKV(rot, v) { return '<div class="cd-kv"><span>' + esc(rot) + '</span><b>' + cdV(v) + '</b></div>'; }
+function cdDesenharPagina() {
+  var p = CD.pagina; if (!p || !$('cd')) return;
+  if (!cdAbasDe(p).some(function (a) { return a[0] === CD.aba; })) CD.aba = 'cadastro';
+  var h = '<div class="cd-pag">' +
+    '<div class="cd-pag-cab"><button class="bt claro cd-voltar" data-cdvoltar aria-label="Voltar à lista"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Condomínios</button>' +
+    '<h2>' + esc(p.nome) + ' <span class="cd-cod">' + esc(p.codigo) + '</span></h2>' +
+    (p.rota && p.rota.mapsUrl ? '<button class="bt ouro" data-rota="' + esc(p.codigo) + '">' + ICO_ROTA + 'Como chegar</button>' : '') + '</div>' +
+    (cdAbasDe(p).length < 2 ? '<div class="cd-corpo">' + cdAba(p) + '</div></div>' : '<div class="cd-abas" role="tablist" aria-label="Seções">' + cdAbasDe(p).map(function (a) {
+      return '<button role="tab" data-cdaba="' + a[0] + '" aria-selected="' + (CD.aba === a[0]) + '"' + (CD.aba === a[0] ? '' : ' tabindex="-1"') + '>' + esc(a[1]) + '</button>';
+    }).join('') + '</div><div class="cd-corpo" role="tabpanel">' + cdAba(p) + '</div></div>');
+  $('cd').innerHTML = h;
+  if (CD.aba === 'cadastro') cdPerfilCarregar(p.codigo);
+}
+function cdAba(p) {
+  var c = p.cadastro || {}, e = p.estrutura || {}, u = p.unidades || {}, po = p.portaria || {}, r = p.rota || {};
+  switch (CD.aba) {
+    case 'estrutura': return '<section class="cd-bloco cd-grade-kv">' + cdKV('Torres', e.torres) + cdKV('Unidades', e.unidades) + cdKV('Elevadores', e.elevadores) +
+      cdKV('Marca do elevador', e.marcaElevador) + cdKV('Bombas', e.bombas) + cdKV('Subsolos', e.subsolos) + cdKV('Garagem coberta', e.garagemCoberta) +
+      cdKV('Caixa superior (L)', e.caixaSuperior) + cdKV('Energia solar', e.energiaSolar === null || e.energiaSolar === undefined ? '' : (e.energiaSolar ? 'Sim' : 'Não')) +
+      cdKV('Cores da fachada', e.fachada) + cdKV('Halls', e.halls) + cdKV('Cores dos halls', e.coresHalls) + '</section>';
+    case 'unidades': return '<section class="cd-bloco cd-grade-kv">' + cdKV('Ar-condicionado', u.arCondicionado) + cdKV('Chuveiro a gás', u.chuveiroGas) +
+      cdKV('Torneira da cozinha a gás', u.torneiraGas) + cdKV('Vagas por unidade', u.vagas) + cdKV('Água individualizada', u.aguaIndividualizada) + cdKV('Redutora de pressão', u.redutora) + '</section>';
+    case 'portaria':
+      var eq = po.equipe || { dia: [], noite: [] };
+      var lp = function (lst) { return lst.length ? lst.map(function (x) { return '<li><b>' + esc(x.nome) + '</b>' + (x.telefone ? '<a class="cd-tel" href="tel:' + esc(x.telefone.replace(/[^\d+]/g, '')) + '">' + esc(x.telefone) + '</a>' : '') + '</li>'; }).join('') : '<li class="cd-nd">Não informado</li>'; };
+      return '<section class="cd-bloco cd-grade-kv">' + cdKV('Tipo de portaria', po.tipo) + cdKV('Postos', po.postos) + cdKV('Entrada de pedestres', po.entrada) +
+        cdKV('Acesso à garagem', po.acessoGaragem) + cdKV('Telefone da portaria', r.portaria && r.portaria.telefone) + '</section>' +
+        cdAcessoHtml(r, p.parceiro) + (!po.equipe ? '' :
+        '<section class="cd-bloco"><h3>Controladores de acesso</h3><div class="cd-turnos"><div><span class="cd-rot">Dia</span><ul>' + lp(eq.dia) + '</ul></div>' +
+        '<div><span class="cd-rot">Noite</span><ul>' + lp(eq.noite) + '</ul></div></div></section>');
+    case 'lazer': return '<section class="cd-bloco"><div class="cd-lazer">' + (p.lazer || []).map(function (x) {
+        var v = String(x.valor || ''), sim = x.quantidade ? (v && v !== '0') : v === 'Sim', nao = x.quantidade ? v === '0' : v === 'Não';
+        var cls = sim ? 'sim' : nao ? 'nao' : 'nd';
+        return '<span class="cd-laz ' + cls + '">' + esc(x.nome) + (x.quantidade && sim ? ' · ' + esc(v) : '') + (cls === 'nd' ? ' ?' : '') + '</span>';
+      }).join('') + '</div><p class="cd-dica">Tracejado = ainda não respondido no perfil.</p></section>';
+    case 'ficha':
+      var f = p.ficha || { itens: [], resumo: {} }, rs = f.resumo || {};
+      if (!f.itens.length) return '<section class="cd-bloco"><p class="vazio">Sem ficha técnica para este condomínio ainda.</p></section>';
+      return '<div class="cd-resumo">' + (rs.vermelho ? '<span class="cd-tag vermelho">' + rs.vermelho + ' crítico' + (rs.vermelho > 1 ? 's ou vencidos' : ' ou vencido') + '</span>' : '') +
+        (rs.amarelo ? '<span class="cd-tag amarelo">' + rs.amarelo + ' para conferir</span>' : '') + (rs.verde ? '<span class="cd-tag verde">' + rs.verde + ' em dia</span>' : '') + '</div>' +
+        f.itens.map(function (i) {
+          var det = [i.sistema, i.qtd ? 'Qtd ' + i.qtd : '', i.local, i.prestador].filter(Boolean).join(' · ');
+          return '<article class="cd-item"><i class="cd-ponto ' + esc(i.cor) + '" aria-hidden="true"></i><div><b>' + esc(i.item) + '</b>' +
+            '<span class="cd-sit">' + esc(i.situacao) + '</span>' + (det ? '<small>' + esc(det) + '</small>' : '') +
+            (i.proximaAcao ? '<small class="cd-prox">Próxima ação: ' + esc(i.proximaAcao) + '</small>' : '') +
+            (i.link ? '<a class="bt-link" href="' + esc(i.link) + '" target="_blank" rel="noopener">Ver documento</a>' : '') + '</div></article>';
+        }).join('') + '<p class="cd-dica">Amarelo: vence em até ' + esc(String(f.diasAlerta || 60)) + ' dias ou sem validade cadastrada.</p>';
+    case 'prestadores':
+      var ps = p.prestadores || [];
+      return ps.length ? ps.map(function (x) {
+        return '<article class="cd-item"><div><b>' + esc(x.apelido) + '</b><small>' + esc(x.categorias.join(' · ')) + '</small>' +
+          (x.obs && x.obs.length ? '<small>' + esc(x.obs.join(' · ')) + '</small>' : '') + '</div>' +
+          '<span class="cd-selo' + (x.noApp ? ' app' : '') + '">' + (x.noApp ? 'No app' : 'Fora do app') + '</span></article>';
+      }).join('') : '<section class="cd-bloco"><p class="vazio">Nenhum prestador vinculado na FORNECEDOR x CONDOMÍNIO.</p></section>';
+    default:
+      if (p.parceiro) return '<section class="cd-bloco cd-grade-kv">' + cdKV('Nome completo', c.nomeCompleto) +
+        cdKV('Endereço', [c.endereco, c.bairro].filter(Boolean).join(' · ')) + cdKV('CEP · Cidade', [c.cep, c.cidade].filter(Boolean).join(' · ')) + '</section>' +
+        cdNfHtml(p.nf) + cdAcessoHtml(r, true);
+      var s = c.seguro || {};
+      return '<section class="cd-bloco cd-grade-kv">' + cdKV('Nome completo', c.nomeCompleto) + cdKV('CNPJ', c.cnpj) +
+        cdKV('Endereço', [c.endereco, c.bairro].filter(Boolean).join(' · ')) + cdKV('CEP · Cidade', [c.cep, c.cidade].filter(Boolean).join(' · ')) +
+        cdKV('Administradora', c.administradora) + '</section>' +
+        cdPerfilHtml(p.codigo) + cdNfHtml(p.nf) + cdAcessoHtml(r) +
+        '<section class="cd-bloco"><h3>Seguro</h3><div class="cd-grade-kv">' + cdKV('Seguradora', s.seguradora) + cdKV('Corretora', s.corretora) +
+        cdKV('Apólice', s.apolice) + cdKV('Vencimento', s.vencimento) + '</div>' + (s.situacao ? '<p class="cd-dica">' + esc(s.situacao) + '</p>' : '') + '</section>';
+  }
+}
+function cdNfHtml(nf) {
+  if (!nf) return '';
+  return '<section class="cd-bloco cd-nf"><h3>Envio de notas fiscais</h3>' +
+    '<div class="cd-nf-emitir"><span>Emitir para</span><b>' + esc(nf.emitirPara) + '</b>' + (nf.cnpj ? '<b>CNPJ ' + esc(nf.cnpj) + '</b>' : '') + '</div>' +
+    '<div class="cd-kv"><span>Enviar para</span><b>' + cdV(nf.para) + '</b></div><div class="cd-kv"><span>Cópia</span><b>' + esc(nf.copia) + '</b></div>' +
+    '<p class="cd-dica">Comece o assunto com o nome do condomínio:</p><div class="cd-assunto">' + esc(nf.assunto) + '</div>' +
+    (nf.falta && nf.falta.length ? '<p class="cd-alerta">Falta na CARACTERÍSTICAS: ' + esc(nf.falta.join(', ')) + '</p>' : '') +
+    '<div class="cd-acoes">' + (nf.mailto ? '<a class="bt ouro" href="' + esc(nf.mailto) + '">' + ICO_MAIL + 'Abrir e-mail pronto</a>' : '') +
+    '<button class="bt claro" data-cdcopiarnf>Copiar</button></div></section>';
+}
+function cdAcessoHtml(r, parceiro) {
+  if (!r) return '';
+  var po = r.portaria || {}, bts = '';
+  if (parceiro && po.telUrl) bts += '<a class="bt claro" href="' + esc(po.telUrl) + '">Ligar para a portaria</a>';
+  if (parceiro && po.whatsUrl) bts += '<a class="bt claro" href="' + esc(po.whatsUrl) + '" target="_blank" rel="noopener">WhatsApp da portaria</a>';
+  if (parceiro && CD.pagina) bts += '<button class="bt claro" data-cdsugerir="' + esc(CD.pagina.codigo) + '">Sugerir correção</button>';
+  return '<section class="cd-bloco"><h3>Acesso para prestadores</h3>' + (r.obsAcesso ? '<p class="cd-acesso-tx">' + esc(r.obsAcesso) + '</p>' : '<p class="cd-nd">Ainda não informado</p>') +
+    (parceiro && po.telefone ? '<p class="cd-dica">Portaria: ' + esc(po.telefone) + '</p>' : '') +
+    (bts ? '<div class="cd-acesso-bts">' + bts + '</div>' : '') + '</section>';
+}
+
+/* ---- Como chegar: o mesmo componente na lista, na página, nas Tarefas ---- */
+function rotaDoCondo(cod) {
+  if (S.det && S.det.condo === cod && S.det.rota) return S.det.rota;
+  var c = ((S.dados && S.dados.condos) || []).filter(function (x) { return x.codigo === cod; })[0];
+  if (c && c.rota) return c.rota;
+  if (CD.pagina && CD.pagina.codigo === cod) return CD.pagina.rota;
+  var l = ((CD.dados && CD.dados.condominios) || []).filter(function (x) { return x.codigo === cod; })[0];
+  return l ? l.rota : null;
+}
+function abrirRota(cod) {
+  var r = rotaDoCondo(cod);
+  if (!r || !r.mapsUrl) { avisar('Endereço deste condomínio não cadastrado.', true); return; }
+  abrirComoChegar(r);
+}
+function appRota() { var a = lerLocal('rotaApp'); return a === 'waze' || a === 'maps' ? a : ''; }
+function abrirComoChegar(r) {
+  var pref = appRota(), alvo = pref === 'waze' ? r.wazeUrl : r.mapsUrl;
+  var port = r.portaria || {};
+  var h = '<div class="jan-corpo cc">' +
+    '<div class="cc-end"><div class="cc-end-tx"><b>' + esc(r.nome) + '</b><span>' + esc(r.endereco) + '</span></div>' +
+      (r.mapa ? '<button class="bt claro cc-mapa-bt" id="ccMapaBt" aria-expanded="false" aria-controls="ccMapa">' + ICO_MAPA + '<span>Mostrar mapa</span></button>' : '') + '</div>' +
+    (r.mapa ? '<div class="cc-mapa" id="ccMapa" hidden></div>' : '') +
+    (r.obsAcesso ? '<div class="cc-acesso">' + ICO_INFO + '<div><small>Acesso para prestadores</small><p>' + esc(r.obsAcesso) + '</p></div></div>' : '') +
+    (port.telefone ? '<div class="cc-port"><div><small>Portaria</small><b>' + esc(port.telefone) + '</b></div><div class="cc-port-bts">' +
+      (port.telUrl ? '<a class="bt claro" href="' + esc(port.telUrl) + '">' + ICO_TEL + 'Ligar</a>' : '') +
+      (port.whatsUrl ? '<a class="bt claro" href="' + esc(port.whatsUrl) + '" target="_blank" rel="noopener">' + IC.zap + 'WhatsApp</a>' : '') + '</div></div>' : '') +
+    '<div class="cc-apps"><a class="bt ' + (pref === 'waze' ? 'claro' : 'ouro') + '" data-ccapp="maps" href="' + esc(r.mapsUrl) + '" target="_blank" rel="noopener">Google Maps</a>' +
+      '<a class="bt ' + (pref === 'waze' ? 'ouro' : 'claro') + '" data-ccapp="waze" href="' + esc(r.wazeUrl) + '" target="_blank" rel="noopener">Waze</a></div>' +
+    '<label class="cc-lembrar"><input type="checkbox" id="ccLembrar"' + (pref ? ' checked' : '') + '> Lembrar minha escolha neste aparelho</label>' +
+    '<button class="bt claro" data-cccopiar>Copiar endereço</button></div>';
+  abrirJanela('Como chegar', r.nome, h, 'centro cc-jan', function (raiz) {
+    var mostrar = function (abrir) {
+      var box = $('ccMapa'), bt = $('ccMapaBt'); if (!box || !bt) return;
+      if (abrir && !box.firstChild) {
+        box.innerHTML = '<iframe title="Mapa de ' + esc(r.nome) + '" src="' + esc(r.mapa.embedUrl) + '" loading="lazy" referrerpolicy="no-referrer"></iframe>' +
+          '<a class="cc-mapa-link" href="' + esc(alvo) + '" target="_blank" rel="noopener" aria-label="Abrir a rota no app"></a><span class="cc-atrib">' + esc(r.mapa.atribuicao || '© OpenStreetMap') + '</span>';
+      }
+      box.hidden = !abrir;
+      bt.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+      bt.querySelector('span').textContent = abrir ? 'Ocultar mapa' : 'Mostrar mapa';
+    };
+    if (r.mapa && lerLocal('rotaMapa') === '1') mostrar(true); // começa fechado; quem abriu uma vez, abre direto
+    raiz.addEventListener('click', function (e) {
+      var b = e.target.closest('button, a'); if (!b) return;
+      if (b.id === 'ccMapaBt') { var ab = $('ccMapa').hidden; mostrar(ab); guardarLocal('rotaMapa', ab ? '1' : '0'); return; }
+      if (b.hasAttribute('data-ccapp')) {
+        var lem = $('ccLembrar');
+        if (lem && lem.checked) guardarLocal('rotaApp', b.getAttribute('data-ccapp'));
+        else if (lem) guardarLocal('rotaApp', '');
+        return; // o link abre o app
+      }
+      if (b.hasAttribute('data-cccopiar')) copiarTexto(r.endereco, 'Endereço copiado');
+    });
+  });
+}
+
+/* ---- Rota nas Tarefas ---- */
+function botaoRota(t) {
+  if (!t.rotaDestaque || !rotaDoCondo(t.condo)) return '';
+  return '<button class="rota-bt" data-rota="' + esc(t.condo) + '" aria-label="Como chegar: ' + esc(t.titulo) + '" title="Como chegar">' + ICO_ROTA + '</button>';
+}
+function htmlRotaDet(t) {
+  var r = t.rota || rotaDoCondo(t.condo);
+  if (!r || !r.mapsUrl) return '';
+  return '<div class="det-rota' + (t.rotaDestaque ? ' destaque' : '') + '"><div class="det-rota-tx"><b>Como chegar</b><span>' + esc(r.endereco) + '</span>' +
+    (t.rotaDestaque && r.obsAcesso ? '<small>' + esc(r.obsAcesso) + '</small>' : '') + '</div>' +
+    '<button class="bt ' + (t.rotaDestaque ? 'ouro' : 'claro') + '" data-rota="' + esc(t.condo) + '">' + ICO_ROTA + 'Rota</button></div>';
+}
+/* Ao compartilhar uma tarefa de manutenção (inclui ocorrência e inspeção), vão junto a rota e a observação de acesso. */
+function rotaCompart(t) {
+  if (!t || !t.rotaDestaque) return '';
+  var r = (S.det && S.det.id === t.id && S.det.rota) || rotaDoCondo(t.condo);
+  if (!r || !r.mapsUrl) return '';
+  return '\n\n📍 ' + r.endereco + (r.obsAcesso ? '\nAcesso: ' + r.obsAcesso : '') +
+    (r.portaria && r.portaria.telefone ? '\nPortaria: ' + r.portaria.telefone : '') + '\nComo chegar: ' + r.mapsUrl;
+}
+
+/* ---------- Bloco Perfil na página do condomínio (C4) — usa as telas do módulo Perfil, sem duplicar ---------- */
+var CD_PERFIL = null; // { condominios: [...] } vindo de perfil.lista; lido uma vez por abertura do módulo
+function cdPerfilDe(cod) { return CD_PERFIL && (CD_PERFIL.condominios || []).filter(function (x) { return x.codigo === cod; })[0]; }
+function cdPerfilHtml(cod) {
+  if (typeof temPerfil !== 'function' || !temPerfil()) return '';
+  var c = cdPerfilDe(cod), r = c && c.resumo;
+  var corpo = !CD_PERFIL ? '<p class="cd-dica">Carregando…</p>' : !r ? '<p class="cd-dica">Este condomínio ainda não está no Perfil.</p>' :
+    '<div class="cd-pf-barra" role="img" aria-label="' + r.preenchidos + ' de ' + r.total + ' preenchidos"><i style="width:' + (r.total ? Math.round(r.preenchidos / r.total * 100) : 0) + '%"></i></div>' +
+    '<p class="cd-pf-tx">' + r.preenchidos + ' de ' + r.total + ' preenchidos' + (r.semResposta ? ' · ' + r.semResposta + ' sem resposta' : '') +
+    (r.paraAprovar ? ' <span class="cd-tag amarelo">' + r.paraAprovar + ' para aprovar</span>' : '') + '</p>';
+  return '<section class="cd-bloco cd-pf" id="cdPerfil"><h3>Perfil do condomínio</h3>' + corpo +
+    (r ? '<div class="cd-pf-acoes"><button class="bt claro" data-cdperfil="c.' + esc(cod) + '">' + (r.paraAprovar ? 'Aprovar respostas' : 'Abrir perfil') + '</button>' +
+      (r.preenchidos < r.total ? '<button class="bt claro" data-cdperfil="k.' + esc(cod) + '">Completar eu mesmo</button>' : '') + '</div>' : '') + '</section>';
+}
+function cdPerfilCarregar(cod) {
+  if (typeof temPerfil !== 'function' || !temPerfil()) return;
+  var desenhar = function () { var el = $('cdPerfil'); if (el && CD.pagina && CD.pagina.codigo === cod && CD.aba === 'cadastro') el.outerHTML = cdPerfilHtml(cod); };
+  if (CD_PERFIL) { desenhar(); return; }
+  api('perfil.lista').then(function (r) { if (r && r.ok) { CD_PERFIL = r; desenhar(); } else { var el = $('cdPerfil'); if (el) el.remove(); } });
+}
+function cdIrPerfil(pv) {
+  CD_PERFIL = null; // ao voltar, o resumo é lido de novo (pode ter aprovado respostas)
+  try {
+    var q = new URLSearchParams(location.search); q.delete('cond'); q.set('m', 'perfil'); q.set('pv', pv);
+    history.pushState({ m: 'perfil', pv: pv }, '', location.pathname + '?' + q.toString());
+  } catch (e) {}
+  mostrarModulo('perfil');
+}
+
+/* ---------- C3: parceira (termo, abas ligadas, sugerir correção, menu) ---------- */
+function cdParceiro() { return temCondominios() && !(S.portal && S.portal.usuario && S.portal.usuario.master); }
+function cdAbasDe(p) {
+  if (!p || !p.parceiro) return CD_ABAS;
+  var lig = p.abas || [];
+  return [['cadastro', 'Dados e acesso']].concat(CD_ABAS.filter(function (a) { return a[0] !== 'cadastro' && lig.indexOf(a[0]) >= 0; }));
+}
+function cdDesenharTermo() {
+  var tm = CD.dados && CD.dados.termo; if (!tm || !$('cd')) return;
+  var par = String(tm.texto || '').split(/\n{2,}/).map(function (b) {
+    return '<p>' + esc(b).replace(/\n/g, '<br>') + '</p>';
+  }).join('');
+  $('cd').innerHTML = '<section class="cd-termo" aria-labelledby="cdTermoT"><h2 id="cdTermoT">Termo de confidencialidade</h2>' +
+    '<div class="cd-termo-tx">' + par + '</div><p class="cd-dica">Versão ' + esc(tm.versao) + ' · pedido uma vez; se o texto mudar, pedimos de novo.</p>' +
+    '<div class="cd-termo-bts"><button class="bt ouro" data-cdtermo="' + esc(tm.versao) + '">Li e concordo</button></div></section>';
+}
+function cdAceitarTermo(b) {
+  var v = b.getAttribute('data-cdtermo');
+  umaVez('cd:termo', b, 'Salvando…', function () { return api('condominios.aceitarTermo', { versao: v }); }).then(function (r) {
+    if (!r || r.ignorado) return;
+    if (!r.ok) { avisar(r.mensagem || 'Não foi possível. Tente de novo.', true); if (r.codigo === 'VALIDACAO') { CD.dados = null; cdCarregar(); } return; }
+    CD.dados = null; cdCarregar();
+  });
+}
+function cdAbrirSugerir(cod) {
+  var atual = (CD.pagina && CD.pagina.rota && CD.pagina.rota.obsAcesso) || '';
+  abrirJanela('Sugerir correção no acesso', (CD.pagina && CD.pagina.nome) || cod,
+    '<div class="jan-corpo cd-sug"><label for="cdSugTx">Como o prestador entra no condomínio?</label>' +
+    '<textarea id="cdSugTx" rows="5" maxlength="600" placeholder="Ex.: portão de serviço na rua de trás, falar com o porteiro">' + esc(atual) + '</textarea>' +
+    '<p class="cd-dica">Vai para o síndico aprovar antes de aparecer para todos.</p><span class="erro-txt" id="cdSugErro" role="alert" hidden></span>' +
+    '<div class="cd-termo-bts"><button class="bt claro" data-acao="fecharJan">Cancelar</button><button class="bt ouro" data-cdsugenviar="' + esc(cod) + '">Enviar</button></div></div>', 'centro');
+  var tx = $('cdSugTx'); if (tx) { try { tx.focus(); tx.setSelectionRange(tx.value.length, tx.value.length); } catch (e) {} }
+}
+document.addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('[data-cdsugenviar]'); if (!b) return;
+  var cod = b.getAttribute('data-cdsugenviar'), tx = $('cdSugTx'), er = $('cdSugErro');
+  var texto = tx ? tx.value.trim() : '';
+  if (texto.length < 5) { if (er) { er.textContent = 'Escreva como é o acesso (pelo menos algumas palavras).'; er.hidden = false; } return; }
+  umaVez('cd:sug:' + cod, b, 'Enviando…', function () { return api('condominios.sugerirAcesso', { codigo: cod, texto: texto }); }).then(function (r) {
+    if (!r || r.ignorado) return;
+    if (!r.ok) { if (er) { er.textContent = r.mensagem || 'Não foi possível. Tente de novo.'; er.hidden = false; } return; }
+    fecharCamadas(); avisar(r.mensagem || 'Enviado ao síndico para aprovar.');
+  });
+});
+/** Quadro do menu do celular para a parceira (o laço do menu só sabia desenhar Tarefas). */
+function cdTileMenu() {
+  return '<button class="mp-mod' + (modAtual === 'condominios' ? ' atual' : '') + '" data-acao="condominios">' + ICO_PREDIO + '<b>Meus condomínios</b><small>Como chegar e dados</small></button>';
+}
+function cdItemLateral() { return '<button class="lat-item" data-acao="condominios" data-mod="condominios">' + ICO_PREDIO + '<span style="flex:1">Meus condomínios</span></button>'; }
+
+/* ---------- C3: Configurações › Empresas parceiras › Meus condomínios ---------- */
+function cdCfgEmpresa(e) {
+  if (!e || !e.condominios) return '';
+  CF.form = CF.form || {};
+  var k = 'cnd:' + e.apelido, orig = { ligado: e.condominios.ligado, abas: e.condominios.abas.slice() };
+  var f = CF.form[k] = CF.form[k] || JSON.parse(JSON.stringify(orig));
+  var mudou = JSON.stringify(f) !== JSON.stringify(orig);
+  var h = '<div class="cf-item' + (mudou ? ' mudou' : '') + '"><div class="ct-linha"><div class="cf-tx"><b>Meus condomínios</b><small>' +
+    (f.ligado ? 'Sempre: dados básicos, Como chegar e envio de NF. Escolha o que mais a empresa vê:' : 'Desligado: a empresa não vê o módulo.') + '</small></div>' +
+    '<button class="pf-sw" role="switch" data-cnd-sw="' + esc(e.apelido) + '" aria-checked="' + f.ligado + '" aria-label="' + esc(e.apelido + ' vê Meus condomínios') + '"></button></div>';
+  if (f.ligado) h += '<div class="chips-linha cd-cfg-abas">' + e.condominios.opcoes.map(function (o) {
+    return '<button class="chip-op" data-cnd-aba="' + esc(e.apelido) + '|' + esc(o.id) + '" aria-pressed="' + (f.abas.indexOf(o.id) >= 0) + '">' + esc(o.nome) + '</button>';
+  }).join('') + '</div><p class="dica-campo">Na primeira vez, cada pessoa aceita o termo de confidencialidade. Os acessos ficam registrados.</p>';
+  if (mudou) h += '<div class="ct-bts"><button class="bt claro" data-cnd-descartar="' + esc(e.apelido) + '">Descartar</button><button class="bt" data-cnd-salvar="' + esc(e.apelido) + '">Salvar Meus condomínios</button></div>';
+  return h + '</div>';
+}
+document.addEventListener('click', function (ev) {
+  var b = ev.target.closest && ev.target.closest('[data-cnd-sw],[data-cnd-aba],[data-cnd-salvar],[data-cnd-descartar]'); if (!b || !CF) return;
+  ev.stopPropagation(); ev.preventDefault();
+  var a;
+  if ((a = b.getAttribute('data-cnd-sw')) !== null) { var f = CF.form['cnd:' + a]; f.ligado = !f.ligado; desenharCfg(); return; }
+  if ((a = b.getAttribute('data-cnd-aba')) !== null) {
+    var p = a.split('|'), f2 = CF.form['cnd:' + p[0]], i = f2.abas.indexOf(p[1]);
+    if (i >= 0) f2.abas.splice(i, 1); else f2.abas.push(p[1]);
+    var ordem = CD_ABAS.map(function (x) { return x[0]; });
+    f2.abas.sort(function (x, y) { return ordem.indexOf(x) - ordem.indexOf(y); });
+    desenharCfg(); return;
+  }
+  if ((a = b.getAttribute('data-cnd-descartar')) !== null) { delete CF.form['cnd:' + a]; desenharCfg(); return; }
+  if ((a = b.getAttribute('data-cnd-salvar')) !== null) {
+    var f3 = CF.form['cnd:' + a];
+    umaVez('cd:cfg:' + a, b, 'Salvando…', function () { return api('condominios.salvarParceira', { empresa: a, ligado: f3.ligado, abas: f3.abas }); }).then(function (r) {
+      if (!r || r.ignorado) return;
+      if (!r.ok) { if (typeof ctErro === 'function') ctErro(r.mensagem); else avisar(r.mensagem, true); return; }
+      avisar(r.mudou ? 'Salvo · vale a partir de agora' : 'Nada mudou');
+      delete CF.form['cnd:' + a]; carregarCfg();
+    });
+  }
+}, true);
+
 /* ================= Módulos e endereços (v1.30, Etapa D.1) =================
    Casca única: todo módulo abre na área principal, com a lateral e o cabeçalho de sempre, e tem endereço
    próprio (?m=<módulo>) — o voltar do navegador e o link direto funcionam. Módulo novo = uma entrada aqui. */
@@ -2118,7 +2638,8 @@ var MODULOS = {
   tarefas: { pode: function () { return true; } },
   ressarcimentos: { pode: function () { return !!(S.portal && S.portal.usuario && S.portal.usuario.master) && temRess(); }, abrir: function (arg) { rsMontar(arg); } },
   evolucao: { pode: function () { return !!(S.portal && S.portal.usuario && S.portal.usuario.master); }, abrir: function () { evoMontar(); } },
-  perfil: { pode: function () { return temPerfil(); }, abrir: function () { pcMontar(); } } // v1.36 (P2): Perfil dos condomínios
+  perfil: { pode: function () { return temPerfil(); }, abrir: function () { pcMontar(); } }, // v1.36 (P2): Perfil dos condomínios
+  condominios: { pode: function () { return temCondominios(); }, abrir: function (arg) { cdMontar(arg); } } // v1.36 (C2)
 };
 var modAtual = 'tarefas';
 function modDaUrl() {
@@ -2128,6 +2649,7 @@ function urlDoMod(id) {
   var q = new URLSearchParams(location.search);
   if (id !== 'perfil') q.delete('pv'); // v1.36: a tela interna do Perfil não segue para outro módulo
   if (id === 'tarefas') q.delete('m'); else q.set('m', id);
+  if (id !== 'condominios') q.delete('cond'); // v1.36
   var t = q.toString();
   return location.pathname + (t ? '?' + t : '');
 }
@@ -2355,6 +2877,7 @@ function cartao(t, agrupado, ord) {
       '<span class="cartao-meta">' + esc(metaDe(t, agrupado)) + anxInd(t) + '</span>' +
       (t.etiqueta ? '<span class="etiqueta">' + esc(t.etiqueta) + '</span>' : '') +
     (ord ? '</div>' : '</button>') +
+    (!ord ? botaoRota(t) : '') + // v1.36 (C2)
     (ord ? ordSetas(t, ord) : ehInspecaoT(t) || t.soAcompanha
       ? '<button class="concluir abrir-compra" data-abrir="' + esc(t.id) + '" aria-label="' + (t.soAcompanha ? 'Acompanhar: ' : 'Abrir inspeção: ') + esc(t.titulo) + '" title="' + (t.soAcompanha ? 'Acompanhar' : 'Abrir inspeção') + '">' + ICO_CAT.inspecao + '</button>'
       : ehPedidoT(t)
@@ -3694,7 +4217,7 @@ var API_LEITURA = {}, API_SILENCIOSA = {}, API_PROPRIA = {}, API_COM_FILA = {};
  'tarefas.pedidoPrevia tarefas.pedidoFoto tarefas.catAdmin tarefas.loteListar tarefas.lotePrevia tarefas.mudancas tarefas.insRoteiros ' +
  'tarefas.insOpcoes tarefas.prgListar tarefas.prgOpcoes tarefas.relInicio tarefas.relResumo tarefas.relCumprimento tarefas.relDesempenho ' +
  'tarefas.relBaixar evolucao.lista ressarcimentos.config ressarcimentos.resumo ressarcimentos.revisao ressarcimentos.acompanhamento ' +
- 'ressarcimentos.painel ressarcimentos.batimentoLer perfil.lista perfil.condominio perfil.completar perfil.perguntas').split(' ').forEach(function (a) { API_LEITURA[a] = 1; });
+ 'ressarcimentos.painel ressarcimentos.batimentoLer perfil.lista perfil.condominio perfil.completar perfil.perguntas condominios.lista condominios.abrir condominios.nf').split(' ').forEach(function (a) { API_LEITURA[a] = 1; });
 /* Gravam sem botão (marcar como lido, registrar o aparelho): levam idCliente, mas não mexem na tela. */
 ['portal.lerAvisos', 'tarefas.lerAlertas', 'portal.registrarPush'].forEach(function (a) { API_SILENCIOSA[a] = 1; });
 /* Envio de anexos: já tem fila no aparelho, idCliente e retomada próprios (v1.10). */
@@ -3967,6 +4490,7 @@ function desenharDetalhe() {
       (t.unidade ? '<span>Unidade <b>' + esc(t.unidade) + '</b></span>' : '') + (t.envolvidos ? '<span>Envolvidos: <b>' + esc(t.envolvidos) + '</b></span>' : '') + '</div>' : '') +
     '</div>';
 
+  h += htmlRotaDet(t); // v1.36 (C2)
   if (t.compra) h += htmlCompra(t);
   if (t.pedido) h += htmlPedido(t);
   if (t.inspecao) h += htmlInspecao(t); // v1.27
@@ -4297,7 +4821,7 @@ function textoConclusao(t, por, quando, follow) {
     (follow ? '\n' + follow : '') + '\nVer no app: ' + linkDe(t.id);
 }
 function textoConcluida(t) { return textoConclusao(t, t.concluidoPor, t.concluidoEm ? new Date(t.concluidoEm) : new Date(), ultimoFollow(t.id)); }
-function textoCompart(t) { return t.status === 'Concluída' ? textoConcluida(t) : textoDe(t) + '\nAbra no app Síndico: ' + linkDe(t.id); }
+function textoCompart(t) { return t.status === 'Concluída' ? textoConcluida(t) : textoDe(t) + rotaCompart(t) + '\nAbra no app Síndico: ' + linkDe(t.id); }
 function avisarWhats(texto) {
   if (navigator.share && faixa() !== 'computador') { navigator.share({ text: texto }).catch(function () {}); return; }
   window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank', 'noopener');
@@ -4346,7 +4870,7 @@ function compartilhar(id) {
   var link = linkDe(id), texto = textoDe(t);
   if (t.status === 'Concluída' && navigator.share && faixa() !== 'computador') { avisarWhats(textoConcluida(t)); return; }
   if (navigator.share && faixa() !== 'computador') {
-    navigator.share({ title: texto, text: texto + '\nAbra no app Síndico:', url: link }).catch(function () {});
+    navigator.share({ title: texto, text: texto + rotaCompart(t) + '\nAbra no app Síndico:', url: link }).catch(function () {});
     return;
   }
   abrirOpcoes(id, true);
@@ -4841,6 +5365,7 @@ function htmlMenuPortal() {
   var n = ((S.dados && S.dados.tarefas) || []).length;
   var h = '<div class="mp"><div class="mp-rot">Módulos</div><div class="mp-grade">';
   mods.forEach(function (m) {
+    if (m.id === 'condominios') { h += cdTileMenu(); return; } // v1.37 (C3)
     h += '<button class="mp-mod' + (modAtual === 'tarefas' ? ' atual' : '') + '" data-acao="modTarefas">' + IC.listaOuro + '<b>' + esc(m.nome) + '</b><small>' + n + (n === 1 ? ' pendente' : ' pendentes') + '</small></button>';
   });
   var breve = emBreve().slice(1, 1 + (mods.length % 2 ? 3 : 2));
@@ -4854,6 +5379,7 @@ function htmlMenuPortal() {
         nr ? '<span class="selo estatico">' + nr + '</span>' : '') : '') +
       (temPerfil() ? mpLin('perfil', ICO_PERFIL.replace(/#E3C894/g, '#0F2646'), 'Perfil dos condomínios', pcN() ? (pcN() === 1 ? '1 resposta para aprovar' : pcN() + ' respostas para aprovar') : 'Ficha, formulário e respostas',
         pcN() ? '<span class="selo estatico">' + pcN() + '</span>' : '') : '') + // v1.36 (P2)
+      (temCondominios() ? mpLin('condominios', ICO_PREDIO.replace(/#C9A46A/g, '#0F2646'), 'Meus condomínios', 'Cadastro, ficha técnica e como chegar') : '') + // v1.36
       mpLin('evolucao', IC.evolucaoOuro.replace(/#E3C894/g, '#0F2646'), 'Evolução', nd ? (nd === 1 ? '1 para decidir' : nd + ' para decidir') : 'Sugestões e melhorias do app',
         nd ? '<span class="selo estatico">' + nd + '</span>' : '') +
       (g && g.configuracoes ? mpLin('configuracoes', ICO_CFG, 'Configurações', 'Parâmetros gerais e de cada módulo') : '') + '</div>';
@@ -4898,7 +5424,10 @@ function desenharLateralGestao() {
   if (sv) {
     var temEvo = ((S.portal && S.portal.modulos) || []).some(function (m) { return m.id === 'evolucao'; }), nd = evoDecidirN();
     var temRs = temRess(), nr = rsBadge();
-    sv.innerHTML = (temEvo || temRs || temPerfil()) ? '<span class="lat-titulo" style="padding-top:1.6em">Só para você</span>' +
+    var temCd = temCondominios(); // v1.36
+    if (temCd && cdParceiro()) sv.innerHTML = cdItemLateral(); // v1.37 (C3): módulo da parceira, sem "Só para você"
+    else sv.innerHTML = (temEvo || temRs || temPerfil() || temCd) ? '<span class="lat-titulo" style="padding-top:1.6em">Só para você</span>' +
+      (temCd ? '<button class="lat-item" data-acao="condominios" data-mod="condominios">' + ICO_PREDIO + '<span style="flex:1">Meus condomínios</span></button>' : '') +
       (temRs ? '<button class="lat-item" data-acao="ressarcimentos">' + ICO_RESS + '<span style="flex:1">Ressarcimentos</span>' + (nr ? '<span class="cont">' + nr + '</span>' : '') + '</button>' : '') +
       (temPerfil() ? '<button class="lat-item" data-acao="perfil" aria-label="Perfil dos condomínios">' + ICO_PERFIL + '<span style="flex:1">Perfil</span>' + (pcN() ? '<span class="cont">' + pcN() + '</span>' : '') + '</button>' : '') + // v1.36 (P2)
       (temEvo ? '<button class="lat-item" data-acao="evolucao">' + IC.evolucaoOuro +
@@ -7858,7 +8387,7 @@ function ctHtmlEmpresa(ap) {
   CF.form = CF.form || {};
   var f = CF.form['emp:' + ap] = CF.form['emp:' + ap] || JSON.parse(JSON.stringify(e.recebe));
   var h = '<div class="cf-cab"><button class="cf-voltar" data-cf-ir="empresas">' + IC.voltar + '<span>Empresas parceiras</span></button><h2>' + esc(e.apelido) + '</h2><small class="ct-sub">' + e.pessoas + (e.pessoas === 1 ? ' pessoa' : ' pessoas') + ' · ' + esc(e.condos.length + (e.condos.length === 1 ? ' condomínio' : ' condomínios')) + '</small></div>';
-  h += '<span class="rotulo">Módulos compartilhados</span><div class="cf-sec"><div class="cf-item ro"><div class="cf-tx"><b>Tarefas</b><small>Ressarcimentos e Evolução do app são só seus.</small></div></div></div>';
+  h += '<span class="rotulo">Módulos compartilhados</span><div class="cf-sec"><div class="cf-item ro"><div class="cf-tx"><b>Tarefas</b><small>Ressarcimentos e Evolução do app são só seus.</small></div></div>' + cdCfgEmpresa(e) + '</div>'; // v1.37 (C3)
   h += '<span class="rotulo">Categorias em que atua</span><div class="cf-sec">' + f.map(function (r, k) {
     var c = ctCat(r.codigo);
     var ass = c ? c.assuntos.filter(function (a) { return a.estado === 'Ativo'; }) : [];
@@ -9042,6 +9571,8 @@ document.addEventListener('click', function (e) {
   segurar.ignorarClique = false;
   var sh = e.target.closest('[data-compartilhar]');
   if (sh) { e.preventDefault(); compartilhar(sh.getAttribute('data-compartilhar')); return; }
+  var ro = e.target.closest('[data-rota]'); // v1.36 (C2): Como chegar
+  if (ro) { e.preventDefault(); abrirRota(ro.getAttribute('data-rota')); return; }
   var b = e.target.closest('button, a[data-acao], .fundo, .fundo-det');
   if (!b) return;
   if (b.id === 'fundoDet') { fecharDetalhe(); return; }
@@ -9077,6 +9608,7 @@ document.addEventListener('click', function (e) {
     case 'convidar': fecharCamadas(); abrirConvidar(); break;
     case 'pessoas': fecharCamadas(); abrirGestao(); break;
     case 'evolucao': fecharCamadas(); abrirEvolucao(); break;
+    case 'condominios': fecharCamadas(); abrirCondominios(); break; // v1.36
     case 'perfil': fecharCamadas(); abrirPerfil(); break; // v1.36 (P2)
     case 'ressarcimentos': fecharCamadas(); abrirRessarcimentos(); break;
     case 'modTarefas': fecharCamadas(); ir('tarefas'); break; // v1.30
