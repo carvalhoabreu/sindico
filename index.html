@@ -1015,6 +1015,19 @@ a.bt{text-decoration:none}
 .evo-seg-b+.evo-seg-b{border-left:1.5px solid var(--linha)}
 .evo-seg-b.sugerida{box-shadow:inset 0 -3px 0 var(--ouro)}
 .evo-seg-b[aria-pressed="true"]{background:var(--azul);color:#fff}
+/* v1.35: categoria da sugestão (selo; opção B) */
+.evo-cat{display:flex;align-items:center;justify-content:space-between;gap:var(--esp-3);flex-wrap:wrap}
+.evo-cat-tx{display:flex;flex-direction:column;gap:.1em}
+.evo-cat-tx b{font-size:.875em;color:var(--azul)}
+.evo-cat-tx span{font-size:.8125em;color:var(--suave)}
+.evo-cat-selo{min-height:max(var(--toque),44px);display:inline-flex;align-items:center;gap:.5em;padding:0 1em;border-radius:999px;border:1.5px solid var(--ouro);background:#fff;color:var(--azul);font-weight:600;font-size:.875em}
+.evo-cat-selo small{font-size:.8125em;font-weight:600;color:#7C5E24}
+.evo-cat-selo.vazio{border-style:dashed;border-color:var(--linha)}
+.evo-cat-lista{display:flex;flex-direction:column;gap:.4em;padding:.25em 0}
+.evo-cat-op{min-height:max(var(--toque),44px);display:flex;align-items:center;justify-content:space-between;gap:.75em;padding:0 1em;border-radius:.75em;border:1.5px solid var(--linha);background:#fff;color:var(--azul);font-weight:600;font-size:.9375em;text-align:left}
+.evo-cat-op small{font-size:.8125em;font-weight:600;color:#7C5E24}
+.evo-cat-op[aria-pressed="true"]{background:var(--azul);border-color:var(--azul);color:#fff}
+.evo-cat-op[aria-pressed="true"] small{color:var(--ouro-claro)}
 .evo-mover{display:flex;flex-direction:column;gap:var(--esp-1);padding-top:var(--esp-3);border-top:1px solid var(--linha2)}
 .evo-mover select.campo{max-width:22em}
 .sug-status.ouro{background:#F6EEDC;color:#6B4A12}.sug-status.cinza{background:#F1EBDD;color:#3D4863}
@@ -1030,7 +1043,7 @@ a.bt{text-decoration:none}
   .evo-chips .chip .n{min-width:0;height:auto;padding:0;background:none;font-size:1.6em;line-height:1.05;color:inherit}
   .evo-chips .chip[aria-pressed="true"] .n{background:none;color:var(--ouro-claro)}
   .evo-filtro select.campo{flex:1;min-width:0}
-  .evo-prio{flex-direction:column;align-items:stretch}
+  .evo-prio,.evo-cat{flex-direction:column;align-items:stretch}
   .evo-seg{display:flex}.evo-seg-b{flex:1;min-width:0}
   .evo-mover select.campo{max-width:none}
 }
@@ -1602,7 +1615,7 @@ body:has(.rs-ap-jan) #gvLento{display:none} /* o aviso de internet lenta aparece
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.34';
+var VERSAO_SITE = '1.35';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -8666,6 +8679,42 @@ function evoPrioridade(s) {
       return '<button class="evo-seg-b' + (!p && sug === x ? ' sugerida' : '') + '" data-evoprio="' + x + '" aria-pressed="' + (p === x) + '">' + x + '</button>';
     }).join('') + '</div></div>';
 }
+/* v1.35: categoria. Escolhida (no selo, ainda não gravada) > confirmada > sugerida pelo agente. */
+var EVO_CATS_PADRAO = ['Tarefas', 'Compras', 'Ressarcimentos', 'Evolução do app', 'Acesso e perfis', 'Avisos e notificações', 'Visual e navegação', 'Outros'];
+function evoCategorias() { return (E.dados && E.dados.categorias && E.dados.categorias.length) ? E.dados.categorias : EVO_CATS_PADRAO; }
+function evoCatAtual(s) {
+  if (s._catSel) return { nome: s._catSel, est: 'escolhida' };
+  if (s.categoria) return { nome: s.categoria, est: 'confirmada' };
+  if (s.categoriaSugerida) return { nome: s.categoriaSugerida, est: 'sugerida' };
+  return { nome: '', est: '' };
+}
+function evoCategoria(s) {
+  var c = evoCatAtual(s);
+  var ajuda = c.est === 'sugerida' ? 'O Maestro sugere. Vale ao aprovar ou planejar; toque para trocar.' : (c.est === 'escolhida' ? 'Vale ao aprovar ou planejar.' : (c.est === 'confirmada' ? 'Toque para trocar.' : 'Toque para escolher.'));
+  return '<div class="evo-cat"><div class="evo-cat-tx"><b>Categoria</b><span>' + ajuda + '</span></div>' +
+    '<button class="evo-cat-selo' + (c.nome ? '' : ' vazio') + '" data-evocat="1" aria-haspopup="dialog">' + (c.nome ? esc(c.nome) + (c.est === 'sugerida' ? ' <small>· sugerida</small>' : '') : 'Escolher categoria') + '</button></div>';
+}
+function evoCategoriaFolha(s) {
+  var c = evoCatAtual(s), lista = evoCategorias().slice();
+  if (c.nome && lista.indexOf(c.nome) < 0) lista.push(c.nome); // nome antigo, fora da lista de hoje
+  var h = '<div class="evo-cat-lista">' + lista.map(function (n, i) {
+    return '<button class="evo-cat-op" type="button" data-evocatesc="' + i + '" aria-pressed="' + (n === c.nome) + '"><span>' + esc(n) + '</span>' + (n === s.categoriaSugerida ? '<small>sugerida</small>' : '') + '</button>';
+  }).join('') + (s.categoria ? '<button class="bt-link" type="button" data-evocatesc="-1" style="align-self:flex-start">Tirar a categoria</button>' : '') + '</div>';
+  abrirJanela('Categoria', 'Escolha uma', h, 'centro', function (raiz) {
+    raiz.addEventListener('click', function (ev) {
+      var b = ev.target.closest('button[data-evocatesc]'); if (!b) return;
+      var i = +b.getAttribute('data-evocatesc'), nome = i < 0 ? '' : lista[i];
+      if (!s.categoria && s.etapa === 'Para decidir' && i >= 0) { s._catSel = nome === s.categoriaSugerida ? '' : nome; fecharCamadas(); if (E && E.aberto === s.id) desenharEvolucao(); return; }
+      api('evolucao.categoria', { id: s.id, categoria: nome }).then(function (r) {
+        if (!r.ok) { avisar(r.mensagem, true); return; }
+        if (r.ignorado) return;
+        s.categoria = r.categoria || ''; s._catSel = '';
+        fecharCamadas(); avisar(s.categoria ? 'Categoria: ' + s.categoria : 'Categoria retirada');
+        if (E && E.aberto === s.id) desenharEvolucao();
+      });
+    });
+  });
+}
 function evoMoverCampo(s) {
   if (s.etapa === 'Implementada') return '';
   var ops = EVO_MOVER.filter(function (x) { return x !== s.etapa; });
@@ -8690,7 +8739,7 @@ function evoCard(s, comEtapa) {
       evoBloco('Como fazer', s.comoFazer) +
       evoBloco('Sua pergunta', s.pergunta) + evoBloco('Resposta de ' + primeiro(s.autorNome), s.respostaAutor) +
       evoBloco('Pedido ao agente', s.agentePendente ? s.pedidoAgente : '') + evoBloco('Mensagem enviada', s.resposta) +
-      (fim ? '' : evoPrioridade(s)) +
+      (fim ? '' : evoCategoria(s) + evoPrioridade(s)) +
       '<p class="cartao-meta" style="margin:0">' + esc(s.id) + (s.categoria ? ' · ' + esc(s.categoria) : '') + (s.tela ? ' · tela: ' + esc(s.tela) : '') + (s.idTarefa ? ' · ' + esc(s.idTarefa) : '') + '</p>' +
       (E.modo ? evoCompositor(s) : '<div class="evo-acoes">' + evoBotoes(s) + '</div>' + evoMoverCampo(s)) + '</div>';
   }
@@ -8764,6 +8813,7 @@ function cliqueEvolucao(ev) {
   if (b.hasAttribute('data-evogrupo')) { E.grupo = b.getAttribute('data-evogrupo'); E.aberto = null; E.modo = null; desenharEvolucao(); return; }
   if (b.hasAttribute('data-evoetapa')) { E.etapa = b.getAttribute('data-evoetapa'); E.grupo = evoGrupoDe(E.etapa); E.aberto = null; E.modo = null; desenharEvolucao(); return; }
   if (b.hasAttribute('data-evoabrir')) { var id = b.getAttribute('data-evoabrir'); E.aberto = E.aberto === id ? null : id; E.modo = null; desenharEvolucao(); return; }
+  if (b.hasAttribute('data-evocat')) { var sc = evoItem(E.aberto); if (sc) evoCategoriaFolha(sc); return; }
   if (b.hasAttribute('data-evoprio')) {
     var sp = evoItem(E.aberto); if (!sp) return;
     var nova = b.getAttribute('data-evoprio'); if (sp.prioridade === nova) nova = '';
@@ -8782,7 +8832,7 @@ function cliqueEvolucao(ev) {
   var s = evoItem(E.aberto); if (!s || E.ocupado) return;
   var txt = $('evoTxt') ? $('evoTxt').value.trim() : '';
   var m = E.modo, chamada;
-  if (m === 'aprovar' || m === 'planejar' || m === 'recusar' || m === 'jaexiste') chamada = api('evolucao.decidir', { id: s.id, decisao: m, mensagem: txt });
+  if (m === 'aprovar' || m === 'planejar' || m === 'recusar' || m === 'jaexiste') chamada = api('evolucao.decidir', { id: s.id, decisao: m, mensagem: txt, categoria: (m === 'aprovar' || m === 'planejar') ? (s._catSel || '') : '' });
   else if (m === 'perguntar') { if (!txt) { avisar('Escreva a pergunta.', true); return; } chamada = api('evolucao.perguntar', { id: s.id, pergunta: txt }); }
   else if (m === 'conversar') { if (!txt) { avisar('Escreva o que o agente deve considerar.', true); return; } chamada = api('evolucao.pedirAgente', { id: s.id, tipo: 'conversar', texto: txt }); }
   else if (m === 'implementar') chamada = api('evolucao.pedirAgente', { id: s.id, tipo: 'implementar', texto: txt });
