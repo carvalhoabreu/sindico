@@ -1620,7 +1620,8 @@ a.bt{text-decoration:none}
   .pc-ficha,.pc-hist{padding-left:var(--esp-4);padding-right:var(--esp-4)}
 }
 /* ================= v1.36 (C2): Meus condomínios e Como chegar — tokens do bloco v1.30 ================= */
-.cd{padding:.5em 1.5em 2.5em;max-width:76em}
+.cd{padding:.5em 1.5em 2.5em;flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch} /* v1.38: rolagem própria, como Evolução/Ressarcimentos/Perfil */
+.cd>*{max-width:76em}
 .cd-barra{display:flex;flex-wrap:wrap;gap:.75em;align-items:center;margin-bottom:1em}
 .cd-busca{flex:1 1 18em;display:flex;align-items:center;gap:.5em;min-height:44px;padding:0 .875em;background:#fff;border:1px solid var(--linha);border-radius:.75em;color:var(--suave)}
 .cd-busca input{flex:1;min-width:0;border:0;outline:0;background:none;font-size:.9375em;color:var(--texto);min-height:2.6em}
@@ -1877,7 +1878,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.37';
+var VERSAO_SITE = '1.38';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
