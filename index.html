@@ -1707,6 +1707,13 @@ a.bt{text-decoration:none}
 .bd-rt{font-size:.875em;line-height:1.5;color:var(--azul)}
 .bd-rt small{display:block;font-size:.8571em;color:var(--suave)}
 .bd-rt b{font-weight:600}
+.bd-acoes{display:flex;flex-wrap:wrap;gap:var(--esp-2);align-items:center}
+.bd-bt.pri{border-color:var(--ouro);font-weight:600}
+.bd-dec{display:flex;flex-direction:column;gap:var(--esp-2);background:var(--creme);border-radius:var(--raio);padding:var(--esp-3)}
+.bd-dec p{margin:0;font-size:.875em;line-height:1.45;color:var(--azul)}
+.bd-dec textarea{width:100%;min-height:5.5em;padding:.7em .8em;border:1px solid var(--linha);border-radius:var(--raio);font:inherit;font-size:.9375em;color:var(--texto);background:#fff;resize:vertical;box-sizing:border-box}
+.bd-dec textarea:focus{outline:2px solid var(--ouro);outline-offset:1px}
+.bd-feito{margin:0;font-size:.875em;font-weight:600;color:#2E6B3F;background:#E8F3EA;border-radius:var(--raio);padding:.7em .85em}
 @media (min-width:768px){.bd-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (min-width:1024px){.bd-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"pg ac" "rt ac"}}
 @media (max-width:767px){.bd{padding:.25em .875em 2em}.bd-valor b{font-size:2em}}
@@ -1974,7 +1981,7 @@ a.bt{text-decoration:none}
 
 /* ================= Configuração ================= */
 var MOTOR = 'https://script.google.com/macros/s/AKfycbzyegcPesXCGSXVs59m6Soaau75Hg-wJ1SDxQLf9jCEb9qm_ihHSSHf_R1NHD4VeWQUpA/exec';
-var VERSAO_SITE = '1.41';
+var VERSAO_SITE = '1.42';
 var TELAS = [
   { id: 'auto', rotulo: 'Automático', px: 16 },
   { id: '1080', rotulo: '1080', px: 15 },
@@ -2275,7 +2282,7 @@ function trocarConta() {
 
 function sair(msg) {
   if (S.sessao) chamar({ fn: 'api', sessao: S.sessao, acao: 'portal.sair', dados: {} });
-  S.sessao = null; S.dados = null; S.det = null; S.selId = null; S.roteado = false; S.bd = null; S.bdErro = ''; S.bdCarregando = false;
+  S.sessao = null; S.dados = null; S.det = null; S.selId = null; S.roteado = false; S.bd = null; S.bdErro = ''; S.bdCarregando = false; BDS.dec = null; BDS.feitos = {};
   mostrarModulo('tarefas');
   guardar('sessao', null); guardar('google', null);
   try { google.accounts.id.disableAutoSelect(); } catch (e) {}
@@ -2733,7 +2740,7 @@ document.addEventListener('click', function (ev) {
    Quem vê é decidido pelo motor, por perfil (Configurações › Bom dia). Aprovar/Questionar (gravar()) é a etapa 2. */
 var ICO_SOL = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A46A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/></svg>';
 var ICO_GMAIL_LINK = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
-var BDS = { aba: 'voce', todos: false };
+var BDS = { aba: 'voce', todos: false, dec: null, feitos: {} }; // dec = { id, modo: 'a'|'q', texto, erro }
 function temBomDia() { return ((S.portal && S.portal.modulos) || []).some(function (m) { return m.id === 'bomdia'; }); }
 function bdN(n, um, varios) { return n + ' ' + (n === 1 ? um : varios); }
 function bdLink(u) { return /^https:\/\/mail\.google\.com\//.test(String(u || '')) ? String(u) : ''; }
@@ -2761,6 +2768,11 @@ function bdMontar() {
   if (!temBomDia()) return;
   moduloTela(bdTitulo(), bdSub(), '<div class="bd" id="bd"><p class="vazio">Carregando…</p></div>', function (raiz) {
     raiz.addEventListener('click', bdClique);
+    raiz.addEventListener('input', function (e) { // a dúvida digitada: libera o botão sem redesenhar (não perde o foco)
+      if (!e.target || !e.target.hasAttribute || !e.target.hasAttribute('data-bdtexto') || !BDS.dec) return;
+      BDS.dec.texto = e.target.value;
+      var bt = raiz.querySelector('[data-bdenviar]'); if (bt) bt.disabled = String(e.target.value).trim().length < 3;
+    });
     if (S.bd) bdDesenhar();
     if (!S.bd || Date.now() - (S.bdEm || 0) > 60000) bdCarregar(false);
   });
@@ -2787,6 +2799,11 @@ function bdCarregar(forcar) {
 function bdClique(e) {
   var b = e.target.closest ? e.target.closest('button') : null;
   if (!b) return;
+  if (b.hasAttribute('data-bdaprovar')) { BDS.dec = { id: b.getAttribute('data-bdaprovar'), modo: 'a' }; bdDesenhar(); return; }
+  if (b.hasAttribute('data-bdquestionar')) { BDS.dec = { id: b.getAttribute('data-bdquestionar'), modo: 'q', texto: '' }; bdDesenhar(); var tx = $('bdTx'); if (tx) tx.focus(); return; }
+  if (b.hasAttribute('data-bdcancelar')) { BDS.dec = null; bdDesenhar(); return; }
+  if (b.hasAttribute('data-bdok')) { bdDecidir(b.getAttribute('data-bdok'), 'Aprovar'); return; }
+  if (b.hasAttribute('data-bdenviar')) { var t1 = BDS.dec && BDS.dec.texto ? String(BDS.dec.texto).trim() : ''; if (t1.length >= 3) bdDecidir(b.getAttribute('data-bdenviar'), 'Questionar', t1); return; }
   if (b.hasAttribute('data-bdatualizar')) { bdCarregar(true); return; }
   if (b.hasAttribute('data-bdaba')) { BDS.aba = b.getAttribute('data-bdaba'); BDS.todos = false; bdDesenhar(); return; }
   if (b.hasAttribute('data-bdtodos')) { BDS.todos = b.getAttribute('data-bdtodos') === '1'; bdDesenhar(); }
@@ -2812,8 +2829,36 @@ function bdHtmlPagamento(p) {
     (dados ? '<div class="bd-dados">' + dados + '</div>' : '') +
     (p.resumo ? '<p class="bd-txt">' + esc(p.resumo) + '</p>' : '') +
     (p.alerta ? '<p class="bd-alerta">' + esc(p.alerta) + '</p>' : '') +
-    (gm ? '<div class="bd-linha1"><a class="bd-bt" href="' + esc(gm) + '" target="_blank" rel="noopener">Abrir no Gmail</a></div>' : '') +
+    bdHtmlDecisao(p, gm) +
     '</article>';
+}
+function bdHtmlDecisao(p, gm) {
+  var feito = BDS.feitos[p.id], dc = BDS.dec && BDS.dec.id === p.id ? BDS.dec : null, id = esc(p.id);
+  var linkGm = gm ? '<a class="bd-bt suave" href="' + esc(gm) + '" target="_blank" rel="noopener">Abrir no Gmail</a>' : '';
+  if (feito) return '<p class="bd-feito" role="status">✓ ' + esc(feito) + '</p>';
+  if (dc && dc.modo === 'a') {
+    return '<div class="bd-dec"><p>Aprovar este pagamento' + (p.valor ? ' de <b>R$ ' + esc(p.valor) + '</b>' : '') + '? Fica registrado e o Maestro executa depois. O portal não paga nada.</p>' +
+      (dc.erro ? '<p class="bd-alerta">' + esc(dc.erro) + '</p>' : '') +
+      '<div class="bd-acoes"><button class="bd-bt pri" data-bdok="' + id + '">Confirmar aprovação</button><button class="bd-bt suave" data-bdcancelar>Cancelar</button></div></div>';
+  }
+  if (dc && dc.modo === 'q') {
+    return '<div class="bd-dec"><p><label for="bdTx">Qual é a sua dúvida?</label></p>' +
+      '<textarea id="bdTx" data-bdtexto maxlength="300" placeholder="Ex.: por que o valor subiu em relação ao mês passado?">' + esc(dc.texto || '') + '</textarea>' +
+      (dc.erro ? '<p class="bd-alerta">' + esc(dc.erro) + '</p>' : '') +
+      '<div class="bd-acoes"><button class="bd-bt pri" data-bdenviar="' + id + '"' + (String(dc.texto || '').trim().length < 3 ? ' disabled' : '') + '>Enviar dúvida</button><button class="bd-bt suave" data-bdcancelar>Cancelar</button></div></div>';
+  }
+  return '<div class="bd-acoes"><button class="bd-bt pri" data-bdaprovar="' + id + '">Aprovar</button><button class="bd-bt" data-bdquestionar="' + id + '">Questionar</button>' + linkGm + '</div>';
+}
+function bdDecidir(id, decisao, texto) {
+  var rotulo = decisao === 'Aprovar' ? 'Aprovado. O Maestro executa depois.' : 'Dúvida registrada. O Maestro vai tratar.';
+  return gravar('bomdia.decidir', { id: id, decisao: decisao, texto: texto || '' }).then(function (r) {
+    if (r && r.ok) { BDS.feitos[id] = rotulo; BDS.dec = null; bdDesenhar(); setTimeout(function () { bdCarregar(true); }, 1200); return; }
+    if (r && r.ignorado) return;
+    var msg = (r && r.mensagem) || 'Não consegui registrar agora. Tente de novo.';
+    if (r && r.codigo === 'CONFLITO') { BDS.dec = null; bdCarregar(true); return; } // já decidido por outro caminho: a lista se atualiza
+    if (BDS.dec && BDS.dec.id === id) BDS.dec.erro = msg;
+    bdDesenhar();
+  }, function () { if (BDS.dec && BDS.dec.id === id) BDS.dec.erro = 'Sem conexão agora. Tente de novo.'; bdDesenhar(); });
 }
 function bdHtmlItem(x, aguardando) {
   var pz = bdPrazoTxt(x), gm = bdLink(x.gmail);
@@ -2841,7 +2886,7 @@ function bdDesenhar() {
     kpi(k.vencidos, 'Prazo vencido', 'Prazos vencidos') + kpi(k.hoje, 'Vence hoje', 'Vencem hoje') +
     kpi(k.abertos, 'Acompanhamento aberto', 'Acompanhamentos abertos') + '</div></section>' +
     (S.bdErro ? '<p class="bd-erro">' + esc(S.bdErro) + ' Mostrando os últimos dados.</p>' : '') +
-    '<p class="bd-aviso">Somente leitura por enquanto. Aprovar e Questionar chegam na próxima etapa.</p>';
+    '<p class="bd-aviso">Aprovar e Questionar só registram a sua decisão. O pagamento em si é feito depois, pelo Maestro.</p>';
 
   // Pagamentos a confirmar
   var pg = '<section class="bd-sec pg" aria-labelledby="bdTPg"><div class="bd-sec-cab"><h2 id="bdTPg">Pagamentos a confirmar</h2><span>' + bdN(k.pagamentos, 'pendente', 'pendentes') + '</span></div>';
